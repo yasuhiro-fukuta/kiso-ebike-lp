@@ -81,6 +81,26 @@ export default function Page() {
         </div>
       </section>
 
+
+{/* YouTube Shorts embed */}
+<section className="mx-auto max-w-6xl px-6 py-8">
+  <div
+    className="w-full rounded-2xl overflow-hidden shadow-sm"
+    style={{ aspectRatio: "9 / 16" }}  // 縦動画（Shorts）に最適
+  >
+    <iframe
+      className="w-full h-full"
+      src="https://www.youtube.com/embed/-9sQwqZJZzE?rel=0&modestbranding=1&playsinline=1"
+      title="Kiso Valley E-Bike Sharing — Shorts"
+      loading="lazy"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowFullScreen
+    />
+  </div>
+</section>
+
+
       {/* HERO直下：Routes map ボタン 4つ */}
       <section className="mx-auto max-w-6xl px-6 py-8">
         <h2 className="text-2xl md:text-3xl font-semibold">Routes map</h2>
