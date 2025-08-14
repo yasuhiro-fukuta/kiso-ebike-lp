@@ -11,6 +11,8 @@ const RESERVE_URL   = "/reserve"; // ← 予約ボタンは内部ページへ
 const ROUTE_MAP_URL = "https://www.google.com/maps/d/embed?mid=1OHpTKOucs5mBSqcEU7T4ILiapXuSkWQ&ehbc=2E312F"; // ← 指定URL
 const INSTAGRAM_URL = "https://www.instagram.com/murabito_bikes";
 const SUPPORT_MAILTO = "ravnicaguild@gmail.com";
+const PRESET_BASE_MAP_URL =
+  "https://www.google.com/maps/d/viewer?mid=1OHpTKOucs5mBSqcEU7T4ILiapXuSkWQ&ehbc=2E312F";
 
 // ヒーロー画像（/public に置いたファイル）
 const HERO = "/DSC00667.JPG"; // 例: /public/DSC00667.JPG
@@ -65,7 +67,7 @@ export default function Page() {
             >
               <Bike className="h-5 w-5" /> Reserve a bike <ArrowRight className="h-4 w-4" />
             </a>
-  <a href={ROUTE_MAP_URL} target="_blank" rel="noreferrer"
+  <a href={PRESET_BASE_MAP_URL} target="_blank" rel="noreferrer"
      className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-5 py-3 text-white backdrop-blur hover:bg-white/20 transition">
     <MapPin className="h-5 w-5" /> Preset base map
   </a>
