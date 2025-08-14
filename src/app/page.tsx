@@ -7,7 +7,8 @@ import {
 } from "lucide-react";
 
 /** === CUSTOMIZE HERE ================================ */
-const RESERVE_URL = "https://example.com/reserve"; // 予約リンク
+const RESERVE_URL   = "/reserve"; // ← 予約ボタンは内部ページへ
+const ROUTE_MAP_URL = "https://www.google.com/maps/d/embed?mid=1OHpTKOucs5mBSqcEU7T4ILiapXuSkWQ&ehbc=2E312F"; // ← 指定URL
 const INSTAGRAM_URL = "https://www.instagram.com/murabito_bikes";
 const SUPPORT_MAILTO = "ravnicaguild@gmail.com";
 
@@ -50,7 +51,7 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-6 pb-10 text-white">
           <h1 className="text-4xl md:text-6xl font-semibold drop-shadow leading-tight">
-            Kiso Valley E-Bike Sharing — Nagiso / Tsumago
+            Kiso Valley E-Bike Sharing — Nagiso / Nojiri
           </h1>
           <p className="mt-3 max-w-2xl text-lg md:text-xl opacity-90">
             Quiet forest roads, the historic Nakasendo, rivers and gorges—explore more with powerful e-bikes.
@@ -64,7 +65,10 @@ export default function Page() {
             >
               <Bike className="h-5 w-5" /> Reserve a bike <ArrowRight className="h-4 w-4" />
             </a>
-            {/* ← 「See routes map」ボタンは削除 */}
+  <a href={ROUTE_MAP_URL} target="_blank" rel="noreferrer"
+     className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-5 py-3 text-white backdrop-blur hover:bg-white/20 transition">
+    <MapPin className="h-5 w-5" /> Preset base map
+  </a>
             <a
               href={INSTAGRAM_URL}
               target="_blank"
