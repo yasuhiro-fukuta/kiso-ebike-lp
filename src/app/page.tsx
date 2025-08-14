@@ -1,103 +1,202 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState } from "react";
+import {
+  ArrowRight, Bike, MapPin, Route, ShieldCheck, Smartphone, Clock3, Leaf,
+  Instagram, Info, CreditCard, Wrench
+} from "lucide-react";
+
+/** === CUSTOMIZE HERE ================================ */
+const RESERVE_URL = "https://example.com/reserve"; // 予約リンク
+const INSTAGRAM_URL = "https://www.instagram.com/murabito_bikes";
+const SUPPORT_MAILTO = "ravnicaguild@gmail.com";
+
+// ヒーロー画像（/public に置いたファイル）
+const HERO = "/DSC00667.JPG"; // 例: /public/DSC00667.JPG
+
+// ヒーロー直下に並べる 4 つのルートボタン
+const ROUTE_LINKS = [
+  {
+    label:
+      "Kakizore gorge route: Hashimotoya (Nagiso) → Atera 2nd parking (Nojiri)",
+    href: "https://maps.app.goo.gl/6XpNNFcXNTb9Pm6i9",
+  },
+  {
+    label:
+      "Kakizore gorge route: Atera 2nd parking (Nojiri) → Hashimotoya (Nagiso)",
+    href: "https://maps.app.goo.gl/U1iEt4to7VWXvv7h8",
+  },
+  {
+    label:
+      "JR railway route: Hashimotoya (Nagiso) → Atera 2nd parking (Nojiri)",
+    href: "https://maps.app.goo.gl/4Qh5YkT4ba3UvK9C7",
+  },
+  {
+    label:
+      "JR railway route: Atera 2nd parking (Nojiri) → Hashimotoya (Nagiso)",
+    href: "https://maps.app.goo.gl/VBQQUDfFXDdBTW7U8",
+  },
+] as const;
+/** ==================================================== */
+
+export default function Page() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-stone-50 text-stone-900">
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <img src={HERO} alt="Kiso Valley E-Bike Sharing" className="h-[70vh] w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-6 pb-10 text-white">
+          <h1 className="text-4xl md:text-6xl font-semibold drop-shadow leading-tight">
+            Kiso Valley E-Bike Sharing — Nagiso / Tsumago
+          </h1>
+          <p className="mt-3 max-w-2xl text-lg md:text-xl opacity-90">
+            Quiet forest roads, the historic Nakasendo, rivers and gorges—explore more with powerful e-bikes.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href={RESERVE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl bg-emerald-500 px-5 py-3 text-white shadow-lg hover:bg-emerald-600 transition"
+            >
+              <Bike className="h-5 w-5" /> Reserve a bike <ArrowRight className="h-4 w-4" />
+            </a>
+            {/* ← 「See routes map」ボタンは削除 */}
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-5 py-3 text-white backdrop-blur hover:bg-white/20 transition"
+            >
+              <Instagram className="h-5 w-5" /> Instagram
+            </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* HERO直下：Routes map ボタン 4つ */}
+      <section className="mx-auto max-w-6xl px-6 py-8">
+        <h2 className="text-2xl md:text-3xl font-semibold">Routes map</h2>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          {ROUTE_LINKS.map((r) => (
+            <a
+              key={r.href}
+              href={r.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 px-4 py-3 hover:bg-stone-100 bg-white shadow-sm"
+            >
+              <MapPin className="h-5 w-5 text-stone-700" />
+              <span className="text-stone-800">{r.label}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* USP */}
+      <section className="mx-auto max-w-6xl px-6 py-10 grid gap-4 md:grid-cols-3">
+        <Feature icon={<Leaf className="h-6 w-6" />} title="Scenic & quiet"
+                 desc="Car-light forest roads + historic Nakasendo views." />
+        <Feature icon={<Wrench className="h-6 w-6" />} title="Well-maintained"
+                 desc="Powerful e-bikes, checked daily for safety." />
+        <Feature icon={<Smartphone className="h-6 w-6" />} title="Easy pick-up"
+                 desc="Reserve online, start navigation with one tap." />
+      </section>
+
+      {/* How it works */}
+      <section className="mx-auto max-w-6xl px-6 py-10">
+        <h2 className="text-2xl md:text-3xl font-semibold">How it works</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-4">
+          <Step title="1. Reserve" icon={<Smartphone className="h-5 w-5" />}>Choose a plan & time</Step>
+          <Step title="2. Pick up" icon={<Clock3 className="h-5 w-5" />}>At Kashiwaya or partner point</Step>
+          <Step title="3. Ride" icon={<Route className="h-5 w-5" />}>Follow our route map</Step>
+          <Step title="4. Return" icon={<MapPin className="h-5 w-5" />}>Back to the same point</Step>
+        </div>
+      </section>
+
+      {/* Pricing セクションは削除 */}
+      {/* Popular routes セクションは削除 */}
+
+      {/* Footer */}
+      <footer className="border-t bg-white/70">
+        <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-stone-600">© {new Date().getFullYear()} Kiso Valley E-Bike Sharing</div>
+          <div className="flex items-center gap-3">
+            <a
+              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-2 hover:bg-stone-100"
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Instagram className="h-4 w-4" /> Instagram
+            </a>
+            <a
+              className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-3 py-2 text-white hover:bg-emerald-600"
+              href={RESERVE_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Reserve now
+            </a>
+          </div>
+        </div>
       </footer>
+
+      {/* Contact modal（そのまま） */}
+      {modalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6"
+          onClick={() => setModalOpen(false)}
+        >
+          <div
+            className="max-w-md w-full rounded-2xl bg-white p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h4 className="text-xl font-semibold">Contact</h4>
+            <p className="mt-2 text-stone-700">
+              Questions, group rentals, custom routes—feel free to reach out.
+            </p>
+            <div className="mt-4 flex gap-3">
+              <a className="rounded-xl bg-stone-900 px-4 py-2 text-white" href={SUPPORT_MAILTO}>
+                Email us
+              </a>
+              <a className="rounded-xl border px-4 py-2" href={RESERVE_URL} target="_blank" rel="noreferrer">
+                Reserve
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---------- small components ---------- */
+function Feature(props: { icon: React.ReactNode; title: string; desc: string }) {
+  const { icon, title, desc } = props;
+  return (
+    <div className="rounded-2xl bg-white p-5 shadow-sm flex gap-3 items-start">
+      <div className="rounded-xl bg-stone-100 p-2 text-stone-700">{icon}</div>
+      <div>
+        <div className="font-semibold">{title}</div>
+        <div className="text-sm text-stone-700 mt-1">{desc}</div>
+      </div>
+    </div>
+  );
+}
+
+function Step(props: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
+  const { title, icon, children } = props;
+  return (
+    <div className="rounded-2xl bg-white p-5 shadow-sm">
+      <div className="flex items-center gap-2 font-semibold">
+        <span className="text-stone-700">{icon}</span>
+        {title}
+      </div>
+      <div className="mt-2 text-stone-700">{children}</div>
     </div>
   );
 }
