@@ -3,7 +3,7 @@
 import { useState } from "react";
 import {
   ArrowRight, Bike, MapPin, Route, ShieldCheck, Smartphone, Clock3, Leaf,
-  Instagram, Info, CreditCard, Wrench
+  Instagram, Info, CreditCard, Wrench, MessageSquare
 } from "lucide-react";
 
 /** === CUSTOMIZE HERE ================================ */
@@ -13,6 +13,9 @@ const INSTAGRAM_URL = "https://www.instagram.com/murabito_bikes";
 const SUPPORT_MAILTO = "ravnicaguild@gmail.com";
 const PRESET_BASE_MAP_URL =
   "https://www.google.com/maps/d/viewer?mid=1OHpTKOucs5mBSqcEU7T4ILiapXuSkWQ&ehbc=2E312F";
+const FEEDBACK_URL =
+'https://docs.google.com/forms/d/e/1FAIpQLScWvvhR9DBXR7d-eloSXw_dCQkIAbd32st1o5jQbc6nZxplVQ/viewform?usp=header';
+
 
 // ヒーロー画像（/public に置いたファイル）
 const HERO = "/DSC00667.JPG"; // 例: /public/DSC00667.JPG
@@ -79,6 +82,16 @@ export default function Page() {
             >
               <Instagram className="h-5 w-5" /> Instagram
             </a>
+
+<a
+href={FEEDBACK_URL}
+target="_blank"
+rel="noreferrer noopener"
+className="inline-flex items-center gap-2 rounded-2xl bg-yellow-400 px-5 py-3 text-black shadow-lg hover:bg-yellow-500 transition"
+>
+<MessageSquare className="h-5 w-5" /> Feedback
+</a>
+
           </div>
         </div>
       </section>
