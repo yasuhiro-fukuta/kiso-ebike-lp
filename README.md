@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+------------------------------
+
+ソース修正から本番環境反映まで
+
+まずパワーシェル開く
+CDでソースフォルダへ
+ソース修正：notepad .\src\app\page.tsx
+ローカルホストにデプロイ：npm run dev
+ローカルホストを確認：http://localhost:3000/
+見た目OKならGitHub にプッシュ：
+git add src/app/page.tsx
+git commit -m "add detail"
+git push
+デプロイ状況はここから確認：
+https://vercel.com/yakkuns-projects
+ホームページはここから確認：
+https://kiso-ebike-lp.vercel.app/
