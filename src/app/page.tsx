@@ -49,6 +49,9 @@ const ROUTE_LINKS = [
   },
 ] as const;
 /** ============================================================= */
+const SQUARE_BOOKING_URL =
+  "https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start";
+/** ============================================================= */
 
 export default function Page() {
   return (
@@ -66,7 +69,7 @@ export default function Page() {
         </div>
       </nav>
 
-      <a href="#book" className="float-book">
+      <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="float-book">
         <Bike size={18} /> Book a Ride
       </a>
 
@@ -86,7 +89,7 @@ export default function Page() {
           the way. Hop on a quiet e-bike and come find it with us.
         </p>
         <div className="hero-cta">
-          <a href="#book" className="btn-primary">
+          <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Book Your Ride <ArrowRight size={16} />
           </a>
           <a href="#tours" className="btn-ghost">
@@ -174,7 +177,7 @@ export default function Page() {
                 ¥5,000<small>/group base&nbsp;&nbsp;+&nbsp;&nbsp;¥5,000/person</small>
                 <span className="price-note">Local guide for the whole route · e-bike included</span>
               </div>
-              <a href="#book" className="card-book">
+              <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -205,7 +208,7 @@ export default function Page() {
                 ¥5,000<small>/group base&nbsp;&nbsp;+&nbsp;&nbsp;¥5,000/person</small>
                 <span className="price-note">Local guide for the whole route · e-bike included</span>
               </div>
-              <a href="#book" className="card-book">
+              <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -234,7 +237,7 @@ export default function Page() {
                 ¥5,000<small>/group base&nbsp;&nbsp;+&nbsp;&nbsp;¥5,000/person</small>
                 <span className="price-note">Local guide for the whole route · e-bike included</span>
               </div>
-              <a href="#book" className="card-book">
+              <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -440,26 +443,8 @@ export default function Page() {
         </p>
 
         <div className="square-embed">
-          {/*
-            ════════════════════════════════════════════════════════════
-            SQUARE BOOKING EMBED ZONE
-            Replace the placeholder block below with your Square embed.
-              Square Dashboard → Appointments → Online Booking → Channels
-              → "Add your booking flow to an existing site" → Get Started
-              → "Create button" (HTML button) OR "Get embed code" (widget)
-            In Next.js, a raw Square <script> snippet is cleanest dropped
-            into a small client component or via the booking page URL in an
-            <iframe>. Hand the snippet to Claude for exact wiring.
-            ════════════════════════════════════════════════════════════
-          */}
-          <div className="square-placeholder">
-            <p style={{ opacity: 0.9, marginBottom: "0.8rem" }}>
-              Square booking widget loads here.
-            </p>
-            <code>Paste your Square embed code in this section</code>
-          </div>
           <a
-            href="https://squareup.com/appointments"
+            href={SQUARE_BOOKING_URL}
             className="booking-cta"
             target="_blank"
             rel="noopener noreferrer"
