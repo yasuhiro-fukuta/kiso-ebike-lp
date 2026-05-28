@@ -3,9 +3,9 @@
 import {
   ArrowRight,
   Bike,
-  MapPin,
   Compass,
   Backpack,
+  Umbrella,
   Instagram,
   Mail,
   Phone,
@@ -29,25 +29,6 @@ const FEEDBACK_URL =
 // Google My Maps — embed + viewer
 const MYMAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1OHpTKOucs5mBSqcEU7T4ILiapXuSkWQ&ehbc=2E312F";
-// Per-route turn-by-turn map links (migrated)
-const ROUTE_LINKS = [
-  {
-    label: "Kakizore Gorge: Hashimotoya (Nagiso) → Atera 2nd parking (Nojiri)",
-    href: "https://maps.app.goo.gl/6XpNNFcXNTb9Pm6i9",
-  },
-  {
-    label: "Kakizore Gorge: Atera 2nd parking (Nojiri) → Hashimotoya (Nagiso)",
-    href: "https://maps.app.goo.gl/U1iEt4to7VWXvv7h8",
-  },
-  {
-    label: "JR Railway route: Hashimotoya (Nagiso) → Atera 2nd parking (Nojiri)",
-    href: "https://maps.app.goo.gl/4Qh5YkT4ba3UvK9C7",
-  },
-  {
-    label: "JR Railway route: Atera 2nd parking (Nojiri) → Hashimotoya (Nagiso)",
-    href: "https://maps.app.goo.gl/VBQQUDfFXDdBTW7U8",
-  },
-] as const;
 /** ============================================================= */
 const SQUARE_BOOKING_URL =
   "https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start";
@@ -81,7 +62,7 @@ export default function Page() {
           Nagiso · Kiso Valley · Central Japan
         </span>
         <h1>
-          Skip the guidebook. <em>Go play</em> like a local.
+          Slide out of the guidebook. <em>Go play</em> like a local.
         </h1>
         <p className="hero-sub">
           There&apos;s a whole valley the day-trippers never see — hidden
@@ -135,11 +116,7 @@ export default function Page() {
             valley — at a pace where you can actually feel the place.
           </p>
         </div>
-        <div className="intro-visual">
-          <span className="vtag">
-            Soba in Tsumago, when the day-trippers have gone home
-          </span>
-        </div>
+        <div className="intro-visual"></div>
       </section>
 
       {/* TOURS */}
@@ -148,8 +125,8 @@ export default function Page() {
           <span className="eyebrow">Choose your day</span>
           <h2>Three routes. All a little off the beaten track.</h2>
           <p>
-            Every ride starts and ends at Kashiwaya, our farmhouse guesthouse.
-            Pick by season and how hard you want to push.
+            Every ride is a half day, 10:00–16:00. Pick by season and how hard
+            you want to push.
           </p>
         </div>
         <div className="tour-grid">
@@ -161,21 +138,17 @@ export default function Page() {
               <span className="season">Spring &amp; Autumn</span>
             </div>
             <div className="body">
-              <h3>Tsumago Revenge Loop</h3>
-              <div className="route">
-                Kashiwaya → Tsumago → Nagiso Stn · (loop or reverse OK)
-              </div>
+              <h3>Tsumago, Revisited</h3>
+              <div className="route">Best in Spring &amp; Autumn · Easy</div>
               <p>
-                For anyone who reached Tsumago at dusk and never got to explore
-                it properly. We take a locals-only road along an old
-                forest-railway line into the post town — wander it after the
-                crowds leave — then roll back a different way along the Kiso
-                River to the station. Wait for your train at a café nearby, and
-                on to the next leg of your trip.
+                What used to be a forest-railway line is now a quiet paved road
+                only locals know — running straight into Tsumago. Perfect for
+                anyone who arrived at the post town too late the night before
+                to explore it properly.
               </p>
               <div className="price">
-                ¥5,000<small>/group base&nbsp;&nbsp;+&nbsp;&nbsp;¥5,000/person</small>
-                <span className="price-note">Local guide for the whole route · e-bike included</span>
+                <small>Easiest of the three · great for a first ride</small>
+                <span className="price-note">Available as a rental or a guided tour — see pricing below</span>
               </div>
               <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
@@ -191,22 +164,19 @@ export default function Page() {
               <span className="season">Summer &amp; Early Winter</span>
             </div>
             <div className="body">
-              <h3>Gorge &amp; Onsen</h3>
-              <div className="route">
-                Kashiwaya → Kakizore → Koiji Pass → Atera → Nojiri Stn · (loop or
-                reverse OK)
-              </div>
+              <h3>Natural AC &amp; Onsen</h3>
+              <div className="route">Best in Summer &amp; Early Winter · Moderate</div>
               <p>
-                We skip the long, brutal Yogawa climb and cross to the west side
-                of the Kiso River instead. Past terraced rice fields, a rest at
-                an old farmhouse, then cool off in Kakizore Gorge. Over Koiji
-                Pass to the Atera Valley — dive straight into the river in
-                summer, or soak in the onsen near the mouth in winter. Finish
-                with a café stop by Nojiri Station.
+                The Yogawa trail is beautiful, but brutal in summer heat. The
+                opposite bank has rice paddy roads, an easy pass, and a narrow
+                road linking two stunning waterfalls. Borrow a rashguard for
+                free, then dive into the gorge to cool off. There&apos;s an
+                onsen at the end of the road — in winter, dive into that
+                instead.
               </p>
               <div className="price">
-                ¥5,000<small>/group base&nbsp;&nbsp;+&nbsp;&nbsp;¥5,000/person</small>
-                <span className="price-note">Local guide for the whole route · e-bike included</span>
+                <small>River swims in summer · onsen in winter</small>
+                <span className="price-note">Available as a rental or a guided tour — see pricing below</span>
               </div>
               <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
@@ -217,25 +187,23 @@ export default function Page() {
           <div className="tour-card">
             <div className="top">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/ebike.jpg" alt="MOVE fat-tire e-bikes parked at the guesthouse" />
+              <img src="/assets/challengers.jpg" alt="Waterfall shower in the Atera river canyon" />
               <span className="lvl">Hard</span>
               <span className="season">For the fit</span>
             </div>
             <div className="body">
-              <h3>Challengers</h3>
-              <div className="route">
-                Tadachi &amp; Iwakura river fishing · Yogawa-michi pass crossing
-              </div>
+              <h3>Nakasendo Challenge</h3>
+              <div className="route">Yogawa-trail crossing · Hard</div>
               <p>
-                The real local secret, and not for the faint-legged. Serious
-                gradient and distance: catch river fish at Tadachi and Iwakura,
-                then take on the Yogawa-michi pass on the bike. Completely
-                un-touristed terrain that only the people who grew up here know.
-                For riders who actually want to earn the views.
+                The Yogawa trail, said to be the most beautiful stretch of the
+                entire Nakasendo. No shops along the way, slightly longer with
+                more elevation than Magome Pass — for confident riders only. We
+                ride the narrow paved road that runs alongside this old
+                highway. For those with the legs for it.
               </p>
               <div className="price">
-                ¥5,000<small>/group base&nbsp;&nbsp;+&nbsp;&nbsp;¥5,000/person</small>
-                <span className="price-note">Local guide for the whole route · e-bike included</span>
+                <small>Steep &amp; long · for confident riders only</small>
+                <span className="price-note">Available as a rental or a guided tour — see pricing below</span>
               </div>
               <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
@@ -247,23 +215,24 @@ export default function Page() {
         {/* PRICING */}
         <div className="pricing">
           <div className="pitem">
-            <h4>Guided Ride</h4>
+            <h4>E-Bike Rental</h4>
             <div className="amt">
-              ¥5,000<span style={{ fontSize: "0.9rem" }}>/group</span>
-              <span style={{ fontSize: "1.1rem", margin: "0 0.4rem" }}>+</span>
-              ¥5,000<span style={{ fontSize: "0.9rem" }}>/person</span>
+              ¥4,000<span style={{ fontSize: "0.9rem" }}>/bike</span>
             </div>
             <p>
-              ¥5,000 base fee per group, plus ¥5,000 per person. A local guide
-              rides the whole route with you — and your e-bike use is included.
+              Self-guided with our route maps. ¥4,000 for one bike, ¥8,000 for
+              two. Up to 2 bikes.
             </p>
           </div>
           <div className="pitem">
-            <h4>E-Bike Only</h4>
+            <h4>Add a Local Guide</h4>
             <div className="amt">
-              ¥4,000<span style={{ fontSize: "0.9rem" }}>/person</span>
+              +¥9,000<span style={{ fontSize: "0.9rem" }}>/group</span>
             </div>
-            <p>Just want the bike? Rent one and explore on your own. No guide fee.</p>
+            <p>
+              Add a local guide to your rental for the whole half day. So it&apos;s
+              ¥13,000 with one bike, ¥17,000 with two — up to 2 guests.
+            </p>
           </div>
           <div className="pitem">
             <h4>Luggage Shuttle</h4>
@@ -273,11 +242,6 @@ export default function Page() {
               ↔ Nojiri Stn. Ride light.
             </p>
           </div>
-          <div className="pricing-foot">
-            <strong>Riding with us? Your luggage shuttle is free</strong> —
-            bags moved between Nagiso Station, Kashiwaya, and Nojiri Station, so
-            you arrive, ride, and leave without lugging your pack over a pass.
-          </div>
         </div>
 
         {/* OPENING CAMPAIGN BANNER */}
@@ -285,13 +249,14 @@ export default function Page() {
           <div className="campaign-badge">Opening Campaign</div>
           <div className="campaign-body">
             <h3>
-              Help us launch — ride a guided tour for <em>80% off.</em>
+              Help us launch — <em>¥7,000 off</em> any guided tour.
             </h3>
             <p>
-              We&apos;re just getting started. If you&apos;re happy to let us
-              photograph the ride and share your feedback afterwards, we&apos;ll
-              take 80% off the full price of any guided tour. Limited-time
-              launch offer.
+              We&apos;re just getting started. If you&apos;re happy to be
+              photographed during the ride and share your feedback afterwards,
+              we&apos;ll take ¥7,000 off — so a guided tour is just ¥6,000 with
+              one bike or ¥10,000 with two. Photos may be used on our website
+              and social media. Limited-time launch offer.
             </p>
           </div>
         </div>
@@ -314,14 +279,6 @@ export default function Page() {
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
             />
-          </div>
-          <div className="route-links">
-            {ROUTE_LINKS.map((r) => (
-              <a key={r.href} href={r.href} target="_blank" rel="noreferrer">
-                <MapPin size={18} />
-                <span>{r.label}</span>
-              </a>
-            ))}
           </div>
         </div>
       </section>
@@ -402,6 +359,13 @@ export default function Page() {
             <h3>Luggage Shuttle</h3>
             <p>Bags moved between the stations and Kashiwaya, free.</p>
           </div>
+          <div className="inc-item">
+            <div className="icon">
+              <Umbrella size={30} />
+            </div>
+            <h3>Waterproof Gear</h3>
+            <p>Rashguards, life jackets, and bear bells — free to borrow.</p>
+          </div>
         </div>
       </section>
 
@@ -476,10 +440,11 @@ export default function Page() {
         <details className="faq-item">
           <summary>What&apos;s the difference between guided and e-bike only?</summary>
           <p>
-            Guided means a local rides with you the whole route (¥5,000/person +
-            ¥5,000 flat guide fee per group). E-bike only is just the rental
-            (¥5,000/person) — you explore on your own with our route maps, no
-            guide fee. Both include the free luggage shuttle.
+            Guided means a local rides with you the whole route, bikes
+            included (¥13,000 for one bike, ¥17,000 for two, up to 2 guests).
+            E-bike only is just the rental (¥4,000 per bike, ¥8,000 for two) —
+            you explore on your own with our route maps. Both include the free
+            luggage shuttle.
           </p>
         </details>
         <details className="faq-item">
@@ -507,18 +472,11 @@ export default function Page() {
           </p>
         </details>
         <details className="faq-item">
-          <summary>What if it rains?</summary>
+          <summary>Where do we start &amp; end?</summary>
           <p>
-            Light rain is part of the Kiso experience and we ride through it. If
-            conditions are unsafe, we reschedule or refund — no questions asked.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>Where do we start?</summary>
-          <p>
-            All rides depart from Kashiwaya Guesthouse in Nagiso (読書4181), about
-            10 minutes from Nagiso Station on the JR Chuo Line. Exact directions
-            come with your booking confirmation.
+            You can pick from three points, and your start and end don&apos;t
+            need to be the same: ① Kashiwaya Guesthouse, ② Nagiso Station, or
+            ③ Nojiri Station.
           </p>
         </details>
       </section>

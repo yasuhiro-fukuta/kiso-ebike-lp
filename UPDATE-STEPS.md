@@ -1,23 +1,22 @@
-# kiso-ebike-lp 更新（v3.1 Square予約URL修正版）
+# kiso-ebike-lp 更新（v6 文言ブラッシュアップ）
 
-修正内容:
-  予約URL を正しいものに修正（...n5ipgn3swmf0ps/... ※"ps"が正）
-  ※前回 v3 は "qs" になっていて予約画面が開けなかった。今回修正済み。
+変更:
+  - ヒーロー: "Skip the guidebook" → "Slide out of the guidebook"
+  - tours-head: "Every ride is a half day, 10:00–16:00" を共通表記に
+  - Tsumagoカード: "Tsumago, Revisited" / 林業鉄道→妻籠の解説に書き換え
+  - Gorgeカード: "Natural AC & Onsen" / 与川道避け→対岸ルートに書き換え
+  - Challengersカード: "Nakasendo Challenge" / Yogawa trailの解説に書き換え
+  - 各カードの "Half day · 10:00–16:00" 表記を削除（上に統一）
+  - ルートマップの4ルートリスト＋未使用import (MapPin, ROUTE_LINKS) を削除
+  - Gear/Includesに4つ目 "Waterproof Gear"（ラッシュガード/ライフジャケット/熊鈴・無料貸出）追加
+  - FAQ "Where do we start?" → "Where do we start & end?" / 3地点選択可に
+  - shodo.jpg を新しい画像（行灯）に差し替え
 
-正しいSquare予約URL:
-  https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start
-
-## 上書きするファイル
-  src/app/page.tsx   ← これだけ上書き
+## 上書き
+  src/app/page.tsx
+  public/assets/shodo.jpg
 
 ## 手順
-1. このフォルダの src/app/page.tsx を
-   C:\Users\ravni\kiso-ebike-lp\src\app\page.tsx に上書き
-2. ローカル確認: npm run dev → http://localhost:3000
-   予約ボタンを押して Square 予約画面（サービス選択）が開けばOK
-3. push:
-     git add .
-     git commit -m "Fix Square booking URL typo (qs -> ps)"
-     git push
+  ZIP解凍 → src と public を上書き → git add . && git commit -m "Refine copy and visuals" && git push
 
-本番ビルド成功・型チェック通過・警告ゼロ確認済み。
+本番ビルド成功・警告ゼロ確認済み。
