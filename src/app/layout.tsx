@@ -81,6 +81,7 @@ const jsonLd = {
       makesOffer: [
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#tour` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#rental` } },
+        { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#downhill` } },
       ],
     },
     {
@@ -160,6 +161,26 @@ const jsonLd = {
       ],
     },
     {
+      "@type": "Product",
+      "@id": `${SITE_URL}/#downhill`,
+      name: "Kiso River Downhill (full-day guided e-bike course)",
+      description:
+        "A full-day, guide-only e-bike descent of the Kiso Valley: 54.5 km from Narai-juku to Nagiso Station, almost all of it downhill, dropping from 997 m at the headwaters of the Kiso River to 409 m on the valley floor (682 m of descent against only 153 m of climbing). The route follows the historic Kiso road past eight of its eleven post towns (all but Niekawa, Magome and Tsumago), with breakfast in Narai-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Books by WhatsApp.",
+      image: `${SITE_URL}/assets/downhill.jpg`,
+      brand: { "@id": `${SITE_URL}/#business` },
+      category: "Guided cycling tour",
+      offers: {
+        "@type": "Offer",
+        name: "Kiso River Downhill — full day, guided",
+        description:
+          "Guide fee ¥40,000 for the whole group, plus ¥4,000 per e-bike. Two riders on two bikes is ¥48,000. Guided only; reserve by WhatsApp.",
+        price: "44000",
+        priceCurrency: "JPY",
+        availability: "https://schema.org/InStock",
+        url: SITE_URL,
+      },
+    },
+    {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,
       mainEntity: [
@@ -209,6 +230,54 @@ const jsonLd = {
           acceptedAnswer: {
             "@type": "Answer",
             text: "You can pick from three points, and your start and end don't need to be the same: Kashiwaya Guesthouse, Nagiso Station, or Nojiri Station.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I ride the Kiso River Downhill course self-guided?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No — the full-day Kiso River Downhill is guided only. In a few places a wrong turn drops you onto roads with heavy traffic, so for safety a guide rides the whole 54.5 km route with you.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "I'm not confident I can ride 50+ km. Can I still do the Kiso River Downhill?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Most likely yes. The 54.5 km course is gentle downhill almost the whole way (682 m of descent against just 153 m of climb), and on the few uphill stretches the high-powered e-bike does the climbing for you. If you can ride a normal bike 10 km on flat ground, you should reach the finish comfortably.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I bail out partway through the Kiso River Downhill?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The route shadows the JR line the whole way, so if you feel unwell you can take a train from the nearest station. Lock the bike at the station rack and we collect it afterwards.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What happens to the Kiso River Downhill in bad weather?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Rain or snow means we cancel and refund by default. Our e-bikes handle rough conditions well, so if it is light enough not to affect safety or the experience and everyone agrees, we may still run it. If the weather turns mid-ride, we stop there, refund part of the fee, and take the train to the finish.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What about bears on the route?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The Kiso has Asiatic black bears, like the rest of these mountains. We hand you a bear bell and bear spray to carry, the guide always rides up front, and we run through a what-to-do-if-you-meet-one briefing before setting off.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do you handle summer heat and winter cold on the full-day course?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "In summer we lend a rashguard, keep you dousing with water, and break to dip in the valley's river pools. In winter we lend cold-weather gear and stop at footbaths and onsen along the way to warm up.",
           },
         },
       ],

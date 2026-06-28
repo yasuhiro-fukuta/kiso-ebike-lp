@@ -343,3 +343,126 @@ body::before {
   color: var(--paper); font-size: 0.7rem; letter-spacing: 0.06em;
   padding: 0.3rem 0.7rem; border-radius: 4px; backdrop-filter: blur(4px);
 }
+
+/* =========================================================
+   SPECIAL COURSE — Kiso River Downhill (full day · guided)
+   A darker, premium band that sets the flagship apart.
+   All selectors scoped under .special.
+   ========================================================= */
+.special {
+  background: linear-gradient(165deg, var(--moss-deep) 0%, var(--ink) 100%);
+  color: var(--paper);
+  padding: clamp(4.5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+  position: relative; overflow: hidden;
+}
+.special::before {
+  content: "川"; position: absolute; right: -1.5rem; top: 0.5rem;
+  font-family: var(--serif); font-size: clamp(14rem, 30vw, 26rem); line-height: 1;
+  color: rgba(244, 239, 230, 0.035); pointer-events: none; user-select: none;
+}
+.special-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+
+.special .eyebrow { color: var(--gold); }
+.special-badge {
+  display: inline-flex; align-items: center; vertical-align: middle;
+  margin-left: 0.8rem; background: var(--rust); color: var(--paper);
+  font-family: var(--sans); font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.32rem 0.75rem; border-radius: 100px;
+}
+.special-head h2 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 1.1rem 0 1.2rem;
+  max-width: 18ch; line-height: 1.04;
+}
+.special-head h2 em { font-style: italic; color: var(--gold); }
+.special-lead { font-weight: 300; font-size: 1.05rem; opacity: 0.9; max-width: 60ch; }
+.special-lead b { font-weight: 500; color: #fff; opacity: 1; }
+
+/* stats strip */
+.special-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  margin: clamp(2.2rem, 5vw, 3rem) 0;
+  border-top: 1px solid rgba(244, 239, 230, 0.14);
+  border-bottom: 1px solid rgba(244, 239, 230, 0.14);
+  padding: 2rem 0;
+}
+@media (max-width: 720px) {
+  .special-stats { grid-template-columns: 1fr 1fr; gap: 1.8rem 1.5rem; }
+}
+.sstat .num { font-family: var(--serif); font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: var(--gold); line-height: 1; }
+.sstat .num small { font-size: 0.85rem; opacity: 0.8; }
+.sstat .lbl { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; margin-top: 0.55rem; }
+
+/* body grid: the day | price */
+.special-body {
+  display: grid; grid-template-columns: 1fr 0.8fr;
+  gap: clamp(2rem, 4vw, 3.5rem); align-items: start;
+}
+@media (max-width: 880px) { .special-body { grid-template-columns: 1fr; } }
+
+/* the day, as a vertical timeline */
+.special-day h3 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 1.3rem; }
+.day-line { list-style: none; position: relative; padding-left: 1.7rem; }
+.day-line::before {
+  content: ""; position: absolute; left: 5px; top: 7px; bottom: 7px; width: 2px;
+  background: linear-gradient(var(--gold), rgba(200, 160, 74, 0.12));
+}
+.day-line li { position: relative; padding-bottom: 1.5rem; }
+.day-line li:last-child { padding-bottom: 0; }
+.day-line li::before {
+  content: ""; position: absolute; left: -1.7rem; top: 4px; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(200, 160, 74, 0.15);
+}
+.day-line .place { font-family: var(--serif); font-size: 1.1rem; }
+.day-line .place .alt {
+  font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.08em;
+  color: var(--gold); margin-left: 0.55rem;
+}
+.day-line .role { font-size: 0.82rem; font-weight: 300; opacity: 0.75; margin-top: 0.15rem; }
+
+/* price + WhatsApp cta */
+.special-price {
+  background: rgba(244, 239, 230, 0.06);
+  border: 1px solid rgba(244, 239, 230, 0.12); border-radius: 10px; padding: 1.6rem;
+}
+.special-price .from { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+.special-price .amt { font-family: var(--serif); font-size: 2.4rem; color: var(--gold); line-height: 1; margin: 0.35rem 0 0.5rem; }
+.special-price .amt span { font-size: 1rem; opacity: 0.7; }
+.special-price .breakdown { font-weight: 300; font-size: 0.86rem; opacity: 0.85; margin-bottom: 1.3rem; }
+.special-cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  width: 100%; background: var(--rust); color: var(--paper); text-decoration: none;
+  padding: 1rem; border-radius: 100px; font-family: var(--sans); font-weight: 600;
+  font-size: 0.95rem; letter-spacing: 0.03em;
+  transition: background 0.3s, transform 0.3s;
+}
+.special-cta:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+.special-cta-note { font-size: 0.76rem; opacity: 0.6; margin-top: 0.85rem; font-weight: 300; line-height: 1.5; }
+
+/* route map */
+.special-map { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.special-map .map-frame {
+  width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); border: 1px solid rgba(244, 239, 230, 0.1);
+}
+.special-map .map-frame iframe { width: 100%; height: 100%; border: 0; }
+.special-map .map-cap { font-size: 0.82rem; font-weight: 300; opacity: 0.78; margin-top: 0.9rem; }
+.special-map .map-cap a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200, 160, 74, 0.4); }
+.special-map .map-cap a:hover { border-color: var(--gold); }
+
+/* faq, scoped to the dark band */
+.special-faq { margin-top: clamp(2.5rem, 5vw, 3.5rem); max-width: 760px; }
+.special-faq h3 { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.4rem; }
+.special-faq .sfaq { border-bottom: 1px solid rgba(244, 239, 230, 0.14); padding: 1.2rem 0; cursor: pointer; }
+.special-faq .sfaq summary {
+  font-family: var(--serif); font-size: 1.12rem; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem; color: var(--paper);
+}
+.special-faq .sfaq summary::-webkit-details-marker { display: none; }
+.special-faq .sfaq summary::after { content: "+"; font-family: var(--sans); font-size: 1.4rem; color: var(--gold); transition: transform 0.3s; flex-shrink: 0; }
+.special-faq .sfaq[open] summary::after { transform: rotate(45deg); }
+.special-faq .sfaq p { font-weight: 300; opacity: 0.82; padding-top: 0.9rem; font-size: 0.95rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .special-cta, .special-faq .sfaq summary::after { transition: none; }
+}

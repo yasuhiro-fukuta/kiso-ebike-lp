@@ -10,6 +10,7 @@ import {
   Mail,
   Phone,
   MessageSquare,
+  MessageCircle,
   Zap,
   Mountain,
   Lightbulb,
@@ -34,6 +35,18 @@ const SQUARE_BOOKING_URL =
   "https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start";
 /** ============================================================= */
 
+/** === SPECIAL COURSE: Kiso River Downhill (full day, guided only) ===
+ *  This flagship books by WhatsApp, not Square.
+ *  ⚠️ Confirm the WhatsApp number below matches the business line.
+ *  ============================================================= */
+const WHATSAPP_URL =
+  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20ask%20about%20the%20Kiso%20River%20Downhill%20full-day%20course.";
+const SPECIAL_MAP_EMBED_URL =
+  "https://www.google.com/maps/d/embed?mid=1LgL4RlnePF5JdvpqzADrpsrrW7oTVDE";
+const SPECIAL_MAP_VIEW_URL =
+  "https://www.google.com/maps/d/viewer?mid=1LgL4RlnePF5JdvpqzADrpsrrW7oTVDE";
+/** ============================================================= */
+
 export default function Page() {
   return (
     <div className="lp">
@@ -43,6 +56,7 @@ export default function Page() {
         </div>
         <div className="nav-links">
           <a href="#tours">Routes</a>
+          <a href="#downhill">Downhill</a>
           <a href="#maps">Maps</a>
           <a href="#gear">The Bikes</a>
           <a href="#faq">FAQ</a>
@@ -310,6 +324,198 @@ export default function Page() {
               <Ruler size={18} /> Sized to you before you set off
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* SPECIAL COURSE — Kiso River Downhill (full day · guided only) */}
+      <section className="special" id="downhill">
+        <div className="special-inner">
+          <div className="special-head">
+            <span className="eyebrow">Special course · Full day</span>
+            <span className="special-badge">Guided only</span>
+            <h2>
+              The Kiso River Downhill — <em>coast the whole valley in a day.</em>
+            </h2>
+            <p className="special-lead">
+              <b>
+                54.5&nbsp;km, Narai-juku to Nagiso Station, almost all of it
+                downhill.
+              </b>{" "}
+              You set off from the headwaters of the Kiso River, 997&nbsp;m up,
+              and follow the water as it grows from a mountain stream into a full
+              river — rolling past eight of the Kiso road&apos;s old post towns
+              (everything but Niekawa, Magome and Tsumago) on one long and
+              gentle descent. Breakfast in Narai, lunch in Kiso-Fukushima, a coffee stop at Nojiri Station,
+              and a finish line at Nagiso as the light goes long. Every metre has
+              been ridden and re-ridden by a local guide to find the most
+              beautiful, the most comfortable, and the safest line down the
+              valley.
+            </p>
+          </div>
+
+          <div className="special-stats">
+            <div className="sstat">
+              <div className="num">
+                54.5<small>&nbsp;km</small>
+              </div>
+              <div className="lbl">Total distance</div>
+            </div>
+            <div className="sstat">
+              <div className="num">
+                ↓682<small>&nbsp;m</small>
+              </div>
+              <div className="lbl">Descent · only ↑153 m up</div>
+            </div>
+            <div className="sstat">
+              <div className="num">
+                997→409<small>&nbsp;m</small>
+              </div>
+              <div className="lbl">Source to valley floor</div>
+            </div>
+            <div className="sstat">
+              <div className="num">8</div>
+              <div className="lbl">Kiso post towns</div>
+            </div>
+          </div>
+
+          <div className="special-body">
+            {/* LEFT — the shape of the day */}
+            <div className="special-day">
+              <h3>How the day runs</h3>
+              <ul className="day-line">
+                <li>
+                  <div className="place">
+                    Narai-juku <span className="alt">997 m</span>
+                  </div>
+                  <div className="role">
+                    Breakfast in the post town, then roll out
+                  </div>
+                </li>
+                <li>
+                  <div className="place">Kiso-Fukushima</div>
+                  <div className="role">Lunch, roughly the halfway mark</div>
+                </li>
+                <li>
+                  <div className="place">Nojiri Station</div>
+                  <div className="role">A coffee stop to stretch the legs</div>
+                </li>
+                <li>
+                  <div className="place">
+                    Nagiso Station <span className="alt">409 m</span>
+                  </div>
+                  <div className="role">Finish line as the light goes long</div>
+                </li>
+              </ul>
+            </div>
+
+            {/* RIGHT — the price + booking */}
+            <div className="special-price">
+              <div className="from">Total for the day</div>
+              <div className="amt">
+                ¥44,000<span>&nbsp;+</span>
+              </div>
+              <p className="breakdown">
+                Guide ¥40,000 for the whole group, plus ¥4,000 per e-bike — so
+                two riders on two bikes comes to ¥48,000.
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="special-cta"
+              >
+                <MessageCircle size={18} /> Ask &amp; book on WhatsApp
+              </a>
+              <p className="special-cta-note">
+                This full-day course is arranged personally — message us on
+                WhatsApp to pick a date.
+              </p>
+            </div>
+          </div>
+
+          {/* route map */}
+          <div className="special-map">
+            <div className="map-frame">
+              <iframe
+                src={SPECIAL_MAP_EMBED_URL}
+                title="Kiso River Downhill — full route map"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+            <p className="map-cap">
+              The full 54.5&nbsp;km line, Narai to Nagiso.{" "}
+              <a
+                href={SPECIAL_MAP_VIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open the route in Google Maps →
+              </a>
+            </p>
+          </div>
+
+          {/* special-course FAQ */}
+          <div className="special-faq">
+            <h3>Before you commit</h3>
+            <details className="sfaq">
+              <summary>Can I ride this one self-guided?</summary>
+              <p>
+                No — this course is guided only. In a few places, one wrong turn
+                drops you onto roads with heavy traffic. To keep the day safe, a
+                guide rides the whole route with you.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>I&apos;m not sure I can ride 50+ km.</summary>
+              <p>
+                54.5 km sounds like an expert distance, we know. But it&apos;s
+                gentle downhill almost the entire way, and on the few uphill
+                stretches the high-powered e-bike does the climbing for you. If
+                you can ride a normal bike 10 km on flat ground, you&apos;ll
+                reach the finish smiling. This is your chance to surprise
+                yourself.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>Can I bail out partway?</summary>
+              <p>
+                Yes. The route shadows the JR line the whole way, so if
+                you&apos;re not feeling well you can step off and take a train
+                from the nearest station. Just lock the bike at the station rack
+                and we&apos;ll collect it afterwards.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>What happens in bad weather?</summary>
+              <p>
+                Rain or snow means we cancel and refund by default. Our e-bikes
+                handle rough conditions well, though — so if it&apos;s light
+                enough not to affect safety or the experience, and everyone&apos;s
+                happy to ride, we may still run it. If the weather turns mid-ride,
+                we stop there, refund part of the fee, and take the train to the
+                finish.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>What about bears?</summary>
+              <p>
+                Like everywhere in these mountains, the Kiso has Asiatic black
+                bears. We hand you a bear bell and bear spray to carry, your guide
+                always rides up front, and we run through a what-to-do-if-you-meet-one
+                briefing before we set off.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>How do you handle summer heat and winter cold?</summary>
+              <p>
+                In summer we lend you a rashguard, keep you dousing with water,
+                and break to dip in the valley&apos;s river pools. In winter we
+                lend cold-weather gear and stop at footbaths and onsen along the
+                way to warm back up.
+              </p>
+            </details>
+          </div>
         </div>
       </section>
 
