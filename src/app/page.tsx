@@ -15,6 +15,10 @@ import {
   Mountain,
   Lightbulb,
   Ruler,
+  ShieldCheck,
+  HeartPulse,
+  Droplet,
+  Wind,
 } from "lucide-react";
 
 /** === CUSTOMIZE HERE ===========================================
@@ -324,6 +328,68 @@ export default function Page() {
               <Ruler size={18} /> Sized to you before you set off
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* GUIDE — Wilderness First Aid credential */}
+      <section className="guide" id="guide">
+        <div className="guide-inner">
+          <div className="guide-text">
+            <span className="eyebrow">
+              <ShieldCheck size={15} /> Who&apos;s riding with you
+            </span>
+            <h2>
+              Out here, your guide is the first responder — and Yakkun&apos;s{" "}
+              <em>trained for it.</em>
+            </h2>
+            <p>
+              Yakkun is certified in Wilderness First Aid by Wilderness Medical
+              Associates International — the same training that expedition crews
+              and mountain-rescue teams rely on. Deep in the valley an ambulance
+              can be a long way off, so he&apos;s trained to be the help until it
+              arrives.
+            </p>
+            <ul className="guide-skills">
+              <li>
+                <HeartPulse size={18} /> Adult CPR and AED use
+              </li>
+              <li>
+                <Wind size={18} /> Clearing an obstructed airway
+              </li>
+              <li>
+                <Droplet size={18} /> Controlling severe bleeding (hemorrhage
+                control)
+              </li>
+            </ul>
+            <p className="guide-consent">
+              By joining a ride, you agree that if an emergency happens, Yakkun
+              may give first aid in line with this certification until
+              professional care reaches us.
+            </p>
+          </div>
+
+          <div className="guide-proof">
+            <div className="cert-stack">
+              <div className="cert cert-front">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/WFA1.jpg"
+                  alt="Wilderness First Aid certification card for Yasuhiro Fukuta, issued by Wilderness Medical Associates International, valid through 18 February 2029, Course ID 37079"
+                />
+              </div>
+              <div className="cert cert-back">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/WFA2.jpg"
+                  alt="Reverse of the Wilderness Medical Associates certification card, showing programme terms and validity"
+                />
+              </div>
+            </div>
+            <div className="cert-cap">
+              Wilderness First Aid · Wilderness Medical Associates Int&apos;l ·
+              Course ID 37079 · valid through Feb 2029
+            </div>
+          </div>
         </div>
       </section>
 

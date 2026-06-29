@@ -83,6 +83,28 @@ const jsonLd = {
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#rental` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#downhill` } },
       ],
+      employee: { "@id": `${SITE_URL}/#guide` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#guide`,
+      name: "Yasuhiro Fukuta",
+      alternateName: "Yakkun",
+      jobTitle: "Cycling guide",
+      worksFor: { "@id": `${SITE_URL}/#business` },
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        name: "Wilderness First Aid",
+        credentialCategory: "certification",
+        description:
+          "Wilderness First Aid certification covering adult CPR and AED use, relief of foreign-body airway obstruction, and control of severe bleeding. Course ID 37079, valid through 18 February 2029.",
+        recognizedBy: {
+          "@type": "Organization",
+          name: "Wilderness Medical Associates International",
+          address: "1 Forest Ave, Portland, ME 04101, USA",
+        },
+        validThrough: "2029-02-18",
+      },
     },
     {
       "@type": "Product",
