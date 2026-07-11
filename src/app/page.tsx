@@ -122,7 +122,7 @@ export default function Page() {
             just off the main road.
           </h2>
           <p>
-            Nagiso sits on the old Nakasendo highway, halfway between Kyoto and
+            Nagiso sits on the old Nakasendo post road, halfway between Kyoto and
             Tokyo. Everyone stops, takes a photo of the post town, and leaves.
             But a few minutes off the route there are emerald gorges, forgotten
             railway paths, and swimming holes that only the people who live here
@@ -217,7 +217,7 @@ export default function Page() {
                 entire Nakasendo. No shops along the way, slightly longer with
                 more elevation than Magome Pass — for confident riders only. We
                 ride the narrow paved road that runs alongside this old
-                highway. For those with the legs for it.
+                route. For those with the legs for it.
               </p>
               <div className="price">
                 <small>Steep &amp; long · for confident riders only</small>
