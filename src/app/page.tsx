@@ -446,7 +446,7 @@ export default function Page() {
             <span className="eyebrow">Special course · Full day</span>
             <span className="special-badge">Guided only</span>
             <h2>
-              The Kiso River Downhill — <em>coast the whole valley in a day.</em>
+              The Kiso River Downhill — <em>the most comfortable 50 km in the world.</em>
             </h2>
             <p className="special-lead">
               <b>
