@@ -439,6 +439,62 @@ body::before {
 .special-cta:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
 .special-cta-note { font-size: 0.76rem; opacity: 0.6; margin-top: 0.85rem; font-weight: 300; line-height: 1.5; }
 
+/* per-group-size price scale */
+.price-scale { list-style: none; margin: 0 0 1.3rem; padding: 0; }
+.price-scale li {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.45rem 0.6rem; font-size: 0.88rem;
+  border-bottom: 1px solid rgba(244, 239, 230, 0.08);
+}
+.price-scale li:last-child { border-bottom: 0; }
+.price-scale li span { font-weight: 300; opacity: 0.8; }
+.price-scale li b { font-family: var(--serif); font-weight: 600; letter-spacing: 0.02em; }
+.price-scale li.base {
+  background: rgba(200, 160, 74, 0.12); border-radius: 6px;
+  border-bottom-color: transparent;
+}
+.price-scale li.base span { opacity: 1; }
+.price-scale li.base b { color: var(--gold); }
+
+/* guide team — five cards, two ride on any given day */
+.special-guides { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.special-guides h3 { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.6rem; }
+.guides-lead { font-weight: 300; font-size: 0.95rem; opacity: 0.82; max-width: 56ch; margin-bottom: 1.8rem; }
+.guides-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+.gcard {
+  background: rgba(244, 239, 230, 0.06);
+  border: 1px solid rgba(244, 239, 230, 0.12);
+  border-radius: 10px; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.gphoto { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.gphoto-ph {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.6rem; background:
+    repeating-linear-gradient(45deg, rgba(244, 239, 230, 0.04) 0 12px, transparent 12px 24px),
+    rgba(244, 239, 230, 0.03);
+}
+.gphoto-ph .ph-initial {
+  font-family: var(--serif); font-size: 2.6rem; line-height: 1;
+  color: rgba(200, 160, 74, 0.55); user-select: none;
+}
+.gphoto-ph .ph-note {
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5;
+}
+.gbody { padding: 1.1rem 1.2rem 1.3rem; }
+.gtag {
+  display: inline-block; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(200, 160, 74, 0.45); border-radius: 100px;
+  padding: 0.22rem 0.6rem; margin-bottom: 0.7rem;
+}
+.gname { font-family: var(--serif); font-size: 1.1rem; line-height: 1.25; }
+.gname-ja { font-size: 0.78rem; opacity: 0.65; font-family: var(--sans); font-weight: 300; margin-left: 0.3rem; white-space: nowrap; }
+.gbio { font-size: 0.82rem; font-weight: 300; opacity: 0.78; margin-top: 0.55rem; line-height: 1.55; }
+
 /* route map */
 .special-map { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 .special-map .map-frame {

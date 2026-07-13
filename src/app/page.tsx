@@ -49,6 +49,52 @@ const SPECIAL_MAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1LgL4RlnePF5JdvpqzADrpsrrW7oTVDE";
 const SPECIAL_MAP_VIEW_URL =
   "https://www.google.com/maps/d/viewer?mid=1LgL4RlnePF5JdvpqzADrpsrrW7oTVDE";
+
+/** Guide team — swap `photo: null` for a real path (e.g. "/assets/guides/yu.jpg")
+ *  when the headshots are ready. Two of these guides ride with every group. */
+const GUIDES: {
+  name: string;
+  nameJa: string;
+  tag: string;
+  photo: string | null;
+  bio: string;
+}[] = [
+  {
+    name: "Yu Katada",
+    nameJa: "片田ゆう",
+    tag: "Hill climber",
+    photo: null,
+    bio: "Three years on the road bike and already a hill climber to be reckoned with — she and her husband Kazuhide completed the Kiso-ichi loop (150 km, 2,000 m of climbing) in a single day.",
+  },
+  {
+    name: "Kazuhide Katada",
+    nameJa: "片田かずひで",
+    tag: "10,000 km a year",
+    photo: null,
+    bio: "Ten years of road cycling, and the man who pulled his wife Yu into the road-bike world in the first place. An office worker by day whose riding has topped 10,000 km in a single year.",
+  },
+  {
+    name: "Minoru Kono",
+    nameJa: "河野穣",
+    tag: "Kiso craftsman",
+    photo: null,
+    bio: "A craftsman of Kiso-hinoki wooden barrels — and a road cyclist who used to commute by bike to his workshop in Agematsu. He knows the roads of Kiso down to the last bend.",
+  },
+  {
+    name: "Takuya Kato",
+    nameJa: "加藤拓哉",
+    tag: "English-speaking",
+    photo: null,
+    bio: "A lawyer by trade and a tour guide who knows Kiso so deeply he has even published a paper on the old Kiso Road. Fully fluent in English.",
+  },
+  {
+    name: "Yasuhiro Fukuta",
+    nameJa: "福田康宏",
+    tag: "Organizer · WFA",
+    photo: null,
+    bio: "The organizer of this service. He toured Kiso by bicycle, then walked away from his Tokyo salaryman career to move here on his own. Manager of Kashiwaya Guesthouse and certified in Wilderness First Aid (WFA).",
+  },
+];
 /** ============================================================= */
 
 export default function Page() {
@@ -415,7 +461,8 @@ export default function Page() {
               and a finish line at Nagiso as the light goes long. Every metre has
               been ridden and re-ridden by a local guide to find the most
               beautiful, the most comfortable, and the safest line down the
-              valley.
+              valley — and <b>two guides ride with every group</b>, one setting
+              the line up front and one sweeping at the back.
             </p>
           </div>
 
@@ -476,14 +523,35 @@ export default function Page() {
 
             {/* RIGHT — the price + booking */}
             <div className="special-price">
-              <div className="from">Total for the day</div>
-              <div className="amt">
-                ¥44,000<span>&nbsp;+</span>
-              </div>
+              <div className="from">Group of four · all-in</div>
+              <div className="amt">¥80,000</div>
               <p className="breakdown">
-                Guide ¥40,000 for the whole group, plus ¥4,000 per e-bike — so
-                two riders on two bikes comes to ¥48,000.
+                One price for the whole day — two guides and every e-bike
+                included. ¥80,000 is the base for a group of four; each rider
+                more or fewer moves the total by 15% (¥12,000).
               </p>
+              <ul className="price-scale">
+                <li>
+                  <span>2 riders</span>
+                  <b>¥56,000</b>
+                </li>
+                <li>
+                  <span>3 riders</span>
+                  <b>¥68,000</b>
+                </li>
+                <li className="base">
+                  <span>4 riders</span>
+                  <b>¥80,000</b>
+                </li>
+                <li>
+                  <span>5 riders</span>
+                  <b>¥92,000</b>
+                </li>
+                <li>
+                  <span>6 riders</span>
+                  <b>¥104,000</b>
+                </li>
+              </ul>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
@@ -496,6 +564,37 @@ export default function Page() {
                 This full-day course is arranged personally — message us on
                 WhatsApp to pick a date.
               </p>
+            </div>
+          </div>
+
+          {/* guide team */}
+          <div className="special-guides">
+            <h3>Meet your guides</h3>
+            <p className="guides-lead">
+              Two of these five ride with you on the day — a lead guide up
+              front and a sweep at the back.
+            </p>
+            <div className="guides-grid">
+              {GUIDES.map((g) => (
+                <div className="gcard" key={g.name}>
+                  {g.photo ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img className="gphoto" src={g.photo} alt={`Portrait of ${g.name}`} />
+                  ) : (
+                    <div className="gphoto gphoto-ph" aria-label={`Photo of ${g.name} coming soon`}>
+                      <span className="ph-initial">{g.nameJa.slice(0, 2)}</span>
+                      <span className="ph-note">Photo coming soon</span>
+                    </div>
+                  )}
+                  <div className="gbody">
+                    <div className="gtag">{g.tag}</div>
+                    <div className="gname">
+                      {g.name} <span className="gname-ja">{g.nameJa}</span>
+                    </div>
+                    <p className="gbio">{g.bio}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -528,8 +627,9 @@ export default function Page() {
               <summary>Can I ride this one self-guided?</summary>
               <p>
                 No — this course is guided only. In a few places, one wrong turn
-                drops you onto roads with heavy traffic. To keep the day safe, a
-                guide rides the whole route with you.
+                drops you onto roads with heavy traffic. To keep the day safe,
+                two guides ride the whole route with you — one up front, one at
+                the back.
               </p>
             </details>
             <details className="sfaq">
@@ -567,9 +667,9 @@ export default function Page() {
               <summary>What about bears?</summary>
               <p>
                 Like everywhere in these mountains, the Kiso has Asiatic black
-                bears. We hand you a bear bell and bear spray to carry, your guide
-                always rides up front, and we run through a what-to-do-if-you-meet-one
-                briefing before we set off.
+                bears. We hand you a bear bell and bear spray to carry, your lead
+                guide always rides up front, and we run through a
+                what-to-do-if-you-meet-one briefing before we set off.
               </p>
             </details>
             <details className="sfaq">
