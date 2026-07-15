@@ -1,0 +1,338 @@
+"use client";
+
+import {
+  MessageCircle,
+  ShieldCheck,
+  HeartPulse,
+  Droplet,
+  Wind,
+} from "lucide-react";
+import {
+  WHATSAPP_URL,
+  SPECIAL_MAP_EMBED_URL,
+  SPECIAL_MAP_VIEW_URL,
+  GUIDES,
+} from "../site";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+
+export default function GuidedPage() {
+  return (
+    <div className="lp">
+      <SiteNav />
+
+      <FloatBook href={WHATSAPP_URL}>
+        <MessageCircle size={18} /> Ask on WhatsApp
+      </FloatBook>
+
+      {/* SPECIAL COURSE — Kiso River Downhill (full day · guided only) */}
+      <section className="special special-page" id="downhill">
+        <div className="special-inner">
+          <div className="special-head">
+            <span className="eyebrow">Guided tour · Full day</span>
+            <span className="special-badge">Our only guided course</span>
+            <h1>
+              The Kiso River Downhill — <em>the most comfortable 50 km in the world.</em>
+            </h1>
+            <p className="special-lead">
+              <b>
+                54.5&nbsp;km, Narai-juku to Nagiso Station, almost all of it
+                downhill.
+              </b>{" "}
+              You set off from the headwaters of the Kiso River, 997&nbsp;m up,
+              and follow the water as it grows from a mountain stream into a full
+              river — rolling past eight of the Kiso road&apos;s old post towns
+              (everything but Niekawa, Magome and Tsumago) on one long and
+              gentle descent. Breakfast in Narai, lunch in Kiso-Fukushima, a coffee stop at Nojiri Station,
+              and a finish line at Nagiso as the light goes long. Every metre has
+              been ridden and re-ridden by a local guide to find the most
+              beautiful, the most comfortable, and the safest line down the
+              valley — and <b>two guides ride with every group</b>, one setting
+              the line up front and one sweeping at the back.
+            </p>
+          </div>
+
+          <div className="special-stats">
+            <div className="sstat">
+              <div className="num">
+                54.5<small>&nbsp;km</small>
+              </div>
+              <div className="lbl">Total distance</div>
+            </div>
+            <div className="sstat">
+              <div className="num">
+                ↓682<small>&nbsp;m</small>
+              </div>
+              <div className="lbl">Descent · only ↑153 m up</div>
+            </div>
+            <div className="sstat">
+              <div className="num">
+                997→409<small>&nbsp;m</small>
+              </div>
+              <div className="lbl">Source to valley floor</div>
+            </div>
+            <div className="sstat">
+              <div className="num">8</div>
+              <div className="lbl">Kiso post towns</div>
+            </div>
+          </div>
+
+          <div className="special-body">
+            {/* LEFT — the shape of the day */}
+            <div className="special-day">
+              <h3>How the day runs</h3>
+              <ul className="day-line">
+                <li>
+                  <div className="place">
+                    Narai-juku <span className="alt">997 m</span>
+                  </div>
+                  <div className="role">
+                    Breakfast in the post town, then roll out
+                  </div>
+                </li>
+                <li>
+                  <div className="place">Kiso-Fukushima</div>
+                  <div className="role">Lunch, roughly the halfway mark</div>
+                </li>
+                <li>
+                  <div className="place">Nojiri Station</div>
+                  <div className="role">A coffee stop to stretch the legs</div>
+                </li>
+                <li>
+                  <div className="place">
+                    Nagiso Station <span className="alt">409 m</span>
+                  </div>
+                  <div className="role">Finish line as the light goes long</div>
+                </li>
+              </ul>
+            </div>
+
+            {/* RIGHT — the price + booking */}
+            <div className="special-price">
+              <div className="from">Group of four · all-in</div>
+              <div className="amt">¥80,000</div>
+              <p className="breakdown">
+                One price for the whole day — two guides and every e-bike
+                included. ¥80,000 is the base for a group of four; each rider
+                more or fewer moves the total by 15% (¥12,000).
+              </p>
+              <ul className="price-scale">
+                <li>
+                  <span>2 riders</span>
+                  <b>¥56,000</b>
+                </li>
+                <li>
+                  <span>3 riders</span>
+                  <b>¥68,000</b>
+                </li>
+                <li className="base">
+                  <span>4 riders</span>
+                  <b>¥80,000</b>
+                </li>
+                <li>
+                  <span>5 riders</span>
+                  <b>¥92,000</b>
+                </li>
+                <li>
+                  <span>6 riders</span>
+                  <b>¥104,000</b>
+                </li>
+              </ul>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="special-cta"
+              >
+                <MessageCircle size={18} /> Ask &amp; book on WhatsApp
+              </a>
+              <p className="special-cta-note">
+                This full-day course is arranged personally — message us on
+                WhatsApp to pick a date.
+              </p>
+            </div>
+          </div>
+
+          {/* guide team */}
+          <div className="special-guides">
+            <h3>Meet your guides</h3>
+            <p className="guides-lead">
+              Two of these five ride with you on the day — a lead guide up
+              front and a sweep at the back.
+            </p>
+            <div className="guides-grid">
+              {GUIDES.map((g) => (
+                <div className="gcard" key={g.name}>
+                  {g.photo ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img className="gphoto" src={g.photo} alt={`Portrait of ${g.name}`} />
+                  ) : (
+                    <div className="gphoto gphoto-ph" aria-label={`Photo of ${g.name} coming soon`}>
+                      <span className="ph-initial">{g.nameJa.slice(0, 2)}</span>
+                      <span className="ph-note">Photo coming soon</span>
+                    </div>
+                  )}
+                  <div className="gbody">
+                    <div className="gtag">{g.tag}</div>
+                    <div className="gname">
+                      {g.name} <span className="gname-ja">{g.nameJa}</span>
+                    </div>
+                    <p className="gbio">{g.bio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* route map */}
+          <div className="special-map">
+            <div className="map-frame">
+              <iframe
+                src={SPECIAL_MAP_EMBED_URL}
+                title="Kiso River Downhill — full route map"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+            <p className="map-cap">
+              The full 54.5&nbsp;km line, Narai to Nagiso.{" "}
+              <a
+                href={SPECIAL_MAP_VIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open the route in Google Maps →
+              </a>
+            </p>
+          </div>
+
+          {/* special-course FAQ */}
+          <div className="special-faq">
+            <h3>Before you commit</h3>
+            <details className="sfaq">
+              <summary>Can I ride this one self-guided?</summary>
+              <p>
+                No — this course is guided only. In a few places, one wrong turn
+                drops you onto roads with heavy traffic. To keep the day safe,
+                two guides ride the whole route with you — one up front, one at
+                the back.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>I&apos;m not sure I can ride 50+ km.</summary>
+              <p>
+                54.5 km sounds like an expert distance, we know. But it&apos;s
+                gentle downhill almost the entire way, and on the few uphill
+                stretches the high-powered e-bike does the climbing for you. If
+                you can ride a normal bike 10 km on flat ground, you&apos;ll
+                reach the finish smiling. This is your chance to surprise
+                yourself.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>Can I bail out partway?</summary>
+              <p>
+                Yes. The route shadows the JR line the whole way, so if
+                you&apos;re not feeling well you can step off and take a train
+                from the nearest station. Just lock the bike at the station rack
+                and we&apos;ll collect it afterwards.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>What happens in bad weather?</summary>
+              <p>
+                Rain or snow means we cancel and refund by default. Our e-bikes
+                handle rough conditions well, though — so if it&apos;s light
+                enough not to affect safety or the experience, and everyone&apos;s
+                happy to ride, we may still run it. If the weather turns mid-ride,
+                we stop there, refund part of the fee, and take the train to the
+                finish.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>What about bears?</summary>
+              <p>
+                Like everywhere in these mountains, the Kiso has Asiatic black
+                bears. We hand you a bear bell and bear spray to carry, your lead
+                guide always rides up front, and we run through a
+                what-to-do-if-you-meet-one briefing before we set off.
+              </p>
+            </details>
+            <details className="sfaq">
+              <summary>How do you handle summer heat and winter cold?</summary>
+              <p>
+                In summer we lend you a rashguard, keep you dousing with water,
+                and break to dip in the valley&apos;s river pools. In winter we
+                lend cold-weather gear and stop at footbaths and onsen along the
+                way to warm back up.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      {/* GUIDE — Wilderness First Aid credential */}
+      <section className="guide" id="wfa">
+        <div className="guide-inner">
+          <div className="guide-text">
+            <span className="eyebrow">
+              <ShieldCheck size={15} /> Safety on the ride
+            </span>
+            <h2>
+              Out here, your guide is the first responder — and Yakkun&apos;s{" "}
+              <em>trained for it.</em>
+            </h2>
+            <p>
+              Yakkun is certified in Wilderness First Aid by Wilderness Medical
+              Associates International — the same training that expedition crews
+              and mountain-rescue teams rely on. Deep in the valley an ambulance
+              can be a long way off, so he&apos;s trained to be the help until it
+              arrives.
+            </p>
+            <ul className="guide-skills">
+              <li>
+                <HeartPulse size={18} /> Adult CPR and AED use
+              </li>
+              <li>
+                <Wind size={18} /> Clearing an obstructed airway
+              </li>
+              <li>
+                <Droplet size={18} /> Controlling severe bleeding (hemorrhage
+                control)
+              </li>
+            </ul>
+            <p className="guide-consent">
+              By joining a ride, you agree that if an emergency happens, Yakkun
+              may give first aid in line with this certification until
+              professional care reaches us.
+            </p>
+          </div>
+
+          <div className="guide-proof">
+            <div className="cert-stack">
+              <div className="cert cert-front">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/WFA1.jpg"
+                  alt="Wilderness First Aid certification card for Yasuhiro Fukuta, issued by Wilderness Medical Associates International, valid through 18 February 2029, Course ID 37079"
+                />
+              </div>
+              <div className="cert cert-back">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/WFA2.jpg"
+                  alt="Reverse of the Wilderness Medical Associates certification card, showing programme terms and validity"
+                />
+              </div>
+            </div>
+            <div className="cert-cap">
+              Wilderness First Aid · Wilderness Medical Associates Int&apos;l ·
+              Course ID 37079 · valid through Feb 2029
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </div>
+  );
+}

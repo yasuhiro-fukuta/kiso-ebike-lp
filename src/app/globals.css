@@ -136,6 +136,56 @@ body::before {
   text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 
+/* PAGE HEAD (sub-pages: /rental) — light band under the fixed nav */
+.page-head {
+  padding: clamp(8rem, 16vw, 11rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4.5rem);
+  max-width: 1100px; margin: 0 auto;
+}
+.page-head .eyebrow { color: var(--rust); }
+.page-head h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 1rem 0 1.4rem; max-width: 18ch; letter-spacing: -0.01em; }
+.page-head h1 em { font-style: italic; color: var(--moss); }
+.page-head p { font-weight: 300; font-size: 1.05rem; color: #3a352d; max-width: 58ch; }
+.page-head p a { color: var(--rust); text-decoration: none; border-bottom: 1px solid rgba(181, 83, 42, 0.4); }
+.page-head p a:hover { border-color: var(--rust); }
+
+/* TWO WAYS TO RIDE (home) */
+.ways { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); background: var(--paper-deep); }
+.ways-head { max-width: 1100px; margin: 0 auto 3rem; }
+.ways-head .eyebrow { color: var(--rust); }
+.ways-head h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin-top: 0.8rem; max-width: 22ch; }
+.ways-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 820px) { .ways-grid { grid-template-columns: 1fr; max-width: 520px; } }
+.way-card {
+  display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+  background: var(--paper); border-radius: 8px; overflow: hidden;
+  box-shadow: 0 12px 34px var(--shadow);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.way-card:hover { transform: translateY(-8px); }
+.way-img { height: 240px; background-size: cover; background-position: center; }
+@media (max-width: 820px) { .way-img { height: 200px; } }
+.way-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.way-kicker {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--rust); margin-bottom: 0.7rem;
+}
+.way-body h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 0.6rem; }
+.way-body p { font-weight: 300; font-size: 0.95rem; color: #3a352d; margin-bottom: 1.4rem; flex: 1; }
+.way-price { font-family: var(--serif); font-size: 1.6rem; line-height: 1.1; margin-bottom: 1.4rem; }
+.way-price small { font-family: var(--sans); font-size: 0.78rem; font-weight: 300; color: var(--cedar); }
+.way-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--moss); color: var(--paper); padding: 0.85rem 1.6rem;
+  border-radius: 100px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s;
+}
+.way-card:hover .way-cta { background: var(--moss-deep); }
+.way-card-dark { background: linear-gradient(165deg, var(--moss-deep) 0%, var(--ink) 100%); color: var(--paper); }
+.way-card-dark .way-kicker { color: var(--gold); }
+.way-card-dark .way-body p { color: var(--paper); opacity: 0.85; }
+.way-card-dark .way-price small { color: var(--gold); }
+.way-card-dark .way-cta { background: var(--rust); }
+.way-card-dark:hover .way-cta { background: var(--gold); color: var(--ink); }
+
 /* TOURS */
 .tours { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); background: var(--paper-deep); }
 .tours-head { max-width: 1100px; margin: 0 auto 3.5rem; }
@@ -370,11 +420,13 @@ body::before {
   letter-spacing: 0.14em; text-transform: uppercase;
   padding: 0.32rem 0.75rem; border-radius: 100px;
 }
-.special-head h2 {
+.special-head h1, .special-head h2 {
   font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 1.1rem 0 1.2rem;
   max-width: 18ch; line-height: 1.04;
 }
-.special-head h2 em { font-style: italic; color: var(--gold); }
+.special-head h1 em, .special-head h2 em { font-style: italic; color: var(--gold); }
+/* when the dark band opens a page, clear the fixed nav */
+.special-page { padding-top: clamp(8rem, 14vw, 10rem); }
 .special-lead { font-weight: 300; font-size: 1.05rem; opacity: 0.9; max-width: 60ch; }
 .special-lead b { font-weight: 500; color: #fff; opacity: 1; }
 

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title:
     "Beyond Nakasendo Cycling — Ditch the guidebook. Ride the Kiso Valley like a local.",
   description:
-    "Guided e-bike rides off the tourist track in the Kiso Valley, Nagiso. Hidden gorges, river swims, soba in the post town, onsen — the way the locals actually do it. Half-day guided tours from ¥13,000; self-guided e-bike rental from ¥4,000.",
+    "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Self-guided e-bike rental from ¥4,000, and the guided full-day Kiso River Downhill — 54.5 km with two local guides, ¥80,000 all-in for a group of four.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Beyond Nakasendo Cycling",
     title: "Beyond Nakasendo Cycling — Ride the Kiso Valley like a local",
     description:
-      "Skip the crowds. Three guided e-bike routes through the hidden side of the Kiso Valley, near Tsumago and Magome.",
+      "Skip the crowds. Self-guided e-bike routes and a guided full-day downhill through the hidden side of the Kiso Valley, near Tsumago and Magome.",
     locale: "en_US",
     images: [HERO_IMG],
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Beyond Nakasendo Cycling — Ride the Kiso Valley like a local",
     description:
-      "Half-day guided e-bike tours and rentals through the hidden Kiso Valley, Nagiso.",
+      "Self-guided e-bike rentals and a guided full-day downhill through the hidden Kiso Valley, Nagiso.",
     images: [HERO_IMG],
   },
 };
@@ -55,11 +55,11 @@ const jsonLd = {
       name: "Beyond Nakasendo Cycling",
       url: SITE_URL,
       description:
-        "Guided half-day e-bike tours and self-guided e-bike rentals through the hidden side of the Kiso Valley in Nagiso, Nagano, near the Nakasendo post towns of Tsumago and Magome. Operated by Kashiwaya Guesthouse (From Scratch LLC).",
+        "Self-guided e-bike rentals and a guided full-day downhill course through the hidden side of the Kiso Valley in Nagiso, Nagano, near the Nakasendo post towns of Tsumago and Magome. Operated by Kashiwaya Guesthouse (From Scratch LLC).",
       image: `${SITE_URL}${HERO_IMG}`,
       telephone: TELEPHONE,
       email: EMAIL,
-      priceRange: "¥4,000–¥17,000",
+      priceRange: "¥4,000–¥104,000",
       currenciesAccepted: "JPY",
       paymentAccepted: "Credit Card",
       address: {
@@ -79,7 +79,6 @@ const jsonLd = {
       sameAs: [INSTAGRAM_URL],
       parentOrganization: { "@type": "Organization", name: "From Scratch LLC" },
       makesOffer: [
-        { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#tour` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#rental` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#downhill` } },
       ],
@@ -105,54 +104,6 @@ const jsonLd = {
         },
         validThrough: "2029-02-18",
       },
-    },
-    {
-      "@type": "Product",
-      "@id": `${SITE_URL}/#tour`,
-      name: "Guided E-Bike Tour (half day)",
-      description:
-        "A half-day (10:00–16:00) guided e-bike ride with a local through the hidden Kiso Valley. Choose from three routes — Tsumago Revisited (easy), Natural AC & Onsen (moderate, river swim or onsen), and the Nakasendo Challenge (hard). Fat-tire e-bike, helmet, lock, lights, waterproof gear, and a free luggage shuttle between Nagiso Station, Kashiwaya, and Nojiri Station all included. Up to 2 guests.",
-      image: `${SITE_URL}${HERO_IMG}`,
-      brand: { "@id": `${SITE_URL}/#business` },
-      category: "Guided cycling tour",
-      offers: [
-        {
-          "@type": "Offer",
-          name: "Guided tour — 1 bike / 1 guest",
-          price: "13000",
-          priceCurrency: "JPY",
-          availability: "https://schema.org/InStock",
-          url: BOOKING_URL,
-        },
-        {
-          "@type": "Offer",
-          name: "Guided tour — 2 bikes / 2 guests",
-          price: "17000",
-          priceCurrency: "JPY",
-          availability: "https://schema.org/InStock",
-          url: BOOKING_URL,
-        },
-        {
-          "@type": "Offer",
-          name: "Opening Campaign — guided tour, 1 bike",
-          description:
-            "Limited-time launch offer: ¥7,000 off a guided tour if you agree to be photographed during the ride and share feedback afterwards. Photos may be used on our website and social media.",
-          price: "6000",
-          priceCurrency: "JPY",
-          availability: "https://schema.org/LimitedAvailability",
-          url: BOOKING_URL,
-        },
-        {
-          "@type": "Offer",
-          name: "Opening Campaign — guided tour, 2 bikes",
-          description:
-            "Limited-time launch offer: ¥7,000 off a guided tour (two bikes / two guests) in exchange for photo consent and feedback.",
-          price: "10000",
-          priceCurrency: "JPY",
-          availability: "https://schema.org/LimitedAvailability",
-          url: BOOKING_URL,
-        },
-      ],
     },
     {
       "@type": "Product",
@@ -187,20 +138,54 @@ const jsonLd = {
       "@id": `${SITE_URL}/#downhill`,
       name: "Kiso River Downhill (full-day guided e-bike course)",
       description:
-        "A full-day, guide-only e-bike descent of the Kiso Valley: 54.5 km from Narai-juku to Nagiso Station, almost all of it downhill, dropping from 997 m at the headwaters of the Kiso River to 409 m on the valley floor (682 m of descent against only 153 m of climbing). The route follows the historic Kiso road past eight of its eleven post towns (all but Niekawa, Magome and Tsumago), with breakfast in Narai-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Books by WhatsApp.",
+        "A full-day, guide-only e-bike descent of the Kiso Valley: 54.5 km from Narai-juku to Nagiso Station, almost all of it downhill, dropping from 997 m at the headwaters of the Kiso River to 409 m on the valley floor (682 m of descent against only 153 m of climbing). The route follows the historic Kiso road past eight of its eleven post towns (all but Niekawa, Magome and Tsumago), with breakfast in Narai-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Two local guides ride with every group — one leading, one sweeping. Books by WhatsApp.",
       image: `${SITE_URL}/assets/downhill.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
-      offers: {
-        "@type": "Offer",
-        name: "Kiso River Downhill — full day, guided",
-        description:
-          "Guide fee ¥40,000 for the whole group, plus ¥4,000 per e-bike. Two riders on two bikes is ¥48,000. Guided only; reserve by WhatsApp.",
-        price: "44000",
-        priceCurrency: "JPY",
-        availability: "https://schema.org/InStock",
-        url: SITE_URL,
-      },
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Kiso River Downhill — group of 4 (base)",
+          description:
+            "All-in price for the whole day: two guides and all e-bikes included. ¥80,000 for a group of four; each rider more or fewer moves the total by 15% (¥12,000).",
+          price: "80000",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/guided`,
+        },
+        {
+          "@type": "Offer",
+          name: "Kiso River Downhill — 2 riders",
+          price: "56000",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/guided`,
+        },
+        {
+          "@type": "Offer",
+          name: "Kiso River Downhill — 3 riders",
+          price: "68000",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/guided`,
+        },
+        {
+          "@type": "Offer",
+          name: "Kiso River Downhill — 5 riders",
+          price: "92000",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/guided`,
+        },
+        {
+          "@type": "Offer",
+          name: "Kiso River Downhill — 6 riders",
+          price: "104000",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/guided`,
+        },
+      ],
     },
     {
       "@type": "FAQPage",
@@ -216,10 +201,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "What's the difference between a guided tour and e-bike rental only?",
+          name: "Can I hire a guide for the half-day routes?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Guided means a local rides the whole route with you, bikes included (¥13,000 for one bike, ¥17,000 for two, up to 2 guests). E-bike only is just the rental (¥4,000 per bike, ¥8,000 for two) and you explore on your own with our route maps. Both include the free luggage shuttle.",
+            text: "No — the three half-day routes are self-guided rentals only (¥4,000 per bike, ¥8,000 for two), ridden with our route maps. Our guides ride on one course: the full-day Kiso River Downhill, where two guides accompany your group. Both options include the free luggage shuttle.",
           },
         },
         {
@@ -227,7 +212,7 @@ const jsonLd = {
           name: "Can I do the routes in reverse, or as a loop?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. The Tsumago and Gorge routes can both be ridden in reverse or as a loop — just tell us your preference when you book and the guide will plan around it.",
+            text: "Yes. The Tsumago and Gorge routes can both be ridden in reverse or as a loop — just tell us your preference when you book and we'll plan the pick-up points around it.",
           },
         },
         {
@@ -259,7 +244,7 @@ const jsonLd = {
           name: "Can I ride the Kiso River Downhill course self-guided?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No — the full-day Kiso River Downhill is guided only. In a few places a wrong turn drops you onto roads with heavy traffic, so for safety a guide rides the whole 54.5 km route with you.",
+            text: "No — the full-day Kiso River Downhill is guided only. In a few places a wrong turn drops you onto roads with heavy traffic, so for safety two guides ride the whole 54.5 km route with you — one up front, one at the back.",
           },
         },
         {
@@ -291,7 +276,7 @@ const jsonLd = {
           name: "What about bears on the route?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The Kiso has Asiatic black bears, like the rest of these mountains. We hand you a bear bell and bear spray to carry, the guide always rides up front, and we run through a what-to-do-if-you-meet-one briefing before setting off.",
+            text: "The Kiso has Asiatic black bears, like the rest of these mountains. We hand you a bear bell and bear spray to carry, the lead guide always rides up front, and we run through a what-to-do-if-you-meet-one briefing before setting off.",
           },
         },
         {
