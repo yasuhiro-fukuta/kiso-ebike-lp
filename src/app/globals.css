@@ -148,6 +148,22 @@ body::before {
 .page-head p a { color: var(--rust); text-decoration: none; border-bottom: 1px solid rgba(181, 83, 42, 0.4); }
 .page-head p a:hover { border-color: var(--rust); }
 
+/* page-head with a side photo (rental) */
+.page-head-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 820px) { .page-head-grid { grid-template-columns: 1fr; } }
+.page-head-visual { margin: 0; }
+.page-head-visual img {
+  width: 100%; max-height: 520px; object-fit: cover; object-position: center 40%;
+  border-radius: 6px; box-shadow: 0 24px 50px var(--shadow); display: block;
+}
+.page-head-visual figcaption {
+  font-size: 0.78rem; font-weight: 300; color: var(--cedar); margin-top: 0.7rem;
+  font-style: italic;
+}
+
 /* TWO WAYS TO RIDE (home) */
 .ways { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); background: var(--paper-deep); }
 .ways-head { max-width: 1100px; margin: 0 auto 3rem; }
@@ -384,6 +400,12 @@ body::before {
 .rainy-text h2 em { font-style: italic; color: var(--moss); }
 .rainy-text p { font-weight: 300; color: #3a352d; margin-bottom: 1rem; }
 .rainy-note strong { color: var(--rust); font-weight: 600; }
+.rainy-link {
+  display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem;
+  color: var(--rust); text-decoration: none; font-weight: 600; font-size: 0.92rem;
+  border-bottom: 1px solid rgba(181, 83, 42, 0.4); padding-bottom: 2px;
+}
+.rainy-link:hover { border-color: var(--rust); }
 .rainy-img {
   min-height: 380px; background-size: cover; background-position: center; position: relative;
 }
@@ -634,3 +656,97 @@ body::before {
   .cert-cap { text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) { .cert-front { transition: none; } }
+
+/* =========================================================
+   SHODO — Japanese calligraphy page. Paper-and-ink theme:
+   washi background, sumi kanji watermark, vertical accent.
+   All selectors scoped under .shodo-*.
+   ========================================================= */
+.shodo-hero {
+  position: relative; overflow: hidden;
+  background: linear-gradient(175deg, #faf7f0 0%, var(--paper) 60%, var(--paper-deep) 100%);
+  padding: clamp(8rem, 16vw, 11rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.shodo-hero::before {
+  content: "書"; position: absolute; right: -1rem; top: 45%; transform: translateY(-50%);
+  font-family: var(--serif); font-size: clamp(16rem, 34vw, 30rem); line-height: 1;
+  color: rgba(28, 26, 22, 0.045); pointer-events: none; user-select: none;
+}
+.shodo-tate {
+  position: absolute; top: clamp(7rem, 14vw, 9.5rem); right: clamp(1.5rem, 6vw, 5rem);
+  writing-mode: vertical-rl; font-family: var(--serif); font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.45em; color: var(--rust); opacity: 0.75; pointer-events: none;
+}
+@media (max-width: 720px) { .shodo-tate { display: none; } }
+.shodo-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.shodo-hero .eyebrow { color: var(--rust); }
+.shodo-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 1rem 0 1.4rem;
+  max-width: 16ch; letter-spacing: -0.01em;
+}
+.shodo-hero h1 em { font-style: italic; color: var(--moss); }
+.shodo-hero p { font-weight: 300; font-size: 1.05rem; color: #3a352d; max-width: 56ch; }
+
+/* photo, mounted like a hanging work */
+.shodo-photo { padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem); background: var(--paper-deep); }
+.shodo-photo figure { max-width: 1000px; margin: 0 auto; transform: translateY(-2rem); }
+.shodo-photo img {
+  width: 100%; display: block; border-radius: 4px;
+  border: 8px solid #fff; box-shadow: 0 26px 60px var(--shadow);
+}
+.shodo-photo figcaption {
+  font-size: 0.8rem; font-weight: 300; font-style: italic; color: var(--cedar);
+  margin-top: 0.9rem; text-align: center;
+}
+
+/* steps 一 二 三 */
+.shodo-steps { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); max-width: 1100px; margin: 0 auto; }
+.shodo-steps-head { margin-bottom: 3rem; }
+.shodo-steps-head .eyebrow { color: var(--rust); }
+.shodo-steps-head h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin-top: 0.8rem; max-width: 24ch; }
+.shodo-steps-head h2 em { font-style: italic; color: var(--moss); }
+.shodo-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
+@media (max-width: 760px) { .shodo-steps-grid { grid-template-columns: 1fr; max-width: 440px; } }
+.sstep .snum {
+  font-family: var(--serif); font-size: 3rem; line-height: 1; color: var(--rust);
+  margin-bottom: 1.1rem;
+}
+.sstep h3 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 0.5rem; }
+.sstep p { font-weight: 300; font-size: 0.95rem; color: #3a352d; }
+
+/* price + booking, dark ink band */
+.shodo-book {
+  background: linear-gradient(165deg, #26241f 0%, var(--ink) 100%); color: var(--paper);
+  padding: clamp(4rem, 9vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+  position: relative; overflow: hidden;
+}
+.shodo-book::before {
+  content: "筆"; position: absolute; left: -2rem; bottom: -3rem;
+  font-family: var(--serif); font-size: clamp(12rem, 26vw, 22rem); line-height: 1;
+  color: rgba(244, 239, 230, 0.035); pointer-events: none; user-select: none;
+}
+.shodo-book-inner {
+  max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+@media (max-width: 820px) { .shodo-book-inner { grid-template-columns: 1fr; } }
+.shodo-book .eyebrow { color: var(--gold); }
+.shodo-book h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin: 1rem 0 1.2rem; }
+.shodo-book h2 em { font-style: italic; color: var(--gold); }
+.shodo-book-text p { font-weight: 300; opacity: 0.88; max-width: 52ch; }
+.shodo-cta-row { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.8rem; }
+.shodo-cta { width: auto; padding: 1rem 2rem; }
+.shodo-cta-alt {
+  display: inline-flex; align-items: center; gap: 0.45rem; color: var(--gold);
+  text-decoration: none; font-size: 0.92rem; border-bottom: 1px solid rgba(200, 160, 74, 0.4); padding-bottom: 2px;
+}
+.shodo-cta-alt:hover { border-color: var(--gold); }
+.shodo-rainy {
+  background: rgba(244, 239, 230, 0.06); border: 1px solid rgba(244, 239, 230, 0.12);
+  border-radius: 10px; padding: 1.6rem; display: flex; gap: 1rem; align-items: flex-start;
+}
+.shodo-rainy svg { color: var(--gold); flex-shrink: 0; margin-top: 0.2rem; }
+.shodo-rainy p { font-weight: 300; font-size: 0.92rem; opacity: 0.88; }
+.shodo-rainy strong { font-weight: 600; color: #fff; }
+.shodo-rainy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200, 160, 74, 0.4); }
+.shodo-rainy a:hover { border-color: var(--gold); }

@@ -27,18 +27,28 @@ export default function RentalPage() {
       </FloatBook>
 
       {/* PAGE HEAD */}
-      <header className="page-head">
-        <span className="eyebrow">Self-guided · Half day · 10:00–16:00</span>
-        <h1>
-          Rent an e-bike. <em>The valley is yours.</em>
-        </h1>
-        <p>
-          Three mapped routes, all a little off the beaten track. We hand you a
-          charged fat-tire e-bike and our route maps, shuttle your luggage for
-          free, and you explore at your own pace. These routes are self-guided
-          only — if you want to ride with our guides, that&apos;s the{" "}
-          <Link href="/guided">full-day Kiso River Downhill</Link>.
-        </p>
+      <header className="page-head page-head-grid">
+        <div>
+          <span className="eyebrow">Self-guided · Half day · 10:00–16:00</span>
+          <h1>
+            Rent an e-bike. <em>The valley is yours.</em>
+          </h1>
+          <p>
+            Three mapped routes, all a little off the beaten track. We hand you
+            a charged fat-tire e-bike and our route maps, shuttle your luggage
+            for free, and you explore at your own pace. These routes are
+            self-guided only — if you want to ride with our guides, that&apos;s
+            the <Link href="/guided">full-day Kiso River Downhill</Link>.
+          </p>
+        </div>
+        <figure className="page-head-visual">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/riders.jpg"
+            alt="A family of four on fat-tire e-bikes, ready to roll out through the village streets of Nagiso"
+          />
+          <figcaption>Rolling out from Kashiwaya, bound for the valley</figcaption>
+        </figure>
       </header>
 
       {/* TOURS */}

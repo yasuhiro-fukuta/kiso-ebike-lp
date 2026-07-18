@@ -186,13 +186,14 @@ export default function Page() {
             While I&apos;m still working toward my calligraphy certification,
             this plan is offered at <strong>80% off the standard price.</strong>
           </p>
+          <Link href="/shodo" className="rainy-link">
+            See how a session flows <ArrowRight size={15} />
+          </Link>
         </div>
         <div
           className="rainy-img"
-          style={{ backgroundImage: "url('/assets/shodo.jpg')" }}
-        >
-          <span className="img-note">Photo coming soon</span>
-        </div>
+          style={{ backgroundImage: "url('/assets/shodo-class.jpg')" }}
+        />
       </section>
 
       <SiteFooter />

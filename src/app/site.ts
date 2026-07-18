@@ -19,6 +19,8 @@ export const SQUARE_BOOKING_URL =
  *  ============================================================= */
 export const WHATSAPP_URL =
   "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20ask%20about%20the%20Kiso%20River%20Downhill%20full-day%20course.";
+export const SHODO_WHATSAPP_URL =
+  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20ask%20about%20the%20shodo%20calligraphy%20session.";
 export const SPECIAL_MAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1LgL4RlnePF5JdvpqzADrpsrrW7oTVDE";
 export const SPECIAL_MAP_VIEW_URL =
