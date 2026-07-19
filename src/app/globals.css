@@ -169,8 +169,8 @@ body::before {
 .ways-head { max-width: 1100px; margin: 0 auto 3rem; }
 .ways-head .eyebrow { color: var(--rust); }
 .ways-head h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin-top: 0.8rem; max-width: 22ch; }
-.ways-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-@media (max-width: 820px) { .ways-grid { grid-template-columns: 1fr; max-width: 520px; } }
+.ways-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+@media (max-width: 880px) { .ways-grid { grid-template-columns: 1fr; max-width: 520px; } }
 .way-card {
   display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
   background: var(--paper); border-radius: 8px; overflow: hidden;
@@ -178,8 +178,8 @@ body::before {
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .way-card:hover { transform: translateY(-8px); }
-.way-img { height: 240px; background-size: cover; background-position: center; }
-@media (max-width: 820px) { .way-img { height: 200px; } }
+.way-img { height: 200px; background-size: cover; background-position: center; }
+@media (max-width: 880px) { .way-img { height: 200px; } }
 .way-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
 .way-kicker {
   font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
@@ -571,6 +571,11 @@ body::before {
 
 /* route map */
 .special-map { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.special-sec-title { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.4rem; }
+.how-to-book-label {
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem; font-weight: 600;
+}
 .special-map .map-frame {
   width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); border: 1px solid rgba(244, 239, 230, 0.1);

@@ -27,6 +27,7 @@ export default function GuidedPage() {
       {/* SPECIAL COURSE — Kiso River Downhill (full day · guided only) */}
       <section className="special special-page" id="downhill">
         <div className="special-inner">
+          {/* 1 — OVERVIEW */}
           <div className="special-head">
             <span className="eyebrow">Guided tour · Full day</span>
             <span className="special-badge">Our only guided course</span>
@@ -76,83 +77,30 @@ export default function GuidedPage() {
             </div>
           </div>
 
-          <div className="special-body">
-            {/* LEFT — the shape of the day */}
-            <div className="special-day">
-              <h3>How the day runs</h3>
-              <ul className="day-line">
-                <li>
-                  <div className="place">
-                    Narai-juku <span className="alt">997 m</span>
-                  </div>
-                  <div className="role">
-                    Breakfast in the post town, then roll out
-                  </div>
-                </li>
-                <li>
-                  <div className="place">Kiso-Fukushima</div>
-                  <div className="role">Lunch, roughly the halfway mark</div>
-                </li>
-                <li>
-                  <div className="place">Nojiri Station</div>
-                  <div className="role">A coffee stop to stretch the legs</div>
-                </li>
-                <li>
-                  <div className="place">
-                    Nagiso Station <span className="alt">409 m</span>
-                  </div>
-                  <div className="role">Finish line as the light goes long</div>
-                </li>
-              </ul>
+          {/* 2 — THE COURSE */}
+          <div className="special-map">
+            <h3 className="special-sec-title">The course</h3>
+            <div className="map-frame">
+              <iframe
+                src={SPECIAL_MAP_EMBED_URL}
+                title="Kiso River Downhill — full route map"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
             </div>
-
-            {/* RIGHT — the price + booking */}
-            <div className="special-price">
-              <div className="from">Group of four · all-in</div>
-              <div className="amt">¥80,000</div>
-              <p className="breakdown">
-                One price for the whole day — two guides and every e-bike
-                included. ¥80,000 is the base for a group of four; each rider
-                more or fewer moves the total by 15% (¥12,000).
-              </p>
-              <ul className="price-scale">
-                <li>
-                  <span>2 riders</span>
-                  <b>¥56,000</b>
-                </li>
-                <li>
-                  <span>3 riders</span>
-                  <b>¥68,000</b>
-                </li>
-                <li className="base">
-                  <span>4 riders</span>
-                  <b>¥80,000</b>
-                </li>
-                <li>
-                  <span>5 riders</span>
-                  <b>¥92,000</b>
-                </li>
-                <li>
-                  <span>6 riders</span>
-                  <b>¥104,000</b>
-                </li>
-              </ul>
+            <p className="map-cap">
+              The full 54.5&nbsp;km line, Narai to Nagiso.{" "}
               <a
-                href={WHATSAPP_URL}
+                href={SPECIAL_MAP_VIEW_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="special-cta"
               >
-                <MessageCircle size={18} /> Ask &amp; book on WhatsApp
+                Open the route in Google Maps →
               </a>
-              <p className="special-cta-note">
-                This full-day course is arranged personally — message us on
-                WhatsApp to pick a date.
-              </p>
-            </div>
+            </p>
           </div>
 
-          {/* guide team */}
+          {/* 3 — THE GUIDES */}
           <div className="special-guides">
             <h3>Meet your guides</h3>
             <p className="guides-lead">
@@ -183,26 +131,81 @@ export default function GuidedPage() {
             </div>
           </div>
 
-          {/* route map */}
-          <div className="special-map">
-            <div className="map-frame">
-              <iframe
-                src={SPECIAL_MAP_EMBED_URL}
-                title="Kiso River Downhill — full route map"
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
+          {/* 4 — SCHEDULE · 5 — PRICE & HOW TO BOOK */}
+          <div className="special-body">
+            <div className="special-day">
+              <h3>How the day runs</h3>
+              <ul className="day-line">
+                <li>
+                  <div className="place">
+                    Narai-juku <span className="alt">997 m</span>
+                  </div>
+                  <div className="role">
+                    Breakfast in the post town, then roll out
+                  </div>
+                </li>
+                <li>
+                  <div className="place">Kiso-Fukushima</div>
+                  <div className="role">Lunch, roughly the halfway mark</div>
+                </li>
+                <li>
+                  <div className="place">Nojiri Station</div>
+                  <div className="role">A coffee stop to stretch the legs</div>
+                </li>
+                <li>
+                  <div className="place">
+                    Nagiso Station <span className="alt">409 m</span>
+                  </div>
+                  <div className="role">Finish line as the light goes long</div>
+                </li>
+              </ul>
             </div>
-            <p className="map-cap">
-              The full 54.5&nbsp;km line, Narai to Nagiso.{" "}
+
+            <div className="special-price">
+              <div className="from">Group of four · all-in</div>
+              <div className="amt">¥80,000</div>
+              <p className="breakdown">
+                One price for the whole day — two guides and every e-bike
+                included. ¥80,000 is the base for a group of four; each rider
+                more or fewer moves the total by 15% (¥12,000).
+              </p>
+              <ul className="price-scale">
+                <li>
+                  <span>2 riders</span>
+                  <b>¥56,000</b>
+                </li>
+                <li>
+                  <span>3 riders</span>
+                  <b>¥68,000</b>
+                </li>
+                <li className="base">
+                  <span>4 riders</span>
+                  <b>¥80,000</b>
+                </li>
+                <li>
+                  <span>5 riders</span>
+                  <b>¥92,000</b>
+                </li>
+                <li>
+                  <span>6 riders</span>
+                  <b>¥104,000</b>
+                </li>
+              </ul>
+              <div className="how-to-book-label">How to book · via WhatsApp</div>
               <a
-                href={SPECIAL_MAP_VIEW_URL}
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="special-cta"
               >
-                Open the route in Google Maps →
+                <MessageCircle size={18} /> Ask &amp; book on WhatsApp
               </a>
-            </p>
+              <p className="special-cta-note">
+                This full-day course is arranged personally — message us on
+                WhatsApp to pick a date, and we&apos;ll sort out the rest
+                together.
+              </p>
+            </div>
           </div>
 
           {/* special-course FAQ */}

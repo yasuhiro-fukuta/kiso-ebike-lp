@@ -1,14 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ArrowRight,
-  Bike,
-  Zap,
-  Mountain,
-  Lightbulb,
-  Ruler,
-} from "lucide-react";
+import { ArrowRight, Bike } from "lucide-react";
 import { SQUARE_BOOKING_URL } from "./site";
 import { SiteNav, SiteFooter, FloatBook } from "./chrome";
 
@@ -86,11 +79,11 @@ export default function Page() {
         <div className="intro-visual"></div>
       </section>
 
-      {/* TWO WAYS TO RIDE */}
+      {/* THREE SERVICES */}
       <section className="ways" id="ways">
         <div className="ways-head">
-          <span className="eyebrow">Two ways to ride</span>
-          <h2>Rent a bike and roam — or go big with the guides.</h2>
+          <span className="eyebrow">What we offer</span>
+          <h2>Three ways to spend a day in Nagiso.</h2>
         </div>
         <div className="ways-grid">
           <Link href="/rental" className="way-card">
@@ -136,64 +129,29 @@ export default function Page() {
               </span>
             </div>
           </Link>
-        </div>
-      </section>
 
-      {/* GEAR */}
-      <section className="gear" id="gear">
-        <div className="gear-img" />
-        <div className="gear-text">
-          <span className="eyebrow">Your ride</span>
-          <h2>
-            Fat-tire e-bikes that <em>flatten the hills.</em>
-          </h2>
-          <p>
-            Our MOVE fat-tire electric bikes handle gravel, riverbanks, and
-            mountain road with ease. The motor does the climbing — you just
-            steer and look around.
-          </p>
-          <ul className="gear-list">
-            <li>
-              <Zap size={18} /> Powerful pedal-assist for the passes
-            </li>
-            <li>
-              <Mountain size={18} /> Fat tires grip gravel and forest tracks
-            </li>
-            <li>
-              <Lightbulb size={18} /> Helmet, lock and lights included
-            </li>
-            <li>
-              <Ruler size={18} /> Sized to you before you set off
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* RAINY DAY PLAN */}
-      <section className="rainy" id="rainy">
-        <div className="rainy-text">
-          <span className="eyebrow">If the rain wins</span>
-          <h2>
-            Heavy rain? Switch to a <em>calligraphy session.</em>
-          </h2>
-          <p>
-            Mountain weather does what it wants. If a downpour makes riding
-            unsafe, we move the day indoors — to a quiet room at Kashiwaya
-            guesthouse for a hands-on Japanese calligraphy (shodo) experience.
-            Brush, ink, washi paper, and a character to take home.
-          </p>
-          <p className="rainy-note">
-            While I&apos;m still working toward my calligraphy certification,
-            this plan is offered at <strong>80% off the standard price.</strong>
-          </p>
-          <Link href="/shodo" className="rainy-link">
-            See how a session flows <ArrowRight size={15} />
+          <Link href="/shodo" className="way-card">
+            <div
+              className="way-img"
+              style={{ backgroundImage: "url('/assets/shodo-class.jpg')" }}
+            />
+            <div className="way-body">
+              <span className="way-kicker">Culture · At Kashiwaya</span>
+              <h3>Shodo Calligraphy</h3>
+              <p>
+                Brush, sumi ink, and washi paper in a quiet tatami room at the
+                guesthouse. Learn the strokes, write a character that&apos;s
+                yours, and take it home. Also our rainy-day plan.
+              </p>
+              <div className="way-price">
+                ¥4,000 <small>/ group of 4 · 80% off trial price</small>
+              </div>
+              <span className="way-cta">
+                See the session <ArrowRight size={15} />
+              </span>
+            </div>
           </Link>
         </div>
-        <div
-          className="rainy-img"
-          style={{ backgroundImage: "url('/assets/shodo-class.jpg')" }}
-        />
       </section>
 
       <SiteFooter />

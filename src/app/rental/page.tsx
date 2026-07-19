@@ -7,6 +7,10 @@ import {
   Compass,
   Backpack,
   Umbrella,
+  Zap,
+  Mountain,
+  Lightbulb,
+  Ruler,
 } from "lucide-react";
 import {
   SQUARE_BOOKING_URL,
@@ -50,6 +54,36 @@ export default function RentalPage() {
           <figcaption>Rolling out from Kashiwaya, bound for the valley</figcaption>
         </figure>
       </header>
+
+      {/* THE BIKES */}
+      <section className="gear" id="gear">
+        <div className="gear-img" />
+        <div className="gear-text">
+          <span className="eyebrow">Your ride</span>
+          <h2>
+            Fat-tire e-bikes that <em>flatten the hills.</em>
+          </h2>
+          <p>
+            Our MOVE fat-tire electric bikes handle gravel, riverbanks, and
+            mountain road with ease. The motor does the climbing — you just
+            steer and look around.
+          </p>
+          <ul className="gear-list">
+            <li>
+              <Zap size={18} /> Powerful pedal-assist for the passes
+            </li>
+            <li>
+              <Mountain size={18} /> Fat tires grip gravel and forest tracks
+            </li>
+            <li>
+              <Lightbulb size={18} /> Helmet, lock and lights included
+            </li>
+            <li>
+              <Ruler size={18} /> Sized to you before you set off
+            </li>
+          </ul>
+        </div>
+      </section>
 
       {/* TOURS */}
       <section className="tours" id="tours">
@@ -244,15 +278,15 @@ export default function RentalPage() {
         </div>
       </section>
 
-      {/* BOOKING */}
+      {/* HOW TO BOOK */}
       <section className="booking" id="book">
-        <span className="eyebrow">Reserve your bike</span>
+        <span className="eyebrow">How to book · via Square</span>
         <h2>
           Book in <em>under two minutes.</em>
         </h2>
         <p>
-          Pick a date below. Pay securely by card — your bike is confirmed
-          instantly, and we&apos;ll email directions to Kashiwaya.
+          Pick a date on our Square page and pay securely by card — your bike
+          is confirmed instantly, and we&apos;ll email directions to Kashiwaya.
         </p>
 
         <div className="square-embed">
