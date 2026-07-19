@@ -36,14 +36,14 @@ export default function GuidedPage() {
             </h1>
             <p className="special-lead">
               <b>
-                54.5&nbsp;km, Narai-juku to Nagiso Station, almost all of it
+                48.9&nbsp;km, Yabuhara-juku to Nagiso Station, almost all of it
                 downhill.
               </b>{" "}
-              You set off from the headwaters of the Kiso River, 997&nbsp;m up,
-              and follow the water as it grows from a mountain stream into a full
-              river — rolling past eight of the Kiso road&apos;s old post towns
-              (everything but Niekawa, Magome and Tsumago) on one long and
-              gentle descent. Breakfast in Narai, lunch in Kiso-Fukushima, a coffee stop at Nojiri Station,
+              You set off high in the valley, near the headwaters of the Kiso
+              River, and follow the water as it grows from a mountain stream
+              into a full river — rolling past seven of the Kiso road&apos;s old
+              post towns (from Yabuhara down to Midono) on one long and gentle
+              descent. Breakfast in Yabuhara, lunch in Kiso-Fukushima, a coffee stop at Nojiri Station,
               and a finish line at Nagiso as the light goes long. Every metre has
               been ridden and re-ridden by a local guide to find the most
               beautiful, the most comfortable, and the safest line down the
@@ -55,25 +55,23 @@ export default function GuidedPage() {
           <div className="special-stats">
             <div className="sstat">
               <div className="num">
-                54.5<small>&nbsp;km</small>
+                48.9<small>&nbsp;km</small>
               </div>
               <div className="lbl">Total distance</div>
             </div>
             <div className="sstat">
               <div className="num">
-                ↓682<small>&nbsp;m</small>
+                ↓613<small>&nbsp;m</small>
               </div>
-              <div className="lbl">Descent · only ↑153 m up</div>
+              <div className="lbl">Descent · only ↑94 m up</div>
             </div>
             <div className="sstat">
-              <div className="num">
-                997→409<small>&nbsp;m</small>
-              </div>
-              <div className="lbl">Source to valley floor</div>
-            </div>
-            <div className="sstat">
-              <div className="num">8</div>
+              <div className="num">7</div>
               <div className="lbl">Kiso post towns</div>
+            </div>
+            <div className="sstat">
+              <div className="num">2</div>
+              <div className="lbl">Guides with every group</div>
             </div>
           </div>
 
@@ -89,7 +87,7 @@ export default function GuidedPage() {
               />
             </div>
             <p className="map-cap">
-              The full 54.5&nbsp;km line, Narai to Nagiso.{" "}
+              The full 48.9&nbsp;km line, Yabuhara to Nagiso.{" "}
               <a
                 href={SPECIAL_MAP_VIEW_URL}
                 target="_blank"
@@ -138,7 +136,7 @@ export default function GuidedPage() {
               <ul className="day-line">
                 <li>
                   <div className="place">
-                    Narai-juku <span className="alt">997 m</span>
+                    Yabuhara-juku
                   </div>
                   <div className="role">
                     Breakfast in the post town, then roll out
@@ -223,7 +221,7 @@ export default function GuidedPage() {
             <details className="sfaq">
               <summary>I&apos;m not sure I can ride 50+ km.</summary>
               <p>
-                54.5 km sounds like an expert distance, we know. But it&apos;s
+                Nearly 50 km sounds like an expert distance, we know. But it&apos;s
                 gentle downhill almost the entire way, and on the few uphill
                 stretches the high-powered e-bike does the climbing for you. If
                 you can ride a normal bike 10 km on flat ground, you&apos;ll

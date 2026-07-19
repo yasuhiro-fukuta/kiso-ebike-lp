@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title:
     "Beyond Nakasendo Cycling — Ditch the guidebook. Ride the Kiso Valley like a local.",
   description:
-    "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Self-guided e-bike rental from ¥4,000, and the guided full-day Kiso River Downhill — 54.5 km with two local guides, ¥80,000 all-in for a group of four.",
+    "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Self-guided e-bike rental from ¥4,000, and the guided full-day Kiso River Downhill — 48.9 km with two local guides, ¥80,000 all-in for a group of four.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -139,7 +139,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#downhill`,
       name: "Kiso River Downhill (full-day guided e-bike course)",
       description:
-        "A full-day, guide-only e-bike descent of the Kiso Valley: 54.5 km from Narai-juku to Nagiso Station, almost all of it downhill, dropping from 997 m at the headwaters of the Kiso River to 409 m on the valley floor (682 m of descent against only 153 m of climbing). The route follows the historic Kiso road past eight of its eleven post towns (all but Niekawa, Magome and Tsumago), with breakfast in Narai-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Two local guides ride with every group — one leading, one sweeping. Books by WhatsApp.",
+        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (613 m of descent against only 94 m of climbing). The route follows the historic Kiso road past seven of its eleven post towns, from Yabuhara down to Midono, with breakfast in Yabuhara-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Two local guides ride with every group — one leading, one sweeping. Books by WhatsApp.",
       image: `${SITE_URL}/assets/kisogawa.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
@@ -283,7 +283,7 @@ const jsonLd = {
           name: "Can I ride the Kiso River Downhill course self-guided?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No — the full-day Kiso River Downhill is guided only. In a few places a wrong turn drops you onto roads with heavy traffic, so for safety two guides ride the whole 54.5 km route with you — one up front, one at the back.",
+            text: "No — the full-day Kiso River Downhill is guided only. In a few places a wrong turn drops you onto roads with heavy traffic, so for safety two guides ride the whole 48.9 km route with you — one up front, one at the back.",
           },
         },
         {
@@ -291,7 +291,7 @@ const jsonLd = {
           name: "I'm not confident I can ride 50+ km. Can I still do the Kiso River Downhill?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Most likely yes. The 54.5 km course is gentle downhill almost the whole way (682 m of descent against just 153 m of climb), and on the few uphill stretches the high-powered e-bike does the climbing for you. If you can ride a normal bike 10 km on flat ground, you should reach the finish comfortably.",
+            text: "Most likely yes. The 48.9 km course is gentle downhill almost the whole way (613 m of descent against just 94 m of climb), and on the few uphill stretches the high-powered e-bike does the climbing for you. If you can ride a normal bike 10 km on flat ground, you should reach the finish comfortably.",
           },
         },
         {

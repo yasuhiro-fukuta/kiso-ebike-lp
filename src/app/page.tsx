@@ -117,7 +117,7 @@ export default function Page() {
               <span className="way-kicker">Guided · Full day</span>
               <h3>The Kiso River Downhill</h3>
               <p>
-                Our flagship: 54.5 km from Narai-juku down the whole valley,
+                Our flagship: 48.9 km from Yabuhara-juku down the whole valley,
                 almost all of it descent, with two local guides riding with
                 your group all day. E-bikes included.
               </p>
