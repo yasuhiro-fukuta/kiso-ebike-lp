@@ -140,7 +140,7 @@ const jsonLd = {
       name: "Kiso River Downhill (full-day guided e-bike course)",
       description:
         "A full-day, guide-only e-bike descent of the Kiso Valley: 54.5 km from Narai-juku to Nagiso Station, almost all of it downhill, dropping from 997 m at the headwaters of the Kiso River to 409 m on the valley floor (682 m of descent against only 153 m of climbing). The route follows the historic Kiso road past eight of its eleven post towns (all but Niekawa, Magome and Tsumago), with breakfast in Narai-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Two local guides ride with every group — one leading, one sweeping. Books by WhatsApp.",
-      image: `${SITE_URL}/assets/downhill.jpg`,
+      image: `${SITE_URL}/assets/kisogawa.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
       offers: [

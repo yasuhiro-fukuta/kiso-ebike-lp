@@ -111,7 +111,7 @@ export default function Page() {
           <Link href="/guided" className="way-card way-card-dark">
             <div
               className="way-img"
-              style={{ backgroundImage: "url('/assets/downhill.jpg')" }}
+              style={{ backgroundImage: "url('/assets/kisogawa.jpg')" }}
             />
             <div className="way-body">
               <span className="way-kicker">Guided · Full day</span>
