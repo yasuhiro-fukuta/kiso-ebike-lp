@@ -741,6 +741,20 @@ body::before {
   text-decoration: none; font-size: 0.92rem; border-bottom: 1px solid rgba(200, 160, 74, 0.4); padding-bottom: 2px;
 }
 .shodo-cta-alt:hover { border-color: var(--gold); }
+.shodo-side { display: flex; flex-direction: column; gap: 1.2rem; }
+.shodo-pricecard {
+  background: rgba(244, 239, 230, 0.06); border: 1px solid rgba(244, 239, 230, 0.12);
+  border-radius: 10px; padding: 1.4rem 1.6rem;
+}
+.shodo-pricecard .from {
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  opacity: 0.7; margin-bottom: 0.6rem;
+}
+.shodo-scale { margin-bottom: 0; }
+.shodo-scale li s { font-weight: 300; font-size: 0.8rem; opacity: 0.5; margin-left: auto; margin-right: 0.9rem; }
+.shodo-scale li b { color: var(--gold); }
+.shodo-scale li.base b { color: var(--gold); }
+
 .shodo-rainy {
   background: rgba(244, 239, 230, 0.06); border: 1px solid rgba(244, 239, 230, 0.12);
   border-radius: 10px; padding: 1.6rem; display: flex; gap: 1rem; align-items: flex-start;

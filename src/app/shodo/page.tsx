@@ -92,13 +92,14 @@ export default function ShodoPage() {
           <div className="shodo-book-text">
             <span className="eyebrow">Honest pricing</span>
             <h2>
-              80% off, <em>while I earn my license.</em>
+              80% off, <em>while I earn my rank.</em>
             </h2>
             <p>
-              I&apos;m still working toward my calligraphy certification — so
-              until it&apos;s in hand, every session is offered at 80% off the
-              standard price. You get the full experience; I get the practice
-              teaching it. Fair trade.
+              The standard price is ¥20,000 for a group of four — each guest
+              more or fewer moves it by 15% (¥3,000). But I&apos;m still
+              working toward my shodan, the first dan rank in calligraphy — so
+              until it&apos;s in hand, every session is 80% off. You get the
+              full experience; I get the practice teaching it. Fair trade.
             </p>
             <div className="shodo-cta-row">
               <a
@@ -114,13 +115,45 @@ export default function ShodoPage() {
               </a>
             </div>
           </div>
-          <div className="shodo-rainy">
-            <CloudRain size={22} />
-            <p>
-              <strong>This is also our rainy-day plan.</strong> If a downpour
-              makes <Link href="/rental">riding</Link> unsafe, we move your day
-              indoors and swap the saddle for a brush — no rebooking hassle.
-            </p>
+          <div className="shodo-side">
+            <div className="shodo-pricecard">
+              <div className="from">Trial price · until I reach shodan</div>
+              <ul className="price-scale shodo-scale">
+                <li>
+                  <span>2 guests</span>
+                  <s>¥14,000</s>
+                  <b>¥2,800</b>
+                </li>
+                <li>
+                  <span>3 guests</span>
+                  <s>¥17,000</s>
+                  <b>¥3,400</b>
+                </li>
+                <li className="base">
+                  <span>4 guests</span>
+                  <s>¥20,000</s>
+                  <b>¥4,000</b>
+                </li>
+                <li>
+                  <span>5 guests</span>
+                  <s>¥23,000</s>
+                  <b>¥4,600</b>
+                </li>
+                <li>
+                  <span>6 guests</span>
+                  <s>¥26,000</s>
+                  <b>¥5,200</b>
+                </li>
+              </ul>
+            </div>
+            <div className="shodo-rainy">
+              <CloudRain size={22} />
+              <p>
+                <strong>This is also our rainy-day plan.</strong> If a downpour
+                makes <Link href="/rental">riding</Link> unsafe, we move your day
+                indoors and swap the saddle for a brush — no rebooking hassle.
+              </p>
+            </div>
           </div>
         </div>
       </section>

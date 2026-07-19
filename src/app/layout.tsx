@@ -59,7 +59,7 @@ const jsonLd = {
       image: `${SITE_URL}${HERO_IMG}`,
       telephone: TELEPHONE,
       email: EMAIL,
-      priceRange: "¥4,000–¥104,000",
+      priceRange: "¥2,800–¥104,000",
       currenciesAccepted: "JPY",
       paymentAccepted: "Credit Card",
       address: {
@@ -81,6 +81,7 @@ const jsonLd = {
       makesOffer: [
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#rental` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#downhill` } },
+        { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#shodo` } },
       ],
       employee: { "@id": `${SITE_URL}/#guide` },
     },
@@ -184,6 +185,44 @@ const jsonLd = {
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
+        },
+      ],
+    },
+    {
+      "@type": "Product",
+      "@id": `${SITE_URL}/#shodo`,
+      name: "Shodo Calligraphy Session (at Kashiwaya Guesthouse)",
+      description:
+        "A hands-on Japanese calligraphy (shodo) session in a quiet tatami room at Kashiwaya guesthouse in Nagiso: brush, sumi ink, and washi paper provided, no experience needed, and your best sheet goes home with you. Standard price ¥20,000 for a group of four, ±15% (¥3,000) per guest more or fewer — offered at 80% off as a trial price until the host earns his shodan (first dan) rank. Also serves as the rainy-day alternative when a downpour cancels a ride.",
+      image: `${SITE_URL}/assets/shodo-class.jpg`,
+      brand: { "@id": `${SITE_URL}/#business` },
+      category: "Cultural experience",
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Shodo session — group of 4 (trial price)",
+          description:
+            "Trial price at 80% off the ¥20,000 standard rate, until the host earns his shodan rank.",
+          price: "4000",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/shodo`,
+        },
+        {
+          "@type": "Offer",
+          name: "Shodo session — 2 guests (trial price)",
+          price: "2800",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/shodo`,
+        },
+        {
+          "@type": "Offer",
+          name: "Shodo session — 6 guests (trial price)",
+          price: "5200",
+          priceCurrency: "JPY",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/shodo`,
         },
       ],
     },
