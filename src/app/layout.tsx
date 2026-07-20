@@ -6,7 +6,7 @@ import "./globals.css";
  *  ⚠️ name / address / telephone は Googleビジネスプロフィールと
  *     一字一句そろえること（NAP一貫性）。料金は page.tsx と一致させる。
  *  ============================================================ */
-const SITE_URL = "https://kiso-ebike-lp.vercel.app";
+const SITE_URL = "https://nakasendo-ebike.com";
 const TELEPHONE = "+81-90-3839-2354";
 const EMAIL = "ravnicaguild@gmail.com";
 const INSTAGRAM_URL = "https://www.instagram.com/murabito_bikes";

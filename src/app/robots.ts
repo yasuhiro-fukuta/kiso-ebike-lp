@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 // src/app/robots.ts に置く。
-const SITE_URL = "https://kiso-ebike-lp.vercel.app";
+const SITE_URL = "https://nakasendo-ebike.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {
