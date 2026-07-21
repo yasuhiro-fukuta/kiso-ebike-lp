@@ -15,6 +15,8 @@ export function SiteNav() {
   return (
     <nav className="lp-nav">
       <Link href="/" className="brand" style={{ textDecoration: "none", color: "inherit" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/assets/logo-mark.png" alt="" className="brand-mark" />
         Beyond Nakasendo <span>Cycling</span>
       </Link>
       <div className="nav-links">
@@ -48,9 +50,16 @@ export function SiteFooter() {
     <footer className="lp-footer">
       <div className="foot-grid">
         <div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/logo-mark.png"
+            alt="Beyond Nakasendo Cycling logo — the kanji 奔 (to run free) in brush strokes"
+            className="foot-mark"
+          />
           <div className="brand">
             Beyond Nakasendo <span>Cycling</span>
           </div>
+          <p className="foot-tagline">奔 — &ldquo;Stream.&rdquo;</p>
           <p>
             E-bike rentals and a guided full-day ride through the hidden side
             of the Kiso Valley. Operated by Kashiwaya Guesthouse, Nagiso,
