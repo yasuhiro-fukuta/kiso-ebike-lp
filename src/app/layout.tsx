@@ -82,6 +82,8 @@ const jsonLd = {
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#rental` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#downhill` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#shodo` } },
+        { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#shuttle` } },
+        { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#gearrental` } },
       ],
       employee: { "@id": `${SITE_URL}/#guide` },
     },
@@ -225,6 +227,28 @@ const jsonLd = {
           url: `${SITE_URL}/shodo`,
         },
       ],
+    },
+    {
+      "@type": "Service",
+      "@id": `${SITE_URL}/#shuttle`,
+      name: "Luggage Shuttle (Nagiso ↔ Kashiwaya ↔ Nojiri)",
+      serviceType: "Luggage transfer",
+      description:
+        "Same-day luggage shuttle between Nagiso Station, Kashiwaya Guesthouse and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. Free with any e-bike rental or tour; standalone shuttle for walkers arranged via WhatsApp.",
+      provider: { "@id": `${SITE_URL}/#business` },
+      areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
+      url: `${SITE_URL}/luggage-shuttle`,
+    },
+    {
+      "@type": "Service",
+      "@id": `${SITE_URL}/#gearrental`,
+      name: "Outdoor Gear Rental",
+      serviceType: "Equipment rental",
+      description:
+        "Rental of traditional woven Kiso travel hats, bear bells and bear spray, rashguards, life jackets and cold-weather layers. Safety and swim gear is free with e-bike rentals and tours; standalone rentals arranged via WhatsApp.",
+      provider: { "@id": `${SITE_URL}/#business` },
+      areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
+      url: `${SITE_URL}/gear`,
     },
     {
       "@type": "FAQPage",

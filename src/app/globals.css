@@ -781,3 +781,157 @@ body::before {
 .shodo-rainy strong { font-weight: 600; color: #fff; }
 .shodo-rainy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200, 160, 74, 0.4); }
 .shodo-rainy a:hover { border-color: var(--gold); }
+
+/* =========================================================
+   RENEWAL (strategy phase 1)
+   - .img-wanted : dashed placeholder marking a photo we still
+     need to shoot (doubles as the shooting list)
+   - .hub-band   : dark full-width CTA band (second-day hub)
+   - .mini-grid  : small service links row
+   - .plan       : second-day itinerary blocks
+   - .stay-*     : stay page cards
+   ========================================================= */
+.img-wanted {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.5rem; text-align: center; padding: 1.5rem;
+  border: 2px dashed rgba(28, 26, 22, 0.28); border-radius: 8px;
+  background: repeating-linear-gradient(45deg, rgba(28, 26, 22, 0.03) 0 14px, transparent 14px 28px);
+  color: var(--cedar); min-height: 240px;
+}
+.img-wanted .iw-tag {
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  border: 1px solid currentColor; border-radius: 100px; padding: 0.2rem 0.6rem;
+}
+.img-wanted .iw-note { font-size: 0.85rem; font-weight: 300; max-width: 34ch; line-height: 1.5; }
+.img-wanted-dark {
+  border-color: rgba(244, 239, 230, 0.3); color: rgba(244, 239, 230, 0.75);
+  background: repeating-linear-gradient(45deg, rgba(244, 239, 230, 0.05) 0 14px, transparent 14px 28px);
+}
+
+/* dark CTA band — the second-day hub teaser */
+.hub-band {
+  background: linear-gradient(160deg, var(--moss-deep) 0%, var(--ink) 100%);
+  color: var(--paper); padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 5vw, 4rem);
+  position: relative; overflow: hidden;
+}
+.hub-band::before {
+  content: "二"; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  font-family: var(--serif); font-size: clamp(12rem, 26vw, 22rem); line-height: 1;
+  color: rgba(244, 239, 230, 0.04); pointer-events: none; user-select: none;
+}
+.hub-band-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.hub-band .eyebrow { color: var(--gold); }
+.hub-band h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin: 1rem 0 1.2rem; max-width: 24ch; }
+.hub-band h2 em { font-style: italic; color: var(--gold); }
+.hub-band p { font-weight: 300; opacity: 0.88; max-width: 58ch; margin-bottom: 1.8rem; }
+.hub-band .band-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--ink);
+  text-decoration: none; padding: 1rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.95rem;
+  transition: transform 0.3s, background 0.3s;
+}
+.hub-band .band-cta:hover { transform: translateY(-2px); background: var(--paper); }
+
+/* small services row */
+.mini-sec { padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem); max-width: 1100px; margin: 0 auto; }
+.mini-sec .eyebrow { color: var(--rust); }
+.mini-sec h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin: 0.8rem 0 2rem; }
+.mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+@media (max-width: 760px) { .mini-grid { grid-template-columns: 1fr; } }
+.mini-card {
+  display: block; text-decoration: none; color: var(--ink);
+  background: var(--paper-deep); border: 1px solid rgba(28, 26, 22, 0.08);
+  border-radius: 8px; padding: 1.5rem 1.6rem; transition: transform 0.3s, background 0.3s;
+}
+.mini-card:hover { transform: translateY(-4px); background: #ddd2bd; }
+.mini-card h3 { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.6rem; }
+.mini-card h3 svg { color: var(--rust); flex-shrink: 0; }
+.mini-card p { font-weight: 300; font-size: 0.88rem; color: #3a352d; }
+
+/* second-day plan blocks */
+.plans { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem); }
+.plan {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 3.5rem);
+  padding: clamp(2.5rem, 5vw, 4rem) 0; border-top: 1px solid var(--paper-deep); align-items: start;
+}
+@media (max-width: 820px) { .plan { grid-template-columns: 1fr; } }
+.plan:first-of-type { border-top: 0; }
+.plan-kicker {
+  font-size: 0.66rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--rust); margin-bottom: 0.6rem; display: block;
+}
+.plan h3 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 0.3rem; }
+.plan .plan-ja { font-size: 0.85rem; color: var(--cedar); margin-bottom: 1rem; }
+.plan p { font-weight: 300; font-size: 0.98rem; color: #3a352d; margin-bottom: 1rem; }
+.plan .day-line { margin-top: 1.4rem; }
+.plan .day-line .role { opacity: 0.85; }
+.plan-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
+.plan-links a {
+  display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none;
+  font-size: 0.85rem; font-weight: 600; color: var(--moss);
+  border: 1px solid rgba(61, 80, 64, 0.35); border-radius: 100px; padding: 0.5rem 1rem;
+  transition: background 0.25s, color 0.25s;
+}
+.plan-links a:hover { background: var(--moss); color: var(--paper); }
+
+/* stay page */
+.stay-cards { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem); display: grid; gap: 1.5rem; }
+.stay-card {
+  display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem, 4vw, 3rem);
+  background: var(--paper-deep); border-radius: 10px; overflow: hidden; align-items: stretch;
+}
+@media (max-width: 820px) { .stay-card { grid-template-columns: 1fr; } }
+.stay-card .img-wanted { border-radius: 0; border: 0; border-right: 2px dashed rgba(28,26,22,0.2); min-height: 300px; }
+@media (max-width: 820px) { .stay-card .img-wanted { border-right: 0; border-bottom: 2px dashed rgba(28,26,22,0.2); } }
+.stay-body { padding: clamp(1.8rem, 4vw, 2.8rem) clamp(1.5rem, 3vw, 2.5rem) clamp(1.8rem, 4vw, 2.8rem) 0; }
+@media (max-width: 820px) { .stay-body { padding: 0 1.5rem 1.8rem; } }
+.stay-badge {
+  display: inline-block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; background: var(--moss); color: var(--paper);
+  border-radius: 100px; padding: 0.3rem 0.8rem; margin-bottom: 0.9rem;
+}
+.stay-badge.soon { background: var(--rust); }
+.stay-body h3 { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.7rem; }
+.stay-body p { font-weight: 300; font-size: 0.95rem; color: #3a352d; margin-bottom: 0.9rem; }
+.stay-perk {
+  background: rgba(200, 160, 74, 0.14); border: 1px solid rgba(200, 160, 74, 0.4);
+  border-radius: 8px; padding: 0.9rem 1.1rem; font-size: 0.88rem; margin: 1rem 0;
+}
+.stay-perk strong { color: var(--cedar); }
+.stay-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem; background: var(--moss); color: var(--paper);
+  text-decoration: none; padding: 0.85rem 1.7rem; border-radius: 100px; font-weight: 600;
+  font-size: 0.9rem; transition: background 0.3s;
+}
+.stay-cta:hover { background: var(--moss-deep); }
+
+/* one-way drop steps (rental) */
+.drop-sec { background: var(--paper); padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 5vw, 4rem); }
+.drop-inner { max-width: 1100px; margin: 0 auto; }
+.drop-inner .eyebrow { color: var(--rust); }
+.drop-inner h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin: 0.8rem 0 0.8rem; max-width: 24ch; }
+.drop-inner h2 em { font-style: italic; color: var(--moss); }
+.drop-inner > p { font-weight: 300; color: #3a352d; max-width: 56ch; margin-bottom: 2.2rem; }
+.drop-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+@media (max-width: 760px) { .drop-steps { grid-template-columns: 1fr; } }
+.drop-step { background: var(--paper-deep); border-radius: 8px; padding: 1.5rem 1.6rem; position: relative; }
+.drop-step .dnum {
+  font-family: var(--serif); font-size: 2.2rem; color: var(--rust); line-height: 1; margin-bottom: 0.7rem;
+}
+.drop-step h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.4rem; }
+.drop-step p { font-weight: 300; font-size: 0.88rem; color: #3a352d; }
+.drop-note { font-size: 0.85rem; font-weight: 300; color: var(--cedar); margin-top: 1.4rem; max-width: 60ch; }
+
+/* review ask (rental) */
+.review-ask {
+  max-width: 1100px; margin: 0 auto clamp(4rem, 8vw, 6rem);
+  padding: clamp(1.8rem, 4vw, 2.5rem);
+  background: var(--paper-deep); border-radius: 10px;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.review-ask svg { color: var(--rust); flex-shrink: 0; }
+.review-ask p { font-weight: 300; font-size: 0.95rem; color: #3a352d; flex: 1; min-width: 260px; }
+.review-ask a {
+  display: inline-flex; align-items: center; gap: 0.5rem; background: var(--rust); color: var(--paper);
+  text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 100px; font-weight: 600; font-size: 0.88rem;
+}
+.review-ask a:hover { background: var(--gold); color: var(--ink); }

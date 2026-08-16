@@ -22,7 +22,8 @@ export function SiteNav() {
       <div className="nav-links">
         <Link href="/rental">E-Bike Rental</Link>
         <Link href="/guided">Guided Tour</Link>
-        <Link href="/shodo">Shodo</Link>
+        <Link href="/second-day">Second Day</Link>
+        <Link href="/stay">Stay</Link>
         <Link href="/rental#book">Book</Link>
       </div>
     </nav>
@@ -72,9 +73,15 @@ export function SiteFooter() {
           <br />
           <Link href="/guided">Guided Tour</Link>
           <br />
-          <Link href="/shodo">Shodo Calligraphy</Link>
+          <Link href="/second-day">Your Second Day</Link>
           <br />
-          <Link href="/rental#gear">The Bikes</Link>
+          <Link href="/stay">Stay</Link>
+          <br />
+          <Link href="/luggage-shuttle">Luggage Shuttle</Link>
+          <br />
+          <Link href="/gear">Gear Rental</Link>
+          <br />
+          <Link href="/shodo">Shodo Calligraphy</Link>
           <br />
           <Link href="/rental#book">Book a Ride</Link>
         </div>

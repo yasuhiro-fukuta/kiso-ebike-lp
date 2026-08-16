@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Bike,
+  Camera,
   Compass,
   Backpack,
   Umbrella,
@@ -15,6 +16,7 @@ import {
 import {
   SQUARE_BOOKING_URL,
   MYMAP_EMBED_URL,
+  GOOGLE_MAPS_URL,
   PHONE,
   PHONE_TEL,
   SUPPORT_MAILTO,
@@ -209,6 +211,52 @@ export default function RentalPage() {
         </div>
       </section>
 
+      {/* ONE-WAY DROP */}
+      <section className="drop-sec" id="one-way">
+        <div className="drop-inner">
+          <span className="eyebrow">The one-way drop</span>
+          <h2>
+            Ride point-to-point. <em>Never double back.</em>
+          </h2>
+          <p>
+            Most rental bikes chain you to a round trip. Ours don&apos;t: pick
+            up at one point, drop off at another, and let the valley unroll in
+            one direction while we handle the logistics.
+          </p>
+          <div className="drop-steps">
+            <div className="drop-step">
+              <div className="dnum">1</div>
+              <h3>Pick up</h3>
+              <p>
+                Collect your e-bike at Kashiwaya Guesthouse, Nagiso Station, or
+                Nojiri Station — whichever fits your route.
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">2</div>
+              <h3>Ride one way</h3>
+              <p>
+                Follow the route maps down the valley. Your luggage travels
+                separately with our free shuttle and meets you at the far end.
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">3</div>
+              <h3>Drop &amp; go</h3>
+              <p>
+                Leave the bike at any of the three points and walk straight to
+                your train — or to your bed at Kashiwaya. We collect the bikes.
+              </p>
+            </div>
+          </div>
+          <p className="drop-note">
+            Start and end points don&apos;t need to match, and the luggage
+            shuttle is included free. Tell us your plan when you book and
+            we&apos;ll set the handover up around it.
+          </p>
+        </div>
+      </section>
+
       {/* ROUTE MAPS */}
       <section className="routemaps" id="maps">
         <div className="routemaps-inner">
@@ -305,6 +353,21 @@ export default function RentalPage() {
           <a href={PHONE_TEL}>{PHONE}</a> or{" "}
           <a href={SUPPORT_MAILTO}>email us</a>.
         </p>
+      </section>
+
+      {/* REVIEW ASK — feeds the Google Maps listing (MEO) */}
+      <section style={{ padding: "0 clamp(1.5rem, 5vw, 4rem)" }}>
+        <div className="review-ask">
+          <Camera size={28} />
+          <p>
+            <strong>Loved the ride?</strong> The single best way to thank us is
+            a photo on Google Maps — travelers like you find us through the
+            pictures riders post. One shot from today&apos;s ride is plenty.
+          </p>
+          <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer">
+            Post a photo on Google Maps <ArrowRight size={15} />
+          </a>
+        </div>
       </section>
 
       {/* FAQ */}

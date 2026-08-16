@@ -13,6 +13,14 @@ export const MYMAP_EMBED_URL =
 export const SQUARE_BOOKING_URL =
   "https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start";
 
+/** Kashiwaya guesthouse — independent domain, linked from /stay */
+export const KASHIWAYA_URL = "https://kashiwaya-inn.com";
+
+/** ⚠️ TODO: replace with the real Google Business Profile review link
+ *  (Google Maps app → your listing → Share → copy link). Used on /rental. */
+export const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/search/Beyond+Nakasendo+Cycling+Nagiso";
+
 /** === SPECIAL COURSE: Kiso River Downhill (full day, guided only) ===
  *  This flagship books by WhatsApp, not Square.
  *  ⚠️ Confirm the WhatsApp number below matches the business line.
