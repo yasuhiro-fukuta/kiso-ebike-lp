@@ -3,7 +3,6 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  Bike,
   Camera,
   Compass,
   Backpack,
@@ -11,10 +10,11 @@ import {
   Zap,
   Mountain,
   Lightbulb,
+  MessageCircle,
   Ruler,
 } from "lucide-react";
 import {
-  SQUARE_BOOKING_URL,
+  RENTAL_WHATSAPP_URL,
   MYMAP_EMBED_URL,
   GOOGLE_MAPS_URL,
   PHONE,
@@ -28,8 +28,8 @@ export default function RentalPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={SQUARE_BOOKING_URL}>
-        <Bike size={18} /> Book a Ride
+      <FloatBook href={RENTAL_WHATSAPP_URL}>
+        <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 
       {/* PAGE HEAD */}
@@ -118,7 +118,7 @@ export default function RentalPage() {
                 <small>Easiest of the three · great for a first ride</small>
                 <span className="price-note">Self-guided rental — ¥4,000 per bike</span>
               </div>
-              <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -146,7 +146,7 @@ export default function RentalPage() {
                 <small>River swims in summer · onsen in winter</small>
                 <span className="price-note">Self-guided rental — ¥4,000 per bike</span>
               </div>
-              <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -173,7 +173,7 @@ export default function RentalPage() {
                 <small>Steep &amp; long · for confident riders only</small>
                 <span className="price-note">Self-guided rental — ¥4,000 per bike</span>
               </div>
-              <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -328,30 +328,32 @@ export default function RentalPage() {
 
       {/* HOW TO BOOK */}
       <section className="booking" id="book">
-        <span className="eyebrow">How to book · via Square</span>
+        <span className="eyebrow">How to book · via WhatsApp</span>
         <h2>
-          Book in <em>under two minutes.</em>
+          One message, <em>and the bike is yours.</em>
         </h2>
         <p>
-          Pick a date on our Square page and pay securely by card — your bike
-          is confirmed instantly, and we&apos;ll email directions to Kashiwaya.
+          Send us your date, number of riders, and which route you fancy —
+          we&apos;ll confirm your bikes and where to meet. No prepayment:
+          you pay on the day, at pickup, by card or cash.
         </p>
 
         <div className="square-embed">
           <a
-            href={SQUARE_BOOKING_URL}
+            href={RENTAL_WHATSAPP_URL}
             className="booking-cta"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book &amp; Pay with Square <ArrowRight size={18} />
+            <MessageCircle size={18} /> Book on WhatsApp
           </a>
         </div>
 
         <p className="booking-alt">
           Prefer to talk to a human? Call or text{" "}
           <a href={PHONE_TEL}>{PHONE}</a> or{" "}
-          <a href={SUPPORT_MAILTO}>email us</a>.
+          <a href={SUPPORT_MAILTO}>email us</a>. Payment on the day —
+          credit card or cash both welcome.
         </p>
       </section>
 

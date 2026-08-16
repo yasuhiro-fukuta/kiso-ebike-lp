@@ -10,8 +10,6 @@ const SITE_URL = "https://nakasendo-ebike.com";
 const TELEPHONE = "+81-90-3839-2354";
 const EMAIL = "ravnicaguild@gmail.com";
 const INSTAGRAM_URL = "https://www.instagram.com/murabito_bikes";
-const BOOKING_URL =
-  "https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start";
 const HERO_IMG = "/assets/gorge.jpg";
 const POSTAL_CODE = "399-5301"; // TODO: 郵便番号を確認して確定
 // 緯度経度: Googleマップで拠点ピンを右クリック →「座標をコピー」して差し替え
@@ -61,7 +59,7 @@ const jsonLd = {
       email: EMAIL,
       priceRange: "¥2,800–¥104,000",
       currenciesAccepted: "JPY",
-      paymentAccepted: "Credit Card",
+      paymentAccepted: "Cash, Credit Card",
       address: {
         "@type": "PostalAddress",
         streetAddress: "3993 Yomikaki",
@@ -113,7 +111,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#rental`,
       name: "E-Bike Rental (self-guided)",
       description:
-        "Self-guided fat-tire e-bike rental for a half day, with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included, plus the free luggage shuttle. Up to 2 bikes.",
+        "Self-guided fat-tire e-bike rental for a half day, with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included, plus the free luggage shuttle. Up to 2 bikes. Book via WhatsApp; pay on the day by card or cash.",
       image: `${SITE_URL}${HERO_IMG}`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Bicycle rental",
@@ -124,7 +122,7 @@ const jsonLd = {
           price: "4000",
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
-          url: BOOKING_URL,
+          url: `${SITE_URL}/rental`,
         },
         {
           "@type": "Offer",
@@ -132,7 +130,7 @@ const jsonLd = {
           price: "8000",
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
-          url: BOOKING_URL,
+          url: `${SITE_URL}/rental`,
         },
       ],
     },

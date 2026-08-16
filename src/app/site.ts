@@ -10,8 +10,9 @@ export const FEEDBACK_URL =
 // Google My Maps — embed + viewer
 export const MYMAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1OHpTKOucs5mBSqcEU7T4ILiapXuSkWQ&ehbc=2E312F";
-export const SQUARE_BOOKING_URL =
-  "https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start";
+/** Rental bookings now go through WhatsApp — pay on the day, card or cash. */
+export const RENTAL_WHATSAPP_URL =
+  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20book%20an%20e-bike.%20Date%3A%20__%20%2F%20Riders%3A%20__%20%2F%20Route%3A%20__";
 
 /** Kashiwaya guesthouse — independent domain, linked from /stay */
 export const KASHIWAYA_URL = "https://kashiwaya-inn.com";

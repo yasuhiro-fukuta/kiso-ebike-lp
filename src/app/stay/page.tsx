@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Bike, ExternalLink } from "lucide-react";
-import { KASHIWAYA_URL, SQUARE_BOOKING_URL } from "../site";
+import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
+import { KASHIWAYA_URL, RENTAL_WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function StayPage() {
@@ -10,8 +10,8 @@ export default function StayPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={SQUARE_BOOKING_URL}>
-        <Bike size={18} /> Book a Ride
+      <FloatBook href={RENTAL_WHATSAPP_URL}>
+        <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 
       {/* PAGE HEAD */}

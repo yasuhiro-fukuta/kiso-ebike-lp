@@ -1,32 +1,84 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Instagram, Mail, Phone, MessageSquare } from "lucide-react";
+import {
+  Instagram,
+  Mail,
+  Phone,
+  MessageSquare,
+  Menu,
+  X,
+  MessageCircle,
+} from "lucide-react";
 import {
   INSTAGRAM_URL,
   SUPPORT_MAILTO,
   PHONE,
   PHONE_TEL,
   FEEDBACK_URL,
+  WHATSAPP_URL,
 } from "./site";
 
-/** Fixed top nav, shared by every page. */
+/** The six services, in menu order. */
+const MENU_ITEMS: { href: string; label: string; sub: string }[] = [
+  { href: "/rental", label: "E-Bike Rental", sub: "Self-guided rides" },
+  { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
+  { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
+  { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
+  { href: "/guided", label: "Guided Tour", sub: "The Kiso River Downhill" },
+  { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
+];
+
+/** Fixed top nav with a hamburger menu, shared by every page. */
 export function SiteNav() {
+  const [open, setOpen] = useState(false);
   return (
-    <nav className="lp-nav">
-      <Link href="/" className="brand" style={{ textDecoration: "none", color: "inherit" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/logo-mark.png" alt="" className="brand-mark" />
-        Beyond Nakasendo <span>Cycling</span>
-      </Link>
-      <div className="nav-links">
-        <Link href="/rental">E-Bike Rental</Link>
-        <Link href="/guided">Guided Tour</Link>
-        <Link href="/second-day">Second Day</Link>
-        <Link href="/stay">Stay</Link>
-        <Link href="/rental#book">Book</Link>
-      </div>
-    </nav>
+    <>
+      <nav className="lp-nav">
+        <Link href="/" className="brand" style={{ textDecoration: "none", color: "inherit" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/logo-mark.png" alt="" className="brand-mark" />
+          Beyond Nakasendo <span>Cycling</span>
+        </Link>
+        <button
+          className="nav-burger"
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+          aria-expanded={open}
+        >
+          <Menu size={26} />
+        </button>
+      </nav>
+
+      {open && (
+        <div className="nav-overlay" role="dialog" aria-modal="true">
+          <button
+            className="nav-close"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={30} />
+          </button>
+          <nav className="nav-menu">
+            {MENU_ITEMS.map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
+                {item.label}
+                <small>{item.sub}</small>
+              </Link>
+            ))}
+          </nav>
+          <div className="nav-overlay-foot">
+            <Link href="/shodo" onClick={() => setOpen(false)}>
+              Shodo Calligraphy
+            </Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <MessageCircle size={15} /> WhatsApp
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -69,21 +121,13 @@ export function SiteFooter() {
         </div>
         <div>
           <h4>Explore</h4>
-          <Link href="/rental">E-Bike Rental</Link>
-          <br />
-          <Link href="/guided">Guided Tour</Link>
-          <br />
-          <Link href="/second-day">Your Second Day</Link>
-          <br />
-          <Link href="/stay">Stay</Link>
-          <br />
-          <Link href="/luggage-shuttle">Luggage Shuttle</Link>
-          <br />
-          <Link href="/gear">Gear Rental</Link>
-          <br />
+          {MENU_ITEMS.map((item) => (
+            <span key={item.href}>
+              <Link href={item.href}>{item.label}</Link>
+              <br />
+            </span>
+          ))}
           <Link href="/shodo">Shodo Calligraphy</Link>
-          <br />
-          <Link href="/rental#book">Book a Ride</Link>
         </div>
         <div>
           <h4>Connect</h4>
@@ -106,7 +150,7 @@ export function SiteFooter() {
       </div>
       <div className="foot-bottom">
         <span>© {new Date().getFullYear()} Beyond Nakasendo Cycling · From Scratch LLC</span>
-        <span>Secure payment by Square</span>
+        <span>Book on WhatsApp · pay on the day, card or cash</span>
       </div>
     </footer>
   );
