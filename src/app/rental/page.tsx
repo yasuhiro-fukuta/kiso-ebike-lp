@@ -6,7 +6,7 @@ import {
   Camera,
   Compass,
   Backpack,
-  Umbrella,
+  Bike,
   Zap,
   Mountain,
   Lightbulb,
@@ -15,13 +15,12 @@ import {
 } from "lucide-react";
 import {
   RENTAL_WHATSAPP_URL,
-  MYMAP_EMBED_URL,
   GOOGLE_MAPS_URL,
   PHONE,
   PHONE_TEL,
   SUPPORT_MAILTO,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 export default function RentalPage() {
   return (
@@ -40,11 +39,12 @@ export default function RentalPage() {
             Rent an e-bike. <em>The valley is yours.</em>
           </h1>
           <p>
-            Three mapped routes, all a little off the beaten track. We hand you
-            a charged fat-tire e-bike and our route maps, shuttle your luggage
-            for free, and you explore at your own pace. These routes are
-            self-guided only — if you want to ride with our guides, that&apos;s
-            the <Link href="/guided">full-day Kiso River Downhill</Link>.
+            We hand you a charged fat-tire e-bike, shuttle your luggage for
+            free, and you explore at your own pace. Wondering where to go?
+            Our three mapped routes live on the{" "}
+            <Link href="/second-day">Self-Tour Advice page</Link> — and if you
+            want to ride with a guide, there&apos;s the{" "}
+            <Link href="/guided">guided tour</Link>.
           </p>
         </div>
         <figure className="page-head-visual">
@@ -87,100 +87,10 @@ export default function RentalPage() {
         </div>
       </section>
 
-      {/* TOURS */}
-      <section className="tours" id="tours">
-        <div className="tours-head">
-          <span className="eyebrow">Choose your day</span>
-          <h2>Three routes. Pick by season and how hard you want to push.</h2>
-          <p>
-            Every rental is a half day, 10:00–16:00. Open the route map on your
-            phone for turn-by-turn directions between our pick-up points.
-          </p>
-        </div>
-        <div className="tour-grid">
-          <div className="tour-card">
-            <div className="top">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/tsumago.jpg" alt="Tsumago post town street at dusk" />
-              <span className="lvl">Easy</span>
-              <span className="season">Spring &amp; Autumn</span>
-            </div>
-            <div className="body">
-              <h3>Tsumago, Revisited</h3>
-              <div className="route">Best in Spring &amp; Autumn · Easy</div>
-              <p>
-                What used to be a forest-railway line is now a quiet paved road
-                only locals know — running straight into Tsumago. Perfect for
-                anyone who arrived at the post town too late the night before
-                to explore it properly.
-              </p>
-              <div className="price">
-                <small>Easiest of the three · great for a first ride</small>
-                <span className="price-note">Self-guided rental — ¥4,000 per bike</span>
-              </div>
-              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
-                Book this ride <ArrowRight size={15} />
-              </a>
-            </div>
-          </div>
-
-          <div className="tour-card">
-            <div className="top">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/gorge.jpg" alt="Emerald gorge with clear river and boulders" />
-              <span className="lvl">Moderate</span>
-              <span className="season">Summer &amp; Early Winter</span>
-            </div>
-            <div className="body">
-              <h3>Natural AC &amp; Onsen</h3>
-              <div className="route">Best in Summer &amp; Early Winter · Moderate</div>
-              <p>
-                The Yogawa trail is beautiful, but brutal in summer heat. The
-                opposite bank has rice paddy roads, an easy pass, and a narrow
-                road linking two stunning waterfalls. Borrow a rashguard for
-                free, then dive into the gorge to cool off. There&apos;s an
-                onsen at the end of the road — in winter, dive into that
-                instead.
-              </p>
-              <div className="price">
-                <small>River swims in summer · onsen in winter</small>
-                <span className="price-note">Self-guided rental — ¥4,000 per bike</span>
-              </div>
-              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
-                Book this ride <ArrowRight size={15} />
-              </a>
-            </div>
-          </div>
-
-          <div className="tour-card">
-            <div className="top">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/challengers.jpg" alt="Waterfall shower in the Atera river canyon" />
-              <span className="lvl">Hard</span>
-              <span className="season">For the fit</span>
-            </div>
-            <div className="body">
-              <h3>Nakasendo Challenge</h3>
-              <div className="route">Yogawa-trail crossing · Hard</div>
-              <p>
-                The Yogawa trail, said to be the most beautiful stretch of the
-                entire Nakasendo. No shops along the way, slightly longer with
-                more elevation than Magome Pass — for confident riders only. We
-                ride the narrow paved road that runs alongside this old
-                route. For those with the legs for it.
-              </p>
-              <div className="price">
-                <small>Steep &amp; long · for confident riders only</small>
-                <span className="price-note">Self-guided rental — ¥4,000 per bike</span>
-              </div>
-              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
-                Book this ride <ArrowRight size={15} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* PRICING */}
+      {/* PRICING */}
+      <section className="mini-sec" id="pricing">
+        <span className="eyebrow">Pricing</span>
+        <h2>Simple: one bike, one price.</h2>
         <div className="pricing">
           <div className="pitem">
             <h4>E-Bike Rental</h4>
@@ -196,8 +106,11 @@ export default function RentalPage() {
             <h4>Route Maps</h4>
             <div className="amt">Free</div>
             <p>
-              Turn-by-turn Google Maps routes for all three rides, on your
-              phone — plus local tips before you set off.
+              Turn-by-turn Google Maps routes for all three rides — see the{" "}
+              <Link href="/second-day" style={{ color: "var(--gold)" }}>
+                Self-Tour Advice
+              </Link>{" "}
+              page.
             </p>
           </div>
           <div className="pitem">
@@ -257,26 +170,6 @@ export default function RentalPage() {
         </div>
       </section>
 
-      {/* ROUTE MAPS */}
-      <section className="routemaps" id="maps">
-        <div className="routemaps-inner">
-          <span className="eyebrow">Find your way</span>
-          <h2>Route maps</h2>
-          <p>
-            Here are the routes we&apos;ve mapped out. Open any of them on your
-            phone for turn-by-turn directions between our pick-up points.
-          </p>
-          <div className="map-embed">
-            <iframe
-              src={MYMAP_EMBED_URL}
-              title="Kiso Valley e-bike route map"
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* VIDEO */}
       <section className="video-sec">
         <span className="eyebrow">Before you ride</span>
@@ -304,6 +197,13 @@ export default function RentalPage() {
         <div className="inc-grid">
           <div className="inc-item">
             <div className="icon">
+              <Bike size={30} />
+            </div>
+            <h3>Helmet, Lock &amp; Lights</h3>
+            <p>Fitted to you before you set off, at no extra charge.</p>
+          </div>
+          <div className="inc-item">
+            <div className="icon">
               <Compass size={30} />
             </div>
             <h3>Route Maps &amp; Local Tips</h3>
@@ -315,13 +215,6 @@ export default function RentalPage() {
             </div>
             <h3>Luggage Shuttle</h3>
             <p>Bags moved between the stations and Kashiwaya, free.</p>
-          </div>
-          <div className="inc-item">
-            <div className="icon">
-              <Umbrella size={30} />
-            </div>
-            <h3>Waterproof Gear</h3>
-            <p>Rashguards, life jackets, and bear bells — free to borrow.</p>
           </div>
         </div>
       </section>
@@ -358,7 +251,7 @@ export default function RentalPage() {
       </section>
 
       {/* REVIEW ASK — feeds the Google Maps listing (MEO) */}
-      <section style={{ padding: "0 clamp(1.5rem, 5vw, 4rem)" }}>
+      <section style={{ padding: "clamp(3rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem) 0" }}>
         <div className="review-ask">
           <Camera size={28} />
           <p>
@@ -388,10 +281,9 @@ export default function RentalPage() {
         <details className="faq-item">
           <summary>Can I add a guide to these routes?</summary>
           <p>
-            No — these three routes are self-guided only. Our guides ride on
-            one course: the <Link href="/guided">full-day Kiso River
-            Downhill</Link>, where two of them accompany your group down the
-            whole valley.
+            No — these routes are self-guided only. If you&apos;d like a
+            guided experience, see the <Link href="/guided">guided tour
+            page</Link>.
           </p>
         </details>
         <details className="faq-item">
@@ -411,14 +303,6 @@ export default function RentalPage() {
           </p>
         </details>
         <details className="faq-item">
-          <summary>Can I swim or use the onsen?</summary>
-          <p>
-            On the Gorge &amp; Onsen route, yes — bring a swimsuit and towel in
-            summer to dive into the Atera river, or use the onsen near the river
-            mouth in colder months.
-          </p>
-        </details>
-        <details className="faq-item">
           <summary>Where do we start &amp; end?</summary>
           <p>
             You can pick from three points, and your start and end don&apos;t
@@ -427,6 +311,9 @@ export default function RentalPage() {
           </p>
         </details>
       </section>
+
+      {/* ALL-IN-ONE PACK */}
+      <AllInOnePack />
 
       <SiteFooter />
     </div>

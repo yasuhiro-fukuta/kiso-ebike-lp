@@ -18,6 +18,7 @@ import {
   PHONE_TEL,
   FEEDBACK_URL,
   WHATSAPP_URL,
+  PACK_WHATSAPP_URL,
 } from "./site";
 
 /** The six services, in menu order. */
@@ -79,6 +80,41 @@ export function SiteNav() {
         </div>
       )}
     </>
+  );
+}
+
+/** All-in-one day pack banner — shown near the bottom of the rental,
+ *  shuttle and gear pages. */
+export function AllInOnePack() {
+  return (
+    <section className="allinone-wrap">
+      <div className="allinone">
+        <div className="allinone-head">
+          <span className="allinone-badge">All-in-One Day Pack</span>
+          <div className="allinone-price">
+            ¥7,000<span>/person</span>
+          </div>
+        </div>
+        <p className="allinone-lead">
+          Everything for a full self-guided day in the valley, in one bundle:
+        </p>
+        <ul className="allinone-list">
+          <li>E-bike × 1</li>
+          <li>Bear bell × 1</li>
+          <li>Bear spray × 1</li>
+          <li>One more gear item of your choice</li>
+          <li>Luggage shuttle (up to 2 bags per person)</li>
+        </ul>
+        <a
+          href={PACK_WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="allinone-cta"
+        >
+          <MessageCircle size={16} /> Book the day pack on WhatsApp
+        </a>
+      </div>
+    </section>
   );
 }
 

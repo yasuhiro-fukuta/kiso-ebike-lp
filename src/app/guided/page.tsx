@@ -12,7 +12,6 @@ import {
   MORNING_WHATSAPP_URL,
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
-  GUIDES,
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
@@ -155,7 +154,7 @@ export default function GuidedPage() {
           {/* 1 — OVERVIEW */}
           <div className="special-head">
             <span className="eyebrow">Guided tour · Full day</span>
-            <span className="special-badge">The flagship</span>
+            <span className="special-badge">Coming soon</span>
             <h2>
               The Kiso River Downhill — <em>the most comfortable 50 km in the world.</em>
             </h2>
@@ -225,33 +224,13 @@ export default function GuidedPage() {
 
           {/* 3 — THE GUIDES */}
           <div className="special-guides">
-            <h3>Meet your guides</h3>
+            <h3>Who rides with you</h3>
             <p className="guides-lead">
-              Two of these five ride with you on the day — a lead guide up
-              front and a sweep at the back.
+              The tour is led by a team of local cyclists who ride these roads
+              all year round — two guides with every group, one setting the
+              line up front and one sweeping at the back. Full team
+              introductions coming with the launch.
             </p>
-            <div className="guides-grid">
-              {GUIDES.map((g) => (
-                <div className="gcard" key={g.name}>
-                  {g.photo ? (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img className="gphoto" src={g.photo} alt={`Portrait of ${g.name}`} />
-                  ) : (
-                    <div className="gphoto gphoto-ph" aria-label={`Photo of ${g.name} coming soon`}>
-                      <span className="ph-initial">{g.nameJa.slice(0, 2)}</span>
-                      <span className="ph-note">Photo coming soon</span>
-                    </div>
-                  )}
-                  <div className="gbody">
-                    <div className="gtag">{g.tag}</div>
-                    <div className="gname">
-                      {g.name} <span className="gname-ja">{g.nameJa}</span>
-                    </div>
-                    <p className="gbio">{g.bio}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* 4 — SCHEDULE · 5 — PRICE & HOW TO BOOK */}
@@ -314,19 +293,19 @@ export default function GuidedPage() {
                   <b>¥104,000</b>
                 </li>
               </ul>
-              <div className="how-to-book-label">How to book · via WhatsApp</div>
+              <div className="how-to-book-label">Coming soon</div>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="special-cta"
               >
-                <MessageCircle size={18} /> Ask &amp; book on WhatsApp
+                <MessageCircle size={18} /> Get notified on WhatsApp
               </a>
               <p className="special-cta-note">
-                This full-day course is arranged personally — message us on
-                WhatsApp to pick a date, and we&apos;ll sort out the rest
-                together.
+                Dates aren&apos;t open yet. Message us on WhatsApp and
+                we&apos;ll let you know the moment the first departures go on
+                sale.
               </p>
             </div>
           </div>

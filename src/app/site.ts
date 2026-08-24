@@ -13,6 +13,8 @@ export const MYMAP_EMBED_URL =
 /** Rental bookings now go through WhatsApp — pay on the day, card or cash. */
 export const RENTAL_WHATSAPP_URL =
   "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20book%20an%20e-bike.%20Date%3A%20__%20%2F%20Riders%3A%20__%20%2F%20Route%3A%20__";
+export const PACK_WHATSAPP_URL =
+  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20the%20all-in-one%20day%20pack%20%28%C2%A57%2C000%2Fperson%29.%20Date%3A%20__%20%2F%20People%3A%20__";
 
 /** Kashiwaya guesthouse — independent domain, linked from /stay */
 export const KASHIWAYA_URL = "https://kashiwaya-inn.com";

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MessageCircle, Backpack, Footprints, Train } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
-import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 export default function LuggageShuttlePage() {
   return (
@@ -107,6 +107,9 @@ export default function LuggageShuttlePage() {
           </Link>
         </div>
       </section>
+
+      {/* ALL-IN-ONE PACK */}
+      <AllInOnePack />
 
       <SiteFooter />
     </div>

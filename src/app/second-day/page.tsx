@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Bike, Footprints, MessageCircle } from "lucide-react";
-import { WHATSAPP_URL } from "../site";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import { RENTAL_WHATSAPP_URL, MYMAP_EMBED_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function SecondDayPage() {
@@ -10,270 +10,156 @@ export default function SecondDayPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={WHATSAPP_URL}>
-        <MessageCircle size={18} /> Plan my second day
+      <FloatBook href={RENTAL_WHATSAPP_URL}>
+        <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 
       {/* PAGE HEAD */}
       <header className="page-head">
-        <span className="eyebrow">The most important day of your trip</span>
+        <span className="eyebrow">Self-tour advice · Ride at your own pace</span>
         <h1>
-          Your second day in Nagiso — <em>the one most travelers never have.</em>
+          Three routes for <em>your second day in Nagiso.</em>
         </h1>
         <p>
-          Here&apos;s the pattern: you walk the Nakasendo over Magome Pass,
-          arrive in Nagiso by evening, sleep — and by 9 a.m. you&apos;re on a
-          train to Matsumoto or Kyoto. Everyone does it. Everyone misses the
-          best part. The valley around Nagiso holds rivers you can swim,
-          gorges the color of glass, and an old highway with no crowds at all.
-          Below are three ways to spend that second day — on foot or by
-          e-bike. Pick one, and let tomorrow be the day you actually meet the
-          Kiso Valley.
+          You walked the Nakasendo yesterday; don&apos;t leave at nine this
+          morning. These are the three self-guided rides we hand our own
+          friends — each mapped turn-by-turn for your phone, each reachable
+          straight from the guesthouse door. Pick by season and by how hard
+          you want to push, then <Link href="/rental">grab an e-bike</Link>{" "}
+          and go.
         </p>
       </header>
 
-      {/* THE THREE PLANS */}
-      <section className="plans" id="plans">
-        {/* PLAN 1 — YOGAWA-MICHI */}
-        <div className="plan">
-          <div>
-            <span className="plan-kicker">
-              Plan one · On foot or by e-bike
-            </span>
-            <h3>The Yogawa-michi — the Nakasendo without the crowds</h3>
-            <div className="plan-ja">与川道 — 中山道の静かな迂回路</div>
-            <p>
-              Yesterday you shared Magome Pass with every guidebook reader in
-              Japan. The Yogawa-michi is the old detour of the same Nakasendo
-              — the route travelers took when the main road was impassable —
-              and today it is almost empty. Forest, small shrines, mountain
-              hamlets, and long views over the valley. It is said to be the
-              most beautiful stretch of the entire Nakasendo, and you will
-              likely have it to yourself.
-            </p>
-            <ul className="day-line">
-              <li>
-                <div className="place">Morning</div>
-                <div className="role">
-                  Leave your bags with our free luggage shuttle and set out
-                  from Nagiso — on foot as the old travelers did, or on the
-                  quiet paved road that shadows the trail by e-bike
-                </div>
-              </li>
-              <li>
-                <div className="place">Midday</div>
-                <div className="role">
-                  Picnic lunch on the pass — there are no shops on the route,
-                  so we&apos;ll help you pack one
-                </div>
-              </li>
-              <li>
-                <div className="place">Afternoon</div>
-                <div className="role">
-                  Descend to Nojiri Station, collect your bags — or ride back
-                  and soak your legs in an onsen
-                </div>
-              </li>
-            </ul>
-            <div className="plan-links">
-              <Link href="/rental">
-                <Bike size={15} /> Ride it self-guided
-              </Link>
-              <Link href="/luggage-shuttle">
-                <Footprints size={15} /> Walk it, we carry your bags
-              </Link>
-            </div>
-          </div>
-          <div className="img-wanted">
-            <span className="iw-tag">Photo wanted</span>
-            <span className="iw-note">
-              与川道の森の中の道(木漏れ日・石畳や道標が写っていると◎)/
-              尾根から谷を見下ろすカット
-            </span>
-          </div>
+      {/* THE THREE ROUTES */}
+      <section className="tours" id="routes">
+        <div className="tours-head">
+          <span className="eyebrow">Choose your day</span>
+          <h2>Three routes. All a little off the beaten track.</h2>
+          <p>
+            Every ride is a half day, 10:00–16:00. Open the route map on your
+            phone for turn-by-turn directions between our pick-up points.
+          </p>
         </div>
-
-        {/* PLAN 2 — KAKIZORE */}
-        <div className="plan">
-          <div>
-            <span className="plan-kicker">Plan two · E-bike + swim</span>
-            <h3>Kakizore Gorge — dive into water the color of glass</h3>
-            <div className="plan-ja">柿其渓谷 — 泳げるエメラルドの渓谷</div>
-            <p>
-              A short e-bike ride from Nagiso, up a valley most tourists never
-              enter, the Kakizore river runs over pale granite in pools so
-              clear they look lit from below. In summer this is the swimming
-              hole of your childhood dreams; in cooler months it is a walk
-              along water that photographs like the tropics. Waterfalls at the
-              top, almost nobody on the path.
-            </p>
-            <ul className="day-line">
-              <li>
-                <div className="place">Morning</div>
-                <div className="role">
-                  Pick up your e-bike at Kashiwaya, borrow a rashguard and
-                  life jacket for free, and ride the quiet farm roads up the
-                  valley
-                </div>
-              </li>
-              <li>
-                <div className="place">Midday</div>
-                <div className="role">
-                  Walk the gorge path to the falls, swim, dry off on warm
-                  granite, repeat
-                </div>
-              </li>
-              <li>
-                <div className="place">Afternoon</div>
-                <div className="role">
-                  Coast back down to Nagiso in time for an early bath and
-                  dinner in the post town
-                </div>
-              </li>
-            </ul>
-            <div className="plan-links">
-              <Link href="/rental">
-                <Bike size={15} /> Rent the e-bike
-              </Link>
-              <Link href="/gear">
-                <ArrowRight size={15} /> Borrow swim &amp; safety gear
-              </Link>
+        <div className="tour-grid">
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/tsumago.jpg" alt="Tsumago post town street at dusk" />
+              <span className="lvl">Easy</span>
+              <span className="season">Spring &amp; Autumn</span>
+            </div>
+            <div className="body">
+              <h3>Tsumago, Revisited</h3>
+              <div className="route">Best in Spring &amp; Autumn · Easy</div>
+              <p>
+                What used to be a forest-railway line is now a quiet paved road
+                only locals know — running straight into Tsumago. Perfect for
+                anyone who arrived at the post town too late the night before
+                to explore it properly.
+              </p>
+              <div className="price">
+                <small>Easiest of the three · great for a first ride</small>
+                <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
+              </div>
+              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+                Book this ride <ArrowRight size={15} />
+              </a>
             </div>
           </div>
-          <div className="img-wanted">
-            <span className="iw-tag">Photo wanted</span>
-            <span className="iw-note">
-              柿其渓谷のエメラルドの淵(人が泳いでいる/飛び込みの瞬間だと最高)/
-              滝のカット
-            </span>
-          </div>
-        </div>
 
-        {/* PLAN 3 — ATERA */}
-        <div className="plan">
-          <div>
-            <span className="plan-kicker">Plan three · The long e-bike day</span>
-            <h3>Atera Valley — the bluest river in the Kiso</h3>
-            <div className="plan-ja">阿寺渓谷 — 「阿寺ブルー」の一日</div>
-            <p>
-              The Atera river is famous — quietly, locally famous — for a
-              blue-green so deep that people call it Atera Blue. The valley
-              road climbs gently beside pool after pool, each one bluer than
-              the last. On an e-bike the climb simply disappears, and the ride
-              back down is one long exhale. Pair it with the onsen near the
-              river mouth and you have a complete day.
-            </p>
-            <ul className="day-line">
-              <li>
-                <div className="place">Morning</div>
-                <div className="role">
-                  Roll out from Nagiso along the Kiso River to the mouth of
-                  the Atera Valley
-                </div>
-              </li>
-              <li>
-                <div className="place">Midday</div>
-                <div className="role">
-                  Ride up the valley, stopping at every pool that demands it —
-                  bring a picnic, or dip your feet where the granite shelves
-                  into the water
-                </div>
-              </li>
-              <li>
-                <div className="place">Afternoon</div>
-                <div className="role">
-                  Freewheel down, then finish in the onsen before riding the
-                  riverside road home
-                </div>
-              </li>
-            </ul>
-            <div className="plan-links">
-              <Link href="/rental">
-                <Bike size={15} /> Rent the e-bike
-              </Link>
-              <Link href="/guided">
-                <ArrowRight size={15} /> Prefer a guided day? See the Downhill
-              </Link>
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/gorge.jpg" alt="Emerald gorge with clear river and boulders" />
+              <span className="lvl">Moderate</span>
+              <span className="season">Summer &amp; Early Winter</span>
+            </div>
+            <div className="body">
+              <h3>Natural AC &amp; Onsen</h3>
+              <div className="route">Best in Summer &amp; Early Winter · Moderate</div>
+              <p>
+                The Yogawa trail is beautiful, but brutal in summer heat. The
+                opposite bank has rice paddy roads, an easy pass, and a narrow
+                road linking two stunning waterfalls. Grab a rashguard from our{" "}
+                <Link href="/gear">gear rental</Link>, then dive into the gorge
+                to cool off. There&apos;s an onsen at the end of the road — in
+                winter, dive into that instead.
+              </p>
+              <div className="price">
+                <small>River swims in summer · onsen in winter</small>
+                <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
+              </div>
+              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+                Book this ride <ArrowRight size={15} />
+              </a>
             </div>
           </div>
-          <div className="img-wanted">
-            <span className="iw-tag">Photo wanted</span>
-            <span className="iw-note">
-              阿寺ブルーの淵と川沿いの道(e-bikeが写り込んでいると◎)
-            </span>
+
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/challengers.jpg" alt="Waterfall shower in the Atera river canyon" />
+              <span className="lvl">Hard</span>
+              <span className="season">For the fit</span>
+            </div>
+            <div className="body">
+              <h3>Nakasendo Challenge</h3>
+              <div className="route">Yogawa-trail crossing · Hard</div>
+              <p>
+                The Yogawa trail, said to be the most beautiful stretch of the
+                entire Nakasendo. No shops along the way, slightly longer with
+                more elevation than Magome Pass — for confident riders only. We
+                ride the narrow paved road that runs alongside this old
+                route. For those with the legs for it.
+              </p>
+              <div className="price">
+                <small>Steep &amp; long · for confident riders only</small>
+                <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
+              </div>
+              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+                Book this ride <ArrowRight size={15} />
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* MAKE IT THREE DAYS */}
+      {/* ROUTE MAPS */}
+      <section className="routemaps" id="maps">
+        <div className="routemaps-inner">
+          <span className="eyebrow">Find your way</span>
+          <h2>Route maps</h2>
+          <p>
+            Here are the routes we&apos;ve mapped out. Open any of them on your
+            phone for turn-by-turn directions between our pick-up points.
+          </p>
+          <div className="map-embed">
+            <iframe
+              src={MYMAP_EMBED_URL}
+              title="Kiso Valley e-bike route map"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT YOU NEED */}
       <section className="hub-band">
         <div className="hub-band-inner">
-          <span className="eyebrow">And if two days become three</span>
+          <span className="eyebrow">Ready to roll</span>
           <h2>
-            The valley doesn&apos;t run out. <em>You just ran out of days.</em>
+            The routes are free. <em>The bike is the ticket.</em>
           </h2>
           <p>
-            River fishing at Tadachi and Iwakura, easy summit hikes with
-            valley views, a hands-on calligraphy session in the old
-            guesthouse, and post-town evenings when the day-trippers have all
-            gone home. Stay a second night and the town starts to feel like
-            yours.
+            Rent an e-bike (¥4,000 per bike, one-way drops welcome), add bear
+            gear or a rashguard from the gear rental, and let the luggage
+            shuttle carry your bags while you ride.
           </p>
-          <Link href="/stay" className="band-cta">
-            See where to stay <ArrowRight size={16} />
+          <Link href="/rental" className="band-cta">
+            Rent an e-bike <ArrowRight size={16} />
           </Link>
         </div>
-      </section>
-
-      {/* FAQ — written for people (and AI) actually asking these questions */}
-      <section className="faq" id="faq">
-        <h2>Second-day questions, answered</h2>
-        <details className="faq-item">
-          <summary>Is one night really not enough for Nagiso?</summary>
-          <p>
-            You can sleep here in one night, but you can&apos;t meet the place.
-            The post towns show you their best face in the early morning and
-            evening — exactly the hours day-trippers miss — and the rivers,
-            gorges and the old Yogawa-michi all need daylight. One night gets
-            you a bed; two nights get you the valley.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>Can I really swim in the rivers?</summary>
-          <p>
-            Yes — in summer the Kakizore and Atera valleys have clear,
-            swimmable pools. We lend rashguards and life jackets for free,
-            point you to the safe entries, and tell you honestly when the
-            water is too high to swim.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>I can&apos;t drive. Can I reach these valleys without a car?</summary>
-          <p>
-            That&apos;s exactly what the e-bikes are for. All three plans start
-            in Nagiso and run on quiet paved roads — the motor flattens the
-            climbs, so the gorges are within easy reach even if you
-            haven&apos;t ridden in years.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>What happens to my luggage while I&apos;m out?</summary>
-          <p>
-            We shuttle bags between Nagiso Station, Kashiwaya and Nojiri
-            Station for free with any ride — and we can hold them for the day
-            while you swim or walk. Details on the{" "}
-            <Link href="/luggage-shuttle">luggage shuttle page</Link>.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>What if it rains on my second day?</summary>
-          <p>
-            Mountain weather happens. If a downpour makes the outdoors
-            unpleasant, we move you indoors — a{" "}
-            <Link href="/shodo">calligraphy session</Link> at the guesthouse,
-            an onsen, and the museums of the post towns. The day is not lost.
-          </p>
-        </details>
       </section>
 
       <SiteFooter />

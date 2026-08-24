@@ -83,6 +83,7 @@ const jsonLd = {
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#shuttle` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#gearrental` } },
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#morning` } },
+        { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#daypack` } },
       ],
       employee: { "@id": `${SITE_URL}/#guide` },
     },
@@ -138,9 +139,9 @@ const jsonLd = {
     {
       "@type": "Product",
       "@id": `${SITE_URL}/#downhill`,
-      name: "Kiso River Downhill (full-day guided e-bike course)",
+      name: "Kiso River Downhill (full-day guided e-bike course) — coming soon",
       description:
-        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (613 m of descent against only 94 m of climbing). The route follows the historic Kiso road past seven of its eleven post towns, from Yabuhara down to Midono, with breakfast in Yabuhara-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Two local guides ride with every group — one leading, one sweeping. Books by WhatsApp.",
+        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (613 m of descent against only 94 m of climbing). The route follows the historic Kiso road past seven of its eleven post towns, from Yabuhara down to Midono, with breakfast in Yabuhara-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Led by a team of local cyclists, two guides with every group — one leading, one sweeping. Launching soon; message us on WhatsApp to be notified when dates open.",
       image: `${SITE_URL}/assets/kisogawa.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
@@ -152,7 +153,7 @@ const jsonLd = {
             "All-in price for the whole day: two guides and all e-bikes included. ¥80,000 for a group of four; each rider more or fewer moves the total by 15% (¥12,000).",
           price: "80000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/InStock",
+          availability: "https://schema.org/PreOrder",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -160,7 +161,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 2 riders",
           price: "56000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/InStock",
+          availability: "https://schema.org/PreOrder",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -168,7 +169,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 3 riders",
           price: "68000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/InStock",
+          availability: "https://schema.org/PreOrder",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -176,7 +177,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 5 riders",
           price: "92000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/InStock",
+          availability: "https://schema.org/PreOrder",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -184,7 +185,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 6 riders",
           price: "104000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/InStock",
+          availability: "https://schema.org/PreOrder",
           url: `${SITE_URL}/guided`,
         },
       ],
@@ -266,6 +267,24 @@ const jsonLd = {
       ],
     },
     {
+      "@type": "Product",
+      "@id": `${SITE_URL}/#daypack`,
+      name: "All-in-One Day Pack",
+      description:
+        "One bundle for a full self-guided day in the Kiso Valley: one e-bike, one bear bell, one bear spray, one more gear item of your choice, and the luggage shuttle (up to 2 bags per person). \u00a57,000 per person; book via WhatsApp and pay on the day, card or cash.",
+      image: `${SITE_URL}${HERO_IMG}`,
+      brand: { "@id": `${SITE_URL}/#business` },
+      category: "Bicycle rental package",
+      offers: {
+        "@type": "Offer",
+        name: "All-in-One Day Pack — per person",
+        price: "7000",
+        priceCurrency: "JPY",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/rental`,
+      },
+    },
+    {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
       name: "Luggage Shuttle (Nagiso ↔ Kashiwaya ↔ Nojiri)",
@@ -282,7 +301,7 @@ const jsonLd = {
       name: "Outdoor Gear Rental",
       serviceType: "Equipment rental",
       description:
-        "Rental of traditional woven Kiso travel hats, bear bells and bear spray, rashguards, life jackets and cold-weather layers. Safety and swim gear is free with e-bike rentals and tours; standalone rentals arranged via WhatsApp.",
+        "Per-item outdoor gear rental at Kashiwaya Guesthouse: hinoki travel hat ¥500, bear bell set ¥500, bear spray ¥2,000, rashguard ¥2,000, life jacket ¥1,000, cold-weather set ¥1,000 (per day). Pay on the day, card or cash.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
       url: `${SITE_URL}/gear`,
