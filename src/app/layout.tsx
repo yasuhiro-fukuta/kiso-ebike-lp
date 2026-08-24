@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title:
     "Beyond Nakasendo Cycling — Ditch the guidebook. Ride the Kiso Valley like a local.",
   description:
-    "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Self-guided e-bike rental from ¥4,000, and the guided full-day Kiso River Downhill — 48.9 km with two local guides, ¥80,000 all-in for a group of four.",
+    "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Self-guided e-bike rental from ¥4,000, a guided early-morning tour, gear rental and a luggage shuttle — with the full-day Kiso River Downhill coming soon.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -57,7 +57,7 @@ const jsonLd = {
       image: `${SITE_URL}${HERO_IMG}`,
       telephone: TELEPHONE,
       email: EMAIL,
-      priceRange: "¥2,800–¥104,000",
+      priceRange: "¥500–¥104,000",
       currenciesAccepted: "JPY",
       paymentAccepted: "Cash, Credit Card",
       address: {
@@ -113,7 +113,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#rental`,
       name: "E-Bike Rental (self-guided)",
       description:
-        "Self-guided fat-tire e-bike rental for a half day, with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included, plus the free luggage shuttle. Up to 2 bikes. Book via WhatsApp; pay on the day by card or cash.",
+        "Self-guided fat-tire e-bike rental for a half day, with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included; one-way drops at no extra charge. Up to 2 bikes. Book via WhatsApp; pay on the day by card or cash.",
       image: `${SITE_URL}${HERO_IMG}`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Bicycle rental",
@@ -290,7 +290,7 @@ const jsonLd = {
       name: "Luggage Shuttle (Nagiso ↔ Kashiwaya ↔ Nojiri)",
       serviceType: "Luggage transfer",
       description:
-        "Same-day luggage shuttle between Nagiso Station, Kashiwaya Guesthouse and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. Free with any e-bike rental or tour; standalone shuttle for walkers arranged via WhatsApp.",
+        "Same-day luggage shuttle between Nagiso Station, Kashiwaya Guesthouse and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. \u00a53,000 for the first bag and \u00a51,500 from the second bag onward, counted per group; included (up to 2 bags per person) in the \u00a57,000 All-in-One Day Pack. Book via WhatsApp; pay on the day, card or cash.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
       url: `${SITE_URL}/luggage-shuttle`,
@@ -323,7 +323,7 @@ const jsonLd = {
           name: "Can I hire a guide for the half-day routes?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No — the three half-day routes are self-guided rentals only (¥4,000 per bike, ¥8,000 for two), ridden with our route maps. Our guides ride on one course: the full-day Kiso River Downhill, where two guides accompany your group. Both options include the free luggage shuttle.",
+            text: "No — the three half-day routes are self-guided rentals only (¥4,000 per bike, ¥8,000 for two), ridden with our route maps. For a guided experience, see the guided tour page: a two-hour early-morning tour now, with the full-day Kiso River Downhill coming soon.",
           },
         },
         {

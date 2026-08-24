@@ -102,7 +102,7 @@ export default function StayPage() {
             One bed, three valleys, <em>zero logistics.</em>
           </h2>
           <p>
-            Free luggage shuttle between the stations and the guesthouse.
+            A luggage shuttle between the stations and the guesthouse.
             E-bikes at the door. The Yogawa-michi, Kakizore and Atera valleys
             all within a morning&apos;s reach — and someone local to tell you,
             honestly, which one fits tomorrow&apos;s weather.

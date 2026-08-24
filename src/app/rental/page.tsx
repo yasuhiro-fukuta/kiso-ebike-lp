@@ -39,8 +39,8 @@ export default function RentalPage() {
             Rent an e-bike. <em>The valley is yours.</em>
           </h1>
           <p>
-            We hand you a charged fat-tire e-bike, shuttle your luggage for
-            free, and you explore at your own pace. Wondering where to go?
+            We hand you a charged fat-tire e-bike, move your luggage down
+            the valley if you need it, and you explore at your own pace. Wondering where to go?
             Our three mapped routes live on the{" "}
             <Link href="/second-day">Self-Tour Advice page</Link> — and if you
             want to ride with a guide, there&apos;s the{" "}
@@ -115,10 +115,12 @@ export default function RentalPage() {
           </div>
           <div className="pitem">
             <h4>Luggage Shuttle</h4>
-            <div className="amt">Free</div>
+            <div className="amt">
+              ¥3,000<span style={{ fontSize: "0.9rem" }}>/first bag</span>
+            </div>
             <p>
-              For bike riders: we move your bags between Nagiso Stn ↔ Kashiwaya
-              ↔ Nojiri Stn. Ride light.
+              Then ¥1,500 per extra bag, counted per group — or included in
+              the All-in-One Day Pack below.
             </p>
           </div>
         </div>
@@ -149,8 +151,9 @@ export default function RentalPage() {
               <div className="dnum">2</div>
               <h3>Ride one way</h3>
               <p>
-                Follow the route maps down the valley. Your luggage travels
-                separately with our free shuttle and meets you at the far end.
+                Follow the route maps down the valley. Add the luggage
+                shuttle and your bags travel separately, meeting you at the
+                far end.
               </p>
             </div>
             <div className="drop-step">
@@ -163,9 +166,9 @@ export default function RentalPage() {
             </div>
           </div>
           <p className="drop-note">
-            Start and end points don&apos;t need to match, and the luggage
-            shuttle is included free. Tell us your plan when you book and
-            we&apos;ll set the handover up around it.
+            Start and end points don&apos;t need to match. Add the luggage
+            shuttle (¥3,000 for the first bag, ¥1,500 from the second, per
+            group) when you book and we&apos;ll set the handover up around it.
           </p>
         </div>
       </section>
@@ -213,8 +216,8 @@ export default function RentalPage() {
             <div className="icon">
               <Backpack size={30} />
             </div>
-            <h3>Luggage Shuttle</h3>
-            <p>Bags moved between the stations and Kashiwaya, free.</p>
+            <h3>One-Way Drops</h3>
+            <p>Start and end at different points — no extra charge.</p>
           </div>
         </div>
       </section>
@@ -298,8 +301,9 @@ export default function RentalPage() {
           <summary>How does the luggage shuttle work?</summary>
           <p>
             We move your bags between Nagiso Station, Kashiwaya, and Nojiri
-            Station, free with every booking. So you can ride point-to-point
-            without carrying your pack over a pass.
+            Station — ¥3,000 for the first bag and ¥1,500 from the second,
+            counted per group. It&apos;s included (up to 2 bags per person) in
+            the All-in-One Day Pack.
           </p>
         </details>
         <details className="faq-item">

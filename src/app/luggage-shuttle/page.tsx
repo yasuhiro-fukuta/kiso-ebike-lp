@@ -65,10 +65,35 @@ export default function LuggageShuttlePage() {
               </p>
             </div>
           </div>
+          <div className="pricing" style={{ marginTop: "2.2rem" }}>
+            <div className="pitem">
+              <h4>First bag</h4>
+              <div className="amt">¥3,000</div>
+              <p>Per group, same-day, between any of the three points.</p>
+            </div>
+            <div className="pitem">
+              <h4>From the 2nd bag</h4>
+              <div className="amt">
+                ¥1,500<span style={{ fontSize: "0.9rem" }}>/bag</span>
+              </div>
+              <p>
+                Counted per group, not per person — so three bags come to
+                ¥6,000 total.
+              </p>
+            </div>
+            <div className="pitem">
+              <h4>In the Day Pack</h4>
+              <div className="amt">Included</div>
+              <p>
+                The All-in-One Day Pack (¥7,000/person) covers up to 2 bags
+                per person.
+              </p>
+            </div>
+          </div>
           <p className="drop-note">
-            The shuttle is <strong>free with any e-bike rental or tour</strong>.
-            Walking the trail without a bike? Message us on WhatsApp for
-            shuttle-only arrangements and current pricing.
+            Pay on the day, card or cash. Message us on WhatsApp with your
+            date, bag count and direction, and we&apos;ll confirm the handover
+            times.
           </p>
         </div>
       </section>
@@ -93,7 +118,7 @@ export default function LuggageShuttlePage() {
             </h3>
             <p>
               Ride our one-way routes without hauling your pack over a pass —
-              included free.
+              or bundle it into the All-in-One Day Pack.
             </p>
           </Link>
           <Link href="/stay" className="mini-card">
