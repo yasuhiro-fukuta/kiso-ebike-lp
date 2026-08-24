@@ -28,6 +28,8 @@ export const GOOGLE_MAPS_URL =
  *  ============================================================= */
 export const WHATSAPP_URL =
   "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20ask%20about%20the%20Kiso%20River%20Downhill%20full-day%20course.";
+export const MORNING_WHATSAPP_URL =
+  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20join%20the%20early%20morning%20cycling%20tour%20%287%E2%80%939%20a.m.%29.%20Date%3A%20__%20%2F%20Riders%3A%20__";
 export const SHODO_WHATSAPP_URL =
   "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20ask%20about%20the%20shodo%20calligraphy%20session.";
 export const SPECIAL_MAP_EMBED_URL =

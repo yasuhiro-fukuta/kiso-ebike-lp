@@ -980,3 +980,9 @@ body::before {
 }
 .nav-overlay-foot a:hover { opacity: 1; color: var(--gold); }
 @media (prefers-reduced-motion: reduce) { .nav-overlay { animation: none; } }
+
+/* early morning tour (guided page top) */
+.morning-extras { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem); }
+.morning-extras .pricing { margin-top: 0; }
+.morning-cta-row { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.8rem; }
+.morning-cta-note { font-size: 0.82rem; font-weight: 300; color: var(--cedar); max-width: 40ch; line-height: 1.5; }

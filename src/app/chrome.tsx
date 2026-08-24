@@ -23,11 +23,11 @@ import {
 /** The six services, in menu order. */
 const MENU_ITEMS: { href: string; label: string; sub: string }[] = [
   { href: "/rental", label: "E-Bike Rental", sub: "Self-guided rides" },
+  { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
   { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
   { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
   { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
-  { href: "/guided", label: "Guided Tour", sub: "The Kiso River Downhill" },
-  { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
+  { href: "/guided", label: "Guided Tour", sub: "Dawn rides & the Kiso River Downhill" },
 ];
 
 /** Fixed top nav with a hamburger menu, shared by every page. */

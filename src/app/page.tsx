@@ -22,6 +22,12 @@ const SERVICES = [
     desc: "Self-guided rides on quiet valley roads — one-way drops, luggage moved free.",
   },
   {
+    href: "/second-day",
+    icon: Map,
+    title: "Self-Tour Advice",
+    desc: "How to spend your second day in Nagiso — written out, on foot or by e-bike.",
+  },
+  {
     href: "/stay",
     icon: BedDouble,
     title: "Stay",
@@ -43,13 +49,7 @@ const SERVICES = [
     href: "/guided",
     icon: Compass,
     title: "Guided Tour",
-    desc: "The Kiso River Downhill — a full day down the valley with two guides.",
-  },
-  {
-    href: "/second-day",
-    icon: Map,
-    title: "Self-Tour Advice",
-    desc: "How to spend your second day in Nagiso — written out, on foot or by e-bike.",
+    desc: "A two-hour dawn ride before breakfast, or the full-day Kiso River Downhill.",
   },
 ];
 

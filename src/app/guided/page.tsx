@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import {
   WHATSAPP_URL,
+  MORNING_WHATSAPP_URL,
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
   GUIDES,
@@ -24,16 +25,97 @@ export default function GuidedPage() {
         <MessageCircle size={18} /> Ask on WhatsApp
       </FloatBook>
 
+      {/* EARLY MORNING CYCLING TOUR */}
+      <header className="page-head page-head-grid" id="morning">
+        <div>
+          <span className="eyebrow">Guided tour · 7:00–9:00 · 2 hours</span>
+          <h1>
+            The Early Morning Tour — <em>own the valley before breakfast.</em>
+          </h1>
+          <p>
+            At seven in the morning the post town belongs to the residents,
+            the river mist, and you. This is a slow two-hour guided loop
+            through Nagiso&apos;s lanes and riverside roads in the softest
+            light of the day — and you&apos;re back by nine, in time for
+            breakfast and checkout. The easiest way to try a guided ride, and
+            the prettiest two hours on this whole site.
+          </p>
+        </div>
+        <div className="img-wanted">
+          <span className="iw-tag">Photo wanted</span>
+          <span className="iw-note">
+            早朝の南木曽・妻籠の町並み(朝靄・朝日+e-bikeで走るカット)。
+            7時台の斜光が理想
+          </span>
+        </div>
+      </header>
+
+      <section className="morning-extras">
+        <div className="pricing">
+          <div className="pitem">
+            <h4>Guide</h4>
+            <div className="amt">
+              ¥4,000<span style={{ fontSize: "0.9rem" }}>/group</span>
+            </div>
+            <p>One local guide for your whole group, 7:00–9:00.</p>
+          </div>
+          <div className="pitem">
+            <h4>E-Bike</h4>
+            <div className="amt">
+              ¥2,000<span style={{ fontSize: "0.9rem" }}>/rider</span>
+            </div>
+            <p>
+              Per person, bike included — so two riders come to ¥8,000, four
+              to ¥12,000.
+            </p>
+          </div>
+          <div className="pitem">
+            <h4>Kashiwaya guests</h4>
+            <div className="amt">¥0</div>
+            <p>Staying at Kashiwaya? Guide and bikes are both free.</p>
+          </div>
+        </div>
+
+        <div className="campaign">
+          <div className="campaign-badge">Kashiwaya Guests</div>
+          <div className="campaign-body">
+            <h3>
+              Sleep at Kashiwaya, and this one&apos;s <em>on the house.</em>
+            </h3>
+            <p>
+              Guests of Kashiwaya Guesthouse join the morning tour for free —
+              no guide fee, no bike fee. Wake up, roll out, and be back before
+              your breakfast goes cold. Just tell us the night before.
+            </p>
+          </div>
+        </div>
+
+        <div className="morning-cta-row">
+          <a
+            href={MORNING_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <MessageCircle size={16} /> Book the morning tour on WhatsApp
+          </a>
+          <span className="morning-cta-note">
+            Pay on the day — card or cash. Kashiwaya guests: just mention it
+            at check-in.
+          </span>
+        </div>
+      </section>
+
       {/* SPECIAL COURSE — Kiso River Downhill (full day · guided only) */}
-      <section className="special special-page" id="downhill">
+      <section className="special" id="downhill">
         <div className="special-inner">
           {/* 1 — OVERVIEW */}
           <div className="special-head">
             <span className="eyebrow">Guided tour · Full day</span>
-            <span className="special-badge">Our only guided course</span>
-            <h1>
+            <span className="special-badge">The flagship</span>
+            <h2>
               The Kiso River Downhill — <em>the most comfortable 50 km in the world.</em>
-            </h1>
+            </h2>
             <p className="special-lead">
               <b>
                 48.9&nbsp;km, Yabuhara-juku to Nagiso Station, almost all of it
