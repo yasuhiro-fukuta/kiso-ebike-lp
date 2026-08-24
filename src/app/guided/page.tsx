@@ -16,6 +16,40 @@ import {
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
+/** The morning tour, by season. Swap `photo: null` for a real path
+ *  (e.g. "/assets/morning/spring.jpg") as each shot comes in. */
+const MORNING_SEASONS: {
+  season: string;
+  photo: string | null;
+  alt: string;
+  wanted: string;
+}[] = [
+  {
+    season: "Spring",
+    photo: null,
+    alt: "Riding a lane of cherry blossoms at dawn in Nagiso",
+    wanted: "春:桜並木の道(朝日+花びら)",
+  },
+  {
+    season: "Summer",
+    photo: null,
+    alt: "The Iwakura river in early summer morning light",
+    wanted: "夏:岩倉川(朝の川面・緑)",
+  },
+  {
+    season: "Autumn",
+    photo: null,
+    alt: "Golden rice paddies along the morning route in autumn",
+    wanted: "秋:田んぼ道(稲穂・朝靄)",
+  },
+  {
+    season: "Winter",
+    photo: null,
+    alt: "A snowy forest road on the winter morning ride",
+    wanted: "冬:雪の林道(轍・静けさ)",
+  },
+];
+
 export default function GuidedPage() {
   return (
     <div className="lp">
@@ -41,12 +75,21 @@ export default function GuidedPage() {
             the prettiest two hours on this whole site.
           </p>
         </div>
-        <div className="img-wanted">
-          <span className="iw-tag">Photo wanted</span>
-          <span className="iw-note">
-            早朝の南木曽・妻籠の町並み(朝靄・朝日+e-bikeで走るカット)。
-            7時台の斜光が理想
-          </span>
+        <div className="seasons-grid">
+          {MORNING_SEASONS.map((s) =>
+            s.photo ? (
+              <figure className="season-cell" key={s.season}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.photo} alt={s.alt} />
+                <figcaption className="season-tag">{s.season}</figcaption>
+              </figure>
+            ) : (
+              <div className="season-cell img-wanted" key={s.season}>
+                <span className="season-tag">{s.season}</span>
+                <span className="iw-note">{s.wanted}</span>
+              </div>
+            )
+          )}
         </div>
       </header>
 
