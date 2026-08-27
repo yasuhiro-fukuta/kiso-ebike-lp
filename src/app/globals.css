@@ -1039,3 +1039,66 @@ figure.season-cell .season-tag {
   transition: background 0.3s, transform 0.3s;
 }
 .allinone-cta:hover { background: var(--paper); transform: translateY(-2px); }
+
+/* ==================== merged: atera guide styles below ==================== */
+/* ==================== ATERA (Japanese guide) ==================== */
+.atera-hero {
+  position: relative;
+  min-height: 62vh;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(6rem, 12vw, 9rem) clamp(1.5rem, 5vw, 4rem) clamp(2.5rem, 6vw, 4rem);
+  background: url("/assets/gorge.jpg") center / cover no-repeat;
+  color: var(--paper);
+}
+.atera-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 24, 20, 0.35) 0%, rgba(20, 24, 20, 0.75) 100%);
+}
+.atera-hero-inner { position: relative; z-index: 1; max-width: 760px; }
+.atera-hero .eyebrow { color: var(--gold); display: block; margin-bottom: 1rem; }
+.atera-hero h1 { font-size: clamp(1.9rem, 5vw, 3.2rem); margin: 0 0 1rem; }
+.atera-hero h1 em { font-style: italic; color: var(--gold); }
+.atera-hero p { max-width: 620px; line-height: 1.9; opacity: 0.95; }
+.atera-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4rem) 1.5rem 4.5rem;
+}
+.atera-body h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 2.6rem 0 0.8rem;
+}
+.atera-body p, .atera-body li { line-height: 1.95; margin: 0 0 1rem; }
+.atera-body ul { padding-left: 1.3rem; }
+.atera-body small { opacity: 0.75; }
+.atera-note {
+  border-left: 3px solid var(--gold);
+  background: rgba(184, 146, 74, 0.08);
+  padding: 1rem 1.2rem;
+  margin: 1.6rem 0;
+  line-height: 1.9;
+}
+.atera-body figure { margin: 1.8rem 0; }
+.atera-body figure img { width: 100%; border-radius: 8px; display: block; }
+.atera-body figcaption {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.atera-ph {
+  margin: 1.8rem 0;
+  border: 2px dashed rgba(120, 120, 110, 0.5);
+  border-radius: 8px;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+.atera-cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.8rem; }

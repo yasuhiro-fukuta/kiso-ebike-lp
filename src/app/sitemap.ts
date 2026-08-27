@@ -12,5 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/luggage-shuttle`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/gear`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/shodo`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/atera`, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

@@ -164,6 +164,8 @@ export function SiteFooter() {
             </span>
           ))}
           <Link href="/shodo">Shodo Calligraphy</Link>
+          <br />
+          <Link href="/atera">阿寺渓谷へは電車&E-bike(日本語)</Link>
         </div>
         <div>
           <h4>Connect</h4>
