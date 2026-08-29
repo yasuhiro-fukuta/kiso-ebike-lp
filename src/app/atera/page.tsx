@@ -40,7 +40,11 @@ export default function AteraPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+<<<<<<< HEAD
       <SiteNav lang="ja" />
+=======
+      <SiteNav />
+>>>>>>> origin/main
 
       <FloatBook href={ATERA_WHATSAPP_URL}>
         <MessageCircle size={18} /> WhatsAppで予約
@@ -162,7 +166,11 @@ export default function AteraPage() {
         </div>
       </main>
 
+<<<<<<< HEAD
       <SiteFooter lang="ja" />
+=======
+      <SiteFooter />
+>>>>>>> origin/main
     </div>
   );
 }
