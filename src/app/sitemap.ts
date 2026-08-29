@@ -8,5 +8,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/rental`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/guided`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/shodo`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/atera`, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

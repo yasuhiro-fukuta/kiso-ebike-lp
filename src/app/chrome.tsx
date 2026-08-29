@@ -77,6 +77,8 @@ export function SiteFooter() {
           <Link href="/rental#gear">The Bikes</Link>
           <br />
           <Link href="/rental#book">Book a Ride</Link>
+          <br />
+          <Link href="/atera">阿寺渓谷へは電車&E-bike(日本語)</Link>
         </div>
         <div>
           <h4>Connect</h4>
