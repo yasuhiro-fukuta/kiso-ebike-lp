@@ -1102,3 +1102,11 @@ figure.season-cell .season-tag {
   opacity: 0.7;
 }
 .atera-cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.8rem; }
+
+/* language switch (nav, blends like the rest of the nav) */
+.nav-right { display: flex; align-items: center; gap: clamp(0.8rem, 2vw, 1.4rem); }
+.lang-switch { display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; letter-spacing: 0.05em; }
+.lang-switch span { opacity: 0.5; }
+.lang-switch a { color: #fff; text-decoration: none; opacity: 0.55; padding: 0.2rem 0.1rem; }
+.lang-switch a.on { opacity: 1; font-weight: 600; border-bottom: 1px solid currentColor; }
+.lang-switch a:hover { opacity: 1; }
