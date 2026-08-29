@@ -22,9 +22,9 @@ const MORNING_SEASONS: {
   alt: string;
   wanted: string;
 }[] = [
-  { season: "春", photo: null, alt: "桜並木の道を走る早朝ライド", wanted: "春:桜並木の道(朝日+花びら)" },
+  { season: "春", photo: "/assets/morning/spring.jpg", alt: "桜並木の道を走る早朝ライド", wanted: "春:桜並木の道(朝日+花びら)" },
   { season: "夏", photo: null, alt: "朝の岩倉川", wanted: "夏:岩倉川(朝の川面・緑)" },
-  { season: "秋", photo: null, alt: "秋の田んぼ道", wanted: "秋:田んぼ道(稲穂・朝靄)" },
+  { season: "秋", photo: "/assets/morning/autumn.jpg", alt: "秋の田んぼ道", wanted: "秋:田んぼ道(稲穂・朝靄)" },
   { season: "冬", photo: null, alt: "雪の林道", wanted: "冬:雪の林道(轍・静けさ)" },
 ];
 

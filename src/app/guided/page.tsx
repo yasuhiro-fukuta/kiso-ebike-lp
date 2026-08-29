@@ -25,7 +25,7 @@ const MORNING_SEASONS: {
 }[] = [
   {
     season: "Spring",
-    photo: null,
+    photo: "/assets/morning/spring.jpg",
     alt: "Riding a lane of cherry blossoms at dawn in Nagiso",
     wanted: "春:桜並木の道(朝日+花びら)",
   },
@@ -37,7 +37,7 @@ const MORNING_SEASONS: {
   },
   {
     season: "Autumn",
-    photo: null,
+    photo: "/assets/morning/autumn.jpg",
     alt: "Golden rice paddies along the morning route in autumn",
     wanted: "秋:田んぼ道(稲穂・朝靄)",
   },
