@@ -31,7 +31,7 @@ const MORNING_SEASONS: {
   },
   {
     season: "Summer",
-    photo: null,
+    photo: "/assets/morning/summer.jpg",
     alt: "The Iwakura river in early summer morning light",
     wanted: "夏:岩倉川(朝の川面・緑)",
   },
@@ -43,7 +43,7 @@ const MORNING_SEASONS: {
   },
   {
     season: "Winter",
-    photo: null,
+    photo: "/assets/morning/winter.jpg",
     alt: "A snowy forest road on the winter morning ride",
     wanted: "冬:雪の林道(轍・静けさ)",
   },

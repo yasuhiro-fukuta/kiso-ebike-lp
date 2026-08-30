@@ -29,11 +29,11 @@ export default function JaStayPage() {
       {/* STAY OPTIONS */}
       <section className="stay-cards">
         <div className="stay-card">
-          <div className="img-wanted">
-            <span className="iw-tag">写真募集中</span>
-            <span className="iw-note">
-              柏屋の外観(夕暮れ・軒先の灯りが点いた時間帯)/ 客室・囲炉裏まわりのカット
-            </span>
+          <div className="stay-photos">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/kashiwaya.jpg" alt="ゲストハウス柏屋の外観(藍色の暖簾のかかる木造二階建)" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/breakfast.jpg" alt="柏屋の朝食セット(蜜蝋ラップのかかった椀と説明カード)" />
           </div>
           <div className="stay-body">
             <span className="stay-badge">営業中</span>
@@ -56,11 +56,9 @@ export default function JaStayPage() {
         </div>
 
         <div className="stay-card">
-          <div className="img-wanted">
-            <span className="iw-tag">写真募集中</span>
-            <span className="iw-note">
-              2軒目の古民家(外観・改修中の様子でもOK。「これから」感が出る写真)
-            </span>
+          <div className="stay-photos">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/kitahara.jpg" alt="改修予定の北原の古民家(夕暮れのパノラマ)" />
           </div>
           <div className="stay-body">
             <span className="stay-badge soon">2027年オープン予定</span>

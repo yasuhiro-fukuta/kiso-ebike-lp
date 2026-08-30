@@ -32,12 +32,17 @@ export default function StayPage() {
       <section className="stay-cards">
         {/* KASHIWAYA */}
         <div className="stay-card">
-          <div className="img-wanted">
-            <span className="iw-tag">Photo wanted</span>
-            <span className="iw-note">
-              柏屋の外観(夕暮れ・軒先の灯りが点いた時間帯)/
-              客室・囲炉裏まわりのカット
-            </span>
+          <div className="stay-photos">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/kashiwaya.jpg"
+              alt="Kashiwaya Guesthouse — an old two-storey wooden inn with indigo noren curtains, Nagiso"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/breakfast.jpg"
+              alt="Kashiwaya's self-serve breakfast tray with beeswax-wrapped bowls and instructions"
+            />
           </div>
           <div className="stay-body">
             <span className="stay-badge">Open now</span>
@@ -65,12 +70,12 @@ export default function StayPage() {
 
         {/* SECOND HOUSE — COMING */}
         <div className="stay-card">
-          <div className="img-wanted">
-            <span className="iw-tag">Photo wanted</span>
-            <span className="iw-note">
-              2軒目の古民家(外観・改修中の様子でもOK。
-              ストーリーとして「これから」感が出る写真)
-            </span>
+          <div className="stay-photos">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/kitahara.jpg"
+              alt="The old house in Kitahara we are restoring into a one-group stay, at dusk"
+            />
           </div>
           <div className="stay-body">
             <span className="stay-badge soon">Coming 2027</span>
