@@ -132,6 +132,15 @@ export default function JaGuidedPage() {
             </p>
           </div>
 
+          <figure className="special-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/kisoriver.jpg"
+              alt="木曽川沿いの静かな舗装路を下るライダー"
+            />
+            <figcaption>木曽川が、ゴールまでずっと隣を流れています。</figcaption>
+          </figure>
+
           <div className="special-stats">
             <div className="sstat">
               <div className="num">

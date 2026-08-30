@@ -176,6 +176,17 @@ export default function GuidedPage() {
             </p>
           </div>
 
+          <figure className="special-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/kisoriver.jpg"
+              alt="A rider on a quiet paved road beside the rushing Kiso River, green hills on both sides"
+            />
+            <figcaption>
+              The Kiso River keeps you company the whole way down.
+            </figcaption>
+          </figure>
+
           <div className="special-stats">
             <div className="sstat">
               <div className="num">
