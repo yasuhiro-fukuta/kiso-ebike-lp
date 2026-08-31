@@ -8,37 +8,67 @@ const GEAR_ITEMS: {
   name: string;
   price: string;
   desc: string;
-  wanted: string;
+  photos?: { src: string; alt: string }[];
+  wanted?: string;
 }[] = [
   {
     name: "ヒノキ傘",
     price: "¥500",
     desc: "木曽路を何百年も歩いてきた、旅人の編み笠。本物の日陰と本物の歴史——そして中山道でいちばんの写真小道具です。",
-    wanted: "ヒノキ傘の物撮り+旅人姿で被って歩いているカット",
+    photos: [
+      {
+        src: "/assets/gear/straw-hat.jpg",
+        alt: "ヒノキ傘——墨書きの入った編み笠",
+      },
+    ],
   },
   {
     name: "熊鈴セット",
     price: "¥500",
     desc: "ここは熊の山です。鈴の音でこちらの存在を先に知らせるのが、いちばんの対策。",
-    wanted: "熊鈴セットの物撮り",
+    photos: [
+      {
+        src: "/assets/gear/bear-bell.jpg",
+        alt: "熊鈴——バッグに付けられるクリップ付き革ストラップの銅鈴",
+      },
+    ],
   },
   {
     name: "熊スプレー",
     price: "¥2,000",
     desc: "もしもの時の切り札。受け取り時に使い方を説明します。与川道を歩く人、静かな谷へ走る人に。",
-    wanted: "熊スプレーの物撮り(ホルダー装着カットがあると◎)",
+    photos: [
+      {
+        src: "/assets/gear/bear-spray.jpg",
+        alt: "熊スプレー本体と専用ホルスター",
+      },
+    ],
   },
   {
     name: "ラッシュガード",
     price: "¥2,000",
-    desc: "柿其・阿寺の泳ぎ場のお供に。冷えと日焼けを気にせずエメラルドの淵へ。",
-    wanted: "川で着用しているカット(柿其の淵など)",
+    desc: "柿其・阿寺の泳ぎ場のお供に。冷えと日焼けを気にせずエメラルドの淵へ。男性用・女性用あります。",
+    photos: [
+      {
+        src: "/assets/gear/watergear-f.jpg",
+        alt: "女性用ラッシュガードセット——ネイビーのジップアップ、レギンス、花柄ショーツ",
+      },
+      {
+        src: "/assets/gear/watergear-m.jpg",
+        alt: "男性用ラッシュガードセット——黒の長袖トップスとレギンス",
+      },
+    ],
   },
   {
     name: "ライフジャケット",
     price: "¥1,000",
     desc: "深い淵でも安心して浮かべます。ラッシュガードと合わせて川遊びフル装備に。",
-    wanted: "ライフジャケット着用で川遊びのカット",
+    photos: [
+      {
+        src: "/assets/gear/life-jacket.jpg",
+        alt: "ライフジャケット——バックル調整式の黒いフローティングベスト",
+      },
+    ],
   },
   {
     name: "防寒具セット",
@@ -77,10 +107,19 @@ export default function JaGearPage() {
               <h3>{item.name}</h3>
               <p>{item.desc}</p>
             </div>
-            <div className="img-wanted">
-              <span className="iw-tag">写真募集中</span>
-              <span className="iw-note">{item.wanted}</span>
-            </div>
+            {item.photos ? (
+              <div className={`plan-photos${item.photos.length > 1 ? " duo" : ""}`}>
+                {item.photos.map((p) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={p.src} src={p.src} alt={p.alt} />
+                ))}
+              </div>
+            ) : (
+              <div className="img-wanted">
+                <span className="iw-tag">写真募集中</span>
+                <span className="iw-note">{item.wanted}</span>
+              </div>
+            )}
           </div>
         ))}
       </section>

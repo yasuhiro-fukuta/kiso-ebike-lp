@@ -59,6 +59,8 @@ export default function JaStayPage() {
           <div className="stay-photos">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/kitahara.jpg" alt="改修予定の北原の古民家(夕暮れのパノラマ)" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/kitahara2.jpg" alt="北原の古民家の玄関先——谷と集落を見下ろす眺め" />
           </div>
           <div className="stay-body">
             <span className="stay-badge soon">2027年オープン予定</span>

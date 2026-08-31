@@ -180,6 +180,14 @@ export default function JaRentalPage() {
       <section className="included">
         <span className="eyebrow">レンタルに含まれるもの</span>
         <h2>手ぶらでどうぞ。あとはこちらで。</h2>
+        <figure className="inc-photo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/gear/helmet.jpg"
+            alt="マットブラックのサイクリングヘルメット——出発前にサイズを合わせてお渡しします"
+          />
+          <figcaption>ヘルメットは受け取り時にフィッティング。追加料金なし</figcaption>
+        </figure>
         <div className="inc-grid">
           <div className="inc-item">
             <div className="icon">

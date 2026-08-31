@@ -310,6 +310,12 @@ body::before {
 .included h2 { text-align: center; font-size: clamp(2rem, 4vw, 3rem); margin: 0.8rem 0 3rem; }
 .inc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
 @media (max-width: 760px) { .inc-grid { grid-template-columns: 1fr 1fr; } }
+.inc-photo { max-width: 420px; margin: -1.4rem auto 2.6rem; text-align: center; }
+.inc-photo img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  border-radius: 10px; box-shadow: 0 14px 34px var(--shadow);
+}
+.inc-photo figcaption { font-size: 0.8rem; color: var(--cedar); margin-top: 0.7rem; font-weight: 300; }
 .inc-item { text-align: center; }
 .inc-item .icon { display: inline-flex; margin-bottom: 0.8rem; color: var(--moss); }
 .inc-item h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
@@ -872,6 +878,14 @@ body::before {
   transition: background 0.25s, color 0.25s;
 }
 .plan-links a:hover { background: var(--moss); color: var(--paper); }
+
+/* gear item photos — replace .img-wanted as the shots arrive */
+.plan-photos { display: grid; gap: 0.9rem; align-self: start; }
+.plan-photos img {
+  width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
+  border-radius: 8px; box-shadow: 0 10px 26px var(--shadow);
+}
+.plan-photos.duo img { aspect-ratio: 16 / 10; }
 
 /* stay page */
 .stay-cards { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem); display: grid; gap: 1.5rem; }

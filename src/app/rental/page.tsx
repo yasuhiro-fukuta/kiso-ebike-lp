@@ -197,6 +197,14 @@ export default function RentalPage() {
       <section className="included">
         <span className="eyebrow">Every rental includes</span>
         <h2>Show up. We&apos;ve got the rest.</h2>
+        <figure className="inc-photo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/gear/helmet.jpg"
+            alt="A matte-black cycling helmet on the guesthouse counter, fitted before every ride"
+          />
+          <figcaption>Your helmet — fitted to you at pickup, no extra charge</figcaption>
+        </figure>
         <div className="inc-grid">
           <div className="inc-item">
             <div className="icon">

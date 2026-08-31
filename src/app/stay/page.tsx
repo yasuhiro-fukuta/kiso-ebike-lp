@@ -76,6 +76,11 @@ export default function StayPage() {
               src="/assets/kitahara.jpg"
               alt="The old house in Kitahara we are restoring into a one-group stay, at dusk"
             />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/kitahara2.jpg"
+              alt="The entrance of the Kitahara house, looking out over the valley and the village below"
+            />
           </div>
           <div className="stay-body">
             <span className="stay-badge soon">Coming 2027</span>
