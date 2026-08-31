@@ -1053,6 +1053,12 @@ figure.season-cell .season-tag {
   transition: background 0.3s, transform 0.3s;
 }
 .allinone-cta:hover { background: var(--paper); transform: translateY(-2px); }
+.allinone-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.allinone-more {
+  color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;
+  border-bottom: 1px solid rgba(200, 160, 74, 0.5); padding-bottom: 0.1rem;
+}
+.allinone-more:hover { border-bottom-color: var(--gold); }
 
 /* ==================== merged: atera guide styles below ==================== */
 /* ==================== ATERA (Japanese guide) ==================== */

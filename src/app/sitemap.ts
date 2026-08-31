@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${SITE_URL}/`, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/rental`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/shuttle-ebike`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/guided`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/second-day`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/stay`, changeFrequency: "monthly", priority: 0.8 },
@@ -15,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/atera`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/ja/rental`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/ja/shuttle-ebike`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja/second-day`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja/guided`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja/stay`, changeFrequency: "monthly", priority: 0.7 },

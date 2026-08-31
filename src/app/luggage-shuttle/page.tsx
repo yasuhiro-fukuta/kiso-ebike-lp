@@ -82,11 +82,11 @@ export default function LuggageShuttlePage() {
               </p>
             </div>
             <div className="pitem">
-              <h4>In the Day Pack</h4>
+              <h4>In the package</h4>
               <div className="amt">Included</div>
               <p>
-                The All-in-One Day Pack (¥7,000/person) covers up to 2 bags
-                per person.
+                The <Link href="/shuttle-ebike" style={{ color: "var(--gold)" }}>Shuttle E-Bike Package</Link>{" "}
+                (¥7,000/person) covers up to 2 bags per person.
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function LuggageShuttlePage() {
             </h3>
             <p>
               Ride our one-way routes without hauling your pack over a pass —
-              or bundle it into the All-in-One Day Pack.
+              or bundle it into the Shuttle E-Bike Package.
             </p>
           </Link>
           <Link href="/stay" className="mini-card">

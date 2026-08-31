@@ -136,7 +136,7 @@ export default function JaSecondDayPage() {
             コースは無料。<em>チケットはE-bike。</em>
           </h2>
           <p>
-            E-bikeは1台¥4,000(乗り捨てOK)。熊対策やラッシュガードはギアレンタルで、荷物は手荷物シャトルで。全部まとめるなら1人¥7,000のオールインワンパックが割安です。
+            E-bikeは1台¥4,000(乗り捨てOK)。熊対策やラッシュガードはギアレンタルで、荷物は手荷物シャトルで。全部まとめるなら1人¥7,000のShuttle E-bikeパッケージが割安です。
           </p>
           <Link href="/ja/rental" className="band-cta">
             E-bikeを借りる <ArrowRight size={16} />

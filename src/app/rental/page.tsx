@@ -120,7 +120,7 @@ export default function RentalPage() {
             </div>
             <p>
               Then ¥1,500 per extra bag, counted per group — or included in
-              the All-in-One Day Pack below.
+              the <Link href="/shuttle-ebike" style={{ color: "var(--gold)" }}>Shuttle E-Bike Package</Link>.
             </p>
           </div>
         </div>
@@ -311,7 +311,7 @@ export default function RentalPage() {
             We move your bags between Nagiso Station, Kashiwaya, and Nojiri
             Station — ¥3,000 for the first bag and ¥1,500 from the second,
             counted per group. It&apos;s included (up to 2 bags per person) in
-            the All-in-One Day Pack.
+            the <Link href="/shuttle-ebike">Shuttle E-Bike Package</Link>.
           </p>
         </details>
         <details className="faq-item">

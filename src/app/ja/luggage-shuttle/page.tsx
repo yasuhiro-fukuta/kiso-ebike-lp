@@ -72,10 +72,13 @@ export default function JaLuggageShuttlePage() {
               </p>
             </div>
             <div className="pitem">
-              <h4>デイパックなら</h4>
+              <h4>パッケージなら</h4>
               <div className="amt">込み</div>
               <p>
-                オールインワン・デイパック(¥7,000/人)には1人2個まで含まれます。
+                <Link href="/ja/shuttle-ebike" style={{ color: "var(--gold)" }}>
+                  Shuttle E-bikeパッケージ
+                </Link>
+                (¥7,000/人)には1人2個まで含まれます。
               </p>
             </div>
           </div>
@@ -103,7 +106,7 @@ export default function JaLuggageShuttlePage() {
               <Backpack size={20} /> 片道ライドの人
             </h3>
             <p>
-              峠越えに荷物を担がない。乗り捨てコースのお供に、またはデイパックで丸ごと。
+              峠越えに荷物を担がない。乗り捨てコースのお供に、またはShuttle E-bikeパッケージで丸ごと。
             </p>
           </Link>
           <Link href="/ja/stay" className="mini-card">

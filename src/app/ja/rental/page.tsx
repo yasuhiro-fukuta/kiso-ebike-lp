@@ -112,7 +112,11 @@ export default function JaRentalPage() {
               ¥3,000<span style={{ fontSize: "0.9rem" }}>/1個目</span>
             </div>
             <p>
-              2個目からは1個¥1,500(グループ単位)。下のオールインワンパックなら込みです。
+              2個目からは1個¥1,500(グループ単位)。
+              <Link href="/ja/shuttle-ebike" style={{ color: "var(--gold)" }}>
+                Shuttle E-bikeパッケージ
+              </Link>
+              なら込みです。
             </p>
           </div>
         </div>
@@ -279,7 +283,9 @@ export default function JaRentalPage() {
         <details className="faq-item">
           <summary>手荷物シャトルの仕組みは?</summary>
           <p>
-            南木曽駅・柏屋・野尻駅の間で荷物を運びます。1個目¥3,000、2個目から¥1,500(グループ単位)。オールインワン・デイパックなら1人2個まで込みです。
+            南木曽駅・柏屋・野尻駅の間で荷物を運びます。1個目¥3,000、2個目から¥1,500(グループ単位)。
+            <Link href="/ja/shuttle-ebike">Shuttle E-bikeパッケージ</Link>
+            なら1人2個まで込みです。
           </p>
         </details>
         <details className="faq-item">

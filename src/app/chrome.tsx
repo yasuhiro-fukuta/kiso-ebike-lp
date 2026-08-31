@@ -26,13 +26,14 @@ import {
 
 export type Lang = "en" | "ja";
 
-/** The six services, in menu order, per language. */
+/** The services, in menu order, per language. */
 const MENU_ITEMS: Record<
   Lang,
   { href: string; label: string; sub: string }[]
 > = {
   en: [
     { href: "/rental", label: "E-Bike Rental", sub: "Self-guided rides" },
+    { href: "/shuttle-ebike", label: "Shuttle E-Bike Package", sub: "One-way, hands-free, ¥7,000" },
     { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
     { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
     { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
@@ -41,6 +42,7 @@ const MENU_ITEMS: Record<
   ],
   ja: [
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "セルフガイドで走る" },
+    { href: "/ja/shuttle-ebike", label: "Shuttle E-bikeパッケージ", sub: "乗り捨て・手ぶらの全部入り ¥7,000" },
     { href: "/ja/second-day", label: "セルフツアーのすすめ", sub: "南木曽での2日目" },
     { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
     { href: "/ja/luggage-shuttle", label: "手荷物シャトル", sub: "身軽に歩く・走る" },
@@ -141,16 +143,23 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
   );
 }
 
-/** All-in-one day pack banner — shown near the bottom of the rental,
- *  shuttle and gear pages. */
-export function AllInOnePack({ lang = "en" }: { lang?: Lang }) {
+/** Shuttle E-bike Package banner — shown near the bottom of the rental,
+ *  shuttle and gear pages. `link` hides the "what is it" link on the
+ *  package's own page. */
+export function AllInOnePack({
+  lang = "en",
+  link = true,
+}: {
+  lang?: Lang;
+  link?: boolean;
+}) {
   const ja = lang === "ja";
   return (
     <section className="allinone-wrap">
       <div className="allinone">
         <div className="allinone-head">
           <span className="allinone-badge">
-            {ja ? "オールインワン・デイパック" : "All-in-One Day Pack"}
+            {ja ? "Shuttle E-bikeパッケージ" : "The Shuttle E-Bike Package"}
           </span>
           <div className="allinone-price">
             ¥7,000<span>{ja ? "/人" : "/person"}</span>
@@ -158,8 +167,8 @@ export function AllInOnePack({ lang = "en" }: { lang?: Lang }) {
         </div>
         <p className="allinone-lead">
           {ja
-            ? "セルフガイドの一日に必要なもの、ぜんぶ入り:"
-            : "Everything for a full self-guided day in the valley, in one bundle:"}
+            ? "乗り捨て・手ぶらの走り方、いわゆる「Shuttle E-bike」の全部入り:"
+            : "The one-way, hands-free way to ride — the “shuttle e-bike” — in one bundle:"}
         </p>
         <ul className="allinone-list">
           <li>{ja ? "E-bike × 1" : "E-bike × 1"}</li>
@@ -172,15 +181,25 @@ export function AllInOnePack({ lang = "en" }: { lang?: Lang }) {
               : "Luggage shuttle (up to 2 bags per person)"}
           </li>
         </ul>
-        <a
-          href={ja ? PACK_WHATSAPP_URL_JA : PACK_WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="allinone-cta"
-        >
-          <MessageCircle size={16} />{" "}
-          {ja ? "デイパックをWhatsAppで予約" : "Book the day pack on WhatsApp"}
-        </a>
+        <div className="allinone-actions">
+          <a
+            href={ja ? PACK_WHATSAPP_URL_JA : PACK_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="allinone-cta"
+          >
+            <MessageCircle size={16} />{" "}
+            {ja ? "パッケージをWhatsAppで予約" : "Book the package on WhatsApp"}
+          </a>
+          {link && (
+            <Link
+              href={ja ? "/ja/shuttle-ebike" : "/shuttle-ebike"}
+              className="allinone-more"
+            >
+              {ja ? "「Shuttle E-bike」って? →" : "What’s a shuttle e-bike? →"}
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   );
