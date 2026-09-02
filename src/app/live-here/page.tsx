@@ -87,11 +87,12 @@ export default function LiveHerePage() {
         <div className="pricing">
           <div className="pitem">
             <h4>What it is</h4>
-            <div className="amt">Monthly</div>
+            <div className="amt">2 houses</div>
             <p>
-              Simple, furnished lodging in Nagiso for people here to work a
-              season — rented by the month, without the paperwork wall that
-              usually blocks short-term newcomers.
+              Two furnished places in Nagiso — <strong>Aoki</strong> and{" "}
+              <strong>Ono</strong> — for people here to work a season.
+              Rented by the month, without the paperwork wall that usually
+              blocks short-term newcomers.
             </p>
           </div>
           <div className="pitem">
@@ -110,6 +111,45 @@ export default function LiveHerePage() {
               Availability moves with the seasons, so message us on WhatsApp
               with your dates and we&apos;ll give you the current rate and
               what&apos;s open.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* THE HOUSES */}
+      <section className="stay-cards" id="houses">
+        <div className="stay-card">
+          <div className="stay-photos">
+            <div className="img-wanted">
+              <span className="iw-tag">Photo wanted</span>
+              <span className="iw-note">Aoki 外観・内観の写真</span>
+            </div>
+          </div>
+          <div className="stay-body">
+            <span className="stay-badge">Seasonal rental</span>
+            <h3>Aoki</h3>
+            <p>
+              The first of the two houses. Furnished and rented by the
+              month — photos and details are on their way, and the current
+              rate and availability are one WhatsApp message away.
+            </p>
+          </div>
+        </div>
+
+        <div className="stay-card">
+          <div className="stay-photos">
+            <div className="img-wanted">
+              <span className="iw-tag">Photo wanted</span>
+              <span className="iw-note">Ono 外観・内観の写真</span>
+            </div>
+          </div>
+          <div className="stay-body">
+            <span className="stay-badge">Seasonal rental</span>
+            <h3>Ono</h3>
+            <p>
+              The second house. Same deal: monthly, furnished, no paperwork
+              wall. Tell us your season and we&apos;ll tell you which of the
+              two fits it better.
             </p>
           </div>
         </div>

@@ -8,6 +8,7 @@ import {
   Backpack,
   Bike,
   Zap,
+  Leaf,
   Mountain,
   Lightbulb,
   MessageCircle,
@@ -34,14 +35,19 @@ export default function RentalPage() {
       {/* PAGE HEAD */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="eyebrow">Self-guided · Half day · 10:00–16:00</span>
+          <span className="eyebrow">Eco-mobility · Self-guided · Half day · 10:00–16:00</span>
           <h1>
-            Rent an e-bike. <em>The valley is yours.</em>
+            Tour nature by eco-mobility. <em>The valley never hears you coming.</em>
           </h1>
           <p>
-            We hand you a charged fat-tire e-bike, move your luggage down
-            the valley if you need it, and you explore at your own pace. Wondering where to go?
-            Our three mapped routes live on the{" "}
+            An e-bike is the gentlest machine you can point at a mountain:
+            no exhaust, no engine noise, nothing left behind but tire
+            tracks. Just enough quiet electric push to carry you through
+            rivers, forests and post towns — moving at nature&apos;s pace,
+            on nature&apos;s terms. We hand you a charged fat-tire e-bike,
+            move your luggage down the valley if you need it, and you
+            explore on your own. Wondering where to go? Our three mapped
+            routes live on the{" "}
             <Link href="/second-day">Self-Tour Advice page</Link> — and if you
             want to ride with a guide, there&apos;s the{" "}
             <Link href="/guided">guided tour</Link>.
@@ -71,6 +77,10 @@ export default function RentalPage() {
             steer and look around.
           </p>
           <ul className="gear-list">
+            <li>
+              <Leaf size={18} /> Zero emissions, near-zero noise — the
+              valley stays undisturbed
+            </li>
             <li>
               <Zap size={18} /> Powerful pedal-assist for the passes
             </li>

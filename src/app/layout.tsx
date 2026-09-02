@@ -113,7 +113,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#rental`,
       name: "E-Bike Rental (self-guided)",
       description:
-        "Self-guided fat-tire e-bike rental for a half day, with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included; one-way drops at no extra charge. Up to 2 bikes. Book via WhatsApp; pay on the day by card or cash.",
+        "Self-guided fat-tire e-bike rental for a half day — a quiet, zero-emission eco-mobility way to tour the Kiso Valley's rivers, forests and post towns — with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included; one-way drops at no extra charge. Up to 2 bikes. Book via WhatsApp; pay on the day by card or cash.",
       image: `${SITE_URL}${HERO_IMG}`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Bicycle rental",

@@ -8,6 +8,7 @@ import {
   Backpack,
   Bike,
   Zap,
+  Leaf,
   Mountain,
   Lightbulb,
   MessageCircle,
@@ -34,12 +35,12 @@ export default function JaRentalPage() {
       {/* PAGE HEAD */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="eyebrow">セルフガイド · 半日 · 10:00–16:00</span>
+          <span className="eyebrow">エコモビリティ · セルフガイド · 半日 · 10:00–16:00</span>
           <h1>
-            E-bikeを借りて、<em>谷をまるごと。</em>
+            E-bikeという<em>エコモビリティ</em>で、自然をめぐる。
           </h1>
           <p>
-            充電済みのファットタイヤE-bikeをお渡しします。荷物は必要なら別便で谷の先へ。あとは自分のペースで走るだけ。どこへ行くか迷ったら、おすすめ3コースを載せた
+            E-bikeは、山に向けていい機械のなかで一番やさしいやつです。排気ガスなし、エンジン音なし、残すのはタイヤの跡だけ。静かな電動アシストにそっと押されて、川と森と宿場町を、自然のペースで、自然の流儀でめぐります。充電済みのファットタイヤE-bikeをお渡しして、荷物は必要なら別便で谷の先へ。あとは自分で走るだけ。どこへ行くか迷ったら、おすすめ3コースを載せた
             <Link href="/ja/second-day">セルフツアーのすすめ</Link>
             へ。ガイドと走りたい方は
             <Link href="/ja/guided">ガイドツアー</Link>をどうぞ。
@@ -67,6 +68,9 @@ export default function JaRentalPage() {
             MOVE社のファットタイヤ電動アシスト。砂利道も川沿いも山道も余裕です。登りはモーターの仕事。あなたはハンドルを握って、景色を見ていてください。
           </p>
           <ul className="gear-list">
+            <li>
+              <Leaf size={18} /> 排気ゼロ・騒音ほぼゼロ——谷の静けさを乱さない
+            </li>
             <li>
               <Zap size={18} /> 峠もこなす強力アシスト
             </li>

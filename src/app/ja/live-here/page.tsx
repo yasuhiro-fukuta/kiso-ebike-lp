@@ -75,9 +75,11 @@ export default function JaLiveHerePage() {
         <div className="pricing">
           <div className="pitem">
             <h4>どんな部屋?</h4>
-            <div className="amt">月単位</div>
+            <div className="amt">2軒</div>
             <p>
-              季節労働で南木曽に来る人のための、家具付きのシンプルな住まい。短期の新参者を阻む例の「契約の壁」なしで、月単位で借りられます。
+              季節労働で南木曽に来る人のための家具付きの住まいが2軒——
+              <strong>Aoki</strong>と<strong>Ono</strong>
+              。短期の新参者を阻む例の「契約の壁」なしで、月単位で借りられます。
             </p>
           </div>
           <div className="pitem">
@@ -92,6 +94,41 @@ export default function JaLiveHerePage() {
             <div className="amt">要相談</div>
             <p>
               空き状況は季節で動きます。希望の時期をWhatsAppで送ってもらえれば、いまの家賃と空きをお伝えします。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* THE HOUSES */}
+      <section className="stay-cards" id="houses">
+        <div className="stay-card">
+          <div className="stay-photos">
+            <div className="img-wanted">
+              <span className="iw-tag">写真募集中</span>
+              <span className="iw-note">Aoki 外観・内観の写真</span>
+            </div>
+          </div>
+          <div className="stay-body">
+            <span className="stay-badge">シーズナル賃貸</span>
+            <h3>Aoki</h3>
+            <p>
+              2軒のうちのひとつ。家具付き・月単位。写真と詳細は近日掲載——いまの家賃と空きは、WhatsAppひと言で答えます。
+            </p>
+          </div>
+        </div>
+
+        <div className="stay-card">
+          <div className="stay-photos">
+            <div className="img-wanted">
+              <span className="iw-tag">写真募集中</span>
+              <span className="iw-note">Ono 外観・内観の写真</span>
+            </div>
+          </div>
+          <div className="stay-body">
+            <span className="stay-badge">シーズナル賃貸</span>
+            <h3>Ono</h3>
+            <p>
+              もう1軒。条件は同じく、月単位・家具付き・面倒な契約の壁なし。希望の季節を教えてもらえれば、どちらが合うかお伝えします。
             </p>
           </div>
         </div>
