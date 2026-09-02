@@ -20,19 +20,29 @@ export default function ShuttleEbikePage() {
       </FloatBook>
 
       {/* PAGE HEAD */}
-      <header className="page-head">
-        <span className="eyebrow">Shuttle E-Bike · One-way · Hands-free</span>
-        <h1>
-          The shuttle e-bike. <em>Word&apos;s getting around.</em>
-        </h1>
-        <p>
-          There&apos;s a name catching on for the way people ride this valley
-          now: the e-bike waits where you start, your bags travel ahead by
-          car, and you ride one way down the Kiso — no doubling back, no
-          carrying, no logistics. Around here it&apos;s called the{" "}
-          <strong>shuttle e-bike</strong>. Once you&apos;ve tried it,
-          you&apos;ll see why it needed its own word.
-        </p>
+      <header className="page-head page-head-grid">
+        <div>
+          <span className="eyebrow">Shuttle E-Bike · One-way · Hands-free</span>
+          <h1>
+            The shuttle e-bike. <em>Word&apos;s getting around.</em>
+          </h1>
+          <p>
+            There&apos;s a name catching on for the way people ride this valley
+            now: the e-bike waits where you start, your bags travel ahead by
+            car, and you ride one way down the Kiso — no doubling back, no
+            carrying, no logistics. Around here it&apos;s called the{" "}
+            <strong>shuttle e-bike</strong>. Once you&apos;ve tried it,
+            you&apos;ll see why it needed its own word.
+          </p>
+        </div>
+        <figure className="page-head-visual poster">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/shuttle-ebike-poster.jpg"
+            alt="Free from weight — the Beyond Nakasendo Cycling shuttle e-bike poster: drop your bags, pick up an e-bike, ride light; we deliver them at your destination"
+          />
+          <figcaption>The poster you&apos;ll spot around the valley</figcaption>
+        </figure>
       </header>
 
       {/* HOW IT WORKS */}

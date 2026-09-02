@@ -164,6 +164,8 @@ body::before {
   font-size: 0.78rem; font-weight: 300; color: var(--cedar); margin-top: 0.7rem;
   font-style: italic;
 }
+/* tall poster artwork — show whole, never crop */
+.page-head-visual.poster img { max-height: none; object-fit: contain; }
 
 /* TWO WAYS TO RIDE (home) */
 .ways { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); background: var(--paper-deep); }

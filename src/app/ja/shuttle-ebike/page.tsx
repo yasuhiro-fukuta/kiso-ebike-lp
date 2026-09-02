@@ -20,16 +20,26 @@ export default function JaShuttleEbikePage() {
       </FloatBook>
 
       {/* PAGE HEAD */}
-      <header className="page-head">
-        <span className="eyebrow">Shuttle E-bike · 乗り捨て · 手ぶら</span>
-        <h1>
-          「Shuttle E-bike」、<em>じわじわ広まってます。</em>
-        </h1>
-        <p>
-          この谷での走り方に、最近呼び名がつき始めました。E-bikeはスタート地点で待っていて、荷物は車で先回り、あなたは木曽谷を一方通行で下るだけ——引き返さない、担がない、段取りしない。それをまとめて
-          <strong>「Shuttle E-bike(シャトルEバイク)」</strong>
-          と呼んでいます。一度やれば、専用の言葉が要った理由がわかります。
-        </p>
+      <header className="page-head page-head-grid">
+        <div>
+          <span className="eyebrow">Shuttle E-bike · 乗り捨て · 手ぶら</span>
+          <h1>
+            「Shuttle E-bike」、<em>じわじわ広まってます。</em>
+          </h1>
+          <p>
+            この谷での走り方に、最近呼び名がつき始めました。E-bikeはスタート地点で待っていて、荷物は車で先回り、あなたは木曽谷を一方通行で下るだけ——引き返さない、担がない、段取りしない。それをまとめて
+            <strong>「Shuttle E-bike(シャトルEバイク)」</strong>
+            と呼んでいます。一度やれば、専用の言葉が要った理由がわかります。
+          </p>
+        </div>
+        <figure className="page-head-visual poster">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/shuttle-ebike-poster.jpg"
+            alt="FREE FROM WEIGHT——Shuttle E-bikeのポスター。荷物を預けて、E-bikeを受け取って、身軽に走る。荷物は目的地までお届け"
+          />
+          <figcaption>谷のどこかで見かけるはずのポスター</figcaption>
+        </figure>
       </header>
 
       {/* HOW IT WORKS */}
