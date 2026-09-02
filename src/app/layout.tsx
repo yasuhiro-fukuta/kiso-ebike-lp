@@ -308,6 +308,17 @@ const jsonLd = {
       url: `${SITE_URL}/gear`,
     },
     {
+      "@type": "Service",
+      "@id": `${SITE_URL}/#livehere`,
+      name: "Seasonal-Worker Rental & Relocation Advice",
+      serviceType: "Monthly furnished rental and relocation support",
+      description:
+        "Furnished monthly lodging in Nagiso for seasonal workers in tourism, agriculture and forestry, plus free, informal relocation advice and local introductions for travelers considering a move to the Kiso Valley. Rates and availability on request via WhatsApp.",
+      provider: { "@id": `${SITE_URL}/#business` },
+      areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
+      url: `${SITE_URL}/live-here`,
+    },
+    {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,
       mainEntity: [

@@ -92,6 +92,12 @@ export default function JaStayPage() {
           <Link href="/ja/second-day" className="band-cta">
             2日目の計画を立てる <ArrowRight size={16} />
           </Link>
+          <p style={{ marginTop: "1.8rem", fontSize: "0.88rem", opacity: 0.75 }}>
+            そして、もし滞在が「帰りたくない」に変わり始めたら——それも、ちゃんとした道です。{" "}
+            <Link href="/ja/live-here" style={{ color: "var(--gold)" }}>
+              谷に住む →
+            </Link>
+          </p>
         </div>
       </section>
 

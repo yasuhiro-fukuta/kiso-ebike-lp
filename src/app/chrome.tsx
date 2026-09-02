@@ -39,6 +39,7 @@ const MENU_ITEMS: Record<
     { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
     { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
     { href: "/guided", label: "Guided Tour", sub: "Dawn rides & the Kiso River Downhill" },
+    { href: "/live-here", label: "Live in the Valley", sub: "Seasonal-work rentals & moving here" },
   ],
   ja: [
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "セルフガイドで走る" },
@@ -48,6 +49,7 @@ const MENU_ITEMS: Record<
     { href: "/ja/luggage-shuttle", label: "手荷物シャトル", sub: "身軽に歩く・走る" },
     { href: "/ja/gear", label: "ギアレンタル", sub: "ヒノキ傘・熊対策ほか" },
     { href: "/ja/guided", label: "ガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
+    { href: "/ja/live-here", label: "谷に住む", sub: "シーズナルワーカー向け賃貸・移住のはなし" },
   ],
 };
 

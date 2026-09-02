@@ -120,6 +120,13 @@ export default function StayPage() {
           <Link href="/second-day" className="band-cta">
             Plan your second day <ArrowRight size={16} />
           </Link>
+          <p style={{ marginTop: "1.8rem", fontSize: "0.88rem", opacity: 0.75 }}>
+            And if a stay here ever starts feeling like it shouldn&apos;t
+            end — that&apos;s a real path too.{" "}
+            <Link href="/live-here" style={{ color: "var(--gold)" }}>
+              Living in the valley →
+            </Link>
+          </p>
         </div>
       </section>
 
