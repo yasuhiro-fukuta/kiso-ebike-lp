@@ -9,7 +9,7 @@ export const FEEDBACK_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScWvvhR9DBXR7d-eloSXw_dCQkIAbd32st1o5jQbc6nZxplVQ/viewform?usp=header";
 // Google My Maps — embed + viewer
 export const MYMAP_EMBED_URL =
-  "https://www.google.com/maps/d/embed?mid=1OHpTKOucs5mBSqcEU7T4ILiapXuSkWQ&ehbc=2E312F";
+  "https://www.google.com/maps/d/embed?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0&ehbc=2E312F";
 /** Rental bookings now go through WhatsApp — pay on the day, card or cash. */
 export const RENTAL_WHATSAPP_URL =
   "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20book%20an%20e-bike.%20Date%3A%20__%20%2F%20Riders%3A%20__%20%2F%20Route%3A%20__";
