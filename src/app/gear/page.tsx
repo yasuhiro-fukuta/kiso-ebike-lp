@@ -32,7 +32,7 @@ const GEAR_ITEMS: {
     photos: [
       {
         src: "/assets/gear/bear-bell.jpg",
-        alt: "The bear bell — a small copper bell on a leather strap with a clip for your bag",
+        alt: "The bear bell — a brass bell on a reflective strap with a carabiner, ready to clip to your bag",
       },
     ],
   },

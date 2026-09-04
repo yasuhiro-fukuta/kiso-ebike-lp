@@ -29,7 +29,7 @@ const GEAR_ITEMS: {
     photos: [
       {
         src: "/assets/gear/bear-bell.jpg",
-        alt: "熊鈴——バッグに付けられるクリップ付き革ストラップの銅鈴",
+        alt: "熊鈴——カラビナと反射ストラップ付きの真鍮ベル。バッグにすぐ付けられます",
       },
     ],
   },
