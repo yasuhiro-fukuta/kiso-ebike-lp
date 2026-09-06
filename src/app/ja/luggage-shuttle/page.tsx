@@ -15,14 +15,24 @@ export default function JaLuggageShuttlePage() {
       </FloatBook>
 
       {/* PAGE HEAD */}
-      <header className="page-head">
-        <span className="eyebrow">手荷物シャトル · 南木曽 ↔ 野尻</span>
-        <h1>
-          旧道は、<em>手ぶらで歩く</em>のがいちばん。
-        </h1>
-        <p>
-          与川道も南木曽まわりのトレイルも、身軽なほど楽しめます。南木曽駅・ゲストハウス柏屋・野尻駅の間で荷物をお運びします。歩いても走っても、向こう側に着いたら荷物が待っている——そういう仕組みです。
-        </p>
+      <header className="page-head page-head-grid">
+        <div>
+          <span className="eyebrow">手荷物シャトル · 南木曽 ↔ 野尻</span>
+          <h1>
+            旧道は、<em>手ぶらで歩く</em>のがいちばん。
+          </h1>
+          <p>
+            与川道も南木曽まわりのトレイルも、身軽なほど楽しめます。南木曽駅・ゲストハウス柏屋・野尻駅の間で荷物をお運びします。歩いても走っても、向こう側に着いたら荷物が待っている——そういう仕組みです。
+          </p>
+        </div>
+        <figure className="page-head-visual">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/shuttle-van.jpg"
+            alt="シャトル便のバン。スーツケースとバックパックを積み込んで谷を下ります"
+          />
+          <figcaption>積んだら出発。荷物のほうが先に着きます</figcaption>
+        </figure>
       </header>
 
       {/* HOW IT WORKS */}

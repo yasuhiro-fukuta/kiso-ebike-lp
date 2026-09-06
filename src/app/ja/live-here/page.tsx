@@ -103,10 +103,11 @@ export default function JaLiveHerePage() {
       <section className="stay-cards" id="houses">
         <div className="stay-card">
           <div className="stay-photos">
-            <div className="img-wanted">
-              <span className="iw-tag">写真募集中</span>
-              <span className="iw-note">Aoki 外観・内観の写真</span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/midono101.jpg"
+              alt="Aoki——藍色の戸と瓦屋根の平屋。谷を見下ろす立地"
+            />
           </div>
           <div className="stay-body">
             <span className="stay-badge">シーズナル賃貸</span>

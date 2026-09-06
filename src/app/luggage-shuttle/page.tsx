@@ -15,17 +15,27 @@ export default function LuggageShuttlePage() {
       </FloatBook>
 
       {/* PAGE HEAD */}
-      <header className="page-head">
-        <span className="eyebrow">Luggage shuttle · Nagiso ↔ Nojiri</span>
-        <h1>
-          Walk the old road <em>with empty hands.</em>
-        </h1>
-        <p>
-          The Yogawa-michi and the trails around Nagiso are best walked light.
-          We move your bags between Nagiso Station, Kashiwaya Guesthouse and
-          Nojiri Station, so you can cross on foot — or ride — and find your
-          luggage waiting at the other end.
-        </p>
+      <header className="page-head page-head-grid">
+        <div>
+          <span className="eyebrow">Luggage shuttle · Nagiso ↔ Nojiri</span>
+          <h1>
+            Walk the old road <em>with empty hands.</em>
+          </h1>
+          <p>
+            The Yogawa-michi and the trails around Nagiso are best walked light.
+            We move your bags between Nagiso Station, Kashiwaya Guesthouse and
+            Nojiri Station, so you can cross on foot — or ride — and find your
+            luggage waiting at the other end.
+          </p>
+        </div>
+        <figure className="page-head-visual">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/shuttle-van.jpg"
+            alt="The shuttle van with its tailgate up, suitcases and a backpack loaded for the run down the valley"
+          />
+          <figcaption>Bags in, tailgate down — they&apos;ll beat you there</figcaption>
+        </figure>
       </header>
 
       {/* HOW IT WORKS */}

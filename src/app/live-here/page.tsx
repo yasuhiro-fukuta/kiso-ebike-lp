@@ -120,10 +120,11 @@ export default function LiveHerePage() {
       <section className="stay-cards" id="houses">
         <div className="stay-card">
           <div className="stay-photos">
-            <div className="img-wanted">
-              <span className="iw-tag">Photo wanted</span>
-              <span className="iw-note">Aoki 外観・内観の写真</span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/midono101.jpg"
+              alt="The Aoki house — a one-storey house with indigo-blue doors and a tiled roof, looking out over the valley"
+            />
           </div>
           <div className="stay-body">
             <span className="stay-badge">Seasonal rental</span>
