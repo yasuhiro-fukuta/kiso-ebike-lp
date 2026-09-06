@@ -78,7 +78,7 @@ export default function JaLiveHerePage() {
             <div className="amt">2軒</div>
             <p>
               季節労働で南木曽に来る人のための家具付きの住まいが2軒——
-              <strong>Aoki</strong>と<strong>Ono</strong>
+              <strong>Midono 101</strong>と<strong>Midono 102</strong>
               。短期の新参者を阻む例の「契約の壁」なしで、月単位で借りられます。
             </p>
           </div>
@@ -106,12 +106,12 @@ export default function JaLiveHerePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/midono101.jpg"
-              alt="Aoki——藍色の戸と瓦屋根の平屋。谷を見下ろす立地"
+              alt="Midono 101——藍色の戸と瓦屋根の平屋。谷を見下ろす立地"
             />
           </div>
           <div className="stay-body">
             <span className="stay-badge">シーズナル賃貸</span>
-            <h3>Aoki</h3>
+            <h3>Midono 101</h3>
             <p>
               2軒のうちのひとつ。家具付き・月単位。写真と詳細は近日掲載——いまの家賃と空きは、WhatsAppひと言で答えます。
             </p>
@@ -120,14 +120,15 @@ export default function JaLiveHerePage() {
 
         <div className="stay-card">
           <div className="stay-photos">
-            <div className="img-wanted">
-              <span className="iw-tag">写真募集中</span>
-              <span className="iw-note">Ono 外観・内観の写真</span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/midono102.jpg"
+              alt="Midono 102——引き戸の並ぶ木造二階の町家。静かな通り沿い"
+            />
           </div>
           <div className="stay-body">
             <span className="stay-badge">シーズナル賃貸</span>
-            <h3>Ono</h3>
+            <h3>Midono 102</h3>
             <p>
               もう1軒。条件は同じく、月単位・家具付き・面倒な契約の壁なし。希望の季節を教えてもらえれば、どちらが合うかお伝えします。
             </p>

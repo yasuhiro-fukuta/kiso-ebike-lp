@@ -89,10 +89,10 @@ export default function LiveHerePage() {
             <h4>What it is</h4>
             <div className="amt">2 houses</div>
             <p>
-              Two furnished places in Nagiso — <strong>Aoki</strong> and{" "}
-              <strong>Ono</strong> — for people here to work a season.
-              Rented by the month, without the paperwork wall that usually
-              blocks short-term newcomers.
+              Two furnished places in Nagiso — <strong>Midono 101</strong>{" "}
+              and <strong>Midono 102</strong> — for people here to work a
+              season. Rented by the month, without the paperwork wall that
+              usually blocks short-term newcomers.
             </p>
           </div>
           <div className="pitem">
@@ -123,12 +123,12 @@ export default function LiveHerePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/midono101.jpg"
-              alt="The Aoki house — a one-storey house with indigo-blue doors and a tiled roof, looking out over the valley"
+              alt="Midono 101 — a one-storey house with indigo-blue doors and a tiled roof, looking out over the valley"
             />
           </div>
           <div className="stay-body">
             <span className="stay-badge">Seasonal rental</span>
-            <h3>Aoki</h3>
+            <h3>Midono 101</h3>
             <p>
               The first of the two houses. Furnished and rented by the
               month — photos and details are on their way, and the current
@@ -139,14 +139,15 @@ export default function LiveHerePage() {
 
         <div className="stay-card">
           <div className="stay-photos">
-            <div className="img-wanted">
-              <span className="iw-tag">Photo wanted</span>
-              <span className="iw-note">Ono 外観・内観の写真</span>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/midono102.jpg"
+              alt="Midono 102 — an old two-storey wooden townhouse with sliding doors on a quiet street"
+            />
           </div>
           <div className="stay-body">
             <span className="stay-badge">Seasonal rental</span>
-            <h3>Ono</h3>
+            <h3>Midono 102</h3>
             <p>
               The second house. Same deal: monthly, furnished, no paperwork
               wall. Tell us your season and we&apos;ll tell you which of the
