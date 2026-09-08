@@ -302,7 +302,7 @@ const jsonLd = {
       name: "Outdoor Gear Rental",
       serviceType: "Equipment rental",
       description:
-        "Per-item outdoor gear rental at Kashiwaya Guesthouse: hinoki travel hat ¥500, bear bell set ¥500, bear spray ¥2,000, rashguard ¥2,000, life jacket ¥1,000, cold-weather set ¥1,000 (per day). Pay on the day, card or cash.",
+        "Per-item outdoor gear rental at Kashiwaya Guesthouse: hinoki travel hat ¥500, bear spray ¥2,000 (a bear bell is included with every spray rental), rashguard ¥2,000, life jacket ¥1,000, cold-weather set ¥1,000 (per day). Pay on the day, card or cash.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
       url: `${SITE_URL}/gear`,

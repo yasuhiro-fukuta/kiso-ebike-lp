@@ -25,26 +25,18 @@ const GEAR_ITEMS: {
     ],
   },
   {
-    name: "Bear bell set",
-    nameJa: "熊鈴セット",
-    desc: "The mountains here are bear country — a bell on your bag lets them hear you coming, which is exactly what you want.",
-    price: "¥500",
-    photos: [
-      {
-        src: "/assets/gear/bear-bell.jpg",
-        alt: "The bear bell — a brass bell on a reflective strap with a carabiner, ready to clip to your bag",
-      },
-    ],
-  },
-  {
-    name: "Bear spray",
-    nameJa: "熊スプレー",
-    desc: "The serious backup, with a quick how-to briefing when you pick it up. For walkers on the Yogawa-michi and riders heading up the quiet valleys.",
+    name: "Bear spray + bell",
+    nameJa: "熊スプレー(熊鈴付き)",
+    desc: "The mountains here are bear country. The spray is the serious backup, with a quick how-to briefing at pickup — and every rental comes with a bear bell, so they hear you coming long before you'd ever need it.",
     price: "¥2,000",
     photos: [
       {
         src: "/assets/gear/bear-spray.jpg",
         alt: "Bear defense spray canister standing next to its black belt holster",
+      },
+      {
+        src: "/assets/gear/bear-bell.jpg",
+        alt: "The bear bell that comes with every spray rental — a brass bell on a reflective strap with a carabiner",
       },
     ],
   },

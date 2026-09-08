@@ -887,7 +887,7 @@ body::before {
   width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
   border-radius: 8px; box-shadow: 0 10px 26px var(--shadow);
 }
-.plan-photos.duo img { aspect-ratio: 16 / 10; }
+.plan-photos.duo img { aspect-ratio: 4 / 3; object-position: center 70%; }
 
 /* stay page */
 .stay-cards { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem); display: grid; gap: 1.5rem; }
