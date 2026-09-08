@@ -10,22 +10,134 @@ export const FEEDBACK_URL =
 // Google My Maps — embed + viewer
 export const MYMAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0&ehbc=2E312F";
-/** Rental bookings now go through WhatsApp — pay on the day, card or cash. */
-export const RENTAL_WHATSAPP_URL =
-  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20book%20an%20e-bike.%20Date%3A%20__%20%2F%20Riders%3A%20__%20%2F%20Route%3A%20__";
-export const PACK_WHATSAPP_URL =
-  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20the%20all-in-one%20day%20pack%20%28%C2%A57%2C000%2Fperson%29.%20Date%3A%20__%20%2F%20People%3A%20__";
-// 日本語ページ用のWhatsAppテンプレ
-export const RENTAL_WHATSAPP_URL_JA =
-  "https://wa.me/819038392354?text=E-bike%E3%82%92%E4%BA%88%E7%B4%84%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A__%20%2F%20%E4%BA%BA%E6%95%B0%EF%BC%9A__%20%2F%20%E3%82%B3%E3%83%BC%E3%82%B9%EF%BC%9A__";
-export const PACK_WHATSAPP_URL_JA =
-  "https://wa.me/819038392354?text=%E3%82%AA%E3%83%BC%E3%83%AB%E3%82%A4%E3%83%B3%E3%83%AF%E3%83%B3%E3%83%91%E3%83%83%E3%82%AF%EF%BC%88%C2%A57%2C000%2F%E4%BA%BA%EF%BC%89%E3%82%92%E4%BA%88%E7%B4%84%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A__%20%2F%20%E4%BA%BA%E6%95%B0%EF%BC%9A__";
-export const MORNING_WHATSAPP_URL_JA =
-  "https://wa.me/819038392354?text=%E6%97%A9%E6%9C%9D%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%84%E3%82%A2%E3%83%BC%EF%BC%887%E2%80%939%E6%99%82%EF%BC%89%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A__%20%2F%20%E4%BA%BA%E6%95%B0%EF%BC%9A__";
-export const WHATSAPP_URL_JA =
-  "https://wa.me/819038392354?text=%E6%9C%A8%E6%9B%BD%E5%B7%9D%E3%83%80%E3%82%A6%E3%83%B3%E3%83%92%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%81%9E%E3%81%8D%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82";
-export const SHODO_WHATSAPP_URL_JA =
-  "https://wa.me/819038392354?text=%E6%9B%B8%E9%81%93%E4%BD%93%E9%A8%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%81%9E%E3%81%8D%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82";
+/** === WhatsApp links ==========================================
+ *  Every booking goes through WhatsApp — pay on the day, card or cash.
+ *  Each page opens the chat with its own prefilled template; pages
+ *  without a template use the plain link.
+ *  ============================================================= */
+const WA_NUMBER = "819038392354";
+const wa = (text?: string) =>
+  text
+    ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`
+    : `https://wa.me/${WA_NUMBER}`;
+
+/** Plain link — no template (home, stay, self-tour, live-here, nav). */
+export const WHATSAPP_URL = wa();
+export const WHATSAPP_URL_JA = wa();
+
+/** E-bike rental */
+export const RENTAL_WHATSAPP_URL = wa(
+  `Hello! I'm interested in renting e-bikes as follows.
+Date: __/__/____, 10:00 - 15:00
+Bikes (riders 150 cm or taller): __
+Bikes (riders under 150 cm): __
+Start: Nagiso Station / Kashiwaya / Nojiri Station
+Finish: Nagiso Station / Kashiwaya / Nojiri Station
+Luggage shuttle from start to finish: __ bags / not needed
+Bear-deterrent kit: __ / not needed`
+);
+export const RENTAL_WHATSAPP_URL_JA = wa(
+  `こんにちは。下記内容でE-bikeレンタルを検討しています。
+日時:〇年〇月〇日 10:00 - 15:00
+台数(身長150センチ以上):〇台
+台数(身長150センチ未満):〇台
+出発:南木曽駅前/柏屋/野尻駅前
+到着:南木曽駅前/柏屋/野尻駅前
+出発地点から到着地点までの荷物運び:〇個/不要
+クマよけグッズ:〇個/不要`
+);
+
+/** Shuttle E-bike Package */
+export const PACK_WHATSAPP_URL = wa(
+  `Hello! I'm interested in the Shuttle E-Bike Package as follows.
+Date: __/__/____, 10:00 - 15:00
+Bikes (riders 150 cm or taller): __
+Bikes (riders under 150 cm): __
+Start: Nagiso Station / Kashiwaya / Nojiri Station
+Finish: Nagiso Station / Kashiwaya / Nojiri Station
+One extra gear item of choice: hinoki hat / rashguard / life jacket
+* The bear-deterrent kit and the luggage shuttle are included.`
+);
+export const PACK_WHATSAPP_URL_JA = wa(
+  `こんにちは。下記内容でE-bikeレンタルを検討しています。
+日時:〇年〇月〇日 10:00 - 15:00
+台数(身長150センチ以上):〇台
+台数(身長150センチ未満):〇台
+出発:南木曽駅前/柏屋/野尻駅前
+到着:南木曽駅前/柏屋/野尻駅前
+希望する追加アイテム1点:檜傘/ラッシュガード/ライフジャケット
+※クマよけグッズと荷物運びはセットになっています。`
+);
+
+/** Luggage shuttle */
+export const LUGGAGE_WHATSAPP_URL = wa(
+  `Hello! I'm interested in the luggage shuttle as follows.
+Date: __/__/____
+From: Nagiso Station / Kashiwaya / Nojiri Station
+To: Nagiso Station / Kashiwaya / Nojiri Station
+Bags from start to finish: __
+Bear-deterrent kit: __ / not needed`
+);
+export const LUGGAGE_WHATSAPP_URL_JA = wa(
+  `こんにちは。下記内容で手荷物シャトル運送を検討しています。
+日時:〇年〇月〇日
+出発:南木曽駅前/柏屋/野尻駅前
+到着:南木曽駅前/柏屋/野尻駅前
+出発地点から到着地点までの荷物運び:〇個
+クマよけグッズ:〇個/不要`
+);
+
+/** Gear rental */
+export const GEAR_WHATSAPP_URL = wa(
+  `Hello! I'm interested in renting gear as follows.
+Date: __/__/____
+Start: Nagiso Station / Kashiwaya / Nojiri Station
+Finish: Nagiso Station / Kashiwaya / Nojiri Station
+Hinoki hat: __ / not needed
+Bear-deterrent kit: __ / not needed
+Rashguard: __ / not needed
+Life jacket: __ / not needed`
+);
+export const GEAR_WHATSAPP_URL_JA = wa(
+  `こんにちは。下記内容でギアレンタルを検討しています。
+日時:〇年〇月〇日
+出発:南木曽駅前/柏屋/野尻駅前
+到着:南木曽駅前/柏屋/野尻駅前
+檜傘:〇個/不要
+クマよけグッズ:〇個/不要
+ラッシュガード:〇個/不要
+ライフジャケット:〇個/不要`
+);
+
+/** Guided tours (early morning ride / Kiso River Downhill) */
+export const GUIDED_WHATSAPP_URL = wa(
+  `Hello! I'm interested in joining a guided tour as follows.
+Date: __/__/____
+Tour: early morning ride / Kiso River Downhill (shodo calligraphy if it rains)
+People: __`
+);
+export const GUIDED_WHATSAPP_URL_JA = wa(
+  `こんにちは。下記内容でガイドツアー参加を検討しています。
+日時:〇年〇月〇日
+ツアー:早朝ライド/木曽川ダウンヒル(雨天時は書道体験)
+人数:〇名`
+);
+export const MORNING_WHATSAPP_URL = GUIDED_WHATSAPP_URL;
+export const MORNING_WHATSAPP_URL_JA = GUIDED_WHATSAPP_URL_JA;
+
+/** Shodo calligraphy */
+export const SHODO_WHATSAPP_URL = wa(
+  `Hello! I'm interested in joining a guided tour as follows.
+Date: __/__/____
+Tour: shodo calligraphy
+People: __`
+);
+export const SHODO_WHATSAPP_URL_JA = wa(
+  `こんにちは。下記内容でガイドツアー参加を検討しています。
+日時:〇年〇月〇日
+ツアー:書道体験
+人数:〇名`
+);
 
 /** Kashiwaya guesthouse — independent domain, linked from /stay */
 export const KASHIWAYA_URL = "https://kashiwaya-inn.com";
@@ -35,18 +147,10 @@ export const KASHIWAYA_URL = "https://kashiwaya-inn.com";
 export const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/search/Beyond+Nakasendo+Cycling+Nagiso";
 
-/** === SPECIAL COURSE: Kiso River Downhill (full day, guided only) ===
- *  This flagship books by WhatsApp, not Square.
- *  ⚠️ Confirm the WhatsApp number below matches the business line.
- *  ============================================================= */
-export const WHATSAPP_URL =
-  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20ask%20about%20the%20Kiso%20River%20Downhill%20full-day%20course.";
-export const MORNING_WHATSAPP_URL =
-  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20join%20the%20early%20morning%20cycling%20tour%20%287%E2%80%939%20a.m.%29.%20Date%3A%20__%20%2F%20Riders%3A%20__";
+/** Atera gorge article (Japanese) — keeps its own template. */
 export const ATERA_WHATSAPP_URL =
   "https://wa.me/819038392354?text=%E9%98%BF%E5%AF%BA%E6%B8%93%E8%B0%B7%E7%94%A8%E3%81%AEE-bike%E3%82%92%E4%BA%88%E7%B4%84%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A%E3%80%80%E5%8F%B0%E6%95%B0%EF%BC%9A";
-export const SHODO_WHATSAPP_URL =
-  "https://wa.me/819038392354?text=Hi%21%20I%27d%20like%20to%20ask%20about%20the%20shodo%20calligraphy%20session.";
+
 export const SPECIAL_MAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1LgL4RlnePF5JdvpqzADrpsrrW7oTVDE";
 export const SPECIAL_MAP_VIEW_URL =

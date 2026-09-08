@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { RENTAL_WHATSAPP_URL_JA, MYMAP_EMBED_URL } from "../../site";
+import { WHATSAPP_URL_JA, MYMAP_EMBED_URL } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export default function JaSecondDayPage() {
@@ -10,7 +10,7 @@ export default function JaSecondDayPage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={RENTAL_WHATSAPP_URL_JA}>
+      <FloatBook href={WHATSAPP_URL_JA}>
         <MessageCircle size={18} /> WhatsAppで予約
       </FloatBook>
 
@@ -53,7 +53,7 @@ export default function JaSecondDayPage() {
                 <small>3コースで一番やさしい · 初めての1本に</small>
                 <span className="price-note">セルフガイド — E-bike 1台¥4,000</span>
               </div>
-              <a href={RENTAL_WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
                 このコースで予約 <ArrowRight size={15} />
               </a>
             </div>
@@ -78,7 +78,7 @@ export default function JaSecondDayPage() {
                 <small>夏は川遊び · 冬は温泉</small>
                 <span className="price-note">セルフガイド — E-bike 1台¥4,000</span>
               </div>
-              <a href={RENTAL_WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
                 このコースで予約 <ArrowRight size={15} />
               </a>
             </div>
@@ -101,7 +101,7 @@ export default function JaSecondDayPage() {
                 <small>急で長い · 自信のある人向け</small>
                 <span className="price-note">セルフガイド — E-bike 1台¥4,000</span>
               </div>
-              <a href={RENTAL_WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
                 このコースで予約 <ArrowRight size={15} />
               </a>
             </div>

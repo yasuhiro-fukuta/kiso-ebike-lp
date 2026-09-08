@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
-import { KASHIWAYA_URL, RENTAL_WHATSAPP_URL_JA } from "../../site";
+import { KASHIWAYA_URL, WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export default function JaStayPage() {
@@ -10,7 +10,7 @@ export default function JaStayPage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={RENTAL_WHATSAPP_URL_JA}>
+      <FloatBook href={WHATSAPP_URL_JA}>
         <MessageCircle size={18} /> WhatsAppで予約
       </FloatBook>
 

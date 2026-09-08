@@ -11,7 +11,7 @@ import {
   Map,
   MessageCircle,
 } from "lucide-react";
-import { RENTAL_WHATSAPP_URL_JA } from "../site";
+import { WHATSAPP_URL_JA } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 const SERVICES = [
@@ -58,7 +58,7 @@ export default function JaHomePage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={RENTAL_WHATSAPP_URL_JA}>
+      <FloatBook href={WHATSAPP_URL_JA}>
         <MessageCircle size={18} /> WhatsAppで予約
       </FloatBook>
 

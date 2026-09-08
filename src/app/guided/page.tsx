@@ -8,7 +8,7 @@ import {
   Wind,
 } from "lucide-react";
 import {
-  WHATSAPP_URL,
+  GUIDED_WHATSAPP_URL,
   MORNING_WHATSAPP_URL,
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
@@ -54,7 +54,7 @@ export default function GuidedPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={WHATSAPP_URL}>
+      <FloatBook href={GUIDED_WHATSAPP_URL}>
         <MessageCircle size={18} /> Ask on WhatsApp
       </FloatBook>
 
@@ -306,7 +306,7 @@ export default function GuidedPage() {
               </ul>
               <div className="how-to-book-label">Coming soon</div>
               <a
-                href={WHATSAPP_URL}
+                href={GUIDED_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="special-cta"

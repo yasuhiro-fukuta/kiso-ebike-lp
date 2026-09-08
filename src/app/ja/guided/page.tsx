@@ -8,7 +8,7 @@ import {
   Wind,
 } from "lucide-react";
 import {
-  WHATSAPP_URL_JA,
+  GUIDED_WHATSAPP_URL_JA,
   MORNING_WHATSAPP_URL_JA,
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
@@ -33,7 +33,7 @@ export default function JaGuidedPage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={WHATSAPP_URL_JA}>
+      <FloatBook href={GUIDED_WHATSAPP_URL_JA}>
         <MessageCircle size={18} /> WhatsAppで相談
       </FloatBook>
 
@@ -244,7 +244,7 @@ export default function JaGuidedPage() {
               </ul>
               <div className="how-to-book-label">近日公開</div>
               <a
-                href={WHATSAPP_URL_JA}
+                href={GUIDED_WHATSAPP_URL_JA}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="special-cta"

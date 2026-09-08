@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
-import { KASHIWAYA_URL, RENTAL_WHATSAPP_URL } from "../site";
+import { KASHIWAYA_URL, WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function StayPage() {
@@ -10,7 +10,7 @@ export default function StayPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={RENTAL_WHATSAPP_URL}>
+      <FloatBook href={WHATSAPP_URL}>
         <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 

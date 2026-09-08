@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MessageCircle, Backpack, Footprints, Train } from "lucide-react";
-import { WHATSAPP_URL_JA } from "../../site";
+import { LUGGAGE_WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
 export default function JaLuggageShuttlePage() {
@@ -10,7 +10,7 @@ export default function JaLuggageShuttlePage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={WHATSAPP_URL_JA}>
+      <FloatBook href={LUGGAGE_WHATSAPP_URL_JA}>
         <MessageCircle size={18} /> WhatsAppで相談
       </FloatBook>
 

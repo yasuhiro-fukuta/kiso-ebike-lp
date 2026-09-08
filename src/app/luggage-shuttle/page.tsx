@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MessageCircle, Backpack, Footprints, Train } from "lucide-react";
-import { WHATSAPP_URL } from "../site";
+import { LUGGAGE_WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 export default function LuggageShuttlePage() {
@@ -10,7 +10,7 @@ export default function LuggageShuttlePage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={WHATSAPP_URL}>
+      <FloatBook href={LUGGAGE_WHATSAPP_URL}>
         <MessageCircle size={18} /> Ask on WhatsApp
       </FloatBook>
 

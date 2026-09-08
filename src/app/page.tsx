@@ -11,7 +11,7 @@ import {
   Map,
   MessageCircle,
 } from "lucide-react";
-import { RENTAL_WHATSAPP_URL } from "./site";
+import { WHATSAPP_URL } from "./site";
 import { SiteNav, SiteFooter, FloatBook } from "./chrome";
 
 const SERVICES = [
@@ -58,7 +58,7 @@ export default function Page() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={RENTAL_WHATSAPP_URL}>
+      <FloatBook href={WHATSAPP_URL}>
         <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 

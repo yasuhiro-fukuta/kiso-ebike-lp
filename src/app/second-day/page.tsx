@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { RENTAL_WHATSAPP_URL, MYMAP_EMBED_URL } from "../site";
+import { WHATSAPP_URL, MYMAP_EMBED_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function SecondDayPage() {
@@ -10,7 +10,7 @@ export default function SecondDayPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={RENTAL_WHATSAPP_URL}>
+      <FloatBook href={WHATSAPP_URL}>
         <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 
@@ -61,7 +61,7 @@ export default function SecondDayPage() {
                 <small>Easiest of the three · great for a first ride</small>
                 <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
               </div>
-              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -89,7 +89,7 @@ export default function SecondDayPage() {
                 <small>River swims in summer · onsen in winter</small>
                 <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
               </div>
-              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
@@ -116,7 +116,7 @@ export default function SecondDayPage() {
                 <small>Steep &amp; long · for confident riders only</small>
                 <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
               </div>
-              <a href={RENTAL_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
                 Book this ride <ArrowRight size={15} />
               </a>
             </div>
