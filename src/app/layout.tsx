@@ -12,7 +12,8 @@ import { ClickTracking } from "./analytics";
 const SITE_URL = "https://nakasendo-ebike.com";
 const TELEPHONE = "+81-90-3839-2354";
 const EMAIL = "ravnicaguild@gmail.com";
-const INSTAGRAM_URL = "https://www.instagram.com/murabito_bikes";
+const INSTAGRAM_URL = "https://www.instagram.com/satoyama_guide_yakkun";
+const MEDIUM_URL = "https://medium.com/@ravnicaguild";
 const HERO_IMG = "/assets/gorge.jpg";
 const POSTAL_CODE = "399-5301"; // TODO: 郵便番号を確認して確定
 // 緯度経度: Googleマップで拠点ピンを右クリック →「座標をコピー」して差し替え
@@ -77,7 +78,7 @@ const jsonLd = {
         longitude: GEO.lng,
       },
       areaServed: { "@type": "Place", name: "Kiso Valley, Nagano, Japan" },
-      sameAs: [INSTAGRAM_URL],
+      sameAs: [INSTAGRAM_URL, MEDIUM_URL],
       parentOrganization: { "@type": "Organization", name: "From Scratch LLC" },
       makesOffer: [
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#rental` } },

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Instagram,
+  BookOpen,
   Mail,
   Phone,
   MessageSquare,
@@ -14,6 +15,7 @@ import {
 } from "lucide-react";
 import {
   INSTAGRAM_URL,
+  MEDIUM_URL,
   SUPPORT_MAILTO,
   PHONE,
   PHONE_TEL,
@@ -274,6 +276,10 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
         </div>
         <div>
           <h4>{ja ? "お問い合わせ" : "Connect"}</h4>
+          <a href={MEDIUM_URL} target="_blank" rel="noreferrer">
+            <BookOpen size={16} /> {ja ? "Medium(読みもの)" : "Stories on Medium"}
+          </a>
+          <br />
           <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
             <Instagram size={16} /> Instagram
           </a>
