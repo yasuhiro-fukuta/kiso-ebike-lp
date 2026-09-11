@@ -7,7 +7,7 @@ import { useEffect } from "react";
  *  ⚠️ GA4プロパティを作成したら、測定ID(G-XXXXXXXXXX)を
  *     下の GA_ID に入れる。空文字の間は何も読み込まれない。
  *  ============================================================ */
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-0JECLSEP0Q";
 
 type GtagFn = (...args: unknown[]) => void;
 
