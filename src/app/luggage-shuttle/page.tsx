@@ -27,14 +27,24 @@ export default function LuggageShuttlePage() {
             Nojiri Station, so you can cross on foot — or ride — and find your
             luggage waiting at the other end.
           </p>
-          <a
-            href={SQUARE_PAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stay-cta"
-          >
-            <CreditCard size={16} /> Pay the shuttle fee online (Square)
-          </a>
+          <div className="pay-row">
+            <a
+              href={SQUARE_PAY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stay-cta"
+            >
+              <CreditCard size={16} /> Pay the shuttle fee online (Square)
+            </a>
+            <figure className="pay-qr">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/square-pay-qr.png"
+                alt="QR code for the Square payment page — scan to pay the shuttle fee"
+              />
+              <figcaption>or scan to pay</figcaption>
+            </figure>
+          </div>
         </div>
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}

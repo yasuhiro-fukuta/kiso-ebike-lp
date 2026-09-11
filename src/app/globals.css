@@ -167,6 +167,15 @@ body::before {
 /* tall poster artwork — show whole, never crop */
 .page-head-visual.poster img { max-height: none; object-fit: contain; }
 
+/* payment button + QR pair (luggage shuttle) */
+.pay-row { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.pay-qr { margin: 0; text-align: center; }
+.pay-qr img {
+  width: 108px; display: block; background: #fff; padding: 6px;
+  border: 1px solid rgba(28, 26, 22, 0.15); border-radius: 8px;
+}
+.pay-qr figcaption { font-size: 0.72rem; color: var(--cedar); margin-top: 0.4rem; font-weight: 300; }
+
 /* TWO WAYS TO RIDE (home) */
 .ways { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); background: var(--paper-deep); }
 .ways-head { max-width: 1100px; margin: 0 auto 3rem; }
