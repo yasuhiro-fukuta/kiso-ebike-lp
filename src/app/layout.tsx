@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
+import { GA_ID, ClickTracking } from "./analytics";
 
 /** ============================================================
  *  CUSTOMIZE ZONE
@@ -445,6 +447,22 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        {/* Google Analytics 4 — GA_IDが空の間は無効 */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`}
+            </Script>
+            <ClickTracking />
+          </>
+        )}
         {/* AI / 検索エンジン向け構造化データ */}
         <script
           type="application/ld+json"
