@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { MessageCircle, Backpack, Footprints, Train } from "lucide-react";
-import { LUGGAGE_WHATSAPP_URL_JA } from "../../site";
+import { MessageCircle, Backpack, Footprints, Train, CreditCard } from "lucide-react";
+import { LUGGAGE_WHATSAPP_URL_JA, SQUARE_PAY_URL } from "../../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
 export default function JaLuggageShuttlePage() {
@@ -24,6 +24,14 @@ export default function JaLuggageShuttlePage() {
           <p>
             与川道も南木曽まわりのトレイルも、身軽なほど楽しめます。南木曽駅・ゲストハウス柏屋・野尻駅の間で荷物をお運びします。歩いても走っても、向こう側に着いたら荷物が待っている——そういう仕組みです。
           </p>
+          <a
+            href={SQUARE_PAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <CreditCard size={16} /> シャトル料金をオンライン決済(Square)
+          </a>
         </div>
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}

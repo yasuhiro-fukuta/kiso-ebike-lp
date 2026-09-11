@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { MessageCircle, Backpack, Footprints, Train } from "lucide-react";
-import { LUGGAGE_WHATSAPP_URL } from "../site";
+import { MessageCircle, Backpack, Footprints, Train, CreditCard } from "lucide-react";
+import { LUGGAGE_WHATSAPP_URL, SQUARE_PAY_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 export default function LuggageShuttlePage() {
@@ -27,6 +27,14 @@ export default function LuggageShuttlePage() {
             Nojiri Station, so you can cross on foot — or ride — and find your
             luggage waiting at the other end.
           </p>
+          <a
+            href={SQUARE_PAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <CreditCard size={16} /> Pay the shuttle fee online (Square)
+          </a>
         </div>
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}

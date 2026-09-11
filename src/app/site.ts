@@ -142,6 +142,9 @@ export const SHODO_WHATSAPP_URL_JA = wa(
 人数:〇名`
 );
 
+/** Square online payment link for the luggage shuttle. */
+export const SQUARE_PAY_URL = "https://square.link/u/mKDF9YoV";
+
 /** Kashiwaya guesthouse — independent domain, linked from /stay */
 export const KASHIWAYA_URL = "https://kashiwaya-inn.com";
 
