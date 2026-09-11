@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { GA_ID, ClickTracking } from "./analytics";
+import { GA_ID } from "./site";
+import { ClickTracking } from "./analytics";
 
 /** ============================================================
  *  CUSTOMIZE ZONE
