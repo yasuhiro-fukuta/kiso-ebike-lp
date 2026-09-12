@@ -17,15 +17,15 @@ export default function LuggageShuttlePage() {
       {/* PAGE HEAD */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="eyebrow">Luggage shuttle · Nagiso ↔ Nojiri</span>
+          <span className="eyebrow">Luggage shuttle · Tsumago ↔ Nojiri</span>
           <h1>
             Walk the old road <em>with empty hands.</em>
           </h1>
           <p>
             The Yogawa-michi and the trails around Nagiso are best walked light.
-            We move your bags between Nagiso Station, Kashiwaya Guesthouse and
-            Nojiri Station, so you can cross on foot — or ride — and find your
-            luggage waiting at the other end.
+            We move your bags anywhere between Tsumago, Nagiso (the station or
+            Kashiwaya Guesthouse), Junikane and Nojiri, so you can cross on
+            foot — or ride — and find your luggage waiting at the other end.
           </p>
           <div className="pay-row">
             <a
@@ -72,8 +72,8 @@ export default function LuggageShuttlePage() {
               <div className="dnum">1</div>
               <h3>Drop your bags</h3>
               <p>
-                At Nagiso Station, Kashiwaya, or Nojiri Station — in the
-                morning, before you set out.
+                At Tsumago, Nagiso Station, Kashiwaya, Junikane Station or
+                Nojiri Station — in the morning, before you set out.
               </p>
             </div>
             <div className="drop-step">
@@ -97,7 +97,7 @@ export default function LuggageShuttlePage() {
             <div className="pitem">
               <h4>First bag</h4>
               <div className="amt">¥3,000</div>
-              <p>Per group, same-day, between any of the three points.</p>
+              <p>Per group, same-day, between any of our points from Tsumago to Nojiri.</p>
             </div>
             <div className="pitem">
               <h4>From the 2nd bag</h4>

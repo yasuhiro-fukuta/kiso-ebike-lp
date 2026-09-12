@@ -57,7 +57,7 @@ export default function JaShuttleEbikePage() {
               <div className="dnum">1</div>
               <h3>自転車が来る</h3>
               <p>
-                E-bikeは柏屋・南木曽駅・野尻駅のうち、あなたの一日が始まる地点で待っています。
+                E-bikeは妻籠・柏屋・南木曽駅・十二兼駅・野尻駅のうち、あなたの一日が始まる地点で待っています。
               </p>
             </div>
             <div className="drop-step">
@@ -110,10 +110,10 @@ export default function JaShuttleEbikePage() {
             </p>
           </div>
           <div className="pitem">
-            <h4>使える地点</h4>
-            <div className="amt">3カ所</div>
+            <h4>使えるエリア</h4>
+            <div className="amt">4エリア</div>
             <p>
-              柏屋・南木曽駅・野尻駅。どこをスタートにしても、ゴールにしても、荷物の受け渡し場所にしてもOK。
+              妻籠・南木曽(柏屋/駅)・十二兼・野尻。どこをスタートにしても、ゴールにしても、荷物の受け渡し場所にしてもOK。
             </p>
           </div>
         </div>

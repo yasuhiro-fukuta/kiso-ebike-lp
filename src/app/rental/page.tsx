@@ -153,8 +153,9 @@ export default function RentalPage() {
               <div className="dnum">1</div>
               <h3>Pick up</h3>
               <p>
-                Collect your e-bike at Kashiwaya Guesthouse, Nagiso Station, or
-                Nojiri Station — whichever fits your route.
+                Collect your e-bike at Tsumago, Kashiwaya Guesthouse, Nagiso
+                Station, Junikane Station or Nojiri Station — whichever fits
+                your route. We deliver the bike to your start point.
               </p>
             </div>
             <div className="drop-step">
@@ -170,7 +171,7 @@ export default function RentalPage() {
               <div className="dnum">3</div>
               <h3>Drop &amp; go</h3>
               <p>
-                Leave the bike at any of the three points and walk straight to
+                Leave the bike at any point in the service area and walk straight to
                 your train — or to your bed at Kashiwaya. We collect the bikes.
               </p>
             </div>
@@ -318,18 +319,19 @@ export default function RentalPage() {
         <details className="faq-item">
           <summary>How does the luggage shuttle work?</summary>
           <p>
-            We move your bags between Nagiso Station, Kashiwaya, and Nojiri
-            Station — ¥3,000 for the first bag and ¥1,500 from the second,
-            counted per group. It&apos;s included (up to 2 bags per person) in
+            We move your bags anywhere between Tsumago, Nagiso Station,
+            Kashiwaya, Junikane Station and Nojiri Station — ¥3,000 for the
+            first bag and ¥1,500 from the second, counted per group.
+            It&apos;s included (up to 2 bags per person) in
             the <Link href="/shuttle-ebike">Shuttle E-Bike Package</Link>.
           </p>
         </details>
         <details className="faq-item">
           <summary>Where do we start &amp; end?</summary>
           <p>
-            You can pick from three points, and your start and end don&apos;t
-            need to be the same: ① Kashiwaya Guesthouse, ② Nagiso Station, or
-            ③ Nojiri Station.
+            Anywhere in our service area — Tsumago, Nagiso (Kashiwaya
+            Guesthouse or the station), Junikane, and Nojiri — and your start
+            and end don&apos;t need to be the same.
           </p>
         </details>
       </section>

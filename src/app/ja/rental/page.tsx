@@ -141,7 +141,7 @@ export default function JaRentalPage() {
               <div className="dnum">1</div>
               <h3>受け取る</h3>
               <p>
-                ゲストハウス柏屋・南木曽駅・野尻駅のいずれかで受け取り。コースに合わせてどうぞ。
+                妻籠・ゲストハウス柏屋・南木曽駅・十二兼駅・野尻駅のいずれかで受け取り。スタート地点までE-bikeをお届けします。
               </p>
             </div>
             <div className="drop-step">
@@ -155,7 +155,7 @@ export default function JaRentalPage() {
               <div className="dnum">3</div>
               <h3>返して、そのまま</h3>
               <p>
-                3地点のどこで返してもOK。そのまま電車へ、または柏屋のお布団へ。回収はこちらでやります。
+                守備範囲内のどの拠点で返してもOK。そのまま電車へ、または柏屋のお布団へ。回収はこちらでやります。
               </p>
             </div>
           </div>
@@ -287,7 +287,7 @@ export default function JaRentalPage() {
         <details className="faq-item">
           <summary>手荷物シャトルの仕組みは?</summary>
           <p>
-            南木曽駅・柏屋・野尻駅の間で荷物を運びます。1個目¥3,000、2個目から¥1,500(グループ単位)。
+            妻籠・南木曽駅・柏屋・十二兼駅・野尻駅の間ならどこでも荷物を運びます。1個目¥3,000、2個目から¥1,500(グループ単位)。
             <Link href="/ja/shuttle-ebike">Shuttle E-bikeパッケージ</Link>
             なら1人2個まで込みです。
           </p>
@@ -295,7 +295,7 @@ export default function JaRentalPage() {
         <details className="faq-item">
           <summary>どこから出発してどこで終わる?</summary>
           <p>
-            ①ゲストハウス柏屋、②南木曽駅、③野尻駅の3地点から選べます。出発地と到着地は同じでなくて構いません。
+            守備範囲は妻籠・南木曽(柏屋/駅)・十二兼・野尻。この範囲ならどこでも選べて、出発地と到着地は同じでなくて構いません。
           </p>
         </details>
       </section>

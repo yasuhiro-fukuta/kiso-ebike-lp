@@ -61,9 +61,9 @@ export default function ShuttleEbikePage() {
               <div className="dnum">1</div>
               <h3>The bike comes to you</h3>
               <p>
-                Your e-bike is waiting at Kashiwaya Guesthouse, Nagiso
-                Station, or Nojiri Station — whichever point your day starts
-                from.
+                Your e-bike is waiting at Tsumago, Kashiwaya Guesthouse,
+                Nagiso Station, Junikane Station or Nojiri Station —
+                whichever point your day starts from.
               </p>
             </div>
             <div className="drop-step">
@@ -124,10 +124,11 @@ export default function ShuttleEbikePage() {
           </div>
           <div className="pitem">
             <h4>Where it runs</h4>
-            <div className="amt">3 points</div>
+            <div className="amt">4 areas</div>
             <p>
-              Kashiwaya Guesthouse, Nagiso Station, and Nojiri Station — any
-              of them can be your start, your finish, or both bag handovers.
+              Tsumago, Nagiso (Kashiwaya or the station), Junikane and
+              Nojiri — any of them can be your start, your finish, or both
+              bag handovers.
             </p>
           </div>
         </div>

@@ -34,8 +34,8 @@ export const RENTAL_WHATSAPP_URL = wa(
 Date: __/__/____, 10:00 - 15:00
 Bikes (riders 150 cm or taller): __
 Bikes (riders under 150 cm): __
-Start: Nagiso Station / Kashiwaya / Nojiri Station
-Finish: Nagiso Station / Kashiwaya / Nojiri Station
+Start: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
+Finish: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
 Luggage shuttle from start to finish: __ bags / not needed
 Bear-deterrent kit: __ / not needed`
 );
@@ -44,8 +44,8 @@ export const RENTAL_WHATSAPP_URL_JA = wa(
 日時:〇年〇月〇日 10:00 - 15:00
 台数(身長150センチ以上):〇台
 台数(身長150センチ未満):〇台
-出発:南木曽駅前/柏屋/野尻駅前
-到着:南木曽駅前/柏屋/野尻駅前
+出発:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
+到着:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
 出発地点から到着地点までの荷物運び:〇個/不要
 クマよけグッズ:〇個/不要`
 );
@@ -56,8 +56,8 @@ export const PACK_WHATSAPP_URL = wa(
 Date: __/__/____, 10:00 - 15:00
 Bikes (riders 150 cm or taller): __
 Bikes (riders under 150 cm): __
-Start: Nagiso Station / Kashiwaya / Nojiri Station
-Finish: Nagiso Station / Kashiwaya / Nojiri Station
+Start: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
+Finish: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
 One extra gear item of choice: hinoki hat / rashguard / life jacket
 * The bear-deterrent kit and the luggage shuttle are included.`
 );
@@ -66,8 +66,8 @@ export const PACK_WHATSAPP_URL_JA = wa(
 日時:〇年〇月〇日 10:00 - 15:00
 台数(身長150センチ以上):〇台
 台数(身長150センチ未満):〇台
-出発:南木曽駅前/柏屋/野尻駅前
-到着:南木曽駅前/柏屋/野尻駅前
+出発:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
+到着:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
 希望する追加アイテム1点:檜傘/ラッシュガード/ライフジャケット
 ※クマよけグッズと荷物運びはセットになっています。`
 );
@@ -76,16 +76,16 @@ export const PACK_WHATSAPP_URL_JA = wa(
 export const LUGGAGE_WHATSAPP_URL = wa(
   `Hello! I'm interested in the luggage shuttle as follows.
 Date: __/__/____
-From: Nagiso Station / Kashiwaya / Nojiri Station
-To: Nagiso Station / Kashiwaya / Nojiri Station
+From: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
+To: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
 Bags from start to finish: __
 Bear-deterrent kit: __ / not needed`
 );
 export const LUGGAGE_WHATSAPP_URL_JA = wa(
   `こんにちは。下記内容で手荷物シャトル運送を検討しています。
 日時:〇年〇月〇日
-出発:南木曽駅前/柏屋/野尻駅前
-到着:南木曽駅前/柏屋/野尻駅前
+出発:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
+到着:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
 出発地点から到着地点までの荷物運び:〇個
 クマよけグッズ:〇個/不要`
 );
@@ -94,8 +94,8 @@ export const LUGGAGE_WHATSAPP_URL_JA = wa(
 export const GEAR_WHATSAPP_URL = wa(
   `Hello! I'm interested in renting gear as follows.
 Date: __/__/____
-Start: Nagiso Station / Kashiwaya / Nojiri Station
-Finish: Nagiso Station / Kashiwaya / Nojiri Station
+Start: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
+Finish: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
 Hinoki hat: __ / not needed
 Bear-deterrent kit: __ / not needed
 Rashguard: __ / not needed
@@ -104,8 +104,8 @@ Life jacket: __ / not needed`
 export const GEAR_WHATSAPP_URL_JA = wa(
   `こんにちは。下記内容でギアレンタルを検討しています。
 日時:〇年〇月〇日
-出発:南木曽駅前/柏屋/野尻駅前
-到着:南木曽駅前/柏屋/野尻駅前
+出発:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
+到着:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
 檜傘:〇個/不要
 クマよけグッズ:〇個/不要
 ラッシュガード:〇個/不要

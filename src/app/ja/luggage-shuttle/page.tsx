@@ -17,12 +17,12 @@ export default function JaLuggageShuttlePage() {
       {/* PAGE HEAD */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="eyebrow">手荷物シャトル · 南木曽 ↔ 野尻</span>
+          <span className="eyebrow">手荷物シャトル · 妻籠 ↔ 野尻</span>
           <h1>
             旧道は、<em>手ぶらで歩く</em>のがいちばん。
           </h1>
           <p>
-            与川道も南木曽まわりのトレイルも、身軽なほど楽しめます。南木曽駅・ゲストハウス柏屋・野尻駅の間で荷物をお運びします。歩いても走っても、向こう側に着いたら荷物が待っている——そういう仕組みです。
+            与川道も南木曽まわりのトレイルも、身軽なほど楽しめます。妻籠・南木曽(駅/柏屋)・十二兼・野尻の間ならどこでも荷物をお運びします。歩いても走っても、向こう側に着いたら荷物が待っている——そういう仕組みです。
           </p>
           <div className="pay-row">
             <a
@@ -67,7 +67,7 @@ export default function JaLuggageShuttlePage() {
             <div className="drop-step">
               <div className="dnum">1</div>
               <h3>預ける</h3>
-              <p>南木曽駅・柏屋・野尻駅のいずれかで、出発前の朝に。</p>
+              <p>妻籠・南木曽駅・柏屋・十二兼駅・野尻駅のいずれかで、出発前の朝に。</p>
             </div>
             <div className="drop-step">
               <div className="dnum">2</div>
@@ -88,7 +88,7 @@ export default function JaLuggageShuttlePage() {
             <div className="pitem">
               <h4>1個目</h4>
               <div className="amt">¥3,000</div>
-              <p>グループ単位・当日中。3地点間ならどこでも。</p>
+              <p>グループ単位・当日中。妻籠〜野尻の各拠点間ならどこでも。</p>
             </div>
             <div className="pitem">
               <h4>2個目から</h4>

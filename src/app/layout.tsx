@@ -292,10 +292,10 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
-      name: "Luggage Shuttle (Nagiso ↔ Kashiwaya ↔ Nojiri)",
+      name: "Luggage Shuttle (Tsumago ↔ Nagiso ↔ Junikane ↔ Nojiri)",
       serviceType: "Luggage transfer",
       description:
-        "Same-day luggage shuttle between Nagiso Station, Kashiwaya Guesthouse and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. \u00a53,000 for the first bag and \u00a51,500 from the second bag onward, counted per group; included (up to 2 bags per person) in the \u00a57,000 Shuttle E-Bike Package. Book via WhatsApp; pay on the day, card or cash.",
+        "Same-day luggage shuttle anywhere between Tsumago, Nagiso Station, Kashiwaya Guesthouse, Junikane Station and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. \u00a53,000 for the first bag and \u00a51,500 from the second bag onward, counted per group; included (up to 2 bags per person) in the \u00a57,000 Shuttle E-Bike Package. Book via WhatsApp; pay on the day, card or cash.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
       url: `${SITE_URL}/luggage-shuttle`,
@@ -355,7 +355,7 @@ const jsonLd = {
           name: "How does the luggage shuttle work?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We move your bags between Nagiso Station, Kashiwaya, and Nojiri Station, free with every booking, so you can ride point-to-point without carrying your pack over a pass.",
+            text: "We move your bags anywhere between Tsumago, Nagiso Station, Kashiwaya, Junikane Station and Nojiri Station — ¥3,000 for the first bag and ¥1,500 from the second, per group — so you can ride point-to-point without carrying your pack over a pass.",
           },
         },
         {
@@ -371,7 +371,7 @@ const jsonLd = {
           name: "Where do tours start and end?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "You can pick from three points, and your start and end don't need to be the same: Kashiwaya Guesthouse, Nagiso Station, or Nojiri Station.",
+            text: "Anywhere in the service area — Tsumago, Nagiso (Kashiwaya Guesthouse or the station), Junikane, and Nojiri — and your start and end don't need to be the same.",
           },
         },
         {
