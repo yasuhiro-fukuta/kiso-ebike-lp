@@ -47,9 +47,8 @@ function PayBlock() {
         </figure>
       </div>
       <p className="pay-note">
-        Base delivery fee ¥1,500 per group + ¥1,500 per bag. Bear spray with
-        bell: ¥1,500 each. Enter the amount on the Square page — cash at the
-        counter is welcome too.
+        Enter the amount on the Square page — cash at the counter is welcome
+        too.
       </p>
     </div>
   );
@@ -88,6 +87,44 @@ export default function LuggageShuttlePage() {
         </figure>
       </header>
 
+      {/* PRICING */}
+      <section className="mini-sec" id="pricing">
+        <span className="eyebrow">Pricing</span>
+        <h2>One base fee, then count your bags.</h2>
+        <div className="pricing">
+          <div className="pitem">
+            <h4>Base fee</h4>
+            <div className="amt">
+              ¥1,500<span style={{ fontSize: "0.9rem" }}>/group</span>
+            </div>
+            <p>
+              Per group, same-day, between any of our points from Tsumago to
+              Nojiri.
+            </p>
+          </div>
+          <div className="pitem">
+            <h4>Per bag</h4>
+            <div className="amt">
+              +¥1,500<span style={{ fontSize: "0.9rem" }}>/bag</span>
+            </div>
+            <p>
+              Counted per group, not per person — so three bags come to
+              ¥6,000 total.
+            </p>
+          </div>
+          <div className="pitem">
+            <h4>Bear spray</h4>
+            <div className="amt">
+              ¥1,500<span style={{ fontSize: "0.9rem" }}>/bottle</span>
+            </div>
+            <p>
+              Bell included, no base fee — pick it up in Nagiso, hand it back
+              in Nojiri.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* PAY — first appearance */}
       <PayBlock />
 
@@ -99,12 +136,14 @@ export default function LuggageShuttlePage() {
             No reservation. <em>Drop, pay, and go.</em>
           </h2>
           <p>
-            Leave your bags at the cafe in front of Nagiso Station and pay by{" "}
-            <strong>10:30</strong>, and they&apos;ll arrive at Coffee Katana in
-            front of Nojiri Station (on Mondays: the Nojiri station-front
-            community hall) by <strong>13:30</strong>. Spend the day hands-free
-            on the Nakasendo&apos;s Yogawa-michi, or in the Kakizore and Atera
-            gorges.
+            By <strong>10:30</strong>, no booking needed: hand your bags in
+            at Nagiso Station (Izumiya Cafe), and they&apos;ll be at Nojiri
+            Station (Coffee Katana*) by <strong>13:30</strong>. Spend the day
+            hands-free on the Nakasendo&apos;s Yogawa-michi, or in the
+            Kakizore and Atera gorges.
+            <br />
+            <small>* On Mondays, bags are held at the Nojiri station-front
+            community hall instead.</small>
           </p>
 
           {/* THE FOUR PANELS */}

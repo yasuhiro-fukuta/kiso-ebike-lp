@@ -47,8 +47,7 @@ function PayBlock() {
         </figure>
       </div>
       <p className="pay-note">
-        基本送料 ¥1,500/グループ+荷物1個につき ¥1,500/個。鈴つき熊スプレー
-        ¥1,500/個。金額はSquareのページで入力してください。店頭での現金払いもOK。
+        金額はSquareのページで入力してください。店頭での現金払いもOK。
       </p>
     </div>
   );
@@ -84,6 +83,39 @@ export default function JaLuggageShuttlePage() {
         </figure>
       </header>
 
+      {/* 料金 */}
+      <section className="mini-sec" id="pricing">
+        <span className="eyebrow">料金</span>
+        <h2>基本送料に、バッグの数を足すだけ。</h2>
+        <div className="pricing">
+          <div className="pitem">
+            <h4>基本送料</h4>
+            <div className="amt">
+              ¥1,500<span style={{ fontSize: "0.9rem" }}>/グループ</span>
+            </div>
+            <p>グループ単位・当日中。妻籠〜野尻の各拠点間ならどこでも。</p>
+          </div>
+          <div className="pitem">
+            <h4>バッグ1個につき</h4>
+            <div className="amt">
+              +¥1,500<span style={{ fontSize: "0.9rem" }}>/個</span>
+            </div>
+            <p>
+              人数ではなくグループ単位で数えます。荷物3個なら合計¥6,000。
+            </p>
+          </div>
+          <div className="pitem">
+            <h4>熊スプレー</h4>
+            <div className="amt">
+              ¥1,500<span style={{ fontSize: "0.9rem" }}>/個</span>
+            </div>
+            <p>
+              鈴付き・基本送料なし。南木曽で借りて、野尻で返却できます。
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 決済——1回目 */}
       <PayBlock />
 
@@ -95,10 +127,11 @@ export default function JaLuggageShuttlePage() {
             予約不要。<em>預けて、払って、出発。</em>
           </h2>
           <p>
-            <strong>10:30まで</strong>
-            に南木曽駅前のカフェに荷物を預けてお会計をすれば、
+            <strong>10:30まで</strong>に、予約なしで、南木曽駅前(イズミヤカフェ)へ荷物を持ち込むだけ。
             <strong>13:30まで</strong>
-            に荷物が野尻駅前のコーヒー刀(月曜日は野尻駅前公民館)に届きます。手ぶらで中山道・与川道や、柿其渓谷、阿寺渓谷を楽しみましょう。
+            に野尻駅前(コーヒー刀※)に届きます。手ぶらで中山道・与川道や、柿其渓谷、阿寺渓谷を楽しみましょう。
+            <br />
+            <small>※月曜日は野尻駅前公民館で荷物をお預かりします。</small>
           </p>
 
           {/* 4コマ */}
