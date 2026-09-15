@@ -20,6 +20,7 @@ import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
+const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
 const MYMAP_VIEW =
   "https://www.google.com/maps/d/viewer?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0";
 
@@ -186,6 +187,20 @@ export default function LuggageShuttlePage() {
               The pick-up counter, in front of Nojiri Station — reward
               yourself with a cup while you reunite with your bags. On
               Mondays, pick up at the station-front community hall instead.
+            </p>
+          </a>
+          <a
+            href={HALL_MAP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mini-card"
+          >
+            <h3>
+              <MapPin size={20} /> Community Hall (Mondays)
+            </h3>
+            <p>
+              Coffee Katana rests on Mondays, so Monday pickups move here —
+              still right in front of Nojiri Station. Tap for the map.
             </p>
           </a>
         </div>

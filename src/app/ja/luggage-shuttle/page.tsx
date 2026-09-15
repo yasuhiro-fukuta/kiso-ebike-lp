@@ -20,6 +20,7 @@ import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
 const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
+const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
 const MYMAP_VIEW =
   "https://www.google.com/maps/d/viewer?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0";
 
@@ -167,6 +168,19 @@ export default function JaLuggageShuttlePage() {
             </h3>
             <p>
               受け取り窓口。野尻駅の目の前——荷物との再会はコーヒー片手に。月曜日は駅前公民館での受け取りになります。地図はこちら。
+            </p>
+          </a>
+          <a
+            href={HALL_MAP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mini-card"
+          >
+            <h3>
+              <MapPin size={20} /> 野尻駅前公民館(月曜)
+            </h3>
+            <p>
+              コーヒー刀が定休日の月曜は、受け取りはこちらで。同じく野尻駅の目の前です。タップで地図が開きます。
             </p>
           </a>
         </div>
