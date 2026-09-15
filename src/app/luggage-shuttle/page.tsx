@@ -66,14 +66,15 @@ export default function LuggageShuttlePage() {
       {/* PAGE HEAD — title, catch copy, photo */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="eyebrow">Luggage shuttle · Nagiso → Nojiri</span>
+          <span className="eyebrow">Shuttle Baggage Service · Nagiso — Nojiri</span>
           <h1>
-            Walk the old road <em>with empty hands.</em>
+            Yes Road, <em>No load.</em>
           </h1>
           <p>
-            The Yogawa-michi and the gorges around Nagiso are best enjoyed
-            light. Hand your bags to a cafe in the morning, and they&apos;ll be
-            waiting at the other end of the valley by early afternoon.
+            We carry your bags, station to station. Hand them to a cafe in
+            the morning, walk the Nakasendo&apos;s Yogawa-michi or swim the
+            gorges hands-free, and they&apos;ll be waiting at the other end
+            of the valley by early afternoon.
           </p>
         </div>
         <figure className="page-head-visual">

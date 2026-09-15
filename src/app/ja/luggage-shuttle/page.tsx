@@ -65,12 +65,12 @@ export default function JaLuggageShuttlePage() {
       {/* PAGE HEAD——タイトル・キャッチコピー・写真 */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="eyebrow">手荷物シャトル · 南木曽 → 野尻</span>
+          <span className="eyebrow">手荷物シャトル · NAGISO — NOJIRI</span>
           <h1>
-            旧道は、<em>手ぶらで歩く</em>のがいちばん。
+            Yes Road, <em>No load.</em>
           </h1>
           <p>
-            与川道も、南木曽まわりの渓谷も、身軽なほど楽しめます。朝、駅前のカフェに荷物を預ければ、昼過ぎには谷の向こうで荷物が待っています。
+            荷物は駅から駅へ、私たちが運びます。朝、駅前のカフェに預けたら、中山道・与川道も渓谷も手ぶらで。昼過ぎには谷の向こうで荷物が待っています。
           </p>
         </div>
         <figure className="page-head-visual">
