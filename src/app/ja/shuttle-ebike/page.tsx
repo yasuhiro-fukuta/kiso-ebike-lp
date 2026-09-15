@@ -106,7 +106,7 @@ export default function JaShuttleEbikePage() {
               ¥4,000<span style={{ fontSize: "0.9rem" }}>〜</span>
             </div>
             <p>
-              E-bike 1台¥4,000、手荷物シャトル1個目¥3,000(2個目から¥1,500・グループ単位)、ギアは1点¥500から。荷物が1個でもあるなら、だいたいパッケージの勝ちです。
+              E-bike 1台¥4,000、手荷物シャトルは基本送料¥1,500/グループ+1個¥1,500、ギアは1点¥500から。荷物が1個でもあるなら、だいたいパッケージの勝ちです。
             </p>
           </div>
           <div className="pitem">
@@ -152,7 +152,7 @@ export default function JaShuttleEbikePage() {
         <details className="faq-item">
           <summary>パッケージ、本当にお得ですか?</summary>
           <p>
-            ほぼ確実に。自転車(¥4,000)+荷物1個(¥3,000)+ギア1点で、もう¥7,000を超えます。パッケージはそこに熊鈴・熊スプレー・荷物2個目まで乗ってきます。
+            ほぼ確実に。自転車(¥4,000)+荷物1個(送料込み¥3,000)+ギア1点で、もう¥7,000を超えます。パッケージはそこに熊鈴・熊スプレー・荷物2個目まで乗ってきます。
           </p>
         </details>
         <details className="faq-item">

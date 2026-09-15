@@ -126,10 +126,10 @@ export default function RentalPage() {
           <div className="pitem">
             <h4>Luggage Shuttle</h4>
             <div className="amt">
-              ¥3,000<span style={{ fontSize: "0.9rem" }}>/first bag</span>
+              ¥1,500<span style={{ fontSize: "0.9rem" }}>&nbsp;base /group</span>
             </div>
             <p>
-              Then ¥1,500 per extra bag, counted per group — or included in
+              Plus ¥1,500 per bag — or included in
               the <Link href="/shuttle-ebike" style={{ color: "var(--gold)" }}>Shuttle E-Bike Package</Link>.
             </p>
           </div>
@@ -178,8 +178,8 @@ export default function RentalPage() {
           </div>
           <p className="drop-note">
             Start and end points don&apos;t need to match. Add the luggage
-            shuttle (¥3,000 for the first bag, ¥1,500 from the second, per
-            group) when you book and we&apos;ll set the handover up around it.
+            shuttle (¥1,500 base per group + ¥1,500 per bag) when you book
+            and we&apos;ll set the handover up around it.
           </p>
         </div>
       </section>
@@ -320,8 +320,8 @@ export default function RentalPage() {
           <summary>How does the luggage shuttle work?</summary>
           <p>
             We move your bags anywhere between Tsumago, Nagiso Station,
-            Kashiwaya, Junikane Station and Nojiri Station — ¥3,000 for the
-            first bag and ¥1,500 from the second, counted per group.
+            Kashiwaya, Junikane Station and Nojiri Station — a ¥1,500 base
+            fee per group plus ¥1,500 per bag.
             It&apos;s included (up to 2 bags per person) in
             the <Link href="/shuttle-ebike">Shuttle E-Bike Package</Link>.
           </p>

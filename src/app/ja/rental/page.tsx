@@ -113,10 +113,10 @@ export default function JaRentalPage() {
           <div className="pitem">
             <h4>手荷物シャトル</h4>
             <div className="amt">
-              ¥3,000<span style={{ fontSize: "0.9rem" }}>/1個目</span>
+              ¥1,500<span style={{ fontSize: "0.9rem" }}>&nbsp;基本送料/グループ</span>
             </div>
             <p>
-              2個目からは1個¥1,500(グループ単位)。
+              +荷物1個につき¥1,500。
               <Link href="/ja/shuttle-ebike" style={{ color: "var(--gold)" }}>
                 Shuttle E-bikeパッケージ
               </Link>
@@ -160,7 +160,7 @@ export default function JaRentalPage() {
             </div>
           </div>
           <p className="drop-note">
-            出発地と到着地は別々で構いません。手荷物シャトル(1個目¥3,000、2個目から¥1,500・グループ単位)を予約時に伝えてもらえれば、受け渡しを組んでおきます。
+            出発地と到着地は別々で構いません。手荷物シャトル(基本送料¥1,500/グループ+1個¥1,500)を予約時に伝えてもらえれば、受け渡しを組んでおきます。
           </p>
         </div>
       </section>
@@ -287,7 +287,7 @@ export default function JaRentalPage() {
         <details className="faq-item">
           <summary>手荷物シャトルの仕組みは?</summary>
           <p>
-            妻籠・南木曽駅・柏屋・十二兼駅・野尻駅の間ならどこでも荷物を運びます。1個目¥3,000、2個目から¥1,500(グループ単位)。
+            妻籠・南木曽駅・柏屋・十二兼駅・野尻駅の間ならどこでも荷物を運びます。基本送料¥1,500/グループ+荷物1個につき¥1,500。
             <Link href="/ja/shuttle-ebike">Shuttle E-bikeパッケージ</Link>
             なら1人2個まで込みです。
           </p>

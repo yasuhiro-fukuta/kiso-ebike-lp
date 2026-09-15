@@ -117,9 +117,9 @@ export default function ShuttleEbikePage() {
               ¥4,000<span style={{ fontSize: "0.9rem" }}>+</span>
             </div>
             <p>
-              E-bike ¥4,000 per bike, luggage shuttle ¥3,000 for the first
-              bag (¥1,500 from the second, per group), gear from ¥500 per
-              item. The package usually wins from one bag up.
+              E-bike ¥4,000 per bike, luggage shuttle ¥1,500 base per group
+              plus ¥1,500 per bag, gear from ¥500 per item. The package
+              usually wins from one bag up.
             </p>
           </div>
           <div className="pitem">
@@ -169,7 +169,7 @@ export default function ShuttleEbikePage() {
         <details className="faq-item">
           <summary>Is the package actually cheaper?</summary>
           <p>
-            Almost always, yes. A bike (¥4,000), the first bag (¥3,000) and
+            Almost always, yes. A bike (¥4,000), one bag with the base fee (¥3,000) and
             one gear item already pass ¥7,000 — and the package adds the bear
             bell, the bear spray, and a second bag on top.
           </p>
