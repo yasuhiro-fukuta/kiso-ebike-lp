@@ -17,10 +17,12 @@ import {
   MYMAP_EMBED_URL,
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
+import { ShuttleCalendar } from "../shuttle-calendar";
 
 const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
 const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
+const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
 const MYMAP_VIEW =
   "https://www.google.com/maps/d/viewer?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0";
 
@@ -128,6 +130,14 @@ export default function LuggageShuttlePage() {
       {/* PAY — first appearance */}
       <PayBlock />
 
+      {/* OPERATING CALENDAR */}
+      <section className="cal-sec" id="calendar">
+        <span className="eyebrow" style={{ display: "block", textAlign: "center", marginBottom: "1.2rem" }}>
+          Operating days
+        </span>
+        <ShuttleCalendar lang="en" />
+      </section>
+
       {/* HOW IT WORKS */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
@@ -137,8 +147,9 @@ export default function LuggageShuttlePage() {
           </h2>
           <p>
             By <strong>10:30</strong>, no booking needed: hand your bags in
-            at Nagiso Station (Izumiya Cafe), and they&apos;ll be at Nojiri
-            Station (Coffee Katana*) by <strong>13:30</strong>. Spend the day
+            at Nagiso Station (Izumiya Cafe) or at Guesthouse WAKU, and
+            they&apos;ll be at Nojiri Station (Coffee Katana*) by{" "}
+            <strong>13:30</strong>. Spend the day
             hands-free on the Nakasendo&apos;s Yogawa-michi, or in the
             Kakizore and Atera gorges.
             <br />
@@ -153,8 +164,8 @@ export default function LuggageShuttlePage() {
               <Store size={26} />
               <h3>Drop</h3>
               <p>
-                By 10:30, hand your bags to Izumiya Cafe — right in front of
-                Nagiso Station.
+                By 10:30, hand your bags to Izumiya Cafe in front of Nagiso
+                Station — or to Guesthouse WAKU.
               </p>
             </div>
             <div className="koma">
@@ -194,11 +205,11 @@ export default function LuggageShuttlePage() {
         </div>
       </section>
 
-      {/* THE TWO COUNTERS */}
+      {/* THE COUNTERS */}
       <section className="mini-sec" id="counters">
-        <span className="eyebrow">The two counters</span>
-        <h2>Drop at one cafe, pick up at another.</h2>
-        <div className="mini-grid">
+        <span className="eyebrow">The counters</span>
+        <h2>Drop at one counter, pick up at another.</h2>
+        <div className="mini-grid cols2">
           <a
             href={IZUMIYA_IG}
             target="_blank"
@@ -206,11 +217,26 @@ export default function LuggageShuttlePage() {
             className="mini-card"
           >
             <h3>
-              <Instagram size={20} /> Izumiya Cafe Nagiso
+              <Instagram size={20} /> Izumiya Cafe Nagiso · drop-off
             </h3>
             <p>
-              The drop-off counter, in front of Nagiso Station. A good coffee
-              before the trail, too. Open the Instagram for photos and hours.
+              The main drop-off counter, in front of Nagiso Station. A good
+              coffee before the trail, too. Open the Instagram for photos and
+              hours.
+            </p>
+          </a>
+          <a
+            href={WAKU_MAP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mini-card"
+          >
+            <h3>
+              <MapPin size={20} /> Guesthouse WAKU · drop-off
+            </h3>
+            <p>
+              Bags left at Guesthouse WAKU also travel down to Coffee Katana
+              (Mondays: the community hall). Tap for the map.
             </p>
           </a>
           <a
@@ -220,12 +246,11 @@ export default function LuggageShuttlePage() {
             className="mini-card"
           >
             <h3>
-              <MapPin size={20} /> Nojiri Cafe Katana
+              <MapPin size={20} /> Nojiri Cafe Katana · pick-up
             </h3>
             <p>
               The pick-up counter, in front of Nojiri Station — reward
-              yourself with a cup while you reunite with your bags. On
-              Mondays, pick up at the station-front community hall instead.
+              yourself with a cup while you reunite with your bags.
             </p>
           </a>
           <a
@@ -235,7 +260,7 @@ export default function LuggageShuttlePage() {
             className="mini-card"
           >
             <h3>
-              <MapPin size={20} /> Community Hall (Mondays)
+              <MapPin size={20} /> Community Hall · pick-up (Mondays)
             </h3>
             <p>
               Coffee Katana rests on Mondays, so Monday pickups move here —

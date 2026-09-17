@@ -17,10 +17,12 @@ import {
   MYMAP_EMBED_URL,
 } from "../../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
+import { ShuttleCalendar } from "../../shuttle-calendar";
 
 const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
 const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
+const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
 const MYMAP_VIEW =
   "https://www.google.com/maps/d/viewer?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0";
 
@@ -119,6 +121,14 @@ export default function JaLuggageShuttlePage() {
       {/* 決済——1回目 */}
       <PayBlock />
 
+      {/* 営業日カレンダー */}
+      <section className="cal-sec" id="calendar">
+        <span className="eyebrow" style={{ display: "block", textAlign: "center", marginBottom: "1.2rem" }}>
+          営業日カレンダー
+        </span>
+        <ShuttleCalendar lang="ja" />
+      </section>
+
       {/* 仕組み */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
@@ -127,7 +137,7 @@ export default function JaLuggageShuttlePage() {
             予約不要。<em>預けて、払って、出発。</em>
           </h2>
           <p>
-            <strong>10:30まで</strong>に、予約なしで、南木曽駅前(イズミヤカフェ)へ荷物を持ち込むだけ。
+            <strong>10:30まで</strong>に、予約なしで、南木曽駅前(イズミヤカフェ)またはゲストハウスWAKUへ荷物を持ち込むだけ。
             <strong>13:30まで</strong>
             に野尻駅前(コーヒー刀※)に届きます。手ぶらで中山道・与川道や、柿其渓谷、阿寺渓谷を楽しみましょう。
             <br />
@@ -141,7 +151,7 @@ export default function JaLuggageShuttlePage() {
               <Store size={26} />
               <h3>預ける</h3>
               <p>
-                10:30までに、南木曽駅前のカフェ・イズミヤへ荷物を持ち込み。
+                10:30までに、南木曽駅前のカフェ・イズミヤか、ゲストハウスWAKUへ荷物を持ち込み。
               </p>
             </div>
             <div className="koma">
@@ -174,9 +184,9 @@ export default function JaLuggageShuttlePage() {
 
       {/* 預ける店・受け取る店 */}
       <section className="mini-sec" id="counters">
-        <span className="eyebrow">窓口はこの2軒</span>
-        <h2>預けるカフェ、受け取るカフェ。</h2>
-        <div className="mini-grid">
+        <span className="eyebrow">窓口はこちら</span>
+        <h2>預ける窓口、受け取る窓口。</h2>
+        <div className="mini-grid cols2">
           <a
             href={IZUMIYA_IG}
             target="_blank"
@@ -184,10 +194,23 @@ export default function JaLuggageShuttlePage() {
             className="mini-card"
           >
             <h3>
-              <Instagram size={20} /> Izumiya Cafe Nagiso
+              <Instagram size={20} /> Izumiya Cafe Nagiso · 預け
             </h3>
             <p>
-              預け窓口。南木曽駅の目の前です。出発前の一杯にもどうぞ。写真と営業時間はInstagramへ。
+              メインの預け窓口。南木曽駅の目の前です。出発前の一杯にもどうぞ。写真と営業時間はInstagramへ。
+            </p>
+          </a>
+          <a
+            href={WAKU_MAP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mini-card"
+          >
+            <h3>
+              <MapPin size={20} /> ゲストハウスWAKU · 預け
+            </h3>
+            <p>
+              こちらからも預けられます。WAKUに預けた荷物も、コーヒー刀(月曜は公民館)へお届け。地図はこちら。
             </p>
           </a>
           <a
@@ -197,10 +220,10 @@ export default function JaLuggageShuttlePage() {
             className="mini-card"
           >
             <h3>
-              <MapPin size={20} /> コーヒー刀(野尻駅前)
+              <MapPin size={20} /> コーヒー刀 · 受け取り
             </h3>
             <p>
-              受け取り窓口。野尻駅の目の前——荷物との再会はコーヒー片手に。月曜日は駅前公民館での受け取りになります。地図はこちら。
+              受け取り窓口。野尻駅の目の前——荷物との再会はコーヒー片手に。地図はこちら。
             </p>
           </a>
           <a
@@ -210,7 +233,7 @@ export default function JaLuggageShuttlePage() {
             className="mini-card"
           >
             <h3>
-              <MapPin size={20} /> 野尻駅前公民館(月曜)
+              <MapPin size={20} /> 野尻駅前公民館 · 受け取り(月曜)
             </h3>
             <p>
               コーヒー刀が定休日の月曜は、受け取りはこちらで。同じく野尻駅の目の前です。タップで地図が開きます。
