@@ -7,8 +7,6 @@ import {
   HeartPulse,
   Droplet,
   Wind,
-  Languages,
-  BookOpen,
   Luggage,
   Headphones,
 } from "lucide-react";
@@ -101,26 +99,16 @@ export default function JaGuidedPage() {
         <div className="mini-grid">
           <div className="mini-card">
             <h3>
-              <Languages size={20} /> 英語を話す地元ガイド
+              <MessageCircle size={20} /> WhatsApp対応
             </h3>
-            <p>
-              代理店も通訳も挟まず、この道を走り込んでいる本人たちと直接やりとりできます。
-            </p>
+            <p>予約や質問も、スタッフが英語で直接対応します。</p>
           </div>
           <div className="mini-card">
             <h3>
-              <MessageCircle size={20} /> WhatsAppでスタッフ直通
+              <Headphones size={20} /> 英語対応
             </h3>
             <p>
-              質問も予約も当日の変更も、メッセージひとつ。人間がちゃんと返します。
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <BookOpen size={20} /> 情報はぜんぶ英語でも
-            </h3>
-            <p>
-              ルート案内、安全ブリーフィング、宿場の物語まで——「翻訳の要約」ではなく体験まるごと。
+              走行中もインカム&グループ通話で、ガイド+お客様+通訳オペレーターがつながり、会話がスムーズに流れます。
             </p>
           </div>
           <div className="mini-card">
@@ -129,22 +117,6 @@ export default function JaGuidedPage() {
             </h3>
             <p>
               出発地で預ければ、宿で待っています。オプションではなくパッケージ込み。
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <Headphones size={20} /> 走りながら届くガイドの声
-            </h3>
-            <p>
-              ハンズフリーのインカムで、走行中も解説や注意がそっと届きます。景色が主役の時間は、沈黙も届けます。
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <ShieldCheck size={20} /> 野外救急の訓練済み
-            </h3>
-            <p>
-              ガイドはWFA(野外救急法)認定。来ないでほしい瞬間のために、訓練しています。詳細はページ下部へ。
             </p>
           </div>
         </div>

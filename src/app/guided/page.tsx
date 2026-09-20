@@ -7,8 +7,6 @@ import {
   HeartPulse,
   Droplet,
   Wind,
-  Languages,
-  BookOpen,
   Luggage,
   Headphones,
 } from "lucide-react";
@@ -109,29 +107,21 @@ export default function GuidedPage() {
         <div className="mini-grid">
           <div className="mini-card">
             <h3>
-              <Languages size={20} /> English-speaking local guides
+              <MessageCircle size={20} /> WhatsApp, answered by humans
             </h3>
             <p>
-              You deal directly with the people who ride these roads — no
-              agency, no interpreter in between.
+              Bookings, questions, day-of changes — our own staff reply
+              directly on WhatsApp, in English.
             </p>
           </div>
           <div className="mini-card">
             <h3>
-              <MessageCircle size={20} /> One WhatsApp thread
+              <Headphones size={20} /> English, even mid-ride
             </h3>
             <p>
-              Questions, bookings, day-of changes — you message the staff
-              directly, in English, and a human answers.
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <BookOpen size={20} /> Everything in English
-            </h3>
-            <p>
-              Route notes, safety briefings, the stories of the post towns —
-              the full experience, not a translated summary.
+              While you ride, an intercom group call connects you, your
+              guide and an interpreter operator — so the conversation flows
+              the whole way down.
             </p>
           </div>
           <div className="mini-card">
@@ -141,25 +131,6 @@ export default function GuidedPage() {
             <p>
               Hand your luggage over at the start and it&apos;s waiting at
               your inn. Included in the package — not an option.
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <Headphones size={20} /> A voice while you ride
-            </h3>
-            <p>
-              A hands-free intercom carries your guide&apos;s tips and stories
-              as you roll — and stays quiet when the valley should do the
-              talking.
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <ShieldCheck size={20} /> First-aid trained guides
-            </h3>
-            <p>
-              Wilderness First Aid certified — trained for the moment
-              everyone hopes never comes. Details at the bottom of this page.
             </p>
           </div>
         </div>
