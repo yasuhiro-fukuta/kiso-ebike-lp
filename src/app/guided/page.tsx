@@ -361,7 +361,7 @@ export default function GuidedPage() {
               <h3>How the day runs</h3>
               <ul className="day-line">
                 <li>
-                  <div className="place">Yabuhara-juku · 10:00</div>
+                  <div className="place">Yabuhara-juku · 9:30</div>
                   <div className="role">
                     Meet at Coffee Bar Yabuhara, 10 minutes&apos; walk from
                     the station — the post town below the Torii Pass

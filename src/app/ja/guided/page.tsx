@@ -317,7 +317,7 @@ export default function JaGuidedPage() {
               <h3>一日の流れ</h3>
               <ul className="day-line">
                 <li>
-                  <div className="place">藪原宿 · 10:00</div>
+                  <div className="place">藪原宿 · 9:30</div>
                   <div className="role">
                     コーヒーバー薮原に集合(駅から徒歩10分)。鳥居峠の分水嶺の下、木曽川が始まる宿場から出発
                   </div>
