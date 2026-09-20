@@ -83,8 +83,8 @@ export default function GuidedPage() {
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/tour/hero.jpg"
-            alt="A rider stopped on a bridge over the wide Kiso River, mountains and big sky all around"
+            src="/assets/kisoriver.jpg"
+            alt="A rider on a quiet paved road beside the rushing Kiso River, green hills on both sides"
           />
           <figcaption>
             The Kiso River keeps you company the whole way down.

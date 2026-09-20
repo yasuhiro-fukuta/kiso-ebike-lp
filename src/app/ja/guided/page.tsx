@@ -77,8 +77,8 @@ export default function JaGuidedPage() {
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/tour/hero.jpg"
-            alt="広い木曽川にかかる橋の上で立ち止まるライダー。山と大きな空"
+            src="/assets/kisoriver.jpg"
+            alt="木曽川沿いの静かな舗装路を走るライダー。両岸に緑の山"
           />
           <figcaption>木曽川が、最後までずっと隣にいます。</figcaption>
         </figure>
