@@ -16,17 +16,20 @@ export default function SecondDayPage() {
 
       {/* PAGE HEAD */}
       <header className="page-head">
-        <span className="eyebrow">Self-tour advice · Ride at your own pace</span>
+        <span className="eyebrow">Self-tour advice · Nagiso, Kiso Valley</span>
         <h1>
-          Three routes for <em>your second day in Nagiso.</em>
+          Why stay a second day? <em>Because day one only scratches it.</em>
         </h1>
         <p>
-          You walked the Nakasendo yesterday; don&apos;t leave at nine this
-          morning. These are the three self-guided rides we hand our own
-          friends — each mapped turn-by-turn for your phone, each reachable
-          straight from the guesthouse door. Pick by season and by how hard
-          you want to push, then <Link href="/rental">grab an e-bike</Link>{" "}
-          and go.
+          Most travelers give the Nakasendo a single night: walk Magome to
+          Tsumago, sleep, and roll on to Kyoto. But this valley holds far
+          more than one trail. So here&apos;s our proposal — <b>day one on
+          foot, day two on wheels</b>. Walk the old road as everyone does;
+          then, instead of leaving at nine, spend the next day riding down
+          the river, into the gorges, past the post towns the tour buses
+          never reach. These are the three self-guided rides we hand our own
+          friends — each mapped turn-by-turn for your phone. Pick one, then{" "}
+          <Link href="/rental">grab an e-bike</Link> and go.
         </p>
       </header>
 

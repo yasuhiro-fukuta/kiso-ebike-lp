@@ -1,11 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import {
   MessageCircle,
   ShieldCheck,
   HeartPulse,
   Droplet,
   Wind,
+  Languages,
+  BookOpen,
+  Luggage,
+  Headphones,
 } from "lucide-react";
 import {
   GUIDED_WHATSAPP_URL,
@@ -55,135 +60,269 @@ export default function GuidedPage() {
       <SiteNav />
 
       <FloatBook href={GUIDED_WHATSAPP_URL}>
-        <MessageCircle size={18} /> Ask on WhatsApp
+        <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 
-      {/* EARLY MORNING CYCLING TOUR */}
-      <header className="page-head page-head-grid" id="morning">
+      {/* HERO — the Kiso River Downhill */}
+      <header className="page-head page-head-grid">
         <div>
-          <span className="eyebrow">Guided tour · 7:00–9:00 · 2 hours</span>
+          <span className="eyebrow">Guided rides · Kiso Valley</span>
           <h1>
-            The Early Morning Tour — <em>own the valley before breakfast.</em>
+            The Kiso River Downhill —{" "}
+            <em>the most comfortable 50 km in the world.</em>
           </h1>
           <p>
-            At seven in the morning the post town belongs to the residents,
-            the river mist, and you. This is a slow two-hour guided loop
-            through Nagiso&apos;s lanes and riverside roads in the softest
-            light of the day — and you&apos;re back by nine, in time for
-            breakfast and checkout. The easiest way to try a guided ride, and
-            the prettiest two hours on this whole site.
+            Almost fifty kilometres from Yabuhara down to Nagiso, nearly all
+            of it downhill — with English-speaking local guides riding beside
+            you, a support car shadowing the group, and your luggage moved to
+            your inn while you ride. Pick your distance below: the full
+            classic, an easy half, or — coming soon — the whole 100 km{" "}
+            <em>Kiso-ichi</em>.
           </p>
         </div>
-        <div className="seasons-grid">
-          {MORNING_SEASONS.map((s) =>
-            s.photo ? (
-              <figure className="season-cell" key={s.season}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={s.photo} alt={s.alt} />
-                <figcaption className="season-tag">{s.season}</figcaption>
-              </figure>
-            ) : (
-              <div className="season-cell img-wanted" key={s.season}>
-                <span className="season-tag">{s.season}</span>
-                <span className="iw-note">{s.wanted}</span>
-              </div>
-            )
-          )}
-        </div>
+        <figure className="page-head-visual">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/tour/hero.jpg"
+            alt="A rider stopped on a bridge over the wide Kiso River, mountains and big sky all around"
+          />
+          <figcaption>
+            The Kiso River keeps you company the whole way down.
+          </figcaption>
+        </figure>
       </header>
 
-      <section className="morning-extras">
-        <div className="pricing">
-          <div className="pitem">
-            <h4>Guide</h4>
-            <div className="amt">
-              ¥4,000<span style={{ fontSize: "0.9rem" }}>/group</span>
-            </div>
-            <p>One local guide for your whole group, 7:00–9:00.</p>
-          </div>
-          <div className="pitem">
-            <h4>E-Bike</h4>
-            <div className="amt">
-              ¥2,000<span style={{ fontSize: "0.9rem" }}>/rider</span>
-            </div>
-            <p>
-              Per person, bike included — so two riders come to ¥8,000, four
-              to ¥12,000.
-            </p>
-          </div>
-          <div className="pitem">
-            <h4>Kashiwaya guests</h4>
-            <div className="amt">¥0</div>
-            <p>Staying at Kashiwaya? Guide and bikes are both free.</p>
-          </div>
-        </div>
-
-        <div className="campaign">
-          <div className="campaign-badge">Kashiwaya Guests</div>
-          <div className="campaign-body">
+      {/* WHY US */}
+      <section className="mini-sec" id="why">
+        <span className="eyebrow">Why us</span>
+        <h2>What makes this different</h2>
+        <p
+          style={{
+            fontWeight: 300,
+            color: "#3a352d",
+            maxWidth: "52ch",
+            marginBottom: "2rem",
+          }}
+        >
+          The things our first riders called &ldquo;game-changing&rdquo;:
+        </p>
+        <div className="mini-grid">
+          <div className="mini-card">
             <h3>
-              Sleep at Kashiwaya, and this one&apos;s <em>on the house.</em>
+              <Languages size={20} /> English-speaking local guides
             </h3>
             <p>
-              Guests of Kashiwaya Guesthouse join the morning tour for free —
-              no guide fee, no bike fee. Wake up, roll out, and be back before
-              your breakfast goes cold. Just tell us the night before.
+              You deal directly with the people who ride these roads — no
+              agency, no interpreter in between.
             </p>
           </div>
-        </div>
-
-        <div className="morning-cta-row">
-          <a
-            href={MORNING_WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stay-cta"
-          >
-            <MessageCircle size={16} /> Book the morning tour on WhatsApp
-          </a>
-          <span className="morning-cta-note">
-            Pay on the day — card or cash. Kashiwaya guests: just mention it
-            at check-in.
-          </span>
+          <div className="mini-card">
+            <h3>
+              <MessageCircle size={20} /> One WhatsApp thread
+            </h3>
+            <p>
+              Questions, bookings, day-of changes — you message the staff
+              directly, in English, and a human answers.
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <BookOpen size={20} /> Everything in English
+            </h3>
+            <p>
+              Route notes, safety briefings, the stories of the post towns —
+              the full experience, not a translated summary.
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <Luggage size={20} /> Bags handled, as standard
+            </h3>
+            <p>
+              Hand your luggage over at the start and it&apos;s waiting at
+              your inn. Included in the package — not an option.
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <Headphones size={20} /> A voice while you ride
+            </h3>
+            <p>
+              A hands-free intercom carries your guide&apos;s tips and stories
+              as you roll — and stays quiet when the valley should do the
+              talking.
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <ShieldCheck size={20} /> First-aid trained guides
+            </h3>
+            <p>
+              Wilderness First Aid certified — trained for the moment
+              everyone hopes never comes. Details at the bottom of this page.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* SPECIAL COURSE — Kiso River Downhill (full day · guided only) */}
+      {/* CHOOSE YOUR LEVEL */}
+      <section className="tours" id="levels">
+        <div className="tours-head">
+          <span className="eyebrow">Choose your level</span>
+          <h2>Three ways down the valley.</h2>
+          <p>
+            Every ride comes as one package: riding guides, a support driver,
+            e-bikes, and your luggage moved to your inn.
+          </p>
+        </div>
+        <div className="tour-grid">
+          {/* A — the classic */}
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/tour/river.jpg"
+                alt="The turquoise Kiso River rushing past the red roofs of a valley town"
+              />
+              <span className="lvl">Middle</span>
+              <span className="season">Now running</span>
+            </div>
+            <div className="body">
+              <h3>A · Kiso River Downhill</h3>
+              <div className="route">
+                Yabuhara → Nagiso · 48.9 km · full day
+              </div>
+              <p>
+                The classic. Seven post towns, an unagi lunch in Agematsu, a
+                detour into the Atera Gorge, and a finish line as the light
+                goes long. Full details below.
+              </p>
+              <div className="price">
+                <small>Guides, driver, bikes &amp; luggage included</small>
+                <span className="price-note">
+                  ¥80,000 / group of 4 · ±15% per rider
+                </span>
+              </div>
+              <a
+                href={GUIDED_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-book"
+              >
+                Book on WhatsApp <MessageCircle size={15} />
+              </a>
+            </div>
+          </div>
+
+          {/* B — the half */}
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/tour/bridge.jpg"
+                alt="Crossing an old red iron bridge over the Kiso on the half course"
+              />
+              <span className="lvl">Easy</span>
+              <span className="season">Now running</span>
+            </div>
+            <div className="body">
+              <h3>B · Half Downhill</h3>
+              <div className="route">
+                Kiso-Fukushima → Nagiso · about 25 km · half day
+              </div>
+              <p>
+                The same river, half the distance. Start in the old
+                checkpoint town of Kiso-Fukushima and ride the gentlest half
+                of the valley — first-timers and families welcome.
+              </p>
+              <div className="price">
+                <small>Guides, driver, bikes &amp; luggage included</small>
+                <span className="price-note">Pricing — ask on WhatsApp</span>
+              </div>
+              <a
+                href={GUIDED_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-book"
+              >
+                Book on WhatsApp <MessageCircle size={15} />
+              </a>
+            </div>
+          </div>
+
+          {/* C — Kiso-ichi */}
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/tour/tunnel.jpg"
+                alt="A rider passing a tunnel portal on the open valley road"
+              />
+              <span className="lvl">Challenge</span>
+              <span className="season">Coming soon</span>
+            </div>
+            <div className="body">
+              <h3>C · Kiso-ichi 木曽イチ</h3>
+              <div className="route">
+                The 100 km Kiso loop · dawn to dusk
+              </div>
+              <p>
+                Climb up the Ina Valley, crest back into the Kiso, and ride
+                the whole downhill home. Awa-ichi, Biwa-ichi… the next name
+                on Japan&apos;s loop-ride pilgrimage list is Kiso-ichi — and
+                you can be among the first.
+              </p>
+              <div className="price">
+                <small>For road-fit riders</small>
+                <span className="price-note">Coming soon</span>
+              </div>
+              <a
+                href={GUIDED_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-book"
+              >
+                Get notified on WhatsApp <MessageCircle size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COURSE A IN DETAIL — Kiso River Downhill */}
       <section className="special" id="downhill">
         <div className="special-inner">
           {/* 1 — OVERVIEW */}
           <div className="special-head">
-            <span className="eyebrow">Guided tour · Full day</span>
-            <span className="special-badge">Coming soon</span>
+            <span className="eyebrow">Course A · Full day · Guided only</span>
+            <span className="special-badge">Now running</span>
             <h2>
-              The Kiso River Downhill — <em>the most comfortable 50 km in the world.</em>
+              The Kiso River Downhill, <em>in detail.</em>
             </h2>
             <p className="special-lead">
               <b>
-                48.9&nbsp;km, Yabuhara-juku to Nagiso Station, almost all of it
-                downhill.
+                48.9&nbsp;km, Yabuhara-juku to Nagiso Station, almost all of
+                it downhill.
               </b>{" "}
-              You set off high in the valley, near the headwaters of the Kiso
-              River, and follow the water as it grows from a mountain stream
-              into a full river — rolling past seven of the Kiso road&apos;s old
-              post towns (from Yabuhara down to Midono) on one long and gentle
-              descent. Breakfast in Yabuhara, lunch in Kiso-Fukushima, a coffee stop at Nojiri Station,
-              and a finish line at Nagiso as the light goes long. Every metre has
-              been ridden and re-ridden by a local guide to find the most
-              beautiful, the most comfortable, and the safest line down the
-              valley — and <b>two guides ride with every group</b>, one setting
-              the line up front and one sweeping at the back.
+              You set off near the headwaters of the Kiso River and follow
+              the water as it grows from a mountain stream into a full river,
+              rolling past seven of the old Kiso road&apos;s post towns on
+              one long, gentle descent. <b>Two guides ride with every
+              group</b> — one setting the line up front, one sweeping at the
+              back — while a support driver shadows the day by car with your
+              luggage on board.
             </p>
           </div>
 
           <figure className="special-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/kisoriver.jpg"
-              alt="A rider on a quiet paved road beside the rushing Kiso River, green hills on both sides"
+              src="/assets/tour/atera.jpg"
+              alt="The impossibly blue water of the Atera Gorge beneath a rusted old forest-railway bridge"
             />
             <figcaption>
-              The Kiso River keeps you company the whole way down.
+              The detour into the Atera Gorge — the blue that ends up on
+              everyone&apos;s camera roll.
             </figcaption>
           </figure>
 
@@ -237,10 +376,11 @@ export default function GuidedPage() {
           <div className="special-guides">
             <h3>Who rides with you</h3>
             <p className="guides-lead">
-              The tour is led by a team of local cyclists who ride these roads
-              all year round — two guides with every group, one setting the
-              line up front and one sweeping at the back. Full team
-              introductions coming with the launch.
+              A team of local cyclists who ride these roads all year round —
+              two with every group, one leading and one sweeping, with a
+              driver in support. As you ride, your guide adds a line or two
+              of each town&apos;s story over the intercom; the rest of the
+              time, the valley speaks for itself.
             </p>
           </div>
 
@@ -250,26 +390,56 @@ export default function GuidedPage() {
               <h3>How the day runs</h3>
               <ul className="day-line">
                 <li>
-                  <div className="place">
-                    Yabuhara-juku
-                  </div>
+                  <div className="place">Yabuhara-juku · 10:00</div>
                   <div className="role">
-                    Breakfast in the post town, then roll out
+                    Meet at Coffee Bar Yabuhara, 10 minutes&apos; walk from
+                    the station — the post town below the Torii Pass
+                    watershed, where the Kiso River begins
+                  </div>
+                </li>
+                <li>
+                  <div className="place">Miyanokoshi</div>
+                  <div className="role">
+                    Home town of the samurai lord Kiso Yoshinaka and the
+                    woman warrior Tomoe Gozen — a stop at the Tomoe-buchi
+                    pool
                   </div>
                 </li>
                 <li>
                   <div className="place">Kiso-Fukushima</div>
-                  <div className="role">Lunch, roughly the halfway mark</div>
+                  <div className="role">
+                    The great checkpoint town of the old road — coffee and a
+                    Kiso monaka sweet
+                  </div>
                 </li>
                 <li>
-                  <div className="place">Nojiri Station</div>
-                  <div className="role">A coffee stop to stretch the legs</div>
+                  <div className="place">Agematsu · ~12:00</div>
+                  <div className="role">
+                    Town of the Kiso hinoki cypress that rebuilds Ise Grand
+                    Shrine — unagi lunch
+                  </div>
+                </li>
+                <li>
+                  <div className="place">Suhara</div>
+                  <div className="role">
+                    A short breather in the quiet post town
+                  </div>
+                </li>
+                <li>
+                  <div className="place">Nojiri → Atera Gorge</div>
+                  <div className="role">
+                    The detour everyone remembers: emerald water between
+                    white granite
+                  </div>
                 </li>
                 <li>
                   <div className="place">
-                    Nagiso Station <span className="alt">409 m</span>
+                    Nagiso · ~15:00 <span className="alt">409 m</span>
                   </div>
-                  <div className="role">Finish line as the light goes long</div>
+                  <div className="role">
+                    Roll in on the quiet rail-side lane and finish at Izumiya
+                    Cafe — coffee until your train, or a bed at Kashiwaya
+                  </div>
                 </li>
               </ul>
             </div>
@@ -278,10 +448,16 @@ export default function GuidedPage() {
               <div className="from">Group of four · all-in</div>
               <div className="amt">¥80,000</div>
               <p className="breakdown">
-                One price for the whole day — two guides and every e-bike
-                included. ¥80,000 is the base for a group of four; each rider
-                more or fewer moves the total by 15% (¥12,000).
+                One price for the whole day. ¥80,000 is the base for a group
+                of four; each rider more or fewer moves the total by 15%
+                (¥12,000).
               </p>
+              <ul className="price-included">
+                <li>Two riding guides — one leading, one sweeping</li>
+                <li>A support driver shadowing the group by car</li>
+                <li>High-power fat-tire e-bikes, helmets included</li>
+                <li>Your luggage, moved from the start to your inn</li>
+              </ul>
               <ul className="price-scale">
                 <li>
                   <span>2 riders</span>
@@ -304,19 +480,23 @@ export default function GuidedPage() {
                   <b>¥104,000</b>
                 </li>
               </ul>
-              <div className="how-to-book-label">Coming soon</div>
+              <div className="how-to-book-label">How to book</div>
               <a
                 href={GUIDED_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="special-cta"
               >
-                <MessageCircle size={18} /> Get notified on WhatsApp
+                <MessageCircle size={18} /> Book on WhatsApp
               </a>
               <p className="special-cta-note">
-                Dates aren&apos;t open yet. Message us on WhatsApp and
-                we&apos;ll let you know the moment the first departures go on
-                sale.
+                Message us with your date and group size — we&apos;ll confirm
+                the day. Pay on the day, card or cash. (Our no-reservation{" "}
+                <Link href="/luggage-shuttle" style={{ color: "inherit" }}>
+                  Nagiso ⇄ Nojiri luggage shuttle
+                </Link>{" "}
+                is a separate service — on a guided day, bags are simply part
+                of the package.)
               </p>
             </div>
           </div>
@@ -327,62 +507,197 @@ export default function GuidedPage() {
             <details className="sfaq">
               <summary>Can I ride this one self-guided?</summary>
               <p>
-                No — this course is guided only. In a few places, one wrong turn
-                drops you onto roads with heavy traffic. To keep the day safe,
-                two guides ride the whole route with you — one up front, one at
-                the back.
+                No — this course is guided only. In a few places, one wrong
+                turn drops you onto roads with heavy traffic. To keep the day
+                safe, two guides ride the whole route with you — one up
+                front, one at the back.
               </p>
             </details>
             <details className="sfaq">
               <summary>I&apos;m not sure I can ride 50+ km.</summary>
               <p>
-                Nearly 50 km sounds like an expert distance, we know. But it&apos;s
-                gentle downhill almost the entire way, and on the few uphill
-                stretches the high-powered e-bike does the climbing for you. If
-                you can ride a normal bike 10 km on flat ground, you&apos;ll
-                reach the finish smiling. This is your chance to surprise
-                yourself.
+                Nearly 50 km sounds like an expert distance, we know. But
+                it&apos;s gentle downhill almost the entire way, and on the
+                few uphill stretches the high-powered e-bike does the
+                climbing for you. If you can ride a normal bike 10 km on flat
+                ground, you&apos;ll reach the finish smiling. And if
+                you&apos;d rather start smaller, that&apos;s exactly what
+                Course B is for.
               </p>
             </details>
             <details className="sfaq">
               <summary>Can I bail out partway?</summary>
               <p>
                 Yes. The route shadows the JR line the whole way, so if
-                you&apos;re not feeling well you can step off and take a train
-                from the nearest station. Just lock the bike at the station rack
-                and we&apos;ll collect it afterwards.
+                you&apos;re not feeling well you can step off and take a
+                train from the nearest station. Just lock the bike at the
+                station rack and we&apos;ll collect it afterwards.
               </p>
             </details>
             <details className="sfaq">
               <summary>What happens in bad weather?</summary>
               <p>
-                Rain or snow means we cancel and refund by default. Our e-bikes
-                handle rough conditions well, though — so if it&apos;s light
-                enough not to affect safety or the experience, and everyone&apos;s
-                happy to ride, we may still run it. If the weather turns mid-ride,
-                we stop there, refund part of the fee, and take the train to the
-                finish.
+                Rain or snow means we cancel and refund by default. Our
+                e-bikes handle rough conditions well, though — so if
+                it&apos;s light enough not to affect safety or the
+                experience, and everyone&apos;s happy to ride, we may still
+                run it. If the weather turns mid-ride, we stop there, refund
+                part of the fee, and take the train to the finish.
               </p>
             </details>
             <details className="sfaq">
               <summary>What about bears?</summary>
               <p>
-                Like everywhere in these mountains, the Kiso has Asiatic black
-                bears. We hand you a bear bell and bear spray to carry, your lead
-                guide always rides up front, and we run through a
+                Like everywhere in these mountains, the Kiso has Asiatic
+                black bears. We hand you a bear bell and bear spray to carry,
+                your lead guide always rides up front, and we run through a
                 what-to-do-if-you-meet-one briefing before we set off.
               </p>
             </details>
             <details className="sfaq">
               <summary>How do you handle summer heat and winter cold?</summary>
               <p>
-                In summer we lend you a rashguard, keep you dousing with water,
-                and break to dip in the valley&apos;s river pools. In winter we
-                lend cold-weather gear and stop at footbaths and onsen along the
-                way to warm back up.
+                In summer we lend you a rashguard, keep you dousing with
+                water, and break to dip in the valley&apos;s river pools. In
+                winter we lend cold-weather gear and stop at footbaths and
+                onsen along the way to warm back up.
               </p>
             </details>
           </div>
+        </div>
+      </section>
+
+      {/* FROM THE FIRST RIDE */}
+      <section className="mini-sec" id="gallery">
+        <span className="eyebrow">From the first rides</span>
+        <h2>Every photo here was shot on tour.</h2>
+        <div className="seasons-grid" style={{ marginTop: "2rem" }}>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/tour/dango.jpg" alt="Riders buying dango sweets at an old post-town shop" />
+            <figcaption className="season-tag">Dango break</figcaption>
+          </figure>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/tour/locals.jpg" alt="Two riders laughing with a smiling local shopkeeper" />
+            <figcaption className="season-tag">Friends en route</figcaption>
+          </figure>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/tour/paddies.jpg" alt="Riding a lane beside golden rice paddies under a blue sky" />
+            <figcaption className="season-tag">Golden paddies</figcaption>
+          </figure>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/tour/swim.jpg" alt="Standing on the granite rocks above a turquoise pool in the Atera Gorge" />
+            <figcaption className="season-tag">Atera blue</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* EARLY MORNING TOUR */}
+      <section className="page-head page-head-grid" id="morning">
+        <div>
+          <span className="eyebrow">Also on the menu · 7:00–9:00 · 2 hours</span>
+          <h2 className="head-sub">
+            The Early Morning Tour — <em>own the valley before breakfast.</em>
+          </h2>
+          <p>
+            At seven in the morning the post town belongs to the residents,
+            the river mist, and you. A slow two-hour guided loop through
+            Nagiso&apos;s lanes and riverside roads in the softest light of
+            the day — back by nine, in time for breakfast and checkout. The
+            easiest way to try a guided ride.
+          </p>
+        </div>
+        <div className="seasons-grid">
+          {MORNING_SEASONS.map((s) =>
+            s.photo ? (
+              <figure className="season-cell" key={s.season}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.photo} alt={s.alt} />
+                <figcaption className="season-tag">{s.season}</figcaption>
+              </figure>
+            ) : (
+              <div className="season-cell img-wanted" key={s.season}>
+                <span className="season-tag">{s.season}</span>
+                <span className="iw-note">{s.wanted}</span>
+              </div>
+            )
+          )}
+        </div>
+      </section>
+
+      <section className="morning-extras">
+        <div className="seasons-grid seasons-row3">
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/morning/bridge.jpg" alt="Walking a bike across the Momosuke suspension bridge in the morning light" />
+            <figcaption className="season-tag">Momosuke Bridge</figcaption>
+          </figure>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/morning/stream.jpg" alt="A mountain stream tumbling over granite boulders in the morning" />
+            <figcaption className="season-tag">Morning stream</figcaption>
+          </figure>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/morning/paddies.jpg" alt="A rider pausing to look over terraced rice paddies at the hillside" />
+            <figcaption className="season-tag">Terraced paddies</figcaption>
+          </figure>
+        </div>
+        <div className="pricing">
+          <div className="pitem">
+            <h4>Guide</h4>
+            <div className="amt">
+              ¥4,000<span style={{ fontSize: "0.9rem" }}>/group</span>
+            </div>
+            <p>One local guide for your whole group, 7:00–9:00.</p>
+          </div>
+          <div className="pitem">
+            <h4>E-Bike</h4>
+            <div className="amt">
+              ¥2,000<span style={{ fontSize: "0.9rem" }}>/rider</span>
+            </div>
+            <p>
+              Per person, bike included — so two riders come to ¥8,000, four
+              to ¥12,000.
+            </p>
+          </div>
+          <div className="pitem">
+            <h4>Kashiwaya guests</h4>
+            <div className="amt">¥0</div>
+            <p>Staying at Kashiwaya? Guide and bikes are both free.</p>
+          </div>
+        </div>
+
+        <div className="campaign">
+          <div className="campaign-badge">Kashiwaya Guests</div>
+          <div className="campaign-body">
+            <h3>
+              Sleep at Kashiwaya, and this one&apos;s <em>on the house.</em>
+            </h3>
+            <p>
+              Guests of Kashiwaya Guesthouse join the morning tour for free —
+              no guide fee, no bike fee. Wake up, roll out, and be back
+              before your breakfast goes cold. Just tell us the night before.
+            </p>
+          </div>
+        </div>
+
+        <div className="morning-cta-row">
+          <a
+            href={MORNING_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <MessageCircle size={16} /> Book the morning tour on WhatsApp
+          </a>
+          <span className="morning-cta-note">
+            Pay on the day — card or cash. Kashiwaya guests: just mention it
+            at check-in.
+          </span>
         </div>
       </section>
 
@@ -398,11 +713,11 @@ export default function GuidedPage() {
               <em>trained for it.</em>
             </h2>
             <p>
-              Yakkun is certified in Wilderness First Aid by Wilderness Medical
-              Associates International — the same training that expedition crews
-              and mountain-rescue teams rely on. Deep in the valley an ambulance
-              can be a long way off, so he&apos;s trained to be the help until it
-              arrives.
+              Yakkun is certified in Wilderness First Aid by Wilderness
+              Medical Associates International — the same training that
+              expedition crews and mountain-rescue teams rely on. Deep in the
+              valley an ambulance can be a long way off, so he&apos;s trained
+              to be the help until it arrives.
             </p>
             <ul className="guide-skills">
               <li>
@@ -417,8 +732,8 @@ export default function GuidedPage() {
               </li>
             </ul>
             <p className="guide-consent">
-              By joining a ride, you agree that if an emergency happens, Yakkun
-              may give first aid in line with this certification until
+              By joining a ride, you agree that if an emergency happens,
+              Yakkun may give first aid in line with this certification until
               professional care reaches us.
             </p>
           </div>

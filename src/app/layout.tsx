@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title:
     "Beyond Nakasendo Cycling — Ditch the guidebook. Ride the Kiso Valley like a local.",
   description:
-    "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Self-guided e-bike rental from ¥4,000, a guided early-morning tour, gear rental and a luggage shuttle — with the full-day Kiso River Downhill coming soon.",
+    "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Guided rides down the Kiso River — the full-day Kiso River Downhill and an easy half course — plus self-guided e-bike rental from ¥4,000, an early-morning tour, gear rental and a luggage shuttle.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -143,9 +143,9 @@ const jsonLd = {
     {
       "@type": "Product",
       "@id": `${SITE_URL}/#downhill`,
-      name: "Kiso River Downhill (full-day guided e-bike course) — coming soon",
+      name: "Kiso River Downhill (full-day guided e-bike course)",
       description:
-        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (613 m of descent against only 94 m of climbing). The route follows the historic Kiso road past seven of its eleven post towns, from Yabuhara down to Midono, with breakfast in Yabuhara-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Led by a team of local cyclists, two guides with every group — one leading, one sweeping. Launching soon; message us on WhatsApp to be notified when dates open.",
+        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (613 m of descent against only 94 m of climbing). The route follows the historic Kiso road past seven of its eleven post towns, from Yabuhara down to Midono, with breakfast in Yabuhara-juku, lunch in Kiso-Fukushima, and a coffee stop at Nojiri Station. Led by a team of local cyclists, two guides with every group — one leading, one sweeping — plus a support driver who moves your luggage from the start to your inn (included). A ~25 km half course from Kiso-Fukushima is also available, and the 100 km Kiso-ichi loop is coming soon. Book via WhatsApp; pay on the day, card or cash.",
       image: `${SITE_URL}/assets/kisogawa.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
@@ -157,7 +157,7 @@ const jsonLd = {
             "All-in price for the whole day: two guides and all e-bikes included. ¥80,000 for a group of four; each rider more or fewer moves the total by 15% (¥12,000).",
           price: "80000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/PreOrder",
+          availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -165,7 +165,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 2 riders",
           price: "56000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/PreOrder",
+          availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -173,7 +173,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 3 riders",
           price: "68000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/PreOrder",
+          availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -181,7 +181,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 5 riders",
           price: "92000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/PreOrder",
+          availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
         },
         {
@@ -189,7 +189,7 @@ const jsonLd = {
           name: "Kiso River Downhill — 6 riders",
           price: "104000",
           priceCurrency: "JPY",
-          availability: "https://schema.org/PreOrder",
+          availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
         },
       ],
@@ -339,7 +339,7 @@ const jsonLd = {
           name: "Can I hire a guide for the half-day routes?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No — the three half-day routes are self-guided rentals only (¥4,000 per bike, ¥8,000 for two), ridden with our route maps. For a guided experience, see the guided tour page: a two-hour early-morning tour now, with the full-day Kiso River Downhill coming soon.",
+            text: "No — the three half-day routes are self-guided rentals only (¥4,000 per bike, ¥8,000 for two), ridden with our route maps. For a guided experience, see the guided tour page: the full-day Kiso River Downhill, an easy ~25 km half course, and a two-hour early-morning tour.",
           },
         },
         {

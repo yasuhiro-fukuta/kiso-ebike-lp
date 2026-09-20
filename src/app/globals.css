@@ -145,6 +145,9 @@ body::before {
 .page-head .eyebrow { color: var(--rust); }
 .page-head h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 1rem 0 1.4rem; max-width: 18ch; letter-spacing: -0.01em; }
 .page-head h1 em { font-style: italic; color: var(--moss); }
+/* demoted section heading inside a page-head block (e.g. morning tour) */
+.page-head h2.head-sub { font-size: clamp(1.9rem, 4.5vw, 3.2rem); margin: 1rem 0 1.4rem; max-width: 20ch; letter-spacing: -0.01em; }
+.page-head h2.head-sub em { font-style: italic; color: var(--moss); }
 .page-head p { font-weight: 300; font-size: 1.05rem; color: #3a352d; max-width: 58ch; }
 .page-head p a { color: var(--rust); text-decoration: none; border-bottom: 1px solid rgba(181, 83, 42, 0.4); }
 .page-head p a:hover { border-color: var(--rust); }
@@ -589,6 +592,10 @@ body::before {
 
 /* per-group-size price scale */
 .price-scale { list-style: none; margin: 0 0 1.3rem; padding: 0; }
+/* "what's included" ticks inside the special price card */
+.price-included { list-style: none; margin: 0 0 1.3rem; padding: 0; display: grid; gap: 0.35rem; }
+.price-included li { font-size: 0.88rem; font-weight: 300; padding-left: 1.3em; position: relative; }
+.price-included li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
 .price-scale li {
   display: flex; justify-content: space-between; align-items: baseline;
   padding: 0.45rem 0.6rem; font-size: 0.88rem;
@@ -1060,6 +1067,9 @@ body::before {
 
 /* morning tour — four seasons photo grid */
 .seasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; align-self: center; }
+/* three-across photo strip reusing season cells (galleries) */
+.seasons-grid.seasons-row3 { grid-template-columns: repeat(3, 1fr); max-width: 1100px; margin: 0 auto 2.5rem; align-self: auto; }
+@media (max-width: 700px) { .seasons-grid.seasons-row3 { grid-template-columns: 1fr; } }
 .season-cell { position: relative; margin: 0; }
 .season-cell.img-wanted { min-height: 160px; padding: 1rem; gap: 0.4rem; }
 .season-cell img {
