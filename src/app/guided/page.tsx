@@ -405,7 +405,7 @@ export default function GuidedPage() {
                 </li>
                 <li>
                   <div className="place">
-                    Nagiso · ~15:00 <span className="alt">409 m</span>
+                    Nagiso · ~16:00 <span className="alt">409 m</span>
                   </div>
                   <div className="role">
                     Roll in on the quiet rail-side lane and finish at Izumiya

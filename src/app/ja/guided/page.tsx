@@ -352,7 +352,7 @@ export default function JaGuidedPage() {
                 </li>
                 <li>
                   <div className="place">
-                    南木曽 · 15:00ごろ <span className="alt">409 m</span>
+                    南木曽 · 16:00ごろ <span className="alt">409 m</span>
                   </div>
                   <div className="role">
                     線路沿いの静かな道でゴールのイズミヤカフェへ。電車までコーヒー、あるいは柏屋の寝床へ
