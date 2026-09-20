@@ -69,7 +69,7 @@ export default function GuidedPage() {
           <span className="eyebrow">Guided rides · Kiso Valley</span>
           <h1>
             The Kiso River Downhill —{" "}
-            <em>the most comfortable 50 km in the world.</em>
+            <em>building Japan&apos;s most comfortable 50 km.</em>
           </h1>
           <p>
             Almost fifty kilometres from Yabuhara down to Nagiso, nearly all
