@@ -10,6 +10,10 @@ import {
 } from "../../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
+const IZUMIYA_MAP = "https://maps.app.goo.gl/4nDgY2TvN6cYh5fQA";
+const KATANA_MAP = "https://maps.app.goo.gl/qYoin6P4mrkmbs4v9";
+const DONGURI_MAP = "https://maps.app.goo.gl/SS9hxF9WcvB4iQqdA";
+
 export default function JaShuttleEbikePage() {
   return (
     <div className="lp">
@@ -24,12 +28,10 @@ export default function JaShuttleEbikePage() {
         <div>
           <span className="eyebrow">Shuttle E-bike · 乗り捨て · 手ぶら</span>
           <h1>
-            「Shuttle E-bike」、<em>じわじわ広まってます。</em>
+            「Shuttle E-bike」、<em>新しい提案です。</em>
           </h1>
           <p>
-            この谷での走り方に、最近呼び名がつき始めました。E-bikeはスタート地点で待っていて、荷物は車で先回り、あなたは木曽谷を一方通行で下るだけ——引き返さない、担がない、段取りしない。それをまとめて
-            <strong>「Shuttle E-bike(シャトルEバイク)」</strong>
-            と呼んでいます。一度やれば、専用の言葉が要った理由がわかります。
+            「シャトルバスをE-bikeでやったら、快適で楽しいんじゃないか?」——こんなアイデアから始めました。スタート地点で荷物を預けて、E-bikeを受け取る。ゴール地点でE-bikeを返して、荷物を受け取る。渓谷沿いの道や中山道など、美しい道がいくつも通る南木曽駅前〜野尻駅前をつないだら、とても快適で楽しい移動体験になりました。名付けて「Shuttle E-bike」。
           </p>
         </div>
         <figure className="page-head-visual poster">
@@ -55,23 +57,35 @@ export default function JaShuttleEbikePage() {
           <div className="drop-steps">
             <div className="drop-step">
               <div className="dnum">1</div>
-              <h3>自転車が来る</h3>
+              <h3>装備を入れ替える</h3>
               <p>
-                E-bikeは妻籠・柏屋・南木曽駅・十二兼駅・野尻駅のうち、あなたの一日が始まる地点で待っています。
+                南木曽駅前のカフェ「Izumiya」で荷物を預けて、E-bikeを受け取ります。{" "}
+                <a href={IZUMIYA_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
+                  Izumiyaの地図
+                </a>
               </p>
             </div>
             <div className="drop-step">
               <div className="dnum">2</div>
-              <h3>荷物が先に行く</h3>
+              <h3>手ぶらで走る</h3>
               <p>
-                あなたが走っている間に、荷物は車で谷を下ります。到着地点で合流。パッケージなら1人2個まで。
+                旧中山道、新中山道・与川道、柿其・阿寺渓谷など、レベルに合わせてお好みのルートで。詳しくは
+                <Link href="/ja/second-day" style={{ color: "var(--gold)" }}>こちら</Link>
+                。あなたが走っている間に、荷物はお昼にゴールへ運ばれます。
               </p>
             </div>
             <div className="drop-step">
               <div className="dnum">3</div>
-              <h3>一方通行で走る</h3>
+              <h3>ゴールで荷物を受け取る</h3>
               <p>
-                マップ付きコースを下流へ。終点で自転車を乗り捨てて、そのまま電車へ——あるいは柏屋の寝床へ。回収はこちらでやります。
+                野尻駅前で乗り捨てて、駅前のカフェ「Katana」で荷物を受け取り(月曜日はカフェどんぐり)。電車を待つ間、ぜひコーヒーを。{" "}
+                <a href={KATANA_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
+                  Katana
+                </a>
+                {" · "}
+                <a href={DONGURI_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
+                  どんぐり
+                </a>
               </p>
             </div>
           </div>
@@ -165,8 +179,7 @@ export default function JaShuttleEbikePage() {
         <details className="faq-item">
           <summary>宿泊と組み合わせられますか?</summary>
           <p>
-            それが王道です。荷物は<Link href="/ja/stay">柏屋</Link>
-            へ先回り、あなたは手ぶらで走って到着。翌朝のライドは玄関先から始まります。
+            出発または到着を宿泊予定の宿にすることは、場所によっては可能です。WhatsAppでご相談ください。
           </p>
         </details>
       </section>

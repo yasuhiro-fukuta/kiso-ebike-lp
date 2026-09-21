@@ -10,6 +10,10 @@ import {
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
+const IZUMIYA_MAP = "https://maps.app.goo.gl/4nDgY2TvN6cYh5fQA";
+const KATANA_MAP = "https://maps.app.goo.gl/qYoin6P4mrkmbs4v9";
+const DONGURI_MAP = "https://maps.app.goo.gl/SS9hxF9WcvB4iQqdA";
+
 export default function ShuttleEbikePage() {
   return (
     <div className="lp">
@@ -24,15 +28,16 @@ export default function ShuttleEbikePage() {
         <div>
           <span className="eyebrow">Shuttle E-Bike · One-way · Hands-free</span>
           <h1>
-            The shuttle e-bike. <em>Word&apos;s getting around.</em>
+            The Shuttle E-bike — <em>a new proposal.</em>
           </h1>
           <p>
-            There&apos;s a name catching on for the way people ride this valley
-            now: the e-bike waits where you start, your bags travel ahead by
-            car, and you ride one way down the Kiso — no doubling back, no
-            carrying, no logistics. Around here it&apos;s called the{" "}
-            <strong>shuttle e-bike</strong>. Once you&apos;ve tried it,
-            you&apos;ll see why it needed its own word.
+            It started with a simple thought: what if the shuttle bus were an
+            e-bike? Drop your bags at the start and pick up an e-bike;
+            return the bike at the finish and pick up your bags. String that
+            between Nagiso Station and Nojiri Station — with the old
+            Nakasendo, the Yogawa road and the gorge lanes running in
+            between — and an ordinary transfer turns into the best part of
+            the day. We named it the <strong>Shuttle E-bike</strong>.
           </p>
         </div>
         <figure className="page-head-visual poster">
@@ -59,29 +64,39 @@ export default function ShuttleEbikePage() {
           <div className="drop-steps">
             <div className="drop-step">
               <div className="dnum">1</div>
-              <h3>The bike comes to you</h3>
+              <h3>Swap your load</h3>
               <p>
-                Your e-bike is waiting at Tsumago, Kashiwaya Guesthouse,
-                Nagiso Station, Junikane Station or Nojiri Station —
-                whichever point your day starts from.
+                At Izumiya Cafe, right by Nagiso Station, hand over your bags
+                and pick up your e-bike.{" "}
+                <a href={IZUMIYA_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
+                  Izumiya on the map
+                </a>
               </p>
             </div>
             <div className="drop-step">
               <div className="dnum">2</div>
-              <h3>Your bags go ahead</h3>
+              <h3>Ride hands-free</h3>
               <p>
-                We shuttle your luggage down the valley by car while you
-                ride. It&apos;s waiting at the far end — up to 2 bags per
-                person in the package.
+                The old Nakasendo, the Yogawa road, the Kakizore and Atera
+                gorges — pick the route that fits your level (
+                <Link href="/second-day" style={{ color: "var(--gold)" }}>details here</Link>
+                ). While you ride, your bags travel to the finish by midday.
               </p>
             </div>
             <div className="drop-step">
               <div className="dnum">3</div>
-              <h3>You ride one way</h3>
+              <h3>Collect at the finish</h3>
               <p>
-                Follow any of the mapped routes downstream, drop the bike at
-                the end point, and walk straight to your train — or your bed
-                at Kashiwaya. We collect the bikes.
+                Drop the bike at Nojiri Station and collect your bags at Cafe
+                Katana in front of the station (Mondays: Cafe Donguri).
+                Enjoy a coffee while you wait for your train.{" "}
+                <a href={KATANA_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
+                  Katana
+                </a>
+                {" · "}
+                <a href={DONGURI_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
+                  Donguri
+                </a>
               </p>
             </div>
           </div>
@@ -186,9 +201,8 @@ export default function ShuttleEbikePage() {
         <details className="faq-item">
           <summary>Can we mix it with a stay?</summary>
           <p>
-            That&apos;s the classic move: bags shuttle to{" "}
-            <Link href="/stay">Kashiwaya</Link>, you ride in hands-free, and
-            tomorrow&apos;s ride starts at the front door.
+            Sometimes, yes — starting or finishing at your inn is possible
+            depending on where it is. Ask us on WhatsApp.
           </p>
         </details>
       </section>
