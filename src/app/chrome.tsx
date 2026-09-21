@@ -34,22 +34,22 @@ const MENU_ITEMS: Record<
   { href: string; label: string; sub: string }[]
 > = {
   en: [
-    { href: "/rental", label: "E-Bike Rental", sub: "Self-guided rides" },
     { href: "/shuttle-ebike", label: "Shuttle E-Bike Package", sub: "One-way, hands-free, ¥7,000" },
-    { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
-    { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
+    { href: "/rental", label: "E-Bike Rental", sub: "Self-guided rides" },
     { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
     { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
-    { href: "/guided", label: "Guided Tour", sub: "Dawn rides & the Kiso River Downhill" },
+    { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
+    { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
+    { href: "/guided", label: "Guided Tours by Locals", sub: "Dawn rides & the Kiso River Downhill" },
   ],
   ja: [
-    { href: "/ja/rental", label: "E-bikeレンタル", sub: "セルフガイドで走る" },
     { href: "/ja/shuttle-ebike", label: "Shuttle E-bikeパッケージ", sub: "乗り捨て・手ぶらの全部入り ¥7,000" },
-    { href: "/ja/second-day", label: "セルフツアーのすすめ", sub: "南木曽での2日目" },
-    { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
+    { href: "/ja/rental", label: "E-bikeレンタル", sub: "セルフガイドで走る" },
     { href: "/ja/luggage-shuttle", label: "手荷物シャトル", sub: "身軽に歩く・走る" },
     { href: "/ja/gear", label: "ギアレンタル", sub: "ヒノキ傘・熊対策ほか" },
-    { href: "/ja/guided", label: "ガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
+    { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
+    { href: "/ja/second-day", label: "セルフツアーのすすめ", sub: "南木曽での2日目" },
+    { href: "/ja/guided", label: "住民本気のガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
   ],
 };
 
