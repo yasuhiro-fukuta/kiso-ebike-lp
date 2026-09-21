@@ -4,9 +4,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   Camera,
-  Compass,
-  Backpack,
-  Bike,
   Zap,
   Leaf,
   Mountain,
@@ -40,10 +37,8 @@ export default function JaRentalPage() {
             E-bikeという<em>エコモビリティ</em>で、自然をめぐる。
           </h1>
           <p>
-            E-bikeは、山に向けていい機械のなかで一番やさしいやつです。排気ガスなし、エンジン音なし、残すのはタイヤの跡だけ。静かな電動アシストにそっと押されて、川と森と宿場町を、自然のペースで、自然の流儀でめぐります。充電済みのファットタイヤE-bikeをお渡しして、荷物は必要なら別便で谷の先へ。あとは自分で走るだけ。どこへ行くか迷ったら、おすすめ3コースを載せた
-            <Link href="/ja/second-day">セルフツアーのすすめ</Link>
-            へ。ガイドと走りたい方は
-            <Link href="/ja/guided">ガイドツアー</Link>をどうぞ。
+            水力発電量が豊富な、水と緑の豊かな谷に、排気ガスは似合いません。あなたの足を電気の力でアシストし、美しい谷の一日の周遊面積を増やします。どこへ行くか迷ったら、おすすめ3コースを載せた
+            <Link href="/ja/second-day">セルフツアーのすすめ</Link>へ。
           </p>
         </div>
         <figure className="page-head-visual">
@@ -90,7 +85,7 @@ export default function JaRentalPage() {
       {/* PRICING */}
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">料金</span>
-        <h2>シンプルに、1台いくら。</h2>
+        <h2>1台おいくら?</h2>
         <div className="pricing">
           <div className="pitem">
             <h4>E-bikeレンタル</h4>
@@ -110,59 +105,17 @@ export default function JaRentalPage() {
               へ。
             </p>
           </div>
-          <div className="pitem">
-            <h4>手荷物シャトル</h4>
-            <div className="amt">
-              ¥1,500<span style={{ fontSize: "0.9rem" }}>&nbsp;基本送料/グループ</span>
-            </div>
-            <p>
-              +荷物1個につき¥1,500。
-              <Link href="/ja/shuttle-ebike" style={{ color: "var(--gold)" }}>
-                Shuttle E-bikeパッケージ
-              </Link>
-              なら込みです。
-            </p>
-          </div>
-        </div>
+</div>
       </section>
 
-      {/* ONE-WAY DROP */}
-      <section className="drop-sec" id="one-way">
-        <div className="drop-inner">
-          <span className="eyebrow">乗り捨て(片道ドロップ)</span>
-          <h2>
-            片道で走りきる。<em>引き返さない。</em>
-          </h2>
-          <p>
-            ふつうのレンタサイクルは「借りた場所に返す」が前提。うちは違います。ある地点で借りて、別の地点で返す。谷を一方向にまるごと味わってください。段取りはこちらの仕事です。
-          </p>
-          <div className="drop-steps">
-            <div className="drop-step">
-              <div className="dnum">1</div>
-              <h3>受け取る</h3>
-              <p>
-                妻籠・ゲストハウス柏屋・南木曽駅・十二兼駅・野尻駅のいずれかで受け取り。スタート地点までE-bikeをお届けします。
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">2</div>
-              <h3>片道で走る</h3>
-              <p>
-                ルートマップに沿って谷を下るだけ。手荷物シャトルを付ければ、荷物は別便で先回りします。
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">3</div>
-              <h3>返して、そのまま</h3>
-              <p>
-                守備範囲内のどの拠点で返してもOK。そのまま電車へ、または柏屋のお布団へ。回収はこちらでやります。
-              </p>
-            </div>
-          </div>
-          <p className="drop-note">
-            出発地と到着地は別々で構いません。手荷物シャトル(基本送料¥1,500/グループ+1個¥1,500)を予約時に伝えてもらえれば、受け渡しを組んでおきます。
-          </p>
-        </div>
+      {/* ONE-WAY DROP → Shuttle E-bike package */}
+      <section className="mini-sec" id="one-way" style={{ textAlign: "center" }}>
+        <p style={{ fontWeight: 300, color: "#3a352d", marginBottom: "1.2rem" }}>
+          手ぶらで、乗り捨てで、片道だけ走りたい?
+        </p>
+        <Link href="/ja/shuttle-ebike" className="stay-cta">
+          Shuttle E-bikeパッケージへ <ArrowRight size={15} />
+        </Link>
       </section>
 
       {/* VIDEO */}
@@ -181,43 +134,6 @@ export default function JaRentalPage() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
-        </div>
-      </section>
-
-      {/* INCLUDED */}
-      <section className="included">
-        <span className="eyebrow">レンタルに含まれるもの</span>
-        <h2>手ぶらでどうぞ。あとはこちらで。</h2>
-        <figure className="inc-photo">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/gear/helmet.jpg"
-            alt="マットブラックのサイクリングヘルメット——出発前にサイズを合わせてお渡しします"
-          />
-          <figcaption>ヘルメットは受け取り時にフィッティング。追加料金なし</figcaption>
-        </figure>
-        <div className="inc-grid">
-          <div className="inc-item">
-            <div className="icon">
-              <Bike size={30} />
-            </div>
-            <h3>ヘルメット・鍵・ライト</h3>
-            <p>出発前に体に合わせて調整。追加料金なし。</p>
-          </div>
-          <div className="inc-item">
-            <div className="icon">
-              <Compass size={30} />
-            </div>
-            <h3>ルートマップと地元情報</h3>
-            <p>3コースの道順をスマホでナビ。見どころも口頭で。</p>
-          </div>
-          <div className="inc-item">
-            <div className="icon">
-              <Backpack size={30} />
-            </div>
-            <h3>乗り捨て無料</h3>
-            <p>出発地と返却地が違ってもOK。追加料金はありません。</p>
-          </div>
         </div>
       </section>
 
@@ -276,26 +192,6 @@ export default function JaRentalPage() {
           <p>
             いいえ、3コースはセルフガイド専用です。ガイド付きをご希望なら
             <Link href="/ja/guided">ガイドツアーのページ</Link>をご覧ください。
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>逆回り・周回はできますか?</summary>
-          <p>
-            できます。妻籠コースと渓谷コースは逆回りも周回もOK。予約時に伝えていただければ、受け渡し地点をそのように組みます。
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>手荷物シャトルの仕組みは?</summary>
-          <p>
-            妻籠・南木曽駅・柏屋・十二兼駅・野尻駅の間ならどこでも荷物を運びます。基本送料¥1,500/グループ+荷物1個につき¥1,500。
-            <Link href="/ja/shuttle-ebike">Shuttle E-bikeパッケージ</Link>
-            なら1人2個まで込みです。
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>どこから出発してどこで終わる?</summary>
-          <p>
-            守備範囲は妻籠・南木曽(柏屋/駅)・十二兼・野尻。この範囲ならどこでも選べて、出発地と到着地は同じでなくて構いません。
           </p>
         </details>
       </section>

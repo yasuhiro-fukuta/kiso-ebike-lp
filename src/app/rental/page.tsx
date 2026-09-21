@@ -4,9 +4,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   Camera,
-  Compass,
-  Backpack,
-  Bike,
   Zap,
   Leaf,
   Mountain,
@@ -40,17 +37,12 @@ export default function RentalPage() {
             Tour nature by eco-mobility. <em>The valley never hears you coming.</em>
           </h1>
           <p>
-            An e-bike is the gentlest machine you can point at a mountain:
-            no exhaust, no engine noise, nothing left behind but tire
-            tracks. Just enough quiet electric push to carry you through
-            rivers, forests and post towns — moving at nature&apos;s pace,
-            on nature&apos;s terms. We hand you a charged fat-tire e-bike,
-            move your luggage down the valley if you need it, and you
-            explore on your own. Wondering where to go? Our three mapped
+            A valley this rich in water, greenery and hydro power has no
+            business smelling of exhaust. The e-bike puts electricity behind
+            your own legs — and stretches how much of this beautiful valley
+            one day can cover. Wondering where to go? Our three mapped
             routes live on the{" "}
-            <Link href="/second-day">Self-Tour Advice page</Link> — and if you
-            want to ride with a guide, there&apos;s the{" "}
-            <Link href="/guided">guided tour</Link>.
+            <Link href="/second-day">Self-Tour Advice page</Link>.
           </p>
         </div>
         <figure className="page-head-visual">
@@ -100,7 +92,7 @@ export default function RentalPage() {
       {/* PRICING */}
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">Pricing</span>
-        <h2>Simple: one bike, one price.</h2>
+        <h2>So — how much per bike?</h2>
         <div className="pricing">
           <div className="pitem">
             <h4>E-Bike Rental</h4>
@@ -123,65 +115,17 @@ export default function RentalPage() {
               page.
             </p>
           </div>
-          <div className="pitem">
-            <h4>Luggage Shuttle</h4>
-            <div className="amt">
-              ¥1,500<span style={{ fontSize: "0.9rem" }}>&nbsp;base /group</span>
-            </div>
-            <p>
-              Plus ¥1,500 per bag — or included in
-              the <Link href="/shuttle-ebike" style={{ color: "var(--gold)" }}>Shuttle E-Bike Package</Link>.
-            </p>
-          </div>
-        </div>
+</div>
       </section>
 
-      {/* ONE-WAY DROP */}
-      <section className="drop-sec" id="one-way">
-        <div className="drop-inner">
-          <span className="eyebrow">The one-way drop</span>
-          <h2>
-            Ride point-to-point. <em>Never double back.</em>
-          </h2>
-          <p>
-            Most rental bikes chain you to a round trip. Ours don&apos;t: pick
-            up at one point, drop off at another, and let the valley unroll in
-            one direction while we handle the logistics.
-          </p>
-          <div className="drop-steps">
-            <div className="drop-step">
-              <div className="dnum">1</div>
-              <h3>Pick up</h3>
-              <p>
-                Collect your e-bike at Tsumago, Kashiwaya Guesthouse, Nagiso
-                Station, Junikane Station or Nojiri Station — whichever fits
-                your route. We deliver the bike to your start point.
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">2</div>
-              <h3>Ride one way</h3>
-              <p>
-                Follow the route maps down the valley. Add the luggage
-                shuttle and your bags travel separately, meeting you at the
-                far end.
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">3</div>
-              <h3>Drop &amp; go</h3>
-              <p>
-                Leave the bike at any point in the service area and walk straight to
-                your train — or to your bed at Kashiwaya. We collect the bikes.
-              </p>
-            </div>
-          </div>
-          <p className="drop-note">
-            Start and end points don&apos;t need to match. Add the luggage
-            shuttle (¥1,500 base per group + ¥1,500 per bag) when you book
-            and we&apos;ll set the handover up around it.
-          </p>
-        </div>
+      {/* ONE-WAY DROP → Shuttle E-bike package */}
+      <section className="mini-sec" id="one-way" style={{ textAlign: "center" }}>
+        <p style={{ fontWeight: 300, color: "#3a352d", marginBottom: "1.2rem" }}>
+          Want to ride one way, hands-free, and drop the bike at the far end?
+        </p>
+        <Link href="/shuttle-ebike" className="stay-cta">
+          See the Shuttle E-Bike Package <ArrowRight size={15} />
+        </Link>
       </section>
 
       {/* VIDEO */}
@@ -201,43 +145,6 @@ export default function RentalPage() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
-        </div>
-      </section>
-
-      {/* INCLUDED */}
-      <section className="included">
-        <span className="eyebrow">Every rental includes</span>
-        <h2>Show up. We&apos;ve got the rest.</h2>
-        <figure className="inc-photo">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/gear/helmet.jpg"
-            alt="A matte-black cycling helmet on the guesthouse counter, fitted before every ride"
-          />
-          <figcaption>Your helmet — fitted to you at pickup, no extra charge</figcaption>
-        </figure>
-        <div className="inc-grid">
-          <div className="inc-item">
-            <div className="icon">
-              <Bike size={30} />
-            </div>
-            <h3>Helmet, Lock &amp; Lights</h3>
-            <p>Fitted to you before you set off, at no extra charge.</p>
-          </div>
-          <div className="inc-item">
-            <div className="icon">
-              <Compass size={30} />
-            </div>
-            <h3>Route Maps &amp; Local Tips</h3>
-            <p>Turn-by-turn maps for all three routes, on your phone.</p>
-          </div>
-          <div className="inc-item">
-            <div className="icon">
-              <Backpack size={30} />
-            </div>
-            <h3>One-Way Drops</h3>
-            <p>Start and end at different points — no extra charge.</p>
-          </div>
         </div>
       </section>
 
@@ -306,32 +213,6 @@ export default function RentalPage() {
             No — these routes are self-guided only. If you&apos;d like a
             guided experience, see the <Link href="/guided">guided tour
             page</Link>.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>Can I do the routes in reverse, or as a loop?</summary>
-          <p>
-            Yes. The Tsumago and Gorge routes can both be ridden in reverse or
-            as a loop — just let us know your preference when you book and
-            we&apos;ll plan the pick-up points around it.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>How does the luggage shuttle work?</summary>
-          <p>
-            We move your bags anywhere between Tsumago, Nagiso Station,
-            Kashiwaya, Junikane Station and Nojiri Station — a ¥1,500 base
-            fee per group plus ¥1,500 per bag.
-            It&apos;s included (up to 2 bags per person) in
-            the <Link href="/shuttle-ebike">Shuttle E-Bike Package</Link>.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>Where do we start &amp; end?</summary>
-          <p>
-            Anywhere in our service area — Tsumago, Nagiso (Kashiwaya
-            Guesthouse or the station), Junikane, and Nojiri — and your start
-            and end don&apos;t need to be the same.
           </p>
         </details>
       </section>
