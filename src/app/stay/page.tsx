@@ -38,11 +38,6 @@ export default function StayPage() {
               src="/assets/kashiwaya.jpg"
               alt="Kashiwaya Guesthouse — an old two-storey wooden inn with indigo noren curtains, Nagiso"
             />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/breakfast.jpg"
-              alt="Kashiwaya's self-serve breakfast tray with beeswax-wrapped bowls and instructions"
-            />
           </div>
           <div className="stay-body">
             <span className="stay-badge">Open now</span>
@@ -101,6 +96,35 @@ export default function StayPage() {
               WhatsApp and we&apos;ll keep you posted.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* MEALS */}
+      <section className="mini-sec" id="meals">
+        <span className="eyebrow">Meals · on request</span>
+        <h2>Reserve ahead, and meals are on the table too.</h2>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "2rem" }}>
+          Pay on the day. This isn&apos;t restaurant food — it&apos;s the
+          hotpot Japanese families cook for their special days, and a
+          slightly special ochazuke breakfast.
+        </p>
+        <div className="seasons-grid" style={{ maxWidth: "880px" }}>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/meal-tsuyu.jpg"
+              alt="Pouring dipping broth at the table, a family-style hotpot waiting behind"
+            />
+            <figcaption className="season-tag">Special-day hotpot</figcaption>
+          </figure>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/breakfast.jpg"
+              alt="The ochazuke breakfast tray with beeswax-wrapped bowls and instructions"
+            />
+            <figcaption className="season-tag">Ochazuke breakfast</figcaption>
+          </figure>
         </div>
       </section>
 

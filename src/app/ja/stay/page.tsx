@@ -32,8 +32,6 @@ export default function JaStayPage() {
           <div className="stay-photos">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/kashiwaya.jpg" alt="ゲストハウス柏屋の外観(藍色の暖簾のかかる木造二階建)" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/breakfast.jpg" alt="柏屋の朝食セット(蜜蝋ラップのかかった椀と説明カード)" />
           </div>
           <div className="stay-body">
             <span className="stay-badge">営業中</span>
@@ -76,6 +74,33 @@ export default function JaStayPage() {
               詳細とオープン日はこのページで最初に告知します。WhatsAppで一報いただければ、続報をお送りします。
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* お食事オプション */}
+      <section className="mini-sec" id="meals">
+        <span className="eyebrow">お食事オプション</span>
+        <h2>予約&amp;現地決済で、お食事もご用意できます。</h2>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "2rem" }}>
+          レストランでは出てこない、日本の家族が特別な日に食べる鍋料理や、ちょっと特別なお茶漬け朝ごはんをお楽しみください。
+        </p>
+        <div className="seasons-grid" style={{ maxWidth: "880px" }}>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/meal-tsuyu.jpg"
+              alt="食卓でつゆを注ぐ手元。奥には家族の鍋料理"
+            />
+            <figcaption className="season-tag">特別な日の鍋</figcaption>
+          </figure>
+          <figure className="season-cell">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/breakfast.jpg"
+              alt="お茶漬け朝ごはんのセット(蜜蝋ラップのかかった椀と説明カード)"
+            />
+            <figcaption className="season-tag">お茶漬け朝ごはん</figcaption>
+          </figure>
         </div>
       </section>
 
