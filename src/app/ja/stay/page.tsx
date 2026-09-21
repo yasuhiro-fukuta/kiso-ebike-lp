@@ -62,9 +62,9 @@ export default function JaStayPage() {
           </div>
           <div className="stay-body">
             <span className="stay-badge soon">2027年オープン予定</span>
-            <h3>古民家を、一棟まるごと。</h3>
+            <h3>谷を一望する民家を、一棟まるごと。</h3>
             <p>
-              2軒目の古民家を、一日一組の一棟貸しとして改修中です。設計思想は「自転車乗りのための宿」。バイクは土間へ、濡れた装備はストーブの前へ、朝は玄関からそのまま谷の道へ。
+              2軒目の古民家を、一日一組の一棟貸しとして改修中です。設計思想は「スローステイ特化の宿」。歩いたり、走ったり、何もせずのんびり雲を眺めたりしたい方のための宿にします。
             </p>
             <div className="stay-perk">
               <strong>連泊特典:</strong>

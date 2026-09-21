@@ -79,12 +79,13 @@ export default function StayPage() {
           </div>
           <div className="stay-body">
             <span className="stay-badge soon">Coming 2027</span>
-            <h3>A whole old house, to yourselves</h3>
+            <h3>A whole house overlooking the valley, to yourselves</h3>
             <p>
               We&apos;re restoring a second kominka — a traditional wooden
-              house — as a private, one-group-per-night stay. Built for
-              riders: park the bikes inside, dry your gear by the stove, roll
-              out the door onto the valley roads.
+              house — as a private, one-group-per-night stay. The design
+              brief is &ldquo;slow stays only&rdquo;: a place for people who
+              want to walk, ride, or do absolutely nothing but watch the
+              clouds drift over the valley.
             </p>
             <div className="stay-perk">
               <strong>The multi-night deal:</strong> stay consecutive nights
