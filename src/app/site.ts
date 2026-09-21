@@ -90,6 +90,40 @@ export const LUGGAGE_WHATSAPP_URL_JA = wa(
 クマよけグッズ:〇個/不要`
 );
 
+/** Luggage shuttle — after-payment details message (sent once paid). */
+export const LUGGAGE_SEND_WHATSAPP_URL = wa(
+  `①name is
+②number is
+③depart from (choose one)
+nagiso station izumiya cafe
+guesthouse Kashiwaya Inn
+guesthouse Waku nagiso
+nojiri station cafe katana
+nojiri station cafe donguri
+④arrive at (choose one)
+nagiso station izumiya cafe
+guesthouse Kashiwaya Inn
+guesthouse Waku nagiso
+nojiri station cafe katana
+nojiri station cafe donguri`
+);
+export const LUGGAGE_SEND_WHATSAPP_URL_JA = wa(
+  `①氏名:
+②個数:
+③発送場所(1つ選択)
+南木曽駅前 イズミヤカフェ
+ゲストハウス柏屋
+ゲストハウスWAKU
+野尻駅前 カフェ刀
+野尻駅前 カフェどんぐり
+④受取場所(1つ選択)
+南木曽駅前 イズミヤカフェ
+ゲストハウス柏屋
+ゲストハウスWAKU
+野尻駅前 カフェ刀
+野尻駅前 カフェどんぐり`
+);
+
 /** Gear rental */
 export const GEAR_WHATSAPP_URL = wa(
   `Hello! I'm interested in renting gear as follows.

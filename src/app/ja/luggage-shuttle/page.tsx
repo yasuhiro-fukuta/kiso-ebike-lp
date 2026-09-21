@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import {
   LUGGAGE_WHATSAPP_URL_JA,
+  LUGGAGE_SEND_WHATSAPP_URL_JA,
   SQUARE_PAY_URL,
   MYMAP_EMBED_URL,
 } from "../../site";
@@ -47,6 +48,22 @@ function PayBlock() {
           />
           <figcaption>スキャンでも支払えます</figcaption>
         </figure>
+      </div>
+      <div className="pay-notify">
+        <p>
+          <strong>
+            支払いしたらWhatsAppで、①氏名 ②個数 ③発送場所 ④受取場所
+            を送ってください。
+          </strong>
+        </p>
+        <a
+          href={LUGGAGE_SEND_WHATSAPP_URL_JA}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="stay-cta"
+        >
+          <MessageCircle size={16} /> WhatsAppで送る
+        </a>
       </div>
       <p className="pay-note">
         金額はSquareのページで入力してください。店頭での現金払いもOK。

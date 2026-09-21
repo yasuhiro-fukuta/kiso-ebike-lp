@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import {
   LUGGAGE_WHATSAPP_URL,
+  LUGGAGE_SEND_WHATSAPP_URL,
   SQUARE_PAY_URL,
   MYMAP_EMBED_URL,
 } from "../site";
@@ -47,6 +48,22 @@ function PayBlock() {
           />
           <figcaption>or scan to pay</figcaption>
         </figure>
+      </div>
+      <div className="pay-notify">
+        <p>
+          <strong>
+            Once you&apos;ve paid, send us on WhatsApp: ① your name ② number
+            of bags ③ where the bags start ④ where to deliver them.
+          </strong>
+        </p>
+        <a
+          href={LUGGAGE_SEND_WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="stay-cta"
+        >
+          <MessageCircle size={16} /> Send the details on WhatsApp
+        </a>
       </div>
       <p className="pay-note">
         Enter the amount on the Square page — cash at the counter is welcome
