@@ -272,6 +272,13 @@ body::before {
 .tours-head p { margin-top: 1rem; font-weight: 300; max-width: 52ch; color: #3a352d; }
 .tour-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 @media (max-width: 880px) { .tour-grid { grid-template-columns: 1fr; max-width: 480px; } }
+/* group headings between route grids (one-way / loops) */
+.tour-group-title {
+  font-family: var(--serif); font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+  max-width: 1100px; margin: 3rem auto 1.3rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid rgba(28, 26, 22, 0.15);
+}
+.tour-grid + .tour-group-title { margin-top: 3.5rem; }
 .tour-card {
   background: var(--paper); border-radius: 6px; overflow: hidden;
   box-shadow: 0 10px 30px var(--shadow);

@@ -18,11 +18,10 @@ export default function JaSecondDayPage() {
       <header className="page-head">
         <span className="eyebrow">セルフツアーのすすめ · 南木曽・木曽谷</span>
         <h1>
-          なぜ、2泊目?<em>——1日目では、まだ入口だから。</em>
+          中山道は、<em>木曽谷の魅力の「入口」です。</em>
         </h1>
         <p>
-          中山道は0泊か1泊で「素通り」されがちです。馬籠から妻籠を歩いて、一晩寝て、翌朝には京都へ。でもこの谷の魅力は、一本の街道だけではありません。そこで提案です——<b>1日目は歩く、2日目は走る</b>。旧道はみんなと同じように歩いて、翌日は9時に発つ代わりに、E-bikeで川を下り、渓谷に入り、観光バスの来ない宿場を巡ってください。ここに載せたのは、私たちが自分の友人に教えている3つのセルフガイドコース。どれもスマホでナビできる地図つきです。選んだら、
-          <Link href="/ja/rental">E-bikeを借りて</Link>出発を。
+          中山道は0泊か1泊で「素通り」されがちです。馬籠から妻籠を歩いて、一晩寝て、翌朝には京都へ。でもこの谷の魅力は、一本の街道だけではありません。私を含め、都会からここまで観光に来て、果ては移住までしてしまった人の多くが、この地を知ったきっかけは「川」と「サイクリング」でした。そこで提案です——<b>1日目は歩く、2日目は走る</b>。旧道はみんなと同じように歩いて、翌日は9時に発つ代わりに、E-bikeで川を下り、渓谷に入り、観光バスの来ない宿場を巡ってください。
         </p>
       </header>
 
@@ -30,32 +29,28 @@ export default function JaSecondDayPage() {
       <section className="tours" id="routes">
         <div className="tours-head">
           <span className="eyebrow">コースを選ぶ</span>
-          <h2>3コース。どれも観光ルートから少し外れています。</h2>
+          <h2>4コース。どれも観光ルートから少し外れています。</h2>
           <p>
             いずれも半日(10:00–16:00)。受け渡し地点間の道順は、スマホのルートマップでターンバイターン表示できます。
           </p>
         </div>
+
+        <h3 className="tour-group-title">南木曽 〜 野尻 片道</h3>
         <div className="tour-grid">
           <div className="tour-card">
             <div className="top">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/tsumago.jpg" alt="夕暮れの妻籠宿の街道" />
+              <div className="img-wanted" style={{ minHeight: 0, height: "100%", borderRadius: 0, border: 0 }}>
+                <span className="iw-tag">写真は近日掲載</span>
+              </div>
               <span className="lvl">やさしい</span>
-              <span className="season">春・秋</span>
+              <span className="season">オールシーズン</span>
             </div>
             <div className="body">
-              <h3>もういちど、妻籠</h3>
-              <div className="route">春・秋がベスト · やさしい</div>
+              <h3>鉄道Lovers</h3>
+              <div className="route">オールシーズン · やさしい</div>
               <p>
-                かつての森林鉄道跡は、いまは地元の人しか知らない静かな舗装路。そのまま妻籠宿へつながります。前日の夜、着くのが遅くて宿場を歩き足りなかった人にぴったり。
+                1761年頃に新中山道・与川道ができる前の、さらに昔の旧中山道です。現在は舗装されていますが、交通量が少なく快適。日本の鉄道オタクの隠れた冬の名所にもなっているコースで、線路と並走しながら、運が良ければ特急しなののベストショットを。
               </p>
-              <div className="price">
-                <small>3コースで一番やさしい · 初めての1本に</small>
-                <span className="price-note">セルフガイド — E-bike 1台¥4,000</span>
-              </div>
-              <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
-                このコースで予約 <ArrowRight size={15} />
-              </a>
             </div>
           </div>
 
@@ -74,13 +69,6 @@ export default function JaSecondDayPage() {
                 <Link href="/ja/gear">ギアレンタル</Link>
                 でラッシュガードを借りて、渓谷に飛び込んで涼んでください。道の終点には温泉。冬はそちらに飛び込んで。
               </p>
-              <div className="price">
-                <small>夏は川遊び · 冬は温泉</small>
-                <span className="price-note">セルフガイド — E-bike 1台¥4,000</span>
-              </div>
-              <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
-                このコースで予約 <ArrowRight size={15} />
-              </a>
             </div>
           </div>
 
@@ -97,13 +85,25 @@ export default function JaSecondDayPage() {
               <p>
                 中山道全体でもっとも美しい区間と言われる与川道。途中に店はなく、馬籠峠より少し長くて登りも多い、自信のある人向けのコースです。旧道に沿う細い舗装路を走ります。脚に覚えのある方はぜひ。
               </p>
-              <div className="price">
-                <small>急で長い · 自信のある人向け</small>
-                <span className="price-note">セルフガイド — E-bike 1台¥4,000</span>
-              </div>
-              <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer" className="card-book">
-                このコースで予約 <ArrowRight size={15} />
-              </a>
+            </div>
+          </div>
+        </div>
+
+        <h3 className="tour-group-title">南木曽周辺 周回</h3>
+        <div className="tour-grid">
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/tsumago.jpg" alt="夕暮れの妻籠宿の街道" />
+              <span className="lvl">やさしい</span>
+              <span className="season">春・秋</span>
+            </div>
+            <div className="body">
+              <h3>もういちど、妻籠</h3>
+              <div className="route">春・秋がベスト · やさしい</div>
+              <p>
+                かつての森林鉄道跡は、いまは地元の人しか知らない静かな舗装路。そのまま妻籠宿へつながります。前日の夜、着くのが遅くて宿場を歩き足りなかった人にぴったり。
+              </p>
             </div>
           </div>
         </div>

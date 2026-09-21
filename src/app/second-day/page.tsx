@@ -18,18 +18,18 @@ export default function SecondDayPage() {
       <header className="page-head">
         <span className="eyebrow">Self-tour advice · Nagiso, Kiso Valley</span>
         <h1>
-          Why stay a second day? <em>Because day one only scratches it.</em>
+          The Nakasendo is <em>the doorway — not the valley.</em>
         </h1>
         <p>
-          Most travelers give the Nakasendo a single night: walk Magome to
-          Tsumago, sleep, and roll on to Kyoto. But this valley holds far
-          more than one trail. So here&apos;s our proposal — <b>day one on
-          foot, day two on wheels</b>. Walk the old road as everyone does;
-          then, instead of leaving at nine, spend the next day riding down
-          the river, into the gorges, past the post towns the tour buses
-          never reach. These are the three self-guided rides we hand our own
-          friends — each mapped turn-by-turn for your phone. Pick one, then{" "}
-          <Link href="/rental">grab an e-bike</Link> and go.
+          Most travelers pass straight through: walk Magome to Tsumago,
+          sleep once, roll on to Kyoto. But this valley holds far more than
+          one trail. Ask the people who first came here as tourists and
+          ended up moving here for good — me included — and most will name
+          the same two things that hooked them: <b>the river, and
+          cycling</b>. So here&apos;s our proposal — day one on foot, day
+          two on wheels. Walk the old road as everyone does; then, instead
+          of leaving at nine, ride down the river, into the gorges, past
+          the post towns the tour buses never reach.
         </p>
       </header>
 
@@ -37,36 +37,34 @@ export default function SecondDayPage() {
       <section className="tours" id="routes">
         <div className="tours-head">
           <span className="eyebrow">Choose your day</span>
-          <h2>Three routes. All a little off the beaten track.</h2>
+          <h2>Four routes. All a little off the beaten track.</h2>
           <p>
             Every ride is a half day, 10:00–16:00. Open the route map on your
             phone for turn-by-turn directions between our pick-up points.
           </p>
         </div>
+
+        <h3 className="tour-group-title">One way · Nagiso → Nojiri</h3>
         <div className="tour-grid">
           <div className="tour-card">
             <div className="top">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/tsumago.jpg" alt="Tsumago post town street at dusk" />
+              <div className="img-wanted" style={{ minHeight: 0, height: "100%", borderRadius: 0, border: 0 }}>
+                <span className="iw-tag">Photo coming soon</span>
+              </div>
               <span className="lvl">Easy</span>
-              <span className="season">Spring &amp; Autumn</span>
+              <span className="season">All seasons</span>
             </div>
             <div className="body">
-              <h3>Tsumago, Revisited</h3>
-              <div className="route">Best in Spring &amp; Autumn · Easy</div>
+              <h3>Train Lovers</h3>
+              <div className="route">All seasons · Easy</div>
               <p>
-                What used to be a forest-railway line is now a quiet paved road
-                only locals know — running straight into Tsumago. Perfect for
-                anyone who arrived at the post town too late the night before
-                to explore it properly.
+                The truly old Nakasendo — the road that predates even the
+                Yogawa bypass of around 1761. Paved now, but nearly
+                traffic-free and comfortable. It&apos;s also a hidden winter
+                favorite of Japan&apos;s railway fans: you ride alongside
+                the JR line, and with luck you&apos;ll catch the best shot
+                of the Shinano limited express.
               </p>
-              <div className="price">
-                <small>Easiest of the three · great for a first ride</small>
-                <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
-              </div>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
-                Book this ride <ArrowRight size={15} />
-              </a>
             </div>
           </div>
 
@@ -88,13 +86,6 @@ export default function SecondDayPage() {
                 to cool off. There&apos;s an onsen at the end of the road — in
                 winter, dive into that instead.
               </p>
-              <div className="price">
-                <small>River swims in summer · onsen in winter</small>
-                <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
-              </div>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
-                Book this ride <ArrowRight size={15} />
-              </a>
             </div>
           </div>
 
@@ -115,13 +106,28 @@ export default function SecondDayPage() {
                 ride the narrow paved road that runs alongside this old
                 route. For those with the legs for it.
               </p>
-              <div className="price">
-                <small>Steep &amp; long · for confident riders only</small>
-                <span className="price-note">Self-guided — e-bike ¥4,000 per bike</span>
-              </div>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="card-book">
-                Book this ride <ArrowRight size={15} />
-              </a>
+            </div>
+          </div>
+        </div>
+
+        <h3 className="tour-group-title">Loops around Nagiso</h3>
+        <div className="tour-grid">
+          <div className="tour-card">
+            <div className="top">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/tsumago.jpg" alt="Tsumago post town street at dusk" />
+              <span className="lvl">Easy</span>
+              <span className="season">Spring &amp; Autumn</span>
+            </div>
+            <div className="body">
+              <h3>Tsumago, Revisited</h3>
+              <div className="route">Best in Spring &amp; Autumn · Easy</div>
+              <p>
+                What used to be a forest-railway line is now a quiet paved road
+                only locals know — running straight into Tsumago. Perfect for
+                anyone who arrived at the post town too late the night before
+                to explore it properly.
+              </p>
             </div>
           </div>
         </div>
