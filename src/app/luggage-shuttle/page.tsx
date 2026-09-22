@@ -16,6 +16,7 @@ import {
   LUGGAGE_SEND_WHATSAPP_URL,
   SQUARE_PAY_URL,
   MYMAP_EMBED_URL,
+  MYMAP_VIEW_URL,
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
@@ -24,8 +25,6 @@ const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
 const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
 const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
-const MYMAP_VIEW =
-  "https://www.google.com/maps/d/viewer?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0";
 
 /** Payment button + QR — shown top and bottom of the page. */
 function PayBlock() {
@@ -308,7 +307,7 @@ export default function LuggageShuttlePage() {
           />
         </div>
         <a
-          href={MYMAP_VIEW}
+          href={MYMAP_VIEW_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="stay-cta"

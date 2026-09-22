@@ -10,9 +10,10 @@ export const PHONE = "090-3839-2354";
 export const PHONE_TEL = "tel:+819038392354";
 export const FEEDBACK_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScWvvhR9DBXR7d-eloSXw_dCQkIAbd32st1o5jQbc6nZxplVQ/viewform?usp=header";
-// Google My Maps — embed + viewer
+// Google My Maps — embed + share link ("open in Google Maps" buttons)
 export const MYMAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0&ehbc=2E312F";
+export const MYMAP_VIEW_URL = "https://goo.gl/maps/bdM3ga2QXExoZENo6?g_st=ac";
 /** === WhatsApp links ==========================================
  *  Every booking goes through WhatsApp — pay on the day, card or cash.
  *  Each page opens the chat with its own prefilled template; pages
