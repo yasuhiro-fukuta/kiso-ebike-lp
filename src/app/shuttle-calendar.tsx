@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
  *  ============================================================ */
 const CLOSED_DAYS = new Set<string>([
   "2026-09-18",
+  "2026-09-23",
 ]);
 
 const DOW: Record<"en" | "ja", string[]> = {
