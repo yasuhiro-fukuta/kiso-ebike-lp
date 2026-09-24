@@ -15,7 +15,7 @@ const GEAR_ITEMS: {
   {
     name: "Hinoki hat",
     nameJa: "ヒノキ傘",
-    desc: "The traditional wide travel hat of the Kiso road, woven from local hinoki cypress. Real shade, real history — and the best photo prop on the Nakasendo.",
+    desc: "Hands-free cover from sun, rain and snow — a quiet marvel in summer and winter alike. Handmade by a local craftsman, woven from local hinoki cypress.",
     price: "¥500",
     photos: [
       {

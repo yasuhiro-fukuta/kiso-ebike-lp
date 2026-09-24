@@ -9,17 +9,15 @@ import {
   PackageCheck,
   Instagram,
   MapPin,
-  ExternalLink,
+  ArrowRight,
 } from "lucide-react";
 import {
   LUGGAGE_WHATSAPP_URL,
   LUGGAGE_SEND_WHATSAPP_URL,
   SPRAY_SEND_WHATSAPP_URL,
   SQUARE_PAY_URL,
-  MYMAP_EMBED_URL,
-  MYMAP_VIEW_URL,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
 
 const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
@@ -102,6 +100,8 @@ export default function LuggageShuttlePage() {
       {/* PAGE HEAD — title, catch copy, photo */}
       <header className="page-head page-head-grid">
         <div>
+          <span className="head-badge">Same-day OK — no reservation</span>
+          <br />
           <span className="eyebrow">Shuttle Baggage Service · Nagiso — Nojiri</span>
           <h1>
             Yes Road, <em>No load.</em>
@@ -111,6 +111,12 @@ export default function LuggageShuttlePage() {
             the morning, walk the Nakasendo&apos;s Yogawa-michi or swim the
             gorges hands-free, and they&apos;ll be waiting at the other end
             of the valley by early afternoon.
+          </p>
+          <p className="head-note">
+            Gear rentals such as bear spray also need no reservation when
+            you rent at Izumiya Cafe (Nagiso Station) and return at Coffee
+            Katana (Nojiri Station) — see the{" "}
+            <Link href="/gear">gear rental page</Link>.
           </p>
         </div>
         <figure className="page-head-visual">
@@ -308,31 +314,10 @@ export default function LuggageShuttlePage() {
       {/* WHERE YOU'LL GO */}
       <section className="mini-sec" id="routes">
         <span className="eyebrow">Where you&apos;ll go hands-free</span>
-        <h2>One quiet old road, two emerald gorges.</h2>
-        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "2rem" }}>
-          The <strong>Yogawa-michi</strong> is the Nakasendo&apos;s forgotten
-          detour between Nagiso and Nojiri — all quiet forest and old stone.
-          The <strong>Kakizore and Atera gorges</strong> are where the valley
-          keeps its emerald water. All three are on the map below, and the{" "}
-          <Link href="/second-day">Self-Tour Advice page</Link> has the full
-          route notes.
-        </p>
-        <div className="map-embed">
-          <iframe
-            src={MYMAP_EMBED_URL}
-            title="Yogawa-michi, Kakizore and Atera on the route map"
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
-        </div>
-        <a
-          href={MYMAP_VIEW_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="stay-cta"
-        >
-          Open the map in Google Maps <ExternalLink size={15} />
-        </a>
+        <h2>Wondering where the day should take you?</h2>
+        <Link href="/second-day" className="stay-cta">
+          Read our Self-Tour Advice <ArrowRight size={15} />
+        </Link>
       </section>
 
       {/* PAY — final appearance */}
@@ -341,9 +326,6 @@ export default function LuggageShuttlePage() {
         <h2>Bags packed? See you at the counter.</h2>
       </section>
       <PayBlock />
-
-      {/* ALL-IN-ONE PACK */}
-      <AllInOnePack />
 
       <SiteFooter />
     </div>

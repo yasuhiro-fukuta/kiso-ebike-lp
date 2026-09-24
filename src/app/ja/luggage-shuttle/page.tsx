@@ -9,17 +9,15 @@ import {
   PackageCheck,
   Instagram,
   MapPin,
-  ExternalLink,
+  ArrowRight,
 } from "lucide-react";
 import {
   LUGGAGE_WHATSAPP_URL_JA,
   LUGGAGE_SEND_WHATSAPP_URL_JA,
   SPRAY_SEND_WHATSAPP_URL_JA,
   SQUARE_PAY_URL,
-  MYMAP_EMBED_URL,
-  MYMAP_VIEW_URL,
 } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
 
 const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
@@ -98,12 +96,18 @@ export default function JaLuggageShuttlePage() {
       {/* PAGE HEAD——タイトル・キャッチコピー・写真 */}
       <header className="page-head page-head-grid">
         <div>
+          <span className="head-badge">当日OK・予約不要</span>
+          <br />
           <span className="eyebrow">手荷物シャトル · NAGISO — NOJIRI</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
           <p>
             荷物は駅から駅へ、私たちが運びます。朝、駅前のカフェに預けたら、中山道・与川道も渓谷も手ぶらで。昼過ぎには谷の向こうで荷物が待っています。
+          </p>
+          <p className="head-note">
+            熊スプレーなどのギアレンタルも、南木曽駅前イズミヤで借りて野尻駅前・珈琲刀で返す場合は予約不要です。詳しくは
+            <Link href="/ja/gear">ギアレンタルのページ</Link>へ。
           </p>
         </div>
         <figure className="page-head-visual">
@@ -276,30 +280,10 @@ export default function JaLuggageShuttlePage() {
       {/* 手ぶらで行く先 */}
       <section className="mini-sec" id="routes">
         <span className="eyebrow">手ぶらで行く先</span>
-        <h2>静かな旧道ひとつ、エメラルドの渓谷ふたつ。</h2>
-        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "2rem" }}>
-          <strong>与川道</strong>
-          は南木曽と野尻をつなぐ中山道の忘れられた迂回路。森と石畳の静かな道です。
-          <strong>柿其渓谷・阿寺渓谷</strong>
-          は、この谷がエメラルドの水を隠している場所。3つとも下の地図に載せてあります。コースの詳しい解説は
-          <Link href="/ja/second-day">セルフツアーのすすめ</Link>へ。
-        </p>
-        <div className="map-embed">
-          <iframe
-            src={MYMAP_EMBED_URL}
-            title="与川道・柿其・阿寺のルートマップ"
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
-        </div>
-        <a
-          href={MYMAP_VIEW_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="stay-cta"
-        >
-          Googleマップで地図を開く <ExternalLink size={15} />
-        </a>
+        <h2>どこへ行こうか迷ったら。</h2>
+        <Link href="/ja/second-day" className="stay-cta">
+          セルフツアーのすすめを見る <ArrowRight size={15} />
+        </Link>
       </section>
 
       {/* 決済——2回目 */}
@@ -308,9 +292,6 @@ export default function JaLuggageShuttlePage() {
         <h2>荷物をまとめたら、駅前のカフェで。</h2>
       </section>
       <PayBlock />
-
-      {/* ALL-IN-ONE PACK */}
-      <AllInOnePack lang="ja" />
 
       <SiteFooter lang="ja" />
     </div>
