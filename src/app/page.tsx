@@ -128,6 +128,20 @@ export default function Page() {
         <div className="intro-visual"></div>
       </section>
 
+      {/* 3-NIGHT MODEL PLAN */}
+      <section className="mini-sec" id="plan">
+        <span className="eyebrow">Planning your trip?</span>
+        <h2>How many nights is this valley worth? Three.</h2>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "1.6rem" }}>
+          On foot to Tsumago, by e-bike to the Atera Gorge, by train to
+          Narai-juku — one bed at Kashiwaya the whole time. We wrote the
+          itinerary so you don&apos;t have to.
+        </p>
+        <Link href="/plan" className="stay-cta">
+          See the 3-night model plan <ArrowRight size={15} />
+        </Link>
+      </section>
+
       {/* SERVICE DIRECTORY */}
       <section className="mini-sec" id="services">
         <span className="eyebrow">What we do</span>

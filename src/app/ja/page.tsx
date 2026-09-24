@@ -116,6 +116,18 @@ export default function JaHomePage() {
         <div className="intro-visual"></div>
       </section>
 
+      {/* 3泊モデルプラン */}
+      <section className="mini-sec" id="plan">
+        <span className="eyebrow">旅の計画中なら</span>
+        <h2>この谷、何泊の価値がある?——答えは3泊。</h2>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "1.6rem" }}>
+          歩いて妻籠へ、E-bikeで阿寺渓谷へ、電車で奈良井宿へ——ベッドは3晩とも柏屋。旅程はこちらで書いておきました。
+        </p>
+        <Link href="/ja/plan" className="stay-cta">
+          3泊モデルプランを見る <ArrowRight size={15} />
+        </Link>
+      </section>
+
       {/* SERVICE DIRECTORY */}
       <section className="mini-sec" id="services">
         <span className="eyebrow">できること</span>

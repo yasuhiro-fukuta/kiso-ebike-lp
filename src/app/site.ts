@@ -213,6 +213,33 @@ export const SHODO_WHATSAPP_URL_JA = wa(
 人数:〇名`
 );
 
+/** Meals at Kashiwaya — order form (menu & details live in the form). */
+export const MEALS_FORM_URL = "https://forms.gle/Gp6WX87KxWprPLYA7";
+
+/** 3-night model plan — one message that covers the whole stay. */
+export const PLAN_WHATSAPP_URL = wa(
+  `Hello! I'm planning a Nagiso stay as follows.
+Dates: __/__/____ - __/__/____ (__ nights)
+People: __
+Stay: Kashiwaya (I'll book rooms on kashiwaya-inn.com) / other
+Meals at Kashiwaya: dinner x__ / breakfast x__ / not needed
+E-bike rental: __ bikes on __/__/____
+Luggage shuttle: __ bags / not needed
+Gear: hinoki hat / bear spray / rashguard / life jacket / not needed
+Guided tour: Kiso River Downhill / early morning ride / not needed`
+);
+export const PLAN_WHATSAPP_URL_JA = wa(
+  `こんにちは。下記内容で南木曽滞在を計画しています。
+日程:〇月〇日〜〇月〇日(〇泊)
+人数:〇名
+宿泊:柏屋(部屋はkashiwaya-inn.comで予約します)/その他
+柏屋での食事:夕食〇回/朝食〇回/不要
+E-bikeレンタル:〇月〇日に〇台
+手荷物シャトル:〇個/不要
+ギアレンタル:檜傘/熊スプレー/ラッシュガード/ライフジャケット/不要
+ガイドツアー:木曽川ダウンヒル/早朝ライド/不要`
+);
+
 /** Square online payment link for the luggage shuttle. */
 export const SQUARE_PAY_URL = "https://square.link/u/mKDF9YoV";
 

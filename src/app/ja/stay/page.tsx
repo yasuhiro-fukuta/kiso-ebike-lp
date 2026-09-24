@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
-import { KASHIWAYA_URL, WHATSAPP_URL_JA } from "../../site";
+import { KASHIWAYA_URL, MEALS_FORM_URL, WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export default function JaStayPage() {
@@ -40,7 +40,11 @@ export default function JaStayPage() {
               南木曽の木造の古い宿。E-bikeを手渡すのと同じ人間が宿も守っているので、荷物も自転車も寝床も、会話ひとつで片づきます。川まで歩いてすぐ。朝起きたら、そのまま2日目のコースへ。
             </p>
             <p>
-              客室と料金は柏屋のサイトへ。日程を確かめたら、ここに戻って旅程を組んでください。
+              客室と料金は柏屋のサイトへ。日程を確かめたら、ここに戻って旅程を組んでください。連泊は夏と冬が取りやすい時期です。旅程の組み方は
+              <Link href="/ja/plan" style={{ color: "inherit" }}>
+                3泊モデルプラン
+              </Link>
+              へ。
             </p>
             <a
               href={KASHIWAYA_URL}
@@ -82,7 +86,7 @@ export default function JaStayPage() {
         <span className="eyebrow">お食事オプション</span>
         <h2>予約&amp;現地決済で、お食事もご用意できます。</h2>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "2rem" }}>
-          レストランでは出てこない、日本の家族が特別な日に食べる鍋料理や、ちょっと特別なお茶漬け朝ごはんをお楽しみください。
+          レストランでは出てこない、日本の家族が特別な日に食べる鍋料理や、ちょっと特別なお茶漬け朝ごはんをお楽しみください。ご予約は下の注文フォームから(メニューなどの詳細もフォームに)。お支払いは当日です。
         </p>
         <div className="seasons-grid" style={{ maxWidth: "880px" }}>
           <figure className="season-cell">
@@ -101,6 +105,16 @@ export default function JaStayPage() {
             />
             <figcaption className="season-tag">お茶漬け朝ごはん</figcaption>
           </figure>
+        </div>
+        <div className="pay-row" style={{ marginTop: "2rem" }}>
+          <a
+            href={MEALS_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            食事を予約する——注文フォーム <ExternalLink size={15} />
+          </a>
         </div>
       </section>
 

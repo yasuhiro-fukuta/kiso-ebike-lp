@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
-import { KASHIWAYA_URL, WHATSAPP_URL } from "../site";
+import { KASHIWAYA_URL, MEALS_FORM_URL, WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function StayPage() {
@@ -50,7 +50,13 @@ export default function StayPage() {
             </p>
             <p>
               Rooms and rates live on Kashiwaya&apos;s own site — check dates
-              there, then come back and plan the days around it.
+              there, then come back and plan the days around it. Summer and
+              winter are usually the easiest seasons to find consecutive
+              nights, and the{" "}
+              <Link href="/plan" style={{ color: "inherit" }}>
+                3-night model plan
+              </Link>{" "}
+              shows how to line the rest up in one message.
             </p>
             <a
               href={KASHIWAYA_URL}
@@ -107,7 +113,8 @@ export default function StayPage() {
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "2rem" }}>
           Pay on the day. This isn&apos;t restaurant food — it&apos;s the
           hotpot Japanese families cook for their special days, and a
-          slightly special ochazuke breakfast.
+          slightly special ochazuke breakfast. Reserve ahead through the
+          order form below; the menu and details are all in the form.
         </p>
         <div className="seasons-grid" style={{ maxWidth: "880px" }}>
           <figure className="season-cell">
@@ -126,6 +133,16 @@ export default function StayPage() {
             />
             <figcaption className="season-tag">Ochazuke breakfast</figcaption>
           </figure>
+        </div>
+        <div className="pay-row" style={{ marginTop: "2rem" }}>
+          <a
+            href={MEALS_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            Reserve meals — order form <ExternalLink size={15} />
+          </a>
         </div>
       </section>
 
