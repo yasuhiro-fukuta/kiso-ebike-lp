@@ -69,41 +69,6 @@ export default function StayPage() {
           </div>
         </div>
 
-        {/* SECOND HOUSE — COMING */}
-        <div className="stay-card">
-          <div className="stay-photos">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/kitahara.jpg"
-              alt="The old house in Kitahara we are restoring into a one-group stay, at dusk"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/kitahara2.jpg"
-              alt="The entrance of the Kitahara house, looking out over the valley and the village below"
-            />
-          </div>
-          <div className="stay-body">
-            <span className="stay-badge soon">Coming 2027</span>
-            <h3>A whole house overlooking the valley, to yourselves</h3>
-            <p>
-              We&apos;re restoring a second kominka — a traditional wooden
-              house — as a private, one-group-per-night stay. The design
-              brief is &ldquo;slow stays only&rdquo;: a place for people who
-              want to walk, ride, or do absolutely nothing but watch the
-              clouds drift over the valley.
-            </p>
-            <div className="stay-perk">
-              <strong>The multi-night deal:</strong> stay consecutive nights
-              and the e-bikes are free for the daytime from your second night
-              onward. The longer you stay, the more valley you get.
-            </div>
-            <p>
-              Details and opening dates will appear here first — or ask us on
-              WhatsApp and we&apos;ll keep you posted.
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* MEALS */}
@@ -170,6 +135,28 @@ export default function StayPage() {
             </Link>
           </p>
         </div>
+      </section>
+
+      {/* SECOND HOUSE — COMING 2027 */}
+      <section className="mini-sec" id="house2027">
+        <span className="stay-badge soon">Coming 2027</span>
+        <h2>A whole house overlooking the valley, to yourselves.</h2>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1rem" }}>
+          We&apos;re restoring a second kominka — a traditional wooden house
+          — as a private, one-group-per-night stay. The design brief is
+          &ldquo;slow stays only&rdquo;: a place for people who want to
+          walk, ride, or do absolutely nothing but watch the clouds drift
+          over the valley.
+        </p>
+        <div className="stay-perk" style={{ maxWidth: "56ch" }}>
+          <strong>The multi-night deal:</strong> stay consecutive nights and
+          the e-bikes are free for the daytime from your second night
+          onward. The longer you stay, the more valley you get.
+        </div>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch" }}>
+          Details and opening dates will appear here first — or ask us on
+          WhatsApp and we&apos;ll keep you posted.
+        </p>
       </section>
 
       <SiteFooter />

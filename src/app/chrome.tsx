@@ -39,7 +39,6 @@ const MENU_ITEMS: Record<
     { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
     { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
     { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
-    { href: "/plan", label: "3-Night Model Plan", sub: "Nagiso as your base camp" },
     { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
     { href: "/guided", label: "Guided Tours by Locals", sub: "Dawn rides & the Kiso River Downhill" },
   ],
@@ -49,12 +48,16 @@ const MENU_ITEMS: Record<
     { href: "/ja/luggage-shuttle", label: "手荷物シャトル", sub: "身軽に歩く・走る" },
     { href: "/ja/gear", label: "ギアレンタル", sub: "ヒノキ傘・熊対策ほか" },
     { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
-    { href: "/ja/plan", label: "3泊モデルプラン", sub: "南木曽をベースキャンプに" },
     { href: "/ja/second-day", label: "セルフツアーのすすめ", sub: "南木曽での2日目" },
     { href: "/ja/guided", label: "住民本気のガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
   ],
 };
 
+const PLAN_HREF: Record<Lang, string> = { en: "/plan", ja: "/ja/plan" };
+const PLAN_LABEL: Record<Lang, string> = {
+  en: "3-Night Model Plan",
+  ja: "3泊モデルプラン",
+};
 const SHODO_HREF: Record<Lang, string> = { en: "/shodo", ja: "/ja/shodo" };
 const SHODO_LABEL: Record<Lang, string> = {
   en: "Shodo Calligraphy",
@@ -135,6 +138,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
             ))}
           </nav>
           <div className="nav-overlay-foot">
+            <Link href={PLAN_HREF[lang]} onClick={() => setOpen(false)}>
+              {PLAN_LABEL[lang]}
+            </Link>
             <Link href={SHODO_HREF[lang]} onClick={() => setOpen(false)}>
               {SHODO_LABEL[lang]}
             </Link>
@@ -268,6 +274,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
               <br />
             </span>
           ))}
+          <Link href={PLAN_HREF[lang]}>{PLAN_LABEL[lang]}</Link>
+          <br />
           <Link href={SHODO_HREF[lang]}>{SHODO_LABEL[lang]}</Link>
           <br />
           <Link href={LIVE_HREF[lang]}>{LIVE_LABEL[lang]}</Link>

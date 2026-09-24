@@ -57,28 +57,6 @@ export default function JaStayPage() {
           </div>
         </div>
 
-        <div className="stay-card">
-          <div className="stay-photos">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/kitahara.jpg" alt="改修予定の北原の古民家(夕暮れのパノラマ)" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/kitahara2.jpg" alt="北原の古民家の玄関先——谷と集落を見下ろす眺め" />
-          </div>
-          <div className="stay-body">
-            <span className="stay-badge soon">2027年オープン予定</span>
-            <h3>谷を一望する民家を、一棟まるごと。</h3>
-            <p>
-              2軒目の古民家を、一日一組の一棟貸しとして改修中です。設計思想は「スローステイ特化の宿」。歩いたり、走ったり、何もせずのんびり雲を眺めたりしたい方のための宿にします。
-            </p>
-            <div className="stay-perk">
-              <strong>連泊特典:</strong>
-              連泊のお客様は、2泊目以降の日中のE-bike利用が無料。長く居るほど、谷は近くなる。
-            </div>
-            <p>
-              詳細とオープン日はこのページで最初に告知します。WhatsAppで一報いただければ、続報をお送りします。
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* お食事オプション */}
@@ -138,6 +116,22 @@ export default function JaStayPage() {
             </Link>
           </p>
         </div>
+      </section>
+
+      {/* 2027年の一棟貸し */}
+      <section className="mini-sec" id="house2027">
+        <span className="stay-badge soon">2027年オープン予定</span>
+        <h2>谷を一望する民家を、一棟まるごと。</h2>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1rem" }}>
+          2軒目の古民家を、一日一組の一棟貸しとして改修中です。設計思想は「スローステイ特化の宿」。歩いたり、走ったり、何もせずのんびり雲を眺めたりしたい方のための宿にします。
+        </p>
+        <div className="stay-perk" style={{ maxWidth: "56ch" }}>
+          <strong>連泊特典:</strong>
+          連泊のお客様は、2泊目以降の日中のE-bike利用が無料。長く居るほど、谷は近くなる。
+        </div>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch" }}>
+          詳細とオープン日はこのページで最初に告知します。WhatsAppで一報いただければ、続報をお送りします。
+        </p>
       </section>
 
       <SiteFooter lang="ja" />
