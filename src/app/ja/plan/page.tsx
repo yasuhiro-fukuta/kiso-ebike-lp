@@ -15,6 +15,8 @@ import {
 } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
+const NARAI_MAP = "https://goo.gl/maps/S6XA5BNduChYeL9S7?g_st=ac";
+
 export default function JaPlanPage() {
   return (
     <div className="lp">
@@ -119,6 +121,15 @@ export default function JaPlanPage() {
               <Link href="/ja/guided#morning">早朝ガイドツアー</Link>
               (7:00–9:00)がちょうど収まります。
             </p>
+            <a
+              href={NARAI_MAP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stay-cta"
+              style={{ marginTop: "1rem" }}
+            >
+              鳥居峠トレイル&amp;奈良井の地図を開く <ExternalLink size={15} />
+            </a>
           </div>
           <div className="img-wanted">
             <span className="iw-tag">写真は近日掲載</span>

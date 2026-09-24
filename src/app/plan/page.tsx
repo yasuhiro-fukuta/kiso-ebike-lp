@@ -15,6 +15,8 @@ import {
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
+const NARAI_MAP = "https://goo.gl/maps/S6XA5BNduChYeL9S7?g_st=ac";
+
 export default function PlanPage() {
   return (
     <div className="lp">
@@ -138,6 +140,15 @@ export default function PlanPage() {
               <Link href="/guided#morning">early-morning guided tour</Link>{" "}
               (7:00–9:00) fits neatly before breakfast.
             </p>
+            <a
+              href={NARAI_MAP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stay-cta"
+              style={{ marginTop: "1rem" }}
+            >
+              Torii Trail &amp; Narai — open the map <ExternalLink size={15} />
+            </a>
           </div>
           <div className="img-wanted">
             <span className="iw-tag">Photo coming soon</span>
