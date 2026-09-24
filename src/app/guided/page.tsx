@@ -62,7 +62,7 @@ export default function GuidedPage() {
       </FloatBook>
 
       {/* HERO — the Kiso River Downhill */}
-      <header className="page-head page-head-grid">
+      <header className="page-head">
         <div>
           <span className="eyebrow">Guided rides · Kiso Valley</span>
           <h1>
@@ -71,14 +71,14 @@ export default function GuidedPage() {
           </h1>
           <p>
             Almost fifty kilometres from Yabuhara down to Nagiso, nearly all
-            of it downhill — with English-speaking local guides riding beside
-            you, a support car shadowing the group, and your luggage moved to
-            your inn while you ride. Pick your distance below: the full
-            classic, an easy half, or — coming soon — the whole 100 km{" "}
-            <em>Kiso-ichi</em>.
+            of it downhill — local guides ride beside you with live English
+            support, a support car shadows the group, and your luggage is
+            moved to your inn while you ride. Pick your distance below: the
+            classic full 50 km, the easy 25 km half, or — coming soon — the
+            whole 100 km <em>Kiso-ichi</em>.
           </p>
         </div>
-        <figure className="page-head-visual">
+        <figure className="page-head-visual hero-wide">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/kisoriver.jpg"
@@ -142,8 +142,9 @@ export default function GuidedPage() {
           <span className="eyebrow">Choose your level</span>
           <h2>Three ways down the valley.</h2>
           <p>
-            Every ride comes as one package: riding guides, a support driver,
-            e-bikes, and your luggage moved to your inn.
+            Every ride comes as one package: a riding guide, a support driver
+            &amp; English operator, e-bikes, and your luggage moved to your
+            inn.
           </p>
         </div>
         <div className="tour-grid">
@@ -152,8 +153,8 @@ export default function GuidedPage() {
             <div className="top">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/tour/river.jpg"
-                alt="The turquoise Kiso River rushing past the red roofs of a valley town"
+                src="/assets/tour/paddies.jpg"
+                alt="A rider pauses on the e-bike to photograph golden rice paddies under a blue valley sky"
               />
               <span className="lvl">Middle</span>
               <span className="season">Now running</span>
@@ -171,7 +172,8 @@ export default function GuidedPage() {
               <div className="price">
                 <small>Guides, driver, bikes &amp; luggage included</small>
                 <span className="price-note">
-                  ¥80,000 / group of 4 · ±15% per rider
+                  ¥40,000 / group of 4 · ±15% per rider · opening campaign:
+                  half price
                 </span>
               </div>
               <a
@@ -278,22 +280,21 @@ export default function GuidedPage() {
               You set off near the headwaters of the Kiso River and follow
               the water as it grows from a mountain stream into a full river,
               rolling past seven of the old Kiso road&apos;s post towns on
-              one long, gentle descent. <b>Two guides ride with every
-              group</b> — one setting the line up front, one sweeping at the
-              back — while a support driver shadows the day by car with your
-              luggage on board.
+              one long, gentle descent. <b>A local guide rides with every
+              group</b>, while a support driver — doubling as your English
+              operator — shadows the day by car with your luggage on board.
             </p>
           </div>
 
           <figure className="special-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/tour/atera.jpg"
-              alt="The impossibly blue water of the Atera Gorge beneath a rusted old forest-railway bridge"
+              src="/assets/tour/paddies.jpg"
+              alt="A rider pauses on the e-bike to photograph golden rice paddies under a blue valley sky"
             />
             <figcaption>
-              The detour into the Atera Gorge — the blue that ends up on
-              everyone&apos;s camera roll.
+              Golden paddies, blue sky — the kind of road that makes everyone
+              stop and reach for a camera.
             </figcaption>
           </figure>
 
@@ -306,9 +307,9 @@ export default function GuidedPage() {
             </div>
             <div className="sstat">
               <div className="num">
-                ↓613<small>&nbsp;m</small>
+                ↓521<small>&nbsp;m</small>
               </div>
-              <div className="lbl">Descent · only ↑94 m up</div>
+              <div className="lbl">Yabuhara Sta. 930 m → Nagiso Sta. 409 m</div>
             </div>
             <div className="sstat">
               <div className="num">7</div>
@@ -316,7 +317,7 @@ export default function GuidedPage() {
             </div>
             <div className="sstat">
               <div className="num">2</div>
-              <div className="lbl">Guides with every group</div>
+              <div className="lbl">Guide + English operator, every group</div>
             </div>
           </div>
 
@@ -348,10 +349,9 @@ export default function GuidedPage() {
             <h3>Who rides with you</h3>
             <p className="guides-lead">
               A team of local cyclists who ride these roads all year round —
-              two with every group, one leading and one sweeping, with a
-              driver in support. As you ride, your guide adds a line or two
-              of each town&apos;s story over the intercom; the rest of the
-              time, the valley speaks for itself.
+              one guide riding with each group, plus a support driver who
+              doubles as your English operator. As you ride, your guide adds
+              a line or two of each town&apos;s story over the intercom.
             </p>
           </div>
 
@@ -361,7 +361,9 @@ export default function GuidedPage() {
               <h3>How the day runs</h3>
               <ul className="day-line">
                 <li>
-                  <div className="place">Yabuhara-juku · 9:30</div>
+                  <div className="place">
+                    Yabuhara-juku · 9:30 <span className="alt">930 m</span>
+                  </div>
                   <div className="role">
                     Meet at Coffee Bar Yabuhara, 10 minutes&apos; walk from
                     the station — the post town below the Torii Pass
@@ -417,38 +419,57 @@ export default function GuidedPage() {
 
             <div className="special-price">
               <div className="from">Group of four · all-in</div>
-              <div className="amt">¥80,000</div>
+              <div className="amt">
+                <s className="amt-old">¥40,000</s>¥20,000
+              </div>
+              <p className="campaign-line">
+                Opening campaign — every group rides at half price right now.
+              </p>
               <p className="breakdown">
-                One price for the whole day. ¥80,000 is the base for a group
-                of four; each rider more or fewer moves the total by 15%
-                (¥12,000).
+                One price for the whole day. ¥40,000 is the regular base for
+                a group of four; each rider more or fewer moves the total by
+                15% (¥6,000) — and the opening campaign then halves the
+                total.
               </p>
               <ul className="price-included">
-                <li>Two riding guides — one leading, one sweeping</li>
-                <li>A support driver shadowing the group by car</li>
+                <li>A local guide riding with you</li>
+                <li>
+                  A support driver &amp; English operator shadowing the group
+                  by car
+                </li>
                 <li>High-power fat-tire e-bikes, helmets included</li>
                 <li>Your luggage, moved from the start to your inn</li>
               </ul>
               <ul className="price-scale">
                 <li>
                   <span>2 riders</span>
-                  <b>¥56,000</b>
+                  <b>
+                    <s>¥28,000</s> ¥14,000
+                  </b>
                 </li>
                 <li>
                   <span>3 riders</span>
-                  <b>¥68,000</b>
+                  <b>
+                    <s>¥34,000</s> ¥17,000
+                  </b>
                 </li>
                 <li className="base">
                   <span>4 riders</span>
-                  <b>¥80,000</b>
+                  <b>
+                    <s>¥40,000</s> ¥20,000
+                  </b>
                 </li>
                 <li>
                   <span>5 riders</span>
-                  <b>¥92,000</b>
+                  <b>
+                    <s>¥46,000</s> ¥23,000
+                  </b>
                 </li>
                 <li>
                   <span>6 riders</span>
-                  <b>¥104,000</b>
+                  <b>
+                    <s>¥52,000</s> ¥26,000
+                  </b>
                 </li>
               </ul>
               <div className="how-to-book-label">How to book</div>
@@ -480,8 +501,8 @@ export default function GuidedPage() {
               <p>
                 No — this course is guided only. In a few places, one wrong
                 turn drops you onto roads with heavy traffic. To keep the day
-                safe, two guides ride the whole route with you — one up
-                front, one at the back.
+                safe, your guide rides the whole route with you, with the
+                support car close behind.
               </p>
             </details>
             <details className="sfaq">

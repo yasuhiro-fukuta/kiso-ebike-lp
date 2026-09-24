@@ -61,18 +61,18 @@ export default function JaGuidedPage() {
       </FloatBook>
 
       {/* HERO——木曽川ダウンヒル */}
-      <header className="page-head page-head-grid">
+      <header className="page-head">
         <div>
           <span className="eyebrow">ガイドライド · 木曽谷</span>
           <h1>
             木曽川ダウンヒル——<em>日本一快適な50kmを作っています。</em>
           </h1>
           <p>
-            藪原から南木曽まで約50km、そのほとんどが下り坂。英語も話せる地元ガイドが並走し、サポートカーが一日を影から支え、荷物はあなたが走っている間に宿へ届きます。距離は下から選べます:定番のフル、気軽なハーフ、そして近日公開の
+            藪原から南木曽まで約50km、そのほとんどが下り坂。英語の有人サポート付きで地元ガイドが並走し、サポートカーが一日を影から支え、荷物はあなたが走っている間に宿へ届きます。距離は下から選べます:定番のフル50km、気軽なハーフ25km、そして近日公開の
             <em>木曽イチ</em>100km。
           </p>
         </div>
-        <figure className="page-head-visual">
+        <figure className="page-head-visual hero-wide">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/kisoriver.jpg"
@@ -128,7 +128,7 @@ export default function JaGuidedPage() {
           <span className="eyebrow">レベルで選ぶ</span>
           <h2>谷の下り方は、3つ。</h2>
           <p>
-            どのコースもワンパッケージ:並走ガイド+サポートドライバー+E-bike+荷物の宿への搬送込み。
+            どのコースもワンパッケージ:並走ガイド+サポートドライバー兼英語オペレーター+E-bike+荷物の宿への搬送込み。
           </p>
         </div>
         <div className="tour-grid">
@@ -137,8 +137,8 @@ export default function JaGuidedPage() {
             <div className="top">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/tour/river.jpg"
-                alt="谷の町の赤い屋根の脇を流れるエメラルドの木曽川"
+                src="/assets/tour/paddies.jpg"
+                alt="金色の稲穂の脇、E-bikeにまたがったまま写真を撮るライダー"
               />
               <span className="lvl">ミドル</span>
               <span className="season">販売中</span>
@@ -152,7 +152,7 @@ export default function JaGuidedPage() {
               <div className="price">
                 <small>ガイド・ドライバー・バイク・荷物運び込み</small>
                 <span className="price-note">
-                  ¥80,000/4名 · 1名±で±15%
+                  ¥40,000/4名 · 1名±で±15% · いまオープンキャンペーンで総額半額
                 </span>
               </div>
               <a
@@ -244,19 +244,19 @@ export default function JaGuidedPage() {
             <p className="special-lead">
               <b>藪原宿から南木曽駅まで48.9km、ほぼすべて下り。</b>
               木曽川の源流近くから出発し、山の沢が一本の大河に育っていくのを追いかけながら、旧中山道の宿場を7つつないで、長くゆるやかに下っていきます。
-              <b>ガイドは2名が並走</b>
-              ——先頭がラインを引き、最後尾が全体を見守ります。さらにサポートドライバーが荷物を積んで一日を車で伴走します。
+              <b>地元ガイドが並走し</b>
+              、サポートドライバー兼英語オペレーターが荷物を積んで一日を車で伴走します。
             </p>
           </div>
 
           <figure className="special-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/tour/atera.jpg"
-              alt="錆びた森林鉄道の橋の下に広がる、阿寺渓谷の信じがたい青"
+              src="/assets/tour/paddies.jpg"
+              alt="金色の稲穂の脇、E-bikeにまたがったまま写真を撮るライダー"
             />
             <figcaption>
-              阿寺渓谷への寄り道——全員のカメラロールに残る青です。
+              稲穂と青空の道——思わず止まって、カメラを構える瞬間。
             </figcaption>
           </figure>
 
@@ -269,9 +269,9 @@ export default function JaGuidedPage() {
             </div>
             <div className="sstat">
               <div className="num">
-                ↓613<small>&nbsp;m</small>
+                ↓521<small>&nbsp;m</small>
               </div>
-              <div className="lbl">下り · 登りはわずか94m</div>
+              <div className="lbl">藪原駅930m → 南木曽駅409m</div>
             </div>
             <div className="sstat">
               <div className="num">7</div>
@@ -279,7 +279,7 @@ export default function JaGuidedPage() {
             </div>
             <div className="sstat">
               <div className="num">2</div>
-              <div className="lbl">全グループにガイド2名</div>
+              <div className="lbl">ガイド+英語オペレーターの2名体制</div>
             </div>
           </div>
 
@@ -308,7 +308,7 @@ export default function JaGuidedPage() {
           <div className="special-guides">
             <h3>一緒に走るのは</h3>
             <p className="guides-lead">
-              一年中この道を走っている地域のサイクリストチーム。各グループに2名(先頭+最後尾)、さらにドライバーが1名。走りながら、宿場ごとの物語をガイドがインカムでひとこと添えます。それ以外の時間は、谷が語ります。
+              一年中この道を走っている地域のサイクリストチーム。各グループにガイド1名+サポートドライバー兼英語オペレーター1名。走りながら、宿場ごとの物語をガイドがインカムでひとこと添えていきます。
             </p>
           </div>
 
@@ -317,7 +317,9 @@ export default function JaGuidedPage() {
               <h3>一日の流れ</h3>
               <ul className="day-line">
                 <li>
-                  <div className="place">藪原宿 · 9:30</div>
+                  <div className="place">
+                    藪原宿 · 9:30 <span className="alt">930 m</span>
+                  </div>
                   <div className="role">
                     コーヒーバー薮原に集合(駅から徒歩10分)。鳥居峠の分水嶺の下、木曽川が始まる宿場から出発
                   </div>
@@ -363,36 +365,51 @@ export default function JaGuidedPage() {
 
             <div className="special-price">
               <div className="from">4名1グループ · 全部込み</div>
-              <div className="amt">¥80,000</div>
+              <div className="amt">
+                <s className="amt-old">¥40,000</s>¥20,000
+              </div>
+              <p className="campaign-line">
+                オープンキャンペーン中——いまなら総額から半額。
+              </p>
               <p className="breakdown">
-                一日まるごとワンプライス。4名で¥80,000を基準に、1名増減ごとに15%(¥12,000)上下します。
+                一日まるごとワンプライス。通常は4名で¥40,000を基準に、1名増減ごとに15%(¥6,000)上下。いまはそこからさらに半額です。
               </p>
               <ul className="price-included">
-                <li>並走ガイド2名——先頭と最後尾</li>
-                <li>荷物を積んで伴走するサポートドライバー</li>
+                <li>並走する地元ガイド</li>
+                <li>荷物を積んで伴走するサポートドライバー兼英語オペレーター</li>
                 <li>ハイパワーのファットタイヤE-bike(ヘルメット付き)</li>
                 <li>荷物は出発地からあなたの宿へ搬送</li>
               </ul>
               <ul className="price-scale">
                 <li>
                   <span>2名</span>
-                  <b>¥56,000</b>
+                  <b>
+                    <s>¥28,000</s> ¥14,000
+                  </b>
                 </li>
                 <li>
                   <span>3名</span>
-                  <b>¥68,000</b>
+                  <b>
+                    <s>¥34,000</s> ¥17,000
+                  </b>
                 </li>
                 <li className="base">
                   <span>4名</span>
-                  <b>¥80,000</b>
+                  <b>
+                    <s>¥40,000</s> ¥20,000
+                  </b>
                 </li>
                 <li>
                   <span>5名</span>
-                  <b>¥92,000</b>
+                  <b>
+                    <s>¥46,000</s> ¥23,000
+                  </b>
                 </li>
                 <li>
                   <span>6名</span>
-                  <b>¥104,000</b>
+                  <b>
+                    <s>¥52,000</s> ¥26,000
+                  </b>
                 </li>
               </ul>
               <div className="how-to-book-label">予約方法</div>
@@ -419,7 +436,7 @@ export default function JaGuidedPage() {
             <details className="sfaq">
               <summary>セルフガイドで走れますか?</summary>
               <p>
-                いいえ——このコースはガイド専用です。数カ所、一本道を間違えると交通量の多い道に出てしまうポイントがあります。安全のため、2名のガイドが全行程を一緒に走ります。
+                いいえ——このコースはガイド専用です。数カ所、一本道を間違えると交通量の多い道に出てしまうポイントがあります。安全のため、ガイドが全行程を一緒に走り、サポートカーが伴走します。
               </p>
             </details>
             <details className="sfaq">

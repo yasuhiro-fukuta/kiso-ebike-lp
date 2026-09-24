@@ -181,6 +181,21 @@ body::before {
 /* after-payment instruction (bold line + WhatsApp button) */
 .pay-notify { text-align: center; margin-top: 1.6rem; }
 .pay-notify p { font-size: 0.95rem; max-width: 56ch; margin: 0 auto 1rem; }
+/* full-width hero photo under the page title (guided page) */
+.page-head-visual.hero-wide { margin-top: 2.4rem; }
+.page-head-visual.hero-wide img { max-height: 640px; }
+
+/* campaign pricing — struck regular price next to the campaign price */
+.amt-old {
+  font-size: 0.52em; font-weight: 300; opacity: 0.55;
+  margin-right: 0.55rem; vertical-align: 0.35em;
+}
+.campaign-line {
+  color: var(--gold); font-weight: 600; font-size: 0.9rem;
+  margin: 0.5rem 0 0.9rem;
+}
+.price-scale s { opacity: 0.5; font-weight: 300; margin-right: 0.3rem; }
+
 /* big "same-day OK" badge at the top of a page head */
 .head-badge {
   display: inline-block; background: var(--rust); color: var(--paper);

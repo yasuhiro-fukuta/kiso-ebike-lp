@@ -23,11 +23,12 @@ export default function LiveHerePage() {
         <p>
           Here&apos;s the part we don&apos;t put on the brochures: the person
           handing you the e-bike arrived in this valley as a traveler too —
-          and never quite left. It happens more often than you&apos;d think.
-          So if somewhere between the river and the old road you catch
-          yourself wondering what living here would feel like, you&apos;re
-          not being silly. You&apos;re being early. And we can help with what
-          comes next.
+          and before he knew it, he had quit his job, given up his city
+          apartment, and was living here. And he&apos;s not the only one. So
+          if somewhere between the river and the old road you catch yourself
+          wondering what living here would feel like, you&apos;re not being
+          silly. And when it comes to housing and work, there are ways we
+          can help.
         </p>
       </header>
 
@@ -36,11 +37,13 @@ export default function LiveHerePage() {
         <div className="drop-inner">
           <span className="eyebrow">The pathway</span>
           <h2>
-            Nobody moves to a valley. <em>They return to one.</em>
+            Our advice: <em>migrate in stages.</em>
           </h2>
           <p>
-            Every local we know who started as a tourist took roughly the
-            same three steps. We&apos;ve simply turned them into a service.
+            The secret to a move that sticks is building relationships
+            before you move. It&apos;s what every settled newcomer here has
+            in common — and they took roughly the same three steps.
+            We&apos;ve simply turned them into a service.
           </p>
           <div className="drop-steps">
             <div className="drop-step">
