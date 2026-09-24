@@ -181,6 +181,12 @@ body::before {
 /* after-payment instruction (bold line + WhatsApp button) */
 .pay-notify { text-align: center; margin-top: 1.6rem; }
 .pay-notify p { font-size: 0.95rem; max-width: 56ch; margin: 0 auto 1rem; }
+/* spray-only alternative inside the pay block */
+.pay-alt {
+  margin-top: 1.5rem; padding-top: 1.3rem;
+  border-top: 1px dashed rgba(28, 26, 22, 0.25);
+}
+.pay-alt p { font-weight: 300; }
 .pay-qr { margin: 0; text-align: center; }
 .pay-qr img {
   width: 108px; display: block; background: #fff; padding: 6px;

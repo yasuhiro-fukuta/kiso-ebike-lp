@@ -125,6 +125,42 @@ export const LUGGAGE_SEND_WHATSAPP_URL_JA = wa(
 野尻駅前 カフェどんぐり`
 );
 
+/** Bear-spray-only rental — after-payment details message (no bags). */
+export const SPRAY_SEND_WHATSAPP_URL = wa(
+  `Bear spray rental only (no bags)
+①name is
+②number of bottles is
+③pick up at (choose one)
+nagiso station izumiya cafe
+guesthouse Kashiwaya Inn
+guesthouse Waku nagiso
+nojiri station cafe katana
+nojiri station cafe donguri
+④return at (choose one)
+nagiso station izumiya cafe
+guesthouse Kashiwaya Inn
+guesthouse Waku nagiso
+nojiri station cafe katana
+nojiri station cafe donguri`
+);
+export const SPRAY_SEND_WHATSAPP_URL_JA = wa(
+  `熊スプレーのみレンタル(荷物運びなし)
+①氏名:
+②本数:
+③受取場所(1つ選択)
+南木曽駅前 イズミヤカフェ
+ゲストハウス柏屋
+ゲストハウスWAKU
+野尻駅前 カフェ刀
+野尻駅前 カフェどんぐり
+④返却場所(1つ選択)
+南木曽駅前 イズミヤカフェ
+ゲストハウス柏屋
+ゲストハウスWAKU
+野尻駅前 カフェ刀
+野尻駅前 カフェどんぐり`
+);
+
 /** Gear rental */
 export const GEAR_WHATSAPP_URL = wa(
   `Hello! I'm interested in renting gear as follows.

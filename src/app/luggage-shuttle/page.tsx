@@ -14,6 +14,7 @@ import {
 import {
   LUGGAGE_WHATSAPP_URL,
   LUGGAGE_SEND_WHATSAPP_URL,
+  SPRAY_SEND_WHATSAPP_URL,
   SQUARE_PAY_URL,
   MYMAP_EMBED_URL,
   MYMAP_VIEW_URL,
@@ -63,10 +64,27 @@ function PayBlock() {
         >
           <MessageCircle size={16} /> Send the details on WhatsApp
         </a>
+        <div className="pay-alt">
+          <p>
+            <strong>Bear spray only, no bags?</strong> That works — pay the
+            spray fee through the same link or QR, then send us your name,
+            number of bottles, and the pick-up and return points.
+          </p>
+          <a
+            href={SPRAY_SEND_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <MessageCircle size={16} /> WhatsApp for spray-only rental
+          </a>
+        </div>
       </div>
       <p className="pay-note">
         Enter the amount on the Square page — cash at the counter is welcome
-        too.
+        too. Note that the Square payment page is displayed in Japanese
+        (「金額」 is the amount field); your browser&apos;s translate
+        function renders it in English just fine.
       </p>
     </div>
   );
@@ -137,7 +155,8 @@ export default function LuggageShuttlePage() {
             </div>
             <p>
               Bell included, no base fee — pick it up in Nagiso, hand it back
-              in Nojiri.
+              in Nojiri. Spray-only rentals, with no bags to send, are just
+              as welcome.
             </p>
           </div>
         </div>

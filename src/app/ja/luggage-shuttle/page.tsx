@@ -14,6 +14,7 @@ import {
 import {
   LUGGAGE_WHATSAPP_URL_JA,
   LUGGAGE_SEND_WHATSAPP_URL_JA,
+  SPRAY_SEND_WHATSAPP_URL_JA,
   SQUARE_PAY_URL,
   MYMAP_EMBED_URL,
   MYMAP_VIEW_URL,
@@ -63,6 +64,20 @@ function PayBlock() {
         >
           <MessageCircle size={16} /> WhatsAppで送る
         </a>
+        <div className="pay-alt">
+          <p>
+            <strong>熊スプレーだけのレンタルもOK。</strong>
+            荷物運びなしで大丈夫です。同じリンク・QRでスプレー代を支払って、氏名・本数・受取場所・返却場所を送ってください。
+          </p>
+          <a
+            href={SPRAY_SEND_WHATSAPP_URL_JA}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <MessageCircle size={16} /> WhatsAppで送る(スプレーのみ)
+          </a>
+        </div>
       </div>
       <p className="pay-note">
         金額はSquareのページで入力してください。店頭での現金払いもOK。
@@ -128,7 +143,7 @@ export default function JaLuggageShuttlePage() {
               ¥1,500<span style={{ fontSize: "0.9rem" }}>/個</span>
             </div>
             <p>
-              鈴付き・基本送料なし。南木曽で借りて、野尻で返却できます。
+              鈴付き・基本送料なし。南木曽で借りて、野尻で返却できます。スプレーだけのレンタル(荷物運びなし)も大歓迎です。
             </p>
           </div>
         </div>
