@@ -7,7 +7,6 @@ import {
   Footprints,
   Store,
   PackageCheck,
-  Instagram,
   MapPin,
   ArrowRight,
 } from "lucide-react";
@@ -20,7 +19,7 @@ import {
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
 
-const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
+const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
 const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
 const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
@@ -223,16 +222,16 @@ export default function JaLuggageShuttlePage() {
         <h2>預ける窓口、受け取る窓口。</h2>
         <div className="mini-grid cols2">
           <a
-            href={IZUMIYA_IG}
+            href={IZUMIYA_MAP}
             target="_blank"
             rel="noopener noreferrer"
             className="mini-card"
           >
             <h3>
-              <Instagram size={20} /> Izumiya Cafe Nagiso · 預け
+              <MapPin size={20} /> Izumiya Cafe Nagiso · 預け
             </h3>
             <p>
-              メインの預け窓口。南木曽駅の目の前です。出発前の一杯にもどうぞ。写真と営業時間はInstagramへ。
+              メインの預け窓口。南木曽駅の目の前です。出発前の一杯にもどうぞ。地図はこちら。
             </p>
           </a>
           <a

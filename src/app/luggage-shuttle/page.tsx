@@ -7,7 +7,6 @@ import {
   Footprints,
   Store,
   PackageCheck,
-  Instagram,
   MapPin,
   ArrowRight,
 } from "lucide-react";
@@ -20,7 +19,7 @@ import {
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
 
-const IZUMIYA_IG = "https://www.instagram.com/izumiyacafe";
+const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
 const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
 const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
@@ -252,18 +251,17 @@ export default function LuggageShuttlePage() {
         <h2>Drop at one counter, pick up at another.</h2>
         <div className="mini-grid cols2">
           <a
-            href={IZUMIYA_IG}
+            href={IZUMIYA_MAP}
             target="_blank"
             rel="noopener noreferrer"
             className="mini-card"
           >
             <h3>
-              <Instagram size={20} /> Izumiya Cafe Nagiso · drop-off
+              <MapPin size={20} /> Izumiya Cafe Nagiso · drop-off
             </h3>
             <p>
               The main drop-off counter, in front of Nagiso Station. A good
-              coffee before the trail, too. Open the Instagram for photos and
-              hours.
+              coffee before the trail, too. Tap for the map.
             </p>
           </a>
           <a
