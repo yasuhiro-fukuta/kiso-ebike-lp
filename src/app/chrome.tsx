@@ -12,6 +12,7 @@ import {
   Menu,
   X,
   MessageCircle,
+  ChevronDown,
 } from "lucide-react";
 import {
   INSTAGRAM_URL,
@@ -67,6 +68,7 @@ const KAKIZORE_LABEL: Record<Lang, string> = {
   en: "Kakizore Gorge: Map & Access",
   ja: "柿其渓谷 Map & Access(英語)",
 };
+const COLUMNS_LABEL: Record<Lang, string> = { en: "Columns", ja: "コラム" };
 const LIVE_HREF: Record<Lang, string> = { en: "/live-here", ja: "/ja/live-here" };
 const LIVE_LABEL: Record<Lang, string> = {
   en: "Live in the Valley",
@@ -90,6 +92,7 @@ function langTargets(pathname: string): { en: string; ja: string; isJa: boolean 
 /** Fixed top nav with a language switch and hamburger menu. */
 export function SiteNav({ lang = "en" }: { lang?: Lang }) {
   const [open, setOpen] = useState(false);
+  const [colsOpen, setColsOpen] = useState(false);
   const pathname = usePathname() ?? "/";
   const t = langTargets(pathname);
   const items = MENU_ITEMS[lang];
@@ -117,7 +120,10 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
           </div>
           <button
             className="nav-burger"
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setOpen(true);
+              setColsOpen(false);
+            }}
             aria-label={lang === "ja" ? "メニューを開く" : "Open menu"}
             aria-expanded={open}
           >
@@ -143,18 +149,34 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
               </Link>
             ))}
           </nav>
+          {colsOpen && (
+            <div className="nav-col-list">
+              <Link href={PLAN_HREF[lang]} onClick={() => setOpen(false)}>
+                {PLAN_LABEL[lang]}
+              </Link>
+              <Link href="/kakizore" onClick={() => setOpen(false)}>
+                {KAKIZORE_LABEL[lang]}
+              </Link>
+            </div>
+          )}
           <div className="nav-overlay-foot">
-            <Link href={PLAN_HREF[lang]} onClick={() => setOpen(false)}>
-              {PLAN_LABEL[lang]}
-            </Link>
+            <button
+              type="button"
+              className="nav-col-toggle"
+              onClick={() => setColsOpen((v) => !v)}
+              aria-expanded={colsOpen}
+            >
+              {COLUMNS_LABEL[lang]}{" "}
+              <ChevronDown
+                size={15}
+                style={colsOpen ? { transform: "rotate(180deg)" } : undefined}
+              />
+            </button>
             <Link href={SHODO_HREF[lang]} onClick={() => setOpen(false)}>
               {SHODO_LABEL[lang]}
             </Link>
             <Link href={LIVE_HREF[lang]} onClick={() => setOpen(false)}>
               {LIVE_LABEL[lang]}
-            </Link>
-            <Link href="/kakizore" onClick={() => setOpen(false)}>
-              {KAKIZORE_LABEL[lang]}
             </Link>
             <a
               href={lang === "ja" ? WHATSAPP_URL_JA : WHATSAPP_URL}
