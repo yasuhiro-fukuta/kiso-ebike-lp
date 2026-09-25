@@ -63,6 +63,10 @@ const SHODO_LABEL: Record<Lang, string> = {
   en: "Shodo Calligraphy",
   ja: "書道体験",
 };
+const KAKIZORE_LABEL: Record<Lang, string> = {
+  en: "Kakizore Gorge: Map & Access",
+  ja: "柿其渓谷 Map & Access(英語)",
+};
 const LIVE_HREF: Record<Lang, string> = { en: "/live-here", ja: "/ja/live-here" };
 const LIVE_LABEL: Record<Lang, string> = {
   en: "Live in the Valley",
@@ -73,6 +77,8 @@ const LIVE_LABEL: Record<Lang, string> = {
  *  article: its EN target is the home page. */
 function langTargets(pathname: string): { en: string; ja: string; isJa: boolean } {
   if (pathname === "/atera") return { en: "/", ja: "/atera", isJa: true };
+  if (pathname === "/kakizore")
+    return { en: "/kakizore", ja: "/ja", isJa: false };
   const isJa = pathname === "/ja" || pathname.startsWith("/ja/");
   if (isJa) {
     const en = pathname.replace(/^\/ja/, "") || "/";
@@ -146,6 +152,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
             </Link>
             <Link href={LIVE_HREF[lang]} onClick={() => setOpen(false)}>
               {LIVE_LABEL[lang]}
+            </Link>
+            <Link href="/kakizore" onClick={() => setOpen(false)}>
+              {KAKIZORE_LABEL[lang]}
             </Link>
             <a
               href={lang === "ja" ? WHATSAPP_URL_JA : WHATSAPP_URL}
@@ -283,6 +292,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           <Link href="/atera">
             {ja ? "阿寺渓谷へは電車&E-bike" : "阿寺渓谷へは電車&E-bike(日本語)"}
           </Link>
+          <br />
+          <Link href="/kakizore">{KAKIZORE_LABEL[lang]}</Link>
         </div>
         <div>
           <h4>{ja ? "お問い合わせ" : "Connect"}</h4>

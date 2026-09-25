@@ -213,6 +213,16 @@ export const SHODO_WHATSAPP_URL_JA = wa(
 人数:〇名`
 );
 
+/** Kakizore Gorge access — reserved e-bikes from Tenpaku Park / Junikane. */
+export const KAKIZORE_WHATSAPP_URL = wa(
+  `Hello! I'd like to reserve e-bikes for the Kakizore Gorge as follows.
+Date: __/__/____
+Bikes: __
+Pick-up point: Tenpaku Park parking lot (Nagiso) / Junikane Station
+Pick-up time: __:__
+Bear-deterrent kit: __ / not needed`
+);
+
 /** Meals at Kashiwaya — order form (menu & details live in the form). */
 export const MEALS_FORM_URL = "https://forms.gle/Gp6WX87KxWprPLYA7";
 

@@ -28,7 +28,7 @@ const GEAR_ITEMS: {
     name: "Bear spray + bell",
     nameJa: "熊スプレー(熊鈴付き)",
     desc: "The mountains here are bear country. The spray is the serious backup, with a quick how-to briefing at pickup — and every rental comes with a bear bell, so they hear you coming long before you'd ever need it.",
-    price: "¥2,000",
+    price: "¥1,500",
     photos: [
       {
         src: "/assets/gear/bear-spray.jpg",

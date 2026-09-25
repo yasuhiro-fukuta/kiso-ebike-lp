@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/shodo`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/live-here`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/atera`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/kakizore`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/ja/rental`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja/shuttle-ebike`, changeFrequency: "monthly", priority: 0.8 },
