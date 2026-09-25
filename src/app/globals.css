@@ -196,6 +196,18 @@ body::before {
 }
 .price-scale s { opacity: 0.5; font-weight: 300; margin-right: 0.3rem; }
 
+/* 26-day itinerary column — day list, with our-valley days highlighted */
+.itin-list { list-style: none; max-width: 66ch; margin: 0; padding: 0; }
+.itin-list li {
+  padding: 0.6rem 0.4rem; border-bottom: 1px solid rgba(28, 26, 22, 0.08);
+  font-weight: 300; color: #3a352d; line-height: 1.7;
+}
+.itin-list b { font-weight: 600; color: var(--ink); margin-right: 0.5rem; }
+.itin-list li.ours {
+  background: rgba(200, 160, 74, 0.13); border-left: 3px solid var(--gold);
+  padding-left: 0.9rem; border-radius: 0 4px 4px 0;
+}
+
 /* big "same-day OK" badge at the top of a page head */
 .head-badge {
   display: inline-block; background: var(--rust); color: var(--paper);

@@ -69,6 +69,10 @@ const KAKIZORE_LABEL: Record<Lang, string> = {
   ja: "柿其渓谷 Map & Access(英語)",
 };
 const COLUMNS_LABEL: Record<Lang, string> = { en: "Columns", ja: "コラム" };
+const CROWDFREE_LABEL: Record<Lang, string> = {
+  en: "Crowd-Free Japan: a 26-Day Itinerary",
+  ja: "人混み嫌いのための日本旅行旅程(英語)",
+};
 const LIVE_HREF: Record<Lang, string> = { en: "/live-here", ja: "/ja/live-here" };
 const LIVE_LABEL: Record<Lang, string> = {
   en: "Live in the Valley",
@@ -81,6 +85,8 @@ function langTargets(pathname: string): { en: string; ja: string; isJa: boolean 
   if (pathname === "/atera") return { en: "/", ja: "/atera", isJa: true };
   if (pathname === "/kakizore")
     return { en: "/kakizore", ja: "/ja", isJa: false };
+  if (pathname === "/crowd-free-japan")
+    return { en: "/crowd-free-japan", ja: "/ja", isJa: false };
   const isJa = pathname === "/ja" || pathname.startsWith("/ja/");
   if (isJa) {
     const en = pathname.replace(/^\/ja/, "") || "/";
@@ -156,6 +162,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
               </Link>
               <Link href="/kakizore" onClick={() => setOpen(false)}>
                 {KAKIZORE_LABEL[lang]}
+              </Link>
+              <Link href="/crowd-free-japan" onClick={() => setOpen(false)}>
+                {CROWDFREE_LABEL[lang]}
               </Link>
             </div>
           )}
@@ -316,6 +325,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           </Link>
           <br />
           <Link href="/kakizore">{KAKIZORE_LABEL[lang]}</Link>
+          <br />
+          <Link href="/crowd-free-japan">{CROWDFREE_LABEL[lang]}</Link>
         </div>
         <div>
           <h4>{ja ? "お問い合わせ" : "Connect"}</h4>
