@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/atera`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/atera-gorge`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/kakizore`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/kakizore-train`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/crowd-free-japan`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/ja/rental`, changeFrequency: "monthly", priority: 0.8 },

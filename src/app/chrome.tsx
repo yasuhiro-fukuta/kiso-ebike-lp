@@ -64,9 +64,13 @@ const SHODO_LABEL: Record<Lang, string> = {
   en: "Shodo Calligraphy",
   ja: "書道体験",
 };
+const KAKIZORE_HREF: Record<Lang, string> = {
+  en: "/kakizore",
+  ja: "/kakizore-train",
+};
 const KAKIZORE_LABEL: Record<Lang, string> = {
   en: "Kakizore Gorge: Map & Access",
-  ja: "柿其渓谷 Map & Access(英語)",
+  ja: "電車で柿其渓谷へ——十二兼駅が便利!",
 };
 const COLUMNS_LABEL: Record<Lang, string> = { en: "Columns", ja: "コラム" };
 const CROWDFREE_LABEL: Record<Lang, string> = {
@@ -92,7 +96,9 @@ function langTargets(pathname: string): { en: string; ja: string; isJa: boolean 
   if (pathname === "/atera-gorge")
     return { en: "/atera-gorge", ja: "/atera", isJa: false };
   if (pathname === "/kakizore")
-    return { en: "/kakizore", ja: "/ja", isJa: false };
+    return { en: "/kakizore", ja: "/kakizore-train", isJa: false };
+  if (pathname === "/kakizore-train")
+    return { en: "/kakizore", ja: "/kakizore-train", isJa: true };
   if (pathname === "/crowd-free-japan")
     return { en: "/crowd-free-japan", ja: "/ja", isJa: false };
   const isJa = pathname === "/ja" || pathname.startsWith("/ja/");
@@ -168,7 +174,7 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
               <Link href={PLAN_HREF[lang]} onClick={() => setOpen(false)}>
                 {PLAN_LABEL[lang]}
               </Link>
-              <Link href="/kakizore" onClick={() => setOpen(false)}>
+              <Link href={KAKIZORE_HREF[lang]} onClick={() => setOpen(false)}>
                 {KAKIZORE_LABEL[lang]}
               </Link>
               <Link href="/crowd-free-japan" onClick={() => setOpen(false)}>
@@ -335,7 +341,7 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
             {ja ? "阿寺渓谷へは電車&E-bike" : "Atera Gorge by Train & E-Bike"}
           </Link>
           <br />
-          <Link href="/kakizore">{KAKIZORE_LABEL[lang]}</Link>
+          <Link href={KAKIZORE_HREF[lang]}>{KAKIZORE_LABEL[lang]}</Link>
           <br />
           <Link href="/crowd-free-japan">{CROWDFREE_LABEL[lang]}</Link>
         </div>

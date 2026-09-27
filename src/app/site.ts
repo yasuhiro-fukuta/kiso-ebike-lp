@@ -223,6 +223,15 @@ Pick-up time: __:__
 Bear-deterrent kit: __ / not needed`
 );
 
+/** Kakizore by train (Japanese article) — Junikane Station pick-up. */
+export const KAKIZORE_WHATSAPP_URL_JA = wa(
+  `こんにちは。柿其渓谷用のE-bikeを予約したいです。
+希望日:〇月〇日
+台数:〇台
+受け取り:十二兼駅
+乗り捨て:十二兼駅/野尻駅`
+);
+
 /** Meals at Kashiwaya — order form (menu & details live in the form). */
 export const MEALS_FORM_URL = "https://forms.gle/Gp6WX87KxWprPLYA7";
 
