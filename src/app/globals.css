@@ -196,6 +196,22 @@ body::before {
 }
 .price-scale s { opacity: 0.5; font-weight: 300; margin-right: 0.3rem; }
 
+/* route-color tags tying self-tour cards to the My Map lines */
+.map-line {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.05em; color: var(--cedar); margin: 0.4rem 0 0.8rem;
+}
+.map-line i,
+.map-legend i {
+  width: 28px; height: 5px; border-radius: 3px; display: inline-block; flex: none;
+}
+.map-legend { display: flex; flex-wrap: wrap; gap: 0.7rem 1.8rem; margin-bottom: 1.6rem; }
+.map-legend span {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600; color: #3a352d;
+}
+
 /* 26-day itinerary column — day list, with our-valley days highlighted */
 .itin-list { list-style: none; max-width: 66ch; margin: 0; padding: 0; }
 .itin-list li {

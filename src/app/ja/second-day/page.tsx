@@ -1,9 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
-import { WHATSAPP_URL_JA, MYMAP_EMBED_URL } from "../../site";
+import { ArrowRight, MessageCircle, ExternalLink } from "lucide-react";
+import { WHATSAPP_URL_JA, MYMAP_EMBED_URL, MYMAP_VIEW_URL } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
+
+/** 下のマイマップの各コースの線の色。 */
+const LINE = {
+  train: "#6d4c41", // 茶
+  onsen: "#2fa8e0", // 水色
+  challenge: "#e0568f", // ピンク
+  tsumago: "#1e6b30", // 緑
+};
 
 export default function JaSecondDayPage() {
   return (
@@ -48,6 +56,9 @@ export default function JaSecondDayPage() {
             <div className="body">
               <h3>鉄道Lovers</h3>
               <div className="route">オールシーズン · やさしい</div>
+              <div className="map-line">
+                <i style={{ background: LINE.train }} /> 下の地図の茶色ライン
+              </div>
               <p>
                 1761年頃に新中山道・与川道ができる前の、さらに昔の旧中山道です。現在は舗装されていますが、交通量が少なく快適。日本の鉄道オタクの隠れた冬の名所にもなっているコースで、線路と並走しながら、運が良ければ特急しなののベストショットを。
               </p>
@@ -64,6 +75,9 @@ export default function JaSecondDayPage() {
             <div className="body">
               <h3>天然クーラーと温泉</h3>
               <div className="route">夏・初冬がベスト · ふつう</div>
+              <div className="map-line">
+                <i style={{ background: LINE.onsen }} /> 下の地図の水色ライン
+              </div>
               <p>
                 夏の与川道は美しいけれど暑さが本気。対岸には田んぼ道とやさしい峠、そして2つの滝を結ぶ細い道があります。
                 <Link href="/ja/gear">ギアレンタル</Link>
@@ -82,6 +96,9 @@ export default function JaSecondDayPage() {
             <div className="body">
               <h3>中山道チャレンジ</h3>
               <div className="route">与川道越え · きつい</div>
+              <div className="map-line">
+                <i style={{ background: LINE.challenge }} /> 下の地図のピンクライン
+              </div>
               <p>
                 中山道全体でもっとも美しい区間と言われる与川道。途中に店はなく、馬籠峠より少し長くて登りも多い、自信のある人向けのコースです。旧道に沿う細い舗装路を走ります。脚に覚えのある方はぜひ。
               </p>
@@ -101,6 +118,9 @@ export default function JaSecondDayPage() {
             <div className="body">
               <h3>もういちど、妻籠</h3>
               <div className="route">春・秋がベスト · やさしい</div>
+              <div className="map-line">
+                <i style={{ background: LINE.tsumago }} /> 下の地図の緑ライン
+              </div>
               <p>
                 かつての森林鉄道跡は、いまは地元の人しか知らない静かな舗装路。そのまま妻籠宿へつながります。前日の夜、着くのが遅くて宿場を歩き足りなかった人にぴったり。
               </p>
@@ -115,8 +135,22 @@ export default function JaSecondDayPage() {
           <span className="eyebrow">道に迷わない</span>
           <h2>ルートマップ</h2>
           <p>
-            走るコースはこちらの地図に。スマホで開けば、受け渡し地点間の道順をそのままナビできます。
+            上の各コースは、この地図にそれぞれの色で引いてあります。カードの色タグと地図のラインを見比べてください。スマホで開けば、受け渡し地点間の道順をそのままナビできます。
           </p>
+          <div className="map-legend">
+            <span>
+              <i style={{ background: LINE.train }} /> 鉄道Lovers
+            </span>
+            <span>
+              <i style={{ background: LINE.onsen }} /> 天然クーラーと温泉
+            </span>
+            <span>
+              <i style={{ background: LINE.challenge }} /> 中山道チャレンジ
+            </span>
+            <span>
+              <i style={{ background: LINE.tsumago }} /> もういちど、妻籠
+            </span>
+          </div>
           <div className="map-embed">
             <iframe
               src={MYMAP_EMBED_URL}
@@ -125,6 +159,15 @@ export default function JaSecondDayPage() {
               referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
+          <a
+            href={MYMAP_VIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+            style={{ marginTop: "1.4rem" }}
+          >
+            Googleマップで地図を開く <ExternalLink size={15} />
+          </a>
         </div>
       </section>
 

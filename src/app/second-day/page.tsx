@@ -1,9 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
-import { WHATSAPP_URL, MYMAP_EMBED_URL } from "../site";
+import { ArrowRight, MessageCircle, ExternalLink } from "lucide-react";
+import { WHATSAPP_URL, MYMAP_EMBED_URL, MYMAP_VIEW_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+
+/** Line colors matching each course on the My Map below. */
+const LINE = {
+  train: "#6d4c41", // brown
+  onsen: "#2fa8e0", // light blue
+  challenge: "#e0568f", // pink
+  tsumago: "#1e6b30", // green
+};
 
 export default function SecondDayPage() {
   return (
@@ -57,6 +65,10 @@ export default function SecondDayPage() {
             <div className="body">
               <h3>Train Lovers</h3>
               <div className="route">All seasons · Easy</div>
+              <div className="map-line">
+                <i style={{ background: LINE.train }} /> The brown line on
+                the map below
+              </div>
               <p>
                 The truly old Nakasendo — the road that predates even the
                 Yogawa bypass of around 1761. Paved now, but nearly
@@ -78,6 +90,10 @@ export default function SecondDayPage() {
             <div className="body">
               <h3>Natural AC &amp; Onsen</h3>
               <div className="route">Best in Summer &amp; Early Winter · Moderate</div>
+              <div className="map-line">
+                <i style={{ background: LINE.onsen }} /> The light-blue line
+                on the map below
+              </div>
               <p>
                 The Yogawa trail is beautiful, but brutal in summer heat. The
                 opposite bank has rice paddy roads, an easy pass, and a narrow
@@ -99,6 +115,10 @@ export default function SecondDayPage() {
             <div className="body">
               <h3>Nakasendo Challenge</h3>
               <div className="route">Yogawa-trail crossing · Hard</div>
+              <div className="map-line">
+                <i style={{ background: LINE.challenge }} /> The pink line on
+                the map below
+              </div>
               <p>
                 The Yogawa trail, said to be the most beautiful stretch of the
                 entire Nakasendo. No shops along the way, slightly longer with
@@ -122,6 +142,10 @@ export default function SecondDayPage() {
             <div className="body">
               <h3>Tsumago, Revisited</h3>
               <div className="route">Best in Spring &amp; Autumn · Easy</div>
+              <div className="map-line">
+                <i style={{ background: LINE.tsumago }} /> The green line on
+                the map below
+              </div>
               <p>
                 What used to be a forest-railway line is now a quiet paved road
                 only locals know — running straight into Tsumago. Perfect for
@@ -139,9 +163,26 @@ export default function SecondDayPage() {
           <span className="eyebrow">Find your way</span>
           <h2>Route maps</h2>
           <p>
-            Here are the routes we&apos;ve mapped out. Open any of them on your
-            phone for turn-by-turn directions between our pick-up points.
+            Every course above is drawn on this map in its own color — match
+            the line tag on each card to the line on the map. Open it on
+            your phone for turn-by-turn directions between our pick-up
+            points.
           </p>
+          <div className="map-legend">
+            <span>
+              <i style={{ background: LINE.train }} /> Train Lovers
+            </span>
+            <span>
+              <i style={{ background: LINE.onsen }} /> Natural AC &amp; Onsen
+            </span>
+            <span>
+              <i style={{ background: LINE.challenge }} /> Nakasendo
+              Challenge
+            </span>
+            <span>
+              <i style={{ background: LINE.tsumago }} /> Tsumago, Revisited
+            </span>
+          </div>
           <div className="map-embed">
             <iframe
               src={MYMAP_EMBED_URL}
@@ -150,6 +191,15 @@ export default function SecondDayPage() {
               referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
+          <a
+            href={MYMAP_VIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+            style={{ marginTop: "1.4rem" }}
+          >
+            Open the map in Google Maps <ExternalLink size={15} />
+          </a>
         </div>
       </section>
 
