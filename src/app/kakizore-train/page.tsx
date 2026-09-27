@@ -4,8 +4,6 @@ import { MessageCircle } from "lucide-react";
 import { KAKIZORE_WHATSAPP_URL_JA } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
-/* eslint-disable @next/next/no-img-element */
-
 export const metadata: Metadata = {
   title:
     "電車で柿其渓谷に行くには、十二兼駅が便利!|Beyond Nakasendo Cycling",
