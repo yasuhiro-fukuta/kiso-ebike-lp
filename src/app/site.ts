@@ -232,6 +232,15 @@ export const KAKIZORE_WHATSAPP_URL_JA = wa(
 乗り捨て:十二兼駅/野尻駅`
 );
 
+/** Kakizore by car (Japanese article) — Tenpaku Park parking pick-up. */
+export const KAKIZORE_CAR_WHATSAPP_URL_JA = wa(
+  `こんにちは。柿其渓谷用のE-bikeを予約したいです。
+希望日:〇月〇日
+台数:〇台
+受け取り:天白公園駐車場
+乗り捨て:天白公園駐車場`
+);
+
 /** Meals at Kashiwaya — order form (menu & details live in the form). */
 export const MEALS_FORM_URL = "https://forms.gle/Gp6WX87KxWprPLYA7";
 
