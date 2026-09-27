@@ -73,6 +73,11 @@ const CROWDFREE_LABEL: Record<Lang, string> = {
   en: "Crowd-Free Japan: a 26-Day Itinerary",
   ja: "人混み嫌いのための日本旅行旅程(英語)",
 };
+const ATERA_COL_HREF: Record<Lang, string> = { en: "/atera-gorge", ja: "/atera" };
+const ATERA_COL_LABEL: Record<Lang, string> = {
+  en: "Atera Gorge by Train & E-Bike",
+  ja: "阿寺渓谷へは電車&E-bike",
+};
 const LIVE_HREF: Record<Lang, string> = { en: "/live-here", ja: "/ja/live-here" };
 const LIVE_LABEL: Record<Lang, string> = {
   en: "Live in the Valley",
@@ -82,7 +87,10 @@ const LIVE_LABEL: Record<Lang, string> = {
 /** EN ⇄ JA path mapping for the toggle. /atera is a Japanese-only
  *  article: its EN target is the home page. */
 function langTargets(pathname: string): { en: string; ja: string; isJa: boolean } {
-  if (pathname === "/atera") return { en: "/", ja: "/atera", isJa: true };
+  if (pathname === "/atera")
+    return { en: "/atera-gorge", ja: "/atera", isJa: true };
+  if (pathname === "/atera-gorge")
+    return { en: "/atera-gorge", ja: "/atera", isJa: false };
   if (pathname === "/kakizore")
     return { en: "/kakizore", ja: "/ja", isJa: false };
   if (pathname === "/crowd-free-japan")
@@ -165,6 +173,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
               </Link>
               <Link href="/crowd-free-japan" onClick={() => setOpen(false)}>
                 {CROWDFREE_LABEL[lang]}
+              </Link>
+              <Link href={ATERA_COL_HREF[lang]} onClick={() => setOpen(false)}>
+                {ATERA_COL_LABEL[lang]}
               </Link>
             </div>
           )}
@@ -320,8 +331,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           <br />
           <Link href={LIVE_HREF[lang]}>{LIVE_LABEL[lang]}</Link>
           <br />
-          <Link href="/atera">
-            {ja ? "阿寺渓谷へは電車&E-bike" : "阿寺渓谷へは電車&E-bike(日本語)"}
+          <Link href={ja ? "/atera" : "/atera-gorge"}>
+            {ja ? "阿寺渓谷へは電車&E-bike" : "Atera Gorge by Train & E-Bike"}
           </Link>
           <br />
           <Link href="/kakizore">{KAKIZORE_LABEL[lang]}</Link>

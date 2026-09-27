@@ -265,6 +265,14 @@ export const GOOGLE_MAPS_URL =
 export const ATERA_WHATSAPP_URL =
   "https://wa.me/819038392354?text=%E9%98%BF%E5%AF%BA%E6%B8%93%E8%B0%B7%E7%94%A8%E3%81%AEE-bike%E3%82%92%E4%BA%88%E7%B4%84%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A%E3%80%80%E5%8F%B0%E6%95%B0%EF%BC%9A";
 
+/** Atera gorge article (English version). */
+export const ATERA_EN_WHATSAPP_URL = wa(
+  `Hello! I'd like to reserve e-bikes for the Atera Gorge.
+Date: __/__/____
+Bikes: __
+Pick-up: Nojiri Station / other`
+);
+
 export const SPECIAL_MAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1LgL4RlnePF5JdvpqzADrpsrrW7oTVDE";
 export const SPECIAL_MAP_VIEW_URL =
