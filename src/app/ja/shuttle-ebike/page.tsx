@@ -10,7 +10,7 @@ import {
 } from "../../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
-const IZUMIYA_MAP = "https://maps.app.goo.gl/4nDgY2TvN6cYh5fQA";
+const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/qYoin6P4mrkmbs4v9";
 const DONGURI_MAP = "https://maps.app.goo.gl/SS9hxF9WcvB4iQqdA";
 
