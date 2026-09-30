@@ -21,7 +21,6 @@ import { ShuttleCalendar } from "../shuttle-calendar";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
-const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
 const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
 
 /** Payment button + QR — shown top and bottom of the page. */
@@ -193,8 +192,7 @@ export default function LuggageShuttlePage() {
             hands-free on the Nakasendo&apos;s Yogawa-michi, or in the
             Kakizore and Atera gorges.
             <br />
-            <small>* On Mondays, bags are held at the Nojiri station-front
-            community hall instead.</small>
+            <small>* The shuttle takes Mondays off — closed every Monday.</small>
           </p>
 
           {/* THE FOUR PANELS */}
@@ -232,7 +230,7 @@ export default function LuggageShuttlePage() {
               <h3>Pick up</h3>
               <p>
                 From 13:00, collect your bags at Coffee Katana by Nojiri
-                Station (Mondays: the community hall).
+                Station.
               </p>
             </div>
           </div>
@@ -281,8 +279,8 @@ export default function LuggageShuttlePage() {
               <MapPin size={20} /> Guesthouse WAKU · drop-off
             </h3>
             <p>
-              Bags left at Guesthouse WAKU also travel down to Coffee Katana
-              (Mondays: the community hall). Tap for the map.
+              Bags left at Guesthouse WAKU also travel down to Coffee
+              Katana. Tap for the map.
             </p>
           </a>
           <a
@@ -297,20 +295,6 @@ export default function LuggageShuttlePage() {
             <p>
               The pick-up counter, in front of Nojiri Station — reward
               yourself with a cup while you reunite with your bags.
-            </p>
-          </a>
-          <a
-            href={HALL_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
-            <h3>
-              <MapPin size={20} /> Community Hall · pick-up (Mondays)
-            </h3>
-            <p>
-              Coffee Katana rests on Mondays, so Monday pickups move here —
-              still right in front of Nojiri Station. Tap for the map.
             </p>
           </a>
         </div>

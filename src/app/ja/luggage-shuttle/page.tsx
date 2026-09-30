@@ -21,7 +21,6 @@ import { ShuttleCalendar } from "../../shuttle-calendar";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
-const HALL_MAP = "https://maps.app.goo.gl/PJDk8kvmz6Xxa9Dd8";
 const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
 
 /** 決済ボタン+QR——ページ上部と最下部の2カ所に出す。 */
@@ -175,7 +174,7 @@ export default function JaLuggageShuttlePage() {
             <strong>遅くとも13:00まで</strong>
             に野尻駅前(コーヒー刀※)へお届けします。手ぶらで中山道・与川道や、柿其渓谷、阿寺渓谷を楽しみましょう。
             <br />
-            <small>※月曜日は野尻駅前公民館で荷物をお預かりします。</small>
+            <small>※このサービスは毎週月曜日が定休日です。</small>
           </p>
 
           {/* 4コマ */}
@@ -205,7 +204,7 @@ export default function JaLuggageShuttlePage() {
               <PackageCheck size={26} />
               <h3>受け取る</h3>
               <p>
-                13:00以降、野尻駅前のコーヒー刀で受け取り(月曜は駅前公民館)。
+                13:00以降、野尻駅前のコーヒー刀で受け取り。
               </p>
             </div>
           </div>
@@ -250,7 +249,7 @@ export default function JaLuggageShuttlePage() {
               <MapPin size={20} /> ゲストハウスWAKU · 預け
             </h3>
             <p>
-              こちらからも預けられます。WAKUに預けた荷物も、コーヒー刀(月曜は公民館)へお届け。地図はこちら。
+              こちらからも預けられます。WAKUに預けた荷物も、コーヒー刀へお届け。地図はこちら。
             </p>
           </a>
           <a
@@ -264,19 +263,6 @@ export default function JaLuggageShuttlePage() {
             </h3>
             <p>
               受け取り窓口。野尻駅の目の前——荷物との再会はコーヒー片手に。地図はこちら。
-            </p>
-          </a>
-          <a
-            href={HALL_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
-            <h3>
-              <MapPin size={20} /> 野尻駅前公民館 · 受け取り(月曜)
-            </h3>
-            <p>
-              コーヒー刀が定休日の月曜は、受け取りはこちらで。同じく野尻駅の目の前です。タップで地図が開きます。
             </p>
           </a>
         </div>

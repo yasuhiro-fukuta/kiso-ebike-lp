@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 /** ============================================================
  *  シャトル営業日カレンダー
- *  ⚠️ 休業日はここに "YYYY-MM-DD" を追加/削除するだけ(随時更新)。
+ *  ⚠️ 毎週月曜日は定休(自動で「休」表示)。
+ *     臨時休業日はここに "YYYY-MM-DD" を追加/削除するだけ(随時更新)。
  *     それ以外の日はすべて「営業」として表示される。
  *     今月と来月の2か月分が自動で並ぶ(月替わりの作業は不要)。
  *  ============================================================ */
@@ -54,9 +55,10 @@ function MonthGrid({
         ))}
         {Array.from({ length: daysInMonth }, (_, i) => {
           const key = `${year}-${pad(month + 1)}-${pad(i + 1)}`;
+          const isMonday = (startDow + i) % 7 === 1;
           const cls = [
             "cal-day",
-            CLOSED_DAYS.has(key) ? "closed" : "",
+            isMonday || CLOSED_DAYS.has(key) ? "closed" : "",
             key < todayKey ? "past" : "",
             key === todayKey ? "today" : "",
           ]
@@ -99,8 +101,8 @@ export function ShuttleCalendar({ lang = "en" }: { lang?: "en" | "ja" }) {
       </div>
       <p className="cal-note">
         {lang === "ja"
-          ? "赤い日(休)は休業。それ以外は毎日営業しています(荷物の受付は11:00まで)。"
-          : "Red days are closed — every other day we run (bag drop-off by 11:00)."}
+          ? "毎週月曜日は定休です。そのほか赤い日(休)も休業。それ以外は毎日営業しています(荷物の受付は11:00まで)。"
+          : "Closed every Monday, plus the other red days — every other day we run (bag drop-off by 11:00)."}
       </p>
     </>
   );
