@@ -102,7 +102,7 @@ export default function JaLuggageShuttlePage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            荷物は駅から駅へ、私たちが運びます。朝、駅前のカフェに預けたら、中山道・与川道も渓谷も手ぶらで。昼過ぎには谷の向こうで荷物が待っています。
+            荷物は駅から駅へ、私たちが運びます。朝、駅前のカフェに預けたら、中山道・与川道も渓谷も手ぶらで。11:00までに預ければ、遅くとも13:00には谷の向こうで荷物が待っています。
           </p>
           <p className="head-note">
             熊スプレーなどのギアレンタルも、南木曽駅前イズミヤで借りて野尻駅前・珈琲刀で返す場合は予約不要です。詳しくは
@@ -115,7 +115,7 @@ export default function JaLuggageShuttlePage() {
             src="/assets/shuttle-van.jpg"
             alt="シャトル便のバン。スーツケースとバックパックを積み込んで谷を下ります"
           />
-          <figcaption>積んだら出発。荷物のほうが先に着きます</figcaption>
+          <figcaption>積んだら出発。遅くとも13:00には野尻駅前に届きます</figcaption>
         </figure>
       </header>
 
@@ -171,9 +171,9 @@ export default function JaLuggageShuttlePage() {
             予約不要。<em>預けて、払って、出発。</em>
           </h2>
           <p>
-            <strong>10:30まで</strong>に、予約なしで、南木曽駅前(イズミヤカフェ)またはゲストハウスWAKUへ荷物を持ち込むだけ。
-            <strong>13:30まで</strong>
-            に野尻駅前(コーヒー刀※)に届きます。手ぶらで中山道・与川道や、柿其渓谷、阿寺渓谷を楽しみましょう。
+            <strong>11:00まで</strong>に、予約なしで、南木曽駅前(イズミヤカフェ)またはゲストハウスWAKUへ荷物を預けていただければ、
+            <strong>遅くとも13:00まで</strong>
+            に野尻駅前(コーヒー刀※)へお届けします。手ぶらで中山道・与川道や、柿其渓谷、阿寺渓谷を楽しみましょう。
             <br />
             <small>※月曜日は野尻駅前公民館で荷物をお預かりします。</small>
           </p>
@@ -185,7 +185,7 @@ export default function JaLuggageShuttlePage() {
               <Store size={26} />
               <h3>預ける</h3>
               <p>
-                10:30までに、南木曽駅前のカフェ・イズミヤか、ゲストハウスWAKUへ荷物を持ち込み。
+                11:00までに、南木曽駅前のカフェ・イズミヤか、ゲストハウスWAKUへ荷物を持ち込み。
               </p>
             </div>
             <div className="koma">
@@ -205,10 +205,16 @@ export default function JaLuggageShuttlePage() {
               <PackageCheck size={26} />
               <h3>受け取る</h3>
               <p>
-                13:30以降、野尻駅前のコーヒー刀で受け取り(月曜は駅前公民館)。
+                13:00以降、野尻駅前のコーヒー刀で受け取り(月曜は駅前公民館)。
               </p>
             </div>
           </div>
+
+          <p className="drop-note">
+            <strong>
+              ※13:00より前に着いた場合、荷物がまだ届いていないことがあります。駅前でコーヒーを一杯どうぞ。
+            </strong>
+          </p>
 
           <p className="drop-note">
             逆方向(野尻→南木曽)や、妻籠・十二兼の発着もOK。WhatsAppでひと言もらえれば手配します。

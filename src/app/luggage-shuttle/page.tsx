@@ -108,8 +108,8 @@ export default function LuggageShuttlePage() {
           <p>
             We carry your bags, station to station. Hand them to a cafe in
             the morning, walk the Nakasendo&apos;s Yogawa-michi or swim the
-            gorges hands-free, and they&apos;ll be waiting at the other end
-            of the valley by early afternoon.
+            gorges hands-free — drop them by 11:00 and they&apos;ll be
+            waiting at the other end of the valley by 13:00 at the latest.
           </p>
           <p className="head-note">
             Gear rentals such as bear spray also need no reservation when
@@ -124,7 +124,7 @@ export default function LuggageShuttlePage() {
             src="/assets/shuttle-van.jpg"
             alt="The shuttle van with its tailgate up, suitcases and a backpack loaded for the run down the valley"
           />
-          <figcaption>Bags in, tailgate down — they&apos;ll beat you there</figcaption>
+          <figcaption>Bags in, tailgate down — at Nojiri by 13:00 at the latest</figcaption>
         </figure>
       </header>
 
@@ -186,10 +186,10 @@ export default function LuggageShuttlePage() {
             No reservation. <em>Drop, pay, and go.</em>
           </h2>
           <p>
-            By <strong>10:30</strong>, no booking needed: hand your bags in
-            at Nagiso Station (Izumiya Cafe) or at Guesthouse WAKU, and
-            they&apos;ll be at Nojiri Station (Coffee Katana*) by{" "}
-            <strong>13:30</strong>. Spend the day
+            No booking needed: hand your bags in at Nagiso Station (Izumiya
+            Cafe) or at Guesthouse WAKU by <strong>11:00</strong>, and
+            we&apos;ll have them at Nojiri Station (Coffee Katana*) by{" "}
+            <strong>13:00 at the latest</strong>. Spend the day
             hands-free on the Nakasendo&apos;s Yogawa-michi, or in the
             Kakizore and Atera gorges.
             <br />
@@ -204,7 +204,7 @@ export default function LuggageShuttlePage() {
               <Store size={26} />
               <h3>Drop</h3>
               <p>
-                By 10:30, hand your bags to Izumiya Cafe in front of Nagiso
+                By 11:00, hand your bags to Izumiya Cafe in front of Nagiso
                 Station — or to Guesthouse WAKU.
               </p>
             </div>
@@ -231,11 +231,18 @@ export default function LuggageShuttlePage() {
               <PackageCheck size={26} />
               <h3>Pick up</h3>
               <p>
-                From 13:30, collect your bags at Coffee Katana by Nojiri
+                From 13:00, collect your bags at Coffee Katana by Nojiri
                 Station (Mondays: the community hall).
               </p>
             </div>
           </div>
+
+          <p className="drop-note">
+            <strong>
+              Note: if you arrive before 13:00, your bags may still be on
+              the way — grab a coffee at the counter while you wait.
+            </strong>
+          </p>
 
           <p className="drop-note">
             Other directions or points — Tsumago, Junikane, or a Nojiri →

@@ -99,8 +99,8 @@ export function ShuttleCalendar({ lang = "en" }: { lang?: "en" | "ja" }) {
       </div>
       <p className="cal-note">
         {lang === "ja"
-          ? "赤い日(休)は休業。それ以外は毎日営業しています(荷物の受付は10:30まで)。"
-          : "Red days are closed — every other day we run (bag drop-off by 10:30)."}
+          ? "赤い日(休)は休業。それ以外は毎日営業しています(荷物の受付は11:00まで)。"
+          : "Red days are closed — every other day we run (bag drop-off by 11:00)."}
       </p>
     </>
   );

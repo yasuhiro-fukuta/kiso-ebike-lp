@@ -71,7 +71,7 @@ export default function JaShuttleEbikePage() {
               <p>
                 旧中山道、新中山道・与川道、柿其・阿寺渓谷など、レベルに合わせてお好みのルートで。詳しくは
                 <Link href="/ja/second-day" style={{ color: "var(--gold)" }}>こちら</Link>
-                。あなたが走っている間に、荷物はお昼にゴールへ運ばれます。
+                。あなたが走っている間に、荷物は遅くとも13:00までにゴールへ届きます。
               </p>
             </div>
             <div className="drop-step">

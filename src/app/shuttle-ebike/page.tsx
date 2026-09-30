@@ -80,7 +80,8 @@ export default function ShuttleEbikePage() {
                 The old Nakasendo, the Yogawa road, the Kakizore and Atera
                 gorges — pick the route that fits your level (
                 <Link href="/second-day" style={{ color: "var(--gold)" }}>details here</Link>
-                ). While you ride, your bags travel to the finish by midday.
+                ). While you ride, your bags travel to the finish — there by
+                13:00 at the latest.
               </p>
             </div>
             <div className="drop-step">
