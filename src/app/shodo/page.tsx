@@ -101,6 +101,9 @@ export default function ShodoPage() {
               until it&apos;s in hand, every session is 80% off. You get the
               full experience; I get the practice teaching it. Fair trade.
             </p>
+            <p>
+              <small>Sessions rest every Monday.</small>
+            </p>
             <div className="how-to-book-label">How to book · via WhatsApp</div>
             <div className="shodo-cta-row">
               <a

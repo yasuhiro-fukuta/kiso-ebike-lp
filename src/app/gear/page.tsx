@@ -96,7 +96,7 @@ export default function GearPage() {
           From the woven travel hats that walked this road for centuries to
           the bear spray the mountains quietly require. Each item rents on its
           own — grab exactly what your day needs, at the guesthouse, and pay
-          on the day by card or cash.
+          on the day by card or cash. Closed every Monday.
         </p>
       </header>
 

@@ -117,7 +117,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#rental`,
       name: "E-Bike Rental (self-guided)",
       description:
-        "Self-guided fat-tire e-bike rental for a half day — a quiet, zero-emission eco-mobility way to tour the Kiso Valley's rivers, forests and post towns — with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included; one-way drops at no extra charge. Up to 2 bikes. Book via WhatsApp; pay on the day by card or cash.",
+        "Self-guided fat-tire e-bike rental for a half day — a quiet, zero-emission eco-mobility way to tour the Kiso Valley's rivers, forests and post towns — with our route maps for turn-by-turn directions between pick-up points. Helmet, lock, and lights included; one-way drops at no extra charge. Up to 2 bikes. Closed every Monday. Book via WhatsApp; pay on the day by card or cash.",
       image: `${SITE_URL}${HERO_IMG}`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Bicycle rental",
@@ -145,7 +145,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#downhill`,
       name: "Kiso River Downhill (full-day guided e-bike course)",
       description:
-        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (from Yabuhara Station at 930 m down to Nagiso Station at 409 m). The route follows the historic Kiso road past seven of its eleven post towns, meeting at Coffee Bar Yabuhara at 9:30, with an unagi lunch in Agematsu, a detour into the Atera Gorge, and a finish at Izumiya Cafe in Nagiso around 16:00. Led by a team of local cyclists — a riding guide with every group, plus a support driver doubling as English operator who moves your luggage from the start to your inn (included). A ~25 km half course from Kiso-Fukushima is also available, and the 100 km Kiso-ichi loop is coming soon. Book via WhatsApp; pay on the day, card or cash.",
+        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (from Yabuhara Station at 930 m down to Nagiso Station at 409 m). The route follows the historic Kiso road past seven of its eleven post towns, meeting at Coffee Bar Yabuhara at 9:30, with an unagi lunch in Agematsu, a detour into the Atera Gorge, and a finish at Izumiya Cafe in Nagiso around 16:00. Led by a team of local cyclists — a riding guide with every group, plus a support driver doubling as English operator who moves your luggage from the start to your inn (included). A ~25 km half course from Kiso-Fukushima is also available, and the 100 km Kiso-ichi loop is coming soon. Tours rest every Monday. Book via WhatsApp; pay on the day, card or cash.",
       image: `${SITE_URL}/assets/kisogawa.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
@@ -199,7 +199,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#shodo`,
       name: "Shodo Calligraphy Session (at Kashiwaya Guesthouse)",
       description:
-        "A hands-on Japanese calligraphy (shodo) session in a quiet tatami room at Kashiwaya guesthouse in Nagiso: brush, sumi ink, and washi paper provided, no experience needed, and your best sheet goes home with you. Standard price ¥20,000 for a group of four, ±15% (¥3,000) per guest more or fewer — offered at 80% off as a trial price until the host earns his shodan (first dan) rank. Also serves as the rainy-day alternative when a downpour cancels a ride.",
+        "A hands-on Japanese calligraphy (shodo) session in a quiet tatami room at Kashiwaya guesthouse in Nagiso: brush, sumi ink, and washi paper provided, no experience needed, and your best sheet goes home with you. Sessions rest every Monday. Standard price ¥20,000 for a group of four, ±15% (¥3,000) per guest more or fewer — offered at 80% off as a trial price until the host earns his shodan (first dan) rank. Also serves as the rainy-day alternative when a downpour cancels a ride.",
       image: `${SITE_URL}/assets/shodo-class.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Cultural experience",
@@ -237,7 +237,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#morning`,
       name: "Early Morning Cycling Tour (guided, 2 hours)",
       description:
-        "A guided two-hour e-bike loop from 7:00 to 9:00 a.m. through Nagiso's post-town lanes and riverside roads, before the day-trippers arrive. Guide ¥4,000 per group plus ¥2,000 per rider with e-bike included — free (guide and bikes ¥0) for guests staying at Kashiwaya Guesthouse. Pay on the day, card or cash. Books via WhatsApp.",
+        "A guided two-hour e-bike loop from 7:00 to 9:00 a.m. through Nagiso's post-town lanes and riverside roads, before the day-trippers arrive. Guide ¥4,000 per group plus ¥2,000 per rider with e-bike included — free (guide and bikes ¥0) for guests staying at Kashiwaya Guesthouse. Rests every Monday. Pay on the day, card or cash. Books via WhatsApp.",
       image: `${SITE_URL}${HERO_IMG}`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
@@ -276,7 +276,7 @@ const jsonLd = {
       name: "Shuttle E-Bike Package (All-in-One Day Pack)",
       alternateName: "Shuttle E-bike",
       description:
-        "The 'shuttle e-bike' \u2014 a one-way, hands-free way to ride the Kiso Valley: the e-bike is delivered to your start point, your luggage is shuttled ahead by car, and you ride one way and drop the bike. The bundle: one e-bike, one bear bell, one bear spray, one more gear item of your choice, and the luggage shuttle (up to 2 bags per person). \u00a57,000 per person; book via WhatsApp and pay on the day, card or cash.",
+        "The 'shuttle e-bike' \u2014 a one-way, hands-free way to ride the Kiso Valley: the e-bike is delivered to your start point, your luggage is shuttled ahead by car, and you ride one way and drop the bike. The bundle: one e-bike, one bear bell, one bear spray, one more gear item of your choice, and the luggage shuttle (up to 2 bags per person). \u00a57,000 per person; rests every Monday; book via WhatsApp and pay on the day, card or cash.",
       image: `${SITE_URL}${HERO_IMG}`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Bicycle rental package",
@@ -306,7 +306,7 @@ const jsonLd = {
       name: "Outdoor Gear Rental",
       serviceType: "Equipment rental",
       description:
-        "Per-item outdoor gear rental at Kashiwaya Guesthouse: hinoki travel hat ¥500, bear spray ¥1,500 (a bear bell is included with every spray rental), rashguard ¥2,000, life jacket ¥1,000, cold-weather set ¥1,000 (per day). Pay on the day, card or cash.",
+        "Per-item outdoor gear rental at Kashiwaya Guesthouse: hinoki travel hat ¥500, bear spray ¥1,500 (a bear bell is included with every spray rental), rashguard ¥2,000, life jacket ¥1,000, cold-weather set ¥1,000 (per day). Closed every Monday. Pay on the day, card or cash.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
       url: `${SITE_URL}/gear`,

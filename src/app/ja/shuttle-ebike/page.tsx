@@ -12,7 +12,6 @@ import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/qYoin6P4mrkmbs4v9";
-const DONGURI_MAP = "https://maps.app.goo.gl/SS9hxF9WcvB4iQqdA";
 
 export default function JaShuttleEbikePage() {
   return (
@@ -78,13 +77,9 @@ export default function JaShuttleEbikePage() {
               <div className="dnum">3</div>
               <h3>ゴールで荷物を受け取る</h3>
               <p>
-                野尻駅前で乗り捨てて、駅前のカフェ「Katana」で荷物を受け取り(月曜日はカフェどんぐり)。電車を待つ間、ぜひコーヒーを。{" "}
+                野尻駅前で乗り捨てて、駅前のカフェ「Katana」で荷物を受け取り。電車を待つ間、ぜひコーヒーを。{" "}
                 <a href={KATANA_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
                   Katana
-                </a>
-                {" · "}
-                <a href={DONGURI_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
-                  どんぐり
                 </a>
               </p>
             </div>
@@ -94,7 +89,7 @@ export default function JaShuttleEbikePage() {
             <Link href="/ja/second-day" style={{ color: "var(--gold)" }}>
               セルフツアーのすすめ
             </Link>
-            から選んでもらえれば、受け渡しはこちらで組みます。
+            から選んでもらえれば、受け渡しはこちらで組みます。なお、パッケージは毎週月曜日が定休です。
           </p>
         </div>
       </section>

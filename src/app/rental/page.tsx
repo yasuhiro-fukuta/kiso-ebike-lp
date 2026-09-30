@@ -157,7 +157,8 @@ export default function RentalPage() {
         <p>
           Send us your date, number of riders, and which route you fancy —
           we&apos;ll confirm your bikes and where to meet. No prepayment:
-          you pay on the day, at pickup, by card or cash.
+          you pay on the day, at pickup, by card or cash. Rentals rest
+          every Monday.
         </p>
 
         <div className="square-embed">

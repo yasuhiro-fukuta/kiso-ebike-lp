@@ -488,7 +488,7 @@ export default function GuidedPage() {
                   Nagiso ⇄ Nojiri luggage shuttle
                 </Link>{" "}
                 is a separate service — on a guided day, bags are simply part
-                of the package.)
+                of the package.) Tours rest every Monday.
               </p>
             </div>
           </div>
@@ -688,7 +688,7 @@ export default function GuidedPage() {
           </a>
           <span className="morning-cta-note">
             Pay on the day — card or cash. Kashiwaya guests: just mention it
-            at check-in.
+            at check-in. Rests every Monday.
           </span>
         </div>
       </section>

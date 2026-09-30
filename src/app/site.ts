@@ -100,13 +100,11 @@ nagiso station izumiya cafe
 guesthouse Kashiwaya Inn
 guesthouse Waku nagiso
 nojiri station cafe katana
-nojiri station cafe donguri
 ④arrive at (choose one)
 nagiso station izumiya cafe
 guesthouse Kashiwaya Inn
 guesthouse Waku nagiso
-nojiri station cafe katana
-nojiri station cafe donguri`
+nojiri station cafe katana`
 );
 export const LUGGAGE_SEND_WHATSAPP_URL_JA = wa(
   `①氏名:
@@ -116,13 +114,11 @@ export const LUGGAGE_SEND_WHATSAPP_URL_JA = wa(
 ゲストハウス柏屋
 ゲストハウスWAKU
 野尻駅前 カフェ刀
-野尻駅前 カフェどんぐり
 ④受取場所(1つ選択)
 南木曽駅前 イズミヤカフェ
 ゲストハウス柏屋
 ゲストハウスWAKU
-野尻駅前 カフェ刀
-野尻駅前 カフェどんぐり`
+野尻駅前 カフェ刀`
 );
 
 /** Bear-spray-only rental — after-payment details message (no bags). */
@@ -135,13 +131,11 @@ nagiso station izumiya cafe
 guesthouse Kashiwaya Inn
 guesthouse Waku nagiso
 nojiri station cafe katana
-nojiri station cafe donguri
 ④return at (choose one)
 nagiso station izumiya cafe
 guesthouse Kashiwaya Inn
 guesthouse Waku nagiso
-nojiri station cafe katana
-nojiri station cafe donguri`
+nojiri station cafe katana`
 );
 export const SPRAY_SEND_WHATSAPP_URL_JA = wa(
   `熊スプレーのみレンタル(荷物運びなし)
@@ -152,13 +146,11 @@ export const SPRAY_SEND_WHATSAPP_URL_JA = wa(
 ゲストハウス柏屋
 ゲストハウスWAKU
 野尻駅前 カフェ刀
-野尻駅前 カフェどんぐり
 ④返却場所(1つ選択)
 南木曽駅前 イズミヤカフェ
 ゲストハウス柏屋
 ゲストハウスWAKU
-野尻駅前 カフェ刀
-野尻駅前 カフェどんぐり`
+野尻駅前 カフェ刀`
 );
 
 /** Gear rental */

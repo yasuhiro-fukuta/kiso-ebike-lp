@@ -86,6 +86,9 @@ export default function JaShodoPage() {
             <p>
               正規料金は4名1グループで¥20,000(±1名につき±15%=¥3,000)。ただ、主宰の私はまだ書道の初段を目指して稽古中です。段位を取るまでの間、全セッションを8割引でご提供します。あなたは体験をまるごと、私は教える練習を。フェアな取引です。
             </p>
+            <p>
+              <small>毎週月曜日は定休です。</small>
+            </p>
             <div className="how-to-book-label">予約方法 · WhatsApp</div>
             <div className="shodo-cta-row">
               <a

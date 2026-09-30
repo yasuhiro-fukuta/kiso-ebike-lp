@@ -426,7 +426,7 @@ export default function JaGuidedPage() {
                 <Link href="/ja/luggage-shuttle" style={{ color: "inherit" }}>
                   手荷物シャトル(南木曽⇄野尻)
                 </Link>
-                は別サービスです——ガイドツアーの日は、荷物運びは最初からパッケージに入っています。)
+                は別サービスです——ガイドツアーの日は、荷物運びは最初からパッケージに入っています。)ツアーは毎週月曜日が定休です。
               </p>
             </div>
           </div>
@@ -594,7 +594,7 @@ export default function JaGuidedPage() {
             <MessageCircle size={16} /> 早朝ツアーをWhatsAppで予約
           </a>
           <span className="morning-cta-note">
-            お支払いは当日(カード/現金)。柏屋のお客様はチェックイン時にひとことどうぞ。
+            お支払いは当日(カード/現金)。柏屋のお客様はチェックイン時にひとことどうぞ。毎週月曜日は定休です。
           </span>
         </div>
       </section>

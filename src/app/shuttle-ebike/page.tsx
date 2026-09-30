@@ -12,7 +12,6 @@ import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/qYoin6P4mrkmbs4v9";
-const DONGURI_MAP = "https://maps.app.goo.gl/SS9hxF9WcvB4iQqdA";
 
 export default function ShuttleEbikePage() {
   return (
@@ -89,14 +88,10 @@ export default function ShuttleEbikePage() {
               <h3>Collect at the finish</h3>
               <p>
                 Drop the bike at Nojiri Station and collect your bags at Cafe
-                Katana in front of the station (Mondays: Cafe Donguri).
-                Enjoy a coffee while you wait for your train.{" "}
+                Katana in front of the station. Enjoy a coffee while you
+                wait for your train.{" "}
                 <a href={KATANA_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
                   Katana
-                </a>
-                {" · "}
-                <a href={DONGURI_MAP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)" }}>
-                  Donguri
                 </a>
               </p>
             </div>
@@ -106,7 +101,8 @@ export default function ShuttleEbikePage() {
             <Link href="/second-day" style={{ color: "var(--gold)" }}>
               Self-Tour Advice page
             </Link>{" "}
-            and we&apos;ll set the handovers up around it.
+            and we&apos;ll set the handovers up around it. Note that the
+            package rests every Monday.
           </p>
         </div>
       </section>
