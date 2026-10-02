@@ -8,7 +8,7 @@ import {
   PHONE_TEL,
   SUPPORT_MAILTO,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook, AllInOnePack, LineButton } from "../chrome";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/qYoin6P4mrkmbs4v9";
@@ -167,6 +167,7 @@ export default function ShuttleEbikePage() {
           >
             <MessageCircle size={18} /> Book the package on WhatsApp
           </a>
+          <LineButton big />
         </div>
 
         <p className="booking-alt">

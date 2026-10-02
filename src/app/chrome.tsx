@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import {
   INSTAGRAM_URL,
+  LINE_URL,
+  LINE_ID,
   MEDIUM_URL,
   SUPPORT_MAILTO,
   PHONE,
@@ -219,6 +221,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
             >
               <MessageCircle size={15} /> WhatsApp
             </a>
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer">
+              <LineIcon size={15} /> LINE
+            </a>
           </div>
         </div>
       )}
@@ -274,6 +279,7 @@ export function AllInOnePack({
             <MessageCircle size={16} />{" "}
             {ja ? "パッケージをWhatsAppで予約" : "Book the package on WhatsApp"}
           </a>
+          <LineButton lang={lang} />
           {link && (
             <Link
               href={ja ? "/ja/shuttle-ebike" : "/shuttle-ebike"}
@@ -289,6 +295,42 @@ export function AllInOnePack({
 }
 
 /** Floating CTA button — target differs per page. */
+/** Simplified LINE speech-bubble mark (inherits currentColor). */
+export function LineIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M12 3C6.48 3 2 6.64 2 11.1c0 2.59 1.5 4.88 3.84 6.36.6.38.4 1.73.26 2.57-.12.73.6.62.98.4.3-.17 2.1-1.26 2.94-1.78.64.1 1.3.15 1.98.15 5.52 0 10-3.64 10-8.1S17.52 3 12 3Zm-4.9 10.08H5.2a.5.5 0 0 1-.5-.5V8.9a.5.5 0 1 1 1 0v3.18h1.4a.5.5 0 1 1 0 1Zm1.9-.5a.5.5 0 1 1-1 0V8.9a.5.5 0 1 1 1 0v3.68Zm4.9 0a.5.5 0 0 1-.9.3l-2-2.73v2.43a.5.5 0 1 1-1 0V8.9a.5.5 0 0 1 .9-.3l2 2.73V8.9a.5.5 0 1 1 1 0v3.68Zm3.9-.5a.5.5 0 0 1 0 1h-1.9a.5.5 0 0 1-.5-.5V8.9a.5.5 0 0 1 .5-.5h1.9a.5.5 0 1 1 0 1h-1.4v.84h1.4a.5.5 0 1 1 0 1h-1.4v.84h1.4Z" />
+    </svg>
+  );
+}
+
+/** LINE friend-add button, placed beside WhatsApp CTAs. */
+export function LineButton({
+  lang = "en",
+  big = false,
+}: {
+  lang?: Lang;
+  big?: boolean;
+}) {
+  return (
+    <a
+      href={LINE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={big ? "line-btn line-btn-big" : "line-btn"}
+    >
+      <LineIcon size={big ? 18 : 16} />{" "}
+      {lang === "ja" ? "LINEで問い合わせ" : "LINE"}
+    </a>
+  );
+}
+
 export function FloatBook({
   href,
   children,
@@ -296,10 +338,27 @@ export function FloatBook({
   href: string;
   children: React.ReactNode;
 }) {
+  const pathname = usePathname() ?? "/";
+  const ja =
+    pathname === "/ja" ||
+    pathname.startsWith("/ja/") ||
+    pathname === "/atera" ||
+    pathname === "/kakizore-train" ||
+    pathname === "/kakizore-car";
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="float-book">
-      {children}
-    </a>
+    <>
+      <a
+        href={LINE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="float-book float-line"
+      >
+        <LineIcon size={18} /> {ja ? "LINEで問い合わせ" : "LINE"}
+      </a>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="float-book">
+        {children}
+      </a>
+    </>
   );
 }
 
@@ -367,6 +426,10 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           <br />
           <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
             <Instagram size={16} /> Instagram
+          </a>
+          <br />
+          <a href={LINE_URL} target="_blank" rel="noreferrer">
+            <LineIcon size={16} /> LINE: {LINE_ID}
           </a>
           <br />
           <a href={SUPPORT_MAILTO}>

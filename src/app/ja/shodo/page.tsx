@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MessageCircle, CloudRain, Mail } from "lucide-react";
 import { SHODO_WHATSAPP_URL_JA, SUPPORT_MAILTO } from "../../site";
-import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook, LineButton } from "../../chrome";
 
 export default function JaShodoPage() {
   return (
@@ -99,6 +99,7 @@ export default function JaShodoPage() {
               >
                 <MessageCircle size={18} /> WhatsAppで相談・予約
               </a>
+          <LineButton lang="ja" />
               <a href={SUPPORT_MAILTO} className="shodo-cta-alt">
                 <Mail size={16} /> メールでも
               </a>

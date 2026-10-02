@@ -18,7 +18,7 @@ import {
   PHONE_TEL,
   SUPPORT_MAILTO,
 } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook, AllInOnePack, LineButton } from "../../chrome";
 
 export default function JaRentalPage() {
   return (
@@ -156,6 +156,7 @@ export default function JaRentalPage() {
           >
             <MessageCircle size={18} /> WhatsAppで予約
           </a>
+          <LineButton lang="ja" big />
         </div>
 
         <p className="booking-alt">

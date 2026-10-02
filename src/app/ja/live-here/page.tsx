@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL_JA, PHONE, PHONE_TEL, SUPPORT_MAILTO } from "../../site";
-import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook, LineButton } from "../../chrome";
 
 export default function JaLiveHerePage() {
   return (
@@ -155,6 +155,7 @@ export default function JaLiveHerePage() {
           >
             <MessageCircle size={18} /> まず話してみる
           </a>
+          <LineButton lang="ja" big />
         </div>
 
         <p className="booking-alt">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL, PHONE, PHONE_TEL, SUPPORT_MAILTO } from "../site";
-import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
 
 export default function LiveHerePage() {
   return (
@@ -181,6 +181,7 @@ export default function LiveHerePage() {
           >
             <MessageCircle size={18} /> Start the conversation
           </a>
+          <LineButton big />
         </div>
 
         <p className="booking-alt">

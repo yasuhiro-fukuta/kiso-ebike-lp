@@ -2,6 +2,9 @@
  *  Shared site data — update these in one place.
  *  ============================================================= */
 export const INSTAGRAM_URL = "https://www.instagram.com/satoyama_guide_yakkun";
+/** LINE official account — Beyond Nakasendo. */
+export const LINE_URL = "https://line.me/R/ti/p/@847fhmne";
+export const LINE_ID = "@847fhmne";
 export const MEDIUM_URL = "https://medium.com/@ravnicaguild";
 /** Google Analytics 4 の測定ID。空文字にすると計測タグごと無効になる。 */
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-0JECLSEP0Q";

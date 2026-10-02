@@ -16,7 +16,7 @@ import {
   SPRAY_SEND_WHATSAPP_URL,
   SQUARE_PAY_URL,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
@@ -60,6 +60,7 @@ function PayBlock() {
         >
           <MessageCircle size={16} /> Send the details on WhatsApp
         </a>
+          <LineButton />
         <div className="pay-alt">
           <p>
             <strong>Bear spray only, no bags?</strong> That works — pay the
@@ -74,6 +75,7 @@ function PayBlock() {
           >
             <MessageCircle size={16} /> WhatsApp for spray-only rental
           </a>
+          <LineButton />
         </div>
       </div>
       <p className="pay-note">

@@ -16,7 +16,7 @@ import {
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
 
 /** The morning tour, by season. Swap `photo: null` for a real path
  *  (e.g. "/assets/morning/spring.jpg") as each shot comes in. */
@@ -184,6 +184,7 @@ export default function GuidedPage() {
               >
                 Book on WhatsApp <MessageCircle size={15} />
               </a>
+          <LineButton />
             </div>
           </div>
 
@@ -220,6 +221,7 @@ export default function GuidedPage() {
               >
                 Book on WhatsApp <MessageCircle size={15} />
               </a>
+          <LineButton />
             </div>
           </div>
 
@@ -257,6 +259,7 @@ export default function GuidedPage() {
               >
                 Get notified on WhatsApp <MessageCircle size={15} />
               </a>
+          <LineButton />
             </div>
           </div>
         </div>
@@ -481,6 +484,7 @@ export default function GuidedPage() {
               >
                 <MessageCircle size={18} /> Book on WhatsApp
               </a>
+          <LineButton big />
               <p className="special-cta-note">
                 Message us with your date and group size — we&apos;ll confirm
                 the day. Pay on the day, card or cash. (Our no-reservation{" "}
@@ -686,6 +690,7 @@ export default function GuidedPage() {
           >
             <MessageCircle size={16} /> Book the morning tour on WhatsApp
           </a>
+          <LineButton />
           <span className="morning-cta-note">
             Pay on the day — card or cash. Kashiwaya guests: just mention it
             at check-in. Rests every Monday.

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { GA_ID } from "./site";
+import { GA_ID, LINE_URL } from "./site";
 import { ClickTracking } from "./analytics";
 
 /** ============================================================
@@ -78,7 +78,7 @@ const jsonLd = {
         longitude: GEO.lng,
       },
       areaServed: { "@type": "Place", name: "Kiso Valley, Nagano, Japan" },
-      sameAs: [INSTAGRAM_URL, MEDIUM_URL],
+      sameAs: [INSTAGRAM_URL, MEDIUM_URL, LINE_URL],
       parentOrganization: { "@type": "Organization", name: "From Scratch LLC" },
       makesOffer: [
         { "@type": "Offer", itemOffered: { "@id": `${SITE_URL}/#rental` } },

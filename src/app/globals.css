@@ -58,6 +58,27 @@ body::before {
   text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
 }
 .float-book:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 40px rgba(181, 83, 42, 0.55); }
+/* LINE friend-add — floating bubble stacked above the WhatsApp one */
+.float-book.float-line {
+  background: #06c755; bottom: calc(clamp(1.2rem, 4vw, 2.2rem) + 3.9rem);
+  box-shadow: 0 8px 30px rgba(6, 199, 85, 0.4); color: #fff;
+}
+.float-book.float-line:hover { box-shadow: 0 12px 40px rgba(6, 199, 85, 0.55); }
+
+/* LINE friend-add buttons (official green #06C755) */
+.line-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem; background: #06c755; color: #fff;
+  text-decoration: none; padding: 0.85rem 1.7rem; border-radius: 100px; font-weight: 600;
+  font-size: 0.9rem; transition: background 0.3s;
+}
+.line-btn:hover { background: #05b34c; color: #fff; }
+.line-btn-big { padding: 1.15rem 3rem; font-size: 1.05rem; letter-spacing: 0.04em; }
+/* WhatsApp + LINE pairs: equal margins keep them aligned in a row and
+   spaced when they wrap to a column on narrow screens */
+.pay-notify .stay-cta,
+.pay-notify .line-btn { margin: 0.25rem 0.3rem; }
+.special-price .line-btn { margin-top: 0.8rem; }
+.tour-card .line-btn { margin-top: 0.6rem; display: flex; justify-content: center; }
 
 /* HERO */
 .hero {
