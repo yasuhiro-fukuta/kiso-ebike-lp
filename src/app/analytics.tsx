@@ -11,6 +11,7 @@ function gtag(...args: unknown[]) {
 
 /** Fires GA4 events for the clicks we count as conversions:
  *  - whatsapp_click : any wa.me link (the main conversion)
+ *  - line_click     : any line.me link (LINE official account)
  *  - phone_click    : tel: links
  *  - email_click    : mailto: links
  *  One listener covers every current and future link on the site. */
@@ -25,6 +26,10 @@ export function ClickTracking() {
         gtag("event", "whatsapp_click", {
           page_path: window.location.pathname,
           link_url: href.split("?")[0],
+        });
+      } else if (href.includes("line.me/")) {
+        gtag("event", "line_click", {
+          page_path: window.location.pathname,
         });
       } else if (href.startsWith("tel:")) {
         gtag("event", "phone_click", { page_path: window.location.pathname });
