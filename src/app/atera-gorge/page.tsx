@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MessageCircle } from "lucide-react";
 import { ATERA_EN_WHATSAPP_URL } from "../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -191,7 +191,6 @@ export default function AteraGorgePage() {
           >
             <MessageCircle size={18} /> Reserve on WhatsApp
           </a>
-          <LineButton big />
         </div>
       </main>
 

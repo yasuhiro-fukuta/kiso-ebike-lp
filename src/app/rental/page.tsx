@@ -18,7 +18,7 @@ import {
   PHONE_TEL,
   SUPPORT_MAILTO,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 export default function RentalPage() {
   return (
@@ -170,7 +170,6 @@ export default function RentalPage() {
           >
             <MessageCircle size={18} /> Book on WhatsApp
           </a>
-          <LineButton big />
         </div>
 
         <p className="booking-alt">

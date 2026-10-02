@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MessageCircle, CloudRain, Mail } from "lucide-react";
 import { SHODO_WHATSAPP_URL, SUPPORT_MAILTO } from "../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function ShodoPage() {
   return (
@@ -114,7 +114,6 @@ export default function ShodoPage() {
               >
                 <MessageCircle size={18} /> Ask &amp; book on WhatsApp
               </a>
-          <LineButton />
               <a href={SUPPORT_MAILTO} className="shodo-cta-alt">
                 <Mail size={16} /> or email us
               </a>

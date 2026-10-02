@@ -16,7 +16,7 @@ import {
   SPRAY_SEND_WHATSAPP_URL_JA,
   SQUARE_PAY_URL,
 } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
@@ -60,7 +60,6 @@ function PayBlock() {
         >
           <MessageCircle size={16} /> WhatsAppで送る
         </a>
-          <LineButton lang="ja" />
         <div className="pay-alt">
           <p>
             <strong>熊スプレーだけのレンタルもOK。</strong>
@@ -74,7 +73,6 @@ function PayBlock() {
           >
             <MessageCircle size={16} /> WhatsAppで送る(スプレーのみ)
           </a>
-          <LineButton lang="ja" />
         </div>
       </div>
       <p className="pay-note">

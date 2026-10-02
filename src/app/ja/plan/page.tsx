@@ -13,7 +13,7 @@ import {
   MEALS_FORM_URL,
   KASHIWAYA_URL,
 } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 const NARAI_MAP = "https://goo.gl/maps/S6XA5BNduChYeL9S7?g_st=ac";
 
@@ -186,7 +186,6 @@ export default function JaPlanPage() {
           >
             <MessageCircle size={16} /> WhatsAppでプランをまるごと送る
           </a>
-          <LineButton lang="ja" />
         </div>
         <p className="pay-note">
           部屋は上の柏屋サイト、食事は注文フォームから。決めきれないところは空欄のまま送ってください——人間が答えます。

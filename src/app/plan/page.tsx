@@ -13,7 +13,7 @@ import {
   MEALS_FORM_URL,
   KASHIWAYA_URL,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 const NARAI_MAP = "https://goo.gl/maps/S6XA5BNduChYeL9S7?g_st=ac";
 
@@ -210,7 +210,6 @@ export default function PlanPage() {
           >
             <MessageCircle size={16} /> Send the whole plan on WhatsApp
           </a>
-          <LineButton />
         </div>
         <p className="pay-note">
           Rooms book on Kashiwaya&apos;s site above; meals go through the

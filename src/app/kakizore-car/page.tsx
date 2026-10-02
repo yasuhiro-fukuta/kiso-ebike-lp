@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MessageCircle } from "lucide-react";
 import { KAKIZORE_CAR_WHATSAPP_URL_JA } from "../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
@@ -100,7 +100,6 @@ export default function KakizoreCarPage() {
           >
             <MessageCircle size={18} /> E-bikeを予約する
           </a>
-          <LineButton lang="ja" big />
         </div>
       </main>
 

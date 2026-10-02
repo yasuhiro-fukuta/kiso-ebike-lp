@@ -16,7 +16,7 @@ import {
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
 } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 /** 早朝ツアーの四季写真。 */
 const MORNING_SEASONS: {
@@ -163,7 +163,6 @@ export default function JaGuidedPage() {
               >
                 WhatsAppで予約 <MessageCircle size={15} />
               </a>
-          <LineButton lang="ja" />
             </div>
           </div>
 
@@ -196,7 +195,6 @@ export default function JaGuidedPage() {
               >
                 WhatsAppで予約 <MessageCircle size={15} />
               </a>
-          <LineButton lang="ja" />
             </div>
           </div>
 
@@ -229,7 +227,6 @@ export default function JaGuidedPage() {
               >
                 公開通知をWhatsAppで受け取る <MessageCircle size={15} />
               </a>
-          <LineButton lang="ja" />
             </div>
           </div>
         </div>
@@ -424,7 +421,6 @@ export default function JaGuidedPage() {
               >
                 <MessageCircle size={18} /> WhatsAppで予約
               </a>
-          <LineButton lang="ja" big />
               <p className="special-cta-note">
                 日付と人数を送ってください。お支払いは当日、カードか現金で。(予約不要の
                 <Link href="/ja/luggage-shuttle" style={{ color: "inherit" }}>
@@ -597,7 +593,6 @@ export default function JaGuidedPage() {
           >
             <MessageCircle size={16} /> 早朝ツアーをWhatsAppで予約
           </a>
-          <LineButton lang="ja" />
           <span className="morning-cta-note">
             お支払いは当日(カード/現金)。柏屋のお客様はチェックイン時にひとことどうぞ。毎週月曜日は定休です。
           </span>

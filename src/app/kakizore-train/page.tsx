@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { KAKIZORE_WHATSAPP_URL_JA } from "../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
@@ -109,7 +109,6 @@ export default function KakizoreTrainPage() {
           >
             <MessageCircle size={18} /> WhatsAppで予約する
           </a>
-          <LineButton lang="ja" big />
         </div>
       </main>
 

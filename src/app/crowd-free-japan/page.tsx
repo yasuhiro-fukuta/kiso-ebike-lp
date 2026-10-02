@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
@@ -217,7 +217,6 @@ export default function CrowdFreeJapanPage() {
           >
             <MessageCircle size={16} /> Plan your Kiso days on WhatsApp
           </a>
-          <LineButton />
         </div>
         <p className="pay-note">
           Staying longer in the valley instead? The{" "}

@@ -8,7 +8,7 @@ import {
   PHONE_TEL,
   SUPPORT_MAILTO,
 } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack, LineButton } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
 const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
 const KATANA_MAP = "https://maps.app.goo.gl/qYoin6P4mrkmbs4v9";
@@ -147,7 +147,6 @@ export default function JaShuttleEbikePage() {
           >
             <MessageCircle size={18} /> パッケージをWhatsAppで予約
           </a>
-          <LineButton lang="ja" big />
         </div>
 
         <p className="booking-alt">

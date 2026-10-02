@@ -6,7 +6,7 @@ import {
   MYMAP_EMBED_URL,
   MYMAP_VIEW_URL,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook, LineButton } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
@@ -142,7 +142,6 @@ export default function KakizorePage() {
           >
             <MessageCircle size={16} /> Reserve e-bikes for Kakizore
           </a>
-          <LineButton />
         </div>
         <p className="pay-note">
           These are bear mountains: add a{" "}
