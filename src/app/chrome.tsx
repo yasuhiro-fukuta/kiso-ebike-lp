@@ -79,6 +79,10 @@ const CROWDFREE_LABEL: Record<Lang, string> = {
   ja: "人混み嫌いのための日本旅行旅程(英語)",
 };
 const KAKIZORE_CAR_LABEL = "車で柿其渓谷へ——天白公園駐車場が便利!";
+const SNOWBOARD_LABEL: Record<Lang, string> = {
+  en: "Learn in Achi, Graduate in Hakuba",
+  ja: "初スノボの冬ルート:阿智で学び、白馬で卒業(英語)",
+};
 const ATERA_COL_HREF: Record<Lang, string> = { en: "/atera-gorge", ja: "/atera" };
 const ATERA_COL_LABEL: Record<Lang, string> = {
   en: "Atera Gorge by Train & E-Bike",
@@ -105,6 +109,8 @@ function langTargets(pathname: string): { en: string; ja: string; isJa: boolean 
     return { en: "/kakizore", ja: "/kakizore-car", isJa: true };
   if (pathname === "/crowd-free-japan")
     return { en: "/crowd-free-japan", ja: "/ja", isJa: false };
+  if (pathname === "/snowboard-route")
+    return { en: "/snowboard-route", ja: "/ja", isJa: false };
   const isJa = pathname === "/ja" || pathname.startsWith("/ja/");
   if (isJa) {
     const en = pathname.replace(/^\/ja/, "") || "/";
@@ -191,6 +197,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
               </Link>
               <Link href={ATERA_COL_HREF[lang]} onClick={() => setOpen(false)}>
                 {ATERA_COL_LABEL[lang]}
+              </Link>
+              <Link href="/snowboard-route" onClick={() => setOpen(false)}>
+                {SNOWBOARD_LABEL[lang]}
               </Link>
             </div>
           )}
@@ -391,6 +400,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           )}
           <br />
           <Link href="/crowd-free-japan">{CROWDFREE_LABEL[lang]}</Link>
+          <br />
+          <Link href="/snowboard-route">{SNOWBOARD_LABEL[lang]}</Link>
         </div>
         <div>
           <h4>{ja ? "お問い合わせ" : "Connect"}</h4>
