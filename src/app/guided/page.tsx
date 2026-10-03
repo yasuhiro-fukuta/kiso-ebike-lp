@@ -11,8 +11,6 @@ import {
   Headphones,
 } from "lucide-react";
 import {
-  GUIDED_WHATSAPP_URL,
-  MORNING_WHATSAPP_URL,
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
 } from "../site";
@@ -57,7 +55,7 @@ export default function GuidedPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={GUIDED_WHATSAPP_URL}>
+      <FloatBook href="/book?s=guided">
         <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 
@@ -177,9 +175,7 @@ export default function GuidedPage() {
                 </span>
               </div>
               <a
-                href={GUIDED_WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book?s=guided"
                 className="card-book"
               >
                 Book on WhatsApp <MessageCircle size={15} />
@@ -213,9 +209,7 @@ export default function GuidedPage() {
                 <span className="price-note">Pricing — ask on WhatsApp</span>
               </div>
               <a
-                href={GUIDED_WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book?s=guided"
                 className="card-book"
               >
                 Book on WhatsApp <MessageCircle size={15} />
@@ -250,9 +244,7 @@ export default function GuidedPage() {
                 <span className="price-note">Coming soon</span>
               </div>
               <a
-                href={GUIDED_WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book?s=guided"
                 className="card-book"
               >
                 Get notified on WhatsApp <MessageCircle size={15} />
@@ -474,9 +466,7 @@ export default function GuidedPage() {
               </ul>
               <div className="how-to-book-label">How to book</div>
               <a
-                href={GUIDED_WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book?s=guided"
                 className="special-cta"
               >
                 <MessageCircle size={18} /> Book on WhatsApp
@@ -679,9 +669,7 @@ export default function GuidedPage() {
 
         <div className="morning-cta-row">
           <a
-            href={MORNING_WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?s=guided"
             className="stay-cta"
           >
             <MessageCircle size={16} /> Book the morning tour on WhatsApp

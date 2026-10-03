@@ -231,6 +231,28 @@ body::before {
   padding-left: 0.9rem; border-radius: 0 4px 4px 0;
 }
 
+/* booking message builder (/book) */
+.book-form { max-width: 560px; display: grid; gap: 1.1rem; }
+.book-field { display: grid; gap: 0.4rem; }
+.book-field label {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--cedar);
+}
+.book-field input,
+.book-field select {
+  width: 100%; padding: 0.75rem 0.9rem; font: inherit; color: var(--ink);
+  background: #fffdf8; border: 1px solid rgba(28, 26, 22, 0.25);
+  border-radius: 8px; appearance: auto;
+}
+.book-field input:focus,
+.book-field select:focus { outline: 2px solid var(--moss); border-color: var(--moss); }
+.book-preview {
+  background: #fffdf8; border: 1px dashed rgba(28, 26, 22, 0.3);
+  border-radius: 8px; padding: 1rem 1.1rem; white-space: pre-wrap;
+  font-size: 0.92rem; font-weight: 300; line-height: 1.7; color: #3a352d;
+}
+.book-send { justify-content: center; }
+
 /* big "same-day OK" badge at the top of a page head */
 .head-badge {
   display: inline-block; background: var(--rust); color: var(--paper);

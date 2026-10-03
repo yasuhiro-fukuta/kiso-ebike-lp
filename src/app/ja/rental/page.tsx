@@ -12,7 +12,6 @@ import {
   Ruler,
 } from "lucide-react";
 import {
-  RENTAL_WHATSAPP_URL_JA,
   GOOGLE_MAPS_URL,
   PHONE,
   PHONE_TEL,
@@ -25,7 +24,7 @@ export default function JaRentalPage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={RENTAL_WHATSAPP_URL_JA}>
+      <FloatBook href="/ja/book?s=rental">
         <MessageCircle size={18} /> WhatsAppで予約
       </FloatBook>
 
@@ -149,7 +148,7 @@ export default function JaRentalPage() {
 
         <div className="square-embed">
           <a
-            href={RENTAL_WHATSAPP_URL_JA}
+            href="/ja/book?s=rental"
             className="booking-cta"
             target="_blank"
             rel="noopener noreferrer"

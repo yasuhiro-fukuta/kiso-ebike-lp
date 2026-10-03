@@ -9,7 +9,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import {
-  PLAN_WHATSAPP_URL,
   MEALS_FORM_URL,
   KASHIWAYA_URL,
 } from "../site";
@@ -22,7 +21,7 @@ export default function PlanPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={PLAN_WHATSAPP_URL}>
+      <FloatBook href="/book?s=plan">
         <MessageCircle size={18} /> Send my plan
       </FloatBook>
 
@@ -203,9 +202,7 @@ export default function PlanPage() {
             </strong>
           </p>
           <a
-            href={PLAN_WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?s=plan"
             className="stay-cta"
           >
             <MessageCircle size={16} /> Send the whole plan on WhatsApp

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { MessageCircle } from "lucide-react";
-import { KAKIZORE_CAR_WHATSAPP_URL_JA } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
@@ -41,7 +40,7 @@ export default function KakizoreCarPage() {
       />
       <SiteNav lang="ja" />
 
-      <FloatBook href={KAKIZORE_CAR_WHATSAPP_URL_JA}>
+      <FloatBook href="/ja/book?s=kakizore-car">
         <MessageCircle size={18} /> E-bikeを予約
       </FloatBook>
 
@@ -93,9 +92,7 @@ export default function KakizoreCarPage() {
 
         <div className="atera-cta-row">
           <a
-            href={KAKIZORE_CAR_WHATSAPP_URL_JA}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/ja/book?s=kakizore-car"
             className="special-cta"
           >
             <MessageCircle size={18} /> E-bikeを予約する

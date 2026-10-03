@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle, ExternalLink, Car, TrainFront } from "lucide-react";
 import {
-  KAKIZORE_WHATSAPP_URL,
   MYMAP_EMBED_URL,
   MYMAP_VIEW_URL,
 } from "../site";
@@ -47,7 +46,7 @@ export default function KakizorePage() {
       />
       <SiteNav />
 
-      <FloatBook href={KAKIZORE_WHATSAPP_URL}>
+      <FloatBook href="/book?s=kakizore">
         <MessageCircle size={18} /> Reserve on WhatsApp
       </FloatBook>
 
@@ -135,9 +134,7 @@ export default function KakizorePage() {
             </strong>
           </p>
           <a
-            href={KAKIZORE_WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?s=kakizore"
             className="stay-cta"
           >
             <MessageCircle size={16} /> Reserve e-bikes for Kakizore

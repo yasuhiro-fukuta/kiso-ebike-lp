@@ -9,7 +9,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import {
-  PLAN_WHATSAPP_URL_JA,
   MEALS_FORM_URL,
   KASHIWAYA_URL,
 } from "../../site";
@@ -22,7 +21,7 @@ export default function JaPlanPage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={PLAN_WHATSAPP_URL_JA}>
+      <FloatBook href="/ja/book?s=plan">
         <MessageCircle size={18} /> プランを送る
       </FloatBook>
 
@@ -179,9 +178,7 @@ export default function JaPlanPage() {
             </strong>
           </p>
           <a
-            href={PLAN_WHATSAPP_URL_JA}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/ja/book?s=plan"
             className="stay-cta"
           >
             <MessageCircle size={16} /> WhatsAppでプランをまるごと送る

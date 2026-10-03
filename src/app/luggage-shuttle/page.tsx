@@ -11,9 +11,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import {
-  LUGGAGE_WHATSAPP_URL,
-  LUGGAGE_SEND_WHATSAPP_URL,
-  SPRAY_SEND_WHATSAPP_URL,
   SQUARE_PAY_URL,
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
@@ -53,9 +50,7 @@ function PayBlock() {
           </strong>
         </p>
         <a
-          href={LUGGAGE_SEND_WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/book?s=luggage-send"
           className="stay-cta"
         >
           <MessageCircle size={16} /> Send the details on WhatsApp
@@ -67,9 +62,7 @@ function PayBlock() {
             number of bottles, and the pick-up and return points.
           </p>
           <a
-            href={SPRAY_SEND_WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?s=spray"
             className="stay-cta"
           >
             <MessageCircle size={16} /> WhatsApp for spray-only rental
@@ -91,7 +84,7 @@ export default function LuggageShuttlePage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={LUGGAGE_WHATSAPP_URL}>
+      <FloatBook href="/book?s=luggage">
         <MessageCircle size={18} /> Ask on WhatsApp
       </FloatBook>
 

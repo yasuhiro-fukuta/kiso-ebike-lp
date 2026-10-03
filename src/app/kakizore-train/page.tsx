@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
-import { KAKIZORE_WHATSAPP_URL_JA } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
@@ -42,7 +41,7 @@ export default function KakizoreTrainPage() {
       />
       <SiteNav lang="ja" />
 
-      <FloatBook href={KAKIZORE_WHATSAPP_URL_JA}>
+      <FloatBook href="/ja/book?s=kakizore">
         <MessageCircle size={18} /> WhatsAppで予約
       </FloatBook>
 
@@ -102,9 +101,7 @@ export default function KakizoreTrainPage() {
 
         <div className="atera-cta-row">
           <a
-            href={KAKIZORE_WHATSAPP_URL_JA}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/ja/book?s=kakizore"
             className="special-cta"
           >
             <MessageCircle size={18} /> WhatsAppで予約する

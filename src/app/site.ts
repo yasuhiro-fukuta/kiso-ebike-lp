@@ -23,7 +23,7 @@ export const MYMAP_VIEW_URL = "https://goo.gl/maps/bdM3ga2QXExoZENo6?g_st=ac";
  *  without a template use the plain link.
  *  ============================================================= */
 const WA_NUMBER = "819038392354";
-const wa = (text?: string) =>
+export const wa = (text?: string) =>
   text
     ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`
     : `https://wa.me/${WA_NUMBER}`;

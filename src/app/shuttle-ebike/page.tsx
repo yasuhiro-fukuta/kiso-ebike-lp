@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import {
-  PACK_WHATSAPP_URL,
   PHONE,
   PHONE_TEL,
   SUPPORT_MAILTO,
@@ -18,7 +17,7 @@ export default function ShuttleEbikePage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={PACK_WHATSAPP_URL}>
+      <FloatBook href="/book?s=pack">
         <MessageCircle size={18} /> Book on WhatsApp
       </FloatBook>
 
@@ -160,7 +159,7 @@ export default function ShuttleEbikePage() {
 
         <div className="square-embed">
           <a
-            href={PACK_WHATSAPP_URL}
+            href="/book?s=pack"
             className="booking-cta"
             target="_blank"
             rel="noopener noreferrer"

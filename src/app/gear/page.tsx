@@ -1,7 +1,6 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
-import { GEAR_WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 const GEAR_ITEMS: {
@@ -82,7 +81,7 @@ export default function GearPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={GEAR_WHATSAPP_URL}>
+      <FloatBook href="/book?s=gear">
         <MessageCircle size={18} /> Ask on WhatsApp
       </FloatBook>
 

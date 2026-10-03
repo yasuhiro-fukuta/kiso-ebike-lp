@@ -24,8 +24,6 @@ import {
   FEEDBACK_URL,
   WHATSAPP_URL,
   WHATSAPP_URL_JA,
-  PACK_WHATSAPP_URL,
-  PACK_WHATSAPP_URL_JA,
 } from "./site";
 
 export type Lang = "en" | "ja";
@@ -276,7 +274,7 @@ export function AllInOnePack({
         </ul>
         <div className="allinone-actions">
           <a
-            href={ja ? PACK_WHATSAPP_URL_JA : PACK_WHATSAPP_URL}
+            href={ja ? "/ja/book?s=pack" : "/book?s=pack"}
             target="_blank"
             rel="noopener noreferrer"
             className="allinone-cta"
@@ -338,7 +336,13 @@ export function FloatBook({
       >
         <LineIcon size={18} /> {ja ? "LINEで問い合わせ" : "LINE"}
       </a>
-      <a href={href} target="_blank" rel="noopener noreferrer" className="float-book">
+      <a
+        href={href}
+        {...(href.startsWith("/")
+          ? {}
+          : { target: "_blank", rel: "noopener noreferrer" })}
+        className="float-book"
+      >
         {children}
       </a>
     </>

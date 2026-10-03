@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MessageCircle, CloudRain, Mail } from "lucide-react";
-import { SHODO_WHATSAPP_URL_JA, SUPPORT_MAILTO } from "../../site";
+import { SUPPORT_MAILTO } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export default function JaShodoPage() {
@@ -10,7 +10,7 @@ export default function JaShodoPage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={SHODO_WHATSAPP_URL_JA}>
+      <FloatBook href="/ja/book?s=shodo">
         <MessageCircle size={18} /> WhatsAppで相談
       </FloatBook>
 
@@ -92,9 +92,7 @@ export default function JaShodoPage() {
             <div className="how-to-book-label">予約方法 · WhatsApp</div>
             <div className="shodo-cta-row">
               <a
-                href={SHODO_WHATSAPP_URL_JA}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/ja/book?s=shodo"
                 className="special-cta shodo-cta"
               >
                 <MessageCircle size={18} /> WhatsAppで相談・予約

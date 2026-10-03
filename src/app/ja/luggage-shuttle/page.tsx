@@ -11,9 +11,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import {
-  LUGGAGE_WHATSAPP_URL_JA,
-  LUGGAGE_SEND_WHATSAPP_URL_JA,
-  SPRAY_SEND_WHATSAPP_URL_JA,
   SQUARE_PAY_URL,
 } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
@@ -53,9 +50,7 @@ function PayBlock() {
           </strong>
         </p>
         <a
-          href={LUGGAGE_SEND_WHATSAPP_URL_JA}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/ja/book?s=luggage-send"
           className="stay-cta"
         >
           <MessageCircle size={16} /> WhatsAppで送る
@@ -66,9 +61,7 @@ function PayBlock() {
             荷物運びなしで大丈夫です。同じリンク・QRでスプレー代を支払って、氏名・本数・受取場所・返却場所を送ってください。
           </p>
           <a
-            href={SPRAY_SEND_WHATSAPP_URL_JA}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/ja/book?s=spray"
             className="stay-cta"
           >
             <MessageCircle size={16} /> WhatsAppで送る(スプレーのみ)
@@ -87,7 +80,7 @@ export default function JaLuggageShuttlePage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={LUGGAGE_WHATSAPP_URL_JA}>
+      <FloatBook href="/ja/book?s=luggage">
         <MessageCircle size={18} /> WhatsAppで相談
       </FloatBook>
 

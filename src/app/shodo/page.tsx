@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MessageCircle, CloudRain, Mail } from "lucide-react";
-import { SHODO_WHATSAPP_URL, SUPPORT_MAILTO } from "../site";
+import { SUPPORT_MAILTO } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function ShodoPage() {
@@ -10,7 +10,7 @@ export default function ShodoPage() {
     <div className="lp">
       <SiteNav />
 
-      <FloatBook href={SHODO_WHATSAPP_URL}>
+      <FloatBook href="/book?s=shodo">
         <MessageCircle size={18} /> Ask on WhatsApp
       </FloatBook>
 
@@ -107,9 +107,7 @@ export default function ShodoPage() {
             <div className="how-to-book-label">How to book · via WhatsApp</div>
             <div className="shodo-cta-row">
               <a
-                href={SHODO_WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book?s=shodo"
                 className="special-cta shodo-cta"
               >
                 <MessageCircle size={18} /> Ask &amp; book on WhatsApp

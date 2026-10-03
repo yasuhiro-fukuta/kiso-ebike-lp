@@ -11,8 +11,6 @@ import {
   Headphones,
 } from "lucide-react";
 import {
-  GUIDED_WHATSAPP_URL_JA,
-  MORNING_WHATSAPP_URL_JA,
   SPECIAL_MAP_EMBED_URL,
   SPECIAL_MAP_VIEW_URL,
 } from "../../site";
@@ -56,7 +54,7 @@ export default function JaGuidedPage() {
     <div className="lp">
       <SiteNav lang="ja" />
 
-      <FloatBook href={GUIDED_WHATSAPP_URL_JA}>
+      <FloatBook href="/ja/book?s=guided">
         <MessageCircle size={18} /> WhatsAppで予約
       </FloatBook>
 
@@ -156,9 +154,7 @@ export default function JaGuidedPage() {
                 </span>
               </div>
               <a
-                href={GUIDED_WHATSAPP_URL_JA}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/ja/book?s=guided"
                 className="card-book"
               >
                 WhatsAppで予約 <MessageCircle size={15} />
@@ -188,9 +184,7 @@ export default function JaGuidedPage() {
                 <span className="price-note">料金はWhatsAppでご相談</span>
               </div>
               <a
-                href={GUIDED_WHATSAPP_URL_JA}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/ja/book?s=guided"
                 className="card-book"
               >
                 WhatsAppで予約 <MessageCircle size={15} />
@@ -220,9 +214,7 @@ export default function JaGuidedPage() {
                 <span className="price-note">近日公開</span>
               </div>
               <a
-                href={GUIDED_WHATSAPP_URL_JA}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/ja/book?s=guided"
                 className="card-book"
               >
                 公開通知をWhatsAppで受け取る <MessageCircle size={15} />
@@ -414,9 +406,7 @@ export default function JaGuidedPage() {
               </ul>
               <div className="how-to-book-label">予約方法</div>
               <a
-                href={GUIDED_WHATSAPP_URL_JA}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/ja/book?s=guided"
                 className="special-cta"
               >
                 <MessageCircle size={18} /> WhatsAppで予約
@@ -586,9 +576,7 @@ export default function JaGuidedPage() {
 
         <div className="morning-cta-row">
           <a
-            href={MORNING_WHATSAPP_URL_JA}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/ja/book?s=guided"
             className="stay-cta"
           >
             <MessageCircle size={16} /> 早朝ツアーをWhatsAppで予約

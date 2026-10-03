@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { MessageCircle } from "lucide-react";
-import { ATERA_EN_WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 /* eslint-disable @next/next/no-img-element */
@@ -44,7 +43,7 @@ export default function AteraGorgePage() {
       />
       <SiteNav />
 
-      <FloatBook href={ATERA_EN_WHATSAPP_URL}>
+      <FloatBook href="/book?s=atera">
         <MessageCircle size={18} /> Reserve on WhatsApp
       </FloatBook>
 
@@ -184,9 +183,7 @@ export default function AteraGorgePage() {
 
         <div className="atera-cta-row">
           <a
-            href={ATERA_EN_WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?s=atera"
             className="special-cta"
           >
             <MessageCircle size={18} /> Reserve on WhatsApp
