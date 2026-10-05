@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -13,6 +14,11 @@ import {
   X,
   MessageCircle,
   ChevronDown,
+  Share2,
+  Link2,
+  Check,
+  Twitter,
+  Facebook,
 } from "lucide-react";
 import {
   INSTAGRAM_URL,
@@ -117,6 +123,94 @@ function langTargets(pathname: string): { en: string; ja: string; isJa: boolean 
   return { en: pathname, ja: pathname === "/" ? "/ja" : `/ja${pathname}`, isJa };
 }
 
+/** Share menu in the top nav: WhatsApp, LINE, X, Facebook, email,
+ *  copy link — plus the device share sheet (Instagram etc.) where
+ *  the browser supports it. */
+function ShareButton({ lang }: { lang: Lang }) {
+  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const ja = lang === "ja";
+
+  const info = () => ({
+    eu: encodeURIComponent(window.location.href),
+    et: encodeURIComponent(document.title),
+  });
+  const go = (href: string) => {
+    window.open(href, "_blank", "noopener,noreferrer");
+    setOpen(false);
+  };
+  const native = async () => {
+    try {
+      await navigator.share({ title: document.title, url: window.location.href });
+    } catch {
+      /* user cancelled */
+    }
+    setOpen(false);
+  };
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+        setOpen(false);
+      }, 1200);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+
+  return (
+    <div className="nav-share">
+      <button
+        className="nav-burger"
+        aria-label={ja ? "このページをシェア" : "Share this page"}
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <Share2 size={20} />
+      </button>
+      {open &&
+        createPortal(
+          <div className="share-menu">
+          <button onClick={() => { const { eu, et } = info(); go(`https://wa.me/?text=${et}%20${eu}`); }}>
+            <MessageCircle size={16} /> WhatsApp
+          </button>
+          <button onClick={() => { const { eu } = info(); go(`https://social-plugins.line.me/lineit/share?url=${eu}`); }}>
+            <LineIcon size={16} /> LINE
+          </button>
+          <button onClick={() => { const { eu, et } = info(); go(`https://twitter.com/intent/tweet?url=${eu}&text=${et}`); }}>
+            <Twitter size={16} /> X
+          </button>
+          <button onClick={() => { const { eu } = info(); go(`https://www.facebook.com/sharer/sharer.php?u=${eu}`); }}>
+            <Facebook size={16} /> Facebook
+          </button>
+          <button
+            onClick={() => {
+              const { eu, et } = info();
+              window.location.href = `mailto:?subject=${et}&body=${eu}`;
+              setOpen(false);
+            }}
+          >
+            <Mail size={16} /> {ja ? "メールで送る" : "Email"}
+          </button>
+          <button onClick={copy}>
+            {copied ? <Check size={16} /> : <Link2 size={16} />}{" "}
+            {copied ? (ja ? "コピーしました" : "Copied!") : ja ? "リンクをコピー" : "Copy link"}
+          </button>
+          {typeof navigator !== "undefined" &&
+            typeof navigator.share === "function" && (
+              <button onClick={native}>
+                <Share2 size={16} /> {ja ? "その他(Instagram等)" : "More (Instagram…)"}
+              </button>
+            )}
+          </div>,
+          document.body
+        )}
+    </div>
+  );
+}
+
 /** Fixed top nav with a language switch and hamburger menu. */
 export function SiteNav({ lang = "en" }: { lang?: Lang }) {
   const [open, setOpen] = useState(false);
@@ -137,6 +231,7 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
           Beyond Nakasendo <span>Cycling</span>
         </Link>
         <div className="nav-right">
+          <ShareButton lang={lang} />
           <div className="lang-switch">
             <Link href={t.en} className={t.isJa ? "" : "on"}>
               EN
