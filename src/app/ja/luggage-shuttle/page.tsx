@@ -58,14 +58,8 @@ function PayBlock() {
         <div className="pay-alt">
           <p>
             <strong>熊スプレーだけのレンタルもOK。</strong>
-            荷物運びなしで大丈夫です。同じリンク・QRでスプレー代を支払って、氏名・本数・受取場所・返却場所を送ってください。
+            予約と決済は<Link href="/ja/gear">ギアレンタルのページ</Link>からどうぞ。
           </p>
-          <a
-            href="/ja/book?s=spray"
-            className="stay-cta"
-          >
-            <MessageCircle size={16} /> WhatsAppで送る(スプレーのみ)
-          </a>
         </div>
       </div>
       <p className="pay-note">

@@ -57,16 +57,10 @@ function PayBlock() {
         </a>
         <div className="pay-alt">
           <p>
-            <strong>Bear spray only, no bags?</strong> That works — pay the
-            spray fee through the same link or QR, then send us your name,
-            number of bottles, and the pick-up and return points.
+            <strong>Bear spray only, no bags?</strong> That works — booking
+            and payment live on the{" "}
+            <Link href="/gear">gear rental page</Link>.
           </p>
-          <a
-            href="/book?s=spray"
-            className="stay-cta"
-          >
-            <MessageCircle size={16} /> WhatsApp for spray-only rental
-          </a>
         </div>
       </div>
       <p className="pay-note">

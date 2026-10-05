@@ -1,6 +1,8 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, CreditCard } from "lucide-react";
+import { SQUARE_PAY_URL } from "../../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
 
 const GEAR_ITEMS: {
@@ -117,6 +119,36 @@ export default function JaGearPage() {
       </section>
 
       {/* ALL-IN-ONE PACK */}
+      {/* 予約と決済 */}
+      <section className="mini-sec" id="book">
+        <span className="eyebrow">予約と決済</span>
+        <h2>WhatsAppでひとこと、支払いはオンラインか店頭で。</h2>
+        <div className="pay-row">
+          <Link href="/ja/book?s=gear" className="stay-cta">
+            <MessageCircle size={16} /> ギアをWhatsAppで予約
+          </Link>
+          <a
+            href={SQUARE_PAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <CreditCard size={16} /> オンライン決済(Square)
+          </a>
+          <figure className="pay-qr">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/square-pay-qr.png"
+              alt="Square決済ページのQRコード——スキャンでギアレンタル代を支払えます"
+            />
+            <figcaption>スキャンでも支払えます</figcaption>
+          </figure>
+        </div>
+        <p className="pay-note" style={{ textAlign: "left", marginLeft: 0 }}>
+          金額はSquareのページで入力してください。店頭での現金払いもOK。
+        </p>
+      </section>
+
       <AllInOnePack lang="ja" />
 
       <SiteFooter lang="ja" />

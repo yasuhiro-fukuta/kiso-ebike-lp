@@ -1,6 +1,8 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, CreditCard } from "lucide-react";
+import { SQUARE_PAY_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
 
 const GEAR_ITEMS: {
@@ -124,6 +126,39 @@ export default function GearPage() {
             )}
           </div>
         ))}
+      </section>
+
+      {/* BOOK & PAY */}
+      <section className="mini-sec" id="book">
+        <span className="eyebrow">Book &amp; pay</span>
+        <h2>Message us, then pay online or at the counter.</h2>
+        <div className="pay-row">
+          <Link href="/book?s=gear" className="stay-cta">
+            <MessageCircle size={16} /> Book gear on WhatsApp
+          </Link>
+          <a
+            href={SQUARE_PAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <CreditCard size={16} /> Pay online (Square)
+          </a>
+          <figure className="pay-qr">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/square-pay-qr.png"
+              alt="QR code for the Square payment page — scan to pay the gear rental fee"
+            />
+            <figcaption>or scan to pay</figcaption>
+          </figure>
+        </div>
+        <p className="pay-note" style={{ textAlign: "left", marginLeft: 0 }}>
+          Enter the amount on the Square page — cash at the counter is
+          welcome too. The Square page is displayed in Japanese (「金額」 is
+          the amount field); your browser&apos;s translate function renders
+          it in English just fine.
+        </p>
       </section>
 
       {/* ALL-IN-ONE PACK */}
