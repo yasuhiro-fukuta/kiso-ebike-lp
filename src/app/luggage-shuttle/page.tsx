@@ -164,10 +164,18 @@ export default function LuggageShuttlePage() {
           </a>
           .
         </p>
-        <ul className="itin-list">
+        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
+          SOUTH
+        </h4>
+        <ul className="itin-list" style={{ marginBottom: "1.4rem" }}>
           <li><b>Ena City</b>+¥1,500</li>
           <li><b>Nakatsugawa City</b>+¥1,000</li>
           <li><b>Nagiso Town</b>+¥0</li>
+        </ul>
+        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
+          NORTH
+        </h4>
+        <ul className="itin-list">
           <li><b>Okuwa Village</b>+¥0</li>
           <li><b>Agematsu</b>+¥1,000</li>
           <li><b>Kiso-Fukushima</b>+¥1,500</li>
@@ -175,6 +183,18 @@ export default function LuggageShuttlePage() {
           <li><b>Narai</b>+¥2,000</li>
           <li><b>Matsumoto</b>+¥3,000</li>
         </ul>
+        <div className="stay-perk" style={{ maxWidth: "56ch", marginTop: "1.6rem" }}>
+          <strong>Example: Nakatsugawa to Kiso-Fukushima, 4 bags</strong>
+          <br />
+          Bags ¥1,500 × 4 = ¥6,000
+          <br />
+          Base fee ¥1,500 / group
+          <br />
+          Surcharge +¥1,000 (south: Nakatsugawa) +¥1,500 (north:
+          Kiso-Fukushima)
+          <br />
+          <strong>Total: ¥10,000</strong>
+        </div>
       </section>
 
       {/* PAY — first appearance */}

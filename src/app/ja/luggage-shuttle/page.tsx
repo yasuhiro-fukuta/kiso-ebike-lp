@@ -148,10 +148,18 @@ export default function JaLuggageShuttlePage() {
           </a>
           。
         </p>
-        <ul className="itin-list">
+        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
+          南方
+        </h4>
+        <ul className="itin-list" style={{ marginBottom: "1.4rem" }}>
           <li><b>恵那市</b>+1,500円</li>
           <li><b>中津川市</b>+1,000円</li>
           <li><b>南木曽町</b>+0円</li>
+        </ul>
+        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
+          北方
+        </h4>
+        <ul className="itin-list">
           <li><b>大桑村</b>+0円</li>
           <li><b>上松</b>+1,000円</li>
           <li><b>木曽福島</b>+1,500円</li>
@@ -159,6 +167,17 @@ export default function JaLuggageShuttlePage() {
           <li><b>奈良井</b>+2,000円</li>
           <li><b>松本</b>+3,000円</li>
         </ul>
+        <div className="stay-perk" style={{ maxWidth: "56ch", marginTop: "1.6rem" }}>
+          <strong>例:中津川市から木曽福島まで、荷物4個</strong>
+          <br />
+          荷物 1,500円/個 × 4個 = 6,000円
+          <br />
+          基本送料 1,500円/グループ
+          <br />
+          追加送料 +1,000円(南方:中津川市)+1,500円(北方:木曽福島)
+          <br />
+          <strong>計:10,000円</strong>
+        </div>
       </section>
 
       {/* 決済——1回目 */}
