@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import {
   SQUARE_PAY_URL,
+  WHATSAPP_URL,
 } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
@@ -151,6 +152,29 @@ export default function LuggageShuttlePage() {
             </p>
           </div>
         </div>
+
+        <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", margin: "2.4rem 0 0.6rem" }}>
+          Area surcharge (per group)
+        </h3>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1.2rem" }}>
+          * Longer-distance runs may also be possible if you ask by the day
+          before —{" "}
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            message us on WhatsApp
+          </a>
+          .
+        </p>
+        <ul className="itin-list">
+          <li><b>Ena City</b>+¥1,500</li>
+          <li><b>Nakatsugawa City</b>+¥1,000</li>
+          <li><b>Nagiso Town</b>+¥0</li>
+          <li><b>Okuwa Village</b>+¥0</li>
+          <li><b>Agematsu</b>+¥1,000</li>
+          <li><b>Kiso-Fukushima</b>+¥1,500</li>
+          <li><b>Yabuhara</b>+¥2,000</li>
+          <li><b>Narai</b>+¥2,000</li>
+          <li><b>Matsumoto</b>+¥3,000</li>
+        </ul>
       </section>
 
       {/* PAY — first appearance */}

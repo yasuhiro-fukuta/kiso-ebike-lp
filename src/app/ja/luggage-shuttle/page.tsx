@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import {
   SQUARE_PAY_URL,
+  WHATSAPP_URL_JA,
 } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
@@ -136,6 +137,28 @@ export default function JaLuggageShuttlePage() {
             </p>
           </div>
         </div>
+
+        <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", margin: "2.4rem 0 0.6rem" }}>
+          追加送料(1グループにつき)
+        </h3>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1.2rem" }}>
+          ※遠方の輸送も、前日までにご相談いただければお受けできる場合があります。
+          <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer">
+            WhatsAppでお問い合わせください
+          </a>
+          。
+        </p>
+        <ul className="itin-list">
+          <li><b>恵那市</b>+1,500円</li>
+          <li><b>中津川市</b>+1,000円</li>
+          <li><b>南木曽町</b>+0円</li>
+          <li><b>大桑村</b>+0円</li>
+          <li><b>上松</b>+1,000円</li>
+          <li><b>木曽福島</b>+1,500円</li>
+          <li><b>薮原</b>+2,000円</li>
+          <li><b>奈良井</b>+2,000円</li>
+          <li><b>松本</b>+3,000円</li>
+        </ul>
       </section>
 
       {/* 決済——1回目 */}
