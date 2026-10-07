@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, ExternalLink, MessageCircle } from "lucide-react";
-import { KASHIWAYA_URL, MEALS_FORM_URL, WHATSAPP_URL } from "../site";
+import { KASHIWAYA_URL, WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function StayPage() {
@@ -73,13 +73,12 @@ export default function StayPage() {
 
       {/* MEALS */}
       <section className="mini-sec" id="meals">
-        <span className="eyebrow">Meals · on request</span>
-        <h2>Reserve ahead, and meals are on the table too.</h2>
+        <span className="eyebrow">Meals · optional</span>
+        <h2>Meals can be part of the stay.</h2>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "2rem" }}>
-          Pay on the day. This isn&apos;t restaurant food — it&apos;s the
-          hotpot Japanese families cook for their special days, and a
-          slightly special ochazuke breakfast. Reserve ahead through the
-          order form below; the menu and details are all in the form.
+          This isn&apos;t restaurant food — it&apos;s the hotpot Japanese
+          families cook for their special days, and a slightly special
+          ochazuke breakfast.
         </p>
         <div className="seasons-grid" style={{ maxWidth: "880px" }}>
           <figure className="season-cell">
@@ -98,16 +97,6 @@ export default function StayPage() {
             />
             <figcaption className="season-tag">Ochazuke breakfast</figcaption>
           </figure>
-        </div>
-        <div className="pay-row" style={{ marginTop: "2rem" }}>
-          <a
-            href={MEALS_FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stay-cta"
-          >
-            Reserve meals — order form <ExternalLink size={15} />
-          </a>
         </div>
       </section>
 
