@@ -19,7 +19,7 @@ const SERVICES = [
     href: "/rental",
     icon: Bike,
     title: "E-Bike Rental",
-    desc: "Self-guided rides on quiet valley roads — one-way drops, luggage moved free.",
+    desc: "Delivered to the spot you choose, dropped off anywhere in the area — self-guided rides on quiet valley roads.",
   },
   {
     href: "/second-day",

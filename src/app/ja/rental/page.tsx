@@ -10,6 +10,8 @@ import {
   Lightbulb,
   MessageCircle,
   Ruler,
+  Truck,
+  MapPin,
 } from "lucide-react";
 import {
   GOOGLE_MAPS_URL,
@@ -31,6 +33,8 @@ export default function JaRentalPage() {
       {/* PAGE HEAD */}
       <header className="page-head page-head-grid">
         <div>
+          <span className="head-badge">お届けします · 乗り捨て自由</span>
+          <br />
           <span className="eyebrow">エコモビリティ · セルフガイド · 半日 · 10:00–16:00</span>
           <h1>
             E-bikeという<em>エコモビリティ</em>で、自然をめぐる。
@@ -38,6 +42,12 @@ export default function JaRentalPage() {
           <p>
             水力発電量が豊富な、水と緑の豊かな谷に、排気ガスは似合いません。あなたの足を電気の力でアシストし、美しい谷の一日の周遊面積を増やします。どこへ行くか迷ったら、おすすめ3コースを載せた
             <Link href="/ja/second-day">セルフツアーのすすめ</Link>へ。
+          </p>
+          <p className="head-note">
+            店舗に来てもらう必要はありません。
+            <strong>
+              妻籠〜野尻のエリア内なら、宿でも駅でも渓谷の入口でも、ご希望の場所にバイクをお届け。走り終えたら、エリア内の好きな場所で乗り捨てできます。
+            </strong>
           </p>
         </div>
         <figure className="page-head-visual">
@@ -82,6 +92,38 @@ export default function JaRentalPage() {
       </section>
 
       {/* PRICING */}
+      {/* お届け&乗り捨て */}
+      <section className="mini-sec" id="delivery">
+        <span className="eyebrow">店舗なし、カウンターなし</span>
+        <h2>バイクのほうが、あなたの場所に来ます。</h2>
+        <div className="mini-grid">
+          <div className="mini-card">
+            <h3>
+              <Truck size={20} /> お届け
+            </h3>
+            <p>
+              出発したい場所を教えてください——宿でも、駅前でも、渓谷の入口でも。妻籠〜野尻のエリア内なら、出発時刻にバイクを設置しておきます。
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <Zap size={20} /> 走るだけ
+            </h3>
+            <p>
+              片道でOK。返しに戻る店舗がないので、行きたい一日をそのまま計画できます——谷を下る、渓谷へ寄る、駅から駅へ。
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <MapPin size={20} /> 乗り捨て自由
+            </h3>
+            <p>
+              エリア内の好きな場所でゴールして、施錠して、場所をWhatsAppで送るだけ。回収はこちらでやります。返却手続きはそれで全部です。
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">料金</span>
         <h2>1台おいくら?</h2>
@@ -180,6 +222,12 @@ export default function JaRentalPage() {
       {/* FAQ */}
       <section className="faq" id="faq">
         <h2>よくある質問</h2>
+        <details className="faq-item">
+          <summary>受け取り・返却はどこで?</summary>
+          <p>
+            お好きな場所で。妻籠〜野尻のエリア内ならご希望の場所にお届けし、走り終えたらエリア内の好きな場所に停めて、施錠して場所を連絡してもらえればOKです。戻ってこなければいけない店舗はありません。
+          </p>
+        </details>
         <details className="faq-item">
           <summary>体力に自信がなくても大丈夫?</summary>
           <p>

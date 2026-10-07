@@ -19,7 +19,7 @@ const SERVICES = [
     href: "/ja/rental",
     icon: Bike,
     title: "E-bikeレンタル",
-    desc: "静かな谷の道をセルフガイドで。乗り捨てOK、手荷物は別便で運べます。",
+    desc: "希望の場所にお届け、エリア内どこでも乗り捨てOK。静かな谷の道をセルフガイドで。",
   },
   {
     href: "/ja/second-day",

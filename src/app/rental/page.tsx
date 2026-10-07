@@ -10,6 +10,8 @@ import {
   Lightbulb,
   MessageCircle,
   Ruler,
+  Truck,
+  MapPin,
 } from "lucide-react";
 import {
   GOOGLE_MAPS_URL,
@@ -31,6 +33,8 @@ export default function RentalPage() {
       {/* PAGE HEAD */}
       <header className="page-head page-head-grid">
         <div>
+          <span className="head-badge">We come to you · Drop off anywhere</span>
+          <br />
           <span className="eyebrow">Eco-mobility · Self-guided · Half day · 10:00–16:00</span>
           <h1>
             Tour nature by eco-mobility. <em>The valley never hears you coming.</em>
@@ -42,6 +46,15 @@ export default function RentalPage() {
             one day can cover. Wondering where to go? Our three mapped
             routes live on the{" "}
             <Link href="/second-day">Self-Tour Advice page</Link>.
+          </p>
+          <p className="head-note">
+            And you don&apos;t come to a shop:{" "}
+            <strong>
+              we deliver the bikes to the spot you choose anywhere in our
+              Tsumago–Nojiri area — your inn, a station, a trailhead — and
+              you can finish and leave the bike at any spot in the area,
+              too.
+            </strong>
           </p>
         </div>
         <figure className="page-head-visual">
@@ -85,6 +98,44 @@ export default function RentalPage() {
               <Ruler size={18} /> Sized to you before you set off
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* DELIVERY & DROP-ANYWHERE */}
+      <section className="mini-sec" id="delivery">
+        <span className="eyebrow">No shop, no counter</span>
+        <h2>The bike comes to you — and stays where you finish.</h2>
+        <div className="mini-grid">
+          <div className="mini-card">
+            <h3>
+              <Truck size={20} /> We deliver
+            </h3>
+            <p>
+              Tell us where you&apos;re starting — your inn, a station, a
+              gorge trailhead — and the bikes are waiting there at your
+              start time. Anywhere in the Tsumago–Nojiri area.
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <Zap size={20} /> You just ride
+            </h3>
+            <p>
+              One way is fine. There&apos;s no shop to return to, so plan
+              the day you actually want — down the valley, into a gorge,
+              station to station.
+            </p>
+          </div>
+          <div className="mini-card">
+            <h3>
+              <MapPin size={20} /> Drop it anywhere
+            </h3>
+            <p>
+              Finish at any spot in the area, lock the bike, and tell us
+              where it is on WhatsApp. We come and collect it — that&apos;s
+              the whole return procedure.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -197,6 +248,15 @@ export default function RentalPage() {
       {/* FAQ */}
       <section className="faq" id="faq">
         <h2>Good to know</h2>
+        <details className="faq-item">
+          <summary>Where do I pick up and return the bikes?</summary>
+          <p>
+            Wherever suits you. We deliver the bikes to the spot you choose
+            anywhere in the Tsumago–Nojiri area, and you can leave them at
+            any spot in the area when you finish — just lock up and message
+            us the location. There is no shop you have to come back to.
+          </p>
+        </details>
         <details className="faq-item">
           <summary>Do I need to be fit?</summary>
           <p>

@@ -25,8 +25,22 @@ type Service = {
 
 /** The five standard start/finish points. */
 const POINTS = {
-  en: ["Tsumago", "Nagiso Station", "Kashiwaya", "Junikane Station", "Nojiri Station"],
-  ja: ["妻籠", "南木曽駅前", "柏屋", "十二兼駅前", "野尻駅前"],
+  en: [
+    "Tsumago",
+    "Nagiso Station",
+    "Kashiwaya",
+    "Junikane Station",
+    "Nojiri Station",
+    "Other spot in the area (details in chat)",
+  ],
+  ja: [
+    "妻籠",
+    "南木曽駅前",
+    "柏屋",
+    "十二兼駅前",
+    "野尻駅前",
+    "その他(エリア内の希望場所・チャットで相談)",
+  ],
 };
 /** Luggage counters (drop-off / pick-up / return points). */
 const COUNTERS = {
