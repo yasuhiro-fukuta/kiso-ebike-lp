@@ -117,7 +117,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#rental`,
       name: "E-Bike Rental (self-guided)",
       description:
-        "Self-guided fat-tire e-bike rental — a quiet, zero-emission eco-mobility way to tour the Kiso Valley's rivers, forests and post towns — with our route maps for turn-by-turn directions between pick-up points. Bikes are delivered to the spot you choose anywhere between Tsumago and Nojiri — your inn, a station, a trailhead — and can be dropped off at any spot in the same area. Helmet, lock, and lights included; one-way drops at no extra charge. Up to 2 bikes. Closed every Monday. Book via WhatsApp; pay on the day by card or cash.",
+        "Self-guided fat-tire e-bike rental — a quiet, zero-emission eco-mobility way to tour the Kiso Valley's rivers, forests and post towns — with our route maps for turn-by-turn directions between pick-up points. Bikes are delivered to the spot you choose anywhere between Tsumago and Nojiri — your inn, a station, a trailhead — and can be dropped off at any spot in the same area. Helmet, lock, and lights included; one-way drops at no extra charge. Up to 4 bikes, one of which fits children. Closed every Monday. Book via WhatsApp; pay on the day by card or cash.",
       image: `${SITE_URL}${HERO_IMG}`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Bicycle rental",
@@ -329,7 +329,7 @@ const jsonLd = {
           name: "Can I hire a guide for the self-guided routes?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No — the three mapped routes are self-guided rentals only (¥4,000 per bike, ¥8,000 for two), ridden with our route maps. For a guided experience, see the guided tour page: the full-day Kiso River Downhill, an easy ~25 km half course, and a two-hour early-morning tour.",
+            text: "No — the three mapped routes are self-guided rentals only (¥4,000 per bike, up to 4 bikes, one of which fits children), ridden with our route maps. For a guided experience, see the guided tour page: the full-day Kiso River Downhill, an easy ~25 km half course, and a two-hour early-morning tour.",
           },
         },
         {

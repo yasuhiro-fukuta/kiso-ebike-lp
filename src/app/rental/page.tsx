@@ -150,8 +150,8 @@ export default function RentalPage() {
               ¥4,000<span style={{ fontSize: "0.9rem" }}>/bike</span>
             </div>
             <p>
-              Self-guided. ¥4,000 for one bike, ¥8,000 for two. Up to
-              2 bikes.
+              Self-guided, ¥4,000 per bike. Up to 4 bikes — and one of
+              them fits kids, too.
             </p>
           </div>
           <div className="pitem">

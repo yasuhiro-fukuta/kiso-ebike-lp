@@ -133,7 +133,7 @@ export default function JaRentalPage() {
             <div className="amt">
               ¥4,000<span style={{ fontSize: "0.9rem" }}>/台</span>
             </div>
-            <p>セルフガイド。1台¥4,000、2台¥8,000。最大2台まで。</p>
+            <p>セルフガイド、1台¥4,000。最大4台まで——うち1台は子供も乗れる自転車です。</p>
           </div>
           <div className="pitem">
             <h4>ルートマップ</h4>
