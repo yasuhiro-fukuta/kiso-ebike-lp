@@ -646,25 +646,6 @@ export default function GuidedPage() {
               to ¥12,000.
             </p>
           </div>
-          <div className="pitem">
-            <h4>Kashiwaya guests</h4>
-            <div className="amt">¥0</div>
-            <p>Staying at Kashiwaya? Guide and bikes are both free.</p>
-          </div>
-        </div>
-
-        <div className="campaign">
-          <div className="campaign-badge">Kashiwaya Guests</div>
-          <div className="campaign-body">
-            <h3>
-              Sleep at Kashiwaya, and this one&apos;s <em>on the house.</em>
-            </h3>
-            <p>
-              Guests of Kashiwaya Guesthouse join the morning tour for free —
-              no guide fee, no bike fee. Wake up, roll out, and be back
-              before your breakfast goes cold. Just tell us the night before.
-            </p>
-          </div>
         </div>
 
         <div className="morning-cta-row">
@@ -675,8 +656,7 @@ export default function GuidedPage() {
             <MessageCircle size={16} /> Book the morning tour on WhatsApp
           </a>
           <span className="morning-cta-note">
-            Pay on the day — card or cash. Kashiwaya guests: just mention it
-            at check-in. Rests every Monday.
+            Pay on the day — card or cash. Rests every Monday.
           </span>
         </div>
       </section>
