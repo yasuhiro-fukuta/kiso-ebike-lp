@@ -35,7 +35,7 @@ export const WHATSAPP_URL_JA = wa();
 /** E-bike rental */
 export const RENTAL_WHATSAPP_URL = wa(
   `Hello! I'm interested in renting e-bikes as follows.
-Date: __/__/____, 10:00 - 15:00
+Date: __/__/____
 Bikes (riders 150 cm or taller): __
 Bikes (riders under 150 cm): __
 Start: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
@@ -45,7 +45,7 @@ Bear-deterrent kit: __ / not needed`
 );
 export const RENTAL_WHATSAPP_URL_JA = wa(
   `こんにちは。下記内容でE-bikeレンタルを検討しています。
-日時:〇年〇月〇日 10:00 - 15:00
+日時:〇年〇月〇日
 台数(身長150センチ以上):〇台
 台数(身長150センチ未満):〇台
 出発:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前
@@ -57,7 +57,7 @@ export const RENTAL_WHATSAPP_URL_JA = wa(
 /** Shuttle E-bike Package */
 export const PACK_WHATSAPP_URL = wa(
   `Hello! I'm interested in the Shuttle E-Bike Package as follows.
-Date: __/__/____, 10:00 - 15:00
+Date: __/__/____
 Bikes (riders 150 cm or taller): __
 Bikes (riders under 150 cm): __
 Start: Tsumago / Nagiso Station / Kashiwaya / Junikane Station / Nojiri Station
@@ -67,7 +67,7 @@ One extra gear item of choice: hinoki hat / rashguard / life jacket
 );
 export const PACK_WHATSAPP_URL_JA = wa(
   `こんにちは。下記内容でE-bikeレンタルを検討しています。
-日時:〇年〇月〇日 10:00 - 15:00
+日時:〇年〇月〇日
 台数(身長150センチ以上):〇台
 台数(身長150センチ未満):〇台
 出発:妻籠/南木曽駅前/柏屋/十二兼駅前/野尻駅前

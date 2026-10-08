@@ -555,23 +555,6 @@ export default function JaGuidedPage() {
               1人あたり、バイク込み。2人なら合計¥8,000、4人なら¥12,000。
             </p>
           </div>
-          <div className="pitem">
-            <h4>柏屋宿泊者</h4>
-            <div className="amt">¥0</div>
-            <p>柏屋にお泊まりなら、ガイド料もバイク代も無料。</p>
-          </div>
-        </div>
-
-        <div className="campaign">
-          <div className="campaign-badge">柏屋宿泊者</div>
-          <div className="campaign-body">
-            <h3>
-              柏屋に泊まれば、これは<em>宿のおごり。</em>
-            </h3>
-            <p>
-              ゲストハウス柏屋のお客様は早朝ツアー無料——ガイド料もバイク代もかかりません。起きて、走って、朝食が冷める前に戻る。前日の夜にひとこと言ってもらえればOKです。
-            </p>
-          </div>
         </div>
 
         <div className="morning-cta-row">
@@ -582,7 +565,7 @@ export default function JaGuidedPage() {
             <MessageCircle size={16} /> 早朝ツアーをWhatsAppで予約
           </a>
           <span className="morning-cta-note">
-            お支払いは当日(カード/現金)。柏屋のお客様はチェックイン時にひとことどうぞ。毎週月曜日は定休です。
+            お支払いは当日(カード/現金)。毎週月曜日は定休です。
           </span>
         </div>
       </section>

@@ -73,8 +73,8 @@ const SERVICES: Record<string, Service> = {
     ],
     build: (l, g) =>
       l === "ja"
-        ? `こんにちは。下記内容でE-bikeレンタルを検討しています。\n日時:${g("date")} 10:00 - 15:00\n台数(身長150センチ以上):${g("tall")}台\n台数(身長150センチ未満):${g("short")}\n出発:${g("start")}\n到着:${g("finish")}\n出発地点から到着地点までの荷物運び:${g("bags")}\nクマよけグッズ:${g("bear")}`
-        : `Hello! I'm interested in renting e-bikes as follows.\nDate: ${g("date")}, 10:00 - 15:00\nBikes (riders 150 cm or taller): ${g("tall")}\nBikes (riders under 150 cm): ${g("short")}\nStart: ${g("start")}\nFinish: ${g("finish")}\nLuggage shuttle from start to finish: ${g("bags")} bags\nBear-deterrent kit: ${g("bear")}`,
+        ? `こんにちは。下記内容でE-bikeレンタルを検討しています。\n日時:${g("date")}\n台数(身長150センチ以上):${g("tall")}台\n台数(身長150センチ未満):${g("short")}\n出発:${g("start")}\n到着:${g("finish")}\n出発地点から到着地点までの荷物運び:${g("bags")}\nクマよけグッズ:${g("bear")}`
+        : `Hello! I'm interested in renting e-bikes as follows.\nDate: ${g("date")}\nBikes (riders 150 cm or taller): ${g("tall")}\nBikes (riders under 150 cm): ${g("short")}\nStart: ${g("start")}\nFinish: ${g("finish")}\nLuggage shuttle from start to finish: ${g("bags")} bags\nBear-deterrent kit: ${g("bear")}`,
   },
   pack: {
     title: { en: "Shuttle E-Bike Package", ja: "Shuttle E-bikeパッケージ" },
@@ -93,8 +93,8 @@ const SERVICES: Record<string, Service> = {
     ],
     build: (l, g) =>
       l === "ja"
-        ? `こんにちは。下記内容でShuttle E-bikeパッケージを検討しています。\n日時:${g("date")} 10:00 - 15:00\n台数(身長150センチ以上):${g("tall")}台\n台数(身長150センチ未満):${g("short")}\n出発:${g("start")}\n到着:${g("finish")}\n希望する追加アイテム1点:${g("gear")}\n※クマよけグッズと荷物運びはセットになっています。`
-        : `Hello! I'm interested in the Shuttle E-Bike Package as follows.\nDate: ${g("date")}, 10:00 - 15:00\nBikes (riders 150 cm or taller): ${g("tall")}\nBikes (riders under 150 cm): ${g("short")}\nStart: ${g("start")}\nFinish: ${g("finish")}\nOne extra gear item of choice: ${g("gear")}\n* The bear-deterrent kit and the luggage shuttle are included.`,
+        ? `こんにちは。下記内容でShuttle E-bikeパッケージを検討しています。\n日時:${g("date")}\n台数(身長150センチ以上):${g("tall")}台\n台数(身長150センチ未満):${g("short")}\n出発:${g("start")}\n到着:${g("finish")}\n希望する追加アイテム1点:${g("gear")}\n※クマよけグッズと荷物運びはセットになっています。`
+        : `Hello! I'm interested in the Shuttle E-Bike Package as follows.\nDate: ${g("date")}\nBikes (riders 150 cm or taller): ${g("tall")}\nBikes (riders under 150 cm): ${g("short")}\nStart: ${g("start")}\nFinish: ${g("finish")}\nOne extra gear item of choice: ${g("gear")}\n* The bear-deterrent kit and the luggage shuttle are included.`,
   },
   luggage: {
     title: { en: "Luggage Shuttle", ja: "手荷物シャトル" },

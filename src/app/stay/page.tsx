@@ -137,11 +137,6 @@ export default function StayPage() {
           walk, ride, or do absolutely nothing but watch the clouds drift
           over the valley.
         </p>
-        <div className="stay-perk" style={{ maxWidth: "56ch" }}>
-          <strong>The multi-night deal:</strong> stay consecutive nights and
-          the e-bikes are free for the daytime from your second night
-          onward. The longer you stay, the more valley you get.
-        </div>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch" }}>
           Details and opening dates will appear here first — or ask us on
           WhatsApp and we&apos;ll keep you posted.

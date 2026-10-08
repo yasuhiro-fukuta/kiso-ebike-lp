@@ -35,7 +35,7 @@ export default function JaRentalPage() {
         <div>
           <span className="head-badge">お届けします · 乗り捨て自由</span>
           <br />
-          <span className="eyebrow">エコモビリティ · セルフガイド · 半日 · 10:00–16:00</span>
+          <span className="eyebrow">エコモビリティ · セルフガイド</span>
           <h1>
             E-bikeという<em>エコモビリティ</em>で、自然をめぐる。
           </h1>
@@ -133,7 +133,7 @@ export default function JaRentalPage() {
             <div className="amt">
               ¥4,000<span style={{ fontSize: "0.9rem" }}>/台</span>
             </div>
-            <p>半日・セルフガイド。1台¥4,000、2台¥8,000。最大2台まで。</p>
+            <p>セルフガイド。1台¥4,000、2台¥8,000。最大2台まで。</p>
           </div>
           <div className="pitem">
             <h4>ルートマップ</h4>

@@ -47,7 +47,7 @@ export default function SecondDayPage() {
           <span className="eyebrow">Choose your day</span>
           <h2>Four routes. All a little off the beaten track.</h2>
           <p>
-            Every ride is a half day, 10:00–16:00. Open the route map on your
+            Open the route map on your
             phone for turn-by-turn directions between our pick-up points.
           </p>
         </div>

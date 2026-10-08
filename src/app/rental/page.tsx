@@ -35,7 +35,7 @@ export default function RentalPage() {
         <div>
           <span className="head-badge">We come to you · Drop off anywhere</span>
           <br />
-          <span className="eyebrow">Eco-mobility · Self-guided · Half day · 10:00–16:00</span>
+          <span className="eyebrow">Eco-mobility · Self-guided</span>
           <h1>
             Tour nature by eco-mobility. <em>The valley never hears you coming.</em>
           </h1>
@@ -150,7 +150,7 @@ export default function RentalPage() {
               ¥4,000<span style={{ fontSize: "0.9rem" }}>/bike</span>
             </div>
             <p>
-              Half day, self-guided. ¥4,000 for one bike, ¥8,000 for two. Up to
+              Self-guided. ¥4,000 for one bike, ¥8,000 for two. Up to
               2 bikes.
             </p>
           </div>

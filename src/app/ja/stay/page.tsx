@@ -115,10 +115,6 @@ export default function JaStayPage() {
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1rem" }}>
           2軒目の古民家を、一日一組の一棟貸しとして改修中です。設計思想は「スローステイ特化の宿」。歩いたり、走ったり、何もせずのんびり雲を眺めたりしたい方のための宿にします。
         </p>
-        <div className="stay-perk" style={{ maxWidth: "56ch" }}>
-          <strong>連泊特典:</strong>
-          連泊のお客様は、2泊目以降の日中のE-bike利用が無料。長く居るほど、谷は近くなる。
-        </div>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch" }}>
           詳細とオープン日はこのページで最初に告知します。WhatsAppで一報いただければ、続報をお送りします。
         </p>
