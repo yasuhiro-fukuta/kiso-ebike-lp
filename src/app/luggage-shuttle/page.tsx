@@ -37,9 +37,10 @@ export default function LuggageBusPage() {
           <p>
             The Luggage Bus carries your bags along the Nakasendo on a fixed
             daily timetable, stopping at Nakatsugawa, Magome, Tsumago,
-            Nagiso, Nojiri, Agematsu and Kiso-Fukushima. Leave your bags at
-            the stop&apos;s counter in the morning and walk on — they&apos;ll
-            be waiting at the other end.
+            Nagiso, Nojiri, Agematsu and Kiso-Fukushima. In the morning,
+            leave your bags at your inn or a luggage-friendly cafe or
+            tourist office near the station, and walk on — they&apos;ll be
+            waiting at the other end.
           </p>
           <p className="head-note">
             Magome to Kiso-Fukushima, the same day: bags arrive around
@@ -133,7 +134,8 @@ export default function LuggageBusPage() {
               <Send size={26} />
               <h3>Request</h3>
               <p>
-                Message us on WhatsApp: date, from, to, and number of bags.
+                Message us on WhatsApp: date, from and to (station, plus your inn
+                if you know it), and number of bags.
               </p>
             </div>
             <div className="koma">
@@ -149,8 +151,8 @@ export default function LuggageBusPage() {
               <PackageCheck size={26} />
               <h3>Hand over</h3>
               <p>
-                Leave your bags at the stop&apos;s counter in the morning,
-                then walk on.
+                Leave your bags at your inn, or at the cafe or tourist office
+                we name near the station, then walk on.
               </p>
             </div>
             <div className="koma">
@@ -158,16 +160,16 @@ export default function LuggageBusPage() {
               <Footprints size={26} />
               <h3>Pick up</h3>
               <p>
-                Collect them at the counter of your destination stop after
-                the run arrives.
+                Collect them at your next inn or the place we name near the
+                destination station, after the run arrives.
               </p>
             </div>
           </div>
 
           <p className="drop-note">
             Hikers usually set out around 8–9 in the morning, before the bus
-            passes. That&apos;s fine — the counter holds your bags until it
-            arrives. For the 9:00 southbound run from Nagiso, hand your bags
+            passes. That&apos;s fine — the inn or the cafe holds your bags
+            until it arrives. For the 9:00 southbound run from Nagiso, hand your bags
             in by 8:50 (or the evening before).
           </p>
         </div>
@@ -243,17 +245,23 @@ export default function LuggageBusPage() {
       {/* THE STOPS */}
       <section className="mini-sec" id="stops">
         <span className="eyebrow">The stops</span>
-        <h2>Seven stops along the old Nakasendo.</h2>
+        <h2>Seven stations along the old Nakasendo.</h2>
+        <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
+          At each station, bags are handed over at an inn or a place that
+          holds luggage nearby — a cafe or a tourist office. We confirm the
+          exact place when we approve your booking.
+        </p>
         <div className="mini-grid">
           {STOPS.map((s) => {
             const body = (
               <>
                 <h3>
-                  <MapPin size={20} /> {s.name.en}
+                  <MapPin size={20} /> {s.station.en}
                 </h3>
                 <p>
-                  {s.counter.en}
-                  {s.pending ? " — being arranged." : ". Tap for the map."}
+                  {s.known
+                    ? `Inns around the station, or ${s.known.en}. Tap for the map.`
+                    : "Inns around the station, or a cafe or tourist office that holds luggage."}
                 </p>
               </>
             );
@@ -274,10 +282,6 @@ export default function LuggageBusPage() {
             );
           })}
         </div>
-        <p className="drop-note">
-          For now, bags are handed over at these counters only. Collection
-          from partner inns&apos; doors is coming later.
-        </p>
       </section>
 
       {/* FAQ */}
@@ -314,8 +318,8 @@ export default function LuggageBusPage() {
           <summary>What if I arrive before my bags?</summary>
           <p>
             Check the arrival times above. If you get there first, have a
-            coffee or look around while you wait — the counter will hand
-            your bags over once the run is through.
+            coffee or look around while you wait — your bags will be there
+            once the run is through.
           </p>
         </details>
         <details className="faq-item">

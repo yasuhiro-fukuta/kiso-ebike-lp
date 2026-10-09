@@ -2,48 +2,47 @@
  *  ラゲッジバス(中津川〜木曽福島の定時便)の共通データ
  *  英語ページ(/luggage-shuttle)と日本語ページ(/ja/luggage-shuttle)で使う。
  *  料金は「配送料(通る区域ごとに1,500円・1予約ごと)+荷物1個1,500円」(2026-10-10 確定)。
- *  ⚠️ フェーズ1: 受け渡しは各停留所の窓口だけ(宿の玄関には行かない)。
- *     観光案内所との提携が決まったら、その停留所の counter を書き換えて
- *     pending を外す。
+ *  停留所は「◯◯駅」として載せる。受け渡しは駅周辺の宿、または荷物を
+ *  預けられる場所(カフェ・観光案内所など)。場所は予約の承認時に伝える。
+ *  提携先が増えたら known に足す。
  *  ============================================================ */
 
 type T = { en: string; ja: string };
 
 export type Stop = {
   key: string;
+  /** Short name, used in routes. */
   name: T;
-  counter: T;
-  /** true = partner counter not agreed yet. */
-  pending: boolean;
+  /** How the stop is listed: the station (or the post town for Magome / Tsumago). */
+  station: T;
+  /** Handover places we already work with near the station, if any. */
+  known: T | null;
   map: string | null;
 };
 
-const INFO_PENDING: T = {
-  en: "Station-area tourist information office",
-  ja: "駅前の観光案内所",
-};
-
-/** Stops from south to north. */
+/** Stops from south to north. Bags are handed over at an inn or a place
+ *  that holds luggage (cafe, tourist office) around each station; the exact
+ *  place is confirmed when the booking is approved. */
 export const STOPS: Stop[] = [
-  { key: "nakatsugawa", name: { en: "Nakatsugawa", ja: "中津川" }, counter: INFO_PENDING, pending: true, map: null },
-  { key: "magome", name: { en: "Magome", ja: "馬籠" }, counter: { en: "Magome tourist information office", ja: "馬籠観光案内所" }, pending: true, map: null },
-  { key: "tsumago", name: { en: "Tsumago", ja: "妻籠" }, counter: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" }, pending: true, map: null },
+  { key: "nakatsugawa", name: { en: "Nakatsugawa", ja: "中津川" }, station: { en: "Nakatsugawa Station", ja: "中津川駅" }, known: null, map: null },
+  { key: "magome", name: { en: "Magome", ja: "馬籠" }, station: { en: "Magome-juku", ja: "馬籠宿" }, known: null, map: null },
+  { key: "tsumago", name: { en: "Tsumago", ja: "妻籠" }, station: { en: "Tsumago-juku", ja: "妻籠宿" }, known: null, map: null },
   {
     key: "nagiso",
     name: { en: "Nagiso", ja: "南木曽" },
-    counter: { en: "Izumiya Cafe (in front of the station) or Kashiwaya Guesthouse", ja: "南木曽駅前 イズミヤカフェ、またはゲストハウス柏屋" },
-    pending: false,
+    station: { en: "Nagiso Station", ja: "南木曽駅" },
+    known: { en: "Izumiya Cafe in front of the station, Kashiwaya Guesthouse", ja: "駅前のイズミヤカフェ、ゲストハウス柏屋" },
     map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6",
   },
   {
     key: "nojiri",
     name: { en: "Nojiri", ja: "野尻" },
-    counter: { en: "Coffee Katana, in front of Nojiri Station", ja: "野尻駅前 珈琲刀" },
-    pending: false,
+    station: { en: "Nojiri Station", ja: "野尻駅" },
+    known: { en: "Coffee Katana in front of the station", ja: "駅前の珈琲刀" },
     map: "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA",
   },
-  { key: "agematsu", name: { en: "Agematsu", ja: "上松" }, counter: INFO_PENDING, pending: true, map: null },
-  { key: "kisofukushima", name: { en: "Kiso-Fukushima", ja: "木曽福島" }, counter: INFO_PENDING, pending: true, map: null },
+  { key: "agematsu", name: { en: "Agematsu", ja: "上松" }, station: { en: "Agematsu Station", ja: "上松駅" }, known: null, map: null },
+  { key: "kisofukushima", name: { en: "Kiso-Fukushima", ja: "木曽福島" }, station: { en: "Kiso-Fukushima Station", ja: "木曽福島駅" }, known: null, map: null },
 ];
 
 /** The four daily runs, in time order. Northbound is the main direction. */

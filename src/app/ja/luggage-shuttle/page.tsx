@@ -35,7 +35,7 @@ export default function JaLuggageBusPage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            ラゲッジバスは、中山道の中津川・馬籠・妻籠・南木曽・野尻・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、停留所の窓口に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先の窓口で待っています。
+            ラゲッジバスは、中山道の中津川・馬籠・妻籠・南木曽・野尻・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、泊まった宿や、駅の周りで荷物を預けられるカフェ・観光案内所に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
           </p>
           <p className="head-note">
             馬籠から木曽福島へは当日13:30〜14:00ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
@@ -120,7 +120,7 @@ export default function JaLuggageBusPage() {
               <span className="koma-num">1</span>
               <Send size={26} />
               <h3>申し込む</h3>
-              <p>WhatsAppで、日付・預ける場所・受け取る場所・個数を送ります。</p>
+              <p>WhatsAppで、日付・預ける駅と受け取る駅(わかれば宿の名前も)・個数を送ります。</p>
             </div>
             <div className="koma">
               <span className="koma-num">2</span>
@@ -132,18 +132,18 @@ export default function JaLuggageBusPage() {
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
               <h3>預ける</h3>
-              <p>朝、停留所の窓口に荷物を預けて、歩き出します。</p>
+              <p>朝、宿か、こちらがお伝えする駅周辺のカフェ・案内所に預けて歩き出します。</p>
             </div>
             <div className="koma">
               <span className="koma-num">4</span>
               <Footprints size={26} />
               <h3>受け取る</h3>
-              <p>便が着いたあと、行き先の停留所の窓口で受け取ります。</p>
+              <p>便が着いたあと、次の宿か、行き先の駅周辺の預け場所で受け取ります。</p>
             </div>
           </div>
 
           <p className="drop-note">
-            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで窓口が荷物を預かります。南木曽発9:00の南行き(①)は、8:50まで(または前日の夕方)に預けてください。
+            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで宿や預け場所が荷物を預かります。南木曽発9:00の南行き(①)は、8:50まで(または前日の夕方)に預けてください。
           </p>
         </div>
       </section>
@@ -218,17 +218,21 @@ export default function JaLuggageBusPage() {
       {/* 停留所 */}
       <section className="mini-sec" id="stops">
         <span className="eyebrow">停留所</span>
-        <h2>中山道沿いの7つの停留所。</h2>
+        <h2>中山道沿いの7つの駅。</h2>
+        <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
+          各駅では、駅の周りの宿か、荷物を預けられる場所(カフェや観光案内所など)で受け渡しします。具体的な場所は、予約の承認のときにお知らせします。
+        </p>
         <div className="mini-grid">
           {STOPS.map((s) => {
             const body = (
               <>
                 <h3>
-                  <MapPin size={20} /> {s.name.ja}
+                  <MapPin size={20} /> {s.station.ja}
                 </h3>
                 <p>
-                  {s.counter.ja}
-                  {s.pending ? "(準備中)" : "。タップで地図が開きます。"}
+                  {s.known
+                    ? `駅周辺の宿、または${s.known.ja}。タップで地図が開きます。`
+                    : "駅周辺の宿、または荷物を預けられるカフェ・観光案内所。"}
                 </p>
               </>
             );
@@ -249,9 +253,6 @@ export default function JaLuggageBusPage() {
             );
           })}
         </div>
-        <p className="drop-note">
-          いまは、これらの窓口での受け渡しだけです。提携する宿の玄関での受け渡しは、今後広げていきます。
-        </p>
       </section>
 
       {/* よくある質問 */}
@@ -278,7 +279,7 @@ export default function JaLuggageBusPage() {
         <details className="faq-item">
           <summary>荷物より先に着いてしまったら?</summary>
           <p>
-            上の「荷物が届く時間」をご覧ください。先に着いたら、お茶をしたり町を歩いたりしてお待ちください。便が着いたら窓口で荷物を受け取れます。
+            上の「荷物が届く時間」をご覧ください。先に着いたら、お茶をしたり町を歩いたりしてお待ちください。便が着いたら荷物を受け取れます。
           </p>
         </details>
         <details className="faq-item">

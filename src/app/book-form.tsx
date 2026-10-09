@@ -53,18 +53,18 @@ const COUNTERS = {
   ja: ["南木曽駅前 イズミヤカフェ", "ゲストハウス柏屋", "ゲストハウスWAKU", "野尻駅前 カフェ刀"],
 };
 
-/** Luggage Bus stops (phase 1: counters only, no inn doors). */
+/** Luggage Bus stations (handover at an inn or a luggage-friendly spot nearby). */
 const LB_POINTS = {
   en: [
-    "Nakatsugawa",
-    "Magome",
-    "Tsumago",
-    "Nagiso (Izumiya Cafe / Kashiwaya)",
-    "Nojiri (Coffee Katana)",
-    "Agematsu",
-    "Kiso-Fukushima",
+    "Nakatsugawa Station",
+    "Magome-juku",
+    "Tsumago-juku",
+    "Nagiso Station",
+    "Nojiri Station",
+    "Agematsu Station",
+    "Kiso-Fukushima Station",
   ],
-  ja: ["中津川", "馬籠", "妻籠", "南木曽(イズミヤカフェ・柏屋)", "野尻(珈琲刀)", "上松", "木曽福島"],
+  ja: ["中津川駅", "馬籠宿", "妻籠宿", "南木曽駅", "野尻駅", "上松駅", "木曽福島駅"],
 };
 
 const fDate = (lang: Lang, iso: string) => {
@@ -115,14 +115,15 @@ const SERVICES: Record<string, Service> = {
     fields: [
       { k: "name", label: { en: "Name", ja: "氏名" }, type: "text" },
       { k: "date", label: { en: "Date", ja: "日付" }, type: "date" },
-      { k: "from", label: { en: "Hand over at", ja: "預ける停留所" }, type: "select", options: LB_POINTS },
-      { k: "to", label: { en: "Pick up at", ja: "受け取る停留所" }, type: "select", options: LB_POINTS },
+      { k: "from", label: { en: "Hand over at", ja: "預ける駅" }, type: "select", options: LB_POINTS },
+      { k: "to", label: { en: "Pick up at", ja: "受け取る駅" }, type: "select", options: LB_POINTS },
+      { k: "inns", label: { en: "Inns (if you know them)", ja: "宿の名前(わかれば)" }, type: "text", opt: true },
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
     ],
     build: (l, g) =>
       l === "ja"
-        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける停留所:${g("from")}\n受け取る停留所:${g("to")}\n個数:${g("bags")}個`
-        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nBags: ${g("bags")}`,
+        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿:${g("inns")}\n個数:${g("bags")}個`
+        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInns: ${g("inns")}\nBags: ${g("bags")}`,
   },
   "luggage-send": {
     title: { en: "Luggage Bus — after payment", ja: "ラゲッジバス(支払い後の連絡)" },
