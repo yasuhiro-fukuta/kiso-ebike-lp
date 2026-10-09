@@ -53,6 +53,18 @@ const COUNTERS = {
   ja: ["南木曽駅前 イズミヤカフェ", "ゲストハウス柏屋", "ゲストハウスWAKU", "野尻駅前 カフェ刀"],
 };
 
+/** Luggage Bus stops, plus door-to-door at an inn. */
+const LB_POINTS = {
+  en: [
+    "My inn's door (door to door)",
+    "Nakatsugawa stop",
+    "Nagiso stop (Izumiya Cafe)",
+    "Nojiri stop (Coffee Katana)",
+    "Kiso-Fukushima stop",
+  ],
+  ja: ["宿の玄関(ドア・ツー・ドア)", "中津川の停留所", "南木曽の停留所(イズミヤカフェ)", "野尻の停留所(珈琲刀)", "木曽福島の停留所"],
+};
+
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
   const [y, m, d] = iso.split("-");
@@ -97,30 +109,30 @@ const SERVICES: Record<string, Service> = {
         : `Hello! I'm interested in the Shuttle E-Bike Package as follows.\nDate: ${g("date")}\nBikes (riders 150 cm or taller): ${g("tall")}\nBikes (riders under 150 cm): ${g("short")}\nStart: ${g("start")}\nFinish: ${g("finish")}\nOne extra gear item of choice: ${g("gear")}\n* The bear-deterrent kit and the luggage shuttle are included.`,
   },
   luggage: {
-    title: { en: "Luggage Shuttle", ja: "手荷物シャトル" },
+    title: { en: "Luggage Bus", ja: "ラゲッジバス" },
     fields: [
       { k: "date", label: { en: "Date", ja: "日付" }, type: "date" },
-      { k: "from", label: { en: "From", ja: "出発" }, type: "select", options: POINTS },
-      { k: "to", label: { en: "To", ja: "到着" }, type: "select", options: POINTS },
+      { k: "from", label: { en: "From", ja: "預ける場所" }, type: "select", options: LB_POINTS },
+      { k: "to", label: { en: "To", ja: "受け取る場所" }, type: "select", options: LB_POINTS },
+      { k: "inns", label: { en: "Inn names (if inn door)", ja: "宿の名前(宿の玄関の場合)" }, type: "text", opt: true },
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
-      { k: "bear", label: { en: "Bear-deterrent kit", ja: "クマよけグッズ" }, type: "count", opt: true },
     ],
     build: (l, g) =>
       l === "ja"
-        ? `こんにちは。下記内容で手荷物シャトル運送を検討しています。\n日時:${g("date")}\n出発:${g("from")}\n到着:${g("to")}\n出発地点から到着地点までの荷物運び:${g("bags")}個\nクマよけグッズ:${g("bear")}`
-        : `Hello! I'm interested in the luggage shuttle as follows.\nDate: ${g("date")}\nFrom: ${g("from")}\nTo: ${g("to")}\nBags from start to finish: ${g("bags")}\nBear-deterrent kit: ${g("bear")}`,
+        ? `こんにちは。下記内容でラゲッジバスを予約したいです。\n日時:${g("date")}\n預ける場所:${g("from")}\n受け取る場所:${g("to")}\n宿の名前:${g("inns")}\n個数:${g("bags")}個`
+        : `Hello! I'd like to book the Luggage Bus as follows.\nDate: ${g("date")}\nFrom: ${g("from")}\nTo: ${g("to")}\nInn names: ${g("inns")}\nBags: ${g("bags")}`,
   },
   "luggage-send": {
-    title: { en: "Luggage Shuttle — after payment", ja: "手荷物シャトル(支払い後の連絡)" },
+    title: { en: "Luggage Bus — after payment", ja: "ラゲッジバス(支払い後の連絡)" },
     fields: [
       { k: "name", label: { en: "Name", ja: "氏名" }, type: "text" },
       { k: "num", label: { en: "Number of bags", ja: "個数" }, type: "count" },
-      { k: "from", label: { en: "Depart from", ja: "発送場所" }, type: "select", options: COUNTERS },
-      { k: "to", label: { en: "Arrive at", ja: "受取場所" }, type: "select", options: COUNTERS },
+      { k: "from", label: { en: "Depart from", ja: "預ける場所" }, type: "select", options: LB_POINTS },
+      { k: "to", label: { en: "Arrive at", ja: "受け取る場所" }, type: "select", options: LB_POINTS },
     ],
     build: (l, g) =>
       l === "ja"
-        ? `①氏名:${g("name")}\n②個数:${g("num")}\n③発送場所:${g("from")}\n④受取場所:${g("to")}`
+        ? `①氏名:${g("name")}\n②個数:${g("num")}\n③預ける場所:${g("from")}\n④受け取る場所:${g("to")}`
         : `①name is ${g("name")}\n②number is ${g("num")}\n③depart from ${g("from")}\n④arrive at ${g("to")}`,
   },
   spray: {

@@ -263,12 +263,12 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
-      name: "Luggage Shuttle (Tsumago ↔ Nagiso ↔ Junikane ↔ Nojiri)",
+      name: "Luggage Bus (Nakatsugawa ⇄ Nagiso ⇄ Nojiri ⇄ Kiso-Fukushima)",
       serviceType: "Luggage transfer",
       description:
-        "Same-day luggage shuttle anywhere between Tsumago, Nagiso Station, Kashiwaya Guesthouse, Junikane Station and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. Drop bags by 11:00 and they arrive by 13:00 at the latest; closed every Monday. \u00a51,500 base fee per group plus \u00a51,500 per bag; a bear spray with bell can be added for \u00a51,500. Book via WhatsApp; pay on the day, card or cash.",
+        "Scheduled luggage-only service along the Kiso Valley, once a day each way: northbound Nakatsugawa 10:00, Nagiso 11:00, Nojiri 12:00, arriving Kiso-Fukushima 13:00; southbound departs Kiso-Fukushima 13:00 and reaches Nakatsugawa by 15:00. Book ahead for inn-to-inn door-to-door delivery, or walk up to a stop counter (Izumiya Cafe at Nagiso Station, Coffee Katana at Nojiri Station). Luggage only \u2014 no passengers. Magome and Tsumago are not served. Provisional fares per bag: \u00a51,500 for one section, \u00a53,000 end to end. Book via WhatsApp.",
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
+      areaServed: { "@type": "Place", name: "Kiso Valley, Nakatsugawa to Kiso-Fukushima" },
       url: `${SITE_URL}/luggage-shuttle`,
     },
     {

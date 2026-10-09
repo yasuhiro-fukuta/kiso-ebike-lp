@@ -5,313 +5,296 @@ import {
   MessageCircle,
   CreditCard,
   Footprints,
-  Store,
   PackageCheck,
   MapPin,
   ArrowRight,
+  BedDouble,
+  Clock,
+  Ban,
+  CalendarCheck,
 } from "lucide-react";
-import {
-  SQUARE_PAY_URL,
-  WHATSAPP_URL_JA,
-} from "../../site";
+import { SQUARE_PAY_URL, WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
+import { STOPS, FARES, DOOR_FEE, yen } from "../../luggage-bus";
 
-const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
-const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
-const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
-
-/** 決済ボタン+QR——ページ上部と最下部の2カ所に出す。 */
-function PayBlock() {
-  return (
-    <div className="pay-sec">
-      <div className="pay-row pay-row-center">
-        <a
-          href={SQUARE_PAY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="stay-cta"
-        >
-          <CreditCard size={16} /> シャトル料金をオンライン決済(Square)
-        </a>
-        <figure className="pay-qr">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/square-pay-qr.png"
-            alt="Square決済ページのQRコード——スキャンでシャトル料金を支払えます"
-          />
-          <figcaption>スキャンでも支払えます</figcaption>
-        </figure>
-      </div>
-      <div className="pay-notify">
-        <p>
-          <strong>
-            支払いしたらWhatsAppで、①氏名 ②個数 ③発送場所 ④受取場所
-            を送ってください。
-          </strong>
-        </p>
-        <a
-          href="/ja/book?s=luggage-send"
-          className="stay-cta"
-        >
-          <MessageCircle size={16} /> WhatsAppで送る
-        </a>
-        <div className="pay-alt">
-          <p>
-            <strong>熊スプレーだけのレンタルもOK。</strong>
-            予約と決済は<Link href="/ja/gear">ギアレンタルのページ</Link>からどうぞ。
-          </p>
-        </div>
-      </div>
-      <p className="pay-note">
-        金額はSquareのページで入力してください。店頭での現金払いもOK。
-      </p>
-    </div>
-  );
-}
-
-export default function JaLuggageShuttlePage() {
+export default function JaLuggageBusPage() {
   return (
     <div className="lp">
       <SiteNav lang="ja" />
 
       <FloatBook href="/ja/book?s=luggage">
-        <MessageCircle size={18} /> WhatsAppで相談
+        <MessageCircle size={18} /> WhatsAppで予約
       </FloatBook>
 
       {/* PAGE HEAD——タイトル・キャッチコピー・写真 */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="head-badge">当日OK・予約不要</span>
+          <span className="head-badge">荷物専用・人は乗れません</span>
           <br />
-          <span className="eyebrow">手荷物シャトル · NAGISO — NOJIRI</span>
+          <span className="eyebrow">ラゲッジバス · 中津川 — 木曽福島</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            荷物は駅から駅へ、私たちが運びます。朝、駅前のカフェに預けたら、中山道・与川道も渓谷も手ぶらで。11:00までに預ければ、遅くとも13:00には谷の向こうで荷物が待っています。
+            ラゲッジバスは、木曽谷の中津川・南木曽・野尻・木曽福島を、決まった時刻に1日1往復する荷物の定期便です。予約すれば宿の玄関で預かり、次の宿の玄関まで届けます。予約なしでも、時刻に合わせて停留所の窓口へ持ってくればOKです。
           </p>
           <p className="head-note">
-            熊スプレーなどのギアレンタルも、南木曽駅前イズミヤで借りて野尻駅前・珈琲刀で返す場合は予約不要です。詳しくは
-            <Link href="/ja/gear">ギアレンタルのページ</Link>へ。
+            北行きは13:00までに木曽福島へ。宿のチェックインに間に合います。
           </p>
         </div>
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/shuttle-van.jpg"
-            alt="シャトル便のバン。スーツケースとバックパックを積み込んで谷を下ります"
+            alt="ラゲッジバスのバン。スーツケースとバックパックを積んで谷を走ります"
           />
-          <figcaption>積んだら出発。遅くとも13:00には野尻駅前に届きます</figcaption>
+          <figcaption>運ぶのは荷物だけ。人は乗せません</figcaption>
         </figure>
       </header>
 
-      {/* 料金 */}
-      <section className="mini-sec" id="pricing">
-        <span className="eyebrow">料金</span>
-        <h2>基本送料に、バッグの数を足すだけ。</h2>
-        <div className="pricing">
-          <div className="pitem">
-            <h4>基本送料</h4>
-            <div className="amt">
-              ¥1,500<span style={{ fontSize: "0.9rem" }}>/グループ</span>
-            </div>
-            <p>グループ単位・当日中。妻籠〜野尻の各拠点間ならどこでも。</p>
-          </div>
-          <div className="pitem">
-            <h4>バッグ1個につき</h4>
-            <div className="amt">
-              +¥1,500<span style={{ fontSize: "0.9rem" }}>/個</span>
-            </div>
+      {/* 荷物のみ */}
+      <section className="mini-sec lb-notice-sec">
+        <div className="lb-notice">
+          <Ban size={26} />
+          <div>
+            <strong>荷物のみ(Luggage only)。ラゲッジバスに人は乗れません。</strong>
             <p>
-              人数ではなくグループ単位で数えます。荷物3個なら合計¥6,000。
-            </p>
-          </div>
-          <div className="pitem">
-            <h4>熊スプレー</h4>
-            <div className="amt">
-              ¥1,500<span style={{ fontSize: "0.9rem" }}>/個</span>
-            </div>
-            <p>
-              鈴付き・基本送料なし。南木曽で借りて、野尻で返却できます。スプレーだけのレンタル(荷物運びなし)も大歓迎です。
+              時刻表どおりに走るので「バス」と呼んでいますが、乗るのは荷物だけです。ご自身の移動は、徒歩・自転車・電車・路線バスでお願いします。
             </p>
           </div>
         </div>
+      </section>
 
-        <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", margin: "2.4rem 0 0.6rem" }}>
-          追加送料(1グループにつき)
-        </h3>
-        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1.2rem" }}>
-          ※遠方の輸送も、前日までにご相談いただければお受けできる場合があります。
-          <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer">
-            WhatsAppでお問い合わせください
-          </a>
-          。
+      {/* 時刻表 */}
+      <section className="mini-sec" id="timetable">
+        <span className="eyebrow">時刻表</span>
+        <h2>運行日は、北へ1便、南へ1便。</h2>
+        <div className="lb-table-wrap">
+          <table className="lb-table">
+            <thead>
+              <tr>
+                <th>停留所</th>
+                <th>北行き ↑</th>
+                <th>南行き ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...STOPS].reverse().map((s) => (
+                <tr key={s.ja}>
+                  <th scope="row">
+                    {s.ja}
+                    {s.counter && <small>{s.counter.ja}</small>}
+                  </th>
+                  <td>
+                    {s.north}
+                    {s.ja === "木曽福島" && <small>着</small>}
+                    {s.ja === "中津川" && <small>発</small>}
+                  </td>
+                  <td>
+                    {s.south ?? "経由"}
+                    {s.ja === "木曽福島" && <small>発</small>}
+                    {s.ja === "中津川" && <small>までに着</small>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="drop-note">
+          北行きは10:00〜13:00、南行きは13:00〜15:00の運行です。南行きの野尻・南木曽の時刻はその日の集荷で変わるので、WhatsAppでお知らせします。馬籠・妻籠には停まりません(下のよくある質問を参照)。
         </p>
-        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
-          南方
-        </h4>
-        <ul className="itin-list" style={{ marginBottom: "1.4rem" }}>
-          <li><b>恵那市</b>+1,500円</li>
-          <li><b>中津川市</b>+1,000円</li>
-          <li><b>南木曽町</b>+0円</li>
-        </ul>
-        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
-          北方
-        </h4>
-        <ul className="itin-list">
-          <li><b>大桑村</b>+0円</li>
-          <li><b>上松</b>+1,000円</li>
-          <li><b>木曽福島</b>+1,500円</li>
-          <li><b>薮原</b>+2,000円</li>
-          <li><b>奈良井</b>+2,000円</li>
-          <li><b>松本</b>+3,000円</li>
-        </ul>
-        <div className="stay-perk" style={{ maxWidth: "56ch", marginTop: "1.6rem" }}>
-          <strong>例:中津川市から木曽福島まで、荷物4個</strong>
-          <br />
-          荷物 1,500円/個 × 4個 = 6,000円
-          <br />
-          基本送料 1,500円/グループ
-          <br />
-          追加送料 +1,000円(南方:中津川市)+1,500円(北方:木曽福島)
-          <br />
-          <strong>計:10,000円</strong>
-        </div>
       </section>
 
-      {/* 決済——1回目 */}
-      <PayBlock />
-
-      {/* 営業日カレンダー */}
-      <section className="cal-sec" id="calendar">
-        <span className="eyebrow" style={{ display: "block", textAlign: "center", marginBottom: "1.2rem" }}>
-          営業日カレンダー
-        </span>
-        <ShuttleCalendar lang="ja" />
-      </section>
-
-      {/* 仕組み */}
+      {/* 2つの出し方 */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
-          <span className="eyebrow">仕組み</span>
+          <span className="eyebrow">2つの出し方</span>
           <h2>
-            予約不要。<em>預けて、払って、出発。</em>
+            予約して宿から、<em>または飛び入りで。</em>
           </h2>
-          <p>
-            <strong>11:00まで</strong>に、予約なしで、南木曽駅前(イズミヤカフェ)またはゲストハウスWAKUへ荷物を預けていただければ、
-            <strong>遅くとも13:00まで</strong>
-            に野尻駅前(コーヒー刀※)へお届けします。手ぶらで中山道・与川道や、柿其渓谷、阿寺渓谷を楽しみましょう。
-            <br />
-            <small>※このサービスは毎週月曜日が定休日です。</small>
-          </p>
+          <div className="mini-grid cols2">
+            <div className="mini-card lb-way">
+              <h3>
+                <BedDouble size={20} /> 予約 · 宿から宿へ
+              </h3>
+              <p>
+                WhatsAppで日付と宿を教えてください。出発の朝、宿のフロントに荷物を預けておけば、バスが回収して次の宿へ届けます。予約の荷物を優先して積みます。支払いは事前にカードで。
+              </p>
+            </div>
+            <div className="mini-card lb-way">
+              <h3>
+                <Clock size={20} /> 飛び入り · 停留所で
+              </h3>
+              <p>
+                予約は不要です。バスが来る前に停留所の窓口へ荷物を持ってきて、行き先の停留所の窓口で受け取ってください。空きがあれば運びます(繁忙期は予約優先)。支払いは窓口で、現金かQR決済。
+              </p>
+            </div>
+          </div>
 
           {/* 4コマ */}
           <div className="koma-grid">
             <div className="koma">
               <span className="koma-num">1</span>
-              <Store size={26} />
-              <h3>預ける</h3>
-              <p>
-                11:00までに、南木曽駅前のカフェ・イズミヤか、ゲストハウスWAKUへ荷物を持ち込み。
-              </p>
+              <CalendarCheck size={26} />
+              <h3>予約 or 飛び入り</h3>
+              <p>宿から宿へならWhatsAppで予約。停留所へ直接でもOK。</p>
             </div>
             <div className="koma">
               <span className="koma-num">2</span>
-              <CreditCard size={26} />
-              <h3>支払う</h3>
-              <p>その場でお会計。SquareのQRでも、カード・現金でも。</p>
+              <PackageCheck size={26} />
+              <h3>預ける</h3>
+              <p>朝、宿のフロントへ。またはバスが来る前に停留所の窓口へ。</p>
             </div>
             <div className="koma">
               <span className="koma-num">3</span>
               <Footprints size={26} />
-              <h3>遊ぶ</h3>
-              <p>与川道を歩く。柿其・阿寺で泳ぐ。肩ひもはゼロ。</p>
+              <h3>歩く</h3>
+              <p>中山道も、渓谷も、木曽谷も。肩に何も背負わずに。</p>
             </div>
             <div className="koma">
               <span className="koma-num">4</span>
-              <PackageCheck size={26} />
+              <MapPin size={26} />
               <h3>受け取る</h3>
-              <p>
-                13:00以降、野尻駅前のコーヒー刀で受け取り。
-              </p>
+              <p>次の宿で、またはバスが着いたあとの停留所の窓口で。</p>
             </div>
           </div>
 
           <p className="drop-note">
-            <strong>
-              ※13:00より前に着いた場合、荷物がまだ届いていないことがあります。駅前でコーヒーを一杯どうぞ。
-            </strong>
-          </p>
-
-          <p className="drop-note">
-            逆方向(野尻→南木曽)や、妻籠・十二兼の発着もOK。WhatsAppでひと言もらえれば手配します。
+            ハイカーは朝8〜9時に宿を出ることが多く、バスが来る前になります。それで大丈夫です。バスが来るまで、宿や停留所の窓口が荷物を預かります。
           </p>
         </div>
       </section>
 
-      {/* 預ける店・受け取る店 */}
-      <section className="mini-sec" id="counters">
-        <span className="eyebrow">窓口はこちら</span>
-        <h2>預ける窓口、受け取る窓口。</h2>
+      {/* 料金 */}
+      <section className="mini-sec" id="pricing">
+        <span className="eyebrow">料金(仮)</span>
+        <h2>1個ごと、運ぶ区間の数で決まります。</h2>
+        <div className="pricing">
+          {FARES.map((f) => (
+            <div className="pitem" key={f.sections}>
+              <h4>{f.ja}</h4>
+              <div className="amt">
+                {yen(f.yen)}
+                <span style={{ fontSize: "0.9rem" }}>/個</span>
+              </div>
+              <p>{f.exJa}</p>
+            </div>
+          ))}
+          <p className="pricing-foot">
+            宿の玄関での預かり・お届け:<strong>+{yen(DOOR_FEE)}</strong>。1区間は隣りあう停留所の間(中津川 — 南木曽 — 野尻 — 木曽福島)です。
+          </p>
+        </div>
+        <p className="drop-note">
+          料金は仮のもので、シーズン開始までに変わることがあります。WhatsAppでお伝えした金額が確定の料金です。
+        </p>
+      </section>
+
+      {/* 営業日カレンダー */}
+      <section className="cal-sec" id="calendar">
+        <span className="eyebrow" style={{ display: "block", textAlign: "center", marginBottom: "1.2rem" }}>
+          運行日
+        </span>
+        <ShuttleCalendar lang="ja" />
+      </section>
+
+      {/* 停留所 */}
+      <section className="mini-sec" id="stops">
+        <span className="eyebrow">停留所</span>
+        <h2>中山道沿いの4つの停留所。</h2>
         <div className="mini-grid cols2">
-          <a
-            href={IZUMIYA_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
-            <h3>
-              <MapPin size={20} /> Izumiya Cafe Nagiso · 預け
-            </h3>
-            <p>
-              メインの預け窓口。南木曽駅の目の前です。出発前の一杯にもどうぞ。地図はこちら。
-            </p>
-          </a>
-          <a
-            href={WAKU_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
-            <h3>
-              <MapPin size={20} /> ゲストハウスWAKU · 預け
-            </h3>
-            <p>
-              こちらからも預けられます。WAKUに預けた荷物も、コーヒー刀へお届け。地図はこちら。
-            </p>
-          </a>
-          <a
-            href={KATANA_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
-            <h3>
-              <MapPin size={20} /> コーヒー刀 · 受け取り
-            </h3>
-            <p>
-              受け取り窓口。野尻駅の目の前——荷物との再会はコーヒー片手に。地図はこちら。
-            </p>
-          </a>
+          {STOPS.map((s) => {
+            const body = (
+              <>
+                <h3>
+                  <MapPin size={20} /> {s.ja}
+                </h3>
+                <p>
+                  {s.counter
+                    ? `${s.counter.ja}。タップで地図が開きます。`
+                    : "駅周辺の窓口は準備中です。予約の荷物は宿で預かります。"}
+                </p>
+              </>
+            );
+            return s.map ? (
+              <a
+                key={s.ja}
+                href={s.map}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mini-card"
+              >
+                {body}
+              </a>
+            ) : (
+              <div key={s.ja} className="mini-card lb-way">
+                {body}
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* 手ぶらで行く先 */}
-      <section className="mini-sec" id="routes">
-        <span className="eyebrow">手ぶらで行く先</span>
-        <h2>どこへ行こうか迷ったら。</h2>
-        <Link href="/ja/second-day" className="stay-cta">
-          セルフツアーのすすめを見る <ArrowRight size={15} />
-        </Link>
+      {/* よくある質問 */}
+      <section className="faq" id="faq">
+        <h2>よくある質問</h2>
+        <details className="faq-item">
+          <summary>ラゲッジバスに乗れますか?</summary>
+          <p>
+            乗れません。運ぶのは荷物だけで、短い区間でも人は乗せられません。停留所の間はJR中央線が同じ谷を走っています。
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>馬籠・妻籠に泊まります。</summary>
+          <p>
+            馬籠・妻籠はルートに入っていません。2つの宿場の間は観光案内所の荷物運びがあります。妻籠から北へ送る場合は、南木曽の停留所(イズミヤカフェ)まで荷物を持ってきてください。WhatsAppで相談いただければ一緒に組み立てます。
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>荷物より先に着いてしまったら?</summary>
+          <p>
+            荷物は時刻表の時間ごろに各停留所へ着きます。先に着いたら窓口でコーヒーでも飲みながらお待ちください。宿から宿への予約なら、荷物は宿で待っています。
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>何個まで送れますか?</summary>
+          <p>
+            予約の荷物を先に積み、飛び入りは空きがあれば運びます。大人数や大きな荷物は、予約の前にご相談ください。
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>熊スプレーも借りたい。</summary>
+          <p>
+            熊スプレーなどは<Link href="/ja/gear">ギアレンタルのページ</Link>からどうぞ。
+          </p>
+        </details>
       </section>
 
-      {/* 決済——2回目 */}
-      <section className="mini-sec" id="pay">
-        <span className="eyebrow">準備はいい?</span>
-        <h2>荷物をまとめたら、駅前のカフェで。</h2>
+      {/* 予約・支払い */}
+      <section className="mini-sec" id="book">
+        <span className="eyebrow">ご予約</span>
+        <h2>荷物の行き先を教えてください。</h2>
+        <div className="pay-row">
+          <Link href="/ja/book?s=luggage" className="stay-cta">
+            <MessageCircle size={16} /> WhatsAppで予約 <ArrowRight size={15} />
+          </Link>
+          <a
+            href={SQUARE_PAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+          >
+            <CreditCard size={16} /> オンライン決済(Square)
+          </a>
+        </div>
+        <p className="drop-note">
+          まずは質問から、という方は
+          <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer">
+            WhatsAppでどうぞ
+          </a>
+          。
+        </p>
       </section>
-      <PayBlock />
 
       <SiteFooter lang="ja" />
     </div>

@@ -1346,3 +1346,36 @@ figure.season-cell .season-tag {
   border: 1px solid rgba(244, 239, 230, 0.1);
 }
 .special-photo figcaption { font-size: 0.8rem; font-weight: 300; opacity: 0.75; margin-top: 0.8rem; }
+
+/* Luggage Bus (/luggage-shuttle) — "luggage only" notice + timetable */
+.lb-notice-sec { padding-top: 0; padding-bottom: 0; }
+.lb-notice {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: rgba(181, 83, 42, 0.1); border: 2px solid var(--rust);
+  border-radius: 8px; padding: 1.2rem 1.4rem; max-width: 760px;
+}
+.lb-notice svg { color: var(--rust); flex-shrink: 0; margin-top: 0.15rem; }
+.lb-notice strong { display: block; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem; }
+.lb-notice p { font-weight: 300; font-size: 0.92rem; color: #3a352d; }
+.lb-table-wrap { overflow-x: auto; }
+.lb-table { width: 100%; max-width: 760px; border-collapse: collapse; background: #fffdf8; border-radius: 8px; overflow: hidden; }
+.lb-table th, .lb-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid rgba(28, 26, 22, 0.1); vertical-align: top; }
+.lb-table thead th {
+  background: var(--ink); color: var(--paper); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.lb-table tbody th { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+.lb-table td { font-family: var(--serif); font-size: 1.25rem; color: var(--moss); white-space: nowrap; }
+.lb-table small {
+  display: block; font-family: var(--sans); font-size: 0.75rem; font-weight: 300;
+  color: var(--cedar); white-space: normal;
+}
+.lb-way { cursor: default; }
+.lb-way:hover { transform: none; background: var(--paper-deep); }
+.drop-inner .mini-grid { margin-bottom: 0.5rem; }
+@media (max-width: 560px) {
+  .lb-table th, .lb-table td { padding: 0.7rem 0.5rem; }
+  .lb-table thead th { font-size: 0.68rem; letter-spacing: 0.04em; }
+  .lb-table tbody th { font-size: 1rem; }
+  .lb-table td { font-size: 1.05rem; }
+}
