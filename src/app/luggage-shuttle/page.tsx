@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
-import { STOPS, RUNS, ARRIVALS, FARES } from "../luggage-bus";
+import { STOPS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -175,23 +175,60 @@ export default function LuggageBusPage() {
 
       {/* PRICING */}
       <section className="mini-sec" id="pricing">
-        <span className="eyebrow">Pricing (provisional)</span>
-        <h2>Per bag, by how far it travels.</h2>
+        <span className="eyebrow">Pricing</span>
+        <h2>Delivery fee + ¥1,500 per bag.</h2>
         <div className="pricing">
-          {FARES.map((f) => (
-            <div className="pitem" key={f.label.en}>
-              <h4>{f.label.en}</h4>
+          {ZONES.map((z) => (
+            <div className="pitem" key={z.name.en}>
+              <h4>{z.name.en}</h4>
               <div className="amt">
-                {f.amt.en}
-                <span style={{ fontSize: "0.9rem" }}>/bag</span>
+                {yen(ZONE_FEE)}
+                <span style={{ fontSize: "0.9rem" }}>/booking</span>
               </div>
+              <p>{z.route.en}</p>
             </div>
           ))}
+          <div className="pitem">
+            <h4>Per bag</h4>
+            <div className="amt">
+              +{yen(BAG_FEE)}
+              <span style={{ fontSize: "0.9rem" }}>/bag</span>
+            </div>
+            <p>The same wherever it goes.</p>
+          </div>
+          <p className="pricing-foot">
+            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. Nagiso is where the two zones meet.
+          </p>
+        </div>
+
+        <h3 className="lb-sub">Examples</h3>
+        <div className="lb-table-wrap">
+          <table className="lb-table">
+            <thead>
+              <tr>
+                <th>Trip</th>
+                <th>Bags</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {EXAMPLES.map((x) => (
+                <tr key={`${x.trip.en}-${x.bags}`}>
+                  <th scope="row">
+                    {x.trip.en}
+                    <small>
+                      Delivery {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
+                    </small>
+                  </th>
+                  <td>{x.bags}</td>
+                  <td>{yen(fare(x.zones, x.bags))}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         <p className="drop-note">
-          These fares are provisional and may change before the season
-          starts. The price in our confirmation on WhatsApp is the one you
-          pay.
+          The total is in our confirmation on WhatsApp, with the payment link.
         </p>
       </section>
 

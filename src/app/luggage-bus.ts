@@ -1,7 +1,7 @@
 /** ============================================================
  *  ラゲッジバス(中津川〜木曽福島の定時便)の共通データ
  *  英語ページ(/luggage-shuttle)と日本語ページ(/ja/luggage-shuttle)で使う。
- *  ⚠️ 料金はまだ仮。決まったらここを直せば両方のページに反映される。
+ *  料金は「配送料(通る区域ごとに1,500円・1予約ごと)+荷物1個1,500円」(2026-10-10 確定)。
  *  ⚠️ フェーズ1: 受け渡しは各停留所の窓口だけ(宿の玄関には行かない)。
  *     観光案内所との提携が決まったら、その停留所の counter を書き換えて
  *     pending を外す。
@@ -64,9 +64,23 @@ export const ARRIVALS: { flow: T; when: T; next?: boolean }[] = [
   { flow: { en: "Kiso-Fukushima side → Tsumago / Magome / Nakatsugawa", ja: "木曽福島方面 → 妻籠・馬籠・中津川" }, when: { en: "Next morning (held overnight in Nagiso)", ja: "翌朝(南木曽で一晩預かり)" }, next: true },
 ];
 
-/** Provisional fares, per bag. */
-export const FARES: { label: T; amt: T }[] = [
-  { label: { en: "To the next stop", ja: "隣の停留所まで" }, amt: { en: "¥1,000–1,500", ja: "¥1,000〜1,500" } },
-  { label: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, amt: { en: "¥3,000", ja: "¥3,000" } },
-  { label: { en: "Nakatsugawa → Kiso-Fukushima", ja: "中津川 → 木曽福島" }, amt: { en: "¥3,500", ja: "¥3,500" } },
+/** Fare = delivery fee (per booking, ¥1,500 for each zone the bags pass through)
+ *  + ¥1,500 per bag. Nagiso is the boundary between the two zones. */
+export const ZONE_FEE = 1500;
+export const BAG_FEE = 1500;
+
+export const ZONES: { name: T; route: T }[] = [
+  { name: { en: "South zone", ja: "南部" }, route: { en: "Nakatsugawa — Magome — Tsumago — Nagiso", ja: "中津川〜馬籠〜妻籠〜南木曽" } },
+  { name: { en: "Central zone", ja: "中部" }, route: { en: "Nagiso — Nojiri — Agematsu — Kiso-Fukushima", ja: "南木曽〜野尻〜上松〜木曽福島" } },
+];
+
+export const fare = (zones: number, bags: number) => zones * ZONE_FEE + bags * BAG_FEE;
+export const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
+
+/** Worked examples shown on the page. */
+export const EXAMPLES: { trip: T; zones: number; bags: number }[] = [
+  { trip: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, zones: 2, bags: 1 },
+  { trip: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, zones: 2, bags: 2 },
+  { trip: { en: "Nagiso → Nojiri", ja: "南木曽 → 野尻" }, zones: 1, bags: 1 },
+  { trip: { en: "Nakatsugawa → Tsumago", ja: "中津川 → 妻籠" }, zones: 1, bags: 3 },
 ];

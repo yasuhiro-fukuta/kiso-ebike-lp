@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
-import { STOPS, RUNS, ARRIVALS, FARES } from "../../luggage-bus";
+import { STOPS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -150,21 +150,60 @@ export default function JaLuggageBusPage() {
 
       {/* 料金 */}
       <section className="mini-sec" id="pricing">
-        <span className="eyebrow">料金(仮)</span>
-        <h2>1個ごと、運ぶ距離で決まります。</h2>
+        <span className="eyebrow">料金</span>
+        <h2>配送料+荷物1個1,500円。</h2>
         <div className="pricing">
-          {FARES.map((f) => (
-            <div className="pitem" key={f.label.ja}>
-              <h4>{f.label.ja}</h4>
+          {ZONES.map((z) => (
+            <div className="pitem" key={z.name.en}>
+              <h4>{z.name.ja}</h4>
               <div className="amt">
-                {f.amt.ja}
-                <span style={{ fontSize: "0.9rem" }}>/個</span>
+                {yen(ZONE_FEE)}
+                <span style={{ fontSize: "0.9rem" }}>/1予約</span>
               </div>
+              <p>{z.route.ja}</p>
             </div>
           ))}
+          <div className="pitem">
+            <h4>荷物</h4>
+            <div className="amt">
+              +{yen(BAG_FEE)}
+              <span style={{ fontSize: "0.9rem" }}>/個</span>
+            </div>
+            <p>距離に関係なく1個ごと。</p>
+          </div>
+          <p className="pricing-foot">
+            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。南部と中部の境目は南木曽です。
+          </p>
+        </div>
+
+        <h3 className="lb-sub">計算例</h3>
+        <div className="lb-table-wrap">
+          <table className="lb-table">
+            <thead>
+              <tr>
+                <th>区間</th>
+                <th>個数</th>
+                <th>合計</th>
+              </tr>
+            </thead>
+            <tbody>
+              {EXAMPLES.map((x) => (
+                <tr key={`${x.trip.en}-${x.bags}`}>
+                  <th scope="row">
+                    {x.trip.ja}
+                    <small>
+                      配送料 {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
+                    </small>
+                  </th>
+                  <td>{x.bags}</td>
+                  <td>{yen(fare(x.zones, x.bags))}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         <p className="drop-note">
-          料金は仮のもので、シーズン開始までに変わることがあります。承認のときにWhatsAppでお伝えする金額が確定の料金です。
+          合計金額は、承認のときに決済リンクと一緒にWhatsAppでお伝えします。
         </p>
       </section>
 
