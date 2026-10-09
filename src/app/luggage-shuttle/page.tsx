@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
-import { STATIONS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { STATIONS, feeText, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -274,6 +274,37 @@ export default function LuggageBusPage() {
             </div>
           ))}
         </div>
+        <h3 className="lb-sub">Holding fees and closing days</h3>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-info">
+            <thead>
+              <tr>
+                <th>Station</th>
+                <th>Holding fee (paid on the spot)</th>
+                <th>Closed</th>
+                <th>Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              {STATIONS.flatMap((s) =>
+                s.places.map((pl) => (
+                  <tr key={pl.id}>
+                    <th scope="row">
+                      {s.name.en}
+                      <small>{pl.name.en}</small>
+                    </th>
+                    <td>{feeText(pl.fee, "en")}{pl.fee ? " / bag" : ""}</td>
+                    <td>{pl.closed.en}</td>
+                    <td>{pl.hours ? pl.hours.en : "—"}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
+          </table>
+        </div>
+        <p className="drop-note">
+          Some stations charge a small holding fee, paid to them directly. Closing days for the tourist offices come from tourism websites and may be out of date — we confirm everything when we approve your booking.
+        </p>
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">
             <h3>

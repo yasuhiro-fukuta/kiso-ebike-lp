@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { wa } from "./site";
-import { FORM_POINTS, estimate, yen } from "./luggage-bus";
+import { FORM_POINTS, estimate, yen, feeText, dateProblem } from "./luggage-bus";
+import { CLOSED_DAYS } from "./shuttle-calendar";
 import { SiteNav, SiteFooter } from "./chrome";
 
 type Lang = "en" | "ja";
@@ -22,6 +23,10 @@ type Service = {
   title: { en: string; ja: string };
   fields: Field[];
   build: (lang: Lang, g: (k: string) => string, est: string) => string;
+  /** Optional note under a field, from the raw values (e.g. station info). */
+  hint?: (lang: Lang, k: string, v: Record<string, string>) => string | null;
+  /** Optional check run when sending; returns an error message or null. */
+  validate?: (lang: Lang, v: Record<string, string>) => string | null;
   /** Optional price estimate from the raw field values (shown and sent). */
   estimate?: (lang: Lang, v: Record<string, string>) => { total: string; detail: string } | null;
 };
@@ -61,7 +66,16 @@ const LB_POINTS = {
   en: FORM_POINTS.map((p) => p.en),
   ja: FORM_POINTS.map((p) => p.ja),
 };
-const lbPos = (label: string) => FORM_POINTS.find((p) => p.en === label || p.ja === label)?.pos ?? null;
+const lbPoint = (label: string) => FORM_POINTS.find((p) => p.en === label || p.ja === label) ?? null;
+const lbPos = (label: string) => lbPoint(label)?.pos ?? null;
+const lbFee = (l: Lang, label: string) => {
+  const pl = lbPoint(label)?.place;
+  return pl ? feeText(pl.fee, l) : l === "ja" ? "確認中" : "being checked";
+};
+const isoToday = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
@@ -116,6 +130,22 @@ const SERVICES: Record<string, Service> = {
       { k: "inns", label: { en: "Inn or place (if not a station)", ja: "宿・場所の名前(駅以外の場合)" }, type: "text", opt: true },
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
     ],
+    hint: (l, k, v) => {
+      if (k !== "from" && k !== "to") return null;
+      const pl = lbPoint(v[k] ?? "")?.place;
+      if (!pl) return null;
+      return l === "ja"
+        ? `預かり料(現地払い):${feeText(pl.fee, l)}${pl.fee ? "/個" : ""} ・ 定休日:${pl.closed.ja}${pl.hours ? ` ・ 営業時間:${pl.hours.ja}` : ""}`
+        : `Holding fee (paid on the spot): ${feeText(pl.fee, l)}${pl.fee ? " / bag" : ""} · Closed: ${pl.closed.en}${pl.hours ? ` · Hours: ${pl.hours.en}` : ""}`;
+    },
+    validate: (l, v) =>
+      dateProblem(
+        v.date ?? "",
+        [lbPoint(v.from ?? "")?.place ?? null, lbPoint(v.to ?? "")?.place ?? null],
+        l,
+        CLOSED_DAYS,
+        isoToday(),
+      ),
     estimate: (l, v) => {
       const e = estimate(lbPos(v.from ?? ""), lbPos(v.to ?? ""), Number(v.bags ?? 0));
       if (!e) return null;
@@ -123,8 +153,8 @@ const SERVICES: Record<string, Service> = {
     },
     build: (l, g, est) =>
       l === "ja"
-        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿・場所:${g("inns")}\n個数:${g("bags")}個\n概算金額:${est}`
-        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInn or place: ${g("inns")}\nBags: ${g("bags")}\nEstimate: ${est}`,
+        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿・場所:${g("inns")}\n個数:${g("bags")}個\n概算金額:${est}\n駅の預かり料(現地払い):預ける駅 ${lbFee(l, g("from"))} / 受け取る駅 ${lbFee(l, g("to"))}`
+        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInn or place: ${g("inns")}\nBags: ${g("bags")}\nEstimate: ${est}\nStation holding fees (paid on the spot): ${lbFee(l, g("from"))} at drop-off / ${lbFee(l, g("to"))} at pick-up`,
   },
   "luggage-send": {
     title: { en: "Luggage Bus — after payment", ja: "ラゲッジバス(支払い後の連絡)" },
@@ -306,6 +336,7 @@ export default function BookForm({ lang }: { lang: Lang }) {
   const key = params.get("s") ?? "";
   const svc = SERVICES[key];
   const [v, setV] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<string | null>(null);
   const t = T[lang];
 
   if (!svc) {
@@ -380,6 +411,7 @@ export default function BookForm({ lang }: { lang: Lang }) {
                   onChange={(e) => setV({ ...v, [f.k]: e.target.value })}
                 />
               )}
+              {svc.hint?.(lang, f.k, v) && <small className="book-hint">{svc.hint(lang, f.k, v)}</small>}
             </div>
           ))}
 
@@ -399,11 +431,21 @@ export default function BookForm({ lang }: { lang: Lang }) {
             <div className="book-preview">{message}</div>
           </div>
 
+          {err && (
+            <p className="book-error" role="alert">
+              {err}
+            </p>
+          )}
           <a
             href={wa(message)}
             target="_blank"
             rel="noopener noreferrer"
             className="stay-cta book-send"
+            onClick={(e) => {
+              const problem = svc.validate?.(lang, v) ?? null;
+              setErr(problem);
+              if (problem) e.preventDefault();
+            }}
           >
             <MessageCircle size={16} /> {t.send}
           </a>

@@ -19,66 +19,145 @@ export const AREAS: { key: string; name: T }[] = [
   { key: "kisofukushima", name: { en: "Kiso-Fukushima", ja: "木曽福島" } },
 ];
 
-/** "Stations": the luggage drop points and partner inns where bags change
- *  hands, grouped by town. Add a place when a new partner signs up. */
-export const STATIONS: {
-  area: string;
+/** A place where bags change hands. `fee` = luggage-holding fee per bag,
+ *  paid on the spot (null = still being checked). `rule` = known closures used
+ *  by the booking form's date check (null = not known yet). Closure info for
+ *  the tourist offices comes from tourism sites and is approximate. */
+export type Place = {
+  id: string;
   name: T;
-  places: { name: T; map: string | null }[];
-}[] = [
-  {
-    area: "nakatsugawa",
-    name: { en: "Nakatsugawa stop", ja: "中津川駅" },
-    places: [
-      { name: { en: "Nakatsugawa tourist information office", ja: "中津川観光案内所" }, map: null },
-    ],
+  map: string | null;
+  fee: number | null;
+  hours: T | null;
+  closed: T;
+  rule: { weekdays: number[]; periods: [string, string][] } | null;
+};
+
+const UNKNOWN: T = { en: "Being checked", ja: "確認中" };
+const YEAR_END: [string, string] = ["12-29", "01-03"];
+
+export const PLACES: Record<string, Place> = {
+  "nakatsugawa-info": {
+    id: "nakatsugawa-info",
+    name: { en: "Nakatsugawa tourist information office", ja: "中津川観光案内所" },
+    map: null,
+    fee: null,
+    hours: { en: "8:30–18:00", ja: "8:30〜18:00" },
+    closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
+    rule: { weekdays: [], periods: [YEAR_END] },
   },
-  {
-    area: "magome",
-    name: { en: "Magome stop", ja: "馬籠駅" },
-    places: [
-      { name: { en: "Magome tourist information office", ja: "馬籠観光案内所" }, map: null },
-    ],
+  "magome-info": {
+    id: "magome-info",
+    name: { en: "Magome tourist information office", ja: "馬籠観光案内所" },
+    map: null,
+    fee: null,
+    hours: { en: "8:30–17:00 (winter 9:00–17:00)", ja: "8:30〜17:00(冬は9:00〜17:00)" },
+    closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
+    rule: { weekdays: [], periods: [YEAR_END] },
   },
-  {
-    area: "tsumago",
-    name: { en: "Tsumago stop", ja: "妻籠駅" },
-    places: [
-      { name: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" }, map: null },
-    ],
+  "tsumago-info": {
+    id: "tsumago-info",
+    name: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" },
+    map: null,
+    fee: null,
+    hours: { en: "8:30–17:00", ja: "8:30〜17:00" },
+    closed: UNKNOWN,
+    rule: null,
   },
-  {
-    area: "nagiso",
-    name: { en: "Nagiso stop", ja: "南木曽駅" },
-    places: [
-      { name: { en: "Cafe Izumiya, in front of Nagiso Station", ja: "カフェイズミヤ(南木曽駅前)" }, map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6" },
-      { name: { en: "Guesthouse Kashiwaya Inn", ja: "ゲストハウス柏屋Inn" }, map: null },
-      { name: { en: "Guesthouse Waku Nagiso", ja: "ゲストハウスWaku南木曽" }, map: "https://maps.app.goo.gl/PdnuaBaziu99LA5i6" },
-      { name: { en: "Guesthouse Yuian", ja: "ゲストハウス結い庵" }, map: null },
-    ],
+  izumiya: {
+    id: "izumiya",
+    name: { en: "Cafe Izumiya, in front of Nagiso Station", ja: "カフェイズミヤ(南木曽駅前)" },
+    map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6",
+    fee: 500,
+    hours: null,
+    closed: UNKNOWN,
+    rule: null,
   },
-  {
-    area: "nojiri",
-    name: { en: "Nojiri stop", ja: "野尻駅" },
-    places: [
-      { name: { en: "Cafe Katana, in front of Nojiri Station", ja: "カフェ刀(野尻駅前)" }, map: "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA" },
-    ],
+  kashiwaya: {
+    id: "kashiwaya",
+    name: { en: "Guesthouse Kashiwaya Inn", ja: "ゲストハウス柏屋Inn" },
+    map: null,
+    fee: 0,
+    hours: null,
+    closed: UNKNOWN,
+    rule: null,
   },
-  {
-    area: "agematsu",
-    name: { en: "Agematsu stop", ja: "上松駅" },
-    places: [
-      { name: { en: "Agematsu tourist information office", ja: "上松観光案内所" }, map: null },
-    ],
+  waku: {
+    id: "waku",
+    name: { en: "Guesthouse Waku Nagiso", ja: "ゲストハウスWaku南木曽" },
+    map: "https://maps.app.goo.gl/PdnuaBaziu99LA5i6",
+    fee: 0,
+    hours: null,
+    closed: UNKNOWN,
+    rule: null,
   },
-  {
-    area: "kisofukushima",
-    name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" },
-    places: [
-      { name: { en: "Kiso-Fukushima tourist information office", ja: "木曽福島観光案内所" }, map: null },
-    ],
+  yuian: {
+    id: "yuian",
+    name: { en: "Guesthouse Yuian", ja: "ゲストハウス結い庵" },
+    map: null,
+    fee: 0,
+    hours: null,
+    closed: UNKNOWN,
+    rule: null,
   },
+  katana: {
+    id: "katana",
+    name: { en: "Cafe Katana, in front of Nojiri Station", ja: "カフェ刀(野尻駅前)" },
+    map: "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA",
+    fee: 0,
+    hours: null,
+    closed: UNKNOWN,
+    rule: null,
+  },
+  "agematsu-info": {
+    id: "agematsu-info",
+    name: { en: "Agematsu tourist information office", ja: "上松観光案内所" },
+    map: null,
+    fee: null,
+    hours: { en: "9:00–17:00", ja: "9:00〜17:00" },
+    closed: {
+      en: "Closed late November to early April (approx. Nov 21–Apr 10); open daily in season",
+      ja: "11月下旬〜4月上旬は休業(11/21〜4/10目安)。期間中は無休",
+    },
+    rule: { weekdays: [], periods: [["11-21", "04-10"]] },
+  },
+  "kisofukushima-info": {
+    id: "kisofukushima-info",
+    name: { en: "Kiso-Fukushima tourist information office", ja: "木曽福島観光案内所" },
+    map: null,
+    fee: null,
+    hours: { en: "8:30–17:30", ja: "8:30〜17:30" },
+    closed: { en: "Open daily (to be confirmed)", ja: "無休(要確認)" },
+    rule: { weekdays: [], periods: [] },
+  },
+  "ena-info": { id: "ena-info", name: { en: "Ena tourist information office", ja: "恵那観光案内所" }, map: null, fee: null, hours: null, closed: UNKNOWN, rule: null },
+  "narai-info": { id: "narai-info", name: { en: "Narai tourist information office", ja: "奈良井観光案内所" }, map: null, fee: null, hours: null, closed: UNKNOWN, rule: null },
+  "matsumoto-info": { id: "matsumoto-info", name: { en: "Matsumoto tourist information office", ja: "松本観光案内所" }, map: null, fee: null, hours: null, closed: UNKNOWN, rule: null },
+};
+
+/** "Stations" shown on the page: the luggage drop points and partner inns,
+ *  grouped by town. Ena, Narai and Matsumoto are booking-form choices only. */
+export const STATIONS: { area: string; name: T; places: Place[] }[] = [
+  { area: "nakatsugawa", name: { en: "Nakatsugawa stop", ja: "中津川駅" }, places: [PLACES["nakatsugawa-info"]] },
+  { area: "magome", name: { en: "Magome stop", ja: "馬籠駅" }, places: [PLACES["magome-info"]] },
+  { area: "tsumago", name: { en: "Tsumago stop", ja: "妻籠駅" }, places: [PLACES["tsumago-info"]] },
+  { area: "nagiso", name: { en: "Nagiso stop", ja: "南木曽駅" }, places: [PLACES.izumiya, PLACES.kashiwaya, PLACES.waku, PLACES.yuian] },
+  { area: "nojiri", name: { en: "Nojiri stop", ja: "野尻駅" }, places: [PLACES.katana] },
+  { area: "agematsu", name: { en: "Agematsu stop", ja: "上松駅" }, places: [PLACES["agematsu-info"]] },
+  { area: "kisofukushima", name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" }, places: [PLACES["kisofukushima-info"]] },
 ];
+
+export const feeText = (fee: number | null, lang: "en" | "ja") =>
+  fee === null ? UNKNOWN[lang] : fee === 0 ? (lang === "ja" ? "無料" : "Free") : yen(fee);
+
+/** Is the place known to be closed on this date (ISO yyyy-mm-dd)? */
+export function placeClosed(place: Place, iso: string) {
+  if (!place.rule || !iso) return false;
+  const d = new Date(`${iso}T00:00:00`);
+  if (place.rule.weekdays.includes(d.getDay())) return true;
+  const md = iso.slice(5);
+  return place.rule.periods.some(([a, b]) => (a <= b ? md >= a && md <= b : md >= a || md <= b));
+}
 
 /** The four daily runs, in time order. Northbound is the main direction. */
 export const RUNS: { no: string; time: string; north: boolean; route: T }[] = [
@@ -132,21 +211,21 @@ const FARE_ZONES: { from: number; to: number; en: string; ja: string }[] = [
  *  automatic estimate. Ena, Narai and Matsumoto are form-only (not listed
  *  as stations on the page). */
 const NAGISO = 4;
-export const FORM_POINTS: { en: string; ja: string; pos: number | null }[] = [
-  { en: "Ena tourist information office", ja: "恵那観光案内所", pos: 0 },
-  { en: "Nakatsugawa stop (tourist information office)", ja: "中津川駅(中津川観光案内所)", pos: 1 },
-  { en: "Magome stop (tourist information office)", ja: "馬籠駅(馬籠観光案内所)", pos: 2 },
-  { en: "Tsumago stop (tourist information office)", ja: "妻籠駅(妻籠観光案内所)", pos: 3 },
-  { en: "Nagiso stop (Cafe Izumiya)", ja: "南木曽駅(カフェイズミヤ)", pos: NAGISO },
-  { en: "Nagiso stop (Guesthouse Kashiwaya Inn)", ja: "南木曽駅(ゲストハウス柏屋Inn)", pos: NAGISO },
-  { en: "Nagiso stop (Guesthouse Waku Nagiso)", ja: "南木曽駅(ゲストハウスWaku南木曽)", pos: NAGISO },
-  { en: "Nagiso stop (Guesthouse Yuian)", ja: "南木曽駅(ゲストハウス結い庵)", pos: NAGISO },
-  { en: "Nojiri stop (Cafe Katana)", ja: "野尻駅(カフェ刀)", pos: 5 },
-  { en: "Agematsu stop (tourist information office)", ja: "上松駅(上松観光案内所)", pos: 6 },
-  { en: "Kiso-Fukushima stop (tourist information office)", ja: "木曽福島駅(木曽福島観光案内所)", pos: 7 },
-  { en: "Narai tourist information office", ja: "奈良井観光案内所", pos: 8 },
-  { en: "Matsumoto tourist information office", ja: "松本観光案内所", pos: 9 },
-  { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null },
+export const FORM_POINTS: { en: string; ja: string; pos: number | null; place: Place | null }[] = [
+  { en: "Ena tourist information office", ja: "恵那観光案内所", pos: 0, place: PLACES["ena-info"] },
+  { en: "Nakatsugawa stop (tourist information office)", ja: "中津川駅(中津川観光案内所)", pos: 1, place: PLACES["nakatsugawa-info"] },
+  { en: "Magome stop (tourist information office)", ja: "馬籠駅(馬籠観光案内所)", pos: 2, place: PLACES["magome-info"] },
+  { en: "Tsumago stop (tourist information office)", ja: "妻籠駅(妻籠観光案内所)", pos: 3, place: PLACES["tsumago-info"] },
+  { en: "Nagiso stop (Cafe Izumiya)", ja: "南木曽駅(カフェイズミヤ)", pos: NAGISO, place: PLACES.izumiya },
+  { en: "Nagiso stop (Guesthouse Kashiwaya Inn)", ja: "南木曽駅(ゲストハウス柏屋Inn)", pos: NAGISO, place: PLACES.kashiwaya },
+  { en: "Nagiso stop (Guesthouse Waku Nagiso)", ja: "南木曽駅(ゲストハウスWaku南木曽)", pos: NAGISO, place: PLACES.waku },
+  { en: "Nagiso stop (Guesthouse Yuian)", ja: "南木曽駅(ゲストハウス結い庵)", pos: NAGISO, place: PLACES.yuian },
+  { en: "Nojiri stop (Cafe Katana)", ja: "野尻駅(カフェ刀)", pos: 5, place: PLACES.katana },
+  { en: "Agematsu stop (tourist information office)", ja: "上松駅(上松観光案内所)", pos: 6, place: PLACES["agematsu-info"] },
+  { en: "Kiso-Fukushima stop (tourist information office)", ja: "木曽福島駅(木曽福島観光案内所)", pos: 7, place: PLACES["kisofukushima-info"] },
+  { en: "Narai tourist information office", ja: "奈良井観光案内所", pos: 8, place: PLACES["narai-info"] },
+  { en: "Matsumoto tourist information office", ja: "松本観光案内所", pos: 9, place: PLACES["matsumoto-info"] },
+  { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null, place: null },
 ];
 
 /** Estimated fare: ¥1,500 for each zone passed + ¥1,500 per bag. null when
@@ -169,3 +248,29 @@ export const EXAMPLES: { trip: T; zones: number; bags: number }[] = [
   { trip: { en: "Nagiso → Nojiri", ja: "南木曽 → 野尻" }, zones: 1, bags: 1 },
   { trip: { en: "Nakatsugawa → Tsumago", ja: "中津川 → 妻籠" }, zones: 1, bags: 3 },
 ];
+
+/** Booking-date check for the form: the bus must run that day (closed every
+ *  Monday and on the calendar's extra closing days) and neither station may
+ *  be on a known closing day. Returns an error message, or null when OK. */
+export function dateProblem(
+  iso: string,
+  places: (Place | null)[],
+  lang: "en" | "ja",
+  busClosed: Set<string>,
+  today: string,
+) {
+  const ja = lang === "ja";
+  if (!iso) return ja ? "日付を選んでください。" : "Please choose a date.";
+  if (iso < today) return ja ? "過去の日付は選べません。" : "That date is in the past.";
+  const d = new Date(`${iso}T00:00:00`);
+  if (d.getDay() === 1 || busClosed.has(iso))
+    return ja
+      ? "その日はラゲッジバスの運休日です(毎週月曜と臨時休業日)。別の日を選んでください。"
+      : "The Luggage Bus doesn't run that day (closed every Monday and on extra closing days). Please pick another date.";
+  const shut = places.filter((p): p is Place => !!p && placeClosed(p, iso));
+  if (shut.length)
+    return ja
+      ? `${shut.map((p) => p.name.ja).join("・")}はその日が定休日(${shut.map((p) => p.closed.ja).join(" / ")})です。別の日か別の駅を選んでください。`
+      : `${shut.map((p) => p.name.en).join(" and ")} ${shut.length > 1 ? "are" : "is"} closed that day (${shut.map((p) => p.closed.en).join(" / ")}). Please pick another date or station.`;
+  return null;
+}

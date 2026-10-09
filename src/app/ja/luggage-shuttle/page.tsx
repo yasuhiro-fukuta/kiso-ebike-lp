@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
-import { STATIONS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { STATIONS, feeText, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -244,6 +244,37 @@ export default function JaLuggageBusPage() {
             </div>
           ))}
         </div>
+        <h3 className="lb-sub">各駅の預かり料と定休日</h3>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-info">
+            <thead>
+              <tr>
+                <th>駅</th>
+                <th>預かり料(現地払い)</th>
+                <th>定休日</th>
+                <th>営業時間</th>
+              </tr>
+            </thead>
+            <tbody>
+              {STATIONS.flatMap((s) =>
+                s.places.map((pl) => (
+                  <tr key={pl.id}>
+                    <th scope="row">
+                      {s.name.ja}
+                      <small>{pl.name.ja}</small>
+                    </th>
+                    <td>{feeText(pl.fee, "ja")}{pl.fee ? "/個" : ""}</td>
+                    <td>{pl.closed.ja}</td>
+                    <td>{pl.hours ? pl.hours.ja : "—"}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
+          </table>
+        </div>
+        <p className="drop-note">
+          預かり料がかかる駅があります(その場で各駅にお支払いください)。観光案内所の定休日は観光サイトの情報をもとにした目安で、変わっていることがあります。予約の承認のときに確認してお伝えします。
+        </p>
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">
             <h3>

@@ -1405,3 +1405,11 @@ figure.season-cell .season-tag {
 .book-estimate strong { font-family: var(--serif); font-size: 1.8rem; font-weight: 500; color: var(--gold); }
 .book-estimate span { font-size: 0.85rem; font-weight: 300; }
 .book-estimate small { font-size: 0.75rem; font-weight: 300; opacity: 0.75; }
+.lb-info td { font-family: var(--sans); font-size: 0.88rem; color: #3a352d; }
+.lb-info tbody th { font-size: 1rem; }
+@media (max-width: 560px) { .lb-info th, .lb-info td { font-size: 0.8rem; } }
+.book-hint { font-size: 0.78rem; font-weight: 300; color: var(--cedar); line-height: 1.5; }
+.book-error {
+  background: rgba(181, 83, 42, 0.12); border: 1px solid var(--rust); color: var(--ink);
+  border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.9rem;
+}
