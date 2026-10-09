@@ -261,31 +261,12 @@ const jsonLd = {
       ],
     },
     {
-      "@type": "Product",
-      "@id": `${SITE_URL}/#daypack`,
-      name: "Shuttle E-Bike Package (All-in-One Day Pack)",
-      alternateName: "Shuttle E-bike",
-      description:
-        "The 'shuttle e-bike' \u2014 a one-way, hands-free way to ride the Kiso Valley: the e-bike is delivered to your start point, your luggage is shuttled ahead by car, and you ride one way and drop the bike. The bundle: one e-bike, one bear bell, one bear spray, one more gear item of your choice, and the luggage shuttle (up to 2 bags per person). \u00a57,000 per person; rests every Monday; book via WhatsApp and pay on the day, card or cash.",
-      image: `${SITE_URL}${HERO_IMG}`,
-      brand: { "@id": `${SITE_URL}/#business` },
-      category: "Bicycle rental package",
-      offers: {
-        "@type": "Offer",
-        name: "Shuttle E-Bike Package — per person",
-        price: "7000",
-        priceCurrency: "JPY",
-        availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/shuttle-ebike`,
-      },
-    },
-    {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
       name: "Luggage Shuttle (Tsumago ↔ Nagiso ↔ Junikane ↔ Nojiri)",
       serviceType: "Luggage transfer",
       description:
-        "Same-day luggage shuttle anywhere between Tsumago, Nagiso Station, Kashiwaya Guesthouse, Junikane Station and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. Drop bags by 11:00 and they arrive by 13:00 at the latest; closed every Monday. \u00a51,500 base fee per group plus \u00a51,500 per bag; a bear spray with bell can be added for \u00a51,500; included (up to 2 bags per person) in the \u00a57,000 Shuttle E-Bike Package. Book via WhatsApp; pay on the day, card or cash.",
+        "Same-day luggage shuttle anywhere between Tsumago, Nagiso Station, Kashiwaya Guesthouse, Junikane Station and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. Drop bags by 11:00 and they arrive by 13:00 at the latest; closed every Monday. \u00a51,500 base fee per group plus \u00a51,500 per bag; a bear spray with bell can be added for \u00a51,500. Book via WhatsApp; pay on the day, card or cash.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
       url: `${SITE_URL}/luggage-shuttle`,

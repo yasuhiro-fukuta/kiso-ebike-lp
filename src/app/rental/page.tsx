@@ -19,7 +19,7 @@ import {
   PHONE_TEL,
   SUPPORT_MAILTO,
 } from "../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export default function RentalPage() {
   return (
@@ -168,16 +168,6 @@ export default function RentalPage() {
 </div>
       </section>
 
-      {/* ONE-WAY DROP → Shuttle E-bike package */}
-      <section className="mini-sec" id="one-way" style={{ textAlign: "center" }}>
-        <p style={{ fontWeight: 300, color: "#3a352d", marginBottom: "1.2rem" }}>
-          Want to ride one way, hands-free, and drop the bike at the far end?
-        </p>
-        <Link href="/shuttle-ebike" className="stay-cta">
-          See the Shuttle E-Bike Package <ArrowRight size={15} />
-        </Link>
-      </section>
-
       {/* VIDEO */}
       <section className="video-sec">
         <span className="eyebrow">Before you ride</span>
@@ -276,9 +266,6 @@ export default function RentalPage() {
           </p>
         </details>
       </section>
-
-      {/* ALL-IN-ONE PACK */}
-      <AllInOnePack />
 
       <SiteFooter />
     </div>

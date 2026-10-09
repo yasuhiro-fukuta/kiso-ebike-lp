@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MessageCircle, CreditCard } from "lucide-react";
 import { SQUARE_PAY_URL } from "../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 const GEAR_ITEMS: {
   name: string;
@@ -160,9 +160,6 @@ export default function GearPage() {
           it in English just fine.
         </p>
       </section>
-
-      {/* ALL-IN-ONE PACK */}
-      <AllInOnePack />
 
       <SiteFooter />
     </div>

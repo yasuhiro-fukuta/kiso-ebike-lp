@@ -19,7 +19,7 @@ import {
   PHONE_TEL,
   SUPPORT_MAILTO,
 } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export default function JaRentalPage() {
   return (
@@ -149,16 +149,6 @@ export default function JaRentalPage() {
 </div>
       </section>
 
-      {/* ONE-WAY DROP → Shuttle E-bike package */}
-      <section className="mini-sec" id="one-way" style={{ textAlign: "center" }}>
-        <p style={{ fontWeight: 300, color: "#3a352d", marginBottom: "1.2rem" }}>
-          手ぶらで、乗り捨てで、片道だけ走りたい?
-        </p>
-        <Link href="/ja/shuttle-ebike" className="stay-cta">
-          Shuttle E-bikeパッケージへ <ArrowRight size={15} />
-        </Link>
-      </section>
-
       {/* VIDEO */}
       <section className="video-sec">
         <span className="eyebrow">乗る前に</span>
@@ -244,8 +234,6 @@ export default function JaRentalPage() {
       </section>
 
       {/* ALL-IN-ONE PACK */}
-      <AllInOnePack lang="ja" />
-
       <SiteFooter lang="ja" />
     </div>
   );

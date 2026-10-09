@@ -79,10 +79,10 @@ const DAYS: { d: string; text: React.ReactNode; ours?: boolean }[] = [
     d: "Day 17",
     text: (
       <>
-        E-bike from Nagiso to Nojiri with your bags carried ahead — that is
-        exactly what our{" "}
-        <Link href="/shuttle-ebike">Shuttle E-Bike Package</Link> does — then
-        catch the train up to Yabuhara.
+        E-bike from Nagiso to Nojiri with your bags carried ahead — our{" "}
+        <Link href="/rental">e-bike rental</Link> and{" "}
+        <Link href="/luggage-shuttle">luggage shuttle</Link> cover exactly
+        this leg — then catch the train up to Yabuhara.
       </>
     ),
     ours: true,

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MessageCircle, CreditCard } from "lucide-react";
 import { SQUARE_PAY_URL } from "../../site";
-import { SiteNav, SiteFooter, FloatBook, AllInOnePack } from "../../chrome";
+import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 const GEAR_ITEMS: {
   name: string;
@@ -148,8 +148,6 @@ export default function JaGearPage() {
           金額はSquareのページで入力してください。店頭での現金払いもOK。
         </p>
       </section>
-
-      <AllInOnePack lang="ja" />
 
       <SiteFooter lang="ja" />
     </div>

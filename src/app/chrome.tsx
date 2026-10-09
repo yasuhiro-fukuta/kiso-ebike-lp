@@ -40,7 +40,6 @@ const MENU_ITEMS: Record<
   { href: string; label: string; sub: string }[]
 > = {
   en: [
-    { href: "/shuttle-ebike", label: "Shuttle E-Bike Package", sub: "One-way, hands-free, ¥7,000" },
     { href: "/rental", label: "E-Bike Rental", sub: "Delivered to you · drop anywhere" },
     { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
     { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
@@ -49,7 +48,6 @@ const MENU_ITEMS: Record<
     { href: "/guided", label: "Guided Tours by Locals", sub: "Dawn rides & the Kiso River Downhill" },
   ],
   ja: [
-    { href: "/ja/shuttle-ebike", label: "Shuttle E-bikeパッケージ", sub: "乗り捨て・手ぶらの全部入り ¥7,000" },
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "お届け&乗り捨て自由" },
     { href: "/ja/luggage-shuttle", label: "手荷物シャトル", sub: "身軽に歩く・走る" },
     { href: "/ja/gear", label: "ギアレンタル", sub: "ヒノキ傘・熊対策ほか" },
