@@ -56,17 +56,19 @@ const COUNTERS = {
 /** Luggage Bus stations (drop points and partner inns), plus "ask". */
 const LB_POINTS = {
   en: [
-    "Izumiya stop (Nagiso)",
-    "Kashiwaya stop (Nagiso)",
-    "WAKU stop (Nagiso)",
+    "Nakatsugawa stop (tourist information office)",
+    "Magome stop (tourist information office)",
+    "Tsumago stop (tourist information office)",
+    "Nagiso stop (Izumiya Cafe)",
     "Katana stop (Nojiri)",
     "Another inn or place on the route (details in chat)",
     "Beyond the route — Ena, Narai… (details in chat)",
   ],
   ja: [
-    "イズミヤ駅(南木曽)",
-    "柏屋駅(南木曽)",
-    "WAKU駅(南木曽)",
+    "中津川駅(中津川観光案内所)",
+    "馬籠駅(馬籠観光案内所)",
+    "妻籠駅(妻籠観光案内所)",
+    "南木曽駅(イズミヤカフェ)",
     "刀駅(野尻)",
     "その他の宿・場所(チャットで相談)",
     "区間外への延長・恵那や奈良井など(チャットで相談)",

@@ -23,22 +23,28 @@ export const AREAS: { key: string; name: T }[] = [
  *  hands. Add a row here when a new partner signs up. */
 export const STATIONS: { area: string; name: T; place: T; map: string | null }[] = [
   {
-    area: "nagiso",
-    name: { en: "Izumiya stop", ja: "イズミヤ駅" },
-    place: { en: "Izumiya Cafe, in front of Nagiso Station", ja: "イズミヤカフェ(南木曽駅前)" },
-    map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6",
+    area: "nakatsugawa",
+    name: { en: "Nakatsugawa stop", ja: "中津川駅" },
+    place: { en: "Nakatsugawa tourist information office", ja: "中津川観光案内所" },
+    map: null,
   },
   {
-    area: "nagiso",
-    name: { en: "Kashiwaya stop", ja: "柏屋駅" },
-    place: { en: "Kashiwaya Guesthouse, Nagiso", ja: "ゲストハウス柏屋(南木曽)" },
+    area: "magome",
+    name: { en: "Magome stop", ja: "馬籠駅" },
+    place: { en: "Magome tourist information office", ja: "馬籠観光案内所" },
+    map: null,
+  },
+  {
+    area: "tsumago",
+    name: { en: "Tsumago stop", ja: "妻籠駅" },
+    place: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" },
     map: null,
   },
   {
     area: "nagiso",
-    name: { en: "WAKU stop", ja: "WAKU駅" },
-    place: { en: "Guesthouse WAKU, Nagiso", ja: "ゲストハウスWAKU(南木曽)" },
-    map: "https://maps.app.goo.gl/PdnuaBaziu99LA5i6",
+    name: { en: "Nagiso stop", ja: "南木曽駅" },
+    place: { en: "Izumiya Cafe, in front of Nagiso Station", ja: "イズミヤカフェ(南木曽駅前)" },
+    map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6",
   },
   {
     area: "nojiri",
