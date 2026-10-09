@@ -108,13 +108,51 @@ export const ZONES: { name: T; route: T }[] = [
   { name: { en: "Central zone", ja: "中部" }, route: { en: "Nagiso — Nojiri — Agematsu — Kiso-Fukushima", ja: "南木曽〜野尻〜上松〜木曽福島" } },
 ];
 
-/** Extension beyond the route (Ena, Narai…), by arrangement:
- *  +¥1,500 for extending the start, +¥1,500 for extending the end. */
+/** Extension beyond the route: Ena tourist information office adds the
+ *  south extension toll, Narai tourist information office the north one
+ *  (+¥1,500 each). Other places beyond the route are by arrangement. */
 export const EXTENSION_FEE = 1500;
 
 export const fare = (zones: number, bags: number, ext = 0) =>
   zones * ZONE_FEE + bags * BAG_FEE + ext * EXTENSION_FEE;
 export const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
+
+/** Booking-form choices, with their position on the line for the estimate:
+ *  -1 Ena (south extension), 0 Nakatsugawa … 3 Nagiso … 6 Kiso-Fukushima,
+ *  7 Narai (north extension); null = no automatic estimate. */
+const NAGISO = 3;
+export const FORM_POINTS: { en: string; ja: string; pos: number | null }[] = [
+  { en: "Ena tourist information office (south extension)", ja: "恵那観光案内所(延伸・南)", pos: -1 },
+  { en: "Nakatsugawa stop (tourist information office)", ja: "中津川駅(中津川観光案内所)", pos: 0 },
+  { en: "Magome stop (tourist information office)", ja: "馬籠駅(馬籠観光案内所)", pos: 1 },
+  { en: "Tsumago stop (tourist information office)", ja: "妻籠駅(妻籠観光案内所)", pos: 2 },
+  { en: "Nagiso stop (Cafe Izumiya)", ja: "南木曽駅(カフェイズミヤ)", pos: NAGISO },
+  { en: "Nagiso stop (Guesthouse Kashiwaya Inn)", ja: "南木曽駅(ゲストハウス柏屋Inn)", pos: NAGISO },
+  { en: "Nagiso stop (Guesthouse Waku Nagiso)", ja: "南木曽駅(ゲストハウスWaku南木曽)", pos: NAGISO },
+  { en: "Nagiso stop (Guesthouse Yuian)", ja: "南木曽駅(ゲストハウス結い庵)", pos: NAGISO },
+  { en: "Nojiri stop (Cafe Katana)", ja: "野尻駅(カフェ刀)", pos: 4 },
+  { en: "Agematsu stop (tourist information office)", ja: "上松駅(上松観光案内所)", pos: 5 },
+  { en: "Kiso-Fukushima stop (tourist information office)", ja: "木曽福島駅(木曽福島観光案内所)", pos: 6 },
+  { en: "Narai tourist information office (north extension)", ja: "奈良井観光案内所(延伸・北)", pos: 7 },
+  { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null },
+];
+
+/** Estimated fare between two line positions: ¥1,500 for each zone passed
+ *  (south: Nakatsugawa–Nagiso, central: Nagiso–Kiso-Fukushima), ¥1,500 for
+ *  each extension (Ena / Narai), plus ¥1,500 per bag. null when it can't be
+ *  worked out (unknown place, or start and end in the same town). */
+export function estimate(from: number | null, to: number | null, bags: number) {
+  if (from === null || to === null || from === to || bags < 1) return null;
+  const lo = Math.min(from, to);
+  const hi = Math.max(from, to);
+  const parts: { en: string; ja: string; yen: number }[] = [];
+  if (lo < 0) parts.push({ en: "South extension (Ena)", ja: "延伸南部通行料(恵那)", yen: EXTENSION_FEE });
+  if (lo < NAGISO) parts.push({ en: "South zone", ja: "南部通行料", yen: ZONE_FEE });
+  if (hi > NAGISO) parts.push({ en: "Central zone", ja: "中部通行料", yen: ZONE_FEE });
+  if (hi > 6) parts.push({ en: "North extension (Narai)", ja: "延伸北部通行料(奈良井)", yen: EXTENSION_FEE });
+  parts.push({ en: `${bags} bag${bags > 1 ? "s" : ""}`, ja: `荷物${bags}個`, yen: BAG_FEE * bags });
+  return { total: parts.reduce((n, p) => n + p.yen, 0), parts };
+}
 
 /** Worked examples shown on the page. */
 export const EXAMPLES: { trip: T; zones: number; bags: number; ext?: number }[] = [
@@ -122,5 +160,6 @@ export const EXAMPLES: { trip: T; zones: number; bags: number; ext?: number }[] 
   { trip: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, zones: 2, bags: 2 },
   { trip: { en: "Nagiso → Nojiri", ja: "南木曽 → 野尻" }, zones: 1, bags: 1 },
   { trip: { en: "Nakatsugawa → Tsumago", ja: "中津川 → 妻籠" }, zones: 1, bags: 3 },
-  { trip: { en: "Ena → Kiso-Fukushima (start extended)", ja: "恵那 → 木曽福島(出発地を延長)" }, zones: 2, bags: 1, ext: 1 },
+  { trip: { en: "Ena → Kiso-Fukushima", ja: "恵那 → 木曽福島" }, zones: 2, bags: 1, ext: 1 },
+  { trip: { en: "Ena → Narai", ja: "恵那 → 奈良井" }, zones: 2, bags: 1, ext: 2 },
 ];

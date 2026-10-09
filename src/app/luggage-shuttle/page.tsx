@@ -199,7 +199,7 @@ export default function LuggageBusPage() {
             <p>The same wherever it goes.</p>
           </div>
           <p className="pricing-foot">
-            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. Nagiso is where the two zones meet.
+            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. Nagiso is where the two zones meet. Extensions: from or to the Ena tourist information office +¥1,500 (south), the Narai tourist information office +¥1,500 (north). The booking form works out an estimate for you.
           </p>
         </div>
 
@@ -220,7 +220,7 @@ export default function LuggageBusPage() {
                     {x.trip.en}
                     <small>
                       Delivery {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
-                      {x.ext ? ` + extension ${yen(x.ext * EXTENSION_FEE)}` : ""}
+                      {x.ext ? ` + extension ${yen(EXTENSION_FEE)} × ${x.ext}` : ""}
                     </small>
                   </th>
                   <td>{x.bags}</td>
@@ -291,9 +291,10 @@ export default function LuggageBusPage() {
               <ArrowRight size={20} /> Beyond the route
             </h3>
             <p>
-              Ena, Narai and other places past either end can be arranged on
-              WhatsApp: +{yen(EXTENSION_FEE)} to extend the start, +
-              {yen(EXTENSION_FEE)} to extend the end.
+              The Ena and Narai tourist information offices take bags too:
+              +{yen(EXTENSION_FEE)} for Ena (south extension), +
+              {yen(EXTENSION_FEE)} for Narai (north extension). Other places
+              past either end can be arranged on WhatsApp.
             </p>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { wa } from "./site";
+import { FORM_POINTS, estimate, yen } from "./luggage-bus";
 import { SiteNav, SiteFooter } from "./chrome";
 
 type Lang = "en" | "ja";
@@ -20,7 +21,9 @@ type Field = {
 type Service = {
   title: { en: string; ja: string };
   fields: Field[];
-  build: (lang: Lang, g: (k: string) => string) => string;
+  build: (lang: Lang, g: (k: string) => string, est: string) => string;
+  /** Optional price estimate from the raw field values (shown and sent). */
+  estimate?: (lang: Lang, v: Record<string, string>) => { total: string; detail: string } | null;
 };
 
 /** The five standard start/finish points. */
@@ -53,37 +56,12 @@ const COUNTERS = {
   ja: ["南木曽駅前 イズミヤカフェ", "ゲストハウス柏屋", "ゲストハウスWAKU", "野尻駅前 カフェ刀"],
 };
 
-/** Luggage Bus stations (drop points and partner inns), plus "ask". */
+/** Luggage Bus stations and extensions (positions live in luggage-bus.ts). */
 const LB_POINTS = {
-  en: [
-    "Nakatsugawa stop (tourist information office)",
-    "Magome stop (tourist information office)",
-    "Tsumago stop (tourist information office)",
-    "Nagiso stop (Cafe Izumiya)",
-    "Nagiso stop (Guesthouse Kashiwaya Inn)",
-    "Nagiso stop (Guesthouse Waku Nagiso)",
-    "Nagiso stop (Guesthouse Yuian)",
-    "Nojiri stop (Cafe Katana)",
-    "Agematsu stop (tourist information office)",
-    "Kiso-Fukushima stop (tourist information office)",
-    "Another inn or place on the route (details in chat)",
-    "Beyond the route — Ena, Narai… (details in chat)",
-  ],
-  ja: [
-    "中津川駅(中津川観光案内所)",
-    "馬籠駅(馬籠観光案内所)",
-    "妻籠駅(妻籠観光案内所)",
-    "南木曽駅(カフェイズミヤ)",
-    "南木曽駅(ゲストハウス柏屋Inn)",
-    "南木曽駅(ゲストハウスWaku南木曽)",
-    "南木曽駅(ゲストハウス結い庵)",
-    "野尻駅(カフェ刀)",
-    "上松駅(上松観光案内所)",
-    "木曽福島駅(木曽福島観光案内所)",
-    "その他の宿・場所(チャットで相談)",
-    "区間外への延長・恵那や奈良井など(チャットで相談)",
-  ],
+  en: FORM_POINTS.map((p) => p.en),
+  ja: FORM_POINTS.map((p) => p.ja),
 };
+const lbPos = (label: string) => FORM_POINTS.find((p) => p.en === label || p.ja === label)?.pos ?? null;
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
@@ -138,10 +116,15 @@ const SERVICES: Record<string, Service> = {
       { k: "inns", label: { en: "Inn or place (if not a station)", ja: "宿・場所の名前(駅以外の場合)" }, type: "text", opt: true },
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
     ],
-    build: (l, g) =>
+    estimate: (l, v) => {
+      const e = estimate(lbPos(v.from ?? ""), lbPos(v.to ?? ""), Number(v.bags ?? 0));
+      if (!e) return null;
+      return { total: yen(e.total), detail: e.parts.map((p) => `${p[l]} ${yen(p.yen)}`).join(" + ") };
+    },
+    build: (l, g, est) =>
       l === "ja"
-        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿:${g("inns")}\n個数:${g("bags")}個`
-        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInns: ${g("inns")}\nBags: ${g("bags")}`,
+        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿・場所:${g("inns")}\n個数:${g("bags")}個\n概算金額:${est}`
+        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInn or place: ${g("inns")}\nBags: ${g("bags")}\nEstimate: ${est}`,
   },
   "luggage-send": {
     title: { en: "Luggage Bus — after payment", ja: "ラゲッジバス(支払い後の連絡)" },
@@ -299,6 +282,9 @@ const T = {
     blank: "__",
     notNeeded: "not needed",
     choose: "— choose —",
+    estimate: "Estimated price",
+    estimateNote: "An estimate from the stations and bags you chose — the final price comes with our approval.",
+    estimateNone: "to be confirmed",
   },
   ja: {
     eyebrow: "予約メッセージをつくる",
@@ -309,6 +295,9 @@ const T = {
     blank: "〇",
     notNeeded: "不要",
     choose: "—選択—",
+    estimate: "概算金額",
+    estimateNote: "選んだ駅と個数からの概算です。確定の金額は承認のときにお伝えします。",
+    estimateNone: "要相談",
   },
 };
 
@@ -340,7 +329,8 @@ export default function BookForm({ lang }: { lang: Lang }) {
     if (raw === "") return field?.opt ? t.notNeeded : t.blank;
     return raw;
   };
-  const message = svc.build(lang, g);
+  const est = svc.estimate?.(lang, v) ?? null;
+  const message = svc.build(lang, g, est ? `${est.total}(${est.detail})` : t.estimateNone);
 
   return (
     <div className="lp">
@@ -392,6 +382,17 @@ export default function BookForm({ lang }: { lang: Lang }) {
               )}
             </div>
           ))}
+
+          {svc.estimate && (
+            <div className="book-field">
+              <label>{t.estimate}</label>
+              <div className="book-estimate">
+                <strong>{est ? est.total : t.estimateNone}</strong>
+                {est && <span>{est.detail}</span>}
+                <small>{t.estimateNote}</small>
+              </div>
+            </div>
+          )}
 
           <div className="book-field">
             <label>{t.preview}</label>

@@ -172,7 +172,7 @@ export default function JaLuggageBusPage() {
             <p>距離に関係なく1個ごと。</p>
           </div>
           <p className="pricing-foot">
-            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。南部と中部の境目は南木曽です。
+            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。南部と中部の境目は南木曽です。区間外の恵那観光案内所は延伸南部通行料+1,500円、奈良井観光案内所は延伸北部通行料+1,500円です。予約フォームで概算金額が出ます。
           </p>
         </div>
 
@@ -193,7 +193,7 @@ export default function JaLuggageBusPage() {
                     {x.trip.ja}
                     <small>
                       配送料 {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
-                      {x.ext ? ` + 延長 ${yen(x.ext * EXTENSION_FEE)}` : ""}
+                      {x.ext ? ` + 延伸 ${yen(EXTENSION_FEE)} × ${x.ext}` : ""}
                     </small>
                   </th>
                   <td>{x.bags}</td>
@@ -256,10 +256,10 @@ export default function JaLuggageBusPage() {
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> 区間外への延長も応相談
+              <ArrowRight size={20} /> 区間外への延長
             </h3>
             <p>
-              恵那や奈良井など、区間の外へもWhatsAppで相談のうえ運びます。出発地の延長は+{yen(EXTENSION_FEE)}、到着地の延長は+{yen(EXTENSION_FEE)}です。
+              恵那観光案内所(延伸南部通行料+{yen(EXTENSION_FEE)})と奈良井観光案内所(延伸北部通行料+{yen(EXTENSION_FEE)})でも受け渡しできます。それ以外の区間外の場所は、WhatsAppでご相談ください。
             </p>
           </div>
         </div>
