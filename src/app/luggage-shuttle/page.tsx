@@ -248,39 +248,32 @@ export default function LuggageBusPage() {
         <span className="eyebrow">The stations</span>
         <h2>Where your bags change hands.</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
-          Each &ldquo;station&rdquo; is a tourist information office or a cafe
-          that holds luggage.
-          Hand your bags over at one in the morning, pick them up at another.
+          Each &ldquo;station&rdquo; is a place that holds luggage — a tourist
+          information office, a cafe or a partner guesthouse. Hand your bags
+          over at one in the morning, pick them up at another. Underlined
+          names open the map.
         </p>
         <div className="mini-grid">
-          {STATIONS.map((s) => {
-            const body = (
-              <>
-                <h3>
-                  <MapPin size={20} /> {s.name.en}
-                </h3>
-                <p>
-                  {s.place.en}
-                  {s.map ? ". Tap for the map." : "."}
-                </p>
-              </>
-            );
-            return s.map ? (
-              <a
-                key={s.name.en}
-                href={s.map}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mini-card"
-              >
-                {body}
-              </a>
-            ) : (
-              <div key={s.name.en} className="mini-card lb-way">
-                {body}
-              </div>
-            );
-          })}
+          {STATIONS.map((s) => (
+            <div key={s.area} className="mini-card lb-way">
+              <h3>
+                <MapPin size={20} /> {s.name.en}
+              </h3>
+              <ul className="lb-places">
+                {s.places.map((pl) => (
+                  <li key={pl.name.en}>
+                    {pl.map ? (
+                      <a href={pl.map} target="_blank" rel="noopener noreferrer">
+                        {pl.name.en}
+                      </a>
+                    ) : (
+                      pl.name.en
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">

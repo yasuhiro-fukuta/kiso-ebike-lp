@@ -1395,3 +1395,6 @@ figure.season-cell .season-tag {
 .lb-sub { font-family: var(--serif); font-size: 1.3rem; margin: 2.6rem 0 0.9rem; }
 .lb-table tr.next th, .lb-table tr.next td { background: rgba(181, 83, 42, 0.08); }
 .lb-table td { white-space: normal; font-size: 1rem; }
+.lb-places { list-style: none; margin: 0; padding: 0; font-weight: 300; font-size: 0.88rem; color: #3a352d; }
+.lb-places li { padding: 0.15rem 0; }
+.lb-places a { color: var(--moss); text-decoration: underline; text-underline-offset: 2px; }

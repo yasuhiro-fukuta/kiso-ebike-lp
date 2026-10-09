@@ -20,49 +20,63 @@ export const AREAS: { key: string; name: T }[] = [
 ];
 
 /** "Stations": the luggage drop points and partner inns where bags change
- *  hands. Add a row here when a new partner signs up. */
-export const STATIONS: { area: string; name: T; place: T; map: string | null }[] = [
+ *  hands, grouped by town. Add a place when a new partner signs up. */
+export const STATIONS: {
+  area: string;
+  name: T;
+  places: { name: T; map: string | null }[];
+}[] = [
   {
     area: "nakatsugawa",
     name: { en: "Nakatsugawa stop", ja: "中津川駅" },
-    place: { en: "Nakatsugawa tourist information office", ja: "中津川観光案内所" },
-    map: null,
+    places: [
+      { name: { en: "Nakatsugawa tourist information office", ja: "中津川観光案内所" }, map: null },
+    ],
   },
   {
     area: "magome",
     name: { en: "Magome stop", ja: "馬籠駅" },
-    place: { en: "Magome tourist information office", ja: "馬籠観光案内所" },
-    map: null,
+    places: [
+      { name: { en: "Magome tourist information office", ja: "馬籠観光案内所" }, map: null },
+    ],
   },
   {
     area: "tsumago",
     name: { en: "Tsumago stop", ja: "妻籠駅" },
-    place: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" },
-    map: null,
+    places: [
+      { name: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" }, map: null },
+    ],
   },
   {
     area: "nagiso",
     name: { en: "Nagiso stop", ja: "南木曽駅" },
-    place: { en: "Cafe Izumiya, in front of Nagiso Station", ja: "カフェイズミヤ(南木曽駅前)" },
-    map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6",
+    places: [
+      { name: { en: "Cafe Izumiya, in front of Nagiso Station", ja: "カフェイズミヤ(南木曽駅前)" }, map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6" },
+      { name: { en: "Guesthouse Kashiwaya Inn", ja: "ゲストハウス柏屋Inn" }, map: null },
+      { name: { en: "Guesthouse Waku Nagiso", ja: "ゲストハウスWaku南木曽" }, map: "https://maps.app.goo.gl/PdnuaBaziu99LA5i6" },
+      { name: { en: "Guesthouse Yuian", ja: "ゲストハウス結い庵" }, map: null },
+    ],
   },
   {
     area: "nojiri",
     name: { en: "Nojiri stop", ja: "野尻駅" },
-    place: { en: "Cafe Katana, in front of Nojiri Station", ja: "カフェ刀(野尻駅前)" },
-    map: "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA",
+    places: [
+      { name: { en: "Cafe Katana, in front of Nojiri Station", ja: "カフェ刀(野尻駅前)" }, map: "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA" },
+    ],
   },
   {
     area: "agematsu",
     name: { en: "Agematsu stop", ja: "上松駅" },
-    place: { en: "Agematsu tourist information office", ja: "上松観光案内所" },
-    map: null,
+    places: [
+      { name: { en: "Agematsu tourist information office", ja: "上松観光案内所" }, map: null },
+    ],
   },
   {
     area: "kisofukushima",
     name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" },
-    place: { en: "Kiso-Fukushima tourist information office", ja: "木曽福島観光案内所" },
-    map: null,
+    places: [
+      { name: { en: "Kiso-Fukushima tourist information office", ja: "木曽福島観光案内所" }, map: null },
+    ],
   },
 ];
 

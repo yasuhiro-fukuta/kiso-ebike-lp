@@ -221,37 +221,29 @@ export default function JaLuggageBusPage() {
         <span className="eyebrow">駅</span>
         <h2>荷物を預ける・受け取る「駅」。</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
-          ラゲッジバスの「駅」は、各地の観光案内所やカフェなど、荷物を預けられる場所です。朝ひとつの駅で預けて、別の駅で受け取ります。
+          ラゲッジバスの「駅」は、観光案内所・カフェ・提携ゲストハウスなど、荷物を預けられる場所です。朝ひとつの駅で預けて、別の駅で受け取ります。下線のある名前はタップで地図が開きます。
         </p>
         <div className="mini-grid">
-          {STATIONS.map((s) => {
-            const body = (
-              <>
-                <h3>
-                  <MapPin size={20} /> {s.name.ja}
-                </h3>
-                <p>
-                  {s.place.ja}
-                  {s.map ? "。タップで地図が開きます。" : ""}
-                </p>
-              </>
-            );
-            return s.map ? (
-              <a
-                key={s.name.ja}
-                href={s.map}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mini-card"
-              >
-                {body}
-              </a>
-            ) : (
-              <div key={s.name.ja} className="mini-card lb-way">
-                {body}
-              </div>
-            );
-          })}
+          {STATIONS.map((s) => (
+            <div key={s.area} className="mini-card lb-way">
+              <h3>
+                <MapPin size={20} /> {s.name.ja}
+              </h3>
+              <ul className="lb-places">
+                {s.places.map((pl) => (
+                  <li key={pl.name.en}>
+                    {pl.map ? (
+                      <a href={pl.map} target="_blank" rel="noopener noreferrer">
+                        {pl.name.ja}
+                      </a>
+                    ) : (
+                      pl.name.ja
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">
