@@ -263,10 +263,10 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
-      name: "Luggage Bus (Nakatsugawa ⇄ Nagiso ⇄ Nojiri ⇄ Kiso-Fukushima)",
+      name: "Luggage Bus (Nakatsugawa ⇄ Magome ⇄ Tsumago ⇄ Nagiso ⇄ Nojiri ⇄ Agematsu ⇄ Kiso-Fukushima)",
       serviceType: "Luggage transfer",
       description:
-        "Scheduled luggage-only service along the Kiso Valley, once a day each way: northbound Nakatsugawa 10:00, Nagiso 11:00, Nojiri 12:00, arriving Kiso-Fukushima 13:00; southbound departs Kiso-Fukushima 13:00 and reaches Nakatsugawa by 15:00. Book ahead for inn-to-inn door-to-door delivery, or walk up to a stop counter (Izumiya Cafe at Nagiso Station, Coffee Katana at Nojiri Station). Luggage only \u2014 no passengers. Magome and Tsumago are not served. Provisional fares per bag: \u00a51,500 for one section, \u00a53,000 end to end. Book via WhatsApp.",
+        "Scheduled luggage-only service along the Nakasendo, four runs a day: southbound Nagiso \u2192 Tsumago \u2192 Magome \u2192 Nakatsugawa 9:00\u201310:00; northbound Nakatsugawa \u2192 Magome \u2192 Tsumago \u2192 Nagiso 10:00\u201312:00 and Nagiso \u2192 Nojiri \u2192 Agematsu \u2192 Kiso-Fukushima 12:00\u201314:00; southbound Kiso-Fukushima \u2192 Nagiso 14:00\u201315:00. Bags from Magome reach Kiso-Fukushima the same day around 13:30\u201314:00. Hand-over at stop counters. Booking required: request on WhatsApp, and a payment link is sent on approval. Luggage only \u2014 no passengers. Provisional fares per bag: \u00a51,000\u20131,500 to the next stop, \u00a53,000 Magome to Kiso-Fukushima, \u00a53,500 Nakatsugawa to Kiso-Fukushima.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Kiso Valley, Nakatsugawa to Kiso-Fukushima" },
       url: `${SITE_URL}/luggage-shuttle`,

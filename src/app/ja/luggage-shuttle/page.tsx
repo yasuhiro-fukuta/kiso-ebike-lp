@@ -8,15 +8,13 @@ import {
   PackageCheck,
   MapPin,
   ArrowRight,
-  BedDouble,
-  Clock,
   Ban,
-  CalendarCheck,
+  Send,
 } from "lucide-react";
-import { SQUARE_PAY_URL, WHATSAPP_URL_JA } from "../../site";
+import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
-import { STOPS, FARES, DOOR_FEE, yen } from "../../luggage-bus";
+import { STOPS, RUNS, ARRIVALS, FARES } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -24,7 +22,7 @@ export default function JaLuggageBusPage() {
       <SiteNav lang="ja" />
 
       <FloatBook href="/ja/book?s=luggage">
-        <MessageCircle size={18} /> WhatsAppで予約
+        <MessageCircle size={18} /> WhatsAppで申し込む
       </FloatBook>
 
       {/* PAGE HEAD——タイトル・キャッチコピー・写真 */}
@@ -37,10 +35,10 @@ export default function JaLuggageBusPage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            ラゲッジバスは、木曽谷の中津川・南木曽・野尻・木曽福島を、決まった時刻に1日1往復する荷物の定期便です。予約すれば宿の玄関で預かり、次の宿の玄関まで届けます。予約なしでも、時刻に合わせて停留所の窓口へ持ってくればOKです。
+            ラゲッジバスは、中山道の中津川・馬籠・妻籠・南木曽・野尻・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、停留所の窓口に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先の窓口で待っています。
           </p>
           <p className="head-note">
-            北行きは13:00までに木曽福島へ。宿のチェックインに間に合います。
+            馬籠から木曽福島へは当日13:30〜14:00ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
           </p>
         </div>
         <figure className="page-head-visual">
@@ -69,99 +67,83 @@ export default function JaLuggageBusPage() {
       {/* 時刻表 */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">時刻表</span>
-        <h2>運行日は、北へ1便、南へ1便。</h2>
+        <h2>1日4便。北へ歩く人に合わせたダイヤです。</h2>
+        <div className="lb-runs">
+          {RUNS.map((r) => (
+            <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
+              <span className="lb-run-dir">
+                {r.no} {r.north ? "北行き" : "南行き"}
+              </span>
+              <span className="lb-run-time">{r.time.replace("–", "〜")}</span>
+              <span className="lb-run-route">{r.route.ja}</span>
+            </div>
+          ))}
+        </div>
+        <p className="drop-note">
+          中山道は北へ歩く人が多いので、北行きの便に時間を多く取っています。南行きは時間が短く、行き先によっては少し不便になります。届く時間は下の表をご覧ください。
+        </p>
+
+        <h3 className="lb-sub">荷物が届く時間</h3>
         <div className="lb-table-wrap">
           <table className="lb-table">
             <thead>
               <tr>
-                <th>停留所</th>
-                <th>北行き ↑</th>
-                <th>南行き ↓</th>
+                <th>どこから → どこへ</th>
+                <th>届く時間</th>
               </tr>
             </thead>
             <tbody>
-              {[...STOPS].reverse().map((s) => (
-                <tr key={s.ja}>
-                  <th scope="row">
-                    {s.ja}
-                    {s.counter && <small>{s.counter.ja}</small>}
-                  </th>
-                  <td>
-                    {s.north}
-                    {s.ja === "木曽福島" && <small>着</small>}
-                    {s.ja === "中津川" && <small>発</small>}
-                  </td>
-                  <td>
-                    {s.south ?? "経由"}
-                    {s.ja === "木曽福島" && <small>発</small>}
-                    {s.ja === "中津川" && <small>までに着</small>}
-                  </td>
+              {ARRIVALS.map((a) => (
+                <tr key={a.flow.ja} className={a.next ? "next" : undefined}>
+                  <th scope="row">{a.flow.ja}</th>
+                  <td>{a.when.ja}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="drop-note">
-          北行きは10:00〜13:00、南行きは13:00〜15:00の運行です。南行きの野尻・南木曽の時刻はその日の集荷で変わるので、WhatsAppでお知らせします。馬籠・妻籠には停まりません(下のよくある質問を参照)。
-        </p>
       </section>
 
-      {/* 2つの出し方 */}
+      {/* 申し込み方法 */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
-          <span className="eyebrow">2つの出し方</span>
+          <span className="eyebrow">申し込み方法</span>
           <h2>
-            予約して宿から、<em>または飛び入りで。</em>
+            WhatsAppで申し込み、<em>承認されたら支払い。</em>
           </h2>
-          <div className="mini-grid cols2">
-            <div className="mini-card lb-way">
-              <h3>
-                <BedDouble size={20} /> 予約 · 宿から宿へ
-              </h3>
-              <p>
-                WhatsAppで日付と宿を教えてください。出発の朝、宿のフロントに荷物を預けておけば、バスが回収して次の宿へ届けます。予約の荷物を優先して積みます。支払いは事前にカードで。
-              </p>
-            </div>
-            <div className="mini-card lb-way">
-              <h3>
-                <Clock size={20} /> 飛び入り · 停留所で
-              </h3>
-              <p>
-                予約は不要です。バスが来る前に停留所の窓口へ荷物を持ってきて、行き先の停留所の窓口で受け取ってください。空きがあれば運びます(繁忙期は予約優先)。支払いは窓口で、現金かQR決済。
-              </p>
-            </div>
-          </div>
+          <p>
+            ご利用はすべて予約制です。予約のない荷物はお預かりできません。WhatsAppで申し込んでいただくと、便の空きを確認して、承認と一緒に決済リンクをお送りします。
+          </p>
 
-          {/* 4コマ */}
           <div className="koma-grid">
             <div className="koma">
               <span className="koma-num">1</span>
-              <CalendarCheck size={26} />
-              <h3>予約 or 飛び入り</h3>
-              <p>宿から宿へならWhatsAppで予約。停留所へ直接でもOK。</p>
+              <Send size={26} />
+              <h3>申し込む</h3>
+              <p>WhatsAppで、日付・預ける場所・受け取る場所・個数を送ります。</p>
             </div>
             <div className="koma">
               <span className="koma-num">2</span>
-              <PackageCheck size={26} />
-              <h3>預ける</h3>
-              <p>朝、宿のフロントへ。またはバスが来る前に停留所の窓口へ。</p>
+              <CreditCard size={26} />
+              <h3>承認・支払い</h3>
+              <p>承認と一緒にSquareの決済リンクが届きます。支払ったら予約確定です。</p>
             </div>
             <div className="koma">
               <span className="koma-num">3</span>
-              <Footprints size={26} />
-              <h3>歩く</h3>
-              <p>中山道も、渓谷も、木曽谷も。肩に何も背負わずに。</p>
+              <PackageCheck size={26} />
+              <h3>預ける</h3>
+              <p>朝、停留所の窓口に荷物を預けて、歩き出します。</p>
             </div>
             <div className="koma">
               <span className="koma-num">4</span>
-              <MapPin size={26} />
+              <Footprints size={26} />
               <h3>受け取る</h3>
-              <p>次の宿で、またはバスが着いたあとの停留所の窓口で。</p>
+              <p>便が着いたあと、行き先の停留所の窓口で受け取ります。</p>
             </div>
           </div>
 
           <p className="drop-note">
-            ハイカーは朝8〜9時に宿を出ることが多く、バスが来る前になります。それで大丈夫です。バスが来るまで、宿や停留所の窓口が荷物を預かります。
+            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで窓口が荷物を預かります。南木曽発9:00の南行き(①)は、8:50まで(または前日の夕方)に預けてください。
           </p>
         </div>
       </section>
@@ -169,24 +151,20 @@ export default function JaLuggageBusPage() {
       {/* 料金 */}
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">料金(仮)</span>
-        <h2>1個ごと、運ぶ区間の数で決まります。</h2>
+        <h2>1個ごと、運ぶ距離で決まります。</h2>
         <div className="pricing">
           {FARES.map((f) => (
-            <div className="pitem" key={f.sections}>
-              <h4>{f.ja}</h4>
+            <div className="pitem" key={f.label.ja}>
+              <h4>{f.label.ja}</h4>
               <div className="amt">
-                {yen(f.yen)}
+                {f.amt.ja}
                 <span style={{ fontSize: "0.9rem" }}>/個</span>
               </div>
-              <p>{f.exJa}</p>
             </div>
           ))}
-          <p className="pricing-foot">
-            宿の玄関での預かり・お届け:<strong>+{yen(DOOR_FEE)}</strong>。1区間は隣りあう停留所の間(中津川 — 南木曽 — 野尻 — 木曽福島)です。
-          </p>
         </div>
         <p className="drop-note">
-          料金は仮のもので、シーズン開始までに変わることがあります。WhatsAppでお伝えした金額が確定の料金です。
+          料金は仮のもので、シーズン開始までに変わることがあります。承認のときにWhatsAppでお伝えする金額が確定の料金です。
         </p>
       </section>
 
@@ -201,24 +179,23 @@ export default function JaLuggageBusPage() {
       {/* 停留所 */}
       <section className="mini-sec" id="stops">
         <span className="eyebrow">停留所</span>
-        <h2>中山道沿いの4つの停留所。</h2>
-        <div className="mini-grid cols2">
+        <h2>中山道沿いの7つの停留所。</h2>
+        <div className="mini-grid">
           {STOPS.map((s) => {
             const body = (
               <>
                 <h3>
-                  <MapPin size={20} /> {s.ja}
+                  <MapPin size={20} /> {s.name.ja}
                 </h3>
                 <p>
-                  {s.counter
-                    ? `${s.counter.ja}。タップで地図が開きます。`
-                    : "駅周辺の窓口は準備中です。予約の荷物は宿で預かります。"}
+                  {s.counter.ja}
+                  {s.pending ? "(準備中)" : "。タップで地図が開きます。"}
                 </p>
               </>
             );
             return s.map ? (
               <a
-                key={s.ja}
+                key={s.key}
                 href={s.map}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -227,12 +204,15 @@ export default function JaLuggageBusPage() {
                 {body}
               </a>
             ) : (
-              <div key={s.ja} className="mini-card lb-way">
+              <div key={s.key} className="mini-card lb-way">
                 {body}
               </div>
             );
           })}
         </div>
+        <p className="drop-note">
+          いまは、これらの窓口での受け渡しだけです。提携する宿の玄関での受け渡しは、今後広げていきます。
+        </p>
       </section>
 
       {/* よくある質問 */}
@@ -241,25 +221,25 @@ export default function JaLuggageBusPage() {
         <details className="faq-item">
           <summary>ラゲッジバスに乗れますか?</summary>
           <p>
-            乗れません。運ぶのは荷物だけで、短い区間でも人は乗せられません。停留所の間はJR中央線が同じ谷を走っています。
+            乗れません。運ぶのは荷物だけで、短い区間でも人は乗せられません。停留所の間は、JR中央線や路線バスが同じ谷を走っています。
           </p>
         </details>
         <details className="faq-item">
-          <summary>馬籠・妻籠に泊まります。</summary>
+          <summary>予約なしで持って行ってもいいですか?</summary>
           <p>
-            馬籠・妻籠はルートに入っていません。2つの宿場の間は観光案内所の荷物運びがあります。妻籠から北へ送る場合は、南木曽の停留所(イズミヤカフェ)まで荷物を持ってきてください。WhatsAppで相談いただければ一緒に組み立てます。
+            予約をお願いします。便の空きを確かめるため、WhatsAppで1件ずつ承認しています。お送りするリンクで支払いが済んだら予約確定です。
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>南へ歩きます。なぜ時間がかかるのですか?</summary>
+          <p>
+            時刻表は、利用の多い北行きに合わせています。木曽福島方面から妻籠・馬籠・中津川へ送る荷物は、南木曽で一晩お預かりして、翌朝の①の便で運びます。南へ歩く方も途中で一泊することが多いので、たいていは困りません。WhatsAppで相談いただければ一緒に組み立てます。
           </p>
         </details>
         <details className="faq-item">
           <summary>荷物より先に着いてしまったら?</summary>
           <p>
-            荷物は時刻表の時間ごろに各停留所へ着きます。先に着いたら窓口でコーヒーでも飲みながらお待ちください。宿から宿への予約なら、荷物は宿で待っています。
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>何個まで送れますか?</summary>
-          <p>
-            予約の荷物を先に積み、飛び入りは空きがあれば運びます。大人数や大きな荷物は、予約の前にご相談ください。
+            上の「荷物が届く時間」をご覧ください。先に着いたら、お茶をしたり町を歩いたりしてお待ちください。便が着いたら窓口で荷物を受け取れます。
           </p>
         </details>
         <details className="faq-item">
@@ -270,25 +250,17 @@ export default function JaLuggageBusPage() {
         </details>
       </section>
 
-      {/* 予約・支払い */}
+      {/* 申し込み */}
       <section className="mini-sec" id="book">
-        <span className="eyebrow">ご予約</span>
+        <span className="eyebrow">お申し込み</span>
         <h2>荷物の行き先を教えてください。</h2>
         <div className="pay-row">
           <Link href="/ja/book?s=luggage" className="stay-cta">
-            <MessageCircle size={16} /> WhatsAppで予約 <ArrowRight size={15} />
+            <MessageCircle size={16} /> WhatsAppで申し込む <ArrowRight size={15} />
           </Link>
-          <a
-            href={SQUARE_PAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stay-cta"
-          >
-            <CreditCard size={16} /> オンライン決済(Square)
-          </a>
         </div>
         <p className="drop-note">
-          まずは質問から、という方は
+          質問だけでも
           <a href={WHATSAPP_URL_JA} target="_blank" rel="noopener noreferrer">
             WhatsAppでどうぞ
           </a>

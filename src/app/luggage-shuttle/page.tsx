@@ -8,15 +8,13 @@ import {
   PackageCheck,
   MapPin,
   ArrowRight,
-  BedDouble,
-  Clock,
   Ban,
-  CalendarCheck,
+  Send,
 } from "lucide-react";
-import { SQUARE_PAY_URL, WHATSAPP_URL } from "../site";
+import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
-import { STOPS, FARES, DOOR_FEE, yen } from "../luggage-bus";
+import { STOPS, RUNS, ARRIVALS, FARES } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -24,7 +22,7 @@ export default function LuggageBusPage() {
       <SiteNav />
 
       <FloatBook href="/book?s=luggage">
-        <MessageCircle size={18} /> Book on WhatsApp
+        <MessageCircle size={18} /> Request on WhatsApp
       </FloatBook>
 
       {/* PAGE HEAD — title, catch copy, photo */}
@@ -37,15 +35,16 @@ export default function LuggageBusPage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            The Luggage Bus runs your bags up and down the Kiso Valley on a
-            fixed timetable, once a day each way: Nakatsugawa, Nagiso,
-            Nojiri, Kiso-Fukushima. Book ahead and we collect from your
-            inn&apos;s door and deliver to the next one. No booking? Just
-            meet the bus at a stop.
+            The Luggage Bus carries your bags along the Nakasendo on a fixed
+            daily timetable, stopping at Nakatsugawa, Magome, Tsumago,
+            Nagiso, Nojiri, Agematsu and Kiso-Fukushima. Leave your bags at
+            the stop&apos;s counter in the morning and walk on — they&apos;ll
+            be waiting at the other end.
           </p>
           <p className="head-note">
-            Northbound, bags reach Kiso-Fukushima by 13:00 — well before
-            check-in.
+            Magome to Kiso-Fukushima, the same day: bags arrive around
+            13:30–14:00, before check-in. Booking required — request on
+            WhatsApp and we confirm.
           </p>
         </div>
         <figure className="page-head-visual">
@@ -76,121 +75,100 @@ export default function LuggageBusPage() {
       {/* TIMETABLE */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">Timetable</span>
-        <h2>One run north, one run south, every operating day.</h2>
+        <h2>Four runs a day, built around the walk north.</h2>
+        <div className="lb-runs">
+          {RUNS.map((r) => (
+            <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
+              <span className="lb-run-dir">
+                {r.no} {r.north ? "Northbound" : "Southbound"}
+              </span>
+              <span className="lb-run-time">{r.time}</span>
+              <span className="lb-run-route">{r.route.en}</span>
+            </div>
+          ))}
+        </div>
+        <p className="drop-note">
+          Most walkers head north, so the northbound runs have the most
+          time. Southbound runs are tighter, which makes a few southbound
+          trips slower — see when your bags arrive below.
+        </p>
+
+        <h3 className="lb-sub">When your bags arrive</h3>
         <div className="lb-table-wrap">
           <table className="lb-table">
             <thead>
               <tr>
-                <th>Stop</th>
-                <th>Northbound ↑</th>
-                <th>Southbound ↓</th>
+                <th>From → to</th>
+                <th>Arrives</th>
               </tr>
             </thead>
             <tbody>
-              {[...STOPS].reverse().map((s) => (
-                <tr key={s.en}>
-                  <th scope="row">
-                    {s.en}
-                    {s.counter && <small>{s.counter.en}</small>}
-                  </th>
-                  <td>
-                    {s.north}
-                    {s.en === "Kiso-Fukushima" && <small>arrive</small>}
-                    {s.en === "Nakatsugawa" && <small>depart</small>}
-                  </td>
-                  <td>
-                    {s.south ?? "en route"}
-                    {s.en === "Kiso-Fukushima" && <small>depart</small>}
-                    {s.en === "Nakatsugawa" && <small>arrive by</small>}
-                  </td>
+              {ARRIVALS.map((a) => (
+                <tr key={a.flow.en} className={a.next ? "next" : undefined}>
+                  <th scope="row">{a.flow.en}</th>
+                  <td>{a.when.en}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="drop-note">
-          Northbound runs 10:00–13:00 and southbound 13:00–15:00. Southbound
-          times at Nojiri and Nagiso depend on the day&apos;s pick-ups — we
-          confirm yours on WhatsApp. Magome and Tsumago are not on the
-          route (see below).
-        </p>
       </section>
 
-      {/* TWO WAYS TO SEND */}
+      {/* HOW TO BOOK */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
-          <span className="eyebrow">Two ways to send</span>
+          <span className="eyebrow">How to book</span>
           <h2>
-            Book ahead, <em>or just walk up.</em>
+            Ask on WhatsApp, <em>we confirm, you pay.</em>
           </h2>
-          <div className="mini-grid cols2">
-            <div className="mini-card lb-way">
-              <h3>
-                <BedDouble size={20} /> Booked · door to door
-              </h3>
-              <p>
-                Tell us your inns and dates on WhatsApp. Leave your bags at
-                the front desk when you set out; the bus collects them on
-                its run and delivers to your next inn. Booked bags get their
-                space first. Pay in advance by card.
-              </p>
-            </div>
-            <div className="mini-card lb-way">
-              <h3>
-                <Clock size={20} /> Walk-up · at a stop
-              </h3>
-              <p>
-                No booking needed: bring your bags to a stop counter before
-                the bus is due, and pick them up at the counter of your
-                destination stop. Carried when there&apos;s room — booked bags
-                go first in the busy season. Pay at the counter, cash or QR.
-              </p>
-            </div>
-          </div>
+          <p>
+            Every bag needs a confirmed booking — we can&apos;t take bags
+            without one. Send your request on WhatsApp; we check there&apos;s
+            space on the run and reply with a payment link.
+          </p>
 
-          {/* THE FOUR PANELS */}
           <div className="koma-grid">
             <div className="koma">
               <span className="koma-num">1</span>
-              <CalendarCheck size={26} />
-              <h3>Book or show up</h3>
+              <Send size={26} />
+              <h3>Request</h3>
               <p>
-                Book on WhatsApp for inn-to-inn, or simply head to a stop.
+                Message us on WhatsApp: date, from, to, and number of bags.
               </p>
             </div>
             <div className="koma">
               <span className="koma-num">2</span>
-              <PackageCheck size={26} />
-              <h3>Hand over</h3>
+              <CreditCard size={26} />
+              <h3>Confirm &amp; pay</h3>
               <p>
-                At your inn&apos;s front desk in the morning, or at the stop
-                counter before the bus is due.
+                We confirm and send a Square payment link. Paid = booked.
               </p>
             </div>
             <div className="koma">
               <span className="koma-num">3</span>
-              <Footprints size={26} />
-              <h3>Walk</h3>
+              <PackageCheck size={26} />
+              <h3>Hand over</h3>
               <p>
-                The Nakasendo, the gorges, the valley — with nothing on your
-                shoulders.
+                Leave your bags at the stop&apos;s counter in the morning,
+                then walk on.
               </p>
             </div>
             <div className="koma">
               <span className="koma-num">4</span>
-              <MapPin size={26} />
-              <h3>Reunite</h3>
+              <Footprints size={26} />
+              <h3>Pick up</h3>
               <p>
-                Your bags wait at your next inn, or at the destination stop
-                after the bus has been through.
+                Collect them at the counter of your destination stop after
+                the run arrives.
               </p>
             </div>
           </div>
 
           <p className="drop-note">
-            Hikers usually leave around 8–9 in the morning, before the bus
-            passes. That&apos;s fine — the inn or the stop counter holds your
-            bags until it arrives.
+            Hikers usually set out around 8–9 in the morning, before the bus
+            passes. That&apos;s fine — the counter holds your bags until it
+            arrives. For the 9:00 southbound run from Nagiso, hand your bags
+            in by 8:50 (or the evening before).
           </p>
         </div>
       </section>
@@ -201,25 +179,19 @@ export default function LuggageBusPage() {
         <h2>Per bag, by how far it travels.</h2>
         <div className="pricing">
           {FARES.map((f) => (
-            <div className="pitem" key={f.sections}>
-              <h4>{f.en}</h4>
+            <div className="pitem" key={f.label.en}>
+              <h4>{f.label.en}</h4>
               <div className="amt">
-                {yen(f.yen)}
+                {f.amt.en}
                 <span style={{ fontSize: "0.9rem" }}>/bag</span>
               </div>
-              <p>{f.exEn}</p>
             </div>
           ))}
-          <p className="pricing-foot">
-            Collection from or delivery to an inn&apos;s door:{" "}
-            <strong>+{yen(DOOR_FEE)}</strong>. A section is one hop between
-            neighbouring stops (Nakatsugawa — Nagiso — Nojiri —
-            Kiso-Fukushima).
-          </p>
         </div>
         <p className="drop-note">
           These fares are provisional and may change before the season
-          starts. The price we confirm on WhatsApp is the one you pay.
+          starts. The price in our confirmation on WhatsApp is the one you
+          pay.
         </p>
       </section>
 
@@ -234,24 +206,23 @@ export default function LuggageBusPage() {
       {/* THE STOPS */}
       <section className="mini-sec" id="stops">
         <span className="eyebrow">The stops</span>
-        <h2>Four stops along the old Nakasendo.</h2>
-        <div className="mini-grid cols2">
+        <h2>Seven stops along the old Nakasendo.</h2>
+        <div className="mini-grid">
           {STOPS.map((s) => {
             const body = (
               <>
                 <h3>
-                  <MapPin size={20} /> {s.en}
+                  <MapPin size={20} /> {s.name.en}
                 </h3>
                 <p>
-                  {s.counter
-                    ? `${s.counter.en}. Tap for the map.`
-                    : "Station-area counter to be announced. Booked bags are collected from your inn."}
+                  {s.counter.en}
+                  {s.pending ? " — being arranged." : ". Tap for the map."}
                 </p>
               </>
             );
             return s.map ? (
               <a
-                key={s.en}
+                key={s.key}
                 href={s.map}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -260,12 +231,16 @@ export default function LuggageBusPage() {
                 {body}
               </a>
             ) : (
-              <div key={s.en} className="mini-card lb-way">
+              <div key={s.key} className="mini-card lb-way">
                 {body}
               </div>
             );
           })}
         </div>
+        <p className="drop-note">
+          For now, bags are handed over at these counters only. Collection
+          from partner inns&apos; doors is coming later.
+        </p>
       </section>
 
       {/* FAQ */}
@@ -275,35 +250,35 @@ export default function LuggageBusPage() {
           <summary>Can I ride the Luggage Bus?</summary>
           <p>
             No. It carries luggage only — no passengers, not even for a
-            short hop. Between the stops, JR Chuo Line trains run along the
-            same valley.
+            short hop. Between the stops, JR Chuo Line trains and local
+            buses run along the same valley.
           </p>
         </details>
         <details className="faq-item">
-          <summary>I&apos;m staying in Magome or Tsumago.</summary>
+          <summary>Can I just turn up with my bags?</summary>
           <p>
-            Magome and Tsumago are not on our route. The tourist information
-            office runs its own luggage service between the two; from
-            Tsumago, bring your bags to our Nagiso stop (Izumiya Cafe) to
-            send them further north. Message us and we&apos;ll help you
-            plan it.
+            No — please book first. We confirm each request on WhatsApp so
+            we know there&apos;s room on the run, and the booking is set
+            once you&apos;ve paid through the link we send.
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>I&apos;m walking south. Why does it take longer?</summary>
+          <p>
+            The timetable is built around the busier northbound walk.
+            Southbound from the Kiso-Fukushima side to Tsumago, Magome or
+            Nakatsugawa, bags stay overnight in Nagiso and travel on the
+            next morning&apos;s first run. Most southbound walkers stop for a
+            night on the way, so it usually works out — message us and
+            we&apos;ll plan it with you.
           </p>
         </details>
         <details className="faq-item">
           <summary>What if I arrive before my bags?</summary>
           <p>
-            Bags reach each stop around the times in the timetable. If you
-            get there first, have a coffee at the counter while you wait —
-            or book door to door and they&apos;ll simply be waiting at your
-            inn.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>How many bags can I send?</summary>
-          <p>
-            Booked bags are loaded first; walk-up bags go on when
-            there&apos;s room. For a big group or unusual items, message us
-            before you book.
+            Check the arrival times above. If you get there first, have a
+            coffee or look around while you wait — the counter will hand
+            your bags over once the run is through.
           </p>
         </details>
         <details className="faq-item">
@@ -315,30 +290,22 @@ export default function LuggageBusPage() {
         </details>
       </section>
 
-      {/* BOOK & PAY */}
+      {/* BOOK */}
       <section className="mini-sec" id="book">
         <span className="eyebrow">Ready?</span>
         <h2>Bags packed? Tell us where they&apos;re going.</h2>
         <div className="pay-row">
           <Link href="/book?s=luggage" className="stay-cta">
-            <MessageCircle size={16} /> Book on WhatsApp <ArrowRight size={15} />
+            <MessageCircle size={16} /> Request on WhatsApp <ArrowRight size={15} />
           </Link>
-          <a
-            href={SQUARE_PAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stay-cta"
-          >
-            <CreditCard size={16} /> Pay online (Square)
-          </a>
         </div>
         <p className="drop-note">
-          Questions first?{" "}
+          Just a question?{" "}
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             Message us on WhatsApp
           </a>
-          . The Square payment page is in Japanese (「金額」 is the amount);
-          your browser&apos;s translate function handles it fine.
+          . The Square payment page we send is in Japanese (「金額」 is the
+          amount); your browser&apos;s translate function handles it fine.
         </p>
       </section>
 
