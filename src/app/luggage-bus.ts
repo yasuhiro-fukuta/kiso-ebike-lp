@@ -2,48 +2,54 @@
  *  ラゲッジバス(中津川〜木曽福島の定時便)の共通データ
  *  英語ページ(/luggage-shuttle)と日本語ページ(/ja/luggage-shuttle)で使う。
  *  料金は「配送料(通る区域ごとに1,500円・1予約ごと)+荷物1個1,500円」(2026-10-10 確定)。
- *  停留所は「◯◯駅」として載せる。受け渡しは駅周辺の宿、または荷物を
- *  預けられる場所(カフェ・観光案内所など)。場所は予約の承認時に伝える。
- *  提携先が増えたら known に足す。
+ *  荷物の預け場所と提携宿を「◯◯駅」として STATIONS に載せる。
+ *  載っていない場所、区間外への延長(恵那・奈良井など)はWhatsAppで応相談。
  *  ============================================================ */
 
 type T = { en: string; ja: string };
 
-export type Stop = {
-  key: string;
-  /** Short name, used in routes. */
-  name: T;
-  /** How the stop is listed: the station (or the post town for Magome / Tsumago). */
-  station: T;
-  /** Handover places we already work with near the station, if any. */
-  known: T | null;
-  map: string | null;
-};
+/** Areas on the route, south to north. */
+export const AREAS: { key: string; name: T }[] = [
+  { key: "nakatsugawa", name: { en: "Nakatsugawa", ja: "中津川" } },
+  { key: "magome", name: { en: "Magome", ja: "馬籠" } },
+  { key: "tsumago", name: { en: "Tsumago", ja: "妻籠" } },
+  { key: "nagiso", name: { en: "Nagiso", ja: "南木曽" } },
+  { key: "nojiri", name: { en: "Nojiri", ja: "野尻" } },
+  { key: "agematsu", name: { en: "Agematsu", ja: "上松" } },
+  { key: "kisofukushima", name: { en: "Kiso-Fukushima", ja: "木曽福島" } },
+];
 
-/** Stops from south to north. Bags are handed over at an inn or a place
- *  that holds luggage (cafe, tourist office) around each station; the exact
- *  place is confirmed when the booking is approved. */
-export const STOPS: Stop[] = [
-  { key: "nakatsugawa", name: { en: "Nakatsugawa", ja: "中津川" }, station: { en: "Nakatsugawa Station", ja: "中津川駅" }, known: null, map: null },
-  { key: "magome", name: { en: "Magome", ja: "馬籠" }, station: { en: "Magome-juku", ja: "馬籠宿" }, known: null, map: null },
-  { key: "tsumago", name: { en: "Tsumago", ja: "妻籠" }, station: { en: "Tsumago-juku", ja: "妻籠宿" }, known: null, map: null },
+/** "Stations": the luggage drop points and partner inns where bags change
+ *  hands. Add a row here when a new partner signs up. */
+export const STATIONS: { area: string; name: T; place: T; map: string | null }[] = [
   {
-    key: "nagiso",
-    name: { en: "Nagiso", ja: "南木曽" },
-    station: { en: "Nagiso Station", ja: "南木曽駅" },
-    known: { en: "Izumiya Cafe in front of the station, Kashiwaya Guesthouse", ja: "駅前のイズミヤカフェ、ゲストハウス柏屋" },
+    area: "nagiso",
+    name: { en: "Izumiya stop", ja: "イズミヤ駅" },
+    place: { en: "Izumiya Cafe, in front of Nagiso Station", ja: "イズミヤカフェ(南木曽駅前)" },
     map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6",
   },
   {
-    key: "nojiri",
-    name: { en: "Nojiri", ja: "野尻" },
-    station: { en: "Nojiri Station", ja: "野尻駅" },
-    known: { en: "Coffee Katana in front of the station", ja: "駅前の珈琲刀" },
+    area: "nagiso",
+    name: { en: "Kashiwaya stop", ja: "柏屋駅" },
+    place: { en: "Kashiwaya Guesthouse, Nagiso", ja: "ゲストハウス柏屋(南木曽)" },
+    map: null,
+  },
+  {
+    area: "nagiso",
+    name: { en: "WAKU stop", ja: "WAKU駅" },
+    place: { en: "Guesthouse WAKU, Nagiso", ja: "ゲストハウスWAKU(南木曽)" },
+    map: "https://maps.app.goo.gl/PdnuaBaziu99LA5i6",
+  },
+  {
+    area: "nojiri",
+    name: { en: "Katana stop", ja: "刀駅" },
+    place: { en: "Coffee Katana, in front of Nojiri Station", ja: "珈琲刀(野尻駅前)" },
     map: "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA",
   },
-  { key: "agematsu", name: { en: "Agematsu", ja: "上松" }, station: { en: "Agematsu Station", ja: "上松駅" }, known: null, map: null },
-  { key: "kisofukushima", name: { en: "Kiso-Fukushima", ja: "木曽福島" }, station: { en: "Kiso-Fukushima Station", ja: "木曽福島駅" }, known: null, map: null },
 ];
+
+/** Areas on the route with no station listed yet (ask on WhatsApp). */
+export const AREAS_WITHOUT_STATION = AREAS.filter((a) => !STATIONS.some((s) => s.area === a.key));
 
 /** The four daily runs, in time order. Northbound is the main direction. */
 export const RUNS: { no: string; time: string; north: boolean; route: T }[] = [
@@ -73,13 +79,19 @@ export const ZONES: { name: T; route: T }[] = [
   { name: { en: "Central zone", ja: "中部" }, route: { en: "Nagiso — Nojiri — Agematsu — Kiso-Fukushima", ja: "南木曽〜野尻〜上松〜木曽福島" } },
 ];
 
-export const fare = (zones: number, bags: number) => zones * ZONE_FEE + bags * BAG_FEE;
+/** Extension beyond the route (Ena, Narai…), by arrangement:
+ *  +¥1,500 for extending the start, +¥1,500 for extending the end. */
+export const EXTENSION_FEE = 1500;
+
+export const fare = (zones: number, bags: number, ext = 0) =>
+  zones * ZONE_FEE + bags * BAG_FEE + ext * EXTENSION_FEE;
 export const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
 
 /** Worked examples shown on the page. */
-export const EXAMPLES: { trip: T; zones: number; bags: number }[] = [
+export const EXAMPLES: { trip: T; zones: number; bags: number; ext?: number }[] = [
   { trip: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, zones: 2, bags: 1 },
   { trip: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, zones: 2, bags: 2 },
   { trip: { en: "Nagiso → Nojiri", ja: "南木曽 → 野尻" }, zones: 1, bags: 1 },
   { trip: { en: "Nakatsugawa → Tsumago", ja: "中津川 → 妻籠" }, zones: 1, bags: 3 },
+  { trip: { en: "Ena → Kiso-Fukushima (start extended)", ja: "恵那 → 木曽福島(出発地を延長)" }, zones: 2, bags: 1, ext: 1 },
 ];

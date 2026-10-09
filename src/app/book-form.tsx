@@ -53,18 +53,24 @@ const COUNTERS = {
   ja: ["南木曽駅前 イズミヤカフェ", "ゲストハウス柏屋", "ゲストハウスWAKU", "野尻駅前 カフェ刀"],
 };
 
-/** Luggage Bus stations (handover at an inn or a luggage-friendly spot nearby). */
+/** Luggage Bus stations (drop points and partner inns), plus "ask". */
 const LB_POINTS = {
   en: [
-    "Nakatsugawa Station",
-    "Magome-juku",
-    "Tsumago-juku",
-    "Nagiso Station",
-    "Nojiri Station",
-    "Agematsu Station",
-    "Kiso-Fukushima Station",
+    "Izumiya stop (Nagiso)",
+    "Kashiwaya stop (Nagiso)",
+    "WAKU stop (Nagiso)",
+    "Katana stop (Nojiri)",
+    "Another inn or place on the route (details in chat)",
+    "Beyond the route — Ena, Narai… (details in chat)",
   ],
-  ja: ["中津川駅", "馬籠宿", "妻籠宿", "南木曽駅", "野尻駅", "上松駅", "木曽福島駅"],
+  ja: [
+    "イズミヤ駅(南木曽)",
+    "柏屋駅(南木曽)",
+    "WAKU駅(南木曽)",
+    "刀駅(野尻)",
+    "その他の宿・場所(チャットで相談)",
+    "区間外への延長・恵那や奈良井など(チャットで相談)",
+  ],
 };
 
 const fDate = (lang: Lang, iso: string) => {
@@ -117,7 +123,7 @@ const SERVICES: Record<string, Service> = {
       { k: "date", label: { en: "Date", ja: "日付" }, type: "date" },
       { k: "from", label: { en: "Hand over at", ja: "預ける駅" }, type: "select", options: LB_POINTS },
       { k: "to", label: { en: "Pick up at", ja: "受け取る駅" }, type: "select", options: LB_POINTS },
-      { k: "inns", label: { en: "Inns (if you know them)", ja: "宿の名前(わかれば)" }, type: "text", opt: true },
+      { k: "inns", label: { en: "Inn or place (if not a station)", ja: "宿・場所の名前(駅以外の場合)" }, type: "text", opt: true },
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
     ],
     build: (l, g) =>

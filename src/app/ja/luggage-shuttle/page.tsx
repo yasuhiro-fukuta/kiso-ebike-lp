@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
-import { STOPS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { STATIONS, AREAS_WITHOUT_STATION, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -35,7 +35,7 @@ export default function JaLuggageBusPage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            ラゲッジバスは、中山道の中津川・馬籠・妻籠・南木曽・野尻・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、泊まった宿や、駅の周りで荷物を預けられるカフェ・観光案内所に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
+            ラゲッジバスは、中山道の中津川・馬籠・妻籠・南木曽・野尻・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
           </p>
           <p className="head-note">
             馬籠から木曽福島へは当日13:30〜14:00ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
@@ -120,7 +120,7 @@ export default function JaLuggageBusPage() {
               <span className="koma-num">1</span>
               <Send size={26} />
               <h3>申し込む</h3>
-              <p>WhatsAppで、日付・預ける駅と受け取る駅(わかれば宿の名前も)・個数を送ります。</p>
+              <p>WhatsAppで、日付・預ける駅と受け取る駅(または宿の名前)・個数を送ります。</p>
             </div>
             <div className="koma">
               <span className="koma-num">2</span>
@@ -132,18 +132,18 @@ export default function JaLuggageBusPage() {
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
               <h3>預ける</h3>
-              <p>朝、宿か、こちらがお伝えする駅周辺のカフェ・案内所に預けて歩き出します。</p>
+              <p>朝、出発の駅(預け場所・提携宿)に預けて歩き出します。</p>
             </div>
             <div className="koma">
               <span className="koma-num">4</span>
               <Footprints size={26} />
               <h3>受け取る</h3>
-              <p>便が着いたあと、次の宿か、行き先の駅周辺の預け場所で受け取ります。</p>
+              <p>便が着いたあと、行き先の駅で受け取ります。</p>
             </div>
           </div>
 
           <p className="drop-note">
-            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで宿や預け場所が荷物を預かります。南木曽発9:00の南行き(①)は、8:50まで(または前日の夕方)に預けてください。
+            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで駅が荷物を預かります。南木曽発9:00の南行き(①)は、8:50まで(または前日の夕方)に預けてください。
           </p>
         </div>
       </section>
@@ -193,10 +193,11 @@ export default function JaLuggageBusPage() {
                     {x.trip.ja}
                     <small>
                       配送料 {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
+                      {x.ext ? ` + 延長 ${yen(x.ext * EXTENSION_FEE)}` : ""}
                     </small>
                   </th>
                   <td>{x.bags}</td>
-                  <td>{yen(fare(x.zones, x.bags))}</td>
+                  <td>{yen(fare(x.zones, x.bags, x.ext))}</td>
                 </tr>
               ))}
             </tbody>
@@ -215,30 +216,29 @@ export default function JaLuggageBusPage() {
         <ShuttleCalendar lang="ja" />
       </section>
 
-      {/* 停留所 */}
+      {/* 駅(預け場所・提携宿) */}
       <section className="mini-sec" id="stops">
-        <span className="eyebrow">停留所</span>
-        <h2>中山道沿いの7つの駅。</h2>
+        <span className="eyebrow">駅</span>
+        <h2>荷物を預ける・受け取る「駅」。</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
-          各駅では、駅の周りの宿か、荷物を預けられる場所(カフェや観光案内所など)で受け渡しします。具体的な場所は、予約の承認のときにお知らせします。
+          ラゲッジバスの「駅」は、荷物の預け場所と提携している宿です。朝ひとつの駅で預けて、別の駅で受け取ります。
         </p>
         <div className="mini-grid">
-          {STOPS.map((s) => {
+          {STATIONS.map((s) => {
             const body = (
               <>
                 <h3>
-                  <MapPin size={20} /> {s.station.ja}
+                  <MapPin size={20} /> {s.name.ja}
                 </h3>
                 <p>
-                  {s.known
-                    ? `駅周辺の宿、または${s.known.ja}。タップで地図が開きます。`
-                    : "駅周辺の宿、または荷物を預けられるカフェ・観光案内所。"}
+                  {s.place.ja}
+                  {s.map ? "。タップで地図が開きます。" : ""}
                 </p>
               </>
             );
             return s.map ? (
               <a
-                key={s.key}
+                key={s.name.ja}
                 href={s.map}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -247,11 +247,30 @@ export default function JaLuggageBusPage() {
                 {body}
               </a>
             ) : (
-              <div key={s.key} className="mini-card lb-way">
+              <div key={s.name.ja} className="mini-card lb-way">
                 {body}
               </div>
             );
           })}
+        </div>
+        <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
+          <div className="mini-card lb-way">
+            <h3>
+              <MessageCircle size={20} /> 載っていない場所は応相談
+            </h3>
+            <p>
+              {AREAS_WITHOUT_STATION.map((a) => a.name.ja).join("・")}
+              など、ここにない宿や場所からも送れます。WhatsAppでご相談ください。
+            </p>
+          </div>
+          <div className="mini-card lb-way">
+            <h3>
+              <ArrowRight size={20} /> 区間外への延長も応相談
+            </h3>
+            <p>
+              恵那や奈良井など、区間の外へもWhatsAppで相談のうえ運びます。出発地の延長は+{yen(EXTENSION_FEE)}、到着地の延長は+{yen(EXTENSION_FEE)}です。
+            </p>
+          </div>
         </div>
       </section>
 

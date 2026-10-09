@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
-import { STOPS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { STATIONS, AREAS_WITHOUT_STATION, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -38,8 +38,8 @@ export default function LuggageBusPage() {
             The Luggage Bus carries your bags along the Nakasendo on a fixed
             daily timetable, stopping at Nakatsugawa, Magome, Tsumago,
             Nagiso, Nojiri, Agematsu and Kiso-Fukushima. In the morning,
-            leave your bags at your inn or a luggage-friendly cafe or
-            tourist office near the station, and walk on — they&apos;ll be
+            leave your bags at one of our stations — a luggage drop point
+            or a partner inn — and walk on — they&apos;ll be
             waiting at the other end.
           </p>
           <p className="head-note">
@@ -134,8 +134,8 @@ export default function LuggageBusPage() {
               <Send size={26} />
               <h3>Request</h3>
               <p>
-                Message us on WhatsApp: date, from and to (station, plus your inn
-                if you know it), and number of bags.
+                Message us on WhatsApp: date, from and to (a station, or your
+                inn), and number of bags.
               </p>
             </div>
             <div className="koma">
@@ -151,8 +151,8 @@ export default function LuggageBusPage() {
               <PackageCheck size={26} />
               <h3>Hand over</h3>
               <p>
-                Leave your bags at your inn, or at the cafe or tourist office
-                we name near the station, then walk on.
+                Leave your bags at your starting station (a drop point or
+                partner inn), then walk on.
               </p>
             </div>
             <div className="koma">
@@ -160,16 +160,16 @@ export default function LuggageBusPage() {
               <Footprints size={26} />
               <h3>Pick up</h3>
               <p>
-                Collect them at your next inn or the place we name near the
-                destination station, after the run arrives.
+                Collect them at your destination station after the run
+                arrives.
               </p>
             </div>
           </div>
 
           <p className="drop-note">
             Hikers usually set out around 8–9 in the morning, before the bus
-            passes. That&apos;s fine — the inn or the cafe holds your bags
-            until it arrives. For the 9:00 southbound run from Nagiso, hand your bags
+            passes. That&apos;s fine — the station holds your bags until it
+            arrives. For the 9:00 southbound run from Nagiso, hand your bags
             in by 8:50 (or the evening before).
           </p>
         </div>
@@ -220,10 +220,11 @@ export default function LuggageBusPage() {
                     {x.trip.en}
                     <small>
                       Delivery {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
+                      {x.ext ? ` + extension ${yen(x.ext * EXTENSION_FEE)}` : ""}
                     </small>
                   </th>
                   <td>{x.bags}</td>
-                  <td>{yen(fare(x.zones, x.bags))}</td>
+                  <td>{yen(fare(x.zones, x.bags, x.ext))}</td>
                 </tr>
               ))}
             </tbody>
@@ -242,32 +243,30 @@ export default function LuggageBusPage() {
         <ShuttleCalendar lang="en" />
       </section>
 
-      {/* THE STOPS */}
+      {/* THE STATIONS */}
       <section className="mini-sec" id="stops">
-        <span className="eyebrow">The stops</span>
-        <h2>Seven stations along the old Nakasendo.</h2>
+        <span className="eyebrow">The stations</span>
+        <h2>Where your bags change hands.</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
-          At each station, bags are handed over at an inn or a place that
-          holds luggage nearby — a cafe or a tourist office. We confirm the
-          exact place when we approve your booking.
+          Each &ldquo;station&rdquo; is a luggage drop point or a partner inn.
+          Hand your bags over at one in the morning, pick them up at another.
         </p>
         <div className="mini-grid">
-          {STOPS.map((s) => {
+          {STATIONS.map((s) => {
             const body = (
               <>
                 <h3>
-                  <MapPin size={20} /> {s.station.en}
+                  <MapPin size={20} /> {s.name.en}
                 </h3>
                 <p>
-                  {s.known
-                    ? `Inns around the station, or ${s.known.en}. Tap for the map.`
-                    : "Inns around the station, or a cafe or tourist office that holds luggage."}
+                  {s.place.en}
+                  {s.map ? ". Tap for the map." : "."}
                 </p>
               </>
             );
             return s.map ? (
               <a
-                key={s.key}
+                key={s.name.en}
                 href={s.map}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -276,11 +275,34 @@ export default function LuggageBusPage() {
                 {body}
               </a>
             ) : (
-              <div key={s.key} className="mini-card lb-way">
+              <div key={s.name.en} className="mini-card lb-way">
                 {body}
               </div>
             );
           })}
+        </div>
+        <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
+          <div className="mini-card lb-way">
+            <h3>
+              <MessageCircle size={20} /> Somewhere not listed?
+            </h3>
+            <p>
+              Staying at another inn on the route —{" "}
+              {AREAS_WITHOUT_STATION.map((a) => a.name.en).join(", ")} or
+              elsewhere? Ask on WhatsApp and we&apos;ll work out where to
+              meet your bags.
+            </p>
+          </div>
+          <div className="mini-card lb-way">
+            <h3>
+              <ArrowRight size={20} /> Beyond the route
+            </h3>
+            <p>
+              Ena, Narai and other places past either end can be arranged on
+              WhatsApp: +{yen(EXTENSION_FEE)} to extend the start, +
+              {yen(EXTENSION_FEE)} to extend the end.
+            </p>
+          </div>
         </div>
       </section>
 
