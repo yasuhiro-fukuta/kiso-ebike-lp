@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { ShuttleCalendar } from "../../shuttle-calendar";
-import { STATIONS, AREAS_WITHOUT_STATION, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { STATIONS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -221,7 +221,7 @@ export default function JaLuggageBusPage() {
         <span className="eyebrow">駅</span>
         <h2>荷物を預ける・受け取る「駅」。</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
-          ラゲッジバスの「駅」は、荷物の預け場所と提携している宿です。朝ひとつの駅で預けて、別の駅で受け取ります。
+          ラゲッジバスの「駅」は、各地の観光案内所やカフェなど、荷物を預けられる場所です。朝ひとつの駅で預けて、別の駅で受け取ります。
         </p>
         <div className="mini-grid">
           {STATIONS.map((s) => {
@@ -259,8 +259,7 @@ export default function JaLuggageBusPage() {
               <MessageCircle size={20} /> 載っていない場所は応相談
             </h3>
             <p>
-              {AREAS_WITHOUT_STATION.map((a) => a.name.ja).join("・")}
-              など、ここにない宿や場所からも送れます。WhatsAppでご相談ください。
+              駅のほかの宿や場所からも送れます。WhatsAppでご相談ください。
             </p>
           </div>
           <div className="mini-card lb-way">

@@ -43,19 +43,28 @@ export const STATIONS: { area: string; name: T; place: T; map: string | null }[]
   {
     area: "nagiso",
     name: { en: "Nagiso stop", ja: "南木曽駅" },
-    place: { en: "Izumiya Cafe, in front of Nagiso Station", ja: "イズミヤカフェ(南木曽駅前)" },
+    place: { en: "Cafe Izumiya, in front of Nagiso Station", ja: "カフェイズミヤ(南木曽駅前)" },
     map: "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6",
   },
   {
     area: "nojiri",
-    name: { en: "Katana stop", ja: "刀駅" },
-    place: { en: "Coffee Katana, in front of Nojiri Station", ja: "珈琲刀(野尻駅前)" },
+    name: { en: "Nojiri stop", ja: "野尻駅" },
+    place: { en: "Cafe Katana, in front of Nojiri Station", ja: "カフェ刀(野尻駅前)" },
     map: "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA",
   },
+  {
+    area: "agematsu",
+    name: { en: "Agematsu stop", ja: "上松駅" },
+    place: { en: "Agematsu tourist information office", ja: "上松観光案内所" },
+    map: null,
+  },
+  {
+    area: "kisofukushima",
+    name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" },
+    place: { en: "Kiso-Fukushima tourist information office", ja: "木曽福島観光案内所" },
+    map: null,
+  },
 ];
-
-/** Areas on the route with no station listed yet (ask on WhatsApp). */
-export const AREAS_WITHOUT_STATION = AREAS.filter((a) => !STATIONS.some((s) => s.area === a.key));
 
 /** The four daily runs, in time order. Northbound is the main direction. */
 export const RUNS: { no: string; time: string; north: boolean; route: T }[] = [

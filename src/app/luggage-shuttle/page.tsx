@@ -14,7 +14,7 @@ import {
 import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { ShuttleCalendar } from "../shuttle-calendar";
-import { STATIONS, AREAS_WITHOUT_STATION, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { STATIONS, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -248,7 +248,8 @@ export default function LuggageBusPage() {
         <span className="eyebrow">The stations</span>
         <h2>Where your bags change hands.</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
-          Each &ldquo;station&rdquo; is a luggage drop point or a partner inn.
+          Each &ldquo;station&rdquo; is a tourist information office or a cafe
+          that holds luggage.
           Hand your bags over at one in the morning, pick them up at another.
         </p>
         <div className="mini-grid">
@@ -287,10 +288,9 @@ export default function LuggageBusPage() {
               <MessageCircle size={20} /> Somewhere not listed?
             </h3>
             <p>
-              Staying at another inn on the route —{" "}
-              {AREAS_WITHOUT_STATION.map((a) => a.name.en).join(", ")} or
-              elsewhere? Ask on WhatsApp and we&apos;ll work out where to
-              meet your bags.
+              Staying at an inn on the route, or starting somewhere else?
+              Ask on WhatsApp and we&apos;ll work out where to meet your
+              bags.
             </p>
           </div>
           <div className="mini-card lb-way">
