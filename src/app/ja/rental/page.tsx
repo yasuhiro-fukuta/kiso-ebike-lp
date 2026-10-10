@@ -9,9 +9,6 @@ import {
   Mountain,
   Lightbulb,
   MessageCircle,
-  Ruler,
-  Truck,
-  MapPin,
 } from "lucide-react";
 import {
   GOOGLE_MAPS_URL,
@@ -82,45 +79,62 @@ export default function JaRentalPage() {
               <Mountain size={18} /> 砂利や林道をつかむ極太タイヤ
             </li>
             <li>
-              <Lightbulb size={18} /> ヘルメット・鍵・ライト付き
-            </li>
-            <li>
-              <Ruler size={18} /> 出発前に体格に合わせて調整
+              <Lightbulb size={18} /> ヘルメット・ナンバーロック・ライト付き
             </li>
           </ul>
         </div>
       </section>
 
-      {/* PRICING */}
-      {/* お届け&乗り捨て */}
-      <section className="mini-sec" id="delivery">
-        <span className="eyebrow">店舗なし、カウンターなし</span>
-        <h2>バイクのほうが、あなたの場所に来ます。</h2>
-        <div className="mini-grid">
-          <div className="mini-card">
-            <h3>
-              <Truck size={20} /> お届け
-            </h3>
-            <p>
-              出発したい場所を教えてください——宿でも、駅前でも、渓谷の入口でも。妻籠〜野尻のエリア内なら、出発時刻にバイクを設置しておきます。
-            </p>
+      {/* ご利用の流れ */}
+      <section className="drop-sec" id="how">
+        <div className="drop-inner">
+          <span className="eyebrow">ご利用の流れ · やりとりはWhatsApp</span>
+          <h2>
+            店舗もカウンターもなし。<em>スマホだけで5ステップ。</em>
+          </h2>
+          <p>
+            バイクのほうがあなたの場所に来て、ゴールした場所で待っています。その間のやりとりは、すべてWhatsAppで完結します。
+          </p>
+          <div className="drop-steps cols5">
+            <div className="drop-step">
+              <div className="dnum">1</div>
+              <h3>前日までに予約</h3>
+              <p>
+                ご利用の前日までに、WhatsAppで日付・人数・出発したい場所を送ってください。
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">2</div>
+              <h3>当日朝、自転車をご用意</h3>
+              <p>
+                ご利用当日の朝、指定の場所に自転車を用意しておきます。同じく当日の朝、利用方法と決済リンクがWhatsAppに届きます。
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">3</div>
+              <h3>決済後に鍵番号</h3>
+              <p>
+                決済を確認したら、ナンバーロックの鍵番号をお伝えします。鍵を外して出発です。
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">4</div>
+              <h3>施錠して写真を送信</h3>
+              <p>
+                走り終えたら、指定した場所（出発地と違っていてもOK）に施錠して、写真を撮ってWhatsAppで送ってください。
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">5</div>
+              <h3>当日夜に回収</h3>
+              <p>
+                返却手続きはこれで全部です。自転車は当日の夜にこちらで回収します。
+              </p>
+            </div>
           </div>
-          <div className="mini-card">
-            <h3>
-              <Zap size={20} /> 走るだけ
-            </h3>
-            <p>
-              片道でOK。返しに戻る店舗がないので、行きたい一日をそのまま計画できます——谷を下る、渓谷へ寄る、駅から駅へ。
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <MapPin size={20} /> 乗り捨て自由
-            </h3>
-            <p>
-              エリア内の好きな場所でゴールして、施錠して、場所をWhatsAppで送るだけ。回収はこちらでやります。返却手続きはそれで全部です。
-            </p>
-          </div>
+          <p className="drop-note">
+            お届け・乗り捨ては妻籠〜野尻のエリア内ならどこでも。宿でも、駅前でも、渓谷の入口でも。
+          </p>
         </div>
       </section>
 
@@ -175,7 +189,7 @@ export default function JaRentalPage() {
           メッセージひとつで、<em>バイクはあなたのもの。</em>
         </h2>
         <p>
-          日付・人数・走りたいコースを送ってください。台数と集合場所を折り返します。事前決済はなし。当日、受け取り時にカードか現金でお支払いください。毎週月曜日は定休です。
+          ご利用の前日までに、日付・人数・出発したい場所を送ってください。台数を確認して折り返します。事前決済はなし。当日の朝にWhatsAppで決済リンクをお送りし、決済を確認したら鍵番号をお伝えします。毎週月曜日は定休です。
         </p>
 
         <div className="square-embed">
@@ -191,7 +205,7 @@ export default function JaRentalPage() {
 
         <p className="booking-alt">
           電話派の方は <a href={PHONE_TEL}>{PHONE}</a> または{" "}
-          <a href={SUPPORT_MAILTO}>メール</a>でも。お支払いは当日、カード・現金どちらでも。
+          <a href={SUPPORT_MAILTO}>メール</a>でも。
         </p>
       </section>
 
@@ -215,7 +229,7 @@ export default function JaRentalPage() {
         <details className="faq-item">
           <summary>受け取り・返却はどこで?</summary>
           <p>
-            お好きな場所で。妻籠〜野尻のエリア内ならご希望の場所にお届けし、走り終えたらエリア内の好きな場所に停めて、施錠して場所を連絡してもらえればOKです。戻ってこなければいけない店舗はありません。
+            お好きな場所で。妻籠〜野尻のエリア内ならご希望の場所にお届けします。走り終えたら、エリア内の好きな場所（出発地と違ってもOK）に施錠して、写真をWhatsAppで送ってください。当日の夜に回収します。戻ってこなければいけない店舗はありません。
           </p>
         </details>
         <details className="faq-item">
