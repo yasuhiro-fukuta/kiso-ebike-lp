@@ -343,8 +343,8 @@ export const RULES: { title: T; body: T }[] = [
   {
     title: { en: "Season", ja: "運行期間" },
     body: {
-      en: "Closed every Monday, and from December to March. We restart around 20 March 2027.",
-      ja: "毎週月曜と、12〜3月は運休です。2027年3月20日ごろに再開します。",
+      en: "Closed every Monday, and from December to March. We restart around 20 March 2027. The Agematsu stop can't be used from late November to early April (approx. 21 Nov–10 Apr), while its tourist office is closed.",
+      ja: "毎週月曜と、12〜3月は運休です。2027年3月20日ごろに再開します。上松駅は、観光案内所が休業する11月下旬〜4月上旬(11/21〜4/10目安)は使えません。",
     },
   },
 ];
