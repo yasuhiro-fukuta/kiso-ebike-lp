@@ -35,15 +35,15 @@ export default function LuggageBusPage() {
           </h1>
           <p>
             The Luggage Bus carries your bags along the Nakasendo on a fixed
-            daily timetable, stopping at Nakatsugawa, Magome, Tsumago,
+            daily timetable, running Route 19 and stopping at Nakatsugawa,
             Nagiso, Nojiri, Agematsu and Kiso-Fukushima. In the morning,
             leave your bags at one of our stations — a luggage drop point
             or a partner inn — and walk on — they&apos;ll be
             waiting at the other end.
           </p>
           <p className="head-note">
-            Magome to Kiso-Fukushima, the same day: bags arrive around
-            13:30–14:00, before check-in. Booking required — request on
+            Nakatsugawa or Nagiso to Kiso-Fukushima, the same day: bags
+            arrive around 12:30, before check-in. Booking required — request on
             WhatsApp and we confirm.
           </p>
         </div>
@@ -316,7 +316,7 @@ export default function LuggageBusPage() {
               <MessageCircle size={20} /> Somewhere not listed?
             </h3>
             <p>
-              Staying at an inn on the route, or starting somewhere else?
+              Staying at an inn in Magome or Tsumago, or starting somewhere else?
               Ask on WhatsApp and we&apos;ll work out where to meet your
               bags.
             </p>
@@ -356,8 +356,7 @@ export default function LuggageBusPage() {
           <summary>I&apos;m walking south. Why does it take longer?</summary>
           <p>
             The timetable is built around the busier northbound walk.
-            Southbound from the Kiso-Fukushima side to Tsumago, Magome or
-            Nakatsugawa, bags stay overnight in Nagiso and travel on the
+            Southbound from the Kiso-Fukushima side to Nakatsugawa, bags stay overnight in Nagiso and travel on the
             next morning&apos;s first run. Most southbound walkers stop for a
             night on the way, so it usually works out — message us and
             we&apos;ll plan it with you.

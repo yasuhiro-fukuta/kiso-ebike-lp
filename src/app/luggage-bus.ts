@@ -11,8 +11,6 @@ type T = { en: string; ja: string };
 /** Areas on the route, south to north. */
 export const AREAS: { key: string; name: T }[] = [
   { key: "nakatsugawa", name: { en: "Nakatsugawa", ja: "中津川" } },
-  { key: "magome", name: { en: "Magome", ja: "馬籠" } },
-  { key: "tsumago", name: { en: "Tsumago", ja: "妻籠" } },
   { key: "nagiso", name: { en: "Nagiso", ja: "南木曽" } },
   { key: "nojiri", name: { en: "Nojiri", ja: "野尻" } },
   { key: "agematsu", name: { en: "Agematsu", ja: "上松" } },
@@ -49,26 +47,6 @@ export const PLACES: Record<string, Place> = {
     hours: { en: "8:30–18:00", ja: "8:30〜18:00" },
     closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
     rule: { weekdays: [], periods: [YEAR_END] },
-  },
-  "magome-info": {
-    id: "magome-info",
-    name: { en: "Magome tourist information office", ja: "馬籠観光案内所" },
-    map: null,
-    fee: null,
-    noHolding: true,
-    hours: { en: "8:30–17:00 (winter 9:00–17:00)", ja: "8:30〜17:00(冬は9:00〜17:00)" },
-    closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
-    rule: { weekdays: [], periods: [YEAR_END] },
-  },
-  "tsumago-info": {
-    id: "tsumago-info",
-    name: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" },
-    map: null,
-    fee: null,
-    noHolding: true,
-    hours: { en: "8:30–17:00", ja: "8:30〜17:00" },
-    closed: UNKNOWN,
-    rule: null,
   },
   izumiya: {
     id: "izumiya",
@@ -147,8 +125,6 @@ export const PLACES: Record<string, Place> = {
  *  grouped by town. Ena, Narai and Matsumoto are booking-form choices only. */
 export const STATIONS: { area: string; name: T; places: Place[] }[] = [
   { area: "nakatsugawa", name: { en: "Nakatsugawa stop", ja: "中津川駅" }, places: [PLACES["nakatsugawa-info"]] },
-  { area: "magome", name: { en: "Magome stop", ja: "馬籠駅" }, places: [PLACES["magome-info"]] },
-  { area: "tsumago", name: { en: "Tsumago stop", ja: "妻籠駅" }, places: [PLACES["tsumago-info"]] },
   { area: "nagiso", name: { en: "Nagiso stop", ja: "南木曽駅" }, places: [PLACES.izumiya, PLACES.kashiwaya, PLACES.waku, PLACES.yuian] },
   { area: "nojiri", name: { en: "Nojiri stop", ja: "野尻駅" }, places: [PLACES.katana] },
   { area: "agematsu", name: { en: "Agematsu stop", ja: "上松駅" }, places: [PLACES["agematsu-info"]] },
@@ -175,20 +151,19 @@ export function placeClosed(place: Place, iso: string) {
 
 /** The four daily runs, in time order. Northbound is the main direction. */
 export const RUNS: { no: string; time: string; north: boolean; route: T }[] = [
-  { no: "①", time: "9:00–10:00", north: false, route: { en: "Nagiso → Tsumago → Magome → Nakatsugawa", ja: "南木曽 → 妻籠 → 馬籠 → 中津川" } },
-  { no: "②", time: "10:00–12:00", north: true, route: { en: "Nakatsugawa → Magome → Tsumago → Nagiso", ja: "中津川 → 馬籠 → 妻籠 → 南木曽" } },
-  { no: "③", time: "12:00–14:00", north: true, route: { en: "Nagiso → Nojiri → Agematsu → Kiso-Fukushima", ja: "南木曽 → 野尻 → 上松 → 木曽福島" } },
-  { no: "④", time: "14:00–15:00", north: false, route: { en: "Kiso-Fukushima → Agematsu → Nojiri → Nagiso", ja: "木曽福島 → 上松 → 野尻 → 南木曽" } },
+  { no: "①", time: "9:00–9:40", north: false, route: { en: "Nagiso → Nakatsugawa", ja: "南木曽 → 中津川" } },
+  { no: "②", time: "10:00–10:45", north: true, route: { en: "Nakatsugawa → Nagiso", ja: "中津川 → 南木曽" } },
+  { no: "③", time: "11:00–12:30", north: true, route: { en: "Nagiso → Nojiri → Agematsu → Kiso-Fukushima", ja: "南木曽 → 野尻 → 上松 → 木曽福島" } },
+  { no: "④", time: "13:00–14:30", north: false, route: { en: "Kiso-Fukushima → Agematsu → Nojiri → Nagiso", ja: "木曽福島 → 上松 → 野尻 → 南木曽" } },
 ];
 
 /** When bags arrive, from the traveller's side. */
 export const ARRIVALS: { flow: T; when: T; next?: boolean }[] = [
-  { flow: { en: "Magome / Tsumago → Kiso-Fukushima", ja: "馬籠・妻籠 → 木曽福島" }, when: { en: "Same day, around 13:30–14:00", ja: "当日 13:30〜14:00ごろ" } },
-  { flow: { en: "Nakatsugawa → Magome / Tsumago / Nagiso", ja: "中津川 → 馬籠・妻籠・南木曽" }, when: { en: "Same day, 10:30–12:00", ja: "当日 10:30〜12:00" } },
-  { flow: { en: "Nagiso → Nojiri / Agematsu / Kiso-Fukushima", ja: "南木曽 → 野尻・上松・木曽福島" }, when: { en: "Same day, 12:30–14:00", ja: "当日 12:30〜14:00" } },
-  { flow: { en: "Nagiso / Tsumago → Magome / Nakatsugawa", ja: "南木曽・妻籠 → 馬籠・中津川" }, when: { en: "Same day by 10:00 (hand over before 9:00)", ja: "当日10:00まで(9:00前に預ける)" } },
-  { flow: { en: "Kiso-Fukushima / Agematsu / Nojiri → Nagiso", ja: "木曽福島・上松・野尻 → 南木曽" }, when: { en: "Same day, 15:00", ja: "当日 15:00" } },
-  { flow: { en: "Kiso-Fukushima side → Tsumago / Magome / Nakatsugawa", ja: "木曽福島方面 → 妻籠・馬籠・中津川" }, when: { en: "Next morning (held overnight in Nagiso)", ja: "翌朝(南木曽で一晩預かり)" }, next: true },
+  { flow: { en: "Nakatsugawa → Nagiso", ja: "中津川 → 南木曽" }, when: { en: "Same day, by 10:45", ja: "当日 10:45まで" } },
+  { flow: { en: "Nakatsugawa / Nagiso → Nojiri / Agematsu / Kiso-Fukushima", ja: "中津川・南木曽 → 野尻・上松・木曽福島" }, when: { en: "Same day, 11:30–12:30", ja: "当日 11:30〜12:30" } },
+  { flow: { en: "Nagiso → Nakatsugawa", ja: "南木曽 → 中津川" }, when: { en: "Same day by 9:40 (hand over before 9:00)", ja: "当日9:40まで(9:00前に預ける)" } },
+  { flow: { en: "Kiso-Fukushima / Agematsu / Nojiri → Nagiso", ja: "木曽福島・上松・野尻 → 南木曽" }, when: { en: "Same day, by 14:30", ja: "当日 14:30まで" } },
+  { flow: { en: "Kiso-Fukushima side → Nakatsugawa", ja: "木曽福島方面 → 中津川" }, when: { en: "Next morning (held overnight in Nagiso)", ja: "翌朝(南木曽で一晩預かり)" }, next: true },
 ];
 
 /** Fare = delivery fee (per booking, ¥1,500 for each zone the bags pass through)
@@ -197,7 +172,7 @@ export const ZONE_FEE = 1500;
 export const BAG_FEE = 1500;
 
 export const ZONES: { name: T; route: T }[] = [
-  { name: { en: "South zone", ja: "南部" }, route: { en: "Nakatsugawa — Magome — Tsumago — Nagiso", ja: "中津川〜馬籠〜妻籠〜南木曽" } },
+  { name: { en: "South zone", ja: "南部" }, route: { en: "Nakatsugawa — Nagiso", ja: "中津川〜南木曽" } },
   { name: { en: "Central zone", ja: "中部" }, route: { en: "Nagiso — Nojiri — Agematsu — Kiso-Fukushima", ja: "南木曽〜野尻〜上松〜木曽福島" } },
 ];
 
@@ -210,7 +185,8 @@ export const fare = (zones: number, bags: number) => zones * ZONE_FEE + bags * B
 export const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
 
 /** All fare zones along the line, south to north. Positions:
- *  0 Ena, 1 Nakatsugawa, 2 Magome, 3 Tsumago, 4 Nagiso, 5 Nojiri,
+ *  0 Ena, 1 Nakatsugawa, 4 Nagiso, 5 Nojiri (2–3 were Magome and Tsumago,
+ *  off the route since 2026-10-10: the bus now runs along Route 19),
  *  6 Agematsu, 7 Kiso-Fukushima, 8 Narai, 9 Matsumoto.
  *  A zone's toll (¥1,500) is charged when the bags pass through it. */
 const FARE_ZONES: { from: number; to: number; en: string; ja: string }[] = [
@@ -228,8 +204,6 @@ const NAGISO = 4;
 export const FORM_POINTS: { en: string; ja: string; pos: number | null; place: Place | null }[] = [
   { en: "Ena (ask in chat where to hand over)", ja: "恵那(預け場所はチャットで相談)", pos: 0, place: PLACES["ena-info"] },
   { en: "Nakatsugawa stop (tourist information office)", ja: "中津川駅(中津川観光案内所)", pos: 1, place: PLACES["nakatsugawa-info"] },
-  { en: "Magome stop (tourist information office)", ja: "馬籠駅(馬籠観光案内所)", pos: 2, place: PLACES["magome-info"] },
-  { en: "Tsumago stop (tourist information office)", ja: "妻籠駅(妻籠観光案内所)", pos: 3, place: PLACES["tsumago-info"] },
   { en: "Nagiso stop (Cafe Izumiya)", ja: "南木曽駅(カフェイズミヤ)", pos: NAGISO, place: PLACES.izumiya },
   { en: "Nagiso stop (Guesthouse Kashiwaya Inn)", ja: "南木曽駅(ゲストハウス柏屋Inn)", pos: NAGISO, place: PLACES.kashiwaya },
   { en: "Nagiso stop (Guesthouse Waku Nagiso)", ja: "南木曽駅(ゲストハウスWaku南木曽)", pos: NAGISO, place: PLACES.waku },
@@ -257,10 +231,10 @@ export function estimate(from: number | null, to: number | null, bags: number) {
 
 /** Worked examples shown on the page. */
 export const EXAMPLES: { trip: T; zones: number; bags: number }[] = [
-  { trip: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, zones: 2, bags: 1 },
-  { trip: { en: "Magome → Kiso-Fukushima", ja: "馬籠 → 木曽福島" }, zones: 2, bags: 2 },
+  { trip: { en: "Nakatsugawa → Kiso-Fukushima", ja: "中津川 → 木曽福島" }, zones: 2, bags: 1 },
+  { trip: { en: "Nakatsugawa → Kiso-Fukushima", ja: "中津川 → 木曽福島" }, zones: 2, bags: 2 },
   { trip: { en: "Nagiso → Nojiri", ja: "南木曽 → 野尻" }, zones: 1, bags: 1 },
-  { trip: { en: "Nakatsugawa → Tsumago", ja: "中津川 → 妻籠" }, zones: 1, bags: 3 },
+  { trip: { en: "Nakatsugawa → Nagiso", ja: "中津川 → 南木曽" }, zones: 1, bags: 3 },
 ];
 
 /** Booking-date check for the form: requests close at 21:00 the day before
@@ -308,8 +282,8 @@ export const RULES: { title: T; body: T }[] = [
   {
     title: { en: "Request by 21:00 the day before", ja: "申し込みは前日21時まで" },
     body: {
-      en: "We approve requests together every evening after 21:00. We reply on WhatsApp in the morning (until 8:45), 15:00–16:00 and after 21:00 — the rest of the day we're driving.",
-      ja: "承認は毎晩21時台にまとめて行います。WhatsAppに返信できるのは、朝(〜8:45)、15:00〜16:00、21:00以降です。それ以外の時間は運転中です。",
+      en: "We approve requests together every evening after 21:00. We reply on WhatsApp in the morning (until 8:45), 14:30–16:00 and after 21:00 — the rest of the day we're driving.",
+      ja: "承認は毎晩21時台にまとめて行います。WhatsAppに返信できるのは、朝(〜8:45)、14:30〜16:00、21:00以降です。それ以外の時間は運転中です。",
     },
   },
   {
