@@ -13,8 +13,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
-import { ShuttleCalendar } from "../shuttle-calendar";
-import { STATIONS, feeText, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { STATIONS, feeText, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -234,12 +233,18 @@ export default function LuggageBusPage() {
         </p>
       </section>
 
-      {/* OPERATING CALENDAR */}
-      <section className="cal-sec" id="calendar">
-        <span className="eyebrow" style={{ display: "block", textAlign: "center", marginBottom: "1.2rem" }}>
-          Operating days
-        </span>
-        <ShuttleCalendar lang="en" />
+      {/* BOOKING RULES */}
+      <section className="mini-sec" id="rules">
+        <span className="eyebrow">Booking rules</span>
+        <h2>Before you book.</h2>
+        <ul className="itin-list lb-rules">
+          {RULES.map((r) => (
+            <li key={r.title.en}>
+              <b>{r.title.en}</b>
+              {r.body.en}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* THE STATIONS */}

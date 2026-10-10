@@ -1418,3 +1418,4 @@ figure.season-cell .season-tag {
 .drop-steps.cols5 { grid-template-columns: repeat(5, 1fr); }
 @media (max-width: 1000px) { .drop-steps.cols5 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .drop-steps.cols5 { grid-template-columns: 1fr; } }
+.lb-rules b { display: block; margin-bottom: 0.15rem; }

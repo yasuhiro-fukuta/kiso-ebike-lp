@@ -13,8 +13,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
-import { ShuttleCalendar } from "../../shuttle-calendar";
-import { STATIONS, feeText, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { STATIONS, feeText, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -207,12 +206,18 @@ export default function JaLuggageBusPage() {
         </p>
       </section>
 
-      {/* 営業日カレンダー */}
-      <section className="cal-sec" id="calendar">
-        <span className="eyebrow" style={{ display: "block", textAlign: "center", marginBottom: "1.2rem" }}>
-          運行日
-        </span>
-        <ShuttleCalendar lang="ja" />
+      {/* ご利用のルール */}
+      <section className="mini-sec" id="rules">
+        <span className="eyebrow">ご利用のルール</span>
+        <h2>申し込む前に。</h2>
+        <ul className="itin-list lb-rules">
+          {RULES.map((r) => (
+            <li key={r.title.en}>
+              <b>{r.title.ja}</b>
+              {r.body.ja}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* 駅(預け場所・提携宿) */}

@@ -72,10 +72,18 @@ const lbFee = (l: Lang, label: string) => {
   const pl = lbPoint(label)?.place;
   return pl ? feeText(pl.fee, l) : l === "ja" ? "確認中" : "being checked";
 };
-const isoToday = () => {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+/** Today, tomorrow and whether it's past 21:00 — in Japan time. */
+const jstNow = () => {
+  const jst = new Date(Date.now() + 9 * 3600 * 1000);
+  const iso = (d: Date) => d.toISOString().slice(0, 10);
+  return {
+    today: iso(jst),
+    tomorrow: iso(new Date(jst.getTime() + 24 * 3600 * 1000)),
+    afterDeadline: jst.getUTCHours() >= 21,
+  };
 };
+const MATSUMOTO_POS = 9;
+const EXT_POS = [0, 8];
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
@@ -131,21 +139,42 @@ const SERVICES: Record<string, Service> = {
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
     ],
     hint: (l, k, v) => {
+      if (k === "date")
+        return l === "ja"
+          ? "申し込みは前日21時まで。毎週月曜と12〜3月は運休です。"
+          : "Requests close at 21:00 the day before. No runs on Mondays or from December to March.";
+      if (k === "bags")
+        return l === "ja" ? "1便につき20個まで。" : "Up to 20 bags per run.";
       if (k !== "from" && k !== "to") return null;
-      const pl = lbPoint(v[k] ?? "")?.place;
+      const pt = lbPoint(v[k] ?? "");
+      const pl = pt?.place;
       if (!pl) return null;
+      const ext =
+        pt.pos !== null && EXT_POS.includes(pt.pos)
+          ? l === "ja"
+            ? " ・ 延長は1日1件まで。日によっては受けられないことがあります。"
+            : " · Extensions are limited to one a day and may not be possible on some days."
+          : "";
       return l === "ja"
-        ? `預かり料(現地払い):${feeText(pl.fee, l)}${pl.fee ? "/個" : ""} ・ 定休日:${pl.closed.ja}${pl.hours ? ` ・ 営業時間:${pl.hours.ja}` : ""}`
-        : `Holding fee (paid on the spot): ${feeText(pl.fee, l)}${pl.fee ? " / bag" : ""} · Closed: ${pl.closed.en}${pl.hours ? ` · Hours: ${pl.hours.en}` : ""}`;
+        ? `預かり料(現地払い):${feeText(pl.fee, l)}${pl.fee ? "/個" : ""} ・ 定休日:${pl.closed.ja}${pl.hours ? ` ・ 営業時間:${pl.hours.ja}` : ""}${ext}`
+        : `Holding fee (paid on the spot): ${feeText(pl.fee, l)}${pl.fee ? " / bag" : ""} · Closed: ${pl.closed.en}${pl.hours ? ` · Hours: ${pl.hours.en}` : ""}${ext}`;
     },
-    validate: (l, v) =>
-      dateProblem(
+    validate: (l, v) => {
+      if ([lbPos(v.from ?? ""), lbPos(v.to ?? "")].includes(MATSUMOTO_POS))
+        return l === "ja"
+          ? "松本は当面受け付けていません。WhatsAppでご相談ください。"
+          : "We're not taking Matsumoto bookings yet. Please ask us on WhatsApp.";
+      const n = jstNow();
+      return dateProblem(
         v.date ?? "",
         [lbPoint(v.from ?? "")?.place ?? null, lbPoint(v.to ?? "")?.place ?? null],
         l,
         CLOSED_DAYS,
-        isoToday(),
-      ),
+        n.today,
+        n.tomorrow,
+        n.afterDeadline,
+      );
+    },
     estimate: (l, v) => {
       const e = estimate(lbPos(v.from ?? ""), lbPos(v.to ?? ""), Number(v.bags ?? 0));
       if (!e) return null;

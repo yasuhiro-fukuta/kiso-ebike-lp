@@ -224,7 +224,7 @@ export const FORM_POINTS: { en: string; ja: string; pos: number | null; place: P
   { en: "Agematsu stop (tourist information office)", ja: "上松駅(上松観光案内所)", pos: 6, place: PLACES["agematsu-info"] },
   { en: "Kiso-Fukushima stop (tourist information office)", ja: "木曽福島駅(木曽福島観光案内所)", pos: 7, place: PLACES["kisofukushima-info"] },
   { en: "Narai tourist information office", ja: "奈良井観光案内所", pos: 8, place: PLACES["narai-info"] },
-  { en: "Matsumoto tourist information office", ja: "松本観光案内所", pos: 9, place: PLACES["matsumoto-info"] },
+  { en: "Matsumoto tourist information office (not taking bookings yet)", ja: "松本観光案内所(当面受付なし)", pos: 9, place: PLACES["matsumoto-info"] },
   { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null, place: null },
 ];
 
@@ -249,19 +249,33 @@ export const EXAMPLES: { trip: T; zones: number; bags: number }[] = [
   { trip: { en: "Nakatsugawa → Tsumago", ja: "中津川 → 妻籠" }, zones: 1, bags: 3 },
 ];
 
-/** Booking-date check for the form: the bus must run that day (closed every
- *  Monday and on the calendar's extra closing days) and neither station may
- *  be on a known closing day. Returns an error message, or null when OK. */
+/** Booking-date check for the form: requests close at 21:00 the day before
+ *  (Japan time), no runs on Mondays, the calendar's extra closing days or in
+ *  the winter break, and neither station may be on a known closing day.
+ *  Returns an error message, or null when OK. */
 export function dateProblem(
   iso: string,
   places: (Place | null)[],
   lang: "en" | "ja",
   busClosed: Set<string>,
   today: string,
+  tomorrow: string,
+  afterDeadline: boolean,
 ) {
   const ja = lang === "ja";
   if (!iso) return ja ? "日付を選んでください。" : "Please choose a date.";
-  if (iso < today) return ja ? "過去の日付は選べません。" : "That date is in the past.";
+  if (iso <= today)
+    return ja
+      ? "申し込みは前日21時までです。明日以降の日付を選んでください。"
+      : "Requests close at 21:00 the day before. Please choose tomorrow or later.";
+  if (iso === tomorrow && afterDeadline)
+    return ja
+      ? "明日の分の申し込みは締め切りました(前日21時まで)。明後日以降の日付を選んでください。"
+      : "Requests for tomorrow closed at 21:00. Please choose the day after tomorrow or later.";
+  if (inWinterBreak(iso))
+    return ja
+      ? "12〜3月は運休です(3月20日ごろ再開)。別の日を選んでください。"
+      : "The Luggage Bus is closed from December to March (restarting around 20 March). Please pick another date.";
   const d = new Date(`${iso}T00:00:00`);
   if (d.getDay() === 1 || busClosed.has(iso))
     return ja
@@ -274,3 +288,69 @@ export function dateProblem(
       : `${shut.map((p) => p.name.en).join(" and ")} ${shut.length > 1 ? "are" : "is"} closed that day (${shut.map((p) => p.closed.en).join(" / ")}). Please pick another date or station.`;
   return null;
 }
+
+/** Booking rules (decided 2026-10-10, "for now"). */
+export const RULES: { title: T; body: T }[] = [
+  {
+    title: { en: "Request by 21:00 the day before", ja: "申し込みは前日21時まで" },
+    body: {
+      en: "We approve requests together every evening after 21:00. We reply on WhatsApp in the morning (until 8:45), 15:00–16:00 and after 21:00 — the rest of the day we're driving.",
+      ja: "承認は毎晩21時台にまとめて行います。WhatsAppに返信できるのは、朝(〜8:45)、15:00〜16:00、21:00以降です。それ以外の時間は運転中です。",
+    },
+  },
+  {
+    title: { en: "Pay by 8:00 on the day", ja: "支払いは当日8:00まで" },
+    body: {
+      en: "Your booking is confirmed once you've paid through the link we send. Bags without a paid booking are not carried.",
+      ja: "お送りする決済リンクで支払いが済んだ時点で予約確定です。支払いのない荷物は運びません。",
+    },
+  },
+  {
+    title: { en: "Cancellations", ja: "取り消し・返金" },
+    body: {
+      en: "Full refund if you cancel by 21:00 the day before; no refund after that. If we cancel (bad weather, a breakdown or illness), you get a full refund.",
+      ja: "前日21時までの取り消しは全額返金、それ以降は返金なしです。運休・天候・車の故障・体調不良などこちらの都合のときは全額返金します。",
+    },
+  },
+  {
+    title: { en: "Bad weather", ja: "悪天候のとき" },
+    body: {
+      en: "If a snow or heavy-rain warning is in force at 21:00 the day before, we cancel that day's runs and tell you on WhatsApp.",
+      ja: "前日21時の時点で雪か大雨の警報が出ていれば運休し、WhatsAppでお知らせします。",
+    },
+  },
+  {
+    title: { en: "What we don't carry", ja: "運ばない物" },
+    body: {
+      en: "Cash, passports, valuables, fragile items, medicines and perishable food.",
+      ja: "現金、パスポート、貴重品、壊れ物、医薬品、生もの。",
+    },
+  },
+  {
+    title: { en: "Compensation", ja: "補償" },
+    body: {
+      en: "Up to ¥30,000 per bag, covered by cargo insurance.",
+      ja: "1個3万円まで。貨物保険に入っています。",
+    },
+  },
+  {
+    title: { en: "Space on each run", ja: "1便あたりの上限" },
+    body: {
+      en: "Up to 20 bags and 8 stops per run. Trips beyond the route are limited to one a day.",
+      ja: "1便につき荷物20個、止まる場所8か所までです。区間外への延長は1日1件までです。",
+    },
+  },
+  {
+    title: { en: "Season", ja: "運行期間" },
+    body: {
+      en: "Closed every Monday, and from December to March. We restart around 20 March 2027.",
+      ja: "毎週月曜と、12〜3月は運休です。2027年3月20日ごろに再開します。",
+    },
+  },
+];
+
+/** Winter break: no runs from 1 Dec to 19 Mar (restart around 20 Mar). */
+export const inWinterBreak = (iso: string) => {
+  const md = iso.slice(5);
+  return md >= "12-01" || md < "03-20";
+};
