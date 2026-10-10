@@ -28,6 +28,10 @@ export type Place = {
   name: T;
   map: string | null;
   fee: number | null;
+  /** Extra holding conditions (e.g. overnight), shown after the fee. */
+  feeNote?: T;
+  /** The office doesn't hold bags for other companies. */
+  noHolding?: boolean;
   hours: T | null;
   closed: T;
   rule: { weekdays: number[]; periods: [string, string][] } | null;
@@ -41,7 +45,7 @@ export const PLACES: Record<string, Place> = {
     id: "nakatsugawa-info",
     name: { en: "Nakatsugawa tourist information office", ja: "中津川観光案内所" },
     map: null,
-    fee: null,
+    fee: 700,
     hours: { en: "8:30–18:00", ja: "8:30〜18:00" },
     closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
     rule: { weekdays: [], periods: [YEAR_END] },
@@ -51,6 +55,7 @@ export const PLACES: Record<string, Place> = {
     name: { en: "Magome tourist information office", ja: "馬籠観光案内所" },
     map: null,
     fee: null,
+    noHolding: true,
     hours: { en: "8:30–17:00 (winter 9:00–17:00)", ja: "8:30〜17:00(冬は9:00〜17:00)" },
     closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
     rule: { weekdays: [], periods: [YEAR_END] },
@@ -60,6 +65,7 @@ export const PLACES: Record<string, Place> = {
     name: { en: "Tsumago tourist information office", ja: "妻籠観光案内所" },
     map: null,
     fee: null,
+    noHolding: true,
     hours: { en: "8:30–17:00", ja: "8:30〜17:00" },
     closed: UNKNOWN,
     rule: null,
@@ -113,19 +119,21 @@ export const PLACES: Record<string, Place> = {
     id: "agematsu-info",
     name: { en: "Agematsu tourist information office", ja: "上松観光案内所" },
     map: null,
-    fee: null,
+    fee: 0,
+    feeNote: { en: "same day only, no overnight holding", ja: "当日中のみ。日をまたぐ預かりは不可" },
     hours: { en: "9:00–17:00", ja: "9:00〜17:00" },
     closed: {
-      en: "Closed late November to early April (approx. Nov 21–Apr 10); open daily in season",
-      ja: "11月下旬〜4月上旬は休業(11/21〜4/10目安)。期間中は無休",
+      en: "Closed from late November to mid-March (approx. Nov 25–Mar 15); open daily in season",
+      ja: "11月末〜3月半ばは休業(11/25〜3/15目安)。期間中は無休",
     },
-    rule: { weekdays: [], periods: [["11-21", "04-10"]] },
+    rule: { weekdays: [], periods: [["11-25", "03-15"]] },
   },
   "kisofukushima-info": {
     id: "kisofukushima-info",
     name: { en: "Kiso-Fukushima tourist information office", ja: "木曽福島観光案内所" },
     map: null,
-    fee: null,
+    fee: 300,
+    feeNote: { en: "paid in advance; ¥600 if held overnight", ja: "前払い。日をまたぐと600円" },
     hours: { en: "8:30–17:30", ja: "8:30〜17:30" },
     closed: { en: "Open daily (to be confirmed)", ja: "無休(要確認)" },
     rule: { weekdays: [], periods: [] },
@@ -147,8 +155,14 @@ export const STATIONS: { area: string; name: T; places: Place[] }[] = [
   { area: "kisofukushima", name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" }, places: [PLACES["kisofukushima-info"]] },
 ];
 
-export const feeText = (fee: number | null, lang: "en" | "ja") =>
-  fee === null ? UNKNOWN[lang] : fee === 0 ? (lang === "ja" ? "無料" : "Free") : yen(fee);
+export const feeText = (pl: Place, lang: "en" | "ja") => {
+  if (pl.noHolding)
+    return lang === "ja" ? "預かり不可(他社の荷物は預かれないため、扱いを確認中)" : "No holding (the office can't hold other companies' bags; being sorted out)";
+  const base =
+    pl.fee === null ? UNKNOWN[lang] : pl.fee === 0 ? (lang === "ja" ? "無料" : "Free") : yen(pl.fee) + (lang === "ja" ? "/個" : " / bag");
+  if (!pl.feeNote) return base;
+  return lang === "ja" ? `${base}(${pl.feeNote.ja})` : `${base} (${pl.feeNote.en})`;
+};
 
 /** Is the place known to be closed on this date (ISO yyyy-mm-dd)? */
 export function placeClosed(place: Place, iso: string) {
@@ -357,8 +371,8 @@ export const RULES: { title: T; body: T }[] = [
   {
     title: { en: "Season", ja: "運行期間" },
     body: {
-      en: "Closed every Monday, and from December to March. We restart around 20 March 2027. The Agematsu stop can't be used from late November to early April (approx. 21 Nov–10 Apr), while its tourist office is closed.",
-      ja: "毎週月曜と、12〜3月は運休です。2027年3月20日ごろに再開します。上松駅は、観光案内所が休業する11月下旬〜4月上旬(11/21〜4/10目安)は使えません。",
+      en: "Closed every Monday, and from December to March. We restart around 20 March 2027. The Agematsu stop can't be used from late November to mid-March (approx. 25 Nov–15 Mar), while its tourist office is closed.",
+      ja: "毎週月曜と、12〜3月は運休です。2027年3月20日ごろに再開します。上松駅は、観光案内所が休業する11月末〜3月半ば(11/25〜3/15目安)は使えません。",
     },
   },
 ];

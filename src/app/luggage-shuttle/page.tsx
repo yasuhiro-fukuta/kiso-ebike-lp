@@ -298,7 +298,7 @@ export default function LuggageBusPage() {
                       {s.name.en}
                       <small>{pl.name.en}</small>
                     </th>
-                    <td>{feeText(pl.fee, "en")}{pl.fee ? " / bag" : ""}</td>
+                    <td>{feeText(pl, "en")}</td>
                     <td>{pl.closed.en}</td>
                     <td>{pl.hours ? pl.hours.en : "—"}</td>
                   </tr>

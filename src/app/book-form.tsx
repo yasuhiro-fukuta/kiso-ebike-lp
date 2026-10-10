@@ -70,7 +70,7 @@ const lbPoint = (label: string) => FORM_POINTS.find((p) => p.en === label || p.j
 const lbPos = (label: string) => lbPoint(label)?.pos ?? null;
 const lbFee = (l: Lang, label: string) => {
   const pl = lbPoint(label)?.place;
-  return pl ? feeText(pl.fee, l) : l === "ja" ? "確認中" : "being checked";
+  return pl ? feeText(pl, l) : l === "ja" ? "確認中" : "being checked";
 };
 /** Today, tomorrow and whether it's past 21:00 — in Japan time. */
 const jstNow = () => {
@@ -156,8 +156,8 @@ const SERVICES: Record<string, Service> = {
             : " · Extensions are limited to one a day and may not be possible on some days."
           : "";
       return l === "ja"
-        ? `預かり料(現地払い):${feeText(pl.fee, l)}${pl.fee ? "/個" : ""} ・ 定休日:${pl.closed.ja}${pl.hours ? ` ・ 営業時間:${pl.hours.ja}` : ""}${ext}`
-        : `Holding fee (paid on the spot): ${feeText(pl.fee, l)}${pl.fee ? " / bag" : ""} · Closed: ${pl.closed.en}${pl.hours ? ` · Hours: ${pl.hours.en}` : ""}${ext}`;
+        ? `預かり料(現地払い):${feeText(pl, l)} ・ 定休日:${pl.closed.ja}${pl.hours ? ` ・ 営業時間:${pl.hours.ja}` : ""}${ext}`
+        : `Holding fee (paid on the spot): ${feeText(pl, l)} · Closed: ${pl.closed.en}${pl.hours ? ` · Hours: ${pl.hours.en}` : ""}${ext}`;
     },
     validate: (l, v) => {
       if ([lbPos(v.from ?? ""), lbPos(v.to ?? "")].includes(MATSUMOTO_POS))

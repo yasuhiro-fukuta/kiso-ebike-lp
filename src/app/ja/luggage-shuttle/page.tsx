@@ -268,7 +268,7 @@ export default function JaLuggageBusPage() {
                       {s.name.ja}
                       <small>{pl.name.ja}</small>
                     </th>
-                    <td>{feeText(pl.fee, "ja")}{pl.fee ? "/個" : ""}</td>
+                    <td>{feeText(pl, "ja")}</td>
                     <td>{pl.closed.ja}</td>
                     <td>{pl.hours ? pl.hours.ja : "—"}</td>
                   </tr>
