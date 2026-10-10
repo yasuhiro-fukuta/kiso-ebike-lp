@@ -37,7 +37,7 @@ const SERVICES = [
     href: "/luggage-shuttle",
     icon: Backpack,
     title: "Luggage Bus",
-    desc: "A daily luggage-only run from Nakatsugawa to Kiso-Fukushima.",
+    desc: "A daily luggage-only run between Nagiso and Kiso-Fukushima.",
   },
   {
     href: "/gear",

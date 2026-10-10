@@ -37,7 +37,7 @@ const SERVICES = [
     href: "/ja/luggage-shuttle",
     icon: Backpack,
     title: "ラゲッジバス",
-    desc: "中津川から木曽福島まで、毎日走る荷物専用の定期便。",
+    desc: "南木曽から木曽福島まで、毎日走る荷物専用の定期便。",
   },
   {
     href: "/ja/gear",

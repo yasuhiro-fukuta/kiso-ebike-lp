@@ -41,7 +41,7 @@ const MENU_ITEMS: Record<
 > = {
   en: [
     { href: "/rental", label: "E-Bike Rental", sub: "Delivered to you · drop anywhere" },
-    { href: "/luggage-shuttle", label: "Luggage Bus", sub: "Nakatsugawa ⇄ Kiso-Fukushima, bags only" },
+    { href: "/luggage-shuttle", label: "Luggage Bus", sub: "Nagiso ⇄ Kiso-Fukushima, bags only" },
     { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
     { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
     { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
@@ -49,7 +49,7 @@ const MENU_ITEMS: Record<
   ],
   ja: [
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "お届け&乗り捨て自由" },
-    { href: "/ja/luggage-shuttle", label: "ラゲッジバス", sub: "中津川⇄木曽福島・荷物専用" },
+    { href: "/ja/luggage-shuttle", label: "ラゲッジバス", sub: "南木曽⇄木曽福島・荷物専用" },
     { href: "/ja/gear", label: "ギアレンタル", sub: "ヒノキ傘・熊対策ほか" },
     { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
     { href: "/ja/second-day", label: "セルフツアーのすすめ", sub: "南木曽での2日目" },

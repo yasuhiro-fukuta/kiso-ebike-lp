@@ -82,8 +82,7 @@ const jstNow = () => {
     afterDeadline: jst.getUTCHours() >= 21,
   };
 };
-const MATSUMOTO_POS = 9;
-const EXT_POS = [0, 8];
+const EXT_POS = [1, 8];
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
@@ -148,22 +147,18 @@ const SERVICES: Record<string, Service> = {
       if (k !== "from" && k !== "to") return null;
       const pt = lbPoint(v[k] ?? "");
       const pl = pt?.place;
-      if (!pl) return null;
-      const ext =
-        pt.pos !== null && EXT_POS.includes(pt.pos)
-          ? l === "ja"
-            ? " ・ 延長は1日1件まで。日によっては受けられないことがあります。"
-            : " · Extensions are limited to one a day and may not be possible on some days."
-          : "";
+      const isExt = pt?.pos != null && EXT_POS.includes(pt.pos);
+      const extNote =
+        l === "ja"
+          ? "延長は1日1件まで。日によっては受けられないことがあります。"
+          : "Extensions are limited to one a day and may not be possible on some days.";
+      if (!pl) return isExt ? extNote : null;
+      const ext = isExt ? (l === "ja" ? ` ・ ${extNote}` : ` · ${extNote}`) : "";
       return l === "ja"
         ? `預かり料(現地払い):${feeText(pl, l)} ・ 定休日:${pl.closed.ja}${pl.hours ? ` ・ 営業時間:${pl.hours.ja}` : ""}${ext}`
         : `Holding fee (paid on the spot): ${feeText(pl, l)} · Closed: ${pl.closed.en}${pl.hours ? ` · Hours: ${pl.hours.en}` : ""}${ext}`;
     },
     validate: (l, v) => {
-      if ([lbPos(v.from ?? ""), lbPos(v.to ?? "")].includes(MATSUMOTO_POS))
-        return l === "ja"
-          ? "松本は当面受け付けていません。WhatsAppでご相談ください。"
-          : "We're not taking Matsumoto bookings yet. Please ask us on WhatsApp.";
       const n = jstNow();
       return dateProblem(
         v.date ?? "",

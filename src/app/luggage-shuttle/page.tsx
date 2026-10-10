@@ -29,21 +29,21 @@ export default function LuggageBusPage() {
         <div>
           <span className="head-badge">Luggage only · no passengers</span>
           <br />
-          <span className="eyebrow">Luggage Bus · Nakatsugawa — Kiso-Fukushima</span>
+          <span className="eyebrow">Luggage Bus · Nagiso — Kiso-Fukushima</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
           <p>
             The Luggage Bus carries your bags along the Nakasendo on a fixed
-            daily timetable, running Route 19 and stopping at Nakatsugawa,
-            Nagiso, Nojiri, Agematsu and Kiso-Fukushima. In the morning,
+            daily timetable, stopping at Nagiso, Nojiri, Agematsu and
+            Kiso-Fukushima. In the morning,
             leave your bags at one of our stations — a luggage drop point
             or a partner inn — and walk on — they&apos;ll be
             waiting at the other end.
           </p>
           <p className="head-note">
-            Nakatsugawa or Nagiso to Kiso-Fukushima, the same day: bags
-            arrive around 12:30, before check-in. Booking required — request on
+            Nagiso to Kiso-Fukushima, the same day: bags
+            arrive around 11:30, before check-in. Booking required — request on
             WhatsApp and we confirm.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function LuggageBusPage() {
       {/* TIMETABLE */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">Timetable</span>
-        <h2>Four runs a day, built around the walk north.</h2>
+        <h2>One round trip a day, Nagiso to Kiso-Fukushima and back.</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
@@ -88,9 +88,8 @@ export default function LuggageBusPage() {
           ))}
         </div>
         <p className="drop-note">
-          Most walkers head north, so the northbound runs have the most
-          time. Southbound runs are tighter, which makes a few southbound
-          trips slower — see when your bags arrive below.
+          Times are still being finalised and may change — see when your
+          bags arrive below.
         </p>
 
         <h3 className="lb-sub">When your bags arrive</h3>
@@ -168,8 +167,8 @@ export default function LuggageBusPage() {
           <p className="drop-note">
             Hikers usually set out around 8–9 in the morning, before the bus
             passes. That&apos;s fine — the station holds your bags until it
-            arrives. For the 9:00 southbound run from Nagiso, hand your bags
-            in by 8:50 (or the evening before).
+            arrives. Hand your bags in at least 10 minutes before the run
+            passes (or the evening before).
           </p>
         </div>
       </section>
@@ -198,7 +197,7 @@ export default function LuggageBusPage() {
             <p>The same wherever it goes.</p>
           </div>
           <p className="pricing-foot">
-            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. Nagiso is where the two zones meet. Going beyond the route adds ¥1,500 for each further zone. The booking form works out an estimate for you.
+            The delivery fee is ¥1,500 per booking (the route runs Nagiso to Kiso-Fukushima). Going beyond the route — south to Nakatsugawa, Tsumago or Magome, or north to Narai — is by arrangement and adds ¥1,500 for each further zone. The booking form works out an estimate for you.
           </p>
         </div>
 
@@ -350,16 +349,6 @@ export default function LuggageBusPage() {
             No — please book first. We confirm each request on WhatsApp so
             we know there&apos;s room on the run, and the booking is set
             once you&apos;ve paid through the link we send.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>I&apos;m walking south. Why does it take longer?</summary>
-          <p>
-            The timetable is built around the busier northbound walk.
-            Southbound from the Kiso-Fukushima side to Nakatsugawa, bags stay overnight in Nagiso and travel on the
-            next morning&apos;s first run. Most southbound walkers stop for a
-            night on the way, so it usually works out — message us and
-            we&apos;ll plan it with you.
           </p>
         </details>
         <details className="faq-item">

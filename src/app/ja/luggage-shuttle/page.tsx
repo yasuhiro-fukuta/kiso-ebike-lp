@@ -29,15 +29,15 @@ export default function JaLuggageBusPage() {
         <div>
           <span className="head-badge">荷物専用・人は乗れません</span>
           <br />
-          <span className="eyebrow">ラゲッジバス · 中津川 — 木曽福島</span>
+          <span className="eyebrow">ラゲッジバス · 南木曽 — 木曽福島</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            ラゲッジバスは、中津川・南木曽・野尻・上松・木曽福島を国道19号で、毎日決まった時刻で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
+            ラゲッジバスは、南木曽・野尻・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
           </p>
           <p className="head-note">
-            中津川・南木曽から木曽福島へは当日12:30ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
+            南木曽から木曽福島へは当日11:30ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
           </p>
         </div>
         <figure className="page-head-visual">
@@ -66,7 +66,7 @@ export default function JaLuggageBusPage() {
       {/* 時刻表 */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">時刻表</span>
-        <h2>1日4便。北へ歩く人に合わせたダイヤです。</h2>
+        <h2>1日1往復。南木曽と木曽福島を結びます。</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
@@ -79,7 +79,7 @@ export default function JaLuggageBusPage() {
           ))}
         </div>
         <p className="drop-note">
-          中山道は北へ歩く人が多いので、北行きの便に時間を多く取っています。南行きは時間が短く、行き先によっては少し不便になります。届く時間は下の表をご覧ください。
+          時刻は調整中で、変わることがあります。届く時間は下の表をご覧ください。
         </p>
 
         <h3 className="lb-sub">荷物が届く時間</h3>
@@ -142,7 +142,7 @@ export default function JaLuggageBusPage() {
           </div>
 
           <p className="drop-note">
-            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで駅が荷物を預かります。南木曽発9:00の南行き(①)は、8:50まで(または前日の夕方)に預けてください。
+            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで駅が荷物を預かります。便が駅を通る10分前まで(または前日の夕方)に預けてください。
           </p>
         </div>
       </section>
@@ -171,7 +171,7 @@ export default function JaLuggageBusPage() {
             <p>距離に関係なく1個ごと。</p>
           </div>
           <p className="pricing-foot">
-            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。南部と中部の境目は南木曽です。区間の外へ延ばすときは、区域が1つ増えるごとに+1,500円です。予約フォームで概算金額が出ます。
+            配送料は1件の予約ごとに1,500円です(区間は南木曽〜木曽福島)。区間の外(南は中津川・妻籠・馬籠、北は奈良井)へ延ばすときは応相談で、区域が1つ増えるごとに+1,500円です。予約フォームで概算金額が出ます。
           </p>
         </div>
 
@@ -313,12 +313,6 @@ export default function JaLuggageBusPage() {
           <summary>予約なしで持って行ってもいいですか?</summary>
           <p>
             予約をお願いします。便の空きを確かめるため、WhatsAppで1件ずつ承認しています。お送りするリンクで支払いが済んだら予約確定です。
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>南へ歩きます。なぜ時間がかかるのですか?</summary>
-          <p>
-            時刻表は、利用の多い北行きに合わせています。木曽福島方面から中津川へ送る荷物は、南木曽で一晩お預かりして、翌朝の①の便で運びます。南へ歩く方も途中で一泊することが多いので、たいていは困りません。WhatsAppで相談いただければ一緒に組み立てます。
           </p>
         </details>
         <details className="faq-item">
