@@ -1413,3 +1413,8 @@ figure.season-cell .season-tag {
   background: rgba(181, 83, 42, 0.12); border: 1px solid var(--rust); color: var(--ink);
   border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.9rem;
 }
+
+/* five-step rental flow */
+.drop-steps.cols5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1000px) { .drop-steps.cols5 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .drop-steps.cols5 { grid-template-columns: 1fr; } }
