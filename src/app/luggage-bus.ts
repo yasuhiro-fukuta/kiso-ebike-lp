@@ -138,8 +138,8 @@ export const PLACES: Record<string, Place> = {
     closed: { en: "Open daily (to be confirmed)", ja: "無休(要確認)" },
     rule: { weekdays: [], periods: [] },
   },
-  "ena-info": { id: "ena-info", name: { en: "Ena tourist information office", ja: "恵那観光案内所" }, map: null, fee: null, hours: null, closed: UNKNOWN, rule: null },
-  "narai-info": { id: "narai-info", name: { en: "Narai tourist information office", ja: "奈良井観光案内所" }, map: null, fee: null, hours: null, closed: UNKNOWN, rule: null },
+  "ena-info": { id: "ena-info", name: { en: "Ena tourist information office", ja: "恵那観光案内所" }, map: null, fee: null, noHolding: true, hours: null, closed: UNKNOWN, rule: null },
+  "narai-station": { id: "narai-station", name: { en: "Narai Station", ja: "奈良井駅" }, map: null, fee: 700, hours: null, closed: UNKNOWN, rule: null },
   "matsumoto-info": { id: "matsumoto-info", name: { en: "Matsumoto tourist information office", ja: "松本観光案内所" }, map: null, fee: null, hours: null, closed: UNKNOWN, rule: null },
 };
 
@@ -157,7 +157,7 @@ export const STATIONS: { area: string; name: T; places: Place[] }[] = [
 
 export const feeText = (pl: Place, lang: "en" | "ja") => {
   if (pl.noHolding)
-    return lang === "ja" ? "預かり不可(他社の荷物は預かれないため、扱いを確認中)" : "No holding (the office can't hold other companies' bags; being sorted out)";
+    return lang === "ja" ? "預かり不可(受け渡し方法は確認中。チャットでご相談ください)" : "No holding (how to hand over is being sorted out; ask in chat)";
   const base =
     pl.fee === null ? UNKNOWN[lang] : pl.fee === 0 ? (lang === "ja" ? "無料" : "Free") : yen(pl.fee) + (lang === "ja" ? "/個" : " / bag");
   if (!pl.feeNote) return base;
@@ -226,7 +226,7 @@ const FARE_ZONES: { from: number; to: number; en: string; ja: string }[] = [
  *  as stations on the page). */
 const NAGISO = 4;
 export const FORM_POINTS: { en: string; ja: string; pos: number | null; place: Place | null }[] = [
-  { en: "Ena tourist information office", ja: "恵那観光案内所", pos: 0, place: PLACES["ena-info"] },
+  { en: "Ena (ask in chat where to hand over)", ja: "恵那(預け場所はチャットで相談)", pos: 0, place: PLACES["ena-info"] },
   { en: "Nakatsugawa stop (tourist information office)", ja: "中津川駅(中津川観光案内所)", pos: 1, place: PLACES["nakatsugawa-info"] },
   { en: "Magome stop (tourist information office)", ja: "馬籠駅(馬籠観光案内所)", pos: 2, place: PLACES["magome-info"] },
   { en: "Tsumago stop (tourist information office)", ja: "妻籠駅(妻籠観光案内所)", pos: 3, place: PLACES["tsumago-info"] },
@@ -237,7 +237,7 @@ export const FORM_POINTS: { en: string; ja: string; pos: number | null; place: P
   { en: "Nojiri stop (Cafe Katana)", ja: "野尻駅(カフェ刀)", pos: 5, place: PLACES.katana },
   { en: "Agematsu stop (tourist information office)", ja: "上松駅(上松観光案内所)", pos: 6, place: PLACES["agematsu-info"] },
   { en: "Kiso-Fukushima stop (tourist information office)", ja: "木曽福島駅(木曽福島観光案内所)", pos: 7, place: PLACES["kisofukushima-info"] },
-  { en: "Narai tourist information office", ja: "奈良井観光案内所", pos: 8, place: PLACES["narai-info"] },
+  { en: "Narai Station", ja: "奈良井駅", pos: 8, place: PLACES["narai-station"] },
   { en: "Matsumoto tourist information office (not taking bookings yet)", ja: "松本観光案内所(当面受付なし)", pos: 9, place: PLACES["matsumoto-info"] },
   { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null, place: null },
 ];
