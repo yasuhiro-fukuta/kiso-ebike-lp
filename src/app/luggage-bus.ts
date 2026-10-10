@@ -306,6 +306,20 @@ export const RULES: { title: T; body: T }[] = [
     },
   },
   {
+    title: { en: "Label your bags", ja: "荷物に名札を" },
+    body: {
+      en: "Attach a paper tag to each bag with your booking name and destination. We explain how in the approval message.",
+      ja: "荷物ごとに、予約名と行き先を書いた紙を付けてください。書き方は承認メッセージでご案内します。",
+    },
+  },
+  {
+    title: { en: "Bags not at the stop", ja: "荷物が駅にないとき" },
+    body: {
+      en: "If your bags aren't at the stop when the run passes, we wait up to 5 minutes. After that we leave without them, and there is no refund.",
+      ja: "便が通る時刻に荷物が駅にない場合は、最大5分待ちます。それでも来なければ運ばず、返金はありません。",
+    },
+  },
+  {
     title: { en: "Cancellations", ja: "取り消し・返金" },
     body: {
       en: "Full refund if you cancel by 21:00 the day before; no refund after that. If we cancel (bad weather, a breakdown or illness), you get a full refund.",
