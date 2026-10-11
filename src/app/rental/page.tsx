@@ -9,9 +9,6 @@ import {
   Mountain,
   Lightbulb,
   MessageCircle,
-  Ruler,
-  Truck,
-  MapPin,
 } from "lucide-react";
 import {
   GOOGLE_MAPS_URL,
@@ -92,50 +89,72 @@ export default function RentalPage() {
               <Mountain size={18} /> Fat tires grip gravel and forest tracks
             </li>
             <li>
-              <Lightbulb size={18} /> Helmet, lock and lights included
-            </li>
-            <li>
-              <Ruler size={18} /> Sized to you before you set off
+              <Lightbulb size={18} /> Helmet, combination lock and lights
+              included
             </li>
           </ul>
         </div>
       </section>
 
-      {/* DELIVERY & DROP-ANYWHERE */}
-      <section className="mini-sec" id="delivery">
-        <span className="eyebrow">No shop, no counter</span>
-        <h2>The bike comes to you — and stays where you finish.</h2>
-        <div className="mini-grid">
-          <div className="mini-card">
-            <h3>
-              <Truck size={20} /> We deliver
-            </h3>
-            <p>
-              Tell us where you&apos;re starting — your inn, a station, a
-              gorge trailhead — and the bikes are waiting there at your
-              start time. Anywhere in the Tsumago–Nojiri area.
-            </p>
+      {/* HOW IT WORKS */}
+      <section className="drop-sec" id="how">
+        <div className="drop-inner">
+          <span className="eyebrow">How it works · All on WhatsApp</span>
+          <h2>
+            No shop, no counter. <em>Five steps on your phone.</em>
+          </h2>
+          <p>
+            The bike comes to you and stays where you finish. Everything in
+            between happens in one WhatsApp chat.
+          </p>
+          <div className="drop-steps cols5">
+            <div className="drop-step">
+              <div className="dnum">1</div>
+              <h3>Book by the day before</h3>
+              <p>
+                Message us on WhatsApp by the day before your ride: the
+                date, how many riders, and where you want to start.
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">2</div>
+              <h3>Your bike is waiting</h3>
+              <p>
+                On the morning of your ride, the bikes are ready at the
+                spot you chose. That same morning, we send the how-to and a
+                payment link on WhatsApp.
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">3</div>
+              <h3>Pay, get the code</h3>
+              <p>
+                Once your payment is confirmed, we send the number for the
+                combination lock. Unlock and ride.
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">4</div>
+              <h3>Lock it and send a photo</h3>
+              <p>
+                Finish at any spot in the area (it doesn&apos;t have to be
+                where you started). Lock the bike, take a photo and send
+                it to us on WhatsApp.
+              </p>
+            </div>
+            <div className="drop-step">
+              <div className="dnum">5</div>
+              <h3>We collect it that night</h3>
+              <p>
+                That&apos;s the whole return procedure. We pick the bike up
+                in the evening.
+              </p>
+            </div>
           </div>
-          <div className="mini-card">
-            <h3>
-              <Zap size={20} /> You just ride
-            </h3>
-            <p>
-              One way is fine. There&apos;s no shop to return to, so plan
-              the day you actually want — down the valley, into a gorge,
-              station to station.
-            </p>
-          </div>
-          <div className="mini-card">
-            <h3>
-              <MapPin size={20} /> Drop it anywhere
-            </h3>
-            <p>
-              Finish at any spot in the area, lock the bike, and tell us
-              where it is on WhatsApp. We come and collect it — that&apos;s
-              the whole return procedure.
-            </p>
-          </div>
+          <p className="drop-note">
+            Delivery and drop-off work anywhere in the Tsumago–Nojiri area:
+            your inn, a station, a gorge trailhead.
+          </p>
         </div>
       </section>
 
@@ -195,10 +214,11 @@ export default function RentalPage() {
           One message, <em>and the bike is yours.</em>
         </h2>
         <p>
-          Send us your date, number of riders, and which route you fancy —
-          we&apos;ll confirm your bikes and where to meet. No prepayment:
-          you pay on the day, at pickup, by card or cash. Rentals rest
-          every Monday.
+          By the day before your ride, send us your date, number of riders,
+          and where you want to start. We&apos;ll confirm your bikes. No
+          prepayment: on the morning of your ride we send a payment link on
+          WhatsApp, and the lock code follows once it&apos;s paid. Rentals
+          rest every Monday.
         </p>
 
         <div className="square-embed">
@@ -215,8 +235,7 @@ export default function RentalPage() {
         <p className="booking-alt">
           Prefer to talk to a human? Call or text{" "}
           <a href={PHONE_TEL}>{PHONE}</a> or{" "}
-          <a href={SUPPORT_MAILTO}>email us</a>. Payment on the day —
-          credit card or cash both welcome.
+          <a href={SUPPORT_MAILTO}>email us</a>.
         </p>
       </section>
 
@@ -243,8 +262,10 @@ export default function RentalPage() {
           <p>
             Wherever suits you. We deliver the bikes to the spot you choose
             anywhere in the Tsumago–Nojiri area, and you can leave them at
-            any spot in the area when you finish — just lock up and message
-            us the location. There is no shop you have to come back to.
+            any spot in the area when you finish, even somewhere different
+            from where you started. Just lock up, send us a photo on
+            WhatsApp, and we collect the bike that night. There is no shop
+            you have to come back to.
           </p>
         </details>
         <details className="faq-item">
