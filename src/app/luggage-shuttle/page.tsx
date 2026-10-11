@@ -88,8 +88,8 @@ export default function LuggageBusPage() {
           ))}
         </div>
         <p className="drop-note">
-          Times are still being finalised and may change — see when your
-          bags arrive below.
+          Out to Kiso-Fukushima in the morning, back to Nagiso after
+          lunch — see when your bags arrive below.
         </p>
 
         <h3 className="lb-sub">When your bags arrive</h3>

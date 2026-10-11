@@ -79,7 +79,7 @@ export default function JaLuggageBusPage() {
           ))}
         </div>
         <p className="drop-note">
-          時刻は調整中で、変わることがあります。届く時間は下の表をご覧ください。
+          午前に木曽福島へ、昼すぎに南木曽へ戻ります。届く時間は下の表をご覧ください。
         </p>
 
         <h3 className="lb-sub">荷物が届く時間</h3>

@@ -145,8 +145,7 @@ export function placeClosed(place: Place, iso: string) {
   return place.rule.periods.some(([a, b]) => (a <= b ? md >= a && md <= b : md >= a || md <= b));
 }
 
-/** The daily runs, in time order. Times are provisional (being reworked
- *  for the Nagiso–Kiso-Fukushima route, 2026-10-10). */
+/** The daily runs, in time order: one round trip (fixed by Yakkun 2026-10-11). */
 export const RUNS: { no: string; time: string; north: boolean; route: T }[] = [
   { no: "①", time: "10:00–11:30", north: true, route: { en: "Nagiso → Nojiri → Agematsu → Kiso-Fukushima", ja: "南木曽 → 野尻 → 上松 → 木曽福島" } },
   { no: "②", time: "12:00–13:30", north: false, route: { en: "Kiso-Fukushima → Agematsu → Nojiri → Nagiso", ja: "木曽福島 → 上松 → 野尻 → 南木曽" } },
