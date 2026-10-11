@@ -154,8 +154,8 @@ const jsonLd = {
           "@type": "Offer",
           name: "Kiso River Downhill — group of 4 (base)",
           description:
-            "All-in price for the whole day: riding guide, support driver & English operator, e-bikes and luggage transfer included. Regular price ¥40,000 for a group of four (each rider more or fewer moves the total by 15% / ¥6,000); currently half price as an opening campaign — ¥20,000.",
-          price: "20000",
+            "All-in price for the whole day: riding guide, support driver & English operator, e-bikes and luggage transfer included. Regular price ¥80,000 for a group of four (each rider more or fewer moves the total by 15% / ¥12,000); currently half price as an opening campaign — ¥40,000.",
+          price: "40000",
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
@@ -163,7 +163,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           name: "Kiso River Downhill — 2 riders (opening campaign)",
-          price: "14000",
+          price: "28000",
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
@@ -171,7 +171,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           name: "Kiso River Downhill — 3 riders (opening campaign)",
-          price: "17000",
+          price: "34000",
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
@@ -179,7 +179,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           name: "Kiso River Downhill — 5 riders (opening campaign)",
-          price: "23000",
+          price: "46000",
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
@@ -187,7 +187,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           name: "Kiso River Downhill — 6 riders (opening campaign)",
-          price: "26000",
+          price: "52000",
           priceCurrency: "JPY",
           availability: "https://schema.org/InStock",
           url: `${SITE_URL}/guided`,
