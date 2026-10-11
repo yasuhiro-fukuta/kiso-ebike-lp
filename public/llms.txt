@@ -8,7 +8,7 @@
 - Schedule: half-day rides, 10:00–16:00
 - Start/end points (mix and match): Kashiwaya Guesthouse, Nagiso Station, or Nojiri Station
 - Free luggage shuttle between Nagiso Station, Kashiwaya, and Nojiri Station with every booking
-- Payment: secure card payment via Square; instant confirmation
+- Payment: no prepayment — on the day, a Square card payment link is sent on WhatsApp (cash at the counter also welcome)
 - Contact: phone/text +81 90-3839-2354, email ravnicaguild@gmail.com
 
 ## Routes
@@ -23,7 +23,7 @@
 - Luggage shuttle: free with every booking
 
 ## Book
-- Book & pay (Square): https://app.squareup.com/appointments/book/n5ipgn3swmf0ps/LKFD21FHJ8GJJ/start
+- Book on WhatsApp: https://nakasendo-ebike.com/book
 
 ## Related
 - Kashiwaya Guesthouse (the inn that operates these tours): https://kashiwaya-lp.vercel.app/

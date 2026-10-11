@@ -264,7 +264,7 @@ E-bikeレンタル:〇月〇日に〇台
 );
 
 /** Square online payment link for the luggage shuttle. */
-export const SQUARE_PAY_URL = "https://square.link/u/mKDF9YoV";
+export const SQUARE_PAY_URL = "https://square.link/u/euk9X8ED";
 
 /** Kashiwaya guesthouse — independent domain, linked from /stay */
 export const KASHIWAYA_URL = "https://kashiwaya-inn.com";
