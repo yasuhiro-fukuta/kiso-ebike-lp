@@ -170,7 +170,7 @@ export default function GuidedPage() {
               <div className="price">
                 <small>Guides, driver, bikes &amp; luggage included</small>
                 <span className="price-note">
-                  ¥40,000 / group of 4 · ±15% per rider · opening campaign:
+                  ¥80,000 / group of 4 · ±15% per rider · opening campaign:
                   half price
                 </span>
               </div>
@@ -412,15 +412,15 @@ export default function GuidedPage() {
             <div className="special-price">
               <div className="from">Group of four · all-in</div>
               <div className="amt">
-                <s className="amt-old">¥40,000</s>¥20,000
+                <s className="amt-old">¥80,000</s>¥40,000
               </div>
               <p className="campaign-line">
                 Opening campaign — every group rides at half price right now.
               </p>
               <p className="breakdown">
-                One price for the whole day. ¥40,000 is the regular base for
+                One price for the whole day. ¥80,000 is the regular base for
                 a group of four; each rider more or fewer moves the total by
-                15% (¥6,000) — and the opening campaign then halves the
+                15% (¥12,000) — and the opening campaign then halves the
                 total.
               </p>
               <ul className="price-included">
@@ -436,31 +436,31 @@ export default function GuidedPage() {
                 <li>
                   <span>2 riders</span>
                   <b>
-                    <s>¥28,000</s> ¥14,000
+                    <s>¥56,000</s> ¥28,000
                   </b>
                 </li>
                 <li>
                   <span>3 riders</span>
                   <b>
-                    <s>¥34,000</s> ¥17,000
+                    <s>¥68,000</s> ¥34,000
                   </b>
                 </li>
                 <li className="base">
                   <span>4 riders</span>
                   <b>
-                    <s>¥40,000</s> ¥20,000
+                    <s>¥80,000</s> ¥40,000
                   </b>
                 </li>
                 <li>
                   <span>5 riders</span>
                   <b>
-                    <s>¥46,000</s> ¥23,000
+                    <s>¥92,000</s> ¥46,000
                   </b>
                 </li>
                 <li>
                   <span>6 riders</span>
                   <b>
-                    <s>¥52,000</s> ¥26,000
+                    <s>¥104,000</s> ¥52,000
                   </b>
                 </li>
               </ul>

@@ -150,7 +150,7 @@ export default function JaGuidedPage() {
               <div className="price">
                 <small>ガイド・ドライバー・バイク・荷物運び込み</small>
                 <span className="price-note">
-                  ¥40,000/4名 · 1名±で±15% · いまオープンキャンペーンで総額半額
+                  ¥80,000/4名 · 1名±で±15% · いまオープンキャンペーンで総額半額
                 </span>
               </div>
               <a
@@ -358,13 +358,13 @@ export default function JaGuidedPage() {
             <div className="special-price">
               <div className="from">4名1グループ · 全部込み</div>
               <div className="amt">
-                <s className="amt-old">¥40,000</s>¥20,000
+                <s className="amt-old">¥80,000</s>¥40,000
               </div>
               <p className="campaign-line">
                 オープンキャンペーン中——いまなら総額から半額。
               </p>
               <p className="breakdown">
-                一日まるごとワンプライス。通常は4名で¥40,000を基準に、1名増減ごとに15%(¥6,000)上下。いまはそこからさらに半額です。
+                一日まるごとワンプライス。通常は4名で¥80,000を基準に、1名増減ごとに15%(¥12,000)上下。いまはそこからさらに半額です。
               </p>
               <ul className="price-included">
                 <li>並走する地元ガイド</li>
@@ -376,31 +376,31 @@ export default function JaGuidedPage() {
                 <li>
                   <span>2名</span>
                   <b>
-                    <s>¥28,000</s> ¥14,000
+                    <s>¥56,000</s> ¥28,000
                   </b>
                 </li>
                 <li>
                   <span>3名</span>
                   <b>
-                    <s>¥34,000</s> ¥17,000
+                    <s>¥68,000</s> ¥34,000
                   </b>
                 </li>
                 <li className="base">
                   <span>4名</span>
                   <b>
-                    <s>¥40,000</s> ¥20,000
+                    <s>¥80,000</s> ¥40,000
                   </b>
                 </li>
                 <li>
                   <span>5名</span>
                   <b>
-                    <s>¥46,000</s> ¥23,000
+                    <s>¥92,000</s> ¥46,000
                   </b>
                 </li>
                 <li>
                   <span>6名</span>
                   <b>
-                    <s>¥52,000</s> ¥26,000
+                    <s>¥104,000</s> ¥52,000
                   </b>
                 </li>
               </ul>
