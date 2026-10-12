@@ -30,11 +30,12 @@ export default function Page() {
           Nagiso · Kiso Valley · Central Japan
         </span>
         <h1>
-          Slide out of the guidebook. <em>Go play</em> like a local.
+          The two of you, and a valley <em>all to yourselves.</em>
         </h1>
         <p className="hero-sub">
-          E-bikes, local guides and luggage logistics for the quiet side of
-          the Kiso Valley, on the old Nakasendo road.
+          Lantern-lit post towns, emerald rivers, roads with nobody else on
+          them. We set up the quiet side of the Kiso Valley for you — bikes
+          delivered, bags carried, locals to ride with.
         </p>
         <div className="hero-cta">
           <a href="#start" className="btn-primary">
@@ -64,22 +65,22 @@ export default function Page() {
 
       {/* PURPOSE ENTRANCES */}
       <section className="mini-sec" id="start">
-        <span className="eyebrow">What brings you to the valley?</span>
-        <h2>Three doors in.</h2>
+        <span className="eyebrow">What kind of day will it be?</span>
+        <h2>Three doors into the valley.</h2>
         <div className="entry-grid">
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/guided" className="entry-card">
             <img
-              src="/assets/downhill.jpg"
-              alt="Guided e-bike tour descending along the Kiso River"
+              src="/assets/tour/hero.jpg"
+              alt="A rider pauses on a bridge to photograph the emerald Kiso River"
             />
             <div className="entry-body">
               <h3>
                 <Compass size={20} /> Join a guided tour
               </h3>
               <p>
-                Ride with locals who grew up on these roads — the full-day
-                Kiso River Downhill, or a two-hour dawn ride.
+                A private full-day ride down the Kiso River — your group,
+                one local guide, and every photo stop worth making.
               </p>
               <span className="entry-go">
                 Guided tours <ArrowRight size={14} />
@@ -89,16 +90,16 @@ export default function Page() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/rental" className="entry-card">
             <img
-              src="/assets/riders.jpg"
-              alt="A family of four on fat-tire e-bikes in Nagiso"
+              src="/assets/tour/paddies.jpg"
+              alt="A rider stops on a quiet lane to photograph golden rice paddies in Nagiso"
             />
             <div className="entry-body">
               <h3>
                 <Bike size={20} /> Rent an e-bike
               </h3>
               <p>
-                Delivered to the spot you choose, dropped off anywhere in
-                the area. Self-guided, on quiet valley roads.
+                Delivered to your inn, dropped off wherever the day ends.
+                Quiet roads, emerald water, your own pace.
               </p>
               <span className="entry-go">
                 E-bike rental <ArrowRight size={14} />
@@ -108,16 +109,16 @@ export default function Page() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/luggage-shuttle" className="entry-card">
             <img
-              src="/assets/shuttle-van.jpg"
-              alt="The luggage shuttle van parked in the Kiso Valley"
+              src="/assets/tsumago.jpg"
+              alt="Zaru soba on a table along the old post-town street of Tsumago"
             />
             <div className="entry-body">
               <h3>
                 <Backpack size={20} /> Have your bags carried
               </h3>
               <p>
-                We move your luggage along the valley so you can walk or
-                ride empty-handed.
+                Walk the old Nakasendo hand in hand — not hand on suitcase.
+                Your bags travel ahead and wait for you.
               </p>
               <span className="entry-go">
                 Luggage shuttle <ArrowRight size={14} />

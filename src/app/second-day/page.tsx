@@ -1,9 +1,38 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, ExternalLink } from "lucide-react";
 import { WHATSAPP_URL, MYMAP_EMBED_URL, MYMAP_VIEW_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+
+export const metadata: Metadata = {
+  title:
+    "Self-Tour Advice: 4 Mapped E-Bike Routes in Nagiso | Beyond Nakasendo Cycling",
+  description:
+    "How to spend your second day in Nagiso, Kiso Valley: four self-guided e-bike routes with turn-by-turn Google Maps — a railway-side old road, a gorge-and-onsen ride, the Yogawa Nakasendo Challenge, and a quiet back road into Tsumago.",
+  alternates: { canonical: "/second-day" },
+  openGraph: {
+    type: "article",
+    url: "https://nakasendo-ebike.com/second-day",
+    siteName: "Beyond Nakasendo Cycling",
+    title: "Self-Tour Advice: 4 Mapped E-Bike Routes in Nagiso",
+    description:
+      "Day one on foot, day two on wheels: four self-guided e-bike routes through the quiet side of the Kiso Valley, each drawn on one Google My Map.",
+    locale: "en_US",
+    images: ["/assets/gorge.jpg"],
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Self-Tour Advice: 4 Mapped E-Bike Routes in Nagiso",
+  inLanguage: "en",
+  about:
+    "Four self-guided e-bike routes around Nagiso in the Kiso Valley, with route maps and seasonal advice",
+  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  mainEntityOfPage: "https://nakasendo-ebike.com/second-day",
+};
 
 /** Line colors matching each course on the My Map below. */
 const LINE = {
@@ -16,6 +45,10 @@ const LINE = {
 export default function SecondDayPage() {
   return (
     <div className="lp">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteNav />
 
       <FloatBook href={WHATSAPP_URL}>
@@ -24,7 +57,7 @@ export default function SecondDayPage() {
 
       {/* PAGE HEAD */}
       <header className="page-head">
-        <span className="eyebrow">Self-tour advice · Nagiso, Kiso Valley</span>
+        <span className="eyebrow">Column · Self-tour advice · Nagiso, Kiso Valley</span>
         <h1>
           The Nakasendo is <em>the doorway — not the valley.</em>
         </h1>

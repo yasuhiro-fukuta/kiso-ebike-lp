@@ -1,9 +1,38 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, ExternalLink } from "lucide-react";
 import { WHATSAPP_URL_JA, MYMAP_EMBED_URL, MYMAP_VIEW_URL } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
+
+export const metadata: Metadata = {
+  title:
+    "セルフツアーのすすめ——南木曽のE-bikeおすすめ4コース | Beyond Nakasendo Cycling",
+  description:
+    "南木曽・木曽谷での「2日目」の過ごし方。E-bikeセルフツアーのおすすめ4コースをGoogleマップの地図つきで紹介——鉄道と並走する旧中山道、渓谷と温泉のコース、与川道の中山道チャレンジ、妻籠へ抜ける静かな森林鉄道跡。",
+  alternates: { canonical: "/ja/second-day" },
+  openGraph: {
+    type: "article",
+    url: "https://nakasendo-ebike.com/ja/second-day",
+    siteName: "Beyond Nakasendo Cycling",
+    title: "セルフツアーのすすめ——南木曽のE-bikeおすすめ4コース",
+    description:
+      "1日目は歩く、2日目は走る。木曽谷の「静かな側」を巡るセルフガイド4コースを、1枚のGoogleマイマップに色分けして公開中。",
+    locale: "ja_JP",
+    images: ["/assets/gorge.jpg"],
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "セルフツアーのすすめ——南木曽のE-bikeおすすめ4コース",
+  inLanguage: "ja",
+  about:
+    "南木曽・木曽谷のE-bikeセルフツアー4コース(地図・季節のアドバイスつき)",
+  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  mainEntityOfPage: "https://nakasendo-ebike.com/ja/second-day",
+};
 
 /** 下のマイマップの各コースの線の色。 */
 const LINE = {
@@ -16,6 +45,10 @@ const LINE = {
 export default function JaSecondDayPage() {
   return (
     <div className="lp">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteNav lang="ja" />
 
       <FloatBook href={WHATSAPP_URL_JA}>
@@ -24,7 +57,7 @@ export default function JaSecondDayPage() {
 
       {/* PAGE HEAD */}
       <header className="page-head">
-        <span className="eyebrow">セルフツアーのすすめ · 南木曽・木曽谷</span>
+        <span className="eyebrow">コラム · セルフツアーのすすめ · 南木曽・木曽谷</span>
         <h1>
           中山道は、<em>木曽谷の魅力の「入口」です。</em>
         </h1>
