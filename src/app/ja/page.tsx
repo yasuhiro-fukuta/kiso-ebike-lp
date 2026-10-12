@@ -4,54 +4,14 @@ import Link from "next/link";
 import {
   ArrowRight,
   Bike,
-  BedDouble,
   Backpack,
-  Shirt,
   Compass,
-  Map,
   MessageCircle,
 } from "lucide-react";
 import { WHATSAPP_URL_JA } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
-const SERVICES = [
-  {
-    href: "/ja/rental",
-    icon: Bike,
-    title: "E-bikeレンタル",
-    desc: "希望の場所にお届け、エリア内どこでも乗り捨てOK。静かな谷の道をセルフガイドで。",
-  },
-  {
-    href: "/ja/second-day",
-    icon: Map,
-    title: "セルフツアーのすすめ",
-    desc: "南木曽での「2日目」の過ごし方。おすすめ3コースを地図つきで公開中。",
-  },
-  {
-    href: "/ja/stay",
-    icon: BedDouble,
-    title: "宿泊",
-    desc: "いまはゲストハウス柏屋。2027年には一棟貸しの古民家も。",
-  },
-  {
-    href: "/ja/luggage-shuttle",
-    icon: Backpack,
-    title: "手荷物シャトル",
-    desc: "駅と宿の間で荷物を運びます。歩きも走りも、手ぶらで。",
-  },
-  {
-    href: "/ja/gear",
-    icon: Shirt,
-    title: "ギアレンタル",
-    desc: "ヒノキ傘、熊鈴・熊スプレー、川遊びや冬の装備まで1点から。",
-  },
-  {
-    href: "/ja/guided",
-    icon: Compass,
-    title: "ガイドツアー",
-    desc: "朝7時からの早朝2時間ライド。木曽川ダウンヒルは近日公開。",
-  },
-];
+/* eslint-disable @next/next/no-img-element */
 
 export default function JaHomePage() {
   return (
@@ -71,14 +31,14 @@ export default function JaHomePage() {
           ガイドブックの外へ。<em>地元の遊び方</em>で。
         </h1>
         <p className="hero-sub">
-          日帰り客が素通りしていく谷には、隠れた渓谷、森林鉄道の跡、飛び込める川の淵があります。私たちは中山道沿いの里山でE-bikeを軸に、宿・荷物・道具・ガイドまでそろえた「旅の道具箱」を営んでいます。
+          中山道沿いの里山から、E-bike・地元ガイド・荷物の段取りまで。木曽谷の「静かな側」を遊ぶための拠点です。
         </p>
         <div className="hero-cta">
-          <Link href="/ja/rental" className="btn-primary">
-            E-bikeを借りる <ArrowRight size={16} />
-          </Link>
-          <Link href="/ja/second-day" className="btn-ghost">
-            2日目の過ごし方はこちら
+          <a href="#start" className="btn-primary">
+            入口をえらぶ <ArrowRight size={16} />
+          </a>
+          <Link href="/ja/explore" className="btn-ghost">
+            周辺を楽しむならこちら
           </Link>
         </div>
       </header>
@@ -99,48 +59,89 @@ export default function JaHomePage() {
         </div>
       </div>
 
-      {/* INTRO */}
-      <section className="intro">
-        <div>
-          <span className="eyebrow">私たちについて</span>
+      {/* 目的別の入口 */}
+      <section className="mini-sec" id="start">
+        <span className="eyebrow">この谷で、何をしに?</span>
+        <h2>入口は3つ。</h2>
+        <div className="entry-grid">
+          {/* 12/7撮影後に写真差し替え */}
+          <Link href="/ja/guided" className="entry-card">
+            <img
+              src="/assets/downhill.jpg"
+              alt="木曽川沿いを下るガイドツアーのE-bike"
+            />
+            <div className="entry-body">
+              <h3>
+                <Compass size={20} /> ガイドツアーに参加する
+              </h3>
+              <p>
+                この道で育った住民と走る。1日がかりの木曽川ダウンヒルと、朝7時からの早朝2時間ライド。
+              </p>
+              <span className="entry-go">
+                ガイドツアーへ <ArrowRight size={14} />
+              </span>
+            </div>
+          </Link>
+          {/* 12/7撮影後に写真差し替え */}
+          <Link href="/ja/rental" className="entry-card">
+            <img
+              src="/assets/riders.jpg"
+              alt="ファットタイヤE-bikeで出発前の家族4人(南木曽の集落の道)"
+            />
+            <div className="entry-body">
+              <h3>
+                <Bike size={20} /> E-bikeを借りる
+              </h3>
+              <p>
+                希望の場所にお届け、エリア内どこでも乗り捨てOK。静かな谷の道をセルフガイドで。
+              </p>
+              <span className="entry-go">
+                E-bikeレンタルへ <ArrowRight size={14} />
+              </span>
+            </div>
+          </Link>
+          {/* 12/7撮影後に写真差し替え */}
+          <Link href="/ja/luggage-shuttle" className="entry-card">
+            <img
+              src="/assets/shuttle-van.jpg"
+              alt="木曽谷を走る手荷物シャトルのバン"
+            />
+            <div className="entry-body">
+              <h3>
+                <Backpack size={20} /> 荷物を運んでもらう
+              </h3>
+              <p>
+                駅と宿の間で荷物をお運びします。歩きも走りも、手ぶらで。
+              </p>
+              <span className="entry-go">
+                手荷物シャトルへ <ArrowRight size={14} />
+              </span>
+            </div>
+          </Link>
+        </div>
+        <div className="sub-entries">
+          <Link href="/ja/stay">
+            ゲストハウス柏屋に泊まる <ArrowRight size={13} />
+          </Link>
+          <Link href="/ja/plan">
+            3泊モデルプランを見る <ArrowRight size={13} />
+          </Link>
+        </div>
+      </section>
+
+      {/* 周辺を楽しむバンド */}
+      <section className="hub-band">
+        <div className="hub-band-inner">
+          <span className="eyebrow">走る、のその先へ</span>
           <h2>
-            京都と江戸を結ぶ旧街道、その<em>里山</em>のE-bike拠点。
+            渓谷も、コースも、<em>地元の知恵も。</em>
           </h2>
           <p>
-            南木曽は中山道の宿場町。妻籠・馬籠を目指して誰もが通り過ぎていきますが、本当にいい場所は幹線から数分外れたところにあります。エメラルドの渓谷、忘れられた鉄道跡、地元の人だけが知る泳ぎ場。
+            阿寺ブルーの川、柿其渓谷、おすすめ3コースのセルフツアー、書道体験、借りられる道具——周辺の楽しみ方は、ここから一段深く。
           </p>
-          <p>
-            静かなE-bikeはこの谷を開ける鍵。その周りに、泊まる宿、荷物を運ぶシャトル、借りられる道具、一緒に走るガイド、そして一人で行く人への正直なアドバイスを揃えました。必要なものを下から選んでください。
-          </p>
-        </div>
-        <div className="intro-visual"></div>
-      </section>
-
-      {/* 3泊モデルプラン */}
-      <section className="mini-sec" id="plan">
-        <span className="eyebrow">旅の計画中なら</span>
-        <h2>この谷、何泊の価値がある?——答えは3泊。</h2>
-        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "1.6rem" }}>
-          歩いて妻籠へ、E-bikeで阿寺渓谷へ、電車で奈良井宿へ——ベッドは3晩とも柏屋。旅程はこちらで書いておきました。
-        </p>
-        <Link href="/ja/plan" className="stay-cta">
-          3泊モデルプランを見る <ArrowRight size={15} />
-        </Link>
-      </section>
-
-      {/* SERVICE DIRECTORY */}
-      <section className="mini-sec" id="services">
-        <span className="eyebrow">できること</span>
-        <h2>入口は6つ。</h2>
-        <div className="mini-grid">
-          {SERVICES.map((s) => (
-            <Link key={s.href} href={s.href} className="mini-card">
-              <h3>
-                <s.icon size={20} /> {s.title}
-              </h3>
-              <p>{s.desc}</p>
-            </Link>
-          ))}
+          <Link href="/ja/explore" className="band-cta">
+            周辺を楽しむ <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
 

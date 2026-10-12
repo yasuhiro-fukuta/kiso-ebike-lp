@@ -4,54 +4,14 @@ import Link from "next/link";
 import {
   ArrowRight,
   Bike,
-  BedDouble,
   Backpack,
-  Shirt,
   Compass,
-  Map,
   MessageCircle,
 } from "lucide-react";
 import { WHATSAPP_URL } from "./site";
 import { SiteNav, SiteFooter, FloatBook } from "./chrome";
 
-const SERVICES = [
-  {
-    href: "/rental",
-    icon: Bike,
-    title: "E-Bike Rental",
-    desc: "Delivered to the spot you choose, dropped off anywhere in the area — self-guided rides on quiet valley roads.",
-  },
-  {
-    href: "/second-day",
-    icon: Map,
-    title: "Self-Tour Advice",
-    desc: "How to spend your second day in Nagiso — written out, on foot or by e-bike.",
-  },
-  {
-    href: "/stay",
-    icon: BedDouble,
-    title: "Stay",
-    desc: "Kashiwaya Guesthouse now; a whole kominka to yourselves in 2027.",
-  },
-  {
-    href: "/luggage-shuttle",
-    icon: Backpack,
-    title: "Luggage Shuttle",
-    desc: "Bags moved along the valley so you can walk or ride empty-handed.",
-  },
-  {
-    href: "/gear",
-    icon: Shirt,
-    title: "Gear Rental",
-    desc: "Woven Kiso hats, bear bells & spray, swim and winter kit.",
-  },
-  {
-    href: "/guided",
-    icon: Compass,
-    title: "Guided Tour",
-    desc: "A two-hour dawn ride before breakfast, or the full-day Kiso River Downhill.",
-  },
-];
+/* eslint-disable @next/next/no-img-element */
 
 export default function Page() {
   return (
@@ -73,17 +33,15 @@ export default function Page() {
           Slide out of the guidebook. <em>Go play</em> like a local.
         </h1>
         <p className="hero-sub">
-          We&apos;re an e-bike outfit in the satoyama hills along the old
-          Nakasendo road — and everything a slow traveler needs around the
-          ride: beds, bags carried, gear lent, guides who grew up on these
-          roads.
+          E-bikes, local guides and luggage logistics for the quiet side of
+          the Kiso Valley, on the old Nakasendo road.
         </p>
         <div className="hero-cta">
-          <Link href="/rental" className="btn-primary">
-            Rent an E-Bike <ArrowRight size={16} />
-          </Link>
-          <Link href="/second-day" className="btn-ghost">
-            Staying a second day? Start here
+          <a href="#start" className="btn-primary">
+            Find your way in <ArrowRight size={16} />
+          </a>
+          <Link href="/explore" className="btn-ghost">
+            Exploring the area? Start here
           </Link>
         </div>
       </header>
@@ -104,57 +62,94 @@ export default function Page() {
         </div>
       </div>
 
-      {/* INTRO — the overview */}
-      <section className="intro">
-        <div>
-          <span className="eyebrow">Who we are</span>
+      {/* PURPOSE ENTRANCES */}
+      <section className="mini-sec" id="start">
+        <span className="eyebrow">What brings you to the valley?</span>
+        <h2>Three doors in.</h2>
+        <div className="entry-grid">
+          {/* 12/7撮影後に写真差し替え */}
+          <Link href="/guided" className="entry-card">
+            <img
+              src="/assets/downhill.jpg"
+              alt="Guided e-bike tour descending along the Kiso River"
+            />
+            <div className="entry-body">
+              <h3>
+                <Compass size={20} /> Join a guided tour
+              </h3>
+              <p>
+                Ride with locals who grew up on these roads — the full-day
+                Kiso River Downhill, or a two-hour dawn ride.
+              </p>
+              <span className="entry-go">
+                Guided tours <ArrowRight size={14} />
+              </span>
+            </div>
+          </Link>
+          {/* 12/7撮影後に写真差し替え */}
+          <Link href="/rental" className="entry-card">
+            <img
+              src="/assets/riders.jpg"
+              alt="A family of four on fat-tire e-bikes in Nagiso"
+            />
+            <div className="entry-body">
+              <h3>
+                <Bike size={20} /> Rent an e-bike
+              </h3>
+              <p>
+                Delivered to the spot you choose, dropped off anywhere in
+                the area. Self-guided, on quiet valley roads.
+              </p>
+              <span className="entry-go">
+                E-bike rental <ArrowRight size={14} />
+              </span>
+            </div>
+          </Link>
+          {/* 12/7撮影後に写真差し替え */}
+          <Link href="/luggage-shuttle" className="entry-card">
+            <img
+              src="/assets/shuttle-van.jpg"
+              alt="The luggage shuttle van parked in the Kiso Valley"
+            />
+            <div className="entry-body">
+              <h3>
+                <Backpack size={20} /> Have your bags carried
+              </h3>
+              <p>
+                We move your luggage along the valley so you can walk or
+                ride empty-handed.
+              </p>
+              <span className="entry-go">
+                Luggage shuttle <ArrowRight size={14} />
+              </span>
+            </div>
+          </Link>
+        </div>
+        <div className="sub-entries">
+          <Link href="/stay">
+            Stay at Kashiwaya Guesthouse <ArrowRight size={13} />
+          </Link>
+          <Link href="/plan">
+            The 3-night model plan <ArrowRight size={13} />
+          </Link>
+        </div>
+      </section>
+
+      {/* EXPLORE BAND */}
+      <section className="hub-band">
+        <div className="hub-band-inner">
+          <span className="eyebrow">Beyond the ride</span>
           <h2>
-            An e-bike hub in the <em>satoyama</em>, on the old road between
-            Kyoto and Tokyo.
+            Gorges, routes and <em>local know-how.</em>
           </h2>
           <p>
-            Nagiso sits on the Nakasendo, in the wooded hills the Japanese
-            call satoyama — the half-wild country between village and
-            mountain. Everyone passes through; almost nobody stays to play.
-            That&apos;s the gap we fill.
+            Atera&apos;s impossibly blue water, the Kakizore gorge, three
+            mapped self-tour routes, calligraphy, gear to borrow — everything
+            around the ride lives one level deeper.
           </p>
-          <p>
-            Quiet e-bikes are the key that opens this valley, and around them
-            we&apos;ve built the rest of the toolkit: a guesthouse to sleep
-            in, a shuttle for your bags, gear to borrow, guides to ride with,
-            and honest advice for going alone. Pick what you need below.
-          </p>
-        </div>
-        <div className="intro-visual"></div>
-      </section>
-
-      {/* 3-NIGHT MODEL PLAN */}
-      <section className="mini-sec" id="plan">
-        <span className="eyebrow">Planning your trip?</span>
-        <h2>How many nights is this valley worth? Three.</h2>
-        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "52ch", marginBottom: "1.6rem" }}>
-          On foot to Tsumago, by e-bike to the Atera Gorge, by train to
-          Narai-juku — one bed at Kashiwaya the whole time. We wrote the
-          itinerary so you don&apos;t have to.
-        </p>
-        <Link href="/plan" className="stay-cta">
-          See the 3-night model plan <ArrowRight size={15} />
-        </Link>
-      </section>
-
-      {/* SERVICE DIRECTORY */}
-      <section className="mini-sec" id="services">
-        <span className="eyebrow">What we do</span>
-        <h2>Six ways in.</h2>
-        <div className="mini-grid">
-          {SERVICES.map((s) => (
-            <Link key={s.href} href={s.href} className="mini-card">
-              <h3>
-                <s.icon size={20} /> {s.title}
-              </h3>
-              <p>{s.desc}</p>
-            </Link>
-          ))}
+          <Link href="/explore" className="band-cta">
+            Explore the area <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
 
