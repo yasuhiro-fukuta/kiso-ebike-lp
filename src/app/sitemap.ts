@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/luggage-shuttle`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/gear`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/shodo`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/live-here`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/explore`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/atera`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/atera-gorge`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/kakizore`, changeFrequency: "monthly", priority: 0.8 },
@@ -30,6 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/ja/luggage-shuttle`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/ja/gear`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/ja/shodo`, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${SITE_URL}/ja/live-here`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_URL}/ja/explore`, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

@@ -28,7 +28,7 @@ export const wa = (text?: string) =>
     ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`
     : `https://wa.me/${WA_NUMBER}`;
 
-/** Plain link — no template (home, stay, self-tour, live-here, nav). */
+/** Plain link — no template (home, stay, self-tour, explore, nav). */
 export const WHATSAPP_URL = wa();
 export const WHATSAPP_URL_JA = wa();
 

@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* =========================================================
-   Murabito Bikes — Kiso Valley E-Bike LP
+/* ==================================================   Murabito Bikes — Kiso Valley E-Bike LP
    Tailwind is imported above (kept for any utility classes /
    the /reserve page). The styles below drive the custom LP.
    ========================================================= */
@@ -613,8 +612,7 @@ body::before {
   padding: 0.3rem 0.7rem; border-radius: 4px; backdrop-filter: blur(4px);
 }
 
-/* =========================================================
-   SPECIAL COURSE — Kiso River Downhill (full day · guided)
+/* ==================================================   SPECIAL COURSE — Kiso River Downhill (full day · guided)
    A darker, premium band that sets the flagship apart.
    All selectors scoped under .special.
    ========================================================= */
@@ -803,8 +801,7 @@ body::before {
   .special-cta, .special-faq .sfaq summary::after { transition: none; }
 }
 
-/* =========================================================
-   GUIDE — Wilderness First Aid credential (trust / safety)
+/* ==================================================   GUIDE — Wilderness First Aid credential (trust / safety)
    Light band between the moss GEAR section and the dark
    Special Course band. All selectors scoped under .guide.
    ========================================================= */
@@ -863,8 +860,7 @@ body::before {
 }
 @media (prefers-reduced-motion: reduce) { .cert-front { transition: none; } }
 
-/* =========================================================
-   SHODO — Japanese calligraphy page. Paper-and-ink theme:
+/* ==================================================   SHODO — Japanese calligraphy page. Paper-and-ink theme:
    washi background, sumi kanji watermark, vertical accent.
    All selectors scoped under .shodo-*.
    ========================================================= */
@@ -971,8 +967,7 @@ body::before {
 .shodo-rainy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200, 160, 74, 0.4); }
 .shodo-rainy a:hover { border-color: var(--gold); }
 
-/* =========================================================
-   RENEWAL (strategy phase 1)
+/* ==================================================   RENEWAL (strategy phase 1)
    - .img-wanted : dashed placeholder marking a photo we still
      need to shoot (doubles as the shooting list)
    - .hub-band   : dark full-width CTA band (second-day hub)
@@ -1134,8 +1129,7 @@ body::before {
 }
 .review-ask a:hover { background: var(--gold); color: var(--ink); }
 
-/* =========================================================
-   HAMBURGER NAV
+/* ==================================================   HAMBURGER NAV
    ========================================================= */
 .nav-burger {
   background: none; border: 0; color: #fff; cursor: pointer;
@@ -1419,3 +1413,32 @@ figure.season-cell .season-tag {
 @media (max-width: 1000px) { .drop-steps.cols5 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .drop-steps.cols5 { grid-template-columns: 1fr; } }
 .lb-rules b { display: block; margin-bottom: 0.15rem; }
+
+/* purpose entrances on the top page (photos swap after the 12/7 shoot) */
+.entry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+@media (max-width: 860px) { .entry-grid { grid-template-columns: 1fr; } }
+.entry-card {
+  display: block; background: #e7dfcc; border-radius: 14px; overflow: hidden;
+  text-decoration: none; color: var(--ink); transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.entry-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(42, 38, 30, 0.14); }
+.entry-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.entry-body { padding: 1.2rem 1.3rem 1.4rem; }
+.entry-body h3 {
+  font-family: var(--serif); font-size: 1.35rem; margin-bottom: 0.45rem;
+  display: flex; align-items: center; gap: 0.55rem;
+}
+.entry-body h3 svg { color: var(--rust); flex-shrink: 0; }
+.entry-body p { font-weight: 300; font-size: 0.9rem; color: #3a352d; margin-bottom: 0.8rem; }
+.entry-go {
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; color: var(--cedar);
+  display: inline-flex; align-items: center; gap: 0.3rem;
+}
+.sub-entries { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; margin-top: 2rem; }
+.sub-entries a {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.1rem; border: 1px solid rgba(42, 38, 30, 0.25); border-radius: 100px;
+  text-decoration: none; color: var(--ink); font-size: 0.88rem; font-weight: 500;
+  transition: background 0.2s ease;
+}
+.sub-entries a:hover { background: #e7dfcc; }

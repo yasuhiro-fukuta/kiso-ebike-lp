@@ -40,20 +40,18 @@ const MENU_ITEMS: Record<
   { href: string; label: string; sub: string }[]
 > = {
   en: [
+    { href: "/guided", label: "Guided Tours by Locals", sub: "Dawn rides & the Kiso River Downhill" },
     { href: "/rental", label: "E-Bike Rental", sub: "Delivered to you · drop anywhere" },
     { href: "/luggage-shuttle", label: "Luggage Bus", sub: "Nagiso ⇄ Kiso-Fukushima, bags only" },
-    { href: "/gear", label: "Gear Rental", sub: "Kiso hats, bear kit & more" },
     { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
-    { href: "/second-day", label: "Self-Tour Advice", sub: "Your second day in Nagiso" },
-    { href: "/guided", label: "Guided Tours by Locals", sub: "Dawn rides & the Kiso River Downhill" },
+    { href: "/explore", label: "Explore the Area", sub: "Gorges, routes, gear & columns" },
   ],
   ja: [
+    { href: "/ja/guided", label: "住民本気のガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "お届け&乗り捨て自由" },
     { href: "/ja/luggage-shuttle", label: "ラゲッジバス", sub: "南木曽⇄木曽福島・荷物専用" },
-    { href: "/ja/gear", label: "ギアレンタル", sub: "ヒノキ傘・熊対策ほか" },
     { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
-    { href: "/ja/second-day", label: "セルフツアーのすすめ", sub: "南木曽での2日目" },
-    { href: "/ja/guided", label: "住民本気のガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
+    { href: "/ja/explore", label: "周辺を楽しむ", sub: "渓谷・コース・道具・コラム" },
   ],
 };
 
@@ -90,10 +88,18 @@ const ATERA_COL_LABEL: Record<Lang, string> = {
   en: "Atera Gorge by Train & E-Bike",
   ja: "阿寺渓谷へは電車&E-bike",
 };
-const LIVE_HREF: Record<Lang, string> = { en: "/live-here", ja: "/ja/live-here" };
-const LIVE_LABEL: Record<Lang, string> = {
-  en: "Live in the Valley",
-  ja: "谷に住む",
+const SECONDDAY_HREF: Record<Lang, string> = {
+  en: "/second-day",
+  ja: "/ja/second-day",
+};
+const SECONDDAY_LABEL: Record<Lang, string> = {
+  en: "Self-Tour Advice: 3 Mapped Routes",
+  ja: "セルフツアーのすすめ——おすすめ3コース",
+};
+const GEAR_HREF: Record<Lang, string> = { en: "/gear", ja: "/ja/gear" };
+const GEAR_LABEL: Record<Lang, string> = {
+  en: "Gear Rental",
+  ja: "ギアレンタル",
 };
 
 /** EN ⇄ JA path mapping for the toggle. /atera is a Japanese-only
@@ -275,6 +281,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
               <Link href={PLAN_HREF[lang]} onClick={() => setOpen(false)}>
                 {PLAN_LABEL[lang]}
               </Link>
+              <Link href={SECONDDAY_HREF[lang]} onClick={() => setOpen(false)}>
+                {SECONDDAY_LABEL[lang]}
+              </Link>
               <Link href={KAKIZORE_HREF[lang]} onClick={() => setOpen(false)}>
                 {KAKIZORE_LABEL[lang]}
               </Link>
@@ -310,8 +319,8 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
             <Link href={SHODO_HREF[lang]} onClick={() => setOpen(false)}>
               {SHODO_LABEL[lang]}
             </Link>
-            <Link href={LIVE_HREF[lang]} onClick={() => setOpen(false)}>
-              {LIVE_LABEL[lang]}
+            <Link href={GEAR_HREF[lang]} onClick={() => setOpen(false)}>
+              {GEAR_LABEL[lang]}
             </Link>
             <a
               href={lang === "ja" ? WHATSAPP_URL_JA : WHATSAPP_URL}
@@ -482,7 +491,9 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           <br />
           <Link href={SHODO_HREF[lang]}>{SHODO_LABEL[lang]}</Link>
           <br />
-          <Link href={LIVE_HREF[lang]}>{LIVE_LABEL[lang]}</Link>
+          <Link href={GEAR_HREF[lang]}>{GEAR_LABEL[lang]}</Link>
+          <br />
+          <Link href={SECONDDAY_HREF[lang]}>{SECONDDAY_LABEL[lang]}</Link>
           <br />
           <Link href={ja ? "/atera" : "/atera-gorge"}>
             {ja ? "阿寺渓谷へは電車&E-bike" : "Atera Gorge by Train & E-Bike"}
