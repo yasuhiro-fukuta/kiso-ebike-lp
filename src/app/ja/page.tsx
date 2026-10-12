@@ -28,10 +28,10 @@ export default function JaHomePage() {
         <div className="hero-overlay" />
         <span className="eyebrow hero-eyebrow">長野県南木曽町 · 木曽谷 · 中山道</span>
         <h1>
-          ガイドブックの外へ。<em>地元の遊び方</em>で。
+          ふたりの旅に、<em>谷をまるごと。</em>
         </h1>
         <p className="hero-sub">
-          中山道沿いの里山から、E-bike・地元ガイド・荷物の段取りまで。木曽谷の「静かな側」を遊ぶための拠点です。
+          行灯の灯る宿場町、エメラルドの川、誰ともすれ違わない道。木曽谷の「静かな側」を、あなたたちの旅のために整えました——E-bikeはお届け、荷物は先回り、走るなら地元ガイドと。
         </p>
         <div className="hero-cta">
           <a href="#start" className="btn-primary">
@@ -61,21 +61,21 @@ export default function JaHomePage() {
 
       {/* 目的別の入口 */}
       <section className="mini-sec" id="start">
-        <span className="eyebrow">この谷で、何をしに?</span>
+        <span className="eyebrow">どんな一日にしますか?</span>
         <h2>入口は3つ。</h2>
         <div className="entry-grid">
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/guided" className="entry-card">
             <img
-              src="/assets/downhill.jpg"
-              alt="木曽川沿いを下るガイドツアーのE-bike"
+              src="/assets/tour/hero.jpg"
+              alt="橋の上からエメラルド色の木曽川を撮影するライダー"
             />
             <div className="entry-body">
               <h3>
                 <Compass size={20} /> ガイドツアーに参加する
               </h3>
               <p>
-                この道で育った住民と走る。1日がかりの木曽川ダウンヒルと、朝7時からの早朝2時間ライド。
+                木曽川を1日かけて下る貸切ライド。あなたたちのグループに地元ガイドがひとり付いて、撮るべき場所で全部停まります。
               </p>
               <span className="entry-go">
                 ガイドツアーへ <ArrowRight size={14} />
@@ -85,15 +85,15 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/rental" className="entry-card">
             <img
-              src="/assets/riders.jpg"
-              alt="ファットタイヤE-bikeで出発前の家族4人(南木曽の集落の道)"
+              src="/assets/tour/paddies.jpg"
+              alt="静かな田んぼ道で足を止めて写真を撮るライダー(南木曽)"
             />
             <div className="entry-body">
               <h3>
                 <Bike size={20} /> E-bikeを借りる
               </h3>
               <p>
-                希望の場所にお届け、エリア内どこでも乗り捨てOK。静かな谷の道をセルフガイドで。
+                宿までお届け、走り終えた場所で乗り捨てOK。静かな道とエメラルドの川を、ふたりのペースで。
               </p>
               <span className="entry-go">
                 E-bikeレンタルへ <ArrowRight size={14} />
@@ -103,15 +103,15 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/luggage-shuttle" className="entry-card">
             <img
-              src="/assets/shuttle-van.jpg"
-              alt="木曽谷を走る手荷物シャトルのバン"
+              src="/assets/tsumago.jpg"
+              alt="妻籠宿の街道沿いの縁台に出されたざるそば"
             />
             <div className="entry-body">
               <h3>
                 <Backpack size={20} /> 荷物を運んでもらう
               </h3>
               <p>
-                駅と宿の間で荷物をお運びします。歩きも走りも、手ぶらで。
+                スーツケースは先回りさせて、旧街道は手ぶらでふたりで歩く。荷物は目的地で待っています。
               </p>
               <span className="entry-go">
                 手荷物シャトルへ <ArrowRight size={14} />

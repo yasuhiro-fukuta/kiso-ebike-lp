@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   Waves,
   TrainFront,
-  Map,
   Brush,
   Shirt,
   BookOpen,
@@ -43,12 +42,6 @@ const CARDS = [
     desc: "Emerald pools and a forgotten forest railway. Map & access from Junikane Station.",
   },
   {
-    href: "/second-day",
-    icon: Map,
-    title: "Self-Tour Routes",
-    desc: "Three mapped e-bike routes for your second day in Nagiso — gorge, post town, or the full Nakasendo Challenge.",
-  },
-  {
     href: "/shodo",
     icon: Brush,
     title: "Shodo Calligraphy",
@@ -64,7 +57,7 @@ const CARDS = [
     href: "/crowd-free-japan",
     icon: BookOpen,
     title: "Columns",
-    desc: "Longer reads: a 26-day crowd-free Japan itinerary, a first snowboard winter route, and more below.",
+    desc: "Longer reads: our self-tour route advice, a 26-day crowd-free Japan itinerary, a first snowboard winter route, and more below.",
   },
 ];
 
@@ -112,7 +105,7 @@ export default function ExplorePage() {
         <div className="sub-entries">
           <Link href="/atera-gorge">Atera Gorge by Train &amp; E-Bike</Link>
           <Link href="/kakizore">Kakizore Gorge: Map &amp; Access</Link>
-          <Link href="/second-day">Self-Tour Advice: 3 Mapped Routes</Link>
+          <Link href="/second-day">Self-Tour Advice: 4 Mapped Routes</Link>
           <Link href="/crowd-free-japan">Crowd-Free Japan: a 26-Day Itinerary</Link>
           <Link href="/snowboard-route">Learn in Achi, Graduate in Hakuba</Link>
         </div>
