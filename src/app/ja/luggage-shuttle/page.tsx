@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
-import { STATIONS, feeText, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -34,7 +34,7 @@ export default function JaLuggageBusPage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            ラゲッジバスは、南木曽・野尻・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
+            ラゲッジバスは、南木曽・野尻・須原・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
           </p>
           <p className="head-note">
             南木曽から木曽福島へは当日11:30ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
@@ -171,7 +171,7 @@ export default function JaLuggageBusPage() {
             <p>距離に関係なく1個ごと。</p>
           </div>
           <p className="pricing-foot">
-            配送料は1件の予約ごとに1,500円です(区間は南木曽〜木曽福島)。奈良井駅まで延ばすときは応相談で、+1,500円です。予約フォームで概算金額が出ます。
+            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。南部と中部の境目は須原です。中津川(南部延伸)・奈良井(北部延伸)まで延ばすときは要相談で、それぞれ+1,500円です。予約フォームで概算金額が出ます。
           </p>
         </div>
 
@@ -225,7 +225,7 @@ export default function JaLuggageBusPage() {
         <span className="eyebrow">駅</span>
         <h2>荷物を預ける・受け取る「駅」。</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
-          ラゲッジバスの「駅」は、観光案内所・カフェ・提携ゲストハウスなど、荷物を預けられる場所です。朝ひとつの駅で預けて、別の駅で受け取ります。下線のある名前はタップで地図が開きます。
+          ラゲッジバスの「駅」は、観光案内所・カフェ・提携の宿など、荷物を預けられる場所です。宿の駅は、その宿に泊まる方だけが使えます。朝ひとつの駅で預けて、別の駅で受け取ります。下線のある名前はタップで地図やサイトが開きます。
         </p>
         <div className="mini-grid">
           {STATIONS.map((s) => (
@@ -238,10 +238,10 @@ export default function JaLuggageBusPage() {
                   <li key={pl.name.en}>
                     {pl.map ? (
                       <a href={pl.map} target="_blank" rel="noopener noreferrer">
-                        {pl.name.ja}
+                        {placeName(pl, "ja")}
                       </a>
                     ) : (
-                      pl.name.ja
+                      placeName(pl, "ja")
                     )}
                   </li>
                 ))}
@@ -266,7 +266,7 @@ export default function JaLuggageBusPage() {
                   <tr key={pl.id}>
                     <th scope="row">
                       {s.name.ja}
-                      <small>{pl.name.ja}</small>
+                      <small>{placeName(pl, "ja")}</small>
                     </th>
                     <td>{feeText(pl, "ja")}</td>
                     <td>{pl.closed.ja}</td>
@@ -291,10 +291,10 @@ export default function JaLuggageBusPage() {
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> 奈良井への延長は応相談
+              <ArrowRight size={20} /> 中津川・奈良井への延長は要相談
             </h3>
             <p>
-              木曽福島の先、奈良井駅までWhatsAppで相談のうえ運びます。+{yen(EXTENSION_FEE)}です。
+              南木曽の先の中津川、木曽福島の先の奈良井までは、WhatsAppで相談のうえ運びます。それぞれ+{yen(EXTENSION_FEE)}です。
             </p>
           </div>
         </div>

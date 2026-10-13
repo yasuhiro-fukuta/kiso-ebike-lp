@@ -263,10 +263,10 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
-      name: "Luggage Bus (Nagiso ⇄ Nojiri ⇄ Agematsu ⇄ Kiso-Fukushima)",
+      name: "Luggage Bus (Nagiso ⇄ Nojiri ⇄ Suhara ⇄ Agematsu ⇄ Kiso-Fukushima)",
       serviceType: "Luggage transfer",
       description:
-        "Scheduled luggage-only service between Nagiso and Kiso-Fukushima along Route 19, one round trip a day: northbound Nagiso \u2192 Nojiri \u2192 Agematsu \u2192 Kiso-Fukushima 10:00\u201311:30; southbound Kiso-Fukushima \u2192 Agematsu \u2192 Nojiri \u2192 Nagiso 12:00\u201313:30. Bags are handed over at Luggage Bus \u201cstations\u201d \u2014 tourist information offices at Agematsu and Kiso-Fukushima, Cafe Izumiya and the guesthouses Kashiwaya Inn, Waku Nagiso and Yuian at Nagiso, and Cafe Katana at Nojiri; inns in Magome and Tsumago and other places by arrangement; an extension to Narai Station by arrangement, \u00a51,500. Booking required: request on WhatsApp, and a payment link is sent on approval. Luggage only \u2014 no passengers. Fare: a delivery fee of \u00a51,500 per zone passed through (the route Nagiso\u2013Kiso-Fukushima is one zone), charged once per booking, plus \u00a51,500 per bag \u2014 e.g. Nagiso to Kiso-Fukushima with one bag is \u00a53,000.",
+        "Scheduled luggage-only service between Nagiso and Kiso-Fukushima along Route 19, one round trip a day: northbound Nagiso \u2192 Nojiri \u2192 Suhara \u2192 Agematsu \u2192 Kiso-Fukushima 10:00\u201311:30; southbound Kiso-Fukushima \u2192 Agematsu \u2192 Suhara \u2192 Nojiri \u2192 Nagiso 12:00\u201313:30. Bags are handed over at Luggage Bus \u201cstations\u201d \u2014 tourist information offices at Agematsu and Kiso-Fukushima, Cafe Izumiya and the guesthouses Kashiwaya Inn, Waku Nagiso and Yuian at Nagiso, Cafe Katana at Nojiri and the inn kinoma at Suhara (inns for their own guests only); extensions to Nakatsugawa and Narai by arrangement, \u00a51,500 each; other places by arrangement. Booking required: request on WhatsApp, and a payment link is sent on approval. Luggage only \u2014 no passengers. Fare: a delivery fee of \u00a51,500 for each zone passed through (south zone Nagiso\u2013Suhara, central zone Suhara\u2013Kiso-Fukushima), charged once per booking, plus \u00a51,500 per bag \u2014 e.g. Nagiso to Kiso-Fukushima with one bag is \u00a54,500.",
       provider: { "@id": `${SITE_URL}/#business` },
       areaServed: { "@type": "Place", name: "Kiso Valley, Nagiso to Kiso-Fukushima" },
       url: `${SITE_URL}/luggage-shuttle`,

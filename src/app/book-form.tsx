@@ -82,7 +82,7 @@ const jstNow = () => {
     afterDeadline: jst.getUTCHours() >= 21,
   };
 };
-const EXT_POS = [8];
+const EXT_POS = [0, 6];
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";

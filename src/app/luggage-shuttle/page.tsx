@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
-import { STATIONS, feeText, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -35,8 +35,8 @@ export default function LuggageBusPage() {
           </h1>
           <p>
             The Luggage Bus carries your bags along the Nakasendo on a fixed
-            daily timetable, stopping at Nagiso, Nojiri, Agematsu and
-            Kiso-Fukushima. In the morning,
+            daily timetable, stopping at Nagiso, Nojiri, Suhara, Agematsu
+            and Kiso-Fukushima. In the morning,
             leave your bags at one of our stations — a luggage drop point
             or a partner inn — and walk on — they&apos;ll be
             waiting at the other end.
@@ -197,7 +197,7 @@ export default function LuggageBusPage() {
             <p>The same wherever it goes.</p>
           </div>
           <p className="pricing-foot">
-            The delivery fee is ¥1,500 per booking (the route runs Nagiso to Kiso-Fukushima). Going on to Narai Station is by arrangement and adds ¥1,500. The booking form works out an estimate for you.
+            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. Suhara is where the two zones meet. Going on to Nakatsugawa (south) or Narai (north) is by arrangement and adds ¥1,500 each. The booking form works out an estimate for you.
           </p>
         </div>
 
@@ -252,9 +252,9 @@ export default function LuggageBusPage() {
         <h2>Where your bags change hands.</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
           Each &ldquo;station&rdquo; is a place that holds luggage — a tourist
-          information office, a cafe or a partner guesthouse. Hand your bags
-          over at one in the morning, pick them up at another. Underlined
-          names open the map.
+          information office, a cafe or a partner inn (inns are for their
+          own guests only). Hand your bags over at one in the morning, pick
+          them up at another. Underlined names open the map or website.
         </p>
         <div className="mini-grid">
           {STATIONS.map((s) => (
@@ -267,10 +267,10 @@ export default function LuggageBusPage() {
                   <li key={pl.name.en}>
                     {pl.map ? (
                       <a href={pl.map} target="_blank" rel="noopener noreferrer">
-                        {pl.name.en}
+                        {placeName(pl, "en")}
                       </a>
                     ) : (
-                      pl.name.en
+                      placeName(pl, "en")
                     )}
                   </li>
                 ))}
@@ -295,7 +295,7 @@ export default function LuggageBusPage() {
                   <tr key={pl.id}>
                     <th scope="row">
                       {s.name.en}
-                      <small>{pl.name.en}</small>
+                      <small>{placeName(pl, "en")}</small>
                     </th>
                     <td>{feeText(pl, "en")}</td>
                     <td>{pl.closed.en}</td>
@@ -321,11 +321,11 @@ export default function LuggageBusPage() {
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> On to Narai
+              <ArrowRight size={20} /> On to Nakatsugawa or Narai
             </h3>
             <p>
-              Going on past Kiso-Fukushima to Narai Station can be arranged
-              on WhatsApp: +{yen(EXTENSION_FEE)}.
+              Past Nagiso to Nakatsugawa, or past Kiso-Fukushima to Narai,
+              can be arranged on WhatsApp: +{yen(EXTENSION_FEE)} each.
             </p>
           </div>
         </div>
