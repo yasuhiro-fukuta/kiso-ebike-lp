@@ -86,8 +86,8 @@ export default function Page() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/rental" className="entry-card">
             <img
-              src="/assets/tour/paddies.jpg"
-              alt="A rider stops on a quiet lane to photograph golden rice paddies in Nagiso"
+              src="/assets/ebike.jpg"
+              alt="Two MOVE fat-tire e-bikes parked inside the old wooden guesthouse"
             />
             <div className="entry-body">
               <h3>

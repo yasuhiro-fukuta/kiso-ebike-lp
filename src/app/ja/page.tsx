@@ -83,8 +83,8 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/rental" className="entry-card">
             <img
-              src="/assets/tour/paddies.jpg"
-              alt="静かな田んぼ道で足を止めて写真を撮るライダー(南木曽)"
+              src="/assets/ebike.jpg"
+              alt="古民家の土間に並ぶMOVEのファットタイヤE-bike2台"
             />
             <div className="entry-body">
               <h3>
