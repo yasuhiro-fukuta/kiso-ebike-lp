@@ -171,7 +171,7 @@ export default function JaLuggageBusPage() {
             <p>距離に関係なく1個ごと。</p>
           </div>
           <p className="pricing-foot">
-            配送料は1件の予約ごとに1,500円です(区間は南木曽〜木曽福島)。区間の外(南は中津川・妻籠・馬籠、北は奈良井)へ延ばすときは応相談で、区域が1つ増えるごとに+1,500円です。予約フォームで概算金額が出ます。
+            配送料は1件の予約ごとに1,500円です(区間は南木曽〜木曽福島)。奈良井駅まで延ばすときは応相談で、+1,500円です。予約フォームで概算金額が出ます。
           </p>
         </div>
 
@@ -286,15 +286,15 @@ export default function JaLuggageBusPage() {
               <MessageCircle size={20} /> 載っていない場所は応相談
             </h3>
             <p>
-              駅のほかの宿や場所(馬籠・妻籠の宿など)からも送れます。WhatsAppでご相談ください。
+              駅のほかの宿や場所(馬籠・妻籠の宿など)は、WhatsAppで個別にご相談ください。
             </p>
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> 区間外への延長も応相談
+              <ArrowRight size={20} /> 奈良井への延長は応相談
             </h3>
             <p>
-              区間の外へもWhatsAppで相談のうえ運びます。区域が1つ増えるごとに+{yen(EXTENSION_FEE)}です。
+              木曽福島の先、奈良井駅までWhatsAppで相談のうえ運びます。+{yen(EXTENSION_FEE)}です。
             </p>
           </div>
         </div>

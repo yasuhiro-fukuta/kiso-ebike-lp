@@ -197,7 +197,7 @@ export default function LuggageBusPage() {
             <p>The same wherever it goes.</p>
           </div>
           <p className="pricing-foot">
-            The delivery fee is ¥1,500 per booking (the route runs Nagiso to Kiso-Fukushima). Going beyond the route — south to Nakatsugawa, Tsumago or Magome, or north to Narai — is by arrangement and adds ¥1,500 for each further zone. The booking form works out an estimate for you.
+            The delivery fee is ¥1,500 per booking (the route runs Nagiso to Kiso-Fukushima). Going on to Narai Station is by arrangement and adds ¥1,500. The booking form works out an estimate for you.
           </p>
         </div>
 
@@ -315,18 +315,17 @@ export default function LuggageBusPage() {
               <MessageCircle size={20} /> Somewhere not listed?
             </h3>
             <p>
-              Staying at an inn in Magome or Tsumago, or starting somewhere else?
-              Ask on WhatsApp and we&apos;ll work out where to meet your
-              bags.
+              Staying at an inn in Magome or Tsumago, or starting somewhere
+              else? Ask us on WhatsApp case by case.
             </p>
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> Beyond the route
+              <ArrowRight size={20} /> On to Narai
             </h3>
             <p>
-              Past either end of the route can be arranged on WhatsApp:
-              +{yen(EXTENSION_FEE)} for each further zone.
+              Going on past Kiso-Fukushima to Narai Station can be arranged
+              on WhatsApp: +{yen(EXTENSION_FEE)}.
             </p>
           </div>
         </div>

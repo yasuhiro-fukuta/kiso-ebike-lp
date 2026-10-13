@@ -82,7 +82,7 @@ const jstNow = () => {
     afterDeadline: jst.getUTCHours() >= 21,
   };
 };
-const EXT_POS = [1, 8];
+const EXT_POS = [8];
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
@@ -177,8 +177,8 @@ const SERVICES: Record<string, Service> = {
     },
     build: (l, g, est) =>
       l === "ja"
-        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿・場所:${g("inns")}\n個数:${g("bags")}個\n概算金額:${est}\n駅の預かり料(現地払い):預ける駅 ${lbFee(l, g("from"))} / 受け取る駅 ${lbFee(l, g("to"))}`
-        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInn or place: ${g("inns")}\nBags: ${g("bags")}\nEstimate: ${est}\nStation holding fees (paid on the spot): ${lbFee(l, g("from"))} at drop-off / ${lbFee(l, g("to"))} at pick-up`,
+        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿・場所:${g("inns")}\n個数:${g("bags")}個\n概算金額:${est}\n駅の預かり料(現地払い):預ける駅 ${lbFee(l, g("from"))} / 受け取る駅 ${lbFee(l, g("to"))}\n※荷物の写真を1個につき1枚、このチャットに送ります。`
+        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInn or place: ${g("inns")}\nBags: ${g("bags")}\nEstimate: ${est}\nStation holding fees (paid on the spot): ${lbFee(l, g("from"))} at drop-off / ${lbFee(l, g("to"))} at pick-up\nI'll send one photo of each bag in this chat.`,
   },
   "luggage-send": {
     title: { en: "Luggage Bus — after payment", ja: "ラゲッジバス(支払い後の連絡)" },

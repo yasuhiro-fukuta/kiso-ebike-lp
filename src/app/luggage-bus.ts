@@ -3,7 +3,7 @@
  *  英語ページ(/luggage-shuttle)と日本語ページ(/ja/luggage-shuttle)で使う。
  *  料金は「配送料(通る区域ごとに1,500円・1予約ごと)+荷物1個1,500円」(2026-10-10 確定)。
  *  荷物の預け場所と提携宿を「◯◯駅」として STATIONS に載せる。
- *  載っていない場所、区間外への延長(中津川・妻籠・馬籠の南部、奈良井の北部)はWhatsAppで応相談。
+ *  載っていない場所、区間外への延長は奈良井のみ(WhatsAppで応相談)。中津川・妻籠・馬籠はいったん対象外(2026-10-13)。
  *  ============================================================ */
 
 type T = { en: string; ja: string };
@@ -167,7 +167,7 @@ export const ZONES: { name: T; route: T }[] = [
 ];
 
 /** Extension beyond the route, by arrangement: ¥1,500 for each further
- *  zone (south: Nakatsugawa, Tsumago, Magome; north: Narai). Shown on the page only in general terms;
+ *  zone (Narai only for now; the south side is out of scope since 2026-10-13). Shown on the page only in general terms;
  *  the extension stations appear only as booking-form choices. */
 export const EXTENSION_FEE = 1500;
 
@@ -192,7 +192,6 @@ const FARE_ZONES: { from: number; to: number; en: string; ja: string }[] = [
  *  on the page); Ena and Matsumoto are not taken for now. */
 const NAGISO = 4;
 export const FORM_POINTS: { en: string; ja: string; pos: number | null; place: Place | null }[] = [
-  { en: "South extension: Nakatsugawa, Tsumago or Magome (ask in chat)", ja: "南部延伸:中津川・妻籠・馬籠の宿など(チャットで相談)", pos: 1, place: null },
   { en: "Nagiso stop (Cafe Izumiya)", ja: "南木曽駅(カフェイズミヤ)", pos: NAGISO, place: PLACES.izumiya },
   { en: "Nagiso stop (Guesthouse Kashiwaya Inn)", ja: "南木曽駅(ゲストハウス柏屋Inn)", pos: NAGISO, place: PLACES.kashiwaya },
   { en: "Nagiso stop (Guesthouse Waku Nagiso)", ja: "南木曽駅(ゲストハウスWaku南木曽)", pos: NAGISO, place: PLACES.waku },
@@ -222,7 +221,7 @@ export const EXAMPLES: { trip: T; zones: number; bags: number }[] = [
   { trip: { en: "Nagiso → Kiso-Fukushima", ja: "南木曽 → 木曽福島" }, zones: 1, bags: 1 },
   { trip: { en: "Nagiso → Kiso-Fukushima", ja: "南木曽 → 木曽福島" }, zones: 1, bags: 2 },
   { trip: { en: "Nojiri → Kiso-Fukushima", ja: "野尻 → 木曽福島" }, zones: 1, bags: 3 },
-  { trip: { en: "Nakatsugawa (extension) → Kiso-Fukushima", ja: "中津川(延長) → 木曽福島" }, zones: 2, bags: 1 },
+  { trip: { en: "Nagiso → Narai Station (extension)", ja: "南木曽 → 奈良井駅(延長)" }, zones: 2, bags: 1 },
 ];
 
 /** Booking-date check for the form: requests close at 21:00 the day before
@@ -282,10 +281,10 @@ export const RULES: { title: T; body: T }[] = [
     },
   },
   {
-    title: { en: "Label your bags", ja: "荷物に名札を" },
+    title: { en: "Send a photo of each bag", ja: "荷物の写真を送ってください" },
     body: {
-      en: "Attach a paper tag to each bag with your booking name and destination. We explain how in the approval message.",
-      ja: "荷物ごとに、予約名と行き先を書いた紙を付けてください。書き方は承認メッセージでご案内します。",
+      en: "Send us one photo per bag on WhatsApp. We attach a tag to each bag when we collect it.",
+      ja: "荷物1個につき1枚、写真をWhatsAppで送ってください。タグは回収のときにこちらで付けます。",
     },
   },
   {
