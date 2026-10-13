@@ -36,8 +36,8 @@ const SERVICES = [
   {
     href: "/ja/luggage-shuttle",
     icon: Backpack,
-    title: "手荷物シャトル",
-    desc: "駅と宿の間で荷物を運びます。歩きも走りも、手ぶらで。",
+    title: "ラゲッジバス",
+    desc: "南木曽から木曽福島まで、毎日走る荷物専用の定期便。",
   },
   {
     href: "/ja/gear",
