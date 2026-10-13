@@ -101,8 +101,8 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/luggage-shuttle" className="entry-card">
             <img
-              src="/assets/tsumago.jpg"
-              alt="妻籠宿の街道沿いの縁台に出されたざるそば"
+              src="/assets/shuttle-van-crop.jpg"
+              alt="シャトルバンの荷室に積まれたスーツケース(宿の前で)"
             />
             <div className="entry-body">
               <h3>
