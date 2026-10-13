@@ -65,8 +65,8 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/guided" className="entry-card">
             <img
-              src="/assets/tour/hero.jpg"
-              alt="橋の上からエメラルド色の木曽川を撮影するライダー"
+              src="/assets/guide-point.jpg"
+              alt="森の橋のたもとで、ガイドが次の見どころを案内しているところ"
             />
             <div className="entry-body">
               <h3>
@@ -83,8 +83,8 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/rental" className="entry-card">
             <img
-              src="/assets/tour/paddies.jpg"
-              alt="静かな田んぼ道で足を止めて写真を撮るライダー(南木曽)"
+              src="/assets/ebike.jpg"
+              alt="古民家の土間に並ぶMOVEのファットタイヤE-bike2台"
             />
             <div className="entry-body">
               <h3>
@@ -101,8 +101,8 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/luggage-shuttle" className="entry-card">
             <img
-              src="/assets/tsumago.jpg"
-              alt="妻籠宿の街道沿いの縁台に出されたざるそば"
+              src="/assets/shuttle-van-crop.jpg"
+              alt="シャトルバンの荷室に積まれたスーツケース(宿の前で)"
             />
             <div className="entry-body">
               <h3>

@@ -81,7 +81,7 @@ body::before {
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: -2;
-  background-image: url("/assets/gorge.jpg");
+  background-image: url("/assets/hero-ride.jpg");
   background-size: cover; background-position: center;
   transform: scale(1.05); animation: slowzoom 20s ease-out forwards;
 }

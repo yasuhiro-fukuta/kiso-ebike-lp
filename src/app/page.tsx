@@ -67,8 +67,8 @@ export default function Page() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/guided" className="entry-card">
             <img
-              src="/assets/tour/hero.jpg"
-              alt="A rider pauses on a bridge to photograph the emerald Kiso River"
+              src="/assets/guide-point.jpg"
+              alt="A local guide points out the next stop to a rider at a forest bridge"
             />
             <div className="entry-body">
               <h3>
@@ -86,8 +86,8 @@ export default function Page() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/rental" className="entry-card">
             <img
-              src="/assets/tour/paddies.jpg"
-              alt="A rider stops on a quiet lane to photograph golden rice paddies in Nagiso"
+              src="/assets/ebike.jpg"
+              alt="Two MOVE fat-tire e-bikes parked inside the old wooden guesthouse"
             />
             <div className="entry-body">
               <h3>
@@ -105,8 +105,8 @@ export default function Page() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/luggage-shuttle" className="entry-card">
             <img
-              src="/assets/tsumago.jpg"
-              alt="Zaru soba on a table along the old post-town street of Tsumago"
+              src="/assets/shuttle-van-crop.jpg"
+              alt="Suitcases loaded in the shuttle van, tailgate open, in front of an old inn"
             />
             <div className="entry-body">
               <h3>
