@@ -30,9 +30,8 @@ export default function Page() {
           Nagiso · Kiso Valley · Central Japan
         </span>
         <h1>
-          An unhurried trip, <em>for two.</em>
+          With the river, <em>and the clouds.</em>
         </h1>
-        <p className="hero-sub">Moving with the river and the clouds.</p>
         <div className="hero-cta">
           <a href="#start" className="btn-primary">
             Find your way in <ArrowRight size={16} />
@@ -113,8 +112,8 @@ export default function Page() {
                 <Backpack size={20} /> Have your bags carried
               </h3>
               <p>
-                Walk the old Nakasendo hand in hand — not hand on suitcase.
-                Your bags travel ahead and wait for you.
+                Walk the old Nakasendo with nothing on your back — your bags
+                travel ahead and wait for you.
               </p>
               <span className="entry-go">
                 Luggage Bus <ArrowRight size={14} />

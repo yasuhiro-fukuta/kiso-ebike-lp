@@ -28,9 +28,8 @@ export default function JaHomePage() {
         <div className="hero-overlay" />
         <span className="eyebrow hero-eyebrow">長野県南木曽町 · 木曽谷 · 中山道</span>
         <h1>
-          急がない旅を、<em>ふたりで。</em>
+          流れる雲と、<em>河と共に。</em>
         </h1>
-        <p className="hero-sub">流れる雲と河と共に。</p>
         <div className="hero-cta">
           <a href="#start" className="btn-primary">
             入口をえらぶ <ArrowRight size={16} />
@@ -91,7 +90,7 @@ export default function JaHomePage() {
                 <Bike size={20} /> E-bikeを借りる
               </h3>
               <p>
-                宿までお届け、走り終えた場所で乗り捨てOK。静かな道とエメラルドの川を、ふたりのペースで。
+                宿までお届け、走り終えた場所で乗り捨てOK。静かな道とエメラルドの川を、自分のペースで。
               </p>
               <span className="entry-go">
                 E-bikeレンタルへ <ArrowRight size={14} />
@@ -109,7 +108,7 @@ export default function JaHomePage() {
                 <Backpack size={20} /> 荷物を運んでもらう
               </h3>
               <p>
-                スーツケースは先回りさせて、旧街道は手ぶらでふたりで歩く。荷物は目的地で待っています。
+                スーツケースは先回りさせて、旧街道は手ぶらで歩く。荷物は目的地で待っています。
               </p>
               <span className="entry-go">
                 ラゲッジバスへ <ArrowRight size={14} />
