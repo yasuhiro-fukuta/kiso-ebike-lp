@@ -112,7 +112,7 @@ export default function JaHomePage() {
                 スーツケースは先回りさせて、旧街道は手ぶらでふたりで歩く。荷物は目的地で待っています。
               </p>
               <span className="entry-go">
-                手荷物シャトルへ <ArrowRight size={14} />
+                ラゲッジバスへ <ArrowRight size={14} />
               </span>
             </div>
           </Link>

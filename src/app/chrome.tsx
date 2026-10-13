@@ -42,14 +42,14 @@ const MENU_ITEMS: Record<
   en: [
     { href: "/guided", label: "Guided Tours by Locals", sub: "Dawn rides & the Kiso River Downhill" },
     { href: "/rental", label: "E-Bike Rental", sub: "Delivered to you · drop anywhere" },
-    { href: "/luggage-shuttle", label: "Luggage Shuttle", sub: "Walk or ride hands-free" },
+    { href: "/luggage-shuttle", label: "Luggage Bus", sub: "Nagiso ⇄ Kiso-Fukushima, bags only" },
     { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
     { href: "/explore", label: "Explore the Area", sub: "Gorges, routes, gear & columns" },
   ],
   ja: [
     { href: "/ja/guided", label: "住民本気のガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "お届け&乗り捨て自由" },
-    { href: "/ja/luggage-shuttle", label: "手荷物シャトル", sub: "身軽に歩く・走る" },
+    { href: "/ja/luggage-shuttle", label: "ラゲッジバス", sub: "南木曽⇄木曽福島・荷物専用" },
     { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
     { href: "/ja/explore", label: "周辺を楽しむ", sub: "渓谷・コース・道具・コラム" },
   ],

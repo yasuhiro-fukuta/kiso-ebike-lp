@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* =========================================================
-   Murabito Bikes — Kiso Valley E-Bike LP
+/* ==================================================   Murabito Bikes — Kiso Valley E-Bike LP
    Tailwind is imported above (kept for any utility classes /
    the /reserve page). The styles below drive the custom LP.
    ========================================================= */
@@ -613,8 +612,7 @@ body::before {
   padding: 0.3rem 0.7rem; border-radius: 4px; backdrop-filter: blur(4px);
 }
 
-/* =========================================================
-   SPECIAL COURSE — Kiso River Downhill (full day · guided)
+/* ==================================================   SPECIAL COURSE — Kiso River Downhill (full day · guided)
    A darker, premium band that sets the flagship apart.
    All selectors scoped under .special.
    ========================================================= */
@@ -803,8 +801,7 @@ body::before {
   .special-cta, .special-faq .sfaq summary::after { transition: none; }
 }
 
-/* =========================================================
-   GUIDE — Wilderness First Aid credential (trust / safety)
+/* ==================================================   GUIDE — Wilderness First Aid credential (trust / safety)
    Light band between the moss GEAR section and the dark
    Special Course band. All selectors scoped under .guide.
    ========================================================= */
@@ -863,8 +860,7 @@ body::before {
 }
 @media (prefers-reduced-motion: reduce) { .cert-front { transition: none; } }
 
-/* =========================================================
-   SHODO — Japanese calligraphy page. Paper-and-ink theme:
+/* ==================================================   SHODO — Japanese calligraphy page. Paper-and-ink theme:
    washi background, sumi kanji watermark, vertical accent.
    All selectors scoped under .shodo-*.
    ========================================================= */
@@ -971,8 +967,7 @@ body::before {
 .shodo-rainy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200, 160, 74, 0.4); }
 .shodo-rainy a:hover { border-color: var(--gold); }
 
-/* =========================================================
-   RENEWAL (strategy phase 1)
+/* ==================================================   RENEWAL (strategy phase 1)
    - .img-wanted : dashed placeholder marking a photo we still
      need to shoot (doubles as the shooting list)
    - .hub-band   : dark full-width CTA band (second-day hub)
@@ -1134,8 +1129,7 @@ body::before {
 }
 .review-ask a:hover { background: var(--gold); color: var(--ink); }
 
-/* =========================================================
-   HAMBURGER NAV
+/* ==================================================   HAMBURGER NAV
    ========================================================= */
 .nav-burger {
   background: none; border: 0; color: #fff; cursor: pointer;
@@ -1347,6 +1341,73 @@ figure.season-cell .season-tag {
 }
 .special-photo figcaption { font-size: 0.8rem; font-weight: 300; opacity: 0.75; margin-top: 0.8rem; }
 
+/* Luggage Bus (/luggage-shuttle) — "luggage only" notice + timetable */
+.lb-notice-sec { padding-top: 0; padding-bottom: 0; }
+.lb-notice {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: rgba(181, 83, 42, 0.1); border: 2px solid var(--rust);
+  border-radius: 8px; padding: 1.2rem 1.4rem; max-width: 760px;
+}
+.lb-notice svg { color: var(--rust); flex-shrink: 0; margin-top: 0.15rem; }
+.lb-notice strong { display: block; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem; }
+.lb-notice p { font-weight: 300; font-size: 0.92rem; color: #3a352d; }
+.lb-table-wrap { overflow-x: auto; }
+.lb-table { width: 100%; max-width: 760px; border-collapse: collapse; background: #fffdf8; border-radius: 8px; overflow: hidden; }
+.lb-table th, .lb-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid rgba(28, 26, 22, 0.1); vertical-align: top; }
+.lb-table thead th {
+  background: var(--ink); color: var(--paper); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.lb-table tbody th { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+.lb-table td { font-family: var(--serif); font-size: 1.25rem; color: var(--moss); white-space: nowrap; }
+.lb-table small {
+  display: block; font-family: var(--sans); font-size: 0.75rem; font-weight: 300;
+  color: var(--cedar); white-space: normal;
+}
+.lb-way { cursor: default; }
+.lb-way:hover { transform: none; background: var(--paper-deep); }
+.drop-inner .mini-grid { margin-bottom: 0.5rem; }
+@media (max-width: 560px) {
+  .lb-table th, .lb-table td { padding: 0.7rem 0.5rem; }
+  .lb-table thead th { font-size: 0.68rem; letter-spacing: 0.04em; }
+  .lb-table tbody th { font-size: 1rem; }
+  .lb-table td { font-size: 1.05rem; }
+}
+/* Luggage Bus — four daily runs */
+.lb-runs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1100px; }
+@media (max-width: 900px) { .lb-runs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .lb-runs { grid-template-columns: 1fr; } }
+.lb-run {
+  display: grid; gap: 0.35rem; background: #fffdf8; border: 1px solid rgba(28, 26, 22, 0.15);
+  border-top: 4px solid var(--cedar); border-radius: 8px; padding: 1.1rem 1.2rem;
+}
+.lb-run.north { border-top-color: var(--moss); }
+.lb-run-dir { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cedar); }
+.lb-run.north .lb-run-dir { color: var(--moss); }
+.lb-run-time { font-family: var(--serif); font-size: 1.4rem; }
+.lb-run-route { font-weight: 300; font-size: 0.88rem; color: #3a352d; }
+.lb-sub { font-family: var(--serif); font-size: 1.3rem; margin: 2.6rem 0 0.9rem; }
+.lb-table tr.next th, .lb-table tr.next td { background: rgba(181, 83, 42, 0.08); }
+.lb-table td { white-space: normal; font-size: 1rem; }
+.lb-places { list-style: none; margin: 0; padding: 0; font-weight: 300; font-size: 0.88rem; color: #3a352d; }
+.lb-places li { padding: 0.15rem 0; }
+.lb-places a { color: var(--moss); text-decoration: underline; text-underline-offset: 2px; }
+.book-estimate {
+  display: grid; gap: 0.25rem; background: var(--ink); color: var(--paper);
+  border-radius: 8px; padding: 1rem 1.1rem;
+}
+.book-estimate strong { font-family: var(--serif); font-size: 1.8rem; font-weight: 500; color: var(--gold); }
+.book-estimate span { font-size: 0.85rem; font-weight: 300; }
+.book-estimate small { font-size: 0.75rem; font-weight: 300; opacity: 0.75; }
+.lb-info td { font-family: var(--sans); font-size: 0.88rem; color: #3a352d; }
+.lb-info tbody th { font-size: 1rem; }
+@media (max-width: 560px) { .lb-info th, .lb-info td { font-size: 0.8rem; } }
+.book-hint { font-size: 0.78rem; font-weight: 300; color: var(--cedar); line-height: 1.5; }
+.book-error {
+  background: rgba(181, 83, 42, 0.12); border: 1px solid var(--rust); color: var(--ink);
+  border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.9rem;
+}
+
 /* five-step rental flow */
 .drop-steps.cols5 { grid-template-columns: repeat(5, 1fr); }
 @media (max-width: 1000px) { .drop-steps.cols5 { grid-template-columns: 1fr 1fr; } }
@@ -1380,3 +1441,4 @@ figure.season-cell .season-tag {
   transition: background 0.2s ease;
 }
 .sub-entries a:hover { background: #e7dfcc; }
+.lb-rules b { display: block; margin-bottom: 0.15rem; }

@@ -5,347 +5,386 @@ import {
   MessageCircle,
   CreditCard,
   Footprints,
-  Store,
   PackageCheck,
   MapPin,
   ArrowRight,
+  Ban,
+  Send,
 } from "lucide-react";
-import {
-  SQUARE_PAY_URL,
-  WHATSAPP_URL,
-} from "../site";
+import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
-import { ShuttleCalendar } from "../shuttle-calendar";
+import { STATIONS, feeText, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
-const IZUMIYA_MAP = "https://maps.app.goo.gl/cCfrFcvGZXbGeBFM6";
-const KATANA_MAP = "https://maps.app.goo.gl/6VGmpJqCbbSjm5MLA";
-const WAKU_MAP = "https://maps.app.goo.gl/PdnuaBaziu99LA5i6";
-
-/** Payment button + QR — shown top and bottom of the page. */
-function PayBlock() {
-  return (
-    <div className="pay-sec">
-      <div className="pay-row pay-row-center">
-        <a
-          href={SQUARE_PAY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="stay-cta"
-        >
-          <CreditCard size={16} /> Pay the shuttle fee online (Square)
-        </a>
-        <figure className="pay-qr">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/square-pay-qr.png"
-            alt="QR code for the Square payment page — scan to pay the shuttle fee"
-          />
-          <figcaption>or scan to pay</figcaption>
-        </figure>
-      </div>
-      <div className="pay-notify">
-        <p>
-          <strong>
-            Once you&apos;ve paid, send us on WhatsApp: ① your name ② number
-            of bags ③ where the bags start ④ where to deliver them.
-          </strong>
-        </p>
-        <a
-          href="/book?s=luggage-send"
-          className="stay-cta"
-        >
-          <MessageCircle size={16} /> Send the details on WhatsApp
-        </a>
-        <div className="pay-alt">
-          <p>
-            <strong>Bear spray only, no bags?</strong> That works — booking
-            and payment live on the{" "}
-            <Link href="/gear">gear rental page</Link>.
-          </p>
-        </div>
-      </div>
-      <p className="pay-note">
-        Enter the amount on the Square page — cash at the counter is welcome
-        too. Note that the Square payment page is displayed in Japanese
-        (「金額」 is the amount field); your browser&apos;s translate
-        function renders it in English just fine.
-      </p>
-    </div>
-  );
-}
-
-export default function LuggageShuttlePage() {
+export default function LuggageBusPage() {
   return (
     <div className="lp">
       <SiteNav />
 
       <FloatBook href="/book?s=luggage">
-        <MessageCircle size={18} /> Ask on WhatsApp
+        <MessageCircle size={18} /> Request on WhatsApp
       </FloatBook>
 
       {/* PAGE HEAD — title, catch copy, photo */}
       <header className="page-head page-head-grid">
         <div>
-          <span className="head-badge">Same-day OK — no reservation</span>
+          <span className="head-badge">Luggage only · no passengers</span>
           <br />
-          <span className="eyebrow">Shuttle Baggage Service · Nagiso — Nojiri</span>
+          <span className="eyebrow">Luggage Bus · Nagiso — Kiso-Fukushima</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            We carry your bags, station to station. Hand them to a cafe in
-            the morning, walk the Nakasendo&apos;s Yogawa-michi or swim the
-            gorges hands-free — drop them by 11:00 and they&apos;ll be
-            waiting at the other end of the valley by 13:00 at the latest.
+            The Luggage Bus carries your bags along the Nakasendo on a fixed
+            daily timetable, stopping at Nagiso, Nojiri, Agematsu and
+            Kiso-Fukushima. In the morning,
+            leave your bags at one of our stations — a luggage drop point
+            or a partner inn — and walk on — they&apos;ll be
+            waiting at the other end.
           </p>
           <p className="head-note">
-            Gear rentals such as bear spray also need no reservation when
-            you rent at Izumiya Cafe (Nagiso Station) and return at Coffee
-            Katana (Nojiri Station) — see the{" "}
-            <Link href="/gear">gear rental page</Link>.
+            Nagiso to Kiso-Fukushima, the same day: bags
+            arrive around 11:30, before check-in. Booking required — request on
+            WhatsApp and we confirm.
           </p>
         </div>
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/shuttle-van.jpg"
-            alt="The shuttle van with its tailgate up, suitcases and a backpack loaded for the run down the valley"
+            alt="The Luggage Bus van with its tailgate up, suitcases and a backpack loaded for the run along the valley"
           />
-          <figcaption>Bags in, tailgate down — at Nojiri by 13:00 at the latest</figcaption>
+          <figcaption>Bags only — the van carries no passengers</figcaption>
         </figure>
       </header>
 
-      {/* PRICING */}
-      <section className="mini-sec" id="pricing">
-        <span className="eyebrow">Pricing</span>
-        <h2>One base fee, then count your bags.</h2>
-        <div className="pricing">
-          <div className="pitem">
-            <h4>Base fee</h4>
-            <div className="amt">
-              ¥1,500<span style={{ fontSize: "0.9rem" }}>/group</span>
-            </div>
+      {/* LUGGAGE ONLY */}
+      <section className="mini-sec lb-notice-sec">
+        <div className="lb-notice">
+          <Ban size={26} />
+          <div>
+            <strong>Luggage only. The Luggage Bus does not carry people.</strong>
             <p>
-              Per group, same-day, between any of our points from Tsumago to
-              Nojiri.
-            </p>
-          </div>
-          <div className="pitem">
-            <h4>Per bag</h4>
-            <div className="amt">
-              +¥1,500<span style={{ fontSize: "0.9rem" }}>/bag</span>
-            </div>
-            <p>
-              Counted per group, not per person — so three bags come to
-              ¥6,000 total.
-            </p>
-          </div>
-          <div className="pitem">
-            <h4>Bear spray</h4>
-            <div className="amt">
-              ¥1,500<span style={{ fontSize: "0.9rem" }}>/bottle</span>
-            </div>
-            <p>
-              Bell included, no base fee — pick it up in Nagiso, hand it back
-              in Nojiri. Spray-only rentals, with no bags to send, are just
-              as welcome.
+              It&apos;s called a bus because it keeps a timetable — but only
+              your bags ride it. Please plan to walk, ride, or take the train
+              or a local bus yourself.
             </p>
           </div>
         </div>
+      </section>
 
-        <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", margin: "2.4rem 0 0.6rem" }}>
-          Area surcharge (per group)
-        </h3>
-        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1.2rem" }}>
-          * Longer-distance runs may also be possible if you ask by the day
-          before —{" "}
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-            message us on WhatsApp
-          </a>
-          .
+      {/* TIMETABLE */}
+      <section className="mini-sec" id="timetable">
+        <span className="eyebrow">Timetable</span>
+        <h2>One round trip a day, Nagiso to Kiso-Fukushima and back.</h2>
+        <div className="lb-runs">
+          {RUNS.map((r) => (
+            <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
+              <span className="lb-run-dir">
+                {r.no} {r.north ? "Northbound" : "Southbound"}
+              </span>
+              <span className="lb-run-time">{r.time}</span>
+              <span className="lb-run-route">{r.route.en}</span>
+            </div>
+          ))}
+        </div>
+        <p className="drop-note">
+          Out to Kiso-Fukushima in the morning, back to Nagiso after
+          lunch — see when your bags arrive below.
         </p>
-        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
-          SOUTH
-        </h4>
-        <ul className="itin-list" style={{ marginBottom: "1.4rem" }}>
-          <li><b>Ena City</b>+¥1,500</li>
-          <li><b>Nakatsugawa City</b>+¥1,000</li>
-          <li><b>Nagiso Town</b>+¥0</li>
-        </ul>
-        <h4 style={{ fontFamily: "var(--sans)", fontSize: "0.82rem", letterSpacing: "0.1em", color: "var(--cedar)", margin: "0 0 0.4rem" }}>
-          NORTH
-        </h4>
-        <ul className="itin-list">
-          <li><b>Okuwa Village</b>+¥0</li>
-          <li><b>Agematsu</b>+¥1,000</li>
-          <li><b>Kiso-Fukushima</b>+¥1,500</li>
-          <li><b>Yabuhara</b>+¥2,000</li>
-          <li><b>Narai</b>+¥2,000</li>
-          <li><b>Matsumoto</b>+¥3,000</li>
-        </ul>
-        <div className="stay-perk" style={{ maxWidth: "56ch", marginTop: "1.6rem" }}>
-          <strong>Example: Nakatsugawa to Kiso-Fukushima, 4 bags</strong>
-          <br />
-          Bags ¥1,500 × 4 = ¥6,000
-          <br />
-          Base fee ¥1,500 / group
-          <br />
-          Surcharge +¥1,000 (south: Nakatsugawa) +¥1,500 (north:
-          Kiso-Fukushima)
-          <br />
-          <strong>Total: ¥10,000</strong>
+
+        <h3 className="lb-sub">When your bags arrive</h3>
+        <div className="lb-table-wrap">
+          <table className="lb-table">
+            <thead>
+              <tr>
+                <th>From → to</th>
+                <th>Arrives</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ARRIVALS.map((a) => (
+                <tr key={a.flow.en} className={a.next ? "next" : undefined}>
+                  <th scope="row">{a.flow.en}</th>
+                  <td>{a.when.en}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
-      {/* PAY — first appearance */}
-      <PayBlock />
-
-      {/* OPERATING CALENDAR */}
-      <section className="cal-sec" id="calendar">
-        <span className="eyebrow" style={{ display: "block", textAlign: "center", marginBottom: "1.2rem" }}>
-          Operating days
-        </span>
-        <ShuttleCalendar lang="en" />
-      </section>
-
-      {/* HOW IT WORKS */}
+      {/* HOW TO BOOK */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
-          <span className="eyebrow">How it works</span>
+          <span className="eyebrow">How to book</span>
           <h2>
-            No reservation. <em>Drop, pay, and go.</em>
+            Ask on WhatsApp, <em>we confirm, you pay.</em>
           </h2>
           <p>
-            No booking needed: hand your bags in at Nagiso Station (Izumiya
-            Cafe) or at Guesthouse WAKU by <strong>11:00</strong>, and
-            we&apos;ll have them at Nojiri Station (Coffee Katana*) by{" "}
-            <strong>13:00 at the latest</strong>. Spend the day
-            hands-free on the Nakasendo&apos;s Yogawa-michi, or in the
-            Kakizore and Atera gorges.
-            <br />
-            <small>* The shuttle takes Mondays off — closed every Monday.</small>
+            Every bag needs a confirmed booking — we can&apos;t take bags
+            without one. Send your request on WhatsApp; we check there&apos;s
+            space on the run and reply with a payment link.
           </p>
 
-          {/* THE FOUR PANELS */}
           <div className="koma-grid">
             <div className="koma">
               <span className="koma-num">1</span>
-              <Store size={26} />
-              <h3>Drop</h3>
+              <Send size={26} />
+              <h3>Request</h3>
               <p>
-                By 11:00, hand your bags to Izumiya Cafe in front of Nagiso
-                Station — or to Guesthouse WAKU.
+                Message us on WhatsApp: date, from and to (a station, or your
+                inn), and number of bags.
               </p>
             </div>
             <div className="koma">
               <span className="koma-num">2</span>
               <CreditCard size={26} />
-              <h3>Pay</h3>
+              <h3>Confirm &amp; pay</h3>
               <p>
-                Settle up on the spot: scan the Square QR, or pay by card or
-                cash.
+                We confirm and send a Square payment link. Paid = booked.
               </p>
             </div>
             <div className="koma">
               <span className="koma-num">3</span>
-              <Footprints size={26} />
-              <h3>Roam</h3>
+              <PackageCheck size={26} />
+              <h3>Hand over</h3>
               <p>
-                Walk the Yogawa-michi, or swim the Kakizore and Atera gorges.
-                Zero shoulder straps.
+                Leave your bags at your starting station (a drop point or
+                partner inn), then walk on.
               </p>
             </div>
             <div className="koma">
               <span className="koma-num">4</span>
-              <PackageCheck size={26} />
+              <Footprints size={26} />
               <h3>Pick up</h3>
               <p>
-                From 13:00, collect your bags at Coffee Katana by Nojiri
-                Station.
+                Collect them at your destination station after the run
+                arrives.
               </p>
             </div>
           </div>
 
           <p className="drop-note">
-            <strong>
-              Note: if you arrive before 13:00, your bags may still be on
-              the way — grab a coffee at the counter while you wait.
-            </strong>
-          </p>
-
-          <p className="drop-note">
-            Other directions or points — Tsumago, Junikane, or a Nojiri →
-            Nagiso run — are no problem: just message us on WhatsApp and
-            we&apos;ll set it up.
+            Hikers usually set out around 8–9 in the morning, before the bus
+            passes. That&apos;s fine — the station holds your bags until it
+            arrives. Hand your bags in at least 10 minutes before the run
+            passes (or the evening before).
           </p>
         </div>
       </section>
 
-      {/* THE COUNTERS */}
-      <section className="mini-sec" id="counters">
-        <span className="eyebrow">The counters</span>
-        <h2>Drop at one counter, pick up at another.</h2>
-        <div className="mini-grid cols2">
-          <a
-            href={IZUMIYA_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
+      {/* PRICING */}
+      <section className="mini-sec" id="pricing">
+        <span className="eyebrow">Pricing</span>
+        <h2>Delivery fee + ¥1,500 per bag.</h2>
+        <div className="pricing">
+          {ZONES.map((z) => (
+            <div className="pitem" key={z.name.en}>
+              <h4>{z.name.en}</h4>
+              <div className="amt">
+                {yen(ZONE_FEE)}
+                <span style={{ fontSize: "0.9rem" }}>/booking</span>
+              </div>
+              <p>{z.route.en}</p>
+            </div>
+          ))}
+          <div className="pitem">
+            <h4>Per bag</h4>
+            <div className="amt">
+              +{yen(BAG_FEE)}
+              <span style={{ fontSize: "0.9rem" }}>/bag</span>
+            </div>
+            <p>The same wherever it goes.</p>
+          </div>
+          <p className="pricing-foot">
+            The delivery fee is ¥1,500 per booking (the route runs Nagiso to Kiso-Fukushima). Going on to Narai Station is by arrangement and adds ¥1,500. The booking form works out an estimate for you.
+          </p>
+        </div>
+
+        <h3 className="lb-sub">Examples</h3>
+        <div className="lb-table-wrap">
+          <table className="lb-table">
+            <thead>
+              <tr>
+                <th>Trip</th>
+                <th>Bags</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {EXAMPLES.map((x) => (
+                <tr key={`${x.trip.en}-${x.bags}`}>
+                  <th scope="row">
+                    {x.trip.en}
+                    <small>
+                      Delivery {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
+                    </small>
+                  </th>
+                  <td>{x.bags}</td>
+                  <td>{yen(fare(x.zones, x.bags))}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="drop-note">
+          The total is in our confirmation on WhatsApp, with the payment link.
+        </p>
+      </section>
+
+      {/* BOOKING RULES */}
+      <section className="mini-sec" id="rules">
+        <span className="eyebrow">Booking rules</span>
+        <h2>Before you book.</h2>
+        <ul className="itin-list lb-rules">
+          {RULES.map((r) => (
+            <li key={r.title.en}>
+              <b>{r.title.en}</b>
+              {r.body.en}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* THE STATIONS */}
+      <section className="mini-sec" id="stops">
+        <span className="eyebrow">The stations</span>
+        <h2>Where your bags change hands.</h2>
+        <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.6rem" }}>
+          Each &ldquo;station&rdquo; is a place that holds luggage — a tourist
+          information office, a cafe or a partner guesthouse. Hand your bags
+          over at one in the morning, pick them up at another. Underlined
+          names open the map.
+        </p>
+        <div className="mini-grid">
+          {STATIONS.map((s) => (
+            <div key={s.area} className="mini-card lb-way">
+              <h3>
+                <MapPin size={20} /> {s.name.en}
+              </h3>
+              <ul className="lb-places">
+                {s.places.map((pl) => (
+                  <li key={pl.name.en}>
+                    {pl.map ? (
+                      <a href={pl.map} target="_blank" rel="noopener noreferrer">
+                        {pl.name.en}
+                      </a>
+                    ) : (
+                      pl.name.en
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <h3 className="lb-sub">Holding fees and closing days</h3>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-info">
+            <thead>
+              <tr>
+                <th>Station</th>
+                <th>Holding fee (paid on the spot)</th>
+                <th>Closed</th>
+                <th>Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              {STATIONS.flatMap((s) =>
+                s.places.map((pl) => (
+                  <tr key={pl.id}>
+                    <th scope="row">
+                      {s.name.en}
+                      <small>{pl.name.en}</small>
+                    </th>
+                    <td>{feeText(pl, "en")}</td>
+                    <td>{pl.closed.en}</td>
+                    <td>{pl.hours ? pl.hours.en : "—"}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
+          </table>
+        </div>
+        <p className="drop-note">
+          Some stations charge a small holding fee, paid to them directly. Closing days for the tourist offices come from tourism websites and may be out of date — we confirm everything when we approve your booking.
+        </p>
+        <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
+          <div className="mini-card lb-way">
             <h3>
-              <MapPin size={20} /> Izumiya Cafe Nagiso · drop-off
+              <MessageCircle size={20} /> Somewhere not listed?
             </h3>
             <p>
-              The main drop-off counter, in front of Nagiso Station. A good
-              coffee before the trail, too. Tap for the map.
+              Staying at an inn in Magome or Tsumago, or starting somewhere
+              else? Ask us on WhatsApp case by case.
             </p>
-          </a>
-          <a
-            href={WAKU_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
+          </div>
+          <div className="mini-card lb-way">
             <h3>
-              <MapPin size={20} /> Guesthouse WAKU · drop-off
+              <ArrowRight size={20} /> On to Narai
             </h3>
             <p>
-              Bags left at Guesthouse WAKU also travel down to Coffee
-              Katana. Tap for the map.
+              Going on past Kiso-Fukushima to Narai Station can be arranged
+              on WhatsApp: +{yen(EXTENSION_FEE)}.
             </p>
-          </a>
-          <a
-            href={KATANA_MAP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mini-card"
-          >
-            <h3>
-              <MapPin size={20} /> Nojiri Cafe Katana · pick-up
-            </h3>
-            <p>
-              The pick-up counter, in front of Nojiri Station — reward
-              yourself with a cup while you reunite with your bags.
-            </p>
-          </a>
+          </div>
         </div>
       </section>
 
-      {/* WHERE YOU'LL GO */}
-      <section className="mini-sec" id="routes">
-        <span className="eyebrow">Where you&apos;ll go hands-free</span>
-        <h2>Wondering where the day should take you?</h2>
-        <Link href="/second-day" className="stay-cta">
-          Read our Self-Tour Advice <ArrowRight size={15} />
-        </Link>
+      {/* FAQ */}
+      <section className="faq" id="faq">
+        <h2>Questions</h2>
+        <details className="faq-item">
+          <summary>Can I ride the Luggage Bus?</summary>
+          <p>
+            No. It carries luggage only — no passengers, not even for a
+            short hop. Between the stops, JR Chuo Line trains and local
+            buses run along the same valley.
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>Can I just turn up with my bags?</summary>
+          <p>
+            No — please book first. We confirm each request on WhatsApp so
+            we know there&apos;s room on the run, and the booking is set
+            once you&apos;ve paid through the link we send.
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>What if I arrive before my bags?</summary>
+          <p>
+            Check the arrival times above. If you get there first, have a
+            coffee or look around while you wait — your bags will be there
+            once the run is through.
+          </p>
+        </details>
+        <details className="faq-item">
+          <summary>Need bear spray too?</summary>
+          <p>
+            Bear spray and other gear are on the{" "}
+            <Link href="/gear">gear rental page</Link>.
+          </p>
+        </details>
       </section>
 
-      {/* PAY — final appearance */}
-      <section className="mini-sec" id="pay">
+      {/* BOOK */}
+      <section className="mini-sec" id="book">
         <span className="eyebrow">Ready?</span>
-        <h2>Bags packed? See you at the counter.</h2>
+        <h2>Bags packed? Tell us where they&apos;re going.</h2>
+        <div className="pay-row">
+          <Link href="/book?s=luggage" className="stay-cta">
+            <MessageCircle size={16} /> Request on WhatsApp <ArrowRight size={15} />
+          </Link>
+        </div>
+        <p className="drop-note">
+          Just a question?{" "}
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            Message us on WhatsApp
+          </a>
+          . The Square payment page we send is in Japanese (「金額」 is the
+          amount); your browser&apos;s translate function handles it fine.
+        </p>
       </section>
-      <PayBlock />
 
       <SiteFooter />
     </div>

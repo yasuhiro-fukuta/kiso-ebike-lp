@@ -263,12 +263,12 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
-      name: "Luggage Shuttle (Tsumago ↔ Nagiso ↔ Junikane ↔ Nojiri)",
+      name: "Luggage Bus (Nagiso ⇄ Nojiri ⇄ Agematsu ⇄ Kiso-Fukushima)",
       serviceType: "Luggage transfer",
       description:
-        "Same-day luggage shuttle anywhere between Tsumago, Nagiso Station, Kashiwaya Guesthouse, Junikane Station and Nojiri Station, so travelers can walk the Yogawa-michi section of the Nakasendo or ride our one-way e-bike routes hands-free. Drop bags by 11:00 and they arrive by 13:00 at the latest; closed every Monday. \u00a51,500 base fee per group plus \u00a51,500 per bag; a bear spray with bell can be added for \u00a51,500. Book via WhatsApp; pay on the day, card or cash.",
+        "Scheduled luggage-only service between Nagiso and Kiso-Fukushima along Route 19, one round trip a day: northbound Nagiso \u2192 Nojiri \u2192 Agematsu \u2192 Kiso-Fukushima 10:00\u201311:30; southbound Kiso-Fukushima \u2192 Agematsu \u2192 Nojiri \u2192 Nagiso 12:00\u201313:30. Bags are handed over at Luggage Bus \u201cstations\u201d \u2014 tourist information offices at Agematsu and Kiso-Fukushima, Cafe Izumiya and the guesthouses Kashiwaya Inn, Waku Nagiso and Yuian at Nagiso, and Cafe Katana at Nojiri; inns in Magome and Tsumago and other places by arrangement; an extension to Narai Station by arrangement, \u00a51,500. Booking required: request on WhatsApp, and a payment link is sent on approval. Luggage only \u2014 no passengers. Fare: a delivery fee of \u00a51,500 per zone passed through (the route Nagiso\u2013Kiso-Fukushima is one zone), charged once per booking, plus \u00a51,500 per bag \u2014 e.g. Nagiso to Kiso-Fukushima with one bag is \u00a53,000.",
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: { "@type": "Place", name: "Nagiso, Kiso Valley, Nagano" },
+      areaServed: { "@type": "Place", name: "Kiso Valley, Nagiso to Kiso-Fukushima" },
       url: `${SITE_URL}/luggage-shuttle`,
     },
     {

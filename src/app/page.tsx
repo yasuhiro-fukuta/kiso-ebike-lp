@@ -117,7 +117,7 @@ export default function Page() {
                 Your bags travel ahead and wait for you.
               </p>
               <span className="entry-go">
-                Luggage shuttle <ArrowRight size={14} />
+                Luggage Bus <ArrowRight size={14} />
               </span>
             </div>
           </Link>

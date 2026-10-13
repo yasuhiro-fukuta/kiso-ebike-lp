@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { wa } from "./site";
+import { FORM_POINTS, estimate, yen, feeText, dateProblem } from "./luggage-bus";
+import { CLOSED_DAYS } from "./shuttle-calendar";
 import { SiteNav, SiteFooter } from "./chrome";
 
 type Lang = "en" | "ja";
@@ -20,7 +22,13 @@ type Field = {
 type Service = {
   title: { en: string; ja: string };
   fields: Field[];
-  build: (lang: Lang, g: (k: string) => string) => string;
+  build: (lang: Lang, g: (k: string) => string, est: string) => string;
+  /** Optional note under a field, from the raw values (e.g. station info). */
+  hint?: (lang: Lang, k: string, v: Record<string, string>) => string | null;
+  /** Optional check run when sending; returns an error message or null. */
+  validate?: (lang: Lang, v: Record<string, string>) => string | null;
+  /** Optional price estimate from the raw field values (shown and sent). */
+  estimate?: (lang: Lang, v: Record<string, string>) => { total: string; detail: string } | null;
 };
 
 /** The five standard start/finish points. */
@@ -52,6 +60,29 @@ const COUNTERS = {
   ],
   ja: ["南木曽駅前 イズミヤカフェ", "ゲストハウス柏屋", "ゲストハウスWAKU", "野尻駅前 カフェ刀"],
 };
+
+/** Luggage Bus stations and extensions (positions live in luggage-bus.ts). */
+const LB_POINTS = {
+  en: FORM_POINTS.map((p) => p.en),
+  ja: FORM_POINTS.map((p) => p.ja),
+};
+const lbPoint = (label: string) => FORM_POINTS.find((p) => p.en === label || p.ja === label) ?? null;
+const lbPos = (label: string) => lbPoint(label)?.pos ?? null;
+const lbFee = (l: Lang, label: string) => {
+  const pl = lbPoint(label)?.place;
+  return pl ? feeText(pl, l) : l === "ja" ? "確認中" : "being checked";
+};
+/** Today, tomorrow and whether it's past 21:00 — in Japan time. */
+const jstNow = () => {
+  const jst = new Date(Date.now() + 9 * 3600 * 1000);
+  const iso = (d: Date) => d.toISOString().slice(0, 10);
+  return {
+    today: iso(jst),
+    tomorrow: iso(new Date(jst.getTime() + 24 * 3600 * 1000)),
+    afterDeadline: jst.getUTCHours() >= 21,
+  };
+};
+const EXT_POS = [8];
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
@@ -97,30 +128,69 @@ const SERVICES: Record<string, Service> = {
         : `Hello! I'm interested in the Shuttle E-Bike Package as follows.\nDate: ${g("date")}\nBikes (riders 150 cm or taller): ${g("tall")}\nBikes (riders under 150 cm): ${g("short")}\nStart: ${g("start")}\nFinish: ${g("finish")}\nOne extra gear item of choice: ${g("gear")}\n* The bear-deterrent kit and the luggage shuttle are included.`,
   },
   luggage: {
-    title: { en: "Luggage Shuttle", ja: "手荷物シャトル" },
+    title: { en: "Luggage Bus — booking request", ja: "ラゲッジバス(予約の申し込み)" },
     fields: [
+      { k: "name", label: { en: "Name", ja: "氏名" }, type: "text" },
       { k: "date", label: { en: "Date", ja: "日付" }, type: "date" },
-      { k: "from", label: { en: "From", ja: "出発" }, type: "select", options: POINTS },
-      { k: "to", label: { en: "To", ja: "到着" }, type: "select", options: POINTS },
+      { k: "from", label: { en: "Hand over at", ja: "預ける駅" }, type: "select", options: LB_POINTS },
+      { k: "to", label: { en: "Pick up at", ja: "受け取る駅" }, type: "select", options: LB_POINTS },
+      { k: "inns", label: { en: "Inn or place (if not a station)", ja: "宿・場所の名前(駅以外の場合)" }, type: "text", opt: true },
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
-      { k: "bear", label: { en: "Bear-deterrent kit", ja: "クマよけグッズ" }, type: "count", opt: true },
     ],
-    build: (l, g) =>
+    hint: (l, k, v) => {
+      if (k === "date")
+        return l === "ja"
+          ? "申し込みは前日21時まで。毎週月曜と12〜3月は運休です。"
+          : "Requests close at 21:00 the day before. No runs on Mondays or from December to March.";
+      if (k === "bags")
+        return l === "ja" ? "1便につき20個まで。" : "Up to 20 bags per run.";
+      if (k !== "from" && k !== "to") return null;
+      const pt = lbPoint(v[k] ?? "");
+      const pl = pt?.place;
+      const isExt = pt?.pos != null && EXT_POS.includes(pt.pos);
+      const extNote =
+        l === "ja"
+          ? "延長は1日1件まで。日によっては受けられないことがあります。"
+          : "Extensions are limited to one a day and may not be possible on some days.";
+      if (!pl) return isExt ? extNote : null;
+      const ext = isExt ? (l === "ja" ? ` ・ ${extNote}` : ` · ${extNote}`) : "";
+      return l === "ja"
+        ? `預かり料(現地払い):${feeText(pl, l)} ・ 定休日:${pl.closed.ja}${pl.hours ? ` ・ 営業時間:${pl.hours.ja}` : ""}${ext}`
+        : `Holding fee (paid on the spot): ${feeText(pl, l)} · Closed: ${pl.closed.en}${pl.hours ? ` · Hours: ${pl.hours.en}` : ""}${ext}`;
+    },
+    validate: (l, v) => {
+      const n = jstNow();
+      return dateProblem(
+        v.date ?? "",
+        [lbPoint(v.from ?? "")?.place ?? null, lbPoint(v.to ?? "")?.place ?? null],
+        l,
+        CLOSED_DAYS,
+        n.today,
+        n.tomorrow,
+        n.afterDeadline,
+      );
+    },
+    estimate: (l, v) => {
+      const e = estimate(lbPos(v.from ?? ""), lbPos(v.to ?? ""), Number(v.bags ?? 0));
+      if (!e) return null;
+      return { total: yen(e.total), detail: e.parts.map((p) => `${p[l]} ${yen(p.yen)}`).join(" + ") };
+    },
+    build: (l, g, est) =>
       l === "ja"
-        ? `こんにちは。下記内容で手荷物シャトル運送を検討しています。\n日時:${g("date")}\n出発:${g("from")}\n到着:${g("to")}\n出発地点から到着地点までの荷物運び:${g("bags")}個\nクマよけグッズ:${g("bear")}`
-        : `Hello! I'm interested in the luggage shuttle as follows.\nDate: ${g("date")}\nFrom: ${g("from")}\nTo: ${g("to")}\nBags from start to finish: ${g("bags")}\nBear-deterrent kit: ${g("bear")}`,
+        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿・場所:${g("inns")}\n個数:${g("bags")}個\n概算金額:${est}\n駅の預かり料(現地払い):預ける駅 ${lbFee(l, g("from"))} / 受け取る駅 ${lbFee(l, g("to"))}\n※荷物の写真を1個につき1枚、このチャットに送ります。`
+        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInn or place: ${g("inns")}\nBags: ${g("bags")}\nEstimate: ${est}\nStation holding fees (paid on the spot): ${lbFee(l, g("from"))} at drop-off / ${lbFee(l, g("to"))} at pick-up\nI'll send one photo of each bag in this chat.`,
   },
   "luggage-send": {
-    title: { en: "Luggage Shuttle — after payment", ja: "手荷物シャトル(支払い後の連絡)" },
+    title: { en: "Luggage Bus — after payment", ja: "ラゲッジバス(支払い後の連絡)" },
     fields: [
       { k: "name", label: { en: "Name", ja: "氏名" }, type: "text" },
       { k: "num", label: { en: "Number of bags", ja: "個数" }, type: "count" },
-      { k: "from", label: { en: "Depart from", ja: "発送場所" }, type: "select", options: COUNTERS },
-      { k: "to", label: { en: "Arrive at", ja: "受取場所" }, type: "select", options: COUNTERS },
+      { k: "from", label: { en: "Depart from", ja: "預ける場所" }, type: "select", options: LB_POINTS },
+      { k: "to", label: { en: "Arrive at", ja: "受け取る場所" }, type: "select", options: LB_POINTS },
     ],
     build: (l, g) =>
       l === "ja"
-        ? `①氏名:${g("name")}\n②個数:${g("num")}\n③発送場所:${g("from")}\n④受取場所:${g("to")}`
+        ? `①氏名:${g("name")}\n②個数:${g("num")}\n③預ける場所:${g("from")}\n④受け取る場所:${g("to")}`
         : `①name is ${g("name")}\n②number is ${g("num")}\n③depart from ${g("from")}\n④arrive at ${g("to")}`,
   },
   spray: {
@@ -266,6 +336,9 @@ const T = {
     blank: "__",
     notNeeded: "not needed",
     choose: "— choose —",
+    estimate: "Estimated price",
+    estimateNote: "An estimate from the stations and bags you chose — the final price comes with our approval.",
+    estimateNone: "to be confirmed",
   },
   ja: {
     eyebrow: "予約メッセージをつくる",
@@ -276,6 +349,9 @@ const T = {
     blank: "〇",
     notNeeded: "不要",
     choose: "—選択—",
+    estimate: "概算金額",
+    estimateNote: "選んだ駅と個数からの概算です。確定の金額は承認のときにお伝えします。",
+    estimateNone: "要相談",
   },
 };
 
@@ -284,6 +360,7 @@ export default function BookForm({ lang }: { lang: Lang }) {
   const key = params.get("s") ?? "";
   const svc = SERVICES[key];
   const [v, setV] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<string | null>(null);
   const t = T[lang];
 
   if (!svc) {
@@ -307,7 +384,8 @@ export default function BookForm({ lang }: { lang: Lang }) {
     if (raw === "") return field?.opt ? t.notNeeded : t.blank;
     return raw;
   };
-  const message = svc.build(lang, g);
+  const est = svc.estimate?.(lang, v) ?? null;
+  const message = svc.build(lang, g, est ? `${est.total}(${est.detail})` : t.estimateNone);
 
   return (
     <div className="lp">
@@ -357,19 +435,41 @@ export default function BookForm({ lang }: { lang: Lang }) {
                   onChange={(e) => setV({ ...v, [f.k]: e.target.value })}
                 />
               )}
+              {svc.hint?.(lang, f.k, v) && <small className="book-hint">{svc.hint(lang, f.k, v)}</small>}
             </div>
           ))}
+
+          {svc.estimate && (
+            <div className="book-field">
+              <label>{t.estimate}</label>
+              <div className="book-estimate">
+                <strong>{est ? est.total : t.estimateNone}</strong>
+                {est && <span>{est.detail}</span>}
+                <small>{t.estimateNote}</small>
+              </div>
+            </div>
+          )}
 
           <div className="book-field">
             <label>{t.preview}</label>
             <div className="book-preview">{message}</div>
           </div>
 
+          {err && (
+            <p className="book-error" role="alert">
+              {err}
+            </p>
+          )}
           <a
             href={wa(message)}
             target="_blank"
             rel="noopener noreferrer"
             className="stay-cta book-send"
+            onClick={(e) => {
+              const problem = svc.validate?.(lang, v) ?? null;
+              setErr(problem);
+              if (problem) e.preventDefault();
+            }}
           >
             <MessageCircle size={16} /> {t.send}
           </a>
