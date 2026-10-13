@@ -28,11 +28,9 @@ export default function JaHomePage() {
         <div className="hero-overlay" />
         <span className="eyebrow hero-eyebrow">長野県南木曽町 · 木曽谷 · 中山道</span>
         <h1>
-          ふたりの旅に、<em>谷をまるごと。</em>
+          急がない旅を、<em>ふたりで。</em>
         </h1>
-        <p className="hero-sub">
-          行灯の灯る宿場町、エメラルドの川、誰ともすれ違わない道。木曽谷の「静かな側」を、あなたたちの旅のために整えました——E-bikeはお届け、荷物は先回り、走るなら地元ガイドと。
-        </p>
+        <p className="hero-sub">流れる雲と河と共に。</p>
         <div className="hero-cta">
           <a href="#start" className="btn-primary">
             入口をえらぶ <ArrowRight size={16} />

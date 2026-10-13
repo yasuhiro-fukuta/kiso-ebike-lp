@@ -30,13 +30,9 @@ export default function Page() {
           Nagiso · Kiso Valley · Central Japan
         </span>
         <h1>
-          The two of you, and a valley <em>all to yourselves.</em>
+          An unhurried trip, <em>for two.</em>
         </h1>
-        <p className="hero-sub">
-          Lantern-lit post towns, emerald rivers, roads with nobody else on
-          them. We set up the quiet side of the Kiso Valley for you — bikes
-          delivered, bags carried, locals to ride with.
-        </p>
+        <p className="hero-sub">Moving with the river and the clouds.</p>
         <div className="hero-cta">
           <a href="#start" className="btn-primary">
             Find your way in <ArrowRight size={16} />
