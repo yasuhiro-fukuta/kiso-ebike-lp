@@ -50,8 +50,8 @@ const CARDS = [
   {
     href: "/gear",
     icon: Shirt,
-    title: "Gear Rental",
-    desc: "Woven Kiso hats, bear bells & spray, swim and winter kit — one item at a time.",
+    title: "Bear Spray Rental",
+    desc: "Bell included, ¥1,500 a day. Hinoki hats and river gear too.",
   },
   {
     href: "/crowd-free-japan",

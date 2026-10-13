@@ -362,7 +362,7 @@ export default function LuggageBusPage() {
           <summary>Need bear spray too?</summary>
           <p>
             Bear spray and other gear are on the{" "}
-            <Link href="/gear">gear rental page</Link>.
+            <Link href="/gear">bear spray rental page</Link>.
           </p>
         </details>
       </section>

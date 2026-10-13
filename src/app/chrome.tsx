@@ -44,14 +44,14 @@ const MENU_ITEMS: Record<
     { href: "/rental", label: "E-Bike Rental", sub: "Delivered to you · drop anywhere" },
     { href: "/luggage-shuttle", label: "Luggage Bus", sub: "Nagiso ⇄ Kiso-Fukushima, bags only" },
     { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
-    { href: "/explore", label: "Explore the Area", sub: "Gorges, routes, gear & columns" },
+    { href: "/gear", label: "Bear Spray Rental", sub: "Bell included · ¥1,500 a day" },
   ],
   ja: [
     { href: "/ja/guided", label: "住民本気のガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "お届け&乗り捨て自由" },
     { href: "/ja/luggage-shuttle", label: "ラゲッジバス", sub: "南木曽⇄木曽福島・荷物専用" },
     { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
-    { href: "/ja/explore", label: "周辺を楽しむ", sub: "渓谷・コース・道具・コラム" },
+    { href: "/ja/gear", label: "熊スプレーレンタル", sub: "熊鈴付き・1日1,500円" },
   ],
 };
 
@@ -96,10 +96,10 @@ const SECONDDAY_LABEL: Record<Lang, string> = {
   en: "Self-Tour Advice: 4 Mapped Routes",
   ja: "セルフツアーのすすめ——おすすめ4コース",
 };
-const GEAR_HREF: Record<Lang, string> = { en: "/gear", ja: "/ja/gear" };
-const GEAR_LABEL: Record<Lang, string> = {
-  en: "Gear Rental",
-  ja: "ギアレンタル",
+const EXPLORE_HREF: Record<Lang, string> = { en: "/explore", ja: "/ja/explore" };
+const EXPLORE_LABEL: Record<Lang, string> = {
+  en: "Explore the Area: gorges, routes, gear & columns",
+  ja: "周辺を楽しむ——渓谷・コース・道具・コラム",
 };
 
 /** EN ⇄ JA path mapping for the toggle. /atera is a Japanese-only
@@ -278,6 +278,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
           </nav>
           {colsOpen && (
             <div className="nav-col-list">
+              <Link href={EXPLORE_HREF[lang]} onClick={() => setOpen(false)}>
+                {EXPLORE_LABEL[lang]}
+              </Link>
               <Link href={PLAN_HREF[lang]} onClick={() => setOpen(false)}>
                 {PLAN_LABEL[lang]}
               </Link>
@@ -318,9 +321,6 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
             </button>
             <Link href={SHODO_HREF[lang]} onClick={() => setOpen(false)}>
               {SHODO_LABEL[lang]}
-            </Link>
-            <Link href={GEAR_HREF[lang]} onClick={() => setOpen(false)}>
-              {GEAR_LABEL[lang]}
             </Link>
             <a
               href={lang === "ja" ? WHATSAPP_URL_JA : WHATSAPP_URL}
@@ -491,7 +491,7 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           <br />
           <Link href={SHODO_HREF[lang]}>{SHODO_LABEL[lang]}</Link>
           <br />
-          <Link href={GEAR_HREF[lang]}>{GEAR_LABEL[lang]}</Link>
+          <Link href={EXPLORE_HREF[lang]}>{EXPLORE_LABEL[lang]}</Link>
           <br />
           <Link href={SECONDDAY_HREF[lang]}>{SECONDDAY_LABEL[lang]}</Link>
           <br />

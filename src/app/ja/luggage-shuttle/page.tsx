@@ -324,7 +324,7 @@ export default function JaLuggageBusPage() {
         <details className="faq-item">
           <summary>熊スプレーも借りたい。</summary>
           <p>
-            熊スプレーなどは<Link href="/ja/gear">ギアレンタルのページ</Link>からどうぞ。
+            熊スプレーなどは<Link href="/ja/gear">熊スプレーレンタルのページ</Link>からどうぞ。
           </p>
         </details>
       </section>

@@ -5,77 +5,11 @@ import { MessageCircle, CreditCard } from "lucide-react";
 import { SQUARE_PAY_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
-const GEAR_ITEMS: {
-  name: string;
-  nameJa: string;
-  desc: string;
-  price: string;
-  photos?: { src: string; alt: string }[];
-  wanted?: string;
-}[] = [
-  {
-    name: "Hinoki hat",
-    nameJa: "ヒノキ傘",
-    desc: "Hands-free cover from sun, rain and snow — a quiet marvel in summer and winter alike. Handmade by a local craftsman, woven from local hinoki cypress.",
-    price: "¥500",
-    photos: [
-      {
-        src: "/assets/gear/straw-hat.jpg",
-        alt: "The hinoki travel hat — a woven conical hat with brushed calligraphy, on the guesthouse windowsill",
-      },
-    ],
-  },
-  {
-    name: "Bear spray + bell",
-    nameJa: "熊スプレー(熊鈴付き)",
-    desc: "The mountains here are bear country. The spray is the serious backup, with a quick how-to briefing at pickup — and every rental comes with a bear bell, so they hear you coming long before you'd ever need it.",
-    price: "¥1,500",
-    photos: [
-      {
-        src: "/assets/gear/bear-spray.jpg",
-        alt: "Bear defense spray canister standing next to its black belt holster",
-      },
-      {
-        src: "/assets/gear/bear-bell.jpg",
-        alt: "The bear bell that comes with every spray rental — a brass bell on a reflective strap with a carabiner",
-      },
-    ],
-  },
-  {
-    name: "Rashguard",
-    nameJa: "ラッシュガード",
-    desc: "For the swimming holes of Kakizore and Atera — swim the emerald pools without freezing or burning. Men's and women's sets available.",
-    price: "¥2,000",
-    photos: [
-      {
-        src: "/assets/gear/watergear-f.jpg",
-        alt: "Women's rashguard set — navy zip-up top, leggings and floral swim shorts",
-      },
-      {
-        src: "/assets/gear/watergear-m.jpg",
-        alt: "Men's rashguard set — black long-sleeve top and leggings",
-      },
-    ],
-  },
-  {
-    name: "Life jacket",
-    nameJa: "ライフジャケット",
-    desc: "Float easy in the deeper pools. Pairs with the rashguard for a full river day.",
-    price: "¥1,000",
-    photos: [
-      {
-        src: "/assets/gear/life-jacket.jpg",
-        alt: "The life jacket — a black buoyancy vest with adjustable buckles",
-      },
-    ],
-  },
-  {
-    name: "Cold-weather set",
-    nameJa: "防寒具セット",
-    desc: "Insulated layers for riding the valley in the colder months, so the descent stays a pleasure.",
-    price: "¥1,000",
-    wanted: "冬装備で走っているカット",
-  },
+/** Other things we lend, mentioned at the end as a bonus. */
+const EXTRAS: { name: string; price: string; desc: string }[] = [
+  { name: "Hinoki hat", price: "¥500", desc: "Hands-free cover from sun, rain and snow, woven from local hinoki cypress by a local craftsman." },
+  { name: "Life jacket", price: "¥1,000", desc: "Float with confidence in the deep pools of Kakizore and Atera." },
+  { name: "Rashguard", price: "¥2,000", desc: "Against the river's chill and the sun. Men's and women's sizes." },
 ];
 
 export default function GearPage() {
@@ -89,43 +23,59 @@ export default function GearPage() {
 
       {/* PAGE HEAD */}
       <header className="page-head">
-        <span className="eyebrow">Gear rental · Per item, per day</span>
+        <span className="eyebrow">Bear spray rental · Bell included · ¥1,500 a day</span>
         <h1>
-          Borrow the valley&apos;s <em>working wardrobe.</em>
+          This is <em>bear country.</em>
         </h1>
         <p>
-          From the woven travel hats that walked this road for centuries to
-          the bear spray the mountains quietly require. Each item rents on its
-          own — grab exactly what your day needs, at the guesthouse, and pay
-          on the day by card or cash. Closed every Monday.
+          If you&apos;re walking the Nakasendo or heading into the gorges,
+          take a can of bear spray with you. We show you how to use it when
+          you pick it up at the guesthouse. Pay on the day by card or cash.
+          Closed every Monday.
         </p>
       </header>
 
-      {/* ITEMS */}
+      {/* BEAR SPRAY */}
       <section className="plans" id="items">
-        {GEAR_ITEMS.map((item) => (
-          <div className="plan" key={item.name}>
-            <div>
-              <span className="plan-kicker">{item.price} / day</span>
-              <h3>{item.name}</h3>
-              <div className="plan-ja">{item.nameJa}</div>
-              <p>{item.desc}</p>
-            </div>
-            {item.photos ? (
-              <div className={`plan-photos${item.photos.length > 1 ? " duo" : ""}`}>
-                {item.photos.map((p) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={p.src} src={p.src} alt={p.alt} />
-                ))}
-              </div>
-            ) : (
-              <div className="img-wanted">
-                <span className="iw-tag">Photo wanted</span>
-                <span className="iw-note">{item.wanted}</span>
-              </div>
-            )}
+        <div className="plan">
+          <div>
+            <span className="plan-kicker">¥1,500 / day</span>
+            <h3>Bear spray, with a bear bell</h3>
+            <div className="plan-ja">熊スプレー(熊鈴付き)</div>
+            <p>
+              The spray is your last resort. Every rental comes with a bear
+              bell, so the mountain hears you coming long before it&apos;s
+              needed. The holster clips to your belt or pack strap, within
+              easy reach.
+            </p>
           </div>
-        ))}
+          <div className="plan-photos duo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/gear/bear-spray.jpg" alt="A can of bear spray in its holster" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/gear/bear-bell.jpg"
+              alt="The bear bell that comes with every spray rental — a brass bell with a carabiner and reflective strap"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* EXTRAS */}
+      <section className="mini-sec" id="extras">
+        <span className="eyebrow">While you&apos;re at it</span>
+        <h2>We lend a few other things, too.</h2>
+        <div className="mini-grid">
+          {EXTRAS.map((x) => (
+            <div className="mini-card" key={x.name}>
+              <h3>
+                {x.name} <small>{x.price} / day</small>
+              </h3>
+              <p>{x.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p className="drop-note">Just add them to your bear spray request on WhatsApp.</p>
       </section>
 
       {/* BOOK & PAY */}
@@ -134,7 +84,7 @@ export default function GearPage() {
         <h2>Message us, then pay online or at the counter.</h2>
         <div className="pay-row">
           <Link href="/book?s=gear" className="stay-cta">
-            <MessageCircle size={16} /> Book gear on WhatsApp
+            <MessageCircle size={16} /> Book bear spray on WhatsApp
           </Link>
           <a
             href={SQUARE_PAY_URL}
@@ -148,7 +98,7 @@ export default function GearPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/square-pay-qr.png"
-              alt="QR code for the Square payment page — scan to pay the gear rental fee"
+              alt="QR code for the Square payment page — scan to pay the rental fee"
             />
             <figcaption>or scan to pay</figcaption>
           </figure>

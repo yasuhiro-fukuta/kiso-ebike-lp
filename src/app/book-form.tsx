@@ -207,7 +207,7 @@ const SERVICES: Record<string, Service> = {
         : `Bear spray rental only (no bags)\n①name is ${g("name")}\n②number of bottles is ${g("num")}\n③pick up at ${g("from")}\n④return at ${g("to")}`,
   },
   gear: {
-    title: { en: "Gear Rental", ja: "ギアレンタル" },
+    title: { en: "Bear Spray Rental", ja: "熊スプレーレンタル" },
     fields: [
       { k: "date", label: { en: "Date", ja: "日付" }, type: "date" },
       { k: "start", label: { en: "Start", ja: "出発" }, type: "select", options: POINTS },
