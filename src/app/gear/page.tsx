@@ -25,7 +25,7 @@ export default function GearPage() {
       <header className="page-head">
         <span className="eyebrow">Bear spray rental · Bell included · ¥1,500 a day</span>
         <h1>
-          This is <em>bear country.</em>
+          A <em>safety charm</em> for the trail.
         </h1>
         <p>
           If you&apos;re walking the Nakasendo or heading into the gorges,

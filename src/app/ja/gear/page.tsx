@@ -25,7 +25,7 @@ export default function JaGearPage() {
       <header className="page-head">
         <span className="eyebrow">熊スプレーレンタル · 熊鈴付き · 1日1,500円</span>
         <h1>
-          ここは<em>熊の山</em>です。
+          <em>安全のお守り</em>に。
         </h1>
         <p>
           中山道や渓谷を歩く・走るなら、熊スプレーを1本持っていってください。宿で受け取るときに使い方を説明します。お支払いは当日カードか現金で。毎週月曜日は定休です。
