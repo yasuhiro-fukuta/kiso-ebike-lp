@@ -1412,7 +1412,6 @@ figure.season-cell .season-tag {
 .drop-steps.cols5 { grid-template-columns: repeat(5, 1fr); }
 @media (max-width: 1000px) { .drop-steps.cols5 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .drop-steps.cols5 { grid-template-columns: 1fr; } }
-.lb-rules b { display: block; margin-bottom: 0.15rem; }
 
 /* purpose entrances on the top page (photos swap after the 12/7 shoot) */
 .entry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
@@ -1442,3 +1441,4 @@ figure.season-cell .season-tag {
   transition: background 0.2s ease;
 }
 .sub-entries a:hover { background: #e7dfcc; }
+.lb-rules b { display: block; margin-bottom: 0.15rem; }
