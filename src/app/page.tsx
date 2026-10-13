@@ -67,8 +67,8 @@ export default function Page() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/guided" className="entry-card">
             <img
-              src="/assets/tour/hero.jpg"
-              alt="A rider pauses on a bridge to photograph the emerald Kiso River"
+              src="/assets/guide-point.jpg"
+              alt="A local guide points out the next stop to a rider at a forest bridge"
             />
             <div className="entry-body">
               <h3>

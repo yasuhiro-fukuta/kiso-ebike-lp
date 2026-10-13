@@ -65,8 +65,8 @@ export default function JaHomePage() {
           {/* 12/7撮影後に写真差し替え */}
           <Link href="/ja/guided" className="entry-card">
             <img
-              src="/assets/tour/hero.jpg"
-              alt="橋の上からエメラルド色の木曽川を撮影するライダー"
+              src="/assets/guide-point.jpg"
+              alt="森の橋のたもとで、ガイドが次の見どころを案内しているところ"
             />
             <div className="entry-body">
               <h3>
