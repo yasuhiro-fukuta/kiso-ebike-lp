@@ -1443,6 +1443,47 @@ figure.season-cell .season-tag {
 .sub-entries a:hover { background: #e7dfcc; }
 .lb-rules b { display: block; margin-bottom: 0.15rem; }
 
+/* small link under the overlay foot (DIY rental recruitment) */
+.nav-overlay-sub { display: flex; justify-content: center; padding-bottom: 1.2rem; }
+.nav-overlay-sub a {
+  color: var(--paper); opacity: 0.45; text-decoration: none; font-size: 0.75rem;
+}
+.nav-overlay-sub a:hover { opacity: 1; color: var(--gold); }
+
+/* DIY rental recruitment page */
+.diyr-photos {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.diyr-photo { margin: 0; }
+.diyr-photo img,
+.diyr-photo-ph { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; display: block; }
+.diyr-photo-ph {
+  background: #e7dfcc; color: var(--cedar); border: 1px dashed rgba(122, 92, 62, 0.45);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem;
+  font-size: 0.8rem; font-weight: 300;
+}
+.diyr-photo figcaption { font-size: 0.8rem; font-weight: 300; color: var(--cedar); margin-top: 0.5rem; }
+.diyr-two { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); margin-top: 1.2rem; }
+.diyr-two h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+.diyr-two ul, .diyr-list { font-weight: 300; color: #3a352d; line-height: 1.8; padding-left: 1.2rem; }
+.diyr-rules { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: 0.7rem; max-width: 60ch; }
+.diyr-rules li { font-weight: 300; line-height: 1.6; padding-left: 1.4rem; position: relative; }
+.diyr-rules li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); }
+.diyr-terms { margin: 1.2rem 0 0; max-width: 720px; border-top: 1px solid rgba(122, 92, 62, 0.25); }
+.diyr-terms > div {
+  display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem;
+  padding: 0.8rem 0; border-bottom: 1px solid rgba(122, 92, 62, 0.25);
+}
+.diyr-terms dt { font-weight: 500; color: var(--cedar); font-size: 0.9rem; }
+.diyr-terms dd { margin: 0; font-weight: 300; color: #3a352d; }
+.diyr-tbd {
+  margin-left: 0.5rem; font-size: 0.68rem; padding: 0.05rem 0.4rem; border-radius: 3px;
+  background: #e7dfcc; color: var(--cedar); vertical-align: middle;
+}
+.diyr-note { font-size: 0.88rem; font-weight: 300; color: var(--cedar); max-width: 60ch; margin-top: 1.2rem; line-height: 1.7; }
+.diyr-contact { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
+.diyr-contact .band-cta { display: inline-flex; align-items: center; gap: 0.4rem; }
 /* ==================================================   RECRUIT — /ja/recruit (draft). Two entry tracks:
    students (paper) and mid-career restart (dark moss).
    All selectors scoped under .rc-*.
