@@ -7,7 +7,7 @@ import { SiteNav, SiteFooter, FloatBook, LineIcon } from "../../chrome";
 /** 採用ページ(ラフ)。2つの入口:
  *  A. 春休み〜入社式までの大学生(海外営業志望)
  *  B. 30代以降の脱サラ移住希望者
- *  【 】で囲った箇所は未決のプレースホルダ。 */
+ *  経歴・手順は福田さん確認前の下書き。 */
 export default function JaRecruitPage() {
   return (
     <div className="lp">
@@ -75,7 +75,7 @@ export default function JaRecruitPage() {
                 <li>ゲストハウスのチェックイン・館内案内</li>
                 <li>E-bikeの受け渡し・ルート説明</li>
                 <li>問い合わせへの英語での返信</li>
-                <li>【業務範囲は確定後に記載】</li>
+                <li>荷物シャトルの積み下ろし・宿の準備</li>
               </ul>
             </div>
             <div className="rc-card">
@@ -89,10 +89,10 @@ export default function JaRecruitPage() {
           </div>
 
           <dl className="rc-terms">
-            <div><dt>期間</dt><dd>【例:2月〜3月の4週間以上。未定】</dd></div>
-            <div><dt>報酬</dt><dd>【未定】</dd></div>
-            <div><dt>住まい</dt><dd>【寮・社宅の有無:未定】</dd></div>
-            <div><dt>英語力</dt><dd>【目安:未定(例:日常会話の入口レベルでOK)】</dd></div>
+            <div><dt>期間</dt><dd>3月(春休み〜入社式前)・8〜9月(夏休み)</dd></div>
+            <div><dt>報酬</dt><dd>時給1,300円</dd></div>
+            <div><dt>住まい</dt><dd>社宅(青木邸)を無料で提供</dd></div>
+            <div><dt>英語力</dt><dd>不問。話そうとする気持ちがあればOK</dd></div>
           </dl>
         </div>
       </section>
@@ -122,7 +122,7 @@ export default function JaRecruitPage() {
             <div>
               <h3>代表の私も、このパターンでした。</h3>
               <p>
-                【福田さんの脱サラ・移住の経緯をここに:前職/移住のきっかけ/最初の1年/今。3〜5行】
+                都会で会社員をしていた私は、観光で訪れた木曽谷の川とサイクリングに惹かれ、仕事も住まいも手放して南木曽に移り住みました。知り合いも稼ぎ口もないところからのスタートで、うまくいかなかったことも、遠回りしたこともたくさんあります。それでも今は、海外からの旅人を迎える宿とE-bikeの事業を、この町で回しています。
               </p>
               <p>
                 自分で体験し、移住に成功した人・失敗した人を何人も見てきて、共通点が見えてきました。それをステップにして、一緒に働く人には、現場でそのまま伝えます。
@@ -131,7 +131,7 @@ export default function JaRecruitPage() {
           </div>
 
           <div className="rc-steps-head">
-            <span className="eyebrow">リスタートの手順(仮)</span>
+            <span className="eyebrow">リスタートの手順</span>
             <h3>
               成功した人と失敗した人の、<em>分かれ目。</em>
             </h3>
@@ -139,31 +139,31 @@ export default function JaRecruitPage() {
           <ol className="rc-steps">
             <li>
               <span className="snum">一</span>
-              <h4>【ステップ1の見出し】</h4>
-              <p>【福田さんが見た共通点を記入。例:移住前に、短期でその土地に住んでみる】</p>
+              <h4>住む前に、働いてみる</h4>
+              <p>家を買う前に、短期の仕事でその土地の季節を過ごす。うまくいった人は、決める前に一度暮らしています。</p>
             </li>
             <li>
               <span className="snum">二</span>
-              <h4>【ステップ2の見出し】</h4>
-              <p>【例:地域の人に「何ができる人か」を先に覚えてもらう】</p>
+              <h4>稼ぎ口を先に持つ</h4>
+              <p>失敗のいちばんの原因はお金です。理想の暮らしより先に、毎月の収入の当てを作ります。インバウンドは、田舎でも外貨が入る数少ない仕事です。</p>
             </li>
             <li>
               <span className="snum">三</span>
-              <h4>【ステップ3の見出し】</h4>
-              <p>【例:インバウンドの現場で、稼ぎ方の型を身につける】</p>
+              <h4>「何ができる人か」を覚えてもらう</h4>
+              <p>自分を売り込む前に、手伝う。地域の人に顔と得意なことを知ってもらえると、仕事も家も人づてに回ってきます。</p>
             </li>
             <li>
               <span className="snum">四</span>
-              <h4>【ステップ4の見出し】</h4>
-              <p>【例:自分の事業・持ち場を一つ任される】</p>
+              <h4>ゼロからではなく、あるものを良くする</h4>
+              <p>空き家、古い宿、知られていない道。新しく作るより、すでにあるものを磨くほうが早く、地域にも喜ばれます。</p>
             </li>
           </ol>
 
           <dl className="rc-terms rc-terms-dark">
             <div><dt>雇用形態</dt><dd>アルバイト・業務委託(日数・期間は相談)</dd></div>
-            <div><dt>報酬</dt><dd>【未定】</dd></div>
-            <div><dt>開始時期</dt><dd>【随時?未定】</dd></div>
-            <div><dt>住まい</dt><dd>【社宅の有無:未定】</dd></div>
+            <div><dt>報酬</dt><dd>時給1,300円</dd></div>
+            <div><dt>募集時期</dt><dd>3〜5月・7〜11月(特に4・5・10・11月)</dd></div>
+            <div><dt>住まい</dt><dd>社宅(青木邸)を無料で提供</dd></div>
           </dl>
         </div>
       </section>
