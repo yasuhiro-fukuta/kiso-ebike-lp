@@ -73,6 +73,7 @@ const KAKIZORE_LABEL: Record<Lang, string> = {
   en: "Kakizore Gorge: Map & Access",
   ja: "電車で柿其渓谷へ——十二兼駅が便利!",
 };
+const RECRUIT_LABEL: Record<Lang, string> = { en: "Careers (JP)", ja: "採用情報" };
 const COLUMNS_LABEL: Record<Lang, string> = { en: "Columns", ja: "コラム" };
 const CROWDFREE_LABEL: Record<Lang, string> = {
   en: "Crowd-Free Japan: a 26-Day Itinerary",
@@ -119,6 +120,8 @@ function langTargets(pathname: string): { en: string; ja: string; isJa: boolean 
     return { en: "/kakizore", ja: "/kakizore-train", isJa: true };
   if (pathname === "/kakizore-car")
     return { en: "/kakizore", ja: "/kakizore-car", isJa: true };
+  if (pathname === "/ja/recruit")
+    return { en: "/", ja: "/ja/recruit", isJa: true };
   if (pathname === "/crowd-free-japan")
     return { en: "/crowd-free-japan", ja: "/ja", isJa: false };
   if (pathname === "/diy-rental")
@@ -335,6 +338,9 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
             >
               <MessageCircle size={15} /> WhatsApp
             </a>
+            <Link href="/ja/recruit" className="nav-recruit" onClick={() => setOpen(false)}>
+              {RECRUIT_LABEL[lang]}
+            </Link>
           </div>
           <div className="nav-overlay-sub">
             <Link href="/diy-rental" onClick={() => setOpen(false)}>
