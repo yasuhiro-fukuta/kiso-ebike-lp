@@ -96,6 +96,10 @@ const SECONDDAY_LABEL: Record<Lang, string> = {
   en: "Self-Tour Advice: 4 Mapped Routes",
   ja: "セルフツアーのすすめ——おすすめ4コース",
 };
+const DIY_RENTAL_LABEL: Record<Lang, string> = {
+  en: "DIY Rental House (JP)",
+  ja: "DIY型賃貸 入居者募集",
+};
 const EXPLORE_HREF: Record<Lang, string> = { en: "/explore", ja: "/ja/explore" };
 const EXPLORE_LABEL: Record<Lang, string> = {
   en: "Explore the Area: gorges, routes, gear & columns",
@@ -117,6 +121,8 @@ function langTargets(pathname: string): { en: string; ja: string; isJa: boolean 
     return { en: "/kakizore", ja: "/kakizore-car", isJa: true };
   if (pathname === "/crowd-free-japan")
     return { en: "/crowd-free-japan", ja: "/ja", isJa: false };
+  if (pathname === "/diy-rental")
+    return { en: "/", ja: "/diy-rental", isJa: true };
   if (pathname === "/snowboard-route")
     return { en: "/snowboard-route", ja: "/ja", isJa: false };
   const isJa = pathname === "/ja" || pathname.startsWith("/ja/");
@@ -330,6 +336,11 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
               <MessageCircle size={15} /> WhatsApp
             </a>
           </div>
+          <div className="nav-overlay-sub">
+            <Link href="/diy-rental" onClick={() => setOpen(false)}>
+              {DIY_RENTAL_LABEL[lang]}
+            </Link>
+          </div>
         </div>
       )}
     </>
@@ -427,7 +438,8 @@ export function FloatBook({
     pathname.startsWith("/ja/") ||
     pathname === "/atera" ||
     pathname === "/kakizore-train" ||
-    pathname === "/kakizore-car";
+    pathname === "/kakizore-car" ||
+    pathname === "/diy-rental";
   return (
     <>
       <a

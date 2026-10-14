@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/kakizore-car`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/crowd-free-japan`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/snowboard-route`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/diy-rental`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/ja`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/ja/rental`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ja/second-day`, changeFrequency: "monthly", priority: 0.8 },
