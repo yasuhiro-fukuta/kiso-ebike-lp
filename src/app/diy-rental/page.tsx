@@ -26,7 +26,7 @@ export const metadata: Metadata = {
  *  ============================================================= */
 const TERMS: { label: string; value: string; tentative?: boolean }[] = [
   { label: "家賃", value: "月1.5万円" },
-  { label: "敷金・礼金", value: "なし", tentative: true },
+  { label: "敷金・礼金", value: "敷金1か月(1.5万円)・礼金なし" },
   { label: "駐車場", value: "なし", tentative: true },
   { label: "入居可能日", value: "随時(ご相談)", tentative: true },
   { label: "ペット", value: "ご相談", tentative: true },
