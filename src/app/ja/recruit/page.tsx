@@ -107,7 +107,7 @@ export default function JaRecruitPage() {
             <em>田舎でインバウンド</em>です。
           </h2>
           <p className="rc-lead">
-            ただし、誰にでも勧めるわけではありません。対象は、次のすべてに頷ける人だけです。
+            まずはアルバイト・業務委託として、ここで働きながら田舎とインバウンドの現場を試してください。ただし、誰にでも勧めるわけではありません。対象は、次のすべてに頷ける人だけです。
           </p>
 
           <ul className="rc-oath">
@@ -125,7 +125,7 @@ export default function JaRecruitPage() {
                 【福田さんの脱サラ・移住の経緯をここに:前職/移住のきっかけ/最初の1年/今。3〜5行】
               </p>
               <p>
-                自分で体験し、移住に成功した人・失敗した人を何人も見てきて、共通点が見えてきました。それをステップにして、入社した人にはそのまま伝えます。
+                自分で体験し、移住に成功した人・失敗した人を何人も見てきて、共通点が見えてきました。それをステップにして、一緒に働く人には、現場でそのまま伝えます。
               </p>
             </div>
           </div>
@@ -160,9 +160,9 @@ export default function JaRecruitPage() {
           </ol>
 
           <dl className="rc-terms rc-terms-dark">
-            <div><dt>雇用形態</dt><dd>正社員(全国平均以上の待遇を目指します)</dd></div>
-            <div><dt>給与</dt><dd>【未定】</dd></div>
-            <div><dt>入社時期</dt><dd>【未定】</dd></div>
+            <div><dt>雇用形態</dt><dd>アルバイト・業務委託(日数・期間は相談)</dd></div>
+            <div><dt>報酬</dt><dd>【未定】</dd></div>
+            <div><dt>開始時期</dt><dd>【随時?未定】</dd></div>
             <div><dt>住まい</dt><dd>【社宅の有無:未定】</dd></div>
           </dl>
         </div>
