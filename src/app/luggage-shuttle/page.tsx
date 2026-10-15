@@ -14,6 +14,7 @@ import {
 import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { LUGGAGE_FAQ } from "../luggage-faq";
 
 export default function LuggageBusPage() {
   return (
@@ -29,7 +30,7 @@ export default function LuggageBusPage() {
         <div>
           <span className="head-badge">Luggage only · no passengers</span>
           <br />
-          <span className="eyebrow">Luggage Bus · Nagiso — Kiso-Fukushima</span>
+          <span className="eyebrow">Nakasendo luggage transfer · Luggage Bus · Nagiso — Kiso-Fukushima</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
@@ -334,30 +335,12 @@ export default function LuggageBusPage() {
       {/* FAQ */}
       <section className="faq" id="faq">
         <h2>Questions</h2>
-        <details className="faq-item">
-          <summary>Can I ride the Luggage Bus?</summary>
-          <p>
-            No. It carries luggage only — no passengers, not even for a
-            short hop. Between the stops, JR Chuo Line trains and local
-            buses run along the same valley.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>Can I just turn up with my bags?</summary>
-          <p>
-            No — please book first. We confirm each request on WhatsApp so
-            we know there&apos;s room on the run, and the booking is set
-            once you&apos;ve paid through the link we send.
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>What if I arrive before my bags?</summary>
-          <p>
-            Check the arrival times above. If you get there first, have a
-            coffee or look around while you wait — your bags will be there
-            once the run is through.
-          </p>
-        </details>
+        {LUGGAGE_FAQ.map((f) => (
+          <details className="faq-item" key={f.q.en}>
+            <summary>{f.q.en}</summary>
+            <p>{f.a.en}</p>
+          </details>
+        ))}
         <details className="faq-item">
           <summary>Need bear spray too?</summary>
           <p>

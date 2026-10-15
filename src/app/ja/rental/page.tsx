@@ -9,6 +9,7 @@ import {
   Mountain,
   Lightbulb,
   MessageCircle,
+  Luggage,
 } from "lucide-react";
 import {
   GOOGLE_MAPS_URL,
@@ -220,6 +221,20 @@ export default function JaRentalPage() {
           <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer">
             Googleマップに写真を投稿 <ArrowRight size={15} />
           </a>
+        </div>
+      </section>
+
+      {/* 荷物運びへの導線 — 翌日に中山道を歩く人向け */}
+      <section style={{ padding: "clamp(3rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem) 0" }}>
+        <div className="review-ask">
+          <Luggage size={28} />
+          <p>
+            <strong>次の日は中山道を歩きますか?</strong>
+            荷物はラゲッジバスで先に送れます。南木曽〜木曽福島を1日1往復し、当日中に届きます。
+          </p>
+          <Link href="/ja/luggage-shuttle">
+            ラゲッジバスを見る <ArrowRight size={15} />
+          </Link>
         </div>
       </section>
 
