@@ -108,7 +108,7 @@ export default function JaRentalPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="contain"
-              src="https://velmo.jp/cdn/shop/files/sand-yellow_accc46c5-39a5-4c1d-8d4a-42181c05872d.png?v=1751018445&width=900"
+              src="https://velmo.jp/cdn/shop/files/mat-black_c373786c-b25e-4951-892c-73e6cf9e6cae.png?v=1751018445&width=900"
               alt="VELMO PICO 小径E-bike"
             />
             <div className="bike-pick-body">
