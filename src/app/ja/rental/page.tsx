@@ -66,7 +66,7 @@ export default function JaRentalPage() {
             坂を<em>平らにする</em>ファットタイヤE-bike。
           </h2>
           <p>
-            MOVE社のファットタイヤ電動アシスト。砂利道も川沿いも山道も余裕です。登りはモーターの仕事。あなたはハンドルを握って、景色を見ていてください。
+            選べる2車種。砂利道も川沿いも山道も余裕のファットタイヤ「MOVE XS」と、軽くて扱いやすい小径の「VELMO PICO」。登りはモーターの仕事。あなたはハンドルを握って、景色を見ていてください。
           </p>
           <ul className="gear-list">
             <li>
@@ -82,6 +82,44 @@ export default function JaRentalPage() {
               <Lightbulb size={18} /> ヘルメット・ナンバーロック・ライト付き
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* 2車種 */}
+      <section className="mini-sec" id="bikes">
+        <span className="eyebrow">選べる2車種</span>
+        <h2>その日の旅に合う1台を。</h2>
+        <div className="bike-picks">
+          <div className="bike-pick">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/ebike.jpg" alt="MOVE XS ファットタイヤE-bike" />
+            <div className="bike-pick-body">
+              <h3>MOVE XS</h3>
+              <p className="bike-pick-tag">ファットタイヤ・砂利道や山道に</p>
+              <div className="amt">
+                <s className="amt-old">¥6,000</s>¥4,000
+                <span>/台・1日</span>
+              </div>
+              <p className="campaign-line">キャンペーン価格</p>
+              <p>極太タイヤで砂利道や林道もしっかりグリップ。渓谷や長めのルートに。</p>
+            </div>
+          </div>
+          <div className="bike-pick">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="contain"
+              src="https://velmo.jp/cdn/shop/files/sand-yellow_accc46c5-39a5-4c1d-8d4a-42181c05872d.png?v=1751018445&width=900"
+              alt="VELMO PICO 小径E-bike"
+            />
+            <div className="bike-pick-body">
+              <h3>VELMO PICO</h3>
+              <p className="bike-pick-tag">16インチ小径・軽くて扱いやすい</p>
+              <div className="amt">
+                ¥4,000<span>/台・1日</span>
+              </div>
+              <p>車重17.5kgの小さく軽いE-bike。小柄な方や、宿場町をのんびり巡る旅に。</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -143,11 +181,19 @@ export default function JaRentalPage() {
         <h2>1台おいくら?</h2>
         <div className="pricing">
           <div className="pitem">
-            <h4>E-bikeレンタル</h4>
+            <h4>MOVE XS</h4>
+            <div className="amt">
+              <s className="amt-old">¥6,000</s>¥4,000
+              <span style={{ fontSize: "0.9rem" }}>/台</span>
+            </div>
+            <p>キャンペーン価格、セルフガイド。最大4台まで——うち1台は子供も乗れる自転車です。</p>
+          </div>
+          <div className="pitem">
+            <h4>VELMO PICO</h4>
             <div className="amt">
               ¥4,000<span style={{ fontSize: "0.9rem" }}>/台</span>
             </div>
-            <p>セルフガイド、1台¥4,000。最大4台まで——うち1台は子供も乗れる自転車です。</p>
+            <p>16インチの小径E-bike、セルフガイド。</p>
           </div>
           <div className="pitem">
             <h4>ルートマップ</h4>
