@@ -19,10 +19,11 @@ export function luggageJsonLd(lang: "en" | "ja") {
     "@context": "https://schema.org",
     "@graph": [
       {
-        // Same @id as the Service in the root layout, so both describe one
-        // entity; this node adds the page-language name and the offer.
+        // This page's own node, tied to the site-wide Service in the root
+        // layout (@id /#shuttle); it adds the page-language name and the offer.
         "@type": "Service",
-        "@id": `${SITE_URL}/#shuttle`,
+        "@id": `${url}#service`,
+        isRelatedTo: { "@id": `${SITE_URL}/#shuttle` },
         name: ja ? "ラゲッジバス(中山道の手荷物配送)" : "Luggage Bus — Nakasendo luggage transfer",
         serviceType: ja ? "手荷物配送" : "Luggage transfer",
         description: ja
@@ -52,7 +53,7 @@ export function luggageJsonLd(lang: "en" | "ja") {
         "@id": `${url}#webpage`,
         url,
         inLanguage: lang,
-        about: { "@id": `${SITE_URL}/#shuttle` },
+        about: { "@id": `${url}#service` },
         mainEntity: LUGGAGE_FAQ.map((f) => ({
           "@type": "Question",
           name: f.q[lang],

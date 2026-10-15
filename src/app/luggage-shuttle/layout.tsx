@@ -17,6 +17,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: ["/assets/shuttle-van.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nakasendo Luggage Transfer — Luggage Bus, Nagiso to Kiso-Fukushima",
+    description: "Drop your bags in the morning, walk on, and find them waiting at the next town. Same-day, one round trip a day.",
+    images: ["/assets/shuttle-van.jpg"],
+  },
 };
 
 export default function LuggageLayout({ children }: { children: React.ReactNode }) {

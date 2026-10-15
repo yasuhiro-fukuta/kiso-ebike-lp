@@ -15,6 +15,12 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     images: ["/assets/shuttle-van.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "中山道の手荷物配送 — ラゲッジバス(南木曽〜木曽福島)",
+    description: "朝に荷物を預けて歩けば、次の町で荷物が待っています。当日配送、1日1往復。",
+    images: ["/assets/shuttle-van.jpg"],
+  },
 };
 
 export default function JaLuggageLayout({ children }: { children: React.ReactNode }) {
