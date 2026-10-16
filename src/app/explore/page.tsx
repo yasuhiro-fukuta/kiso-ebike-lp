@@ -105,7 +105,7 @@ export default function ExplorePage() {
         <div className="sub-entries">
           <Link href="/atera-gorge">Atera Gorge by Train &amp; E-Bike</Link>
           <Link href="/kakizore">Kakizore Gorge: Map &amp; Access</Link>
-          <Link href="/second-day">Self-Tour Advice: 4 Mapped Routes</Link>
+          <Link href="/second-day">Self-Tour Advice: 5 Mapped Routes</Link>
           <Link href="/crowd-free-japan">Crowd-Free Japan: a 26-Day Itinerary</Link>
           <Link href="/snowboard-route">Learn in Achi, Graduate in Hakuba</Link>
         </div>

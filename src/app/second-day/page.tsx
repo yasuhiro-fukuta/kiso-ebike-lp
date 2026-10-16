@@ -217,8 +217,9 @@ export default function SecondDayPage() {
                 Drawn on the map, this loop is a heart. Roll gently downhill
                 from Nagiso through Sakashita all the way to Nakatsugawa,
                 passing Naegi Castle ruins and a local ramen stop on the way.
-                Then turn back east and climb over Magome Pass on the old
-                Nakasendo, dropping into Tsumago and home to Nagiso. Only want
+                Then turn back northeast, climb through Magome post town and
+                over Magome Pass on the old Nakasendo, dropping into Tsumago
+                and home to Nagiso. Only want
                 the downhill? Leave the bike at Nakatsugawa Station and take
                 the train back — about 30 km, mostly descending.
               </p>
@@ -233,7 +234,7 @@ export default function SecondDayPage() {
           <span className="eyebrow">Find your way</span>
           <h2>Route maps</h2>
           <p>
-            Every course above is drawn on this map in its own color — match
+            The first four courses above are drawn on this map in their own colors (the Sakashita–Magome Challenge has its own map below) — match
             the line tag on each card to the line on the map. Open it on
             your phone for turn-by-turn directions between our pick-up
             points.
