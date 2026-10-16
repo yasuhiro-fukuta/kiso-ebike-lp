@@ -206,7 +206,10 @@ export default function GuidedPage() {
               </p>
               <div className="price">
                 <small>Guides, driver, bikes &amp; luggage included</small>
-                <span className="price-note">Pricing — ask on WhatsApp</span>
+                <span className="price-note">
+                  Same price as the full day — ¥80,000 / group of 4 · ±15% per
+                  rider · opening campaign: half price
+                </span>
               </div>
               <a
                 href="/book?s=guided"

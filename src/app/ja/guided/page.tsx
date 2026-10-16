@@ -181,7 +181,9 @@ export default function JaGuidedPage() {
               </p>
               <div className="price">
                 <small>ガイド・ドライバー・バイク・荷物運び込み</small>
-                <span className="price-note">料金はWhatsAppでご相談</span>
+                <span className="price-note">
+                  フルコースと同額 · ¥80,000/4名 · 1名±で±15% · いまオープンキャンペーンで総額半額
+                </span>
               </div>
               <a
                 href="/ja/book?s=guided"
