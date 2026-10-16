@@ -50,9 +50,9 @@ export default function StayPage() {
             </p>
             <p>
               Rooms and rates live on Kashiwaya&apos;s own site — check dates
-              there, then come back and plan the days around it. Summer and
-              winter are usually the easiest seasons to find consecutive
-              nights, and the{" "}
+              there, then come back and plan the days around it. Kashiwaya is
+              closed December–February; summer is usually the easiest season
+              to find consecutive nights, and the{" "}
               <Link href="/plan" style={{ color: "inherit" }}>
                 3-night model plan
               </Link>{" "}

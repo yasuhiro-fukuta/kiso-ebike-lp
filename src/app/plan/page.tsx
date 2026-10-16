@@ -162,8 +162,9 @@ export default function PlanPage() {
         <h2>One bed, one table, three nights.</h2>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1rem" }}>
           Rooms book directly on Kashiwaya&apos;s own site. Availability
-          varies with the season — <strong>summer and winter are usually
-          the easiest times to find three straight nights.</strong>
+          varies with the season — <strong>summer is usually the easiest
+          time to find three straight nights.</strong> Kashiwaya is closed
+          December–February.
         </p>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "2rem" }}>
           Meals are the guesthouse&apos;s special-day hotpot dinner and the

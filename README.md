@@ -52,4 +52,4 @@ git push
 デプロイ状況はここから確認：
 https://vercel.com/yakkuns-projects
 ホームページはここから確認：
-https://kiso-ebike-lp.vercel.app/
+https://nakasendo-ebike.com/

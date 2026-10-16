@@ -158,6 +158,9 @@ export default function SnowboardRoutePage() {
           get a workout, and you see a side of Japan that no ski resort can
           show you.
         </p>
+        <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "60ch", marginTop: "1rem" }}>
+          <strong>Please note: Kashiwaya is closed December–February.</strong>
+        </p>
       </section>
 
       {/* STAGE 3 */}
@@ -249,7 +252,7 @@ export default function SnowboardRoutePage() {
           </a>
         </div>
         <p className="pay-note">
-          Winter is also when Kashiwaya is easiest to book — the{" "}
+          Please note: Kashiwaya is closed December–February. The{" "}
           <Link href="/plan" style={{ color: "inherit" }}>
             3-night model plan
           </Link>{" "}

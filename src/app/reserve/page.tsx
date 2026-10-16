@@ -6,9 +6,9 @@ export default function ReservePage() {
       <div className="max-w-xl text-center text-white">
         <h1 className="text-2xl md:text-3xl font-semibold mb-3">Reservation</h1>
         <p className="mb-4">
-          You can now book and pay online from the{" "}
-          <Link href="/rental#book" className="underline">
-            booking section on our rental page
+          Book on WhatsApp from the{" "}
+          <Link href="/book?s=rental" className="underline">
+            booking page
           </Link>
           .
         </p>
