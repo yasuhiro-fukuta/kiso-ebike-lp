@@ -143,7 +143,7 @@ export default function JaPlanPage() {
         <h2>ベッドひとつ、食卓ひとつ、3泊。</h2>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "1rem" }}>
           部屋の予約は柏屋の公式サイトから。空き状況は季節によりますが、
-          <strong>夏と冬は3連泊が取りやすい</strong>時期です。
+          <strong>夏は3連泊が取りやすい</strong>時期です。柏屋は12〜2月は休業です。
         </p>
         <p style={{ fontWeight: 300, color: "#3a352d", maxWidth: "56ch", marginBottom: "2rem" }}>
           食事は、特別な日の鍋の夕食と、お茶漬けの朝ごはん。注文フォームから事前予約して、お支払いは当日です。写真と詳細は

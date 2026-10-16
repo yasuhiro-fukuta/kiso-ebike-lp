@@ -312,10 +312,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "How does the luggage shuttle work?",
+          name: "How does the Luggage Bus work?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "We move your bags anywhere between Tsumago, Nagiso Station, Kashiwaya, Junikane Station and Nojiri Station — a ¥1,500 base fee per group plus ¥1,500 per bag — so you can ride point-to-point without carrying your pack over a pass.",
+            text: "A booked, luggage-only van runs once a day between Nagiso, Nojiri, Suhara, Agematsu and Kiso-Fukushima (Nagiso → Kiso-Fukushima 10:00–11:30, back 12:00–13:30). Fare: ¥1,500 for each zone the bags pass through plus ¥1,500 per bag. Request by 21:00 the day before; pay by 8:00 on the day through the link we send. Closed every Monday and from December to March.",
           },
         },
         {

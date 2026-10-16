@@ -473,11 +473,11 @@ export default function GuidedPage() {
               </a>
               <p className="special-cta-note">
                 Message us with your date and group size — we&apos;ll confirm
-                the day. Pay on the day, card or cash. (Our no-reservation{" "}
+                the day. Pay on the day, card or cash. (Our{" "}
                 <Link href="/luggage-shuttle" style={{ color: "inherit" }}>
-                  Nagiso ⇄ Nojiri luggage shuttle
+                  Luggage Bus
                 </Link>{" "}
-                is a separate service — on a guided day, bags are simply part
+                — booking by 21:00 the day before — is a separate service — on a guided day, bags are simply part
                 of the package.) Tours rest every Monday.
               </p>
             </div>
