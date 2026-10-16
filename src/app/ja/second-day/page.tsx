@@ -175,17 +175,17 @@ export default function JaSecondDayPage() {
               <div className="img-wanted" style={{ minHeight: 0, height: "100%", borderRadius: 0, border: 0 }}>
                 <span className="iw-tag">写真準備中</span>
               </div>
-              <span className="lvl">健脚向け</span>
+              <span className="lvl">きつい</span>
               <span className="season">春〜秋</span>
             </div>
             <div className="body">
               <h3>坂下馬込チャレンジ</h3>
-              <div className="route">ハート型の周回 · 約55km · 健脚向け</div>
+              <div className="route">ハート型の周回 · 約55km · きつい</div>
               <div className="map-line">
                 <i style={{ background: LINE.heart }} /> 下のハート地図の赤ライン
               </div>
               <p>
-                地図に描くとハートの形になる周回コース。南木曽から坂下を経由して中津川まで、苗木城跡や地元のラーメン屋に寄りながらゆったり下ります。帰りは馬込峠を越えて旧中山道を妻籠へ、そして南木曽へ戻ります。下りだけ楽しみたい人は、中津川駅で乗り捨てて電車で帰ることもできます（約30km・ほぼ下り）。
+                地図に描くとハートの形になる周回コース。南木曽から坂下を経由して中津川まで、苗木城跡や地元のラーメン屋に寄りながらゆったり下ります。帰りは馬込宿を抜けて馬込峠を越え、旧中山道を妻籠へ、そして南木曽へ戻ります。下りだけ楽しみたい人は、中津川駅で乗り捨てて電車で帰ることもできます（約30km・ほぼ下り）。
               </p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function JaSecondDayPage() {
           <span className="eyebrow">道に迷わない</span>
           <h2>ルートマップ</h2>
           <p>
-            上の各コースは、この地図にそれぞれの色で引いてあります。カードの色タグと地図のラインを見比べてください。スマホで開けば、受け渡し地点間の道順をそのままナビできます。
+            上の4コースは、この地図にそれぞれの色で引いてあります（坂下馬込チャレンジは下に別の地図があります）。カードの色タグと地図のラインを見比べてください。スマホで開けば、受け渡し地点間の道順をそのままナビできます。
           </p>
           <div className="map-legend">
             <span>

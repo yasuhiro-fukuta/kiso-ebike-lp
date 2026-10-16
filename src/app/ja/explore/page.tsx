@@ -103,7 +103,7 @@ export default function JaExplorePage() {
           <Link href="/atera">阿寺渓谷へは電車&amp;E-bike</Link>
           <Link href="/kakizore-train">電車で柿其渓谷へ——十二兼駅が便利!</Link>
           <Link href="/kakizore-car">車で柿其渓谷へ——天白公園駐車場が便利!</Link>
-          <Link href="/ja/second-day">セルフツアーのすすめ——おすすめ4コース</Link>
+          <Link href="/ja/second-day">セルフツアーのすすめ——おすすめ5コース</Link>
           <Link href="/crowd-free-japan">人混み嫌いのための日本旅行旅程(英語)</Link>
           <Link href="/snowboard-route">初スノボの冬ルート:阿智で学び、白馬で卒業(英語)</Link>
         </div>
