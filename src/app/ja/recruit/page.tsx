@@ -91,7 +91,7 @@ export default function JaRecruitPage() {
           <dl className="rc-terms">
             <div><dt>期間</dt><dd>3月(春休み〜入社式前)・8〜9月(夏休み)</dd></div>
             <div><dt>報酬</dt><dd>時給1,300円</dd></div>
-            <div><dt>住まい</dt><dd>社宅(青木邸)を無料で提供</dd></div>
+            <div><dt>住まい</dt><dd>相談可</dd></div>
             <div><dt>英語力</dt><dd>不問。話そうとする気持ちがあればOK</dd></div>
           </dl>
         </div>
@@ -163,7 +163,7 @@ export default function JaRecruitPage() {
             <div><dt>雇用形態</dt><dd>アルバイト・業務委託(日数・期間は相談)</dd></div>
             <div><dt>報酬</dt><dd>時給1,300円</dd></div>
             <div><dt>募集時期</dt><dd>3〜5月・7〜11月(特に4・5・10・11月)</dd></div>
-            <div><dt>住まい</dt><dd>社宅(青木邸)を無料で提供</dd></div>
+            <div><dt>住まい</dt><dd>相談可</dd></div>
           </dl>
         </div>
       </section>
