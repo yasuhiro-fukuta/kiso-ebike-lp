@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, ExternalLink } from "lucide-react";
-import { WHATSAPP_URL, MYMAP_EMBED_URL, MYMAP_VIEW_URL } from "../site";
+import {
+  WHATSAPP_URL,
+  MYMAP_EMBED_URL,
+  MYMAP_VIEW_URL,
+  HEART_MAP_EMBED_URL,
+  HEART_MAP_VIEW_URL,
+} from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "Self-Tour Advice: 4 Mapped E-Bike Routes in Nagiso | Beyond Nakasendo Cycling",
+    "Self-Tour Advice: 5 Mapped E-Bike Routes in Nagiso | Beyond Nakasendo Cycling",
   description:
-    "How to spend your second day in Nagiso, Kiso Valley: four self-guided e-bike routes with turn-by-turn Google Maps — a railway-side old road, a gorge-and-onsen ride, the Yogawa Nakasendo Challenge, and a quiet back road into Tsumago.",
+    "How to spend your second day in Nagiso, Kiso Valley: five self-guided e-bike routes with turn-by-turn Google Maps — a railway-side old road, a gorge-and-onsen ride, the Yogawa Nakasendo Challenge, a quiet back road into Tsumago, and the heart-shaped Sakashita–Magome Challenge.",
   alternates: { canonical: "/second-day" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/second-day",
     siteName: "Beyond Nakasendo Cycling",
-    title: "Self-Tour Advice: 4 Mapped E-Bike Routes in Nagiso",
+    title: "Self-Tour Advice: 5 Mapped E-Bike Routes in Nagiso",
     description:
-      "Day one on foot, day two on wheels: four self-guided e-bike routes through the quiet side of the Kiso Valley, each drawn on one Google My Map.",
+      "Day one on foot, day two on wheels: five self-guided e-bike routes through the quiet side of the Kiso Valley, each drawn on Google My Maps.",
     locale: "en_US",
     images: ["/assets/gorge.jpg"],
   },
@@ -25,10 +31,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Self-Tour Advice: 4 Mapped E-Bike Routes in Nagiso",
+  headline: "Self-Tour Advice: 5 Mapped E-Bike Routes in Nagiso",
   inLanguage: "en",
   about:
-    "Four self-guided e-bike routes around Nagiso in the Kiso Valley, with route maps and seasonal advice",
+    "Five self-guided e-bike routes around Nagiso in the Kiso Valley, with route maps and seasonal advice",
   author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
   publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
   mainEntityOfPage: "https://nakasendo-ebike.com/second-day",
@@ -40,6 +46,7 @@ const LINE = {
   onsen: "#2fa8e0", // light blue
   challenge: "#e0568f", // pink
   tsumago: "#1e6b30", // green
+  heart: "#d32f2f", // red (own map)
 };
 
 export default function SecondDayPage() {
@@ -78,7 +85,7 @@ export default function SecondDayPage() {
       <section className="tours" id="routes">
         <div className="tours-head">
           <span className="eyebrow">Choose your day</span>
-          <h2>Four routes. All a little off the beaten track.</h2>
+          <h2>Five routes. All a little off the beaten track.</h2>
           <p>
             Open the route map on your
             phone for turn-by-turn directions between our pick-up points.
@@ -188,6 +195,37 @@ export default function SecondDayPage() {
             </div>
           </div>
         </div>
+
+        <h3 className="tour-group-title">Heart-shaped loop · Nagiso → Nakatsugawa → Nagiso</h3>
+        <div className="tour-grid">
+          <div className="tour-card">
+            <div className="top">
+              <div className="img-wanted" style={{ minHeight: 0, height: "100%", borderRadius: 0, border: 0 }}>
+                <span className="iw-tag">Photo coming soon</span>
+              </div>
+              <span className="lvl">Hard</span>
+              <span className="season">Spring to Autumn</span>
+            </div>
+            <div className="body">
+              <h3>Sakashita–Magome Challenge</h3>
+              <div className="route">Heart-shaped loop · approx. 55 km · Hard</div>
+              <div className="map-line">
+                <i style={{ background: LINE.heart }} /> The red line on the
+                heart map below
+              </div>
+              <p>
+                Drawn on the map, this loop is a heart. Roll gently downhill
+                from Nagiso through Sakashita all the way to Nakatsugawa,
+                passing Naegi Castle ruins and a local ramen stop on the way.
+                Then turn back northeast, climb through Magome post town and
+                over Magome Pass on the old Nakasendo, dropping into Tsumago
+                and home to Nagiso. Only want
+                the downhill? Leave the bike at Nakatsugawa Station and take
+                the train back — about 30 km, mostly descending.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ROUTE MAPS */}
@@ -196,7 +234,7 @@ export default function SecondDayPage() {
           <span className="eyebrow">Find your way</span>
           <h2>Route maps</h2>
           <p>
-            Every course above is drawn on this map in its own color — match
+            The first four courses above are drawn on this map in their own colors (the Sakashita–Magome Challenge has its own map below) — match
             the line tag on each card to the line on the map. Open it on
             your phone for turn-by-turn directions between our pick-up
             points.
@@ -232,6 +270,27 @@ export default function SecondDayPage() {
             style={{ marginTop: "1.4rem" }}
           >
             Open the map in Google Maps <ExternalLink size={15} />
+          </a>
+
+          <h3 className="tour-group-title" style={{ marginTop: "2.4rem" }}>
+            Sakashita–Magome Challenge (heart loop)
+          </h3>
+          <div className="map-embed">
+            <iframe
+              src={HEART_MAP_EMBED_URL}
+              title="Sakashita–Magome Challenge route map"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+          <a
+            href={HEART_MAP_VIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+            style={{ marginTop: "1.4rem" }}
+          >
+            Open the heart loop in Google Maps <ExternalLink size={15} />
           </a>
         </div>
       </section>
