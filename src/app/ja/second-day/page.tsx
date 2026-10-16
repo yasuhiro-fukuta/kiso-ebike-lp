@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, ExternalLink } from "lucide-react";
-import { WHATSAPP_URL_JA, MYMAP_EMBED_URL, MYMAP_VIEW_URL } from "../../site";
+import {
+  WHATSAPP_URL_JA,
+  MYMAP_EMBED_URL,
+  MYMAP_VIEW_URL,
+  HEART_MAP_EMBED_URL,
+  HEART_MAP_VIEW_URL,
+} from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export const metadata: Metadata = {
   title:
-    "セルフツアーのすすめ——南木曽のE-bikeおすすめ4コース | Beyond Nakasendo Cycling",
+    "セルフツアーのすすめ——南木曽のE-bikeおすすめ5コース | Beyond Nakasendo Cycling",
   description:
-    "南木曽・木曽谷での「2日目」の過ごし方。E-bikeセルフツアーのおすすめ4コースをGoogleマップの地図つきで紹介——鉄道と並走する旧中山道、渓谷と温泉のコース、与川道の中山道チャレンジ、妻籠へ抜ける静かな森林鉄道跡。",
+    "南木曽・木曽谷での「2日目」の過ごし方。E-bikeセルフツアーのおすすめ5コースをGoogleマップの地図つきで紹介——鉄道と並走する旧中山道、渓谷と温泉のコース、与川道の中山道チャレンジ、妻籠へ抜ける静かな森林鉄道跡、ハート型の坂下馬込チャレンジ。",
   alternates: { canonical: "/ja/second-day" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/ja/second-day",
     siteName: "Beyond Nakasendo Cycling",
-    title: "セルフツアーのすすめ——南木曽のE-bikeおすすめ4コース",
+    title: "セルフツアーのすすめ——南木曽のE-bikeおすすめ5コース",
     description:
-      "1日目は歩く、2日目は走る。木曽谷の「静かな側」を巡るセルフガイド4コースを、1枚のGoogleマイマップに色分けして公開中。",
+      "1日目は歩く、2日目は走る。木曽谷の「静かな側」を巡るセルフガイド5コースを、1枚のGoogleマイマップに色分けして公開中。",
     locale: "ja_JP",
     images: ["/assets/gorge.jpg"],
   },
@@ -25,10 +31,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "セルフツアーのすすめ——南木曽のE-bikeおすすめ4コース",
+  headline: "セルフツアーのすすめ——南木曽のE-bikeおすすめ5コース",
   inLanguage: "ja",
   about:
-    "南木曽・木曽谷のE-bikeセルフツアー4コース(地図・季節のアドバイスつき)",
+    "南木曽・木曽谷のE-bikeセルフツアー5コース(地図・季節のアドバイスつき)",
   author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
   publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
   mainEntityOfPage: "https://nakasendo-ebike.com/ja/second-day",
@@ -40,6 +46,7 @@ const LINE = {
   onsen: "#2fa8e0", // 水色
   challenge: "#e0568f", // ピンク
   tsumago: "#1e6b30", // 緑
+  heart: "#d32f2f", // 赤(別マップ)
 };
 
 export default function JaSecondDayPage() {
@@ -70,7 +77,7 @@ export default function JaSecondDayPage() {
       <section className="tours" id="routes">
         <div className="tours-head">
           <span className="eyebrow">コースを選ぶ</span>
-          <h2>4コース。どれも観光ルートから少し外れています。</h2>
+          <h2>5コース。どれも観光ルートから少し外れています。</h2>
           <p>
             受け渡し地点間の道順は、スマホのルートマップでターンバイターン表示できます。
           </p>
@@ -160,6 +167,29 @@ export default function JaSecondDayPage() {
             </div>
           </div>
         </div>
+
+        <h3 className="tour-group-title">ハート型周回 南木曽 → 中津川 → 南木曽</h3>
+        <div className="tour-grid">
+          <div className="tour-card">
+            <div className="top">
+              <div className="img-wanted" style={{ minHeight: 0, height: "100%", borderRadius: 0, border: 0 }}>
+                <span className="iw-tag">写真準備中</span>
+              </div>
+              <span className="lvl">健脚向け</span>
+              <span className="season">春〜秋</span>
+            </div>
+            <div className="body">
+              <h3>坂下馬込チャレンジ</h3>
+              <div className="route">ハート型の周回 · 約55km · 健脚向け</div>
+              <div className="map-line">
+                <i style={{ background: LINE.heart }} /> 下のハート地図の赤ライン
+              </div>
+              <p>
+                地図に描くとハートの形になる周回コース。南木曽から坂下を経由して中津川まで、苗木城跡や地元のラーメン屋に寄りながらゆったり下ります。帰りは馬込峠を越えて旧中山道を妻籠へ、そして南木曽へ戻ります。下りだけ楽しみたい人は、中津川駅で乗り捨てて電車で帰ることもできます（約30km・ほぼ下り）。
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ROUTE MAPS */}
@@ -200,6 +230,27 @@ export default function JaSecondDayPage() {
             style={{ marginTop: "1.4rem" }}
           >
             Googleマップで地図を開く <ExternalLink size={15} />
+          </a>
+
+          <h3 className="tour-group-title" style={{ marginTop: "2.4rem" }}>
+            坂下馬込チャレンジ（ハート型）
+          </h3>
+          <div className="map-embed">
+            <iframe
+              src={HEART_MAP_EMBED_URL}
+              title="坂下馬込チャレンジ ルートマップ"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+          <a
+            href={HEART_MAP_VIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stay-cta"
+            style={{ marginTop: "1.4rem" }}
+          >
+            Googleマップでハートのコースを開く <ExternalLink size={15} />
           </a>
         </div>
       </section>
