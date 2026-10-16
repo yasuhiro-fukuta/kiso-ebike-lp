@@ -270,7 +270,8 @@ export default function RentalPage() {
           By the day before your ride, send us your date, number of riders,
           and where you want to start. We&apos;ll confirm your bikes. No
           prepayment: on the morning of your ride we send a payment link on
-          WhatsApp, and the lock code follows once it&apos;s paid. Rentals
+          WhatsApp (card only, no cash), and the lock code follows once
+          it&apos;s paid. Rentals
           rest every Monday.
         </p>
 
