@@ -73,9 +73,10 @@ export default function RentalPage() {
             Fat-tire e-bikes that <em>flatten the hills.</em>
           </h2>
           <p>
-            Our MOVE fat-tire electric bikes handle gravel, riverbanks, and
-            mountain road with ease. The motor does the climbing — you just
-            steer and look around.
+            Two e-bikes to choose from: the MOVE XS fat-tire bike for gravel,
+            riverbanks and mountain road, and the compact VELMO PICO for
+            lighter, easy-going rides. The motor does the climbing — you
+            just steer and look around.
           </p>
           <ul className="gear-list">
             <li>
@@ -93,6 +94,51 @@ export default function RentalPage() {
               included
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* CHOOSE YOUR BIKE */}
+      <section className="mini-sec" id="bikes">
+        <span className="eyebrow">Two models</span>
+        <h2>Pick the bike that fits your day.</h2>
+        <div className="bike-picks">
+          <div className="bike-pick">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/ebike.jpg" alt="MOVE XS fat-tire e-bike" />
+            <div className="bike-pick-body">
+              <h3>MOVE XS</h3>
+              <p className="bike-pick-tag">Fat tires · Gravel and mountain roads</p>
+              <div className="amt">
+                <s className="amt-old">¥6,000</s>¥4,000
+                <span>/bike/day</span>
+              </div>
+              <p className="campaign-line">Campaign price</p>
+              <p>
+                Wide fat tires grip gravel and forest tracks. Best for the
+                gorge and longer valley rides.
+              </p>
+            </div>
+          </div>
+          <div className="bike-pick">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="contain"
+              src="https://velmo.jp/cdn/shop/files/mat-black_c373786c-b25e-4951-892c-73e6cf9e6cae.png?v=1751018445&width=900"
+              alt="VELMO PICO compact e-bike"
+            />
+            <div className="bike-pick-body">
+              <h3>VELMO PICO</h3>
+              <p className="bike-pick-tag">16-inch compact · Light and easy</p>
+              <div className="amt">
+                ¥4,000<span>/bike/day</span>
+              </div>
+              <p>
+                A small, light e-bike (17.5 kg) with a low step-through
+                frame. Easy for smaller riders and relaxed rides between
+                the post towns.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -164,14 +210,22 @@ export default function RentalPage() {
         <h2>So — how much per bike?</h2>
         <div className="pricing">
           <div className="pitem">
-            <h4>E-Bike Rental</h4>
+            <h4>MOVE XS</h4>
+            <div className="amt">
+              <s className="amt-old">¥6,000</s>¥4,000
+              <span style={{ fontSize: "0.9rem" }}>/bike</span>
+            </div>
+            <p>
+              Campaign price, self-guided. Up to 4 bikes — and one of them
+              fits kids, too.
+            </p>
+          </div>
+          <div className="pitem">
+            <h4>VELMO PICO</h4>
             <div className="amt">
               ¥4,000<span style={{ fontSize: "0.9rem" }}>/bike</span>
             </div>
-            <p>
-              Self-guided, ¥4,000 per bike. Up to 4 bikes — and one of
-              them fits kids, too.
-            </p>
+            <p>Compact 16-inch e-bike, self-guided.</p>
           </div>
           <div className="pitem">
             <h4>Route Maps</h4>
