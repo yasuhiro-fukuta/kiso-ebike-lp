@@ -474,8 +474,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
   const ja = lang === "ja";
   const items = MENU_ITEMS[lang];
   const pathname = usePathname() ?? "/";
-  // Self-rental is paid by card through the WhatsApp payment link only.
-  const cardOnly = pathname === "/rental" || pathname === "/ja/rental";
+  // Self-rental and shuttle e-bike are paid by card through the WhatsApp payment link only.
+  const cardOnly = ["/rental", "/ja/rental", "/shuttle-ebike", "/ja/shuttle-ebike"].includes(pathname);
   return (
     <footer className="lp-footer">
       <div className="foot-grid">
