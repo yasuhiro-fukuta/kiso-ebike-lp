@@ -94,8 +94,8 @@ const SECONDDAY_HREF: Record<Lang, string> = {
   ja: "/ja/second-day",
 };
 const SECONDDAY_LABEL: Record<Lang, string> = {
-  en: "Self-Tour Advice: 4 Mapped Routes",
-  ja: "セルフツアーのすすめ——おすすめ4コース",
+  en: "Self-Tour Advice: 5 Mapped Routes",
+  ja: "セルフツアーのすすめ——おすすめ5コース",
 };
 const DIY_RENTAL_LABEL: Record<Lang, string> = {
   en: "DIY Rental House (JP)",
