@@ -133,9 +133,8 @@ export default function RentalPage() {
                 ¥4,000<span>/bike/day</span>
               </div>
               <p>
-                A small, light e-bike (17.5 kg) with a low step-through
-                frame. Easy for smaller riders and relaxed rides between
-                the post towns.
+                A small, light e-bike (17.5 kg). Easy for smaller riders
+                and relaxed rides between the post towns.
               </p>
             </div>
           </div>
