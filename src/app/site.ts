@@ -17,6 +17,11 @@ export const FEEDBACK_URL =
 export const MYMAP_EMBED_URL =
   "https://www.google.com/maps/d/embed?mid=1UdxxoxfvuLwGjvlmiEC3vyAbExP95b0&ehbc=2E312F";
 export const MYMAP_VIEW_URL = "https://goo.gl/maps/bdM3ga2QXExoZENo6?g_st=ac";
+// Sakashita–Magome Challenge (heart loop) has its own My Map
+export const HEART_MAP_EMBED_URL =
+  "https://www.google.com/maps/d/embed?mid=15w0bREW4cp0qUgBegH_3pUEbP5yo1nM";
+export const HEART_MAP_VIEW_URL =
+  "https://www.google.com/maps/d/viewer?mid=15w0bREW4cp0qUgBegH_3pUEbP5yo1nM";
 /** === WhatsApp links ==========================================
  *  Every booking goes through WhatsApp — pay on the day, card or cash.
  *  Each page opens the chat with its own prefilled template; pages
