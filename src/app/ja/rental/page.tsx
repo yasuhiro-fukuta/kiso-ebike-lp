@@ -152,7 +152,7 @@ export default function JaRentalPage() {
               <div className="dnum">3</div>
               <h3>決済後に鍵番号</h3>
               <p>
-                決済を確認したら、ナンバーロックの鍵番号をお伝えします。鍵を外して出発です。
+                決済を確認したら、ナンバーロックの鍵番号をお伝えします。鍵を外し、サドルの高さを体格に合わせてから出発してください（合わせ方は利用方法に記載）。
               </p>
             </div>
             <div className="drop-step">

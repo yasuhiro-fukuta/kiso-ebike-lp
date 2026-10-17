@@ -175,7 +175,8 @@ export default function RentalPage() {
               <h3>Pay, get the code</h3>
               <p>
                 Once your payment is confirmed, we send the number for the
-                combination lock. Unlock and ride.
+                combination lock. Unlock, set the saddle to your height
+                (the how-to shows you how), and ride.
               </p>
             </div>
             <div className="drop-step">
