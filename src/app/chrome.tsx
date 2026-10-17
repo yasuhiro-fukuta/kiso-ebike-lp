@@ -473,6 +473,9 @@ export function FloatBook({
 export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
   const ja = lang === "ja";
   const items = MENU_ITEMS[lang];
+  const pathname = usePathname() ?? "/";
+  // Self-rental and shuttle e-bike are paid by card through the WhatsApp payment link only.
+  const cardOnly = ["/rental", "/ja/rental", "/shuttle-ebike", "/ja/shuttle-ebike"].includes(pathname);
   return (
     <footer className="lp-footer">
       <div className="foot-grid">
@@ -555,9 +558,13 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
       <div className="foot-bottom">
         <span>© {new Date().getFullYear()} Beyond Nakasendo Cycling · From Scratch LLC</span>
         <span>
-          {ja
-            ? "WhatsAppで予約 · お支払いは当日(カード/現金)"
-            : "Book on WhatsApp · pay on the day, card or cash"}
+          {cardOnly
+            ? ja
+              ? "WhatsAppで予約 · お支払いは当日、カードのみ"
+              : "Book on WhatsApp · pay on the day, card only"
+            : ja
+              ? "WhatsAppで予約 · お支払いは当日(カード/現金)"
+              : "Book on WhatsApp · pay on the day, card or cash"}
         </span>
       </div>
     </footer>
