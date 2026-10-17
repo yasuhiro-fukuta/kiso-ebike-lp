@@ -14,6 +14,7 @@ import {
 import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { LUGGAGE_FAQ } from "../../luggage-faq";
 
 export default function JaLuggageBusPage() {
   return (
@@ -29,7 +30,7 @@ export default function JaLuggageBusPage() {
         <div>
           <span className="head-badge">荷物専用・人は乗れません</span>
           <br />
-          <span className="eyebrow">ラゲッジバス · 南木曽 — 木曽福島</span>
+          <span className="eyebrow">中山道の手荷物配送 · ラゲッジバス · 南木曽 — 木曽福島</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
@@ -303,24 +304,12 @@ export default function JaLuggageBusPage() {
       {/* よくある質問 */}
       <section className="faq" id="faq">
         <h2>よくある質問</h2>
-        <details className="faq-item">
-          <summary>ラゲッジバスに乗れますか?</summary>
-          <p>
-            乗れません。運ぶのは荷物だけで、短い区間でも人は乗せられません。停留所の間は、JR中央線や路線バスが同じ谷を走っています。
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>予約なしで持って行ってもいいですか?</summary>
-          <p>
-            予約をお願いします。便の空きを確かめるため、WhatsAppで1件ずつ承認しています。お送りするリンクで支払いが済んだら予約確定です。
-          </p>
-        </details>
-        <details className="faq-item">
-          <summary>荷物より先に着いてしまったら?</summary>
-          <p>
-            上の「荷物が届く時間」をご覧ください。先に着いたら、お茶をしたり町を歩いたりしてお待ちください。便が着いたら荷物を受け取れます。
-          </p>
-        </details>
+        {LUGGAGE_FAQ.map((f) => (
+          <details className="faq-item" key={f.q.en}>
+            <summary>{f.q.ja}</summary>
+            <p>{f.a.ja}</p>
+          </details>
+        ))}
         <details className="faq-item">
           <summary>熊スプレーも借りたい。</summary>
           <p>

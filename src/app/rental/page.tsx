@@ -9,6 +9,7 @@ import {
   Mountain,
   Lightbulb,
   MessageCircle,
+  Luggage,
 } from "lucide-react";
 import {
   GOOGLE_MAPS_URL,
@@ -304,6 +305,21 @@ export default function RentalPage() {
           <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer">
             Post a photo on Google Maps <ArrowRight size={15} />
           </a>
+        </div>
+      </section>
+
+      {/* LUGGAGE CROSS-SELL — riders walking on to the next post town */}
+      <section style={{ padding: "clamp(3rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem) 0" }}>
+        <div className="review-ask">
+          <Luggage size={28} />
+          <p>
+            <strong>Walking the Nakasendo the next day?</strong> Send your
+            bags ahead on the Luggage Bus: it runs once a day between Nagiso
+            and Kiso-Fukushima, and your bags arrive the same day.
+          </p>
+          <Link href="/luggage-shuttle">
+            See the Luggage Bus <ArrowRight size={15} />
+          </Link>
         </div>
       </section>
 

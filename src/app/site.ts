@@ -274,10 +274,9 @@ export const SQUARE_PAY_URL = "https://square.link/u/euk9X8ED";
 /** Kashiwaya guesthouse — independent domain, linked from /stay */
 export const KASHIWAYA_URL = "https://kashiwaya-inn.com";
 
-/** ⚠️ TODO: replace with the real Google Business Profile review link
- *  (Google Maps app → your listing → Share → copy link). Used on /rental. */
-export const GOOGLE_MAPS_URL =
-  "https://www.google.com/maps/search/Beyond+Nakasendo+Cycling+Nagiso";
+/** Google Business Profile review link for Beyond Nakasendo Cycling
+ *  (GBP → "Ask for reviews"). Used on /rental. */
+export const GOOGLE_MAPS_URL = "https://g.page/r/Cc9H7JtyRqQzEAE/review";
 
 /** Atera gorge article (Japanese) — keeps its own template. */
 export const ATERA_WHATSAPP_URL =
