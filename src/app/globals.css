@@ -1606,3 +1606,36 @@ figure.season-cell .season-tag {
 .bike-pick .amt { font-family: var(--serif); font-size: 1.8rem; color: var(--gold); }
 .bike-pick .amt span { font-size: 0.9rem; opacity: 0.7; margin-left: 0.2rem; }
 .bike-pick p { font-weight: 300; font-size: 0.92rem; }
+
+/* host intro (top page bottom) */
+.host-sec {
+  max-width: 1100px; margin: 0 auto; padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 5vw, 4rem);
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+.host-press { margin: 0; }
+.host-press img {
+  display: block; width: 100%; height: auto; border-radius: 6px;
+  box-shadow: 0 18px 40px var(--shadow); transform: rotate(-1.2deg); background: var(--paper-deep);
+}
+.host-press figcaption { margin-top: 1rem; font-size: 0.85rem; color: var(--cedar); text-align: center; }
+.host-body .eyebrow { color: var(--rust); }
+.host-body h2 { font-size: clamp(2rem, 4vw, 3rem); margin: 0.8rem 0 1.2rem; }
+.host-body h2 em { font-style: italic; color: var(--moss); }
+.host-body p { font-weight: 300; line-height: 1.85; margin-bottom: 1rem; max-width: 58ch; }
+@media (max-width: 760px) {
+  .host-sec { grid-template-columns: 1fr; }
+  .host-press { max-width: 420px; margin: 0 auto; }
+}
+
+/* host intro: collapsed by default */
+.host-toggle { max-width: 1100px; margin: 0 auto; padding: 2rem clamp(1.5rem, 5vw, 4rem) 0; text-align: center; }
+.host-toggle > summary {
+  display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
+  font-size: 0.85rem; color: var(--cedar); padding: 0.4rem 1rem; border: 1px solid rgba(122, 92, 62, 0.35);
+  border-radius: 100px; user-select: none;
+}
+.host-toggle > summary::-webkit-details-marker { display: none; }
+.host-toggle > summary::after { content: "▾"; font-size: 0.8rem; transition: transform 0.2s; }
+.host-toggle[open] > summary::after { transform: rotate(180deg); }
+.host-toggle > summary:hover { color: var(--ink); border-color: var(--cedar); }
+.host-toggle .host-sec { text-align: left; padding-top: 2.5rem; }
