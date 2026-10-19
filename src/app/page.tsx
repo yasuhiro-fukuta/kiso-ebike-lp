@@ -149,6 +149,39 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ABOUT YAKKUN */}
+      <section className="host-sec">
+        <figure className="host-press">
+          <img
+            src="/assets/shimin-times-2026.jpg"
+            alt="Shimin Times newspaper feature on Yakkun (Yasuhiro Fukuda), standing with an e-bike inside Kashiwaya"
+          />
+          <figcaption>Featured in the Shimin Times (&ldquo;Kirari Kono Hito&rdquo;)</figcaption>
+        </figure>
+        <div className="host-body">
+          <span className="eyebrow">Your host</span>
+          <h2>
+            Hi, I&apos;m <em>Yakkun.</em>
+          </h2>
+          <p>
+            I&apos;m Yasuhiro Fukuda — everyone here calls me Yakkun. Born in
+            Nagoya, I worked as an engineer and spent a year in the US before
+            Kiso kept pulling me back. In 2025 I moved to Midono-juku on the old
+            Nakasendo and now run Kashiwaya, a 140-year-old guesthouse.
+          </p>
+          <p>
+            Beyond Nakasendo grew out of my love of cycling: e-bikes that let you
+            ride the valley as one continuous line, from post town to post town,
+            plus a luggage bus so you can travel light. I guide the tours myself,
+            usually in samue work clothes.
+          </p>
+          <p>
+            My hope is simple — that Midono and the whole Kiso valley become a
+            destination in their own right. Come say hi.
+          </p>
+        </div>
+      </section>
+
       <SiteFooter />
     </div>
   );

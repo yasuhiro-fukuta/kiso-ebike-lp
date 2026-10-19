@@ -142,6 +142,32 @@ export default function JaHomePage() {
         </div>
       </section>
 
+      {/* Yakkunの紹介 */}
+      <section className="host-sec">
+        <figure className="host-press">
+          <img
+            src="/assets/shimin-times-2026.jpg"
+            alt="市民タイムス「キラリこの人」に掲載された福田康宏（Yakkun）の記事。柏屋の土間でE-bikeと"
+          />
+          <figcaption>市民タイムス「キラリこの人」に掲載されました</figcaption>
+        </figure>
+        <div className="host-body">
+          <span className="eyebrow">案内人</span>
+          <h2>
+            はじめまして、<em>Yakkunです。</em>
+          </h2>
+          <p>
+            福田康宏です。みんなからは「Yakkun」と呼ばれています。名古屋市出身で、エンジニアとして働き、米国で1年ほど過ごしたあと、何度も訪れていた木曽に惹かれて2025年に南木曽町へ移住。旧中山道・三留野宿にある築140年のゲストハウス「柏屋」を営んでいます。
+          </p>
+          <p>
+            好きな自転車を生かして始めたのが Beyond Nakasendo。宿場から宿場へ、木曽谷を「線」で巡るE-bikeと、手ぶらで旅できるラゲッジバスを用意しています。ツアーは作務衣姿の私がご案内します。
+          </p>
+          <p>
+            三留野、そして木曽谷一帯が旅の目的地になるように。お気軽に声をかけてください。
+          </p>
+        </div>
+      </section>
+
       <SiteFooter lang="ja" />
     </div>
   );
