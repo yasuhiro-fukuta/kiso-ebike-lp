@@ -150,6 +150,8 @@ export default function Page() {
       </section>
 
       {/* ABOUT YAKKUN */}
+      <details className="host-toggle">
+        <summary>Who is Yakkun?</summary>
       <section className="host-sec">
         <figure className="host-press">
           <img
@@ -181,6 +183,7 @@ export default function Page() {
           </p>
         </div>
       </section>
+      </details>
 
       <SiteFooter />
     </div>

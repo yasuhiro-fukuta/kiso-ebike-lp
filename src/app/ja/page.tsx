@@ -143,6 +143,8 @@ export default function JaHomePage() {
       </section>
 
       {/* Yakkunの紹介 */}
+      <details className="host-toggle">
+        <summary>Who is Yakkun?</summary>
       <section className="host-sec">
         <figure className="host-press">
           <img
@@ -167,6 +169,7 @@ export default function JaHomePage() {
           </p>
         </div>
       </section>
+      </details>
 
       <SiteFooter lang="ja" />
     </div>

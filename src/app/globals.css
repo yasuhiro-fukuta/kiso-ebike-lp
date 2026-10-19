@@ -1626,3 +1626,16 @@ figure.season-cell .season-tag {
   .host-sec { grid-template-columns: 1fr; }
   .host-press { max-width: 420px; margin: 0 auto; }
 }
+
+/* host intro: collapsed by default */
+.host-toggle { max-width: 1100px; margin: 0 auto; padding: 2rem clamp(1.5rem, 5vw, 4rem) 0; text-align: center; }
+.host-toggle > summary {
+  display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer; list-style: none;
+  font-size: 0.85rem; color: var(--cedar); padding: 0.4rem 1rem; border: 1px solid rgba(122, 92, 62, 0.35);
+  border-radius: 100px; user-select: none;
+}
+.host-toggle > summary::-webkit-details-marker { display: none; }
+.host-toggle > summary::after { content: "▾"; font-size: 0.8rem; transition: transform 0.2s; }
+.host-toggle[open] > summary::after { transform: rotate(180deg); }
+.host-toggle > summary:hover { color: var(--ink); border-color: var(--cedar); }
+.host-toggle .host-sec { text-align: left; padding-top: 2.5rem; }
