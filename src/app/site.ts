@@ -268,9 +268,6 @@ E-bikeレンタル:〇月〇日に〇台
 ガイドツアー:木曽川ダウンヒル/早朝ライド/不要`
 );
 
-/** Square online payment link for the luggage shuttle. */
-export const SQUARE_PAY_URL = "https://square.link/u/euk9X8ED";
-
 /** Kashiwaya guesthouse — independent domain, linked from /stay */
 export const KASHIWAYA_URL = "https://kashiwaya-inn.com";
 
