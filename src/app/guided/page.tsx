@@ -473,7 +473,7 @@ export default function GuidedPage() {
               </a>
               <p className="special-cta-note">
                 Message us with your date and group size — we&apos;ll confirm
-                the day. Pay on the day, card or cash. (Our no-reservation{" "}
+                the day. Pay on the day, card or cash. (Our{" "}
                 <Link href="/luggage-shuttle" style={{ color: "inherit" }}>
                   Nagiso ⇄ Nojiri luggage shuttle
                 </Link>{" "}

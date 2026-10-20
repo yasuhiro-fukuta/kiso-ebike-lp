@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MessageCircle, CreditCard } from "lucide-react";
-import { SQUARE_PAY_URL } from "../../site";
+import { MessageCircle } from "lucide-react";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 /** ついでに借りられるもの(ページの最後でおまけとして紹介)。 */
@@ -28,7 +27,7 @@ export default function JaGearPage() {
           <em>安全のお守り</em>に。
         </h1>
         <p>
-          中山道や渓谷を歩く・走るなら、熊スプレーを1本持っていってください。宿で受け取るときに使い方を説明します。お支払いは当日カードか現金で。毎週月曜日は定休です。
+          中山道や渓谷を歩く・走るなら、熊スプレーを1本持っていってください。宿で受け取るときに使い方を説明します。先にWhatsAppでご予約ください。お支払いはカード決済リンクで。毎週月曜日は定休です。
         </p>
       </header>
 
@@ -74,30 +73,14 @@ export default function JaGearPage() {
       {/* 予約と決済 */}
       <section className="mini-sec" id="book">
         <span className="eyebrow">予約と決済</span>
-        <h2>WhatsAppでひとこと、支払いはオンラインか店頭で。</h2>
+        <h2>WhatsAppでひとこと。承認後に決済リンクをお送りします。</h2>
         <div className="pay-row">
           <Link href="/ja/book?s=gear" className="stay-cta">
             <MessageCircle size={16} /> 熊スプレーをWhatsAppで予約
           </Link>
-          <a
-            href={SQUARE_PAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stay-cta"
-          >
-            <CreditCard size={16} /> オンライン決済(Square)
-          </a>
-          <figure className="pay-qr">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/square-pay-qr.png"
-              alt="Square決済ページのQRコード——スキャンでレンタル代を支払えます"
-            />
-            <figcaption>スキャンでも支払えます</figcaption>
-          </figure>
         </div>
         <p className="pay-note" style={{ textAlign: "left", marginLeft: 0 }}>
-          金額はSquareのページで入力してください。店頭での現金払いもOK。
+          承認後にWhatsAppでカード決済リンクをお送りします。飛び込み・現金払いはできません。先にご予約ください。
         </p>
       </section>
 

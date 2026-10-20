@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MessageCircle, CreditCard } from "lucide-react";
-import { SQUARE_PAY_URL } from "../site";
+import { MessageCircle } from "lucide-react";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 /** Other things we lend, mentioned at the end as a bonus. */
@@ -30,8 +29,8 @@ export default function GearPage() {
         <p>
           If you&apos;re walking the Nakasendo or heading into the gorges,
           take a can of bear spray with you. We show you how to use it when
-          you pick it up at the guesthouse. Pay on the day by card or cash.
-          Closed every Monday.
+          you pick it up at the guesthouse. Book on WhatsApp first; card
+          payment by link. Closed every Monday.
         </p>
       </header>
 
@@ -81,33 +80,15 @@ export default function GearPage() {
       {/* BOOK & PAY */}
       <section className="mini-sec" id="book">
         <span className="eyebrow">Book &amp; pay</span>
-        <h2>Message us, then pay online or at the counter.</h2>
+        <h2>Message us on WhatsApp — we confirm, then send a payment link.</h2>
         <div className="pay-row">
           <Link href="/book?s=gear" className="stay-cta">
             <MessageCircle size={16} /> Book bear spray on WhatsApp
           </Link>
-          <a
-            href={SQUARE_PAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stay-cta"
-          >
-            <CreditCard size={16} /> Pay online (Square)
-          </a>
-          <figure className="pay-qr">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/square-pay-qr.png"
-              alt="QR code for the Square payment page — scan to pay the rental fee"
-            />
-            <figcaption>or scan to pay</figcaption>
-          </figure>
         </div>
         <p className="pay-note" style={{ textAlign: "left", marginLeft: 0 }}>
-          Enter the amount on the Square page — cash at the counter is
-          welcome too. The Square page is displayed in Japanese (「金額」 is
-          the amount field); your browser&apos;s translate function renders
-          it in English just fine.
+          Once we confirm, we send a card payment link on WhatsApp. No walk-ins,
+          no cash — booking first, please.
         </p>
       </section>
 
