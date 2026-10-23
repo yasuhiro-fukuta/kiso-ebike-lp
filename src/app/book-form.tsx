@@ -339,6 +339,7 @@ const T = {
     estimate: "Estimated price",
     estimateNote: "An estimate from the stations and bags you chose — the final price comes with our approval.",
     estimateNone: "to be confirmed",
+    replyNote: "We reply three times a day, around 6:00, 12:00 and 18:00 Japan time. If it's urgent on the day, please call us on WhatsApp: +81 90 3839 2354.",
   },
   ja: {
     eyebrow: "予約メッセージをつくる",
@@ -352,6 +353,7 @@ const T = {
     estimate: "概算金額",
     estimateNote: "選んだ駅と個数からの概算です。確定の金額は承認のときにお伝えします。",
     estimateNone: "要相談",
+    replyNote: "返信は毎日6時・12時・18時ごろ（日本時間）の3回です。当日の急ぎはWhatsAppでお電話ください（+81 90 3839 2354）。",
   },
 };
 
@@ -454,6 +456,8 @@ export default function BookForm({ lang }: { lang: Lang }) {
             <label>{t.preview}</label>
             <div className="book-preview">{message}</div>
           </div>
+
+          <p className="book-reply-note">{t.replyNote}</p>
 
           {err && (
             <p className="book-error" role="alert">
