@@ -1403,6 +1403,10 @@ figure.season-cell .season-tag {
 .lb-info tbody th { font-size: 1rem; }
 @media (max-width: 560px) { .lb-info th, .lb-info td { font-size: 0.8rem; } }
 .book-hint { font-size: 0.78rem; font-weight: 300; color: var(--cedar); line-height: 1.5; }
+.book-reply-note {
+  border-left: 3px solid var(--gold); padding: 0.4rem 0.8rem;
+  font-size: 0.85rem; font-weight: 300; color: var(--ink); line-height: 1.6;
+}
 .book-error {
   background: rgba(181, 83, 42, 0.12); border: 1px solid var(--rust); color: var(--ink);
   border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.9rem;
