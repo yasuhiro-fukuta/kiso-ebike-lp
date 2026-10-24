@@ -32,7 +32,7 @@ export default function JaRentalPage() {
         <div>
           <span className="head-badge">お届けします · 乗り捨て自由</span>
           <br />
-          <span className="eyebrow">エコモビリティ · セルフガイド</span>
+          <span className="eyebrow">エコモビリティ · セルフガイド · 9:00〜18:00</span>
           <h1>
             E-bikeという<em>エコモビリティ</em>で、自然をめぐる。
           </h1>
@@ -145,7 +145,7 @@ export default function JaRentalPage() {
               <div className="dnum">2</div>
               <h3>当日朝、自転車をご用意</h3>
               <p>
-                ご利用当日の朝、指定の場所に自転車を用意しておきます。同じく当日の朝、利用方法と決済リンクがWhatsAppに届きます。
+                ご利用当日の9時までに、指定の場所に自転車を用意しておきます。同じく当日の朝、利用方法と決済リンクがWhatsAppに届きます。
               </p>
             </div>
             <div className="drop-step">
@@ -166,7 +166,7 @@ export default function JaRentalPage() {
               <div className="dnum">5</div>
               <h3>当日夜に回収</h3>
               <p>
-                返却手続きはこれで全部です。自転車は当日の夜にこちらで回収します。
+                返却手続きはこれで全部です。自転車は当日18時以降にこちらで回収します。
               </p>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function JaRentalPage() {
           メッセージひとつで、<em>バイクはあなたのもの。</em>
         </h2>
         <p>
-          ご利用の前日までに、日付・人数・出発したい場所を送ってください。台数を確認して折り返します。事前決済はなし。当日の朝にWhatsAppで決済リンクをお送りし、決済を確認したら鍵番号をお伝えします。毎週月曜日は定休です。
+          ご利用の前日までに、日付・人数・出発したい場所を送ってください。台数を確認して折り返します。事前決済はなし。当日の朝にWhatsAppで決済リンクをお送りし、決済を確認したら鍵番号をお伝えします。ご利用時間は原則9:00〜18:00です。それより早く・遅く使いたい場合は、お気軽にご相談ください。毎週月曜日は定休です。
         </p>
 
         <div className="square-embed">

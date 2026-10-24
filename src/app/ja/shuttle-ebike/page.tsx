@@ -88,7 +88,7 @@ export default function JaShuttleEbikePage() {
             <Link href="/ja/second-day" style={{ color: "var(--gold)" }}>
               セルフツアーのすすめ
             </Link>
-            から選んでもらえれば、受け渡しはこちらで組みます。なお、パッケージは毎週月曜日が定休です。
+            から選んでもらえれば、受け渡しはこちらで組みます。ご利用時間は原則9:00〜18:00（それより早く・遅くはご相談ください）、パッケージは毎週月曜日が定休です。
           </p>
         </div>
       </section>

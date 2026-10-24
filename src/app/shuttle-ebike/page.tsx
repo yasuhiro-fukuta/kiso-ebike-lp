@@ -100,8 +100,9 @@ export default function ShuttleEbikePage() {
             <Link href="/second-day" style={{ color: "var(--gold)" }}>
               Self-Tour Advice page
             </Link>{" "}
-            and we&apos;ll set the handovers up around it. Note that the
-            package rests every Monday.
+            and we&apos;ll set the handovers up around it. Bikes run 9:00–18:00
+            as standard (earlier or later by arrangement), and the package
+            rests every Monday.
           </p>
         </div>
       </section>
