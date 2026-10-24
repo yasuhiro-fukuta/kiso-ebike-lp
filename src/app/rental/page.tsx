@@ -165,18 +165,19 @@ export default function RentalPage() {
               <div className="dnum">2</div>
               <h3>Your bike is waiting</h3>
               <p>
-                By 9:00 on the day of your ride, the bikes are ready at the
-                spot you chose. That same morning, we send the how-to and a
-                payment link on WhatsApp.
+                Once your booking is confirmed we send a payment link (card
+                only) — please pay by the day before. By 9:00 on the day,
+                the bikes are ready at the spot you chose.
               </p>
             </div>
             <div className="drop-step">
               <div className="dnum">3</div>
-              <h3>Pay, get the code</h3>
+              <h3>One message, everything</h3>
               <p>
-                Once your payment is confirmed, we send the number for the
-                combination lock. Unlock, set the saddle to your height
-                (the how-to shows you how), and ride.
+                That morning, one WhatsApp message brings a photo of the
+                spot, a map pin, the lock code and your drop-off spot. The{" "}
+                <Link href="/ride">ride-day guide</Link> covers the rest, so
+                you can set off without waiting for a reply.
               </p>
             </div>
             <div className="drop-step">
@@ -269,10 +270,10 @@ export default function RentalPage() {
         </h2>
         <p>
           By the day before your ride, send us your date, number of riders,
-          and where you want to start. We&apos;ll confirm your bikes. No
-          prepayment: on the morning of your ride we send a payment link on
-          WhatsApp (card only, no cash), and the lock code follows once
-          it&apos;s paid. Bikes are
+          and where you want to start. We&apos;ll confirm your bikes. Once
+          confirmed, we send a payment link — please pay by the day before
+          (card only, no cash). On the morning of your ride, the lock code
+          and the bike&apos;s spot arrive in one message. Bikes are
           yours from 9:00 to 18:00 as standard — need them earlier or later?
           Just ask and we&apos;ll work it out. Rentals rest every Monday.
         </p>
