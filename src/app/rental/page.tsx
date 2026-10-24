@@ -271,9 +271,11 @@ export default function RentalPage() {
         <p>
           By the day before your ride, send us your date, number of riders,
           and where you want to start. We&apos;ll confirm your bikes. Once
-          confirmed, we send a payment link — please pay by the day before
-         . On the morning of your ride, the lock code
-          and the bike&apos;s spot arrive in one message. Bikes are
+          confirmed, we send a payment link — please pay by the day before.
+          On the morning of your ride, the lock code
+          and the bike&apos;s spot arrive in one message. Cancel by the
+          day before for a full refund; same-day cancellations are not
+          refunded. Bikes are
           yours from 9:00 to 18:00 as standard — need them earlier or later?
           Just ask and we&apos;ll work it out. Rentals rest every Monday.
         </p>
