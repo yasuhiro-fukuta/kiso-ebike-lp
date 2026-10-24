@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
-import { PHONE, PHONE_TEL, WHATSAPP_URL_JA } from "../../site";
+import { PHONE, PHONE_TEL, MYMAP_VIEW_URL, WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter } from "../../chrome";
 
 /**
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
+const STEPS: { h: string; p: string; img?: string; alt?: string; link?: { href: string; label: string } }[] = [
   {
     h: "自転車を見つける",
     p: "当日朝のメッセージの場所（写真と地図ピン付き）に置いてあります。ヘルメットと鍵も一緒です。",
@@ -38,7 +38,7 @@ const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
   },
   {
     h: "アシストの強さ",
-    p: "同じスイッチの＋で強く、−で弱く。集落内は弱め、登りは強めに。",
+    p: "同じスイッチの＋で強く、−で弱く。集落内は弱め、登りは強めに。−ボタンの右の小さいボタンで、フロントライトを常にオンにしてください。",
     img: "/assets/ride/assist.jpg",
     alt: "アシストスイッチの＋と−",
   },
@@ -51,6 +51,7 @@ const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
   {
     h: "スマホホルダー",
     p: "ハンドルにスマホホルダーがあります。地図や動画に。アームを開いてスマホを入れ、挟んで閉じます。ルートは出発前に設定し、走行中は操作しないでください。",
+    link: { href: MYMAP_VIEW_URL, label: "コースのマイマップを開く" },
     img: "/assets/ride/phone-holder.jpg",
     alt: "ハンドルに付いたスマホホルダー",
   },
@@ -127,6 +128,13 @@ export default function RideGuidePageJa() {
                 )}
                 <h3>{s.h}</h3>
                 <p>{s.p}</p>
+                {s.link && (
+                  <p>
+                    <a href={s.link.href} target="_blank" rel="noopener noreferrer">
+                      <MapPin size={14} /> {s.link.label}
+                    </a>
+                  </p>
+                )}
               </div>
             ))}
           </div>
