@@ -165,8 +165,8 @@ export default function RentalPage() {
               <div className="dnum">2</div>
               <h3>Your bike is waiting</h3>
               <p>
-                Once your booking is confirmed we send a payment link (card
-                only) — please pay by the day before. By 9:00 on the day,
+                Once your booking is confirmed we send a payment link —
+                please pay by the day before. By 9:00 on the day,
                 the bikes are ready at the spot you chose.
               </p>
             </div>
