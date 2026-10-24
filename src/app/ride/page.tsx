@@ -24,7 +24,7 @@ const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
   },
   {
     h: "Unlock",
-    p: "Turn the dials of the number lock to the code in your morning message, then pull it open. Keep the lock with you — you need it at the end.",
+    p: "Turn the dials of the number lock to the code in your email (it arrives after you pay and send the consent form), then pull it open. Keep the lock with you — you need it at the end.",
   },
   {
     h: "Set the saddle",
