@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
-import { PHONE, PHONE_TEL, WHATSAPP_URL } from "../site";
+import { PHONE, PHONE_TEL, MYMAP_VIEW_URL, WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter } from "../chrome";
 
 /**
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
+const STEPS: { h: string; p: string; img?: string; alt?: string; link?: { href: string; label: string } }[] = [
   {
     h: "Find your bike",
     p: "It is parked at the spot in your morning message (photo and map pin included). Helmet and lock are with the bike.",
@@ -38,7 +38,7 @@ const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
   },
   {
     h: "Assist level",
-    p: "On the same remote: + for more help, − for less. Start low on village streets, go higher on climbs.",
+    p: "On the same remote: + for more help, − for less. Start low on village streets, go higher on climbs. Use the small button to the right of − to turn the front light on, and keep it on all day.",
     img: "/assets/ride/assist.jpg",
     alt: "The + and − buttons of the assist remote",
   },
@@ -51,6 +51,7 @@ const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
   {
     h: "Phone holder",
     p: "The phone holder is on the handlebar, for maps and videos. Open the arms, set your phone in, and squeeze them closed. Set your route before you start, and don't touch the phone while riding.",
+    link: { href: MYMAP_VIEW_URL, label: "Open the route map (Google My Maps)" },
     img: "/assets/ride/phone-holder.jpg",
     alt: "Phone holder mounted on the handlebar",
   },
@@ -128,6 +129,13 @@ export default function RideGuidePage() {
                 )}
                 <h3>{s.h}</h3>
                 <p>{s.p}</p>
+                {s.link && (
+                  <p>
+                    <a href={s.link.href} target="_blank" rel="noopener noreferrer">
+                      <MapPin size={14} /> {s.link.label}
+                    </a>
+                  </p>
+                )}
               </div>
             ))}
           </div>
