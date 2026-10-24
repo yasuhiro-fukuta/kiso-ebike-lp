@@ -166,7 +166,9 @@ export default function RentalPage() {
               <h3>Your bike is waiting</h3>
               <p>
                 Once your booking is confirmed we send a payment link (card
-                only) — please pay by the day before. By 9:00 on the day,
+                only) — please pay by the day before. Right after paying you land on a
+                short consent form; send it and your lock code arrives by
+                email. By 9:00 on the day,
                 the bikes are ready at the spot you chose.
               </p>
             </div>
@@ -175,7 +177,7 @@ export default function RentalPage() {
               <h3>One message, everything</h3>
               <p>
                 That morning, one WhatsApp message brings a photo of the
-                spot, a map pin, the lock code and your drop-off spot. The{" "}
+                spot, a map pin and your drop-off spot. The{" "}
                 <Link href="/ride">ride-day guide</Link> covers the rest, so
                 you can set off without waiting for a reply.
               </p>
@@ -272,8 +274,9 @@ export default function RentalPage() {
           By the day before your ride, send us your date, number of riders,
           and where you want to start. We&apos;ll confirm your bikes. Once
           confirmed, we send a payment link — please pay by the day before
-          (card only, no cash). On the morning of your ride, the lock code
-          and the bike&apos;s spot arrive in one message. Cancel by the
+          (card only, no cash). Right after paying, a short consent form opens; send it
+          and your lock code arrives by email. On the morning of your
+          ride, the bike&apos;s spot arrives in one message. Cancel by the
           day before for a full refund; same-day cancellations are not
           refunded. Bikes are
           yours from 9:00 to 18:00 as standard — need them earlier or later?
