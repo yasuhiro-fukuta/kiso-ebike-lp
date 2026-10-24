@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-const STEPS: { h: string; p: string }[] = [
+const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
   {
     h: "Find your bike",
     p: "It is parked at the spot in your morning message (photo and map pin included). Helmet and lock are with the bike.",
@@ -32,15 +32,27 @@ const STEPS: { h: string; p: string }[] = [
   },
   {
     h: "Power on",
-    p: "Press the power button on the display (or battery). Choose your assist level with + / −. Start low on village streets, go higher on climbs.",
+    p: "The assist remote is on the left handle. Press and hold the small power button (⏻) on its lower edge until the display lights up.",
+    img: "/assets/ride/power.jpg",
+    alt: "Assist remote on the left handle, with the power button on its lower edge",
+  },
+  {
+    h: "Assist level",
+    p: "On the same remote: + for more help, − for less. Start low on village streets, go higher on climbs.",
+    img: "/assets/ride/assist.jpg",
+    alt: "The + and − buttons of the assist remote",
   },
   {
     h: "Gears",
-    p: "The gear changer is on the right handle. Shift to a lighter gear before a climb or before you stop, not halfway up the hill.",
+    p: "The 7-speed gear changer is on the right handle, and the dial shows your gear: 1 is the lightest (for climbs), 7 the fastest. Shift before a climb or before you stop, not halfway up the hill.",
+    img: "/assets/ride/gears.jpg",
+    alt: "Shimano 7-speed gear changer on the right handle, dial showing 1 to 7",
   },
   {
     h: "Phone holder",
-    p: "The phone holder sits on the left of the handlebar, for maps and videos. Set your route before you start, and don't touch the phone while riding.",
+    p: "The phone holder is on the handlebar, for maps and videos. Open the arms, set your phone in, and squeeze them closed. Set your route before you start, and don't touch the phone while riding.",
+    img: "/assets/ride/phone-holder.jpg",
+    alt: "Phone holder mounted on the handlebar",
   },
   {
     h: "Check the brakes, then go",
@@ -99,12 +111,21 @@ export default function RideGuidePage() {
         <div className="drop-inner">
           <span className="eyebrow">Start</span>
           <h2>
-            Seven steps, <em>about five minutes.</em>
+            Eight steps, <em>about five minutes.</em>
           </h2>
           <div className="drop-steps">
             {STEPS.map((s, i) => (
               <div className="drop-step" key={s.h}>
                 <div className="dnum">{i + 1}</div>
+                {s.img && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={s.img}
+                    alt={s.alt ?? ""}
+                    loading="lazy"
+                    style={{ width: "100%", borderRadius: 10, margin: "0.6rem 0", aspectRatio: "4 / 3", objectFit: "cover" }}
+                  />
+                )}
                 <h3>{s.h}</h3>
                 <p>{s.p}</p>
               </div>

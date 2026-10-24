@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-const STEPS: { h: string; p: string }[] = [
+const STEPS: { h: string; p: string; img?: string; alt?: string }[] = [
   {
     h: "自転車を見つける",
     p: "当日朝のメッセージの場所（写真と地図ピン付き）に置いてあります。ヘルメットと鍵も一緒です。",
@@ -32,15 +32,27 @@ const STEPS: { h: string; p: string }[] = [
   },
   {
     h: "電源を入れる",
-    p: "表示部（またはバッテリー）の電源ボタンを押し、＋／−でアシストの強さを選びます。集落内は弱め、登りは強めに。",
+    p: "左手ハンドルのアシストスイッチ、その下の端にある小さな電源ボタン（⏻）を、表示が点くまで長押しします。",
+    img: "/assets/ride/power.jpg",
+    alt: "左手ハンドルのアシストスイッチと、下端の電源ボタン",
+  },
+  {
+    h: "アシストの強さ",
+    p: "同じスイッチの＋で強く、−で弱く。集落内は弱め、登りは強めに。",
+    img: "/assets/ride/assist.jpg",
+    alt: "アシストスイッチの＋と−",
   },
   {
     h: "ギア",
-    p: "変速は右手のハンドルです。登り坂や止まる前に軽いギアへ。坂の途中ではなく手前で変えるのがコツです。",
+    p: "変速は右手ハンドルの7段ギア。目盛りの1がいちばん軽く（登り用）、7がいちばん速いギアです。坂の途中ではなく、登る前・止まる前に変えるのがコツです。",
+    img: "/assets/ride/gears.jpg",
+    alt: "右手ハンドルのシマノ7段変速レバー（目盛り1〜7）",
   },
   {
     h: "スマホホルダー",
-    p: "ハンドルの左側にスマホホルダーがあります。地図や動画に。ルートは出発前に設定し、走行中は操作しないでください。",
+    p: "ハンドルにスマホホルダーがあります。地図や動画に。アームを開いてスマホを入れ、挟んで閉じます。ルートは出発前に設定し、走行中は操作しないでください。",
+    img: "/assets/ride/phone-holder.jpg",
+    alt: "ハンドルに付いたスマホホルダー",
   },
   {
     h: "ブレーキを確かめて出発",
@@ -98,12 +110,21 @@ export default function RideGuidePageJa() {
         <div className="drop-inner">
           <span className="eyebrow">出発</span>
           <h2>
-            7ステップ、<em>5分ほどです。</em>
+            8ステップ、<em>5分ほどです。</em>
           </h2>
           <div className="drop-steps">
             {STEPS.map((s, i) => (
               <div className="drop-step" key={s.h}>
                 <div className="dnum">{i + 1}</div>
+                {s.img && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={s.img}
+                    alt={s.alt ?? ""}
+                    loading="lazy"
+                    style={{ width: "100%", borderRadius: 10, margin: "0.6rem 0", aspectRatio: "4 / 3", objectFit: "cover" }}
+                  />
+                )}
                 <h3>{s.h}</h3>
                 <p>{s.p}</p>
               </div>
