@@ -32,7 +32,7 @@ export default function RentalPage() {
         <div>
           <span className="head-badge">We come to you · Drop off anywhere</span>
           <br />
-          <span className="eyebrow">Eco-mobility · Self-guided</span>
+          <span className="eyebrow">Eco-mobility · Self-guided · 9:00–18:00</span>
           <h1>
             Tour nature by eco-mobility. <em>The valley never hears you coming.</em>
           </h1>
@@ -165,7 +165,7 @@ export default function RentalPage() {
               <div className="dnum">2</div>
               <h3>Your bike is waiting</h3>
               <p>
-                On the morning of your ride, the bikes are ready at the
+                By 9:00 on the day of your ride, the bikes are ready at the
                 spot you chose. That same morning, we send the how-to and a
                 payment link on WhatsApp.
               </p>
@@ -193,7 +193,7 @@ export default function RentalPage() {
               <h3>We collect it that night</h3>
               <p>
                 That&apos;s the whole return procedure. We pick the bike up
-                in the evening.
+                after 18:00.
               </p>
             </div>
           </div>
@@ -272,8 +272,9 @@ export default function RentalPage() {
           and where you want to start. We&apos;ll confirm your bikes. No
           prepayment: on the morning of your ride we send a payment link on
           WhatsApp (card only, no cash), and the lock code follows once
-          it&apos;s paid. Rentals
-          rest every Monday.
+          it&apos;s paid. Bikes are
+          yours from 9:00 to 18:00 as standard — need them earlier or later?
+          Just ask and we&apos;ll work it out. Rentals rest every Monday.
         </p>
 
         <div className="square-embed">
