@@ -23,7 +23,7 @@ export const HEART_MAP_EMBED_URL =
 export const HEART_MAP_VIEW_URL =
   "https://www.google.com/maps/d/viewer?mid=15w0bREW4cp0qUgBegH_3pUEbP5yo1nM";
 /** === WhatsApp links ==========================================
- *  Every booking goes through WhatsApp — pay on the day, card or cash.
+ *  Every booking goes through WhatsApp — pay when you book, card or PayPay.
  *  Each page opens the chat with its own prefilled template; pages
  *  without a template use the plain link.
  *  ============================================================= */

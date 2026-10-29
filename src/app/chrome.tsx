@@ -553,11 +553,14 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
         </div>
       </div>
       <div className="foot-bottom">
-        <span>© {new Date().getFullYear()} Beyond Nakasendo Cycling · From Scratch LLC</span>
+        <span>
+          © {new Date().getFullYear()} Beyond Nakasendo Cycling · From Scratch LLC ·{" "}
+          <Link href={ja ? "/ja/legal" : "/legal"}>{ja ? "特定商取引法に基づく表記" : "Legal notice"}</Link>
+        </span>
         <span>
           {ja
-            ? "WhatsAppで予約 · お支払いは当日(カード/現金)"
-            : "Book on WhatsApp · pay on the day, card or cash"}
+            ? "WhatsAppで予約 · お支払いは予約時(カード・PayPay)"
+            : "Book on WhatsApp · pay when you book (card or PayPay)"}
         </span>
       </div>
     </footer>

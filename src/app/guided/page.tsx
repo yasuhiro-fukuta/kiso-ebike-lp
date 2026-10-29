@@ -473,7 +473,7 @@ export default function GuidedPage() {
               </a>
               <p className="special-cta-note">
                 Message us with your date and group size — we&apos;ll confirm
-                the day. Pay on the day, card or cash. (Our{" "}
+                the day. Pay when you book, by card or PayPay. (Our{" "}
                 <Link href="/luggage-shuttle" style={{ color: "inherit" }}>
                   Nagiso ⇄ Nojiri luggage shuttle
                 </Link>{" "}
@@ -656,7 +656,7 @@ export default function GuidedPage() {
             <MessageCircle size={16} /> Book the morning tour on WhatsApp
           </a>
           <span className="morning-cta-note">
-            Pay on the day — card or cash. Rests every Monday.
+            Pay when you book — card or PayPay. Rests every Monday.
           </span>
         </div>
       </section>

@@ -145,7 +145,7 @@ export default function KakizorePage() {
           <Link href="/gear" style={{ color: "inherit" }}>
             bear spray (¥1,500, bell included)
           </Link>{" "}
-          to the reservation. Pay on the day, card or cash.
+          to the reservation. Pay when you book, by card or PayPay.
         </p>
       </div>
 

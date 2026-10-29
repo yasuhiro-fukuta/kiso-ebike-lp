@@ -155,7 +155,7 @@ export default function ShuttleEbikePage() {
         <p>
           Message us your date, your group size, and where you&apos;re
           starting — we&apos;ll line up the bikes, the bags, and the pick-up
-          points. No prepayment: you pay on the day, by card or cash.
+          points. You pay when you book, by card or PayPay.
         </p>
 
         <div className="square-embed">
