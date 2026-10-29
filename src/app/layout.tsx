@@ -63,7 +63,7 @@ const jsonLd = {
       email: EMAIL,
       priceRange: "¥500–¥104,000",
       currenciesAccepted: "JPY",
-      paymentAccepted: "Cash, Credit Card",
+      paymentAccepted: "Credit Card, PayPay",
       address: {
         "@type": "PostalAddress",
         streetAddress: "3993 Yomikaki",

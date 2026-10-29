@@ -412,7 +412,7 @@ export default function JaGuidedPage() {
                 <MessageCircle size={18} /> WhatsAppで予約
               </a>
               <p className="special-cta-note">
-                日付と人数を送ってください。お支払いは当日、カードか現金で。(
+                日付と人数を送ってください。お支払いはご予約時に、カードかPayPayで。(
                 <Link href="/ja/luggage-shuttle" style={{ color: "inherit" }}>
                   手荷物シャトル(南木曽⇄野尻)
                 </Link>
@@ -565,7 +565,7 @@ export default function JaGuidedPage() {
             <MessageCircle size={16} /> 早朝ツアーをWhatsAppで予約
           </a>
           <span className="morning-cta-note">
-            お支払いは当日(カード/現金)。毎週月曜日は定休です。
+            お支払いはご予約時(カード・PayPay)。毎週月曜日は定休です。
           </span>
         </div>
       </section>
