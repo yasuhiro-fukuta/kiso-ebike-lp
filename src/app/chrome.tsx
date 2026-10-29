@@ -559,8 +559,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
         </span>
         <span>
           {ja
-            ? "WhatsAppで予約 · お支払いは当日(カード/現金)"
-            : "Book on WhatsApp · pay on the day, card or cash"}
+            ? "WhatsAppで予約 · お支払いは予約時(カード・PayPay)"
+            : "Book on WhatsApp · pay when you book (card or PayPay)"}
         </span>
       </div>
     </footer>
