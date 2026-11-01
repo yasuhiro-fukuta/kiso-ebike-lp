@@ -61,14 +61,23 @@ export default function JaGuidedPage() {
       {/* HERO——木曽川ダウンヒル */}
       <header className="page-head">
         <div>
-          <span className="eyebrow">ガイドライド · 木曽谷</span>
+          <span className="eyebrow">ガイドライド · 中山道</span>
           <h1>
-            木曽川ダウンヒル——<em>日本一快適な50kmを作っています。</em>
+            中山道の宿場7つを、<em>E-bikeで1日。</em>
           </h1>
           <p>
-            藪原から南木曽まで約50km、そのほとんどが下り坂。英語の有人サポート付きで地元ガイドが並走し、サポートカーが一日を影から支え、荷物はあなたが走っている間に宿へ届きます。距離は下から選べます:定番のフル50km、気軽なハーフ25km、そして近日公開の
+            木曽川ダウンヒル——藪原から南木曽まで48.9km、旧中山道に沿って、ほぼ下り。標高差は約520mの下りで、短い登りはE-bikeのモーターが引き受けます。地元ガイドが並走し、英語の対応はインカムで一日中つながり、サポートカーが影から支え、荷物はあなたが走っている間に宿へ届きます。距離は下から選べます:1日のフルコース、気軽なハーフ25km、そして近日公開の
             <em>木曽イチ</em>100km。
           </p>
+          <ol className="post-strip" aria-label="7つの宿場(北から南へ)">
+            <li>藪原</li>
+            <li>宮ノ越</li>
+            <li>木曽福島</li>
+            <li>上松</li>
+            <li>須原</li>
+            <li>野尻</li>
+            <li>南木曽</li>
+          </ol>
         </div>
         <figure className="page-head-visual hero-wide">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -124,7 +133,7 @@ export default function JaGuidedPage() {
       <section className="tours" id="levels">
         <div className="tours-head">
           <span className="eyebrow">レベルで選ぶ</span>
-          <h2>谷の下り方は、3つ。</h2>
+          <h2>宿場の走り方は、3つ。</h2>
           <p>
             どのコースもワンパッケージ:並走ガイド+サポートドライバー兼英語オペレーター+E-bike+荷物の宿への搬送込み。
           </p>
@@ -145,7 +154,7 @@ export default function JaGuidedPage() {
               <h3>A · 木曽川ダウンヒル</h3>
               <div className="route">藪原 → 南木曽 · 48.9km · 1日</div>
               <p>
-                定番のフルコース。7つの宿場、上松のうなぎ昼食、阿寺渓谷への寄り道、夕方の光の中のゴール。詳細はこの下に。
+                定番のフルコース。宿場7つを1日で、上松のうなぎ昼食、阿寺渓谷への寄り道、夕方の光の中のゴール。詳細はこの下に。
               </p>
               <div className="price">
                 <small>ガイド・ドライバー・バイク・荷物運び込み</small>
@@ -177,7 +186,7 @@ export default function JaGuidedPage() {
               <h3>B · ハーフダウンヒル</h3>
               <div className="route">木曽福島 → 南木曽 · 約25km · 半日</div>
               <p>
-                同じ川を、半分の距離で。関所の町・木曽福島から、谷のいちばん穏やかな区間だけを下ります。初めての方も家族連れも。
+                同じ川を、半分の距離で。関所の町・木曽福島から、7つのうち5つの宿場を通って、いちばん穏やかな区間だけを下ります。初めての方も家族連れも。
               </p>
               <div className="price">
                 <small>ガイド・ドライバー・バイク・荷物運び込み</small>
@@ -234,8 +243,8 @@ export default function JaGuidedPage() {
               木曽川ダウンヒル、<em>くわしく。</em>
             </h2>
             <p className="special-lead">
-              <b>藪原宿から南木曽駅まで48.9km、ほぼすべて下り。</b>
-              木曽川の源流近くから出発し、山の沢が一本の大河に育っていくのを追いかけながら、旧中山道の宿場を7つつないで、長くゆるやかに下っていきます。
+              <b>藪原宿から南木曽駅まで48.9km、ほぼ下り。</b>
+              木曽川の源流近くから出発し、山の沢が一本の大河に育っていくのを追いかけながら、旧中山道の宿場を1日で7つ駆け抜けます。標高差は約520mの下りで、短い登りはE-bikeのモーターが引き受けます。
               <b>地元ガイドが並走し</b>
               、サポートドライバー兼英語オペレーターが荷物を積んで一日を車で伴走します。
             </p>
@@ -254,6 +263,10 @@ export default function JaGuidedPage() {
 
           <div className="special-stats">
             <div className="sstat">
+              <div className="num">7</div>
+              <div className="lbl">中山道の宿場を、1日で</div>
+            </div>
+            <div className="sstat">
               <div className="num">
                 48.9<small>&nbsp;km</small>
               </div>
@@ -264,10 +277,6 @@ export default function JaGuidedPage() {
                 ↓521<small>&nbsp;m</small>
               </div>
               <div className="lbl">藪原駅930m → 南木曽駅409m</div>
-            </div>
-            <div className="sstat">
-              <div className="num">7</div>
-              <div className="lbl">木曽の宿場</div>
             </div>
             <div className="sstat">
               <div className="num">2</div>
@@ -432,7 +441,7 @@ export default function JaGuidedPage() {
             <details className="sfaq">
               <summary>50km も走れる自信がありません。</summary>
               <p>
-                50km近くと聞くと上級者の距離に思えますよね。でもほぼ全区間がゆるやかな下りで、わずかな登りはハイパワーE-bikeが代わりに漕いでくれます。平地で10km走れるなら、笑顔でゴールできます。それでも不安なら——そのためのコースBです。
+                50km近くと聞くと上級者の距離に思えますよね。でもコースはほぼ下りで、標高差は約520mの下り。短い登りはハイパワーE-bikeのモーターが引き受けます。平地で10km走れるなら、笑顔でゴールできます。それでも不安なら——そのためのコースBです。
               </p>
             </details>
             <details className="sfaq">

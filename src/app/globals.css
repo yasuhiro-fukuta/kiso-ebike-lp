@@ -1650,3 +1650,24 @@ figure.season-cell .season-tag {
 .legal-row dt { font-weight: 700; }
 .legal-row dd { margin: 0; }
 @media (max-width: 640px) { .legal-row { grid-template-columns: 1fr; } }
+
+/* guided page: the seven post towns, north to south */
+.post-strip {
+  list-style: none; margin: 1.6rem 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem;
+  counter-reset: post;
+}
+.post-strip li {
+  counter-increment: post;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: var(--sans); font-size: 0.85rem; color: var(--ink);
+  background: var(--paper-deep); border-radius: 100px;
+  padding: 0.3rem 0.85rem 0.3rem 0.35rem;
+}
+.post-strip li::before {
+  content: counter(post);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.4rem; height: 1.4rem; border-radius: 50%;
+  background: var(--moss); color: var(--paper);
+  font-size: 0.72rem; font-weight: 500;
+}

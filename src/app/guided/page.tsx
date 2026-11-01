@@ -62,19 +62,30 @@ export default function GuidedPage() {
       {/* HERO — the Kiso River Downhill */}
       <header className="page-head">
         <div>
-          <span className="eyebrow">Guided rides · Kiso Valley</span>
+          <span className="eyebrow">Guided rides · Nakasendo</span>
           <h1>
-            The Kiso River Downhill —{" "}
-            <em>building Japan&apos;s most comfortable 50 km.</em>
+            7 Nakasendo post towns in one day —{" "}
+            <em>by e-bike.</em>
           </h1>
           <p>
-            Almost fifty kilometres from Yabuhara down to Nagiso, nearly all
-            of it downhill — local guides ride beside you with live English
-            support, a support car shadows the group, and your luggage is
+            The Kiso River Downhill: 48.9 km from Yabuhara to Nagiso along the
+            old Nakasendo, mostly downhill — about 520 m of descent, and where
+            the road does climb, the e-bike&apos;s motor takes it. A local
+            guide rides beside you with live English support over the
+            intercom, a support car shadows the group, and your luggage is
             moved to your inn while you ride. Pick your distance below: the
-            classic full 50 km, the easy 25 km half, or — coming soon — the
-            whole 100 km <em>Kiso-ichi</em>.
+            full day, an easy 25 km half, or — coming soon — the 100 km{" "}
+            <em>Kiso-ichi</em>.
           </p>
+          <ol className="post-strip" aria-label="The seven post towns, north to south">
+            <li>Yabuhara</li>
+            <li>Miyanokoshi</li>
+            <li>Kiso-Fukushima</li>
+            <li>Agematsu</li>
+            <li>Suhara</li>
+            <li>Nojiri</li>
+            <li>Nagiso</li>
+          </ol>
         </div>
         <figure className="page-head-visual hero-wide">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -138,7 +149,7 @@ export default function GuidedPage() {
       <section className="tours" id="levels">
         <div className="tours-head">
           <span className="eyebrow">Choose your level</span>
-          <h2>Three ways down the valley.</h2>
+          <h2>Three ways to ride the post towns.</h2>
           <p>
             Every ride comes as one package: a riding guide, a support driver
             &amp; English operator, e-bikes, and your luggage moved to your
@@ -163,9 +174,9 @@ export default function GuidedPage() {
                 Yabuhara → Nagiso · 48.9 km · full day
               </div>
               <p>
-                The classic. Seven post towns, an unagi lunch in Agematsu, a
-                detour into the Atera Gorge, and a finish line as the light
-                goes long. Full details below.
+                The classic. All seven post towns in one day, an unagi lunch in
+                Agematsu, a detour into the Atera Gorge, and a finish line as
+                the light goes long. Full details below.
               </p>
               <div className="price">
                 <small>Guides, driver, bikes &amp; luggage included</small>
@@ -202,7 +213,8 @@ export default function GuidedPage() {
               <p>
                 The same river, half the distance. Start in the old
                 checkpoint town of Kiso-Fukushima and ride the gentlest half
-                of the valley — first-timers and families welcome.
+                of the valley through five of the seven post towns —
+                first-timers and families welcome.
               </p>
               <div className="price">
                 <small>Guides, driver, bikes &amp; luggage included</small>
@@ -266,15 +278,17 @@ export default function GuidedPage() {
             </h2>
             <p className="special-lead">
               <b>
-                48.9&nbsp;km, Yabuhara-juku to Nagiso Station, almost all of
-                it downhill.
+                48.9&nbsp;km, Yabuhara-juku to Nagiso Station, mostly
+                downhill.
               </b>{" "}
               You set off near the headwaters of the Kiso River and follow
               the water as it grows from a mountain stream into a full river,
-              rolling past seven of the old Kiso road&apos;s post towns on
-              one long, gentle descent. <b>A local guide rides with every
-              group</b>, while a support driver — doubling as your English
-              operator — shadows the day by car with your luggage on board.
+              rolling through seven post towns of the old Nakasendo in a
+              single day. The road drops about 520&nbsp;m overall, and on the
+              short climbs the e-bike&apos;s motor does the work.{" "}
+              <b>A local guide rides with every group</b>, while a support
+              driver — doubling as your English operator — shadows the day by
+              car with your luggage on board.
             </p>
           </div>
 
@@ -292,6 +306,10 @@ export default function GuidedPage() {
 
           <div className="special-stats">
             <div className="sstat">
+              <div className="num">7</div>
+              <div className="lbl">Nakasendo post towns, in one day</div>
+            </div>
+            <div className="sstat">
               <div className="num">
                 48.9<small>&nbsp;km</small>
               </div>
@@ -302,10 +320,6 @@ export default function GuidedPage() {
                 ↓521<small>&nbsp;m</small>
               </div>
               <div className="lbl">Yabuhara Sta. 930 m → Nagiso Sta. 409 m</div>
-            </div>
-            <div className="sstat">
-              <div className="num">7</div>
-              <div className="lbl">Kiso post towns</div>
             </div>
             <div className="sstat">
               <div className="num">2</div>
@@ -499,10 +513,10 @@ export default function GuidedPage() {
               <summary>I&apos;m not sure I can ride 50+ km.</summary>
               <p>
                 Nearly 50 km sounds like an expert distance, we know. But
-                it&apos;s gentle downhill almost the entire way, and on the
-                few uphill stretches the high-powered e-bike does the
-                climbing for you. If you can ride a normal bike 10 km on flat
-                ground, you&apos;ll reach the finish smiling. And if
+                the route is mostly downhill — about 520 m of descent overall
+                — and on the short climbs the high-powered e-bike&apos;s motor
+                does the work for you. If you can ride a normal bike 10 km on
+                flat ground, you&apos;ll reach the finish smiling. And if
                 you&apos;d rather start smaller, that&apos;s exactly what
                 Course B is for.
               </p>
