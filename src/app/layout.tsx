@@ -143,9 +143,9 @@ const jsonLd = {
     {
       "@type": "Product",
       "@id": `${SITE_URL}/#downhill`,
-      name: "Kiso River Downhill (full-day guided e-bike course)",
+      name: "Kiso River Downhill — 7 Nakasendo post towns in one day by e-bike (full-day guided course)",
       description:
-        "A full-day, guide-only e-bike descent of the Kiso Valley: 48.9 km from Yabuhara-juku to Nagiso Station, almost all of it downhill (from Yabuhara Station at 930 m down to Nagiso Station at 409 m). The route follows the historic Kiso road past seven of its eleven post towns, meeting at Coffee Bar Yabuhara at 9:30, with an unagi lunch in Agematsu, a detour into the Atera Gorge, and a finish at Izumiya Cafe in Nagiso around 16:00. Led by a team of local cyclists — a riding guide with every group, plus a support driver doubling as English operator who moves your luggage from the start to your inn (included). A ~25 km half course from Kiso-Fukushima is also available, and the 100 km Kiso-ichi loop is coming soon. Tours rest every Monday. Book via WhatsApp; pay on the day, card or cash.",
+        "A full-day, guide-only e-bike ride through seven Nakasendo post towns in one day: 48.9 km from Yabuhara-juku to Nagiso Station, mostly downhill (about 520 m of descent, from Yabuhara Station at 930 m down to Nagiso Station at 409 m; on the short climbs the e-bike's motor does the work). The route follows the historic Kiso road past seven of its eleven post towns, meeting at Coffee Bar Yabuhara at 9:30, with an unagi lunch in Agematsu, a detour into the Atera Gorge, and a finish at Izumiya Cafe in Nagiso around 16:00. Led by a team of local cyclists — a riding guide with every group, plus a support driver doubling as English operator who moves your luggage from the start to your inn (included). A ~25 km half course from Kiso-Fukushima is also available, and the 100 km Kiso-ichi loop is coming soon. Tours rest every Monday. Book via WhatsApp; pay on the day, card or cash.",
       image: `${SITE_URL}/assets/kisogawa.jpg`,
       brand: { "@id": `${SITE_URL}/#business` },
       category: "Guided cycling tour",
@@ -347,7 +347,7 @@ const jsonLd = {
           name: "I'm not confident I can ride 50+ km. Can I still do the Kiso River Downhill?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Most likely yes. The 48.9 km course is gentle downhill almost the whole way (from Yabuhara Station at 930 m down to Nagiso Station at 409 m), and on the few uphill stretches the high-powered e-bike does the climbing for you. If you can ride a normal bike 10 km on flat ground, you should reach the finish comfortably.",
+            text: "Most likely yes. The 48.9 km course is mostly downhill — about 520 m of descent overall, from Yabuhara Station at 930 m down to Nagiso Station at 409 m — and on the short climbs the high-powered e-bike's motor does the work for you. If you can ride a normal bike 10 km on flat ground, you should reach the finish comfortably.",
           },
         },
         {
