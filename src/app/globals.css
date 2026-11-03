@@ -1341,7 +1341,7 @@ figure.season-cell .season-tag {
 }
 .special-photo figcaption { font-size: 0.8rem; font-weight: 300; opacity: 0.75; margin-top: 0.8rem; }
 
-/* Luggage Bus (/luggage-shuttle) — "luggage only" notice + timetable */
+/* Luggage Bus (luggagebusnakasendo.com /lb) — "luggage only" notice + timetable */
 .lb-notice-sec { padding-top: 0; padding-bottom: 0; }
 .lb-notice {
   display: flex; gap: 1rem; align-items: flex-start;

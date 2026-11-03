@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   MessageCircle,
   CreditCard,
@@ -12,17 +11,17 @@ import {
   Send,
 } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
-import { SiteNav, SiteFooter, FloatBook } from "../chrome";
+import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
     <div className="lp">
-      <SiteNav />
+      <LbNav />
 
-      <FloatBook href="/book?s=luggage">
+      <LbFloat href={`${EBIKE_SITE}/book?s=luggage`}>
         <MessageCircle size={18} /> Request on WhatsApp
-      </FloatBook>
+      </LbFloat>
 
       {/* PAGE HEAD — title, catch copy, photo */}
       <header className="page-head page-head-grid">
@@ -362,7 +361,7 @@ export default function LuggageBusPage() {
           <summary>Need bear spray too?</summary>
           <p>
             Bear spray and other gear are on the{" "}
-            <Link href="/gear">bear spray rental page</Link>.
+            <a href={`${EBIKE_SITE}/gear`}>bear spray rental page</a>.
           </p>
         </details>
       </section>
@@ -372,9 +371,9 @@ export default function LuggageBusPage() {
         <span className="eyebrow">Ready?</span>
         <h2>Bags packed? Tell us where they&apos;re going.</h2>
         <div className="pay-row">
-          <Link href="/book?s=luggage" className="stay-cta">
+          <a href={`${EBIKE_SITE}/book?s=luggage`} className="stay-cta">
             <MessageCircle size={16} /> Request on WhatsApp <ArrowRight size={15} />
-          </Link>
+          </a>
         </div>
         <p className="drop-note">
           Just a question?{" "}
@@ -386,7 +385,7 @@ export default function LuggageBusPage() {
         </p>
       </section>
 
-      <SiteFooter />
+      <LbFooter />
     </div>
   );
 }

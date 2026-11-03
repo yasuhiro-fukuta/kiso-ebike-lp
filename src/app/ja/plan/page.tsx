@@ -74,7 +74,7 @@ export default function JaPlanPage() {
             <div className="plan-ja">The Nakasendo, hands-free</div>
             <p>
               朝、南木曽駅前のイズミヤカフェに荷物を預ければ、
-              <Link href="/ja/luggage-shuttle">手荷物シャトル</Link>
+              <Link href="https://luggagebusnakasendo.com/ja">手荷物シャトル</Link>
               が先回りして運びます。
               <Link href="/ja/gear">檜傘</Link>
               を借りて、時間が止まった宿場・妻籠へ。脚が残っていれば峠を越えて馬籠方面まで。夜は宿に戻って、特別な日の鍋を(要事前予約・下記)。

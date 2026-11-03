@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   MessageCircle,
   CreditCard,
@@ -12,17 +11,17 @@ import {
   Send,
 } from "lucide-react";
 import { WHATSAPP_URL_JA } from "../../site";
-import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
+import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "../lb-chrome";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
     <div className="lp">
-      <SiteNav lang="ja" />
+      <LbNav lang="ja" />
 
-      <FloatBook href="/ja/book?s=luggage">
+      <LbFloat href={`${EBIKE_SITE}/ja/book?s=luggage`}>
         <MessageCircle size={18} /> WhatsAppで申し込む
-      </FloatBook>
+      </LbFloat>
 
       {/* PAGE HEAD——タイトル・キャッチコピー・写真 */}
       <header className="page-head page-head-grid">
@@ -324,7 +323,7 @@ export default function JaLuggageBusPage() {
         <details className="faq-item">
           <summary>熊スプレーも借りたい。</summary>
           <p>
-            熊スプレーなどは<Link href="/ja/gear">熊スプレーレンタルのページ</Link>からどうぞ。
+            熊スプレーなどは<a href={`${EBIKE_SITE}/ja/gear`}>熊スプレーレンタルのページ</a>からどうぞ。
           </p>
         </details>
       </section>
@@ -334,9 +333,9 @@ export default function JaLuggageBusPage() {
         <span className="eyebrow">お申し込み</span>
         <h2>荷物の行き先を教えてください。</h2>
         <div className="pay-row">
-          <Link href="/ja/book?s=luggage" className="stay-cta">
+          <a href={`${EBIKE_SITE}/ja/book?s=luggage`} className="stay-cta">
             <MessageCircle size={16} /> WhatsAppで申し込む <ArrowRight size={15} />
-          </Link>
+          </a>
         </div>
         <p className="drop-note">
           質問だけでも
@@ -347,7 +346,7 @@ export default function JaLuggageBusPage() {
         </p>
       </section>
 
-      <SiteFooter lang="ja" />
+      <LbFooter lang="ja" />
     </div>
   );
 }

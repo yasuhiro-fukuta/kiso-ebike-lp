@@ -98,7 +98,7 @@ export default function JaHomePage() {
             </div>
           </Link>
           {/* 12/7撮影後に写真差し替え */}
-          <Link href="/ja/luggage-shuttle" className="entry-card">
+          <Link href="https://luggagebusnakasendo.com/ja" className="entry-card">
             <img
               src="/assets/shuttle-van-crop.jpg"
               alt="シャトルバンの荷室に積まれたスーツケース(宿の前で)"

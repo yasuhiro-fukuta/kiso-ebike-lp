@@ -423,7 +423,7 @@ export default function JaGuidedPage() {
               </a>
               <p className="special-cta-note">
                 日付と人数を送ってください。お支払いは当日、カードか現金で。(
-                <Link href="/ja/luggage-shuttle" style={{ color: "inherit" }}>
+                <Link href="https://luggagebusnakasendo.com/ja" style={{ color: "inherit" }}>
                   手荷物シャトル(南木曽⇄野尻)
                 </Link>
                 は別サービスです——ガイドツアーの日は、荷物運びは最初からパッケージに入っています。)ツアーは毎週月曜日が定休です。
