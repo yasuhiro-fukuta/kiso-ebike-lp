@@ -102,7 +102,7 @@ export default function Page() {
             </div>
           </Link>
           {/* 12/7撮影後に写真差し替え */}
-          <Link href="/luggage-shuttle" className="entry-card">
+          <Link href="https://luggagebusnakasendo.com" className="entry-card">
             <img
               src="/assets/shuttle-van-crop.jpg"
               alt="Suitcases loaded in the shuttle van, tailgate open, in front of an old inn"

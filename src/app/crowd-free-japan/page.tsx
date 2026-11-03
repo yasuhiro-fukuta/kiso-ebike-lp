@@ -81,7 +81,7 @@ const DAYS: { d: string; text: React.ReactNode; ours?: boolean }[] = [
       <>
         E-bike from Nagiso to Nojiri with your bags carried ahead — our{" "}
         <Link href="/rental">e-bike rental</Link> and{" "}
-        <Link href="/luggage-shuttle">luggage shuttle</Link> cover exactly
+        <Link href="https://luggagebusnakasendo.com">luggage shuttle</Link> cover exactly
         this leg — then catch the train up to Yabuhara.
       </>
     ),

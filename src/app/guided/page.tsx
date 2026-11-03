@@ -488,7 +488,7 @@ export default function GuidedPage() {
               <p className="special-cta-note">
                 Message us with your date and group size — we&apos;ll confirm
                 the day. Pay when you book, by card or PayPay. (Our{" "}
-                <Link href="/luggage-shuttle" style={{ color: "inherit" }}>
+                <Link href="https://luggagebusnakasendo.com" style={{ color: "inherit" }}>
                   Nagiso ⇄ Nojiri luggage shuttle
                 </Link>{" "}
                 is a separate service — on a guided day, bags are simply part

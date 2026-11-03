@@ -83,7 +83,7 @@ export default function PlanPage() {
             <div className="plan-ja">中山道を歩く</div>
             <p>
               Hand your bags to Izumiya Cafe by Nagiso Station in the
-              morning — the <Link href="/luggage-shuttle">luggage
+              morning — the <Link href="https://luggagebusnakasendo.com">luggage
               shuttle</Link> runs them ahead while you walk. Borrow a{" "}
               <Link href="/gear">hinoki hat</Link> for the sun and take the
               old road to Tsumago, the post town that time skipped — and on
