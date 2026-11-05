@@ -1,5 +1,6 @@
 "use client";
 
+import KappaWidget from "@/components/KappaWidget";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
@@ -475,6 +476,7 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
   const items = MENU_ITEMS[lang];
   return (
     <footer className="lp-footer">
+      <KappaWidget lang={lang} />
       <div className="foot-grid">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
