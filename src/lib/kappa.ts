@@ -68,7 +68,7 @@ const SITE_FACTS = `
 - Self-guided routes: Train Lovers (easy, all seasons) / Tsumago, Revisited (easy, spring & autumn) / Natural AC & Onsen (moderate, summer & early winter) / Nakasendo Challenge (hard, confident riders only).
 - Guided full-day Kiso River Downhill: "7 Nakasendo post towns in one day, by e-bike" (Yabuhara to Nagiso, 48.9 km, mostly downhill).
 - Pages: rental https://nakasendo-ebike.com/rental / guided https://nakasendo-ebike.com/guided / explore https://nakasendo-ebike.com/explore / luggage shuttle https://luggagebusnakasendo.com / stay https://nakasendo-ebike.com/stay
-- Book: https://nakasendo-ebike.com/book
+- Book: https://nakasendo-ebike.com/book (there is no guest login or account; bookings are handled on WhatsApp)
 - Contact: WhatsApp https://wa.me/819038392354 / LINE https://line.me/R/ti/p/@847fhmne / phone +81 90-3839-2354
 `;
 
@@ -85,6 +85,7 @@ export function buildKappaPrompt(material: KappaMaterial | null, staff: boolean)
 - Answer only from the "Facts" and "Live material" below. Prices, closed days and availability: quote them exactly as given. Never guess or change a number.
 - "Live material" availability is a quick check for a standard request (1 bike / 2 people guided / 1 luggage item Nagiso→Nojiri). ok=true means "likely available"; the booking is only confirmed after booking on the site. Say this when you talk about availability.
 - If the answer is not in the sources, say you don't know and point to WhatsApp (https://wa.me/819038392354) or LINE.
+- In Live material, a product's "note" explains how its price is calculated (e.g. luggage: price = unit price × (items + 1)). Use it when quoting a total. If price is null, say the price is on the page for that product and give its URL.
 - Never promise discounts, refunds, free items or exceptions. Never create URLs — use only the URLs given.
 - You cannot make, change or cancel bookings in this chat. Point to https://nakasendo-ebike.com/book or WhatsApp.
 - Do not ask for names, booking numbers, card numbers or other personal information.
