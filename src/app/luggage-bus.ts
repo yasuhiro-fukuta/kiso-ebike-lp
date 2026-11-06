@@ -352,8 +352,8 @@ export const RULES: { title: T; body: T }[] = [
   {
     title: { en: "Cancellations", ja: "取り消し・返金" },
     body: {
-      en: "Full refund if you cancel 3 or more days before; 50% refund from 3 days before until the day before; no refund on the day. If we cancel (bad weather, a breakdown or illness), you get a full refund.",
-      ja: "3日前までの取り消しは全額返金、3日前から前日までは半額返金、当日は返金なしです。運休・天候・車の故障・体調不良などこちらの都合のときは全額返金します。",
+      en: "Full refund if you cancel 3 or more days before; 50% refund if you cancel 1–2 days before; no refund on the day (rain included). If we cancel (bad weather, a breakdown or illness), you get a full refund.",
+      ja: "利用日の3日前までの取り消しは全額返金、3日前を過ぎてから前日までは半額返金、当日は返金なし（雨天でも同じ）です。運休・天候・車の故障・体調不良などこちらの都合のときは全額返金します。",
     },
   },
   {
