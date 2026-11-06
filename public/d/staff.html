@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<script>window.DOLPHIN_API="https://script.google.com/macros/s/AKfycbzAHy-91-MQKFuvUXNWoZK_DNzKhHXIWj_XxtZIBgNFLlfiaw_VWuNL5mZLz-QpcBcR/exec";</script>
+<!-- 正本は dolphin リポジトリ web/staff.html。直すときはそちらを直してから写す -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>スタッフページ</title>
+<style>
+  :root { --bg:#fbfaf7; --fg:#1e1f1c; --mut:#6b6e66; --line:#dcdcd3; --acc:#2f6b4f; --bad:#a33; --warn:#8a5a00; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#16181a; --fg:#ecece6; --mut:#9a9d95; --line:#33362f; --acc:#6cc39a; --bad:#e88; --warn:#e0b050; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Hiragino Sans",sans-serif; overflow-x:hidden; }
+  main { max-width:560px; margin:0 auto; padding:16px; }
+  h1 { font-size:15px; color:var(--mut); font-weight:600; margin:4px 0 2px; }
+  h2 { font-size:15px; color:var(--mut); margin:22px 0 8px; }
+  .today { font-size:26px; font-weight:800; margin:0 0 10px; }
+  .card { padding:14px; border:1px solid var(--line); border-radius:12px; margin-top:10px; overflow-wrap:anywhere; }
+  .big { font-size:20px; font-weight:700; }
+  .row { display:flex; gap:10px; align-items:baseline; padding:8px 0; border-top:1px solid var(--line); }
+  .row:first-child { border-top:0; }
+  .row .t { flex:0 0 3.6em; color:var(--mut); font-size:14px; }
+  .row .b { flex:1; min-width:0; }
+  .note { font-size:14px; color:var(--mut); }
+  .key { font-size:28px; font-weight:800; letter-spacing:.15em; }
+  .btn { width:100%; margin-top:12px; padding:16px; border:0; border-radius:12px; background:var(--acc); color:var(--bg); font:inherit; font-size:18px; font-weight:700; }
+  .btn.sub { background:transparent; color:var(--acc); border:1px solid var(--acc); }
+  .btn:disabled { opacity:.45; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:999px; border:1px solid var(--line); font-size:13px; }
+  .hide { display:none; }
+  .tabs { display:flex; gap:6px; margin-bottom:10px; }
+  .tabs button { flex:1; padding:10px; border:1px solid var(--line); border-radius:10px; background:transparent; color:var(--fg); font:inherit; }
+  .tabs button[aria-pressed=true] { border-color:var(--acc); color:var(--acc); font-weight:700; }
+  .cal { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+  .cal .h { text-align:center; font-size:12px; color:var(--mut); }
+  .cal button { aspect-ratio:1; border:1px solid var(--line); border-radius:8px; background:transparent; color:var(--fg); font:inherit; padding:0; }
+  .cal button[aria-pressed=true] { background:var(--bad); border-color:var(--bad); color:var(--bg); text-decoration:line-through; }
+  .stepper { display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
+  .stepper .v { font-size:24px; font-weight:800; min-width:2.5em; text-align:center; }
+  .stepper button { width:52px; height:52px; border-radius:12px; border:1px solid var(--acc); background:transparent; color:var(--acc); font-size:26px; font-weight:700; }
+  a { color:var(--acc); }
+</style>
+</head>
+<body>
+<main>
+  <div id="msg" class="note">読み込み中…</div>
+  <div id="view" class="hide">
+    <h1 id="hello"></h1>
+    <p class="today" id="todayTitle"></p>
+    <div id="todayBox"></div>
+    <div id="btns"></div>
+    <div id="keyBox"></div>
+    <h2>今月の割当</h2>
+    <div class="card" id="month"></div>
+    <h2>報酬</h2>
+    <div class="card" id="pay"></div>
+    <h2>希望を出す</h2>
+    <div class="card" id="wish"></div>
+    <h2>フィードバック</h2>
+    <div class="card" id="fb"></div>
+    <div class="card"><div class="note">困ったときは電話</div><a id="tel" class="btn sub" style="display:block;text-align:center;text-decoration:none"></a></div>
+    <p class="note">このページのリンクは自分専用です。他の人に送らないでください。</p>
+  </div>
+</main>
+<script>
+const q = new URLSearchParams(location.search);
+const API = q.get('api_base') || window.DOLPHIN_API || '';
+const S = (q.get('s') || '').toLowerCase();
+const $ = id => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+const WD = ['日', '月', '火', '水', '木', '金', '土'];
+const md = ymd => { const d = new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(5, 7) - 1, +ymd.slice(8, 10))); return (+ymd.slice(5, 7)) + '/' + (+ymd.slice(8, 10)) + '（' + WD[d.getUTCDay()] + '）'; };
+let data = null;
+
+function paint() {
+  const d = data;
+  $('hello').textContent = d.name + ' さん';
+  $('todayTitle').textContent = '今日 ' + md(d.today) + ' の仕事';
+  const tb = $('todayBox'); tb.textContent = '';
+  if (!d.todayRows.length) tb.appendChild(el('div', 'card big', '今日の仕事はありません'));
+  d.todayRows.forEach(r => {
+    const c = el('div', 'card');
+    c.appendChild(el('div', 'big', r.role + (r.task ? '：' + r.task : '')));
+    const st = r.done ? '完了 ' + r.done.slice(11, 16) : r.out ? '退勤 ' + r.out : r.in ? '出勤 ' + r.in : (r.state || '');
+    if (st) c.appendChild(el('span', 'badge', st));
+    tb.appendChild(c);
+  });
+  if (d.work.length) {
+    const c = el('div', 'card');
+    d.work.forEach(w => {
+      const row = el('div', 'row'); row.appendChild(el('div', 't', w.time));
+      const b = el('div', 'b'); b.appendChild(el('div', '', w.place + '　' + w.task + (w.qty ? ' ×' + w.qty : '')));
+      const sub = [w.guest, w.ids, w.memo].filter(Boolean).join('／'); if (sub) b.appendChild(el('div', 'note', sub));
+      row.appendChild(b); c.appendChild(row);
+    });
+    tb.appendChild(c);
+  }
+  // ボタン：雇用＝出勤・退勤、委託＝作業完了（T-S05）
+  const bx = $('btns'); bx.textContent = '';
+  const r0 = d.todayRows[0];
+  if (r0) {
+    const mk = (label, op, disabled, cls) => { const b = el('button', 'btn' + (cls ? ' ' + cls : ''), label); b.disabled = disabled; b.onclick = () => act(op, b); bx.appendChild(b); };
+    if (d.kind === 'employee') { mk(r0.in ? '出勤済み ' + r0.in : '出勤', 'in', !!r0.in); mk(r0.out ? '退勤済み ' + r0.out : '退勤', 'out', !r0.in || !!r0.out, 'sub'); }
+    else mk(r0.done ? '完了報告済み' : '作業が終わった（完了）', 'done', !!r0.done);
+  }
+  const kb = $('keyBox'); kb.textContent = '';
+  d.keys.forEach(k => { const c = el('div', 'card'); c.appendChild(el('div', 'note', 'E-bike 鍵番号（' + k.id + '）')); c.appendChild(el('div', 'key', k.key)); kb.appendChild(c); });
+  const m = $('month'); m.textContent = '';
+  if (!d.month.length) m.appendChild(el('div', 'note', '今月の割当はまだありません'));
+  d.month.forEach(r => { const row = el('div', 'row'); row.appendChild(el('div', 't', md(r.date).replace(/（.）/, ''))); row.appendChild(el('div', 'b', r.role + (r.task ? '：' + r.task : '') + (r.state ? '（' + r.state + '）' : ''))); m.appendChild(row); });
+  const pb = $('pay'); pb.textContent = '';
+  (d.pay || []).forEach((p, i) => {
+    const row = el('div', 'row'); row.appendChild(el('div', 't', (+p.month.slice(5)) + '月'));
+    const b = el('div', 'b');
+    if (p.total === null) b.appendChild(el('div', 'note', 'まだありません'));
+    else {
+      b.appendChild(el('div', 'big', p.total.toLocaleString('ja-JP') + '円' + (p.state === '確定' ? '（確定）' : '（見込み）')));
+      const sub = [p.count ? p.count + '件' : '', p.hours ? p.hours + '時間' : '', p.bonus ? '特別 ' + p.bonus.toLocaleString('ja-JP') + '円' : ''].filter(Boolean).join('／');
+      if (sub) b.appendChild(el('div', 'note', sub));
+    }
+    row.appendChild(b); pb.appendChild(row);
+  });
+  paintWish();
+  const f = $('fb'); f.textContent = '';
+  if (!d.feedback.length) f.appendChild(el('div', 'note', 'まだありません'));
+  d.feedback.forEach(x => { const row = el('div', 'row'); row.appendChild(el('div', 't', md(x.date).replace(/（.）/, ''))); const b = el('div', 'b', (x.score ? '★' + x.score + '　' : '') + x.text); row.appendChild(b); f.appendChild(row); });
+  const ph = /^\+\d{8,15}$/.test(d.phone || '') ? d.phone : '';
+  $('tel').textContent = ph ? '電話する' : ''; $('tel').href = ph ? 'tel:' + ph : '#'; $('tel').parentNode.classList.toggle('hide', !ph);
+}
+// 希望を出す（T-S02）：カレンダーのタップ＝出られない日、数字は＋−ボタンだけ。文字入力なし
+let wm = 0, draft = null;
+function wishDraft() {
+  const w = data.wish[wm];
+  draft = { month: w.month, days: w.days, min: w.sent ? w.min : 0, max: w.sent ? w.max : Math.min(w.days, 10), off: new Set(w.off) };
+}
+function paintWish() {
+  const box = $('wish'); box.textContent = '';
+  if (!data.wish || !data.wish.length) return;
+  if (!draft || draft.month !== data.wish[wm].month) wishDraft();
+  const tabs = el('div', 'tabs');
+  data.wish.forEach((w, i) => { const b = el('button', '', (+w.month.slice(5)) + '月' + (w.sent ? '（提出済み）' : '')); b.setAttribute('aria-pressed', i === wm); b.onclick = () => { wm = i; wishDraft(); paintWish(); }; tabs.appendChild(b); });
+  box.appendChild(tabs);
+  box.appendChild(el('div', 'note', '出られない日をタップ（赤になります）'));
+  const cal = el('div', 'cal'); WD.forEach(x => cal.appendChild(el('div', 'h', x)));
+  const y = +draft.month.slice(0, 4), m = +draft.month.slice(5, 7), first = new Date(Date.UTC(y, m - 1, 1)).getUTCDay();
+  for (let i = 0; i < first; i++) cal.appendChild(el('div'));
+  for (let d = 1; d <= draft.days; d++) {
+    const ymd = draft.month + '-' + ('0' + d).slice(-2), b = el('button', '', String(d));
+    b.setAttribute('aria-pressed', draft.off.has(ymd)); b.setAttribute('data-d', ymd);
+    b.onclick = () => { draft.off.has(ymd) ? draft.off.delete(ymd) : draft.off.add(ymd); b.setAttribute('aria-pressed', draft.off.has(ymd)); };
+    cal.appendChild(b);
+  }
+  box.appendChild(cal);
+  const step = (label, key) => {
+    const row = el('div', 'stepper'); row.appendChild(el('div', '', label));
+    const minus = el('button', '', '−'), v = el('div', 'v', String(draft[key])), plus = el('button', '', '+');
+    minus.setAttribute('data-k', key + '-'); plus.setAttribute('data-k', key + '+');
+    minus.onclick = () => { draft[key] = Math.max(0, draft[key] - 1); if (draft.min > draft.max) draft.max = draft.min; paintWish(); };
+    plus.onclick = () => { draft[key] = Math.min(draft.days, draft[key] + 1); if (draft.min > draft.max) draft.max = draft.min; paintWish(); };
+    const g = el('div'); g.style.display = 'flex'; g.style.gap = '10px'; g.style.alignItems = 'center'; g.append(minus, v, plus); row.appendChild(g); box.appendChild(row);
+  };
+  step('最低の日数', 'min'); step('最大の日数', 'max');
+  const send = el('button', 'btn', data.wish[wm].sent ? '出し直す' : '希望を出す'); send.id = 'wishSend';
+  send.onclick = async () => {
+    send.disabled = true; const keep = send.textContent; send.textContent = '送信中…';
+    try {
+      const r = await (await fetch(API, { method: 'POST', body: JSON.stringify({ api: 'staff', s: S, op: 'wish', month: draft.month, min: draft.min, max: draft.max, off: Array.from(draft.off) }), headers: { 'Content-Type': 'text/plain' } })).json();
+      if (!r.ok) throw new Error(r.reason);
+      await load(); $('msg').textContent = (+draft.month.slice(5)) + '月の希望を受け付けました';
+    } catch (e) { send.disabled = false; send.textContent = keep; $('msg').textContent = '送れませんでした。もう一度押してください。'; }
+  };
+  box.appendChild(send);
+}
+async function load() {
+  const r = await (await fetch(API + '?' + new URLSearchParams({ api: 'staff', s: S }))).json();
+  if (!r.ok) throw new Error('nf');
+  data = r; $('msg').textContent = ''; $('view').classList.remove('hide'); paint();
+}
+async function act(op, b) {
+  b.disabled = true; const keep = b.textContent; b.textContent = '記録中…';
+  try {
+    const r = await (await fetch(API, { method: 'POST', body: JSON.stringify({ api: 'staff', s: S, op: op }), headers: { 'Content-Type': 'text/plain' } })).json();
+    if (!r.ok) throw new Error(r.reason || 'ng');
+    await load();
+  } catch (e) { b.disabled = false; b.textContent = keep; $('msg').textContent = '記録できませんでした。もう一度押すか、電話してください。'; }
+}
+(async () => {
+  try { if (!API || !/^[0-9a-f]{40}$/.test(S)) throw new Error('nf'); await load(); }
+  catch (e) { $('msg').textContent = e.message === 'nf' ? 'このリンクは使えません。管理者に連絡してください。' : '読み込めませんでした。しばらくしてからもう一度。'; }
+})();
+</script>
+</body>
+</html>
