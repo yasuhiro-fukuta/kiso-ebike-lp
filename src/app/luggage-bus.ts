@@ -226,6 +226,38 @@ export const FORM_POINTS: { en: string; ja: string; pos: number | null; place: P
   { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null, place: null },
 ];
 
+/** Booking form step 1: the area (a town on the line, south to north).
+ *  Nakatsugawa and Narai are extensions, by arrangement. */
+export const FORM_AREAS: { key: string; pos: number; name: T }[] = [
+  { key: "nakatsugawa", pos: 0, name: { en: "Nakatsugawa (south extension, by arrangement)", ja: "中津川(南部延伸・要相談)" } },
+  { key: "nagiso", pos: NAGISO, name: { en: "Nagiso", ja: "南木曽" } },
+  { key: "nojiri", pos: 2, name: { en: "Nojiri", ja: "野尻" } },
+  { key: "suhara", pos: 3, name: { en: "Suhara", ja: "須原" } },
+  { key: "agematsu", pos: 4, name: { en: "Agematsu", ja: "上松" } },
+  { key: "kisofukushima", pos: 5, name: { en: "Kiso-Fukushima", ja: "木曽福島" } },
+  { key: "narai", pos: 6, name: { en: "Narai (north extension, by arrangement)", ja: "奈良井(北部延伸・要相談)" } },
+];
+
+/** Last choice in every area: an inn or place not on the list, named in the free-text box. */
+export const FORM_OTHER: T = {
+  en: "Another inn or place in this area (write its name below)",
+  ja: "このエリアのその他の宿・場所(下に名前を書く)",
+};
+
+/** Step 2: the stations and inns of one area (pulldown), plus the free-text choice. */
+export const formSpots = (areaLabel: string, lang: "en" | "ja"): string[] => {
+  const a = FORM_AREAS.find((x) => x.name.en === areaLabel || x.name.ja === areaLabel);
+  if (!a) return [];
+  return [
+    ...FORM_POINTS.filter((p) => p.pos === a.pos && p.place).map((p) => p[lang]),
+    FORM_OTHER[lang],
+  ];
+};
+
+/** Position on the line for a chosen area. */
+export const formAreaPos = (areaLabel: string): number | null =>
+  FORM_AREAS.find((x) => x.name.en === areaLabel || x.name.ja === areaLabel)?.pos ?? null;
+
 /** Estimated fare: ¥1,500 for each zone passed + ¥1,500 per bag. null when
  *  it can't be worked out (unknown place, or start and end in one town). */
 export function estimate(from: number | null, to: number | null, bags: number) {

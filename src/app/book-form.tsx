@@ -4,7 +4,17 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { wa } from "./site";
-import { FORM_POINTS, estimate, yen, feeText, dateProblem } from "./luggage-bus";
+import {
+  FORM_POINTS,
+  FORM_AREAS,
+  FORM_OTHER,
+  formSpots,
+  formAreaPos,
+  estimate,
+  yen,
+  feeText,
+  dateProblem,
+} from "./luggage-bus";
 import { CLOSED_DAYS } from "./shuttle-calendar";
 import { SiteNav, SiteFooter } from "./chrome";
 
@@ -16,13 +26,19 @@ type Field = {
   label: { en: string; ja: string };
   type: "date" | "text" | "count" | "select";
   options?: { en: string[]; ja: string[] };
+  /** Choices that depend on the other values (e.g. stations of the chosen area). */
+  optionsFor?: (lang: Lang, v: Record<string, string>) => string[];
+  /** Fields to clear when this one changes. */
+  resets?: string[];
+  /** Show only when this returns true. */
+  showIf?: (v: Record<string, string>) => boolean;
   opt?: boolean;
 };
 
 type Service = {
   title: { en: string; ja: string };
   fields: Field[];
-  build: (lang: Lang, g: (k: string) => string, est: string) => string;
+  build: (lang: Lang, g: (k: string) => string, est: string, v: Record<string, string>) => string;
   /** Optional note under a field, from the raw values (e.g. station info). */
   hint?: (lang: Lang, k: string, v: Record<string, string>) => string | null;
   /** Optional check run when sending; returns an error message or null. */
@@ -68,6 +84,22 @@ const LB_POINTS = {
 };
 const lbPoint = (label: string) => FORM_POINTS.find((p) => p.en === label || p.ja === label) ?? null;
 const lbPos = (label: string) => lbPoint(label)?.pos ?? null;
+const AREA_OPTIONS = {
+  en: FORM_AREAS.map((a) => a.name.en),
+  ja: FORM_AREAS.map((a) => a.name.ja),
+};
+const isOther = (spot: string) => spot === FORM_OTHER.en || spot === FORM_OTHER.ja;
+/** Position of one end of the trip: the chosen station, else the chosen area. */
+const endPos = (v: Record<string, string>, k: "from" | "to") =>
+  lbPos(v[k] ?? "") ?? formAreaPos(v[`${k}Area`] ?? "");
+/** Readable end of the trip for the message: area, station, and any typed name. */
+const endText = (l: Lang, v: Record<string, string>, k: "from" | "to", blank: string) => {
+  const area = v[`${k}Area`] ?? "";
+  const spot = v[k] ?? "";
+  const other = (v[`${k}Other`] ?? "").trim();
+  const parts = [area, isOther(spot) ? "" : spot, other].filter(Boolean);
+  return parts.length ? parts.join(l === "ja" ? " / " : " / ") : blank;
+};
 const lbFee = (l: Lang, label: string) => {
   const pl = lbPoint(label)?.place;
   return pl ? feeText(pl, l) : l === "ja" ? "確認中" : "being checked";
@@ -132,9 +164,36 @@ const SERVICES: Record<string, Service> = {
     fields: [
       { k: "name", label: { en: "Name", ja: "氏名" }, type: "text" },
       { k: "date", label: { en: "Date", ja: "日付" }, type: "date" },
-      { k: "from", label: { en: "Hand over at", ja: "預ける駅" }, type: "select", options: LB_POINTS },
-      { k: "to", label: { en: "Pick up at", ja: "受け取る駅" }, type: "select", options: LB_POINTS },
-      { k: "inns", label: { en: "Inn or place (if not a station)", ja: "宿・場所の名前(駅以外の場合)" }, type: "text", opt: true },
+      { k: "fromArea", label: { en: "Hand over: area", ja: "預けるエリア" }, type: "select", options: AREA_OPTIONS, resets: ["from", "fromOther"] },
+      {
+        k: "from",
+        label: { en: "Hand over: station or inn", ja: "預ける駅・宿" },
+        type: "select",
+        optionsFor: (l, v) => formSpots(v.fromArea ?? "", l),
+        showIf: (v) => !!v.fromArea,
+      },
+      {
+        k: "fromOther",
+        label: { en: "Name of the inn or place (if not in the list)", ja: "宿・場所の名前(リストにない場合)" },
+        type: "text",
+        opt: true,
+        showIf: (v) => !!v.fromArea,
+      },
+      { k: "toArea", label: { en: "Pick up: area", ja: "受け取るエリア" }, type: "select", options: AREA_OPTIONS, resets: ["to", "toOther"] },
+      {
+        k: "to",
+        label: { en: "Pick up: station or inn", ja: "受け取る駅・宿" },
+        type: "select",
+        optionsFor: (l, v) => formSpots(v.toArea ?? "", l),
+        showIf: (v) => !!v.toArea,
+      },
+      {
+        k: "toOther",
+        label: { en: "Name of the inn or place (if not in the list)", ja: "宿・場所の名前(リストにない場合)" },
+        type: "text",
+        opt: true,
+        showIf: (v) => !!v.toArea,
+      },
       { k: "bags", label: { en: "Bags", ja: "個数" }, type: "count" },
     ],
     hint: (l, k, v) => {
@@ -147,7 +206,11 @@ const SERVICES: Record<string, Service> = {
       if (k !== "from" && k !== "to") return null;
       const pt = lbPoint(v[k] ?? "");
       const pl = pt?.place;
-      const isExt = pt?.pos != null && EXT_POS.includes(pt.pos);
+      if (!pt && isOther(v[k] ?? ""))
+        return l === "ja"
+          ? "リストにない宿・場所は、名前を下の欄に書いてください。預かり料などは返信でお伝えします。"
+          : "Write the name of an inn or place that isn't listed. We'll confirm fees in our reply.";
+      const isExt = endPos(v, k) != null && EXT_POS.includes(endPos(v, k) as number);
       const extNote =
         l === "ja"
           ? "延長は1日1件まで。日によっては受けられないことがあります。"
@@ -171,14 +234,17 @@ const SERVICES: Record<string, Service> = {
       );
     },
     estimate: (l, v) => {
-      const e = estimate(lbPos(v.from ?? ""), lbPos(v.to ?? ""), Number(v.bags ?? 0));
+      const e = estimate(endPos(v, "from"), endPos(v, "to"), Number(v.bags ?? 0));
       if (!e) return null;
       return { total: yen(e.total), detail: e.parts.map((p) => `${p[l]} ${yen(p.yen)}`).join(" + ") };
     },
-    build: (l, g, est) =>
-      l === "ja"
-        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける駅:${g("from")}\n受け取る駅:${g("to")}\n宿・場所:${g("inns")}\n個数:${g("bags")}個\n概算金額:${est}\n駅の預かり料(現地払い):預ける駅 ${lbFee(l, g("from"))} / 受け取る駅 ${lbFee(l, g("to"))}\n※荷物の写真を1個につき1枚、このチャットに送ります。`
-        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${g("from")}\nPick up at: ${g("to")}\nInn or place: ${g("inns")}\nBags: ${g("bags")}\nEstimate: ${est}\nStation holding fees (paid on the spot): ${lbFee(l, g("from"))} at drop-off / ${lbFee(l, g("to"))} at pick-up\nI'll send one photo of each bag in this chat.`,
+    build: (l, g, est, v) => {
+      const from = endText(l, v, "from", l === "ja" ? "〇" : "__");
+      const to = endText(l, v, "to", l === "ja" ? "〇" : "__");
+      return l === "ja"
+        ? `こんにちは。下記内容でラゲッジバスの予約を申し込みます。\n氏名:${g("name")}\n日時:${g("date")}\n預ける場所:${from}\n受け取る場所:${to}\n個数:${g("bags")}個\n概算金額:${est}\n駅の預かり料(現地払い):預ける駅 ${lbFee(l, g("from"))} / 受け取る駅 ${lbFee(l, g("to"))}\n※荷物の写真を1個につき1枚、このチャットに送ります。`
+        : `Hello! I'd like to request a Luggage Bus booking.\nName: ${g("name")}\nDate: ${g("date")}\nHand over at: ${from}\nPick up at: ${to}\nBags: ${g("bags")}\nEstimate: ${est}\nStation holding fees (paid on the spot): ${lbFee(l, g("from"))} at drop-off / ${lbFee(l, g("to"))} at pick-up\nI'll send one photo of each bag in this chat.`;
+    },
   },
   "luggage-send": {
     title: { en: "Luggage Bus — after payment", ja: "ラゲッジバス(支払い後の連絡)" },
@@ -385,7 +451,7 @@ export default function BookForm({ lang }: { lang: Lang }) {
     return raw;
   };
   const est = svc.estimate?.(lang, v) ?? null;
-  const message = svc.build(lang, g, est ? `${est.total}(${est.detail})` : t.estimateNone);
+  const message = svc.build(lang, g, est ? `${est.total}(${est.detail})` : t.estimateNone, v);
 
   return (
     <div className="lp">
@@ -398,17 +464,21 @@ export default function BookForm({ lang }: { lang: Lang }) {
 
       <section className="mini-sec" id="form">
         <div className="book-form">
-          {svc.fields.map((f) => (
+          {svc.fields.filter((f) => !f.showIf || f.showIf(v)).map((f) => (
             <div className="book-field" key={f.k}>
               <label htmlFor={`bf-${f.k}`}>{f.label[lang]}</label>
               {f.type === "select" ? (
                 <select
                   id={`bf-${f.k}`}
                   value={v[f.k] ?? ""}
-                  onChange={(e) => setV({ ...v, [f.k]: e.target.value })}
+                  onChange={(e) => {
+                    const next = { ...v, [f.k]: e.target.value };
+                    f.resets?.forEach((r) => delete next[r]);
+                    setV(next);
+                  }}
                 >
                   <option value="">{t.choose}</option>
-                  {(f.options?.[lang] ?? []).map((o) => (
+                  {(f.optionsFor ? f.optionsFor(lang, v) : (f.options?.[lang] ?? [])).map((o) => (
                     <option key={o} value={o}>
                       {o}
                     </option>
