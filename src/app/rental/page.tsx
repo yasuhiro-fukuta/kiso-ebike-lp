@@ -276,9 +276,9 @@ export default function RentalPage() {
           confirmed, we send a payment link — please pay by the day before.
           Right after paying, a short consent form opens; send it
           and your lock code arrives by email. On the morning of your
-          ride, the bike&apos;s spot arrives in one message. Cancel by the
-          day before for a full refund; same-day cancellations are not
-          refunded. Bikes are
+          ride, the bike&apos;s spot arrives in one message. Full refund if
+          you cancel 3 or more days before; 50% refund if you cancel 1–2
+          days before; no refund on the day (rain included). Bikes are
           yours from 9:00 to 18:00 as standard — need them earlier or later?
           Just ask and we&apos;ll work it out. Rentals rest every Monday.
         </p>
