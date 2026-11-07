@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<script>window.DOLPHIN_API="https://script.google.com/macros/s/AKfycbzAHy-91-MQKFuvUXNWoZK_DNzKhHXIWj_XxtZIBgNFLlfiaw_VWuNL5mZLz-QpcBcR/exec";</script>
+<!-- 正本は dolphin リポジトリ web/index.html。12月の試運転（ダミー予約）用。お客さんには案内しない -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beyond Nakasendo — Book</title>
+<style>
+  :root { --bg:#fbfaf7; --fg:#1e1f1c; --mut:#6b6e66; --line:#dcdcd3; --acc:#2f6b4f; --ng:#b3b3a8; --bad:#a33; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#16181a; --fg:#ecece6; --mut:#9a9d95; --line:#33362f; --acc:#6cc39a; --ng:#555; --bad:#e88; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui,-apple-system,"Hiragino Sans",sans-serif; }
+  main { max-width:560px; margin:0 auto; padding:16px; }
+  h1 { font-size:20px; margin:8px 0 12px; }
+  .row { display:flex; gap:8px; align-items:center; justify-content:space-between; }
+  .tabs { display:flex; gap:6px; margin:8px 0 16px; }
+  .tabs button, .lang button { flex:1; padding:10px 6px; border:1px solid var(--line); background:transparent; color:var(--fg); border-radius:8px; font:inherit; }
+  .tabs button[aria-pressed=true] { border-color:var(--acc); color:var(--acc); font-weight:600; }
+  .lang { display:flex; gap:4px; } .lang button { flex:none; padding:4px 10px; font-size:13px; }
+  .lang button[aria-pressed=true] { border-color:var(--acc); color:var(--acc); }
+  label { display:block; margin:12px 0 4px; font-size:14px; color:var(--mut); }
+  select, input[type=number], input[type=text], input[type=tel], input[type=email] { width:100%; padding:10px; font:inherit; color:var(--fg); background:transparent; border:1px solid var(--line); border-radius:8px; }
+  .cal { margin-top:12px; }
+  .cal header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+  .cal header button { border:1px solid var(--line); background:transparent; color:var(--fg); border-radius:8px; padding:6px 12px; font:inherit; }
+  .grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+  .grid .h { text-align:center; font-size:12px; color:var(--mut); }
+  .grid button { aspect-ratio:1; border:1px solid var(--line); border-radius:8px; background:transparent; color:var(--fg); font:inherit; }
+  .grid button:disabled { color:var(--ng); background:repeating-linear-gradient(45deg,transparent 0 6px,var(--line) 6px 7px); }
+  .grid button[aria-pressed=true] { background:var(--acc); color:var(--bg); border-color:var(--acc); }
+  .note { font-size:13px; color:var(--mut); min-height:20px; margin-top:6px; }
+  .quote { margin-top:16px; padding:12px; border:1px solid var(--line); border-radius:10px; }
+  .quote .amt { font-size:24px; font-weight:700; }
+  .bad { color:var(--bad); }
+  .cta { width:100%; margin-top:16px; padding:14px; border:0; border-radius:10px; background:var(--acc); color:var(--bg); font:inherit; font-weight:600; }
+  .cta:disabled { opacity:.45; }
+  label.chk { display:flex; gap:8px; align-items:flex-start; color:var(--fg); font-size:13px; margin-top:14px; }
+  label.chk input { margin-top:3px; }
+  .hide { display:none; }
+.paybtn{display:inline-block;margin-top:10px;padding:12px 22px;border-radius:8px;background:#1b6b4a;color:#fff;text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+  <div class="row">
+    <h1 id="t-title">Book</h1>
+    <div class="lang"><button data-l="en" aria-pressed="true">EN</button><button data-l="ja" aria-pressed="false">日本語</button></div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+
+  <div id="f-route" class="hide">
+    <label id="l-pickup" for="pickup"></label><select id="pickup"></select>
+    <label id="l-drop" for="drop"></label><select id="drop"></select>
+  </div>
+  <div id="f-qty">
+    <label id="l-qty" for="qty"></label><input id="qty" type="number" min="1" value="1" inputmode="numeric">
+  </div>
+
+  <div class="cal">
+    <header><button id="prev" aria-label="prev">‹</button><strong id="month"></strong><button id="next" aria-label="next">›</button></header>
+    <div class="grid" id="grid"></div>
+    <div class="note" id="daynote"></div>
+  </div>
+
+  <div class="quote" id="quote" hidden>
+    <div id="q-label" class="note"></div>
+    <div class="amt" id="q-amt"></div>
+    <div class="note" id="q-meta"></div>
+  </div>
+  <div id="contact" class="hide">
+    <label id="l-name" for="name"></label><input id="name" type="text" autocomplete="name">
+    <label id="l-wa" for="wa"></label><input id="wa" type="tel" autocomplete="tel" placeholder="+61 400 123 456">
+    <label id="l-mail" for="mail"></label><input id="mail" type="email" autocomplete="email">
+    <label class="chk"><input id="consent" type="checkbox"> <span id="l-consent"></span></label>
+  </div>
+  <button class="cta" id="go" disabled></button>
+  <div class="note" id="result"></div>
+  <div class="note" id="foot"></div>
+</main>
+
+<script>
+function safeUrl(u){ return /^https:\/\/[^\s"'<>]+$/.test(u) ? u : '#'; }
+// ---- 設定：APIのURL（ウェブアプリの /exec）。?api_base=… で上書きできる ----
+let consent = { version: '', text: { en: '', ja: '' } }; // api=consent で商品ごとに取得（正本は gas/Api.gs の CONSENTS）
+const API = new URLSearchParams(location.search).get('api_base') || window.DOLPHIN_API || '';
+
+const T = {
+  en: { title:'Book', LUGGAGE:'Luggage', EBIKE_RENTAL:'E-bike', GUIDE_DOWNHILL:'Guide',
+    pickup:'Pick up from', drop:'Deliver to', pieces:'Pieces (1–10, max 15 kg each)', bikes:'Bikes (1–4)', people:'People (1–8)',
+    choose:'Choose…', pickDate:'Choose a date', total:'Total', go:'Reserve (hold for 30 min)', name:'Your name', wa:'WhatsApp number (with country code)', mail:'Email',
+    consent:'I will not hand over prohibited items (cash, passports, valuables, fragile items, medicine, perishables). Max 15 kg per piece. Loss or damage is covered up to ¥30,000 per piece. Cancellations after 21:00 the day before are not refunded (cancellation by us, or delivery later than 15:00, is refunded in full). Weather-related cancellations are decided at 21:00 the day before.',
+    held:'Reserved! Booking no.', heldNote:'Held until {t}. Please pay within that time to confirm.', pay:'Pay now', mypage:'Open your reservation page', payWait:'Payment link is being prepared — we will message you on WhatsApp.', loading:'Loading…',
+    delivery:{ '当日':'Same-day delivery by 15:00', '翌朝':'Delivered next morning' }, dir:{ '北行き':'Northbound', '南行き':'Southbound' },
+    priceTbd:'Price to be confirmed', foot:'Booking closes at 21:00 the day before.',
+    reasons:{ 'この日は運行しません（定休日）':'Closed (weekly day off)', 'この日は運行しません（冬季運休）':'Closed for winter (Dec 1 – Mar 19)',
+      'この日は運行しません':'Not operating this day', '受付は前日21:00までです':'Booking closed (deadline: 21:00 the day before)',
+      'この日は満杯です':'Fully booked', 'この日は満席です':'Fully booked', 'この日は満車です':'No bikes available',
+      '受取先と届け先は別の場所を選んでください':'Pick-up and delivery must differ' }, mon:['Su','Mo','Tu','We','Th','Fr','Sa'] },
+  ja: { title:'ご予約', LUGGAGE:'荷物運び', EBIKE_RENTAL:'E-bike', GUIDE_DOWNHILL:'ガイド',
+    pickup:'受取先', drop:'届け先', pieces:'個数（1〜10個・1個15kgまで）', bikes:'台数（1〜4台）', people:'人数（1〜8名）',
+    choose:'選択…', pickDate:'日付を選んでください', total:'合計', go:'予約する（30分仮押さえ）', name:'お名前', wa:'WhatsApp番号（国番号つき）', mail:'メール',
+    consent:'運べない物（現金・パスポート・貴重品・壊れ物・医薬品・生もの）は預けません。1個15kgまで。補償は1個30,000円までの貨物保険。前日21:00以降の取消は返金されません（運休・15:00を過ぎての未配達は全額返金）。天候などによる運休は前日21:00に決まります。',
+    held:'仮押さえしました。予約番号', heldNote:'{t} までお取りしています。この時刻までにお支払いいただくと確定します。', pay:'お支払いへ', mypage:'ご予約ページを開く', payWait:'お支払いリンクは準備中です。WhatsAppでご案内します。', loading:'読み込み中…',
+    delivery:{ '当日':'15:00までに当日お届け', '翌朝':'翌朝のお届け' }, dir:{ '北行き':'北行き', '南行き':'南行き' },
+    priceTbd:'料金は確認中です', foot:'受付は前日21:00までです。', reasons:{}, mon:['日','月','火','水','木','金','土'] },
+};
+let lang = (navigator.language || 'en').startsWith('ja') ? 'ja' : 'en';
+let product = 'LUGGAGE', month = new Date().toISOString().slice(0, 7), picked = '', stops = [], days = {};
+const $ = id => document.getElementById(id);
+const tr = () => T[lang];
+const reason = r => tr().reasons[r] || r;
+
+async function api(params) {
+  if (!API) return { ok: false, reason: 'API not configured' };
+  const r = await fetch(API + '?' + new URLSearchParams(params));
+  return r.json();
+}
+function qtyLabel() { return product === 'GUIDE_DOWNHILL' ? tr().people : product === 'EBIKE_RENTAL' ? tr().bikes : tr().pieces; }
+function qtyParams() {
+  const n = Math.max(1, parseInt($('qty').value || '1', 10));
+  return product === 'GUIDE_DOWNHILL' ? { people: n } : { qty: n };
+}
+function routeParams() { return product === 'LUGGAGE' ? { pickup: $('pickup').value, drop: $('drop').value } : {}; }
+function routeReady() { return product !== 'LUGGAGE' || ($('pickup').value && $('drop').value && $('pickup').value !== $('drop').value); }
+
+function paintStatic() {
+  const t = tr();
+  document.documentElement.lang = lang; $('t-title').textContent = t.title;
+  $('tabs').innerHTML = '';
+  ['LUGGAGE', 'EBIKE_RENTAL', 'GUIDE_DOWNHILL'].forEach(p => {
+    const b = document.createElement('button'); b.textContent = t[p]; b.setAttribute('aria-pressed', p === product);
+    b.onclick = () => { product = p; picked = ''; refresh(true); }; $('tabs').appendChild(b);
+  });
+  document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === lang));
+  $('l-pickup').textContent = t.pickup; $('l-drop').textContent = t.drop; $('l-qty').textContent = qtyLabel();
+  $('f-route').classList.toggle('hide', product !== 'LUGGAGE');
+  $('go').textContent = t.go; $('foot').textContent = t.foot;
+  $('l-name').textContent = t.name; $('l-wa').textContent = t.wa; $('l-mail').textContent = t.mail; $('l-consent').textContent = consent.text[lang] || '';
+  ['pickup', 'drop'].forEach(id => {
+    const sel = $(id), cur = sel.value;
+    sel.innerHTML = '<option value="">' + t.choose + '</option>' + stops.map(s => '<option value="' + s.code + '">' + s.name + '</option>').join('');
+    sel.value = cur;
+  });
+  $('qty').max = product === 'GUIDE_DOWNHILL' ? 8 : product === 'EBIKE_RENTAL' ? 4 : 10;
+}
+
+async function paintCalendar() {
+  const t = tr(); $('month').textContent = month; $('daynote').textContent = '';
+  if (!routeReady()) { days = {}; } else { $('daynote').textContent = t.loading; const r = await api(Object.assign({ api: 'days', product, month }, routeParams(), qtyParams())); days = r.days || {}; $('daynote').textContent = r.ok ? '' : reason(r.reason || ''); }
+  const first = new Date(month + '-01T00:00:00Z').getUTCDay();
+  const n = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5), 0)).getUTCDate();
+  let h = t.mon.map(d => '<div class="h">' + d + '</div>').join('') + '<div></div>'.repeat(first);
+  for (let d = 1; d <= n; d++) {
+    const ymd = month + '-' + String(d).padStart(2, '0'), ok = days[ymd] === 'ok';
+    h += '<button data-d="' + ymd + '"' + (ok ? '' : ' disabled title="' + reason(days[ymd] || '') + '"') + ' aria-pressed="' + (picked === ymd) + '">' + d + '</button>';
+  }
+  $('grid').innerHTML = h;
+  $('grid').querySelectorAll('button:not(:disabled)').forEach(b => b.onclick = () => { picked = b.dataset.d; paintCalendar(); paintQuote(); });
+}
+
+async function paintQuote() {
+  const t = tr(); $('quote').hidden = true; $('go').disabled = true;
+  if (!picked || !routeReady()) { $('daynote').textContent = picked ? '' : (routeReady() ? t.pickDate : ''); return; }
+  const r = await api(Object.assign({ api: 'quote', product, ymd: picked }, routeParams(), qtyParams()));
+  $('quote').hidden = false; $('q-label').textContent = picked;
+  if (!r.ok) { $('q-amt').innerHTML = '<span class="bad">' + reason(r.reason) + '</span>'; $('q-meta').textContent = ''; return; }
+  $('q-amt').textContent = r.amount === null ? t.priceTbd : '¥' + Number(r.amount).toLocaleString();
+  lastQuoteOk = true;
+  const m = r.meta || {};
+  $('q-meta').textContent = [m.direction && t.dir[m.direction], m.delivery && t.delivery[m.delivery]].filter(Boolean).join(' · ');
+  $('contact').classList.remove('hide'); checkReady();
+}
+
+let lastQuoteOk = false;
+function checkReady() {
+  const okc = $('name').value.trim() && $('wa').value.replace(/\D/g, '').length >= 8 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('mail').value.trim()) && $('consent').checked;
+  $('go').disabled = !(lastQuoteOk && okc);
+}
+
+async function loadConsent() { const r = await api({ api: 'consent', product }); if (r.ok) consent = r; $('l-consent').textContent = consent.text[lang] || ''; }
+function refresh(full) { if (full) loadConsent(); paintStatic(); paintCalendar().then(paintQuote); }
+
+$('go').onclick = async () => {
+  $('go').disabled = true;
+  const body = Object.assign({ api: 'hold', product, ymd: picked, name: $('name').value, whatsapp: $('wa').value, email: $('mail').value, lang, consent: $('consent').checked, consentVersion: consent.version, device: navigator.userAgent.slice(0, 120) }, routeParams(), qtyParams());
+  let r; try { r = await (await fetch(API, { method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'text/plain' } })).json(); } catch (e) { r = { ok: false, reason: 'Network error' }; }
+  const t = tr();
+  $('result').innerHTML = r.ok ? '<strong>' + t.held + ' ' + r.id + '</strong><br>' + (r.payUrl ? t.heldNote.replace('{t}', r.expires.slice(11)) + '<br><a class="paybtn" href="' + safeUrl(r.payUrl) + '">' + t.pay + '</a>' : t.payWait) + (/^[0-9a-f]{40}$/.test(r.key || '') ? '<br><a href="my.html?k=' + r.key + (API && new URLSearchParams(location.search).get('api_base') ? '&api_base=' + encodeURIComponent(API) : '') + '">' + t.mypage + '</a>' : '') : '<span class="bad">' + reason(r.reason) + '</span>';
+  if (!r.ok) checkReady();
+};
+
+(async function init() {
+  const r = await api({ api: 'stops' }); stops = r.stops || [];
+  document.querySelectorAll('.lang button').forEach(b => b.onclick = () => { lang = b.dataset.l; refresh(); });
+  ['name', 'wa', 'mail', 'consent'].forEach(id => $(id).addEventListener('input', checkReady));
+  ['pickup', 'drop', 'qty'].forEach(id => $(id).addEventListener('change', () => { picked = ''; refresh(); }));
+  $('prev').onclick = () => { const d = new Date(month + '-01T00:00:00Z'); d.setUTCMonth(d.getUTCMonth() - 1); month = d.toISOString().slice(0, 7); paintCalendar(); };
+  $('next').onclick = () => { const d = new Date(month + '-01T00:00:00Z'); d.setUTCMonth(d.getUTCMonth() + 1); month = d.toISOString().slice(0, 7); paintCalendar(); };
+  await loadConsent(); refresh();
+})();
+</script>
+</body>
+</html>
