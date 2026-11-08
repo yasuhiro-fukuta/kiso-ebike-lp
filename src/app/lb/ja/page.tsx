@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL_JA } from "../../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "../lb-chrome";
+import { LbHowVideo } from "../how-video";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
@@ -88,6 +89,8 @@ export default function JaLuggageBusPage() {
           </table>
         </div>
       </section>
+
+      <LbHowVideo lang="ja" />
 
       {/* 時刻表 */}
       <section className="mini-sec" id="timetable">

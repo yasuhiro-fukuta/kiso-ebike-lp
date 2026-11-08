@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
+import { LbHowVideo } from "./how-video";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
@@ -97,6 +98,8 @@ export default function LuggageBusPage() {
           </table>
         </div>
       </section>
+
+      <LbHowVideo lang="en" />
 
       {/* TIMETABLE */}
       <section className="mini-sec" id="timetable">
