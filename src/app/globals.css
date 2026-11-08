@@ -1660,3 +1660,15 @@ figure.season-cell .season-tag {
   background: var(--moss); color: var(--paper);
   font-size: 0.72rem; font-weight: 500;
 }
+
+/* LBN 初めての方向け: 比較表・仮置き画像 */
+.lb-compare { max-width: 860px; }
+.lb-compare td.us { background: rgba(181, 83, 42, 0.08); font-weight: 500; }
+.lb-compare td { font-size: 0.95rem; }
+.lb-ph {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 84px; margin-bottom: 0.7rem; padding: 0.5rem;
+  border: 1.5px dashed rgba(28, 26, 22, 0.3); border-radius: 6px;
+  background: rgba(28, 26, 22, 0.04); color: #6b645a; font-size: 0.75rem;
+}
+.koma .lb-ph { margin-top: 0.4rem; }
