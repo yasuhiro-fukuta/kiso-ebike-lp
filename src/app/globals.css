@@ -2043,3 +2043,12 @@ figure.season-cell .season-tag {
   background: rgba(28, 26, 22, 0.04); color: #6b645a; font-size: 0.75rem;
 }
 .koma .lb-ph { margin-top: 0.4rem; }
+
+/* LBN 使い方ショート動画の枠 */
+.lb-video { max-width: 760px; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #1c1a16; }
+.lb-video video { width: 100%; height: 100%; display: block; object-fit: contain; background: #1c1a16; }
+.lb-video-ph {
+  width: 100%; height: 100%; display: flex; flex-direction: column; gap: 0.7rem;
+  align-items: center; justify-content: center; color: #f4efe6; font-size: 0.9rem;
+  border: 1.5px dashed rgba(244, 239, 230, 0.4); border-radius: 8px;
+}
