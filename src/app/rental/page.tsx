@@ -141,69 +141,22 @@ export default function RentalPage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* HOW IT WORKS — short; the full walkthrough lives on /how-it-works */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
           <span className="eyebrow">How it works · All on WhatsApp</span>
           <h2>
-            No shop, no counter. <em>Five steps on your phone.</em>
+            No shop, no counter. <em>Everything on your phone.</em>
           </h2>
           <p>
-            The bike comes to you and stays where you finish. Everything in
-            between happens in one WhatsApp chat.
+            Message us on WhatsApp: our first reply brings a payment link, and
+            your booking is confirmed the moment you pay. By 9:00 the bike is
+            waiting at your inn or station; when you finish, lock it anywhere
+            between Tsumago and Nojiri and send us one photo.
           </p>
-          <div className="drop-steps cols5">
-            <div className="drop-step">
-              <div className="dnum">1</div>
-              <h3>Book by the day before</h3>
-              <p>
-                Message us on WhatsApp by the day before your ride: the
-                date, how many riders, and where you want to start.
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">2</div>
-              <h3>Your bike is waiting</h3>
-              <p>
-                Once your booking is confirmed we send a payment link —
-                please pay by the day before. Right after paying you land on a
-                short consent form; send it and your lock code arrives by
-                email. By 9:00 on the day,
-                the bikes are ready at the spot you chose.
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">3</div>
-              <h3>One message, everything</h3>
-              <p>
-                That morning, one WhatsApp message brings a photo of the
-                spot, a map pin and your drop-off spot. The{" "}
-                <Link href="/ride">ride-day guide</Link> covers the rest, so
-                you can set off without waiting for a reply.
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">4</div>
-              <h3>Lock it and send a photo</h3>
-              <p>
-                Finish at any spot in the area (it doesn&apos;t have to be
-                where you started). Lock the bike, take a photo and send
-                it to us on WhatsApp.
-              </p>
-            </div>
-            <div className="drop-step">
-              <div className="dnum">5</div>
-              <h3>We collect it that night</h3>
-              <p>
-                That&apos;s the whole return procedure. We pick the bike up
-                after 18:00.
-              </p>
-            </div>
-          </div>
-          <p className="drop-note">
-            Delivery and drop-off work anywhere in the Tsumago–Nojiri area:
-            your inn, a station, a gorge trailhead.
-          </p>
+          <Link href="/how-it-works" className="rental-hiw-link">
+            First time? See how it works, step by step <ArrowRight size={15} />
+          </Link>
         </div>
       </section>
 
@@ -272,8 +225,9 @@ export default function RentalPage() {
         </h2>
         <p>
           By the day before your ride, send us your date, number of riders,
-          and where you want to start. We&apos;ll confirm your bikes. Once
-          confirmed, we send a payment link — please pay by the day before.
+          and where you want to start. Our first reply
+          includes a payment link, and your booking is confirmed the moment
+          you pay (by the day before at the latest).
           Right after paying, a short consent form opens; send it
           and your lock code arrives by email. On the morning of your
           ride, the bike&apos;s spot arrives in one message. Full refund if you
