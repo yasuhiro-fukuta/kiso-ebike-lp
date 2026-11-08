@@ -338,3 +338,10 @@ export const GUIDES: {
     bio: "The organizer of this service. He toured Kiso by bicycle, then walked away from his Tokyo salaryman career to move here on his own. Manager of Kashiwaya Guesthouse and certified in Wilderness First Aid (WFA).",
   },
 ];
+
+/** === How it works (/how-it-works) =============================
+ *  YouTube Shorts video ID for the 1-minute vertical (9:16) video.
+ *  e.g. "abcDEF12345" from https://youtube.com/shorts/abcDEF12345
+ *  Leave empty ("") to show the "video coming soon" placeholder.
+ *  ============================================================= */
+export const HOW_IT_WORKS_SHORT_ID = "";

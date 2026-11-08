@@ -121,6 +121,15 @@ export default function Page() {
             </div>
           </Link>
         </div>
+        <Link href="/how-it-works" className="first-band">
+          <div>
+            <b>First time here? There is no shop.</b>
+            <span className="first-sub">We bring the e-bike to your inn or station, and you leave it wherever your day ends.</span>
+          </div>
+          <span className="first-go">
+            How it works <ArrowRight size={14} />
+          </span>
+        </Link>
         <div className="sub-entries">
           <Link href="/stay">
             Stay at Kashiwaya Guesthouse <ArrowRight size={13} />

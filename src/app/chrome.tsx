@@ -43,6 +43,7 @@ const MENU_ITEMS: Record<
   en: [
     { href: "/guided", label: "Guided Tours by Locals", sub: "Dawn rides & the Kiso River Downhill" },
     { href: "/rental", label: "E-Bike Rental", sub: "Delivered to you · drop anywhere" },
+    { href: "/how-it-works", label: "How it works", sub: "First time? No shop — here's the whole day" },
     { href: "https://luggagebusnakasendo.com", label: "Luggage Bus", sub: "Nagiso ⇄ Kiso-Fukushima, bags only" },
     { href: "/stay", label: "Stay", sub: "Kashiwaya & the 2027 house" },
     { href: "/gear", label: "Bear Spray Rental", sub: "Bell included · ¥1,500 a day" },
@@ -50,6 +51,7 @@ const MENU_ITEMS: Record<
   ja: [
     { href: "/ja/guided", label: "住民本気のガイドツアー", sub: "早朝ライドと木曽川ダウンヒル" },
     { href: "/ja/rental", label: "E-bikeレンタル", sub: "お届け&乗り捨て自由" },
+    { href: "/ja/how-it-works", label: "ご利用の流れ", sub: "はじめての方へ・お店のないレンタルの使い方" },
     { href: "https://luggagebusnakasendo.com/ja", label: "ラゲッジバス", sub: "南木曽⇄木曽福島・荷物専用" },
     { href: "/ja/stay", label: "宿泊", sub: "柏屋と、2027年の一棟貸し" },
     { href: "/ja/gear", label: "熊スプレーレンタル", sub: "熊鈴付き・1日1,500円" },
@@ -561,8 +563,8 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
         </span>
         <span>
           {ja
-            ? "WhatsAppで予約 · お支払いは予約時(カード・PayPay)"
-            : "Book on WhatsApp · pay when you book (card or PayPay)"}
+            ? "WhatsAppで予約 · 最初の返信で決済リンク → 決済された時点で予約成立(カード・PayPay)"
+            : "Book on WhatsApp · payment link in our first reply → booked the moment you pay (card or PayPay)"}
         </span>
       </div>
     </footer>
