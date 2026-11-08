@@ -82,7 +82,7 @@ export default function JaLuggageBusPage() {
             <tbody>
               <tr><th scope="row">運ぶ時刻</th><td>業者が決める・時間帯を指定</td><td className="us">毎日決まった時刻(北行き 10:00〜11:30 / 南行き 12:00〜13:30)</td></tr>
               <tr><th scope="row">預ける・受け取る場所</th><td>住所を自由に指定</td><td className="us">決まった「駅」(カフェ・宿・案内所)から選ぶ</td></tr>
-              <tr><th scope="row">申し込みの締切</th><td>業者による</td><td className="us">前日21:00まで</td></tr>
+              <tr><th scope="row">申し込みの締切</th><td>業者による</td><td className="us">前日23:00まで</td></tr>
               <tr><th scope="row">料金</th><td>サイズ・距離で変わる</td><td className="us">配送料(区域×1,500円)+荷物1個1,500円</td></tr>
               <tr><th scope="row">向いている人</th><td>日時・場所を細かく指定したい人</td><td className="us">歩く・走る予定を先に決めた人</td></tr>
             </tbody>

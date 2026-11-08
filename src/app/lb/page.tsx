@@ -91,7 +91,7 @@ export default function LuggageBusPage() {
             <tbody>
               <tr><th scope="row">When it moves</th><td>The courier decides, or you pick a window</td><td className="us">Fixed daily runs (northbound 10:00–11:30, southbound 12:00–13:30)</td></tr>
               <tr><th scope="row">Where you drop and collect</th><td>Any address</td><td className="us">Fixed stops: cafés, inns and info offices</td></tr>
-              <tr><th scope="row">Booking deadline</th><td>Varies</td><td className="us">21:00 the day before</td></tr>
+              <tr><th scope="row">Booking deadline</th><td>Varies</td><td className="us">23:00 the day before</td></tr>
               <tr><th scope="row">Price</th><td>By size and distance</td><td className="us">Zones × ¥1,500 + ¥1,500 per bag</td></tr>
               <tr><th scope="row">Best for</th><td>Exact times and addresses</td><td className="us">Walkers and cyclists with a plan already set</td></tr>
             </tbody>
