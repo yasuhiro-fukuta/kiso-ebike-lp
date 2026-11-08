@@ -71,6 +71,33 @@ export default function LuggageBusPage() {
         </div>
       </section>
 
+      {/* HOW IT DIFFERS */}
+      <section className="mini-sec" id="difference">
+        <span className="eyebrow">First time here?</span>
+        <h2>Fixed times and fixed stops, so you only pick.</h2>
+        <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.4rem" }}>
+          The Luggage Bus is not a courier where you choose any time and any address. The run times and the drop-off stops are set in advance. You choose a date and your stops, and that is the whole booking.
+        </p>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-compare">
+            <thead>
+              <tr>
+                <th></th>
+                <th>A regular courier</th>
+                <th>Luggage Bus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">When it moves</th><td>The courier decides, or you pick a window</td><td className="us">Fixed daily runs (northbound 10:00–11:30, southbound 12:00–13:30)</td></tr>
+              <tr><th scope="row">Where you drop and collect</th><td>Any address</td><td className="us">Fixed stops: cafés, inns and info offices</td></tr>
+              <tr><th scope="row">Booking deadline</th><td>Varies</td><td className="us">21:00 the day before</td></tr>
+              <tr><th scope="row">Price</th><td>By size and distance</td><td className="us">Zones × ¥1,500 + ¥1,500 per bag</td></tr>
+              <tr><th scope="row">Best for</th><td>Exact times and addresses</td><td className="us">Walkers and cyclists with a plan already set</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* TIMETABLE */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">Timetable</span>
@@ -127,6 +154,7 @@ export default function LuggageBusPage() {
 
           <div className="koma-grid">
             <div className="koma">
+              <div className="lb-ph">Screen (placeholder)<br/>Booking form</div>
               <span className="koma-num">1</span>
               <Send size={26} />
               <h3>Request</h3>
@@ -136,6 +164,7 @@ export default function LuggageBusPage() {
               </p>
             </div>
             <div className="koma">
+              <div className="lb-ph">Screen (placeholder)<br/>Approval and payment link</div>
               <span className="koma-num">2</span>
               <CreditCard size={26} />
               <h3>Confirm &amp; pay</h3>
@@ -144,6 +173,7 @@ export default function LuggageBusPage() {
               </p>
             </div>
             <div className="koma">
+              <div className="lb-ph">Photo (placeholder)<br/>Drop at a stop</div>
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
               <h3>Hand over</h3>
@@ -153,6 +183,7 @@ export default function LuggageBusPage() {
               </p>
             </div>
             <div className="koma">
+              <div className="lb-ph">Photo (placeholder)<br/>Pick up at a stop</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
               <h3>Pick up</h3>
@@ -169,6 +200,30 @@ export default function LuggageBusPage() {
             arrives. Hand your bags in at least 10 minutes before the run
             passes (or the evening before).
           </p>
+        </div>
+      </section>
+
+      {/* WHO IT'S FOR */}
+      <section className="mini-sec" id="who">
+        <span className="eyebrow">Is it for you?</span>
+        <h2>Who it suits.</h2>
+        <div className="mini-grid cols2">
+          <div className="mini-card lb-way">
+            <h3>A good fit</h3>
+            <ul className="lb-places">
+              <li>Walkers and cyclists going inn to inn without bags</li>
+              <li>You can choose your date and stops by the day before</li>
+              <li>You travel between Nagiso, Nojiri, Suhara, Agematsu and Kiso-Fukushima</li>
+            </ul>
+          </div>
+          <div className="mini-card lb-way">
+            <h3>Not a fit</h3>
+            <ul className="lb-places">
+              <li>You need an exact time or an exact address</li>
+              <li>You travel on a Monday, or from December to March (no runs)</li>
+              <li>You want to ride along yourself (bags only)</li>
+            </ul>
+          </div>
         </div>
       </section>
 

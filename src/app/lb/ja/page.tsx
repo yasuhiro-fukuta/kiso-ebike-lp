@@ -62,6 +62,33 @@ export default function JaLuggageBusPage() {
         </div>
       </section>
 
+      {/* 使い方の違い */}
+      <section className="mini-sec" id="difference">
+        <span className="eyebrow">はじめての方へ</span>
+        <h2>時刻と駅が決まっているから、選ぶだけ。</h2>
+        <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.4rem" }}>
+          ラゲッジバスは、宅配便のように「いつ・どこへ」を自由に決めるサービスではありません。毎日走る時刻と、荷物を預ける「駅」をあらかじめ決めてあります。その中から日付と駅を選ぶだけで申し込めます。
+        </p>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-compare">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ふつうの荷物配送</th>
+                <th>ラゲッジバス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">運ぶ時刻</th><td>業者が決める・時間帯を指定</td><td className="us">毎日決まった時刻(北行き 10:00〜11:30 / 南行き 12:00〜13:30)</td></tr>
+              <tr><th scope="row">預ける・受け取る場所</th><td>住所を自由に指定</td><td className="us">決まった「駅」(カフェ・宿・案内所)から選ぶ</td></tr>
+              <tr><th scope="row">申し込みの締切</th><td>業者による</td><td className="us">前日21:00まで</td></tr>
+              <tr><th scope="row">料金</th><td>サイズ・距離で変わる</td><td className="us">配送料(区域×1,500円)+荷物1個1,500円</td></tr>
+              <tr><th scope="row">向いている人</th><td>日時・場所を細かく指定したい人</td><td className="us">歩く・走る予定を先に決めた人</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* 時刻表 */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">時刻表</span>
@@ -115,24 +142,28 @@ export default function JaLuggageBusPage() {
 
           <div className="koma-grid">
             <div className="koma">
+              <div className="lb-ph">画面(仮置き)<br/>予約フォーム</div>
               <span className="koma-num">1</span>
               <Send size={26} />
               <h3>申し込む</h3>
               <p>WhatsAppで、日付・預ける駅と受け取る駅(または宿の名前)・個数を送ります。</p>
             </div>
             <div className="koma">
+              <div className="lb-ph">画面(仮置き)<br/>承認と決済リンク</div>
               <span className="koma-num">2</span>
               <CreditCard size={26} />
               <h3>承認・支払い</h3>
-              <p>承認と一緒にSquareの決済リンクが届きます。支払ったら予約確定です。</p>
+              <p>承認と一緒に決済リンクが届きます。支払ったら予約確定です。</p>
             </div>
             <div className="koma">
+              <div className="lb-ph">写真(仮置き)<br/>駅に預ける</div>
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
               <h3>預ける</h3>
               <p>朝、出発の駅(預け場所・提携宿)に預けて歩き出します。</p>
             </div>
             <div className="koma">
+              <div className="lb-ph">写真(仮置き)<br/>駅で受け取る</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
               <h3>受け取る</h3>
@@ -143,6 +174,30 @@ export default function JaLuggageBusPage() {
           <p className="drop-note">
             ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで駅が荷物を預かります。便が駅を通る10分前まで(または前日の夕方)に預けてください。
           </p>
+        </div>
+      </section>
+
+      {/* 向く人・向かない人 */}
+      <section className="mini-sec" id="who">
+        <span className="eyebrow">ご利用の目安</span>
+        <h2>こんな方に向いています。</h2>
+        <div className="mini-grid cols2">
+          <div className="mini-card lb-way">
+            <h3>向いている方</h3>
+            <ul className="lb-places">
+              <li>宿から宿へ、手ぶらで歩く・走る方</li>
+              <li>前日までに日付と駅を決められる方</li>
+              <li>南木曽・野尻・須原・上松・木曽福島の間で動く方</li>
+            </ul>
+          </div>
+          <div className="mini-card lb-way">
+            <h3>向いていない方</h3>
+            <ul className="lb-places">
+              <li>時刻や場所を細かく指定したい方</li>
+              <li>月曜、または12月〜3月に移動する方(運休)</li>
+              <li>人も一緒に運んでほしい方(荷物専用です)</li>
+            </ul>
+          </div>
         </div>
       </section>
 
