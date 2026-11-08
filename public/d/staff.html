@@ -112,6 +112,7 @@ function paint() {
   if (!d.month.length) m.appendChild(el('div', 'note', '今月の割当はまだありません'));
   d.month.forEach(r => { const row = el('div', 'row'); row.appendChild(el('div', 't', md(r.date).replace(/（.）/, ''))); row.appendChild(el('div', 'b', r.role + (r.task ? '：' + r.task : '') + (r.state ? '（' + r.state + '）' : ''))); m.appendChild(row); });
   const pb = $('pay'); pb.textContent = '';
+  pb.hidden = pb.previousElementSibling.hidden = !(d.pay || []).length;   // 報酬を受け取らない人には欄ごと出さない
   (d.pay || []).forEach((p, i) => {
     const row = el('div', 'row'); row.appendChild(el('div', 't', (+p.month.slice(5)) + '月'));
     const b = el('div', 'b');
