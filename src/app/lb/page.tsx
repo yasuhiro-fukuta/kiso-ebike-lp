@@ -286,6 +286,27 @@ export default function LuggageBusPage() {
         </p>
       </section>
 
+      {/* CANCELLATION */}
+      <section className="mini-sec" id="cancel">
+        <span className="eyebrow">Cancellation</span>
+        <h2>Full refund up to 3 days before.</h2>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-compare">
+            <thead>
+              <tr><th>When you cancel</th><th>Refund</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">3 or more days before</th><td className="us">Full refund</td></tr>
+              <tr><th scope="row">From 3 days before until the day before</th><td className="us">50% refund</td></tr>
+              <tr><th scope="row">On the day</th><td className="us">No refund</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="drop-note">
+          If we cannot run (bad weather, a breakdown or illness), you get a full refund.
+        </p>
+      </section>
+
       {/* BOOKING RULES */}
       <section className="mini-sec" id="rules">
         <span className="eyebrow">Booking rules</span>
@@ -382,6 +403,33 @@ export default function LuggageBusPage() {
               can be arranged on WhatsApp: +{yen(EXTENSION_FEE)} each.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* FIND YOUR STOP */}
+      <section className="mini-sec" id="find-stop">
+        <span className="eyebrow">Find your stop</span>
+        <h2>Look up your inn or place.</h2>
+        <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.2rem" }}>
+          In the booking form you pick the area first, then the inn or place in it. If yours is not listed, choose &quot;Another&quot; and write its name.
+        </p>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-info">
+            <thead>
+              <tr><th>Inn or place</th><th>Area to choose</th><th>Who can use it</th></tr>
+            </thead>
+            <tbody>
+              {STATIONS.flatMap((s) =>
+                s.places.map((pl) => (
+                  <tr key={`find-${pl.id}`}>
+                    <th scope="row">{pl.name.en}</th>
+                    <td>{s.name.en}</td>
+                    <td>{pl.guestsOnly ? "Guests only" : "Anyone"}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
+          </table>
         </div>
       </section>
 
