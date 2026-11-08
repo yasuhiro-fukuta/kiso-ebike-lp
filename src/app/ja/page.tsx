@@ -116,6 +116,15 @@ export default function JaHomePage() {
             </div>
           </Link>
         </div>
+        <Link href="/ja/how-it-works" className="first-band">
+          <div>
+            <b>はじめての方へ：お店はありません。</b>
+            <span className="first-sub">自転車は宿や駅へお届け。乗り終えたら、一日が終わった場所に置いて大丈夫です。</span>
+          </div>
+          <span className="first-go">
+            ご利用の流れ <ArrowRight size={14} />
+          </span>
+        </Link>
         <div className="sub-entries">
           <Link href="/ja/stay">
             ゲストハウス柏屋に泊まる <ArrowRight size={13} />
