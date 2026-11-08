@@ -260,6 +260,27 @@ export default function JaLuggageBusPage() {
         </p>
       </section>
 
+      {/* キャンセル */}
+      <section className="mini-sec" id="cancel">
+        <span className="eyebrow">キャンセル</span>
+        <h2>キャンセルは3日前まで全額返金。</h2>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-compare">
+            <thead>
+              <tr><th>取り消す日</th><th>返金</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">利用日の3日前まで</th><td className="us">全額返金</td></tr>
+              <tr><th scope="row">3日前を過ぎてから前日まで</th><td className="us">半額返金</td></tr>
+              <tr><th scope="row">当日</th><td className="us">返金なし</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="drop-note">
+          運休・天候・車の故障・体調不良など、こちらの都合で運べないときは全額返金します。
+        </p>
+      </section>
+
       {/* ご利用のルール */}
       <section className="mini-sec" id="rules">
         <span className="eyebrow">ご利用のルール</span>
@@ -351,6 +372,33 @@ export default function JaLuggageBusPage() {
               南木曽の先の中津川、木曽福島の先の奈良井までは、WhatsAppで相談のうえ運びます。それぞれ+{yen(EXTENSION_FEE)}です。
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* 宿・場所から駅を探す */}
+      <section className="mini-sec" id="find-stop">
+        <span className="eyebrow">駅の探し方</span>
+        <h2>宿や場所の名前から、駅を探す。</h2>
+        <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.2rem" }}>
+          予約フォームでは、先にエリア(駅)を選び、次にその中の宿・場所を選びます。載っていない宿は「その他」を選んで名前を書いてください。
+        </p>
+        <div className="lb-table-wrap">
+          <table className="lb-table lb-info">
+            <thead>
+              <tr><th>宿・場所</th><th>選ぶエリア</th><th>利用できる人</th></tr>
+            </thead>
+            <tbody>
+              {STATIONS.flatMap((s) =>
+                s.places.map((pl) => (
+                  <tr key={`find-${pl.id}`}>
+                    <th scope="row">{pl.name.ja}</th>
+                    <td>{s.name.ja}</td>
+                    <td>{pl.guestsOnly ? "宿泊者のみ" : "どなたでも"}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
+          </table>
         </div>
       </section>
 
