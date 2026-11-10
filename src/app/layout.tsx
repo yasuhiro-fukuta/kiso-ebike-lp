@@ -56,7 +56,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/#business`,
       name: "Kiso Ride",
       alternateName: ["Kiso Ride", "キソライド", "Kiso Ride — E-bike rental on the Nakasendo"],
-      logo: `${SITE_URL}/assets/kiso-ride-logo.png`,
+      logo: `${SITE_URL}/assets/kiso-ride-mark.png`,
       url: SITE_URL,
       description:
         "Self-guided e-bike rentals and a guided full-day downhill course through the hidden side of the Kiso Valley in Nagiso, Nagano, near the Nakasendo post towns of Tsumago and Magome. Operated by Kashiwaya Guesthouse (From Scratch LLC).",

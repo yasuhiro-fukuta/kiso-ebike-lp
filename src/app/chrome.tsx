@@ -241,8 +241,6 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
           style={{ textDecoration: "none", color: "inherit" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/logo-mark.png" alt="" className="brand-mark" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/kiso-ride-logo-white.png"
             alt={lang === "ja" ? "キソライド" : "Kiso Ride"}
@@ -484,16 +482,6 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
       <KappaWidget lang={lang} />
       <div className="foot-grid">
         <div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/logo-mark.png"
-            alt={
-              ja
-                ? "キソライドのロゴ — 筆文字の「奔」"
-                : "Kiso Ride logo — the kanji 奔 (to run free) in brush strokes"
-            }
-            className="foot-mark"
-          />
           <div className="brand">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -505,7 +493,6 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
           <p className="foot-descriptor">
             {ja ? "中山道・木曽のE-bikeレンタル" : "E-bike rental on the Nakasendo"}
           </p>
-          <p className="foot-tagline">奔 — &ldquo;Stream.&rdquo;</p>
           <p>
             {ja
               ? "木曽谷の「まだ知られていない側」を走るE-bikeレンタルとガイドライド。長野県南木曽町・ゲストハウス柏屋が運営しています。"

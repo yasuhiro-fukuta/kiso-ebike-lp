@@ -4,6 +4,11 @@ const LB_URL = "https://luggagebusnakasendo.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(LB_URL),
+  // ラゲッジバスは別ブランドなので、E-bike（キソライド）のアイコンではなく従来のアイコンを使う
+  icons: {
+    icon: "/assets/lb-icon.png",
+    apple: "/assets/lb-apple-icon.png",
+  },
   title: "Luggage Bus Nakasendo — bags-only shuttle, Nagiso ⇄ Kiso-Fukushima",
   description:
     "A luggage-only shuttle along the Nakasendo: Nagiso, Nojiri, Suhara, Agematsu and Kiso-Fukushima. Walk or ride bag-free — your bags go ahead to your inn. Book on WhatsApp.",
