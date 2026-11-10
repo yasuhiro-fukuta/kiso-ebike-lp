@@ -12,14 +12,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export const metadata: Metadata = {
   title:
-    "セルフツアーのすすめ——南木曽のE-bikeおすすめ5コース | Beyond Nakasendo Cycling",
+    "セルフツアーのすすめ——南木曽のE-bikeおすすめ5コース | Kiso Ride",
   description:
     "南木曽・木曽谷での「2日目」の過ごし方。E-bikeセルフツアーのおすすめ5コースをGoogleマップの地図つきで紹介——鉄道と並走する旧中山道、渓谷と温泉のコース、与川道の中山道チャレンジ、妻籠へ抜ける静かな森林鉄道跡、ハート型の坂下馬込チャレンジ。",
   alternates: { canonical: "/ja/second-day" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/ja/second-day",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "セルフツアーのすすめ——南木曽のE-bikeおすすめ5コース",
     description:
       "1日目は歩く、2日目は走る。木曽谷の「静かな側」を巡るセルフガイド5コースを、1枚のGoogleマイマップに色分けして公開中。",
@@ -35,8 +35,8 @@ const jsonLd = {
   inLanguage: "ja",
   about:
     "南木曽・木曽谷のE-bikeセルフツアー5コース(地図・季節のアドバイスつき)",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/ja/second-day",
 };
 

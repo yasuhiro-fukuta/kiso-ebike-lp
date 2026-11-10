@@ -4,8 +4,8 @@ import { SiteNav, SiteFooter } from "../chrome";
 
 /** Legal notice under the Japanese Act on Specified Commercial Transactions. Japanese version: /ja/legal */
 export const metadata: Metadata = {
-  title: "Legal Notice (Specified Commercial Transactions Act) | Beyond Nakasendo Cycling",
-  description: "Legal notice for Beyond Nakasendo Cycling (From Scratch LLC) under the Act on Specified Commercial Transactions.",
+  title: "Legal Notice (Specified Commercial Transactions Act) | Kiso Ride",
+  description: "Legal notice for Kiso Ride (formerly Kiso Ride; From Scratch LLC) under the Act on Specified Commercial Transactions.",
   alternates: { canonical: "/legal", languages: { ja: "/ja/legal" } },
 };
 

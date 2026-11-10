@@ -4,14 +4,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "車で柿其渓谷に行くには、天白公園駐車場が便利!|Beyond Nakasendo Cycling",
+    "車で柿其渓谷に行くには、天白公園駐車場が便利!|Kiso Ride",
   description:
     "泳ぐのに最適な美しい柿其渓谷、最大の弱点は駐車場が少ないこと。地元民の提案は、南木曽駅近く・天白公園の広大な駐車場に停めて、そこからE-bikeで片道40分。木曽谷の西側は西日が差さず涼しく、快適です。帰りは桃介橋を渡って駅前のカフェへ。",
   alternates: { canonical: "/kakizore-car" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/kakizore-car",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "車で柿其渓谷に行くには、天白公園駐車場が便利!",
     description:
       "駐車場が少ない柿其渓谷へは、天白公園の広大な駐車場+E-bikeで。片道40分、風を切る快適な移動。",
@@ -26,8 +26,8 @@ const jsonLd = {
   headline: "車で柿其渓谷に行くには、天白公園駐車場が便利!",
   inLanguage: "ja",
   about: "柿其渓谷への車(天白公園駐車場)とE-bikeでのアクセス方法",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/kakizore-car",
 };
 

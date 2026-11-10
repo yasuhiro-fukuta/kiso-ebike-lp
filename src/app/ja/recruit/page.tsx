@@ -28,7 +28,7 @@ export default function JaRecruitPage() {
             旅人を、<em>迎える側</em>で働く。
           </h1>
           <p>
-            中山道の宿場町・南木曽で、ゲストハウス柏屋とE-bikeツアー「Beyond Nakasendo」を運営しています。お客さんの多くは海外から。ここで働くことは、毎日が英語の現場です。入口は2つあります。
+            中山道の宿場町・南木曽で、ゲストハウス柏屋とE-bikeツアー「キソライド」を運営しています。お客さんの多くは海外から。ここで働くことは、毎日が英語の現場です。入口は2つあります。
           </p>
           <nav className="rc-doors">
             <a href="#students" className="rc-door">

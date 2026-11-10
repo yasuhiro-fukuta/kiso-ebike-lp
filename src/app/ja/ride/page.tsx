@@ -10,7 +10,7 @@ import { SiteNav, SiteFooter } from "../../chrome";
  * 予約メッセージと各自転車のQRシールからリンク。
  */
 export const metadata: Metadata = {
-  title: "ご利用当日ガイド | Beyond Nakasendo Cycling",
+  title: "ご利用当日ガイド | Kiso Ride",
   description:
     "E-bikeご利用当日に必要なことを1ページに。鍵の開け方、サドル、電源とアシスト、ギア、スマホホルダー、返却、困ったとき。",
   alternates: { canonical: "/ja/ride", languages: { en: "/ride" } },

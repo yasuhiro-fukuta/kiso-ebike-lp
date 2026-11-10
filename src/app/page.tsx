@@ -172,7 +172,7 @@ export default function Page() {
             Nakasendo and now run Kashiwaya, a 140-year-old guesthouse.
           </p>
           <p>
-            Beyond Nakasendo grew out of my love of cycling: e-bikes that let you
+            Kiso Ride grew out of my love of cycling: e-bikes that let you
             ride the valley as one continuous line, from post town to post town,
             plus a luggage bus so you can travel light. I guide the tours myself,
             usually in samue work clothes.

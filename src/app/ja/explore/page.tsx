@@ -12,14 +12,14 @@ import { WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter, FloatBook } from "../../chrome";
 
 export const metadata: Metadata = {
-  title: "周辺を楽しむ — 南木曽・木曽谷の遊び方 | Beyond Nakasendo Cycling",
+  title: "周辺を楽しむ — 南木曽・木曽谷の遊び方 | Kiso Ride",
   description:
     "南木曽・木曽谷の周辺の楽しみ方をまとめたページ。阿寺渓谷・柿其渓谷へのアクセス、E-bikeセルフツアーのおすすめ3コース、書道体験、アウトドアギアレンタル、旅の計画に役立つコラム。",
   alternates: { canonical: "/ja/explore" },
   openGraph: {
     type: "website",
     url: "https://nakasendo-ebike.com/ja/explore",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "周辺を楽しむ — 南木曽・木曽谷の遊び方",
     description:
       "阿寺渓谷、柿其渓谷、セルフツアー3コース、書道体験、ギアレンタル。南木曽の周辺の楽しみ方はここから。",

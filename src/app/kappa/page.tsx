@@ -34,7 +34,7 @@ export default function KappaPage() {
             </>
           )}
         </span>
-        <span className="chatpage-sub">{key ? "スタッフ" : "Beyond Nakasendo Cycling"}</span>
+        <span className="chatpage-sub">{key ? "スタッフ" : "Kiso Ride"}</span>
       </div>
       <div className="chatpage-body">{ready && <KappaChat lang={lang} staffKey={key} />}</div>
     </div>

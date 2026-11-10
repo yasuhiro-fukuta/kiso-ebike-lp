@@ -5,14 +5,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 /* eslint-disable @next/next/no-img-element */
 
 export const metadata: Metadata = {
-  title: "阿寺渓谷へは、電車&E-bikeがおすすめ!|Beyond Nakasendo Cycling",
+  title: "阿寺渓谷へは、電車&E-bikeがおすすめ!|Kiso Ride",
   description:
     "奇跡の蒼い川・阿寺渓谷(長野県大桑村)へ、渋滞・駐車場待ちなしで行く方法。野尻駅からE-bikeで坂を楽々登って、阿寺ブルーへダイブ。東京・名古屋からの電車アクセスとE-bikeの予約方法をご紹介します。",
   alternates: { canonical: "/atera" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/atera",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "阿寺渓谷へは、電車&E-bikeがおすすめ!",
     description:
       "奇跡の蒼い川・阿寺渓谷へ、渋滞・駐車場待ちなしで。野尻駅からE-bikeで楽々アクセス。",
@@ -27,8 +27,8 @@ const jsonLd = {
   headline: "阿寺渓谷へは、電車&E-bikeがおすすめ!",
   inLanguage: "ja",
   about: "阿寺渓谷への電車とE-bikeでのアクセス方法",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/atera",
 };
 

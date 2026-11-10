@@ -6,14 +6,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "Learn in Achi, Graduate in Hakuba — A Winter Route for First-Time Snowboarders | Beyond Nakasendo Cycling",
+    "Learn in Achi, Graduate in Hakuba — A Winter Route for First-Time Snowboarders | Kiso Ride",
   description:
     "A winter route through Nagano for people who have never touched a snowboard: learn on the quiet beginner slopes of Heavens Sonohara from Hirugami Onsen, rest your legs walking the snowy Nakasendo from Magome to Tsumago with a night at Kashiwaya, then graduate to Hakuba, Nozawa or Akakura powder.",
   alternates: { canonical: "/snowboard-route" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/snowboard-route",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "Learn in Achi, Graduate in Hakuba — A Winter Route for First-Time Snowboarders",
     description:
       "Start small in southern Nagano, rest on the snowy Nakasendo, and save the famous powder for the end — when you can actually enjoy it.",
@@ -30,8 +30,8 @@ const jsonLd = {
   inLanguage: "en",
   about:
     "A Nagano winter itinerary for first-time snowboarders: Heavens Sonohara from Hirugami Onsen, a rest day on the snowy Nakasendo at Kashiwaya in Nagiso, then Hakuba, Nozawa or Akakura",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/snowboard-route",
 };
 

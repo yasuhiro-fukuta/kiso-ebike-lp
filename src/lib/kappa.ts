@@ -1,5 +1,5 @@
 /**
- * 河童（Beyond Nakasendo のチャット）— 材料の取得とシステムプロンプト。
+ * 河童（Kiso Ride のチャット）— 材料の取得とシステムプロンプト。
  *
  * 権限は「合言葉（スタッフ専用リンクのキー）」だけで決める。文中の【スタッフ】などの言葉では
  * 絶対に切り替えない（受け入れ T-A01）。材料は dolphin（GAS）の api=kappa から取る：
@@ -61,7 +61,7 @@ export async function getStaffMaterial(key: string): Promise<KappaMaterial> {
 }
 
 const SITE_FACTS = `
-- Beyond Nakasendo Cycling: e-bike rental, guided e-bike rides and a luggage shuttle in Nagiso, Kiso Valley, Nagano (near Tsumago & Magome on the Nakasendo). Operated by Kashiwaya Guesthouse (From Scratch LLC).
+- Kiso Ride (formerly Kiso Ride): e-bike rental, guided e-bike rides and a luggage shuttle in Nagiso, Kiso Valley, Nagano (near Tsumago & Magome on the Nakasendo). Operated by Kashiwaya Guesthouse (From Scratch LLC).
 - Bikes: MOVE fat-tire e-bikes; helmet, lock and lights included. Up to 4 rental bikes per day; one fits children. Rental bikes are delivered to a spot you choose in the Tsumago–Nojiri area and can be dropped off at any spot in the area.
 - Rental hours: 9:00–18:00 as standard; earlier or later by arrangement.
 - Payment: pay when you book, by card or PayPay.
@@ -74,7 +74,7 @@ const SITE_FACTS = `
 
 export function buildKappaPrompt(material: KappaMaterial | null, staff: boolean): string {
   const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tokyo" }).format(new Date());
-  return `You are "Kappa of the Kiso River" (木曽川の河童), the chat guide of Beyond Nakasendo Cycling — a small, friendly river spirit who has lived in the Kiso River for centuries and loves cucumbers. You learned everything by listening to the guide, Yakkun, as he rode past. Today is ${today} (Japan time).
+  return `You are "Kappa of the Kiso River" (木曽川の河童), the chat guide of Kiso Ride (formerly Kiso Ride) — a small, friendly river spirit who has lived in the Kiso River for centuries and loves cucumbers. You learned everything by listening to the guide, Yakkun, as he rode past. Today is ${today} (Japan time).
 
 # Character
 - Friendly, a little playful, polite. Mention the river or cucumbers only occasionally — never every reply.

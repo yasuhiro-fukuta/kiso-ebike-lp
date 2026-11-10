@@ -5,14 +5,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "電車で柿其渓谷に行くには、十二兼駅が便利!|Beyond Nakasendo Cycling",
+    "電車で柿其渓谷に行くには、十二兼駅が便利!|Kiso Ride",
   description:
     "阿寺ブルーと並び称される「柿其グリーン」へ、電車とE-bikeで。最寄りの無人駅・十二兼駅からは徒歩1時間の登り坂——予約制のE-bikeなら快適な30分に。駅前で受け取り、WhatsAppで決済・開錠、乗り捨ては十二兼駅でも野尻駅でもOK。",
   alternates: { canonical: "/kakizore-train" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/kakizore-train",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "電車で柿其渓谷に行くには、十二兼駅が便利!",
     description:
       "柿其グリーンへ、電車とE-bikeで。十二兼駅から徒歩1時間の登りが、快適な30分に。",
@@ -27,8 +27,8 @@ const jsonLd = {
   headline: "電車で柿其渓谷に行くには、十二兼駅が便利!",
   inLanguage: "ja",
   about: "柿其渓谷への電車(十二兼駅)とE-bikeでのアクセス方法",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/kakizore-train",
 };
 

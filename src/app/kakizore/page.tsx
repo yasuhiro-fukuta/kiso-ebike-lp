@@ -9,14 +9,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "Kakizore Gorge Map & Access — Parking, Train and E-bike | Beyond Nakasendo Cycling",
+    "Kakizore Gorge Map & Access — Parking, Train and E-bike | Kiso Ride",
   description:
     "Kakizore Gorge map and access guide: the gorge has no large parking lot, so park at Tenpaku Park in Nagiso or take the train to Junikane Station, and cover the last stretch on a reserved e-bike. Emerald water in the Kiso Valley, Nagano, Japan.",
   alternates: { canonical: "/kakizore" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/kakizore",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "Kakizore Gorge Map & Access — Parking, Train and E-bike",
     description:
       "Where to park, which station to use, and how a reserved e-bike solves Kakizore's tiny-parking problem.",
@@ -32,8 +32,8 @@ const jsonLd = {
   inLanguage: "en",
   about:
     "How to access Kakizore Gorge in Nagiso, Japan: map, parking at Tenpaku Park, Junikane Station, and reserved e-bike rental",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/kakizore",
 };
 

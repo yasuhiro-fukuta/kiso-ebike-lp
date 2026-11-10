@@ -42,7 +42,7 @@ export default function ShuttleEbikePage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/shuttle-ebike-poster.jpg"
-            alt="Free from weight — the Beyond Nakasendo Cycling shuttle e-bike poster: drop your bags, pick up an e-bike, ride light; we deliver them at your destination"
+            alt="Free from weight — the Kiso Ride shuttle e-bike poster: drop your bags, pick up an e-bike, ride light; we deliver them at your destination"
           />
           <figcaption>The poster you&apos;ll spot around the valley</figcaption>
         </figure>

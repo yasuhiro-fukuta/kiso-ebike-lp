@@ -105,7 +105,7 @@ export function LbFooter({ lang = "en" }: { lang?: Lang }) {
         <div>
           <h4>{ja ? "関連サービス" : "Also from us"}</h4>
           <a href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>
-            Beyond Nakasendo Cycling
+            Kiso Ride
           </a>
           <br />
           <a href={ja ? `${EBIKE_SITE}/ja/rental` : `${EBIKE_SITE}/rental`}>

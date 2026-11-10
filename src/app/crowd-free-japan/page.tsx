@@ -6,14 +6,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "A 26-Day Japan Itinerary for People Who Hate Crowds | Beyond Nakasendo Cycling",
+    "A 26-Day Japan Itinerary for People Who Hate Crowds | Kiso Ride",
   description:
     "A local's 26-day Japan itinerary for crowd-averse travelers: in and out of Chubu Centrair, a figure-eight around a Nagoya guesthouse base, onsen towns, the Nakasendo on foot and by e-bike, and only as much Tokyo as you actually need.",
   alternates: { canonical: "/crowd-free-japan" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/crowd-free-japan",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "A 26-Day Japan Itinerary for People Who Hate Crowds",
     description:
       "Adventure and discovery, not queues: a figure-eight route around Nagoya, designed by a rural-Japan traveler who moved to the Kiso Valley.",
@@ -29,8 +29,8 @@ const jsonLd = {
   inLanguage: "en",
   about:
     "A 26-day off-the-beaten-path Japan itinerary based in Nagoya, including the Nakasendo, Kiso Valley, onsen towns and the Japan Alps",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/crowd-free-japan",
 };
 

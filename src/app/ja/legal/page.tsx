@@ -4,8 +4,8 @@ import { SiteNav, SiteFooter } from "../../chrome";
 
 /** 特定商取引法に基づく表記（PayPay・Stripe の審査に必要）。英語版は /legal */
 export const metadata: Metadata = {
-  title: "特定商取引法に基づく表記 | Beyond Nakasendo Cycling",
-  description: "Beyond Nakasendo Cycling（合同会社FROM SCRATCH）の特定商取引法に基づく表記。",
+  title: "特定商取引法に基づく表記 | Kiso Ride",
+  description: "キソライド Kiso Ride（旧 Kiso Ride／合同会社FROM SCRATCH）の特定商取引法に基づく表記。",
   alternates: { canonical: "/ja/legal", languages: { en: "/legal" } },
 };
 
