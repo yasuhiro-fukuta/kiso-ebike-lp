@@ -12,14 +12,14 @@ import { WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
-  title: "Explore the Area — Nagiso & the Kiso Valley | Beyond Nakasendo Cycling",
+  title: "Explore the Area — Nagiso & the Kiso Valley | Kiso Ride",
   description:
     "Everything to do around Nagiso in the Kiso Valley: the Atera and Kakizore gorges, three mapped self-tour e-bike routes, shodo calligraphy, outdoor gear rental, and our columns for trip planning.",
   alternates: { canonical: "/explore" },
   openGraph: {
     type: "website",
     url: "https://nakasendo-ebike.com/explore",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "Explore the Area — Nagiso & the Kiso Valley",
     description:
       "Gorges, self-tour routes, calligraphy, gear and local know-how around Nagiso, Kiso Valley.",

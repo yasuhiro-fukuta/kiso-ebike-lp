@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://nakasendo-ebike.com/diy-rental",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "【月1.5万円／一軒家】住みながら自分で直せる家(南木曽町・DIY可)",
     description:
       "南木曽駅徒歩15分の一戸建て。柱と構造以外はDIY自由・原状回復なし・買取可。入居者を一組募集中。",

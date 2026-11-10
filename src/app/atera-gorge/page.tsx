@@ -6,14 +6,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "Atera Gorge by Train & E-Bike — Skip the Traffic | Beyond Nakasendo Cycling",
+    "Atera Gorge by Train & E-Bike — Skip the Traffic | Kiso Ride",
   description:
     "The best way to reach the Atera Gorge (Okuwa, Nagano) and its miraculous 'Atera Blue' water: no traffic jams, no parking queues. Take the JR Chuo Line to Nojiri Station, let an e-bike do the climb, and dive in. Train access from Tokyo, Nagoya and Osaka plus how to reserve.",
   alternates: { canonical: "/atera-gorge" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/atera-gorge",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "Atera Gorge by Train & E-Bike — Skip the Traffic",
     description:
       "Reach the miraculous blue water of the Atera Gorge with no traffic and no parking stress: train to Nojiri Station, then an e-bike up the hill.",
@@ -29,8 +29,8 @@ const jsonLd = {
   inLanguage: "en",
   about:
     "How to access the Atera Gorge in the Kiso Valley by train and e-bike from Nojiri Station",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/atera-gorge",
 };
 

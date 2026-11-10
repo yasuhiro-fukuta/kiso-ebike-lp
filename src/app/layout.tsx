@@ -23,15 +23,15 @@ const GEO = { lat: 35.6011, lng: 137.6056 }; // TODO: 正確な座標に置換
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title:
-    "Beyond Nakasendo Cycling — Ditch the guidebook. Ride the Kiso Valley like a local.",
+    "Kiso Ride | Nakasendo E-bike Rental (Tsumago–Nojiri) — Ride the Kiso Valley like a local",
   description:
     "E-bike rides off the tourist track in the Kiso Valley, Nagiso. Guided rides down the Kiso River — the full-day Kiso River Downhill and an easy half course — plus self-guided e-bike rental from ¥4,000, an early-morning tour, gear rental and a luggage shuttle.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Beyond Nakasendo Cycling",
-    title: "Beyond Nakasendo Cycling — Ride the Kiso Valley like a local",
+    siteName: "Kiso Ride",
+    title: "Kiso Ride — E-bike rental on the Nakasendo",
     description:
       "Skip the crowds. Self-guided e-bike routes and a guided full-day downhill through the hidden side of the Kiso Valley, near Tsumago and Magome.",
     locale: "en_US",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beyond Nakasendo Cycling — Ride the Kiso Valley like a local",
+    title: "Kiso Ride — E-bike rental on the Nakasendo",
     description:
       "Self-guided e-bike rentals and a guided full-day downhill through the hidden Kiso Valley, Nagiso.",
     images: [HERO_IMG],
@@ -54,7 +54,9 @@ const jsonLd = {
     {
       "@type": ["LocalBusiness", "SportsActivityLocation"],
       "@id": `${SITE_URL}/#business`,
-      name: "Beyond Nakasendo Cycling",
+      name: "Kiso Ride",
+      alternateName: ["Kiso Ride", "キソライド", "Kiso Ride — E-bike rental on the Nakasendo"],
+      logo: `${SITE_URL}/assets/kiso-ride-mark.png`,
       url: SITE_URL,
       description:
         "Self-guided e-bike rentals and a guided full-day downhill course through the hidden side of the Kiso Valley in Nagiso, Nagano, near the Nakasendo post towns of Tsumago and Magome. Operated by Kashiwaya Guesthouse (From Scratch LLC).",

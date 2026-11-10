@@ -10,7 +10,7 @@ import { SiteNav, SiteFooter } from "../chrome";
  * Linked from the booking message and the QR sticker on every bike.
  */
 export const metadata: Metadata = {
-  title: "Ride-Day Guide | Beyond Nakasendo Cycling",
+  title: "Ride-Day Guide | Kiso Ride",
   description:
     "Everything for your e-bike day in one page: unlocking, saddle, power and assist, gears, phone holder, return and what to do if something goes wrong.",
   alternates: { canonical: "/ride", languages: { ja: "/ja/ride" } },

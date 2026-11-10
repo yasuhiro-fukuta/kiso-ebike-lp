@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import BookForm from "../book-form";
 
 export const metadata: Metadata = {
-  title: "Booking message builder | Beyond Nakasendo Cycling",
+  title: "Booking message builder | Kiso Ride",
   description:
     "Fill in your dates and details, and your WhatsApp booking message writes itself — then send it in one tap.",
   robots: { index: false },

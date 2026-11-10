@@ -241,8 +241,11 @@ export function SiteNav({ lang = "en" }: { lang?: Lang }) {
           style={{ textDecoration: "none", color: "inherit" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/logo-mark.png" alt="" className="brand-mark" />
-          Beyond Nakasendo <span>Cycling</span>
+          <img
+            src="/assets/kiso-ride-logo-white.png"
+            alt={lang === "ja" ? "キソライド" : "Kiso Ride"}
+            className="brand-logo"
+          />
         </Link>
         <div className="nav-right">
           <ShareButton lang={lang} />
@@ -479,20 +482,17 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
       <KappaWidget lang={lang} />
       <div className="foot-grid">
         <div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/assets/logo-mark.png"
-            alt={
-              ja
-                ? "Beyond Nakasendo Cyclingのロゴ — 筆文字の「奔」"
-                : "Beyond Nakasendo Cycling logo — the kanji 奔 (to run free) in brush strokes"
-            }
-            className="foot-mark"
-          />
           <div className="brand">
-            Beyond Nakasendo <span>Cycling</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/kiso-ride-logo-white.png"
+              alt={ja ? "キソライド" : "Kiso Ride"}
+              className="foot-logo"
+            />
           </div>
-          <p className="foot-tagline">奔 — &ldquo;Stream.&rdquo;</p>
+          <p className="foot-descriptor">
+            {ja ? "中山道・木曽のE-bikeレンタル" : "E-bike rental on the Nakasendo"}
+          </p>
           <p>
             {ja
               ? "木曽谷の「まだ知られていない側」を走るE-bikeレンタルとガイドライド。長野県南木曽町・ゲストハウス柏屋が運営しています。"
@@ -556,7 +556,7 @@ export function SiteFooter({ lang = "en" }: { lang?: Lang }) {
       </div>
       <div className="foot-bottom">
         <span>
-          © {new Date().getFullYear()} Beyond Nakasendo Cycling · From Scratch LLC ·{" "}
+          © {new Date().getFullYear()} {ja ? "キソライド（旧 Beyond Nakasendo Cycling）" : "Kiso Ride (formerly Beyond Nakasendo Cycling)"} · From Scratch LLC ·{" "}
           <Link href={ja ? "/ja/legal" : "/legal"}>{ja ? "特定商取引法に基づく表記" : "Legal notice"}</Link>
         </span>
         <span>

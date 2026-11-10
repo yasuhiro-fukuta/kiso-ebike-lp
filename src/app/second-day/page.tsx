@@ -12,14 +12,14 @@ import { SiteNav, SiteFooter, FloatBook } from "../chrome";
 
 export const metadata: Metadata = {
   title:
-    "Self-Tour Advice: 5 Mapped E-Bike Routes in Nagiso | Beyond Nakasendo Cycling",
+    "Self-Tour Advice: 5 Mapped E-Bike Routes in Nagiso | Kiso Ride",
   description:
     "How to spend your second day in Nagiso, Kiso Valley: five self-guided e-bike routes with turn-by-turn Google Maps — a railway-side old road, a gorge-and-onsen ride, the Yogawa Nakasendo Challenge, a quiet back road into Tsumago, and the heart-shaped Sakashita–Magome Challenge.",
   alternates: { canonical: "/second-day" },
   openGraph: {
     type: "article",
     url: "https://nakasendo-ebike.com/second-day",
-    siteName: "Beyond Nakasendo Cycling",
+    siteName: "Kiso Ride",
     title: "Self-Tour Advice: 5 Mapped E-Bike Routes in Nagiso",
     description:
       "Day one on foot, day two on wheels: five self-guided e-bike routes through the quiet side of the Kiso Valley, each drawn on Google My Maps.",
@@ -35,8 +35,8 @@ const jsonLd = {
   inLanguage: "en",
   about:
     "Five self-guided e-bike routes around Nagiso in the Kiso Valley, with route maps and seasonal advice",
-  author: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
-  publisher: { "@type": "Organization", name: "Beyond Nakasendo Cycling" },
+  author: { "@type": "Organization", name: "Kiso Ride" },
+  publisher: { "@type": "Organization", name: "Kiso Ride" },
   mainEntityOfPage: "https://nakasendo-ebike.com/second-day",
 };
 

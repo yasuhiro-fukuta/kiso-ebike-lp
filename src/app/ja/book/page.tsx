@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import BookForm from "../../book-form";
 
 export const metadata: Metadata = {
-  title: "予約メッセージをつくる | Beyond Nakasendo Cycling",
+  title: "予約メッセージをつくる | Kiso Ride",
   description:
     "日付や台数を選ぶだけでWhatsAppの予約メッセージが自動で完成。ワンタップでそのまま送れます。",
   robots: { index: false },
