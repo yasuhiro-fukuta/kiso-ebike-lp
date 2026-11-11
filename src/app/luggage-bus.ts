@@ -279,7 +279,7 @@ export const EXAMPLES: { trip: T; zones: number; bags: number }[] = [
   { trip: { en: "Nakatsugawa (extension) → Kiso-Fukushima", ja: "中津川(延長) → 木曽福島" }, zones: 3, bags: 1 },
 ];
 
-/** Booking-date check for the form: requests close at 21:00 the day before
+/** Booking-date check for the form: requests close at 23:00 the day before
  *  (Japan time), no runs on Mondays, the calendar's extra closing days or in
  *  the winter break, and neither station may be on a known closing day.
  *  Returns an error message, or null when OK. */
@@ -296,12 +296,12 @@ export function dateProblem(
   if (!iso) return ja ? "日付を選んでください。" : "Please choose a date.";
   if (iso <= today)
     return ja
-      ? "申し込みは前日21時までです。明日以降の日付を選んでください。"
-      : "Requests close at 21:00 the day before. Please choose tomorrow or later.";
+      ? "申し込みは前日23時までです。明日以降の日付を選んでください。電話・WhatsAppで予約済みの方は、お送りした決済リンクからお支払いください。"
+      : "Requests close at 23:00 the day before. Please choose tomorrow or later. Already booked by phone or WhatsApp? Please pay with the payment link we sent you.";
   if (iso === tomorrow && afterDeadline)
     return ja
-      ? "明日の分の申し込みは締め切りました(前日21時まで)。明後日以降の日付を選んでください。"
-      : "Requests for tomorrow closed at 21:00. Please choose the day after tomorrow or later.";
+      ? "明日の分の申し込みは締め切りました(前日23時まで)。明後日以降の日付を選んでください。電話・WhatsAppで予約済みの方は、お送りした決済リンクからお支払いください。"
+      : "Requests for tomorrow closed at 23:00. Please choose the day after tomorrow or later. Already booked by phone or WhatsApp? Please pay with the payment link we sent you.";
   if (inWinterBreak(iso))
     return ja
       ? "12〜3月は運休です(3月20日ごろ再開)。別の日を選んでください。"
@@ -322,10 +322,10 @@ export function dateProblem(
 /** Booking rules (decided 2026-10-10, "for now"). */
 export const RULES: { title: T; body: T }[] = [
   {
-    title: { en: "Request by 21:00 the day before", ja: "申し込みは前日21時まで" },
+    title: { en: "Request by 23:00 the day before", ja: "申し込みは前日23時まで" },
     body: {
-      en: "We approve requests together every evening after 21:00. We reply on WhatsApp in the morning (until 8:45), 13:30–16:00 and after 21:00 — the rest of the day we're driving.",
-      ja: "承認は毎晩21時台にまとめて行います。WhatsAppに返信できるのは、朝(〜8:45)、13:30〜16:00、21:00以降です。それ以外の時間は運転中です。",
+      en: "We approve requests together every evening. We reply on WhatsApp in the morning (until 8:45), 13:30–16:00 and after 21:00 — the rest of the day we're driving.",
+      ja: "承認は毎晩まとめて行います。WhatsAppに返信できるのは、朝(〜8:45)、13:30〜16:00、21:00以降です。それ以外の時間は運転中です。",
     },
   },
   {
