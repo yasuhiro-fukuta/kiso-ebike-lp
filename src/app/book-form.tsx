@@ -104,14 +104,14 @@ const lbFee = (l: Lang, label: string) => {
   const pl = lbPoint(label)?.place;
   return pl ? feeText(pl, l) : l === "ja" ? "確認中" : "being checked";
 };
-/** Today, tomorrow and whether it's past 21:00 — in Japan time. */
+/** Today, tomorrow and whether it's past 23:00 — in Japan time. */
 const jstNow = () => {
   const jst = new Date(Date.now() + 9 * 3600 * 1000);
   const iso = (d: Date) => d.toISOString().slice(0, 10);
   return {
     today: iso(jst),
     tomorrow: iso(new Date(jst.getTime() + 24 * 3600 * 1000)),
-    afterDeadline: jst.getUTCHours() >= 21,
+    afterDeadline: jst.getUTCHours() >= 23,
   };
 };
 const EXT_POS = [0, 6];
@@ -199,8 +199,8 @@ const SERVICES: Record<string, Service> = {
     hint: (l, k, v) => {
       if (k === "date")
         return l === "ja"
-          ? "申し込みは前日21時まで。毎週月曜と12〜3月は運休です。"
-          : "Requests close at 21:00 the day before. No runs on Mondays or from December to March.";
+          ? "申し込みは前日23時まで。毎週月曜と12〜3月は運休です。"
+          : "Requests close at 23:00 the day before. No runs on Mondays or from December to March.";
       if (k === "bags")
         return l === "ja" ? "1便につき20個まで。" : "Up to 20 bags per run.";
       if (k !== "from" && k !== "to") return null;
