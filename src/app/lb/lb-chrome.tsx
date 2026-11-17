@@ -96,6 +96,9 @@ export function LbFooter({ lang = "en" }: { lang?: Lang }) {
           <div className="brand">
             Luggage Bus <span>Nakasendo</span>
           </div>
+          <a className="lb-endorse" href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>
+            a Kiso Ride service
+          </a>
           <p>
             {ja
               ? "南木曽〜木曽福島の宿へ、荷物だけを運ぶバス。長野県南木曽町・ゲストハウス柏屋(From Scratch LLC)が運営しています。"
@@ -138,7 +141,7 @@ export function LbFooter({ lang = "en" }: { lang?: Lang }) {
       <div className="foot-bottom">
         <span>© {new Date().getFullYear()} From Scratch LLC</span>
         <span>
-          {ja ? "WhatsAppで予約 · お支払いは当日" : "Book on WhatsApp · pay on the day"}
+          {ja ? "オンラインで申し込み · お支払いで予約確定" : "Book online · confirmed when you pay"}
         </span>
       </div>
     </footer>

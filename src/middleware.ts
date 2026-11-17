@@ -22,7 +22,10 @@ export function middleware(req: NextRequest) {
       "/sitemap.xml": "/lb/sitemap.xml",
       "/robots.txt": "/lb/robots.txt",
     };
-    const target = map[pathname];
+    // Guide pages: /guide/... and /ja/guide/... live under /lb.
+    const target =
+      map[pathname] ??
+      (pathname.startsWith("/guide/") || pathname.startsWith("/ja/guide/") ? `/lb${pathname}` : undefined);
     if (target) {
       const url = req.nextUrl.clone();
       url.pathname = target;

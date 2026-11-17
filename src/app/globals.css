@@ -2052,3 +2052,6 @@ figure.season-cell .season-tag {
   align-items: center; justify-content: center; color: #f4efe6; font-size: 0.9rem;
   border: 1.5px dashed rgba(244, 239, 230, 0.4); border-radius: 8px;
 }
+
+/* LBN: Kiso Ride endorsement line under the footer brand */
+.lb-endorse { display: inline-block; margin: 0.2rem 0 0.6rem; font-size: 0.78rem; letter-spacing: 0.06em; opacity: 0.8; text-decoration: underline; text-underline-offset: 3px; }
