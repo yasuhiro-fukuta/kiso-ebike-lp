@@ -9,10 +9,8 @@ import { useEffect, useState } from "react";
  *     それ以外の日はすべて「営業」として表示される。
  *     今月と来月の2か月分が自動で並ぶ(月替わりの作業は不要)。
  *  ============================================================ */
-export const CLOSED_DAYS = new Set<string>([
-  "2026-09-18",
-  "2026-09-23",
-]);
+import { CLOSED_DAYS } from "./closed-days";
+export { CLOSED_DAYS };
 
 const DOW: Record<"en" | "ja", string[]> = {
   en: ["S", "M", "T", "W", "T", "F", "S"],

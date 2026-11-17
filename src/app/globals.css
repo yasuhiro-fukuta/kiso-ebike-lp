@@ -2055,3 +2055,7 @@ figure.season-cell .season-tag {
 
 /* LBN: Kiso Ride endorsement line under the footer brand */
 .lb-endorse { display: inline-block; margin: 0.2rem 0 0.6rem; font-size: 0.78rem; letter-spacing: 0.06em; opacity: 0.8; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Luggage Bus instant payment button (a <button> styled like the CTA links) */
+.book-pay { border: none; cursor: pointer; font: inherit; margin-bottom: 0.6rem; }
+.book-pay:disabled { opacity: 0.6; cursor: progress; }

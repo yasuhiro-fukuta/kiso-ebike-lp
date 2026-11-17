@@ -21,6 +21,8 @@ export function middleware(req: NextRequest) {
       "/ja": "/lb/ja",
       "/sitemap.xml": "/lb/sitemap.xml",
       "/robots.txt": "/lb/robots.txt",
+      "/booked": "/lb/booked",
+      "/ja/booked": "/lb/ja/booked",
     };
     // Guide pages: /guide/... and /ja/guide/... live under /lb.
     const target =
