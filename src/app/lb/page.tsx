@@ -8,11 +8,14 @@ import {
   MapPin,
   ArrowRight,
   Ban,
-  Send,
+  Camera,
+  ShieldCheck,
+  Building2,
 } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
 import { LbHowVideo } from "./how-video";
+import { LbBookBox } from "./book-box";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
@@ -56,6 +59,8 @@ export default function LuggageBusPage() {
           <figcaption>Bags only — the van carries no passengers</figcaption>
         </figure>
       </header>
+
+      <LbBookBox lang="en" />
 
       {/* LUGGAGE ONLY */}
       <section className="mini-sec lb-notice-sec">
@@ -142,68 +147,62 @@ export default function LuggageBusPage() {
         </div>
       </section>
 
-      {/* HOW TO BOOK */}
+      {/* HOW IT WORKS (4 steps) */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
-          <span className="eyebrow">How to book</span>
-          <h2>
-            Ask on WhatsApp, <em>we confirm, you pay.</em>
-          </h2>
-          <p>
-            Every bag needs a confirmed booking — we can&apos;t take bags
-            without one. Send your request on WhatsApp; we check there&apos;s
-            space on the run and reply with a payment link.
-          </p>
-
+          <span className="eyebrow">How it works</span>
+          <h2>Four steps. <em>Then just walk.</em></h2>
           <div className="koma-grid">
             <div className="koma">
-              <div className="lb-ph">Screen (placeholder)<br/>Booking form</div>
+              <div className="lb-ph">Screen (placeholder)<br/>Booking box and payment</div>
               <span className="koma-num">1</span>
-              <Send size={26} />
-              <h3>Request</h3>
-              <p>
-                Message us on WhatsApp: date, from and to (a station, or your
-                inn), and number of bags.
-              </p>
+              <CreditCard size={26} />
+              <h3>Book and pay</h3>
+              <p>Choose your date, stops and bags in the box above. Paid = booked. For an inn that isn&apos;t listed, or the extensions, send the request on WhatsApp.</p>
             </div>
             <div className="koma">
-              <div className="lb-ph">Screen (placeholder)<br/>Approval and payment link</div>
+              <div className="lb-ph">Photo (placeholder)<br/>A photo of your bag</div>
               <span className="koma-num">2</span>
-              <CreditCard size={26} />
-              <h3>Confirm &amp; pay</h3>
-              <p>
-                We confirm and send a Square payment link. Paid = booked.
-              </p>
+              <Camera size={26} />
+              <h3>Send a photo of each bag</h3>
+              <p>One photo per bag on WhatsApp. We put the tags on when we collect.</p>
             </div>
             <div className="koma">
               <div className="lb-ph">Photo (placeholder)<br/>Drop at a stop</div>
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
-              <h3>Hand over</h3>
-              <p>
-                Leave your bags at your starting station (a drop point or
-                partner inn), then walk on.
-              </p>
+              <h3>Drop off in the morning</h3>
+              <p>Leave your bags at your stop or inn at least 10 minutes before the run passes (or the evening before), then set off with nothing on your back.</p>
             </div>
             <div className="koma">
-              <div className="lb-ph">Photo (placeholder)<br/>Pick up at a stop</div>
+              <div className="lb-ph">Photo (placeholder)<br/>Collect at your next stop</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
-              <h3>Pick up</h3>
-              <p>
-                Collect them at your destination station after the run
-                arrives.
-              </p>
+              <h3>Collect at your next stop</h3>
+              <p>Northbound bags arrive 10:30–11:30, southbound by 13:30. Just pick them up when you arrive.</p>
             </div>
           </div>
-
-          <p className="drop-note">
-            Hikers usually set out around 8–9 in the morning, before the bus
-            passes. That&apos;s fine — the station holds your bags until it
-            arrives. Hand your bags in at least 10 minutes before the run
-            passes (or the evening before).
-          </p>
         </div>
+      </section>
+
+      {/* PEACE OF MIND + CONDITIONS (in one place) */}
+      <section className="mini-sec" id="conditions">
+        <span className="eyebrow">Peace of mind</span>
+        <h2>Covered, recorded, and run by real people.</h2>
+        <div className="mini-grid cols3">
+          <div className="mini-card lb-way"><h3><ShieldCheck size={20} /> Covered up to ¥30,000</h3><p>Every bag is insured with cargo insurance.</p></div>
+          <div className="mini-card lb-way"><h3><Camera size={20} /> Photo and tag</h3><p>We get a photo of each bag before we take it, and tag it when we collect.</p></div>
+          <div className="mini-card lb-way"><h3><Building2 size={20} /> Who we are</h3><p>From Scratch LLC, Nagiso. We also run Guesthouse Kashiwaya and Kiso Ride e-bikes. <a href="https://nakasendo-ebike.com/legal">Legal notice</a></p></div>
+        </div>
+        <h3 className="lb-cond-title">Conditions</h3>
+        <ul className="lb-places lb-cond">
+          <li>Book by 23:00 the day before.</li>
+          <li>Up to 20 bags per run.</li>
+          <li>One photo of each bag on WhatsApp.</li>
+          <li>We don&apos;t carry cash, passports, valuables, fragile items, medicine or fresh food.</li>
+          <li>Cancellation: full refund up to 3 days before; 50% from then until the day before; none on the day.</li>
+          <li>No runs on Mondays or from December to March (restarting around 20 March 2027).</li>
+        </ul>
       </section>
 
       {/* WHO IT'S FOR */}

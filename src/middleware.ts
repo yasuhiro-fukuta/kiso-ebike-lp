@@ -16,6 +16,8 @@ export function middleware(req: NextRequest) {
       const rest = pathname.slice(3) || "/";
       return NextResponse.redirect(`${LB_ORIGIN}${rest}${search}`, 308);
     }
+    // The booking box posts here from the LB domain itself.
+    if (pathname === "/api/lb-checkout") return NextResponse.next();
     const map: Record<string, string> = {
       "/": "/lb",
       "/ja": "/lb/ja",

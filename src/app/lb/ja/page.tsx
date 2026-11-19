@@ -8,11 +8,14 @@ import {
   MapPin,
   ArrowRight,
   Ban,
-  Send,
+  Camera,
+  ShieldCheck,
+  Building2,
 } from "lucide-react";
 import { WHATSAPP_URL_JA } from "../../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "../lb-chrome";
 import { LbHowVideo } from "../how-video";
+import { LbBookBox } from "../book-box";
 import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
@@ -49,6 +52,8 @@ export default function JaLuggageBusPage() {
           <figcaption>運ぶのは荷物だけ。人は乗せません</figcaption>
         </figure>
       </header>
+
+      <LbBookBox lang="ja" />
 
       {/* 荷物のみ */}
       <section className="mini-sec lb-notice-sec">
@@ -132,52 +137,62 @@ export default function JaLuggageBusPage() {
         </div>
       </section>
 
-      {/* 申し込み方法 */}
+      {/* 申し込み方法(4ステップ) */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
-          <span className="eyebrow">申し込み方法</span>
-          <h2>
-            WhatsAppで申し込み、<em>承認されたら支払い。</em>
-          </h2>
-          <p>
-            ご利用はすべて予約制です。予約のない荷物はお預かりできません。WhatsAppで申し込んでいただくと、便の空きを確認して、承認と一緒に決済リンクをお送りします。
-          </p>
-
+          <span className="eyebrow">使い方</span>
+          <h2>4ステップ。<em>予約したら、あとは歩くだけ。</em></h2>
           <div className="koma-grid">
             <div className="koma">
-              <div className="lb-ph">画面(仮置き)<br/>予約フォーム</div>
+              <div className="lb-ph">画面(仮置き)<br/>予約ボックスと決済</div>
               <span className="koma-num">1</span>
-              <Send size={26} />
-              <h3>申し込む</h3>
-              <p>WhatsAppで、日付・預ける駅と受け取る駅(または宿の名前)・個数を送ります。</p>
+              <CreditCard size={26} />
+              <h3>予約して支払う</h3>
+              <p>上の予約ボックスで日付・駅・個数を選び、支払った時点で予約確定です。宿の名前が無いときや延長区間はWhatsAppで受け付けます。</p>
             </div>
             <div className="koma">
-              <div className="lb-ph">画面(仮置き)<br/>承認と決済リンク</div>
+              <div className="lb-ph">写真(仮置き)<br/>荷物の写真</div>
               <span className="koma-num">2</span>
-              <CreditCard size={26} />
-              <h3>承認・支払い</h3>
-              <p>承認と一緒に決済リンクが届きます。支払ったら予約確定です。</p>
+              <Camera size={26} />
+              <h3>荷物の写真を送る</h3>
+              <p>荷物1個につき1枚、WhatsAppで写真を送ってください。タグは回収のときにこちらで付けます。</p>
             </div>
             <div className="koma">
               <div className="lb-ph">写真(仮置き)<br/>駅に預ける</div>
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
-              <h3>預ける</h3>
-              <p>朝、出発の駅(預け場所・提携宿)に預けて歩き出します。</p>
+              <h3>朝、駅に預ける</h3>
+              <p>便が駅を通る10分前まで(前日の夕方でも可)に、出発の駅か泊まった宿に預けて、手ぶらで出発。</p>
             </div>
             <div className="koma">
-              <div className="lb-ph">写真(仮置き)<br/>駅で受け取る</div>
+              <div className="lb-ph">写真(仮置き)<br/>次の宿で受け取る</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
-              <h3>受け取る</h3>
-              <p>便が着いたあと、行き先の駅で受け取ります。</p>
+              <h3>次の駅・宿で受け取る</h3>
+              <p>北行きは10:30〜11:30、南行きは13:30までに到着。着いたら受け取るだけです。</p>
             </div>
           </div>
-
-          <p className="drop-note">
-            ハイカーは朝8〜9時に出発することが多く、バスが来る前になります。それで大丈夫です。バスが来るまで駅が荷物を預かります。便が駅を通る10分前まで(または前日の夕方)に預けてください。
-          </p>
         </div>
+      </section>
+
+      {/* 安心と条件(ひとまとめ) */}
+      <section className="mini-sec" id="conditions">
+        <span className="eyebrow">安心して預けるために</span>
+        <h2>補償・記録・運営者。</h2>
+        <div className="mini-grid cols3">
+          <div className="mini-card lb-way"><h3><ShieldCheck size={20} /> 1個3万円まで補償</h3><p>貨物保険に入っています。</p></div>
+          <div className="mini-card lb-way"><h3><Camera size={20} /> 写真とタグで管理</h3><p>預かる前に1個ずつ写真を受け取り、回収のときにタグを付けます。</p></div>
+          <div className="mini-card lb-way"><h3><Building2 size={20} /> 運営者がわかる</h3><p>合同会社FROM SCRATCH(南木曽町)。ゲストハウス柏屋とE-bikeのキソライドを運営しています。<a href="https://nakasendo-ebike.com/ja/legal">特定商取引法の表記</a></p></div>
+        </div>
+        <h3 className="lb-cond-title">ご利用の条件</h3>
+        <ul className="lb-places lb-cond">
+          <li>申し込みは前日23時まで。</li>
+          <li>1便につき荷物20個まで。</li>
+          <li>荷物1個につき写真1枚をWhatsAppで送る。</li>
+          <li>運ばない物：現金、パスポート、貴重品、壊れ物、医薬品、生もの。</li>
+          <li>キャンセル：3日前まで全額返金/3日前を過ぎて前日まで半額/当日は返金なし。</li>
+          <li>毎週月曜と12〜3月は運休(2027年3月20日ごろ再開)。</li>
+        </ul>
       </section>
 
       {/* 向く人・向かない人 */}
