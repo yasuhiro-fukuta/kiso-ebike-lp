@@ -275,9 +275,9 @@ export const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
  *  5.33 Miyanokoshi, 5.67 Yabuhara, 6 Narai. A zone's toll (¥1,500) is charged when the bags pass through it. */
 const FARE_ZONES: { from: number; to: number; en: string; ja: string }[] = [
   { from: 0, to: 1, en: "Mino zone", ja: "美濃区域" },
-  { from: 1, to: 3, en: "South zone", ja: "南部通行料" },
-  { from: 3, to: 5, en: "Central zone", ja: "中部通行料" },
-  { from: 5, to: 6, en: "North zone", ja: "北部" },
+  { from: 1, to: 3, en: "South zone", ja: "南部区域" },
+  { from: 3, to: 5, en: "Central zone", ja: "中部区域" },
+  { from: 5, to: 6, en: "North zone", ja: "北部区域" },
 ];
 
 /** Booking-form choices with their position on the line; null = no
