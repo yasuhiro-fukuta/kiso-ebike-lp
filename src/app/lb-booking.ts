@@ -12,6 +12,7 @@ import { CLOSED_DAYS } from "./closed-days";
 type Lang = "en" | "ja";
 
 export const RUN_CAPACITY = 20;
+const NAGISO_POS = 1;
 
 /** Today, tomorrow and whether it's past 23:00 — in Japan time. */
 export const jstNow = () => {
@@ -49,6 +50,15 @@ export function quoteLb(input: LbInput, lang: Lang): LbQuote {
   if (!input.name.trim()) return { kind: "error", message: ja ? "氏名を入れてください。" : "Please enter your name." };
   if (!Number.isInteger(input.bags) || input.bags < 1 || input.bags > 8)
     return { kind: "error", message: ja ? "個数を選んでください。" : "Please choose the number of bags." };
+  // The daily loop runs south (Nakatsugawa) first, then north (Narai), so bags
+  // picked up north of Nagiso can't reach Tadachi / Sakashita / Nakatsugawa the same day.
+  if (f.pos > NAGISO_POS && t.pos < NAGISO_POS)
+    return {
+      kind: "error",
+      message: ja
+        ? "南木曽より北から田立・坂下・中津川へは、当日配送できない区間です。"
+        : "We can't deliver from north of Nagiso to Tadachi, Sakashita or Nakatsugawa on the same day.",
+    };
   const n = jstNow();
   const problem = dateProblem(input.date, [f.place, t.place], lang, CLOSED_DAYS, n.today, n.tomorrow, n.afterDeadline);
   if (problem) return { kind: "error", message: problem };

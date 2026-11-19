@@ -121,7 +121,7 @@ export default function LuggageBusPage() {
         </div>
         <p className="drop-note">
           From Nagiso we run down to Nakatsugawa and back, then up to Narai
-          and back. Times are a guide; our promise is delivery by 15:00.
+          and back. Times are a guide; our promise is delivery by 15:00. We can&apos;t deliver from north of Nagiso to Tadachi, Sakashita or Nakatsugawa on the same day.
         </p>
 
         <h3 className="lb-sub">When to leave them, when they arrive</h3>
