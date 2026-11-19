@@ -16,7 +16,7 @@ import { WHATSAPP_URL } from "../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
 import { LbHowVideo } from "./how-video";
 import { LbBookBox } from "./book-box";
-import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
 
 export default function LuggageBusPage() {
   return (
@@ -37,17 +37,15 @@ export default function LuggageBusPage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            The Luggage Bus carries your bags along the Nakasendo on a fixed
-            daily timetable, stopping at Nagiso, Nojiri, Suhara, Agematsu
-            and Kiso-Fukushima. In the morning,
-            leave your bags at one of our stations — a luggage drop point
-            or a partner inn — and walk on — they&apos;ll be
-            waiting at the other end.
+            The Luggage Bus carries your bags along the Nakasendo every day,
+            from Nakatsugawa through Nagiso and Kiso-Fukushima to Narai.
+            Leave your bags at your inn&apos;s front desk or entrance by 9:00.
+            They&apos;ll be delivered to your next destination by 15:00 the same day.
           </p>
           <p className="head-note">
-            Nagiso to Kiso-Fukushima, the same day: bags
-            arrive around 11:30, before check-in. Booking required — request on
-            WhatsApp and we confirm.
+            We cover Nakatsugawa, Sakashita, Tadachi, Nagiso, Nojiri, Suhara,
+            Agematsu, Kiso-Fukushima, Miyanokoshi, Yabuhara and Narai.
+            Booking required; confirmed when you pay.
           </p>
         </div>
         <figure className="page-head-visual">
@@ -94,8 +92,8 @@ export default function LuggageBusPage() {
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">When it moves</th><td>The courier decides, or you pick a window</td><td className="us">Fixed daily runs (northbound 10:00–11:30, southbound 12:00–13:30)</td></tr>
-              <tr><th scope="row">Where you drop and collect</th><td>Any address</td><td className="us">Fixed stops: cafés, inns and info offices</td></tr>
+              <tr><th scope="row">When it moves</th><td>The courier decides, or you pick a window</td><td className="us">Every day the same way: drop by 9:00, delivered by 15:00</td></tr>
+              <tr><th scope="row">Where you drop and collect</th><td>Any address</td><td className="us">Your inn&apos;s front desk or entrance, or a set drop point</td></tr>
               <tr><th scope="row">Booking deadline</th><td>Varies</td><td className="us">23:00 the day before</td></tr>
               <tr><th scope="row">Price</th><td>By size and distance</td><td className="us">Zones × ¥1,500 + ¥1,500 per bag</td></tr>
               <tr><th scope="row">Best for</th><td>Exact times and addresses</td><td className="us">Walkers and cyclists with a plan already set</td></tr>
@@ -109,12 +107,12 @@ export default function LuggageBusPage() {
       {/* TIMETABLE */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">Timetable</span>
-        <h2>One round trip a day, Nagiso to Kiso-Fukushima and back.</h2>
+        <h2>Collected by 9:00, delivered by 15:00.</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
               <span className="lb-run-dir">
-                {r.no} {r.north ? "Northbound" : "Southbound"}
+                {r.no} {r.north ? "North" : "South"}
               </span>
               <span className="lb-run-time">{r.time}</span>
               <span className="lb-run-route">{r.route.en}</span>
@@ -122,17 +120,17 @@ export default function LuggageBusPage() {
           ))}
         </div>
         <p className="drop-note">
-          Out to Kiso-Fukushima in the morning, back to Nagiso after
-          lunch — see when your bags arrive below.
+          From Nagiso we run down to Nakatsugawa and back, then up to Narai
+          and back. Times are a guide; our promise is delivery by 15:00.
         </p>
 
-        <h3 className="lb-sub">When your bags arrive</h3>
+        <h3 className="lb-sub">When to leave them, when they arrive</h3>
         <div className="lb-table-wrap">
           <table className="lb-table">
             <thead>
               <tr>
-                <th>From → to</th>
-                <th>Arrives</th>
+                <th>What happens</th>
+                <th>When</th>
               </tr>
             </thead>
             <tbody>
@@ -158,7 +156,7 @@ export default function LuggageBusPage() {
               <span className="koma-num">1</span>
               <CreditCard size={26} />
               <h3>Book and pay</h3>
-              <p>Choose your date, stops and bags in the box above. Paid = booked. For an inn that isn&apos;t listed, or the extensions, send the request on WhatsApp.</p>
+              <p>Choose your date, stops and bags in the box above. Paid = booked. For an inn that isn&apos;t listed, send the request on WhatsApp.</p>
             </div>
             <div className="koma">
               <div className="lb-ph">Photo (placeholder)<br/>A photo of your bag</div>
@@ -168,18 +166,18 @@ export default function LuggageBusPage() {
               <p>One photo per bag on WhatsApp. We put the tags on when we collect.</p>
             </div>
             <div className="koma">
-              <div className="lb-ph">Photo (placeholder)<br/>Drop at a stop</div>
+              <div className="lb-ph">Photo (placeholder)<br/>Bags at the inn entrance</div>
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
-              <h3>Drop off in the morning</h3>
-              <p>Leave your bags at your stop or inn at least 10 minutes before the run passes (or the evening before), then set off with nothing on your back.</p>
+              <h3>Leave them at your inn by 9:00</h3>
+              <p>Leave your bags at your inn&apos;s front desk or entrance by 9:00, then set off with nothing on your back.</p>
             </div>
             <div className="koma">
               <div className="lb-ph">Photo (placeholder)<br/>Collect at your next stop</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
-              <h3>Collect at your next stop</h3>
-              <p>Northbound bags arrive 10:30–11:30, southbound by 13:30. Just pick them up when you arrive.</p>
+              <h3>Delivered by 15:00</h3>
+              <p>They&apos;re delivered to your next destination by 15:00 the same day. Just pick them up when you arrive.</p>
             </div>
           </div>
         </div>
@@ -253,7 +251,7 @@ export default function LuggageBusPage() {
             <p>The same wherever it goes.</p>
           </div>
           <p className="pricing-foot">
-            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. Suhara is where the two zones meet. Going on to Nakatsugawa (south) or Narai (north) is by arrangement and adds ¥1,500 each. The booking form works out an estimate for you.
+            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. There are four zones: Nakatsugawa–Nagiso, Nagiso–Suhara, Suhara–Kiso-Fukushima and Kiso-Fukushima–Narai. The booking form works out an estimate for you.
           </p>
         </div>
 
@@ -392,17 +390,19 @@ export default function LuggageBusPage() {
               <MessageCircle size={20} /> Somewhere not listed?
             </h3>
             <p>
-              Staying at an inn in Magome or Tsumago, or starting somewhere
-              else? Ask us on WhatsApp case by case.
+              Staying at an inn that isn&apos;t listed? Tell us its name on
+              WhatsApp. Anywhere between Nakatsugawa and Narai is fine.
+              Magome, Tsumago and Ran are outside our route.
             </p>
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> On to Nakatsugawa or Narai
+              <ArrowRight size={20} /> Nakatsugawa to Narai
             </h3>
             <p>
-              Past Nagiso to Nakatsugawa, or past Kiso-Fukushima to Narai,
-              can be arranged on WhatsApp: +{yen(EXTENSION_FEE)} each.
+              We cover 11 stops every day: Nakatsugawa, Sakashita, Tadachi,
+              Nagiso, Nojiri, Suhara, Agematsu, Kiso-Fukushima, Miyanokoshi,
+              Yabuhara and Narai.
             </p>
           </div>
         </div>

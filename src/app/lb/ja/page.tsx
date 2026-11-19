@@ -16,7 +16,7 @@ import { WHATSAPP_URL_JA } from "../../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "../lb-chrome";
 import { LbHowVideo } from "../how-video";
 import { LbBookBox } from "../book-box";
-import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
 
 export default function JaLuggageBusPage() {
   return (
@@ -37,10 +37,10 @@ export default function JaLuggageBusPage() {
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            ラゲッジバスは、南木曽・野尻・須原・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
+            ラゲッジバスは、中津川から南木曽・木曽福島を通って奈良井まで、中山道の宿場を毎日結ぶ荷物の定期便です。朝9時までに、宿のフロントまたは玄関に荷物を置いておいてください。その日の15時までに、次の目的地に配達されます。
           </p>
           <p className="head-note">
-            南木曽から木曽福島へは当日11:30ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
+            運ぶ範囲:中津川・坂下・田立・南木曽・野尻・須原・上松・木曽福島・宮ノ越・薮原・奈良井。ご利用は予約制で、支払った時点で確定します。
           </p>
         </div>
         <figure className="page-head-visual">
@@ -85,8 +85,8 @@ export default function JaLuggageBusPage() {
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">運ぶ時刻</th><td>業者が決める・時間帯を指定</td><td className="us">毎日決まった時刻(北行き 10:00〜11:30 / 南行き 12:00〜13:30)</td></tr>
-              <tr><th scope="row">預ける・受け取る場所</th><td>住所を自由に指定</td><td className="us">決まった「駅」(カフェ・宿・案内所)から選ぶ</td></tr>
+              <tr><th scope="row">運ぶ時刻</th><td>業者が決める・時間帯を指定</td><td className="us">毎日同じ流れ(朝9時までに預け、15時までに届く)</td></tr>
+              <tr><th scope="row">預ける・受け取る場所</th><td>住所を自由に指定</td><td className="us">宿のフロント・玄関、または決まった預け場所</td></tr>
               <tr><th scope="row">申し込みの締切</th><td>業者による</td><td className="us">前日23:00まで</td></tr>
               <tr><th scope="row">料金</th><td>サイズ・距離で変わる</td><td className="us">配送料(区域×1,500円)+荷物1個1,500円</td></tr>
               <tr><th scope="row">向いている人</th><td>日時・場所を細かく指定したい人</td><td className="us">歩く・走る予定を先に決めた人</td></tr>
@@ -100,12 +100,12 @@ export default function JaLuggageBusPage() {
       {/* 時刻表 */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">時刻表</span>
-        <h2>1日1往復。南木曽と木曽福島を結びます。</h2>
+        <h2>朝9時に集めて、15時までに届けます。</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
               <span className="lb-run-dir">
-                {r.no} {r.north ? "北行き" : "南行き"}
+                {r.no} {r.north ? "北へ" : "南へ"}
               </span>
               <span className="lb-run-time">{r.time.replace("–", "〜")}</span>
               <span className="lb-run-route">{r.route.ja}</span>
@@ -113,16 +113,16 @@ export default function JaLuggageBusPage() {
           ))}
         </div>
         <p className="drop-note">
-          午前に木曽福島へ、昼すぎに南木曽へ戻ります。届く時間は下の表をご覧ください。
+          南木曽から中津川を往復し、そのあと奈良井まで往復します。時刻は目安で、お約束は「その日の15時まで」です。
         </p>
 
-        <h3 className="lb-sub">荷物が届く時間</h3>
+        <h3 className="lb-sub">預ける時間・届く時間</h3>
         <div className="lb-table-wrap">
           <table className="lb-table">
             <thead>
               <tr>
-                <th>どこから → どこへ</th>
-                <th>届く時間</th>
+                <th>やること</th>
+                <th>時刻</th>
               </tr>
             </thead>
             <tbody>
@@ -148,7 +148,7 @@ export default function JaLuggageBusPage() {
               <span className="koma-num">1</span>
               <CreditCard size={26} />
               <h3>予約して支払う</h3>
-              <p>上の予約ボックスで日付・駅・個数を選び、支払った時点で予約確定です。宿の名前が無いときや延長区間はWhatsAppで受け付けます。</p>
+              <p>上の予約ボックスで日付・駅・個数を選び、支払った時点で予約確定です。一覧に宿の名前が無いときはWhatsAppで受け付けます。</p>
             </div>
             <div className="koma">
               <div className="lb-ph">写真(仮置き)<br/>荷物の写真</div>
@@ -158,18 +158,18 @@ export default function JaLuggageBusPage() {
               <p>荷物1個につき1枚、WhatsAppで写真を送ってください。タグは回収のときにこちらで付けます。</p>
             </div>
             <div className="koma">
-              <div className="lb-ph">写真(仮置き)<br/>駅に預ける</div>
+              <div className="lb-ph">写真(仮置き)<br/>宿の玄関に置く</div>
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
-              <h3>朝、駅に預ける</h3>
-              <p>便が駅を通る10分前まで(前日の夕方でも可)に、出発の駅か泊まった宿に預けて、手ぶらで出発。</p>
+              <h3>朝9時までに宿に置く</h3>
+              <p>朝9時までに、宿のフロントまたは玄関に荷物を置いて、手ぶらで出発。</p>
             </div>
             <div className="koma">
               <div className="lb-ph">写真(仮置き)<br/>次の宿で受け取る</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
-              <h3>次の駅・宿で受け取る</h3>
-              <p>北行きは10:30〜11:30、南行きは13:30までに到着。着いたら受け取るだけです。</p>
+              <h3>15時までに次の宿へ</h3>
+              <p>その日の15時までに、次の目的地に配達されます。着いたら受け取るだけです。</p>
             </div>
           </div>
         </div>
@@ -243,7 +243,7 @@ export default function JaLuggageBusPage() {
             <p>距離に関係なく1個ごと。</p>
           </div>
           <p className="pricing-foot">
-            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。南部と中部の境目は須原です。中津川(南部延伸)・奈良井(北部延伸)まで延ばすときは要相談で、それぞれ+1,500円です。予約フォームで概算金額が出ます。
+            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。区域は4つ(中津川〜南木曽/南木曽〜須原/須原〜木曽福島/木曽福島〜奈良井)です。予約フォームで概算金額が出ます。
           </p>
         </div>
 
@@ -379,15 +379,15 @@ export default function JaLuggageBusPage() {
               <MessageCircle size={20} /> 載っていない場所は応相談
             </h3>
             <p>
-              駅のほかの宿や場所(馬籠・妻籠の宿など)は、WhatsAppで個別にご相談ください。
+              一覧にない宿は、WhatsAppで宿の名前を教えてください。運ぶ範囲(中津川〜奈良井)の中なら受け付けます。馬籠・妻籠・蘭は範囲外です。
             </p>
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> 中津川・奈良井への延長は要相談
+              <ArrowRight size={20} /> 中津川から奈良井まで
             </h3>
             <p>
-              南木曽の先の中津川、木曽福島の先の奈良井までは、WhatsAppで相談のうえ運びます。それぞれ+{yen(EXTENSION_FEE)}です。
+              中津川・坂下・田立・南木曽・野尻・須原・上松・木曽福島・宮ノ越・薮原・奈良井の11か所を、毎日まわります。
             </p>
           </div>
         </div>

@@ -8,7 +8,7 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
   en: [
     {
       q: "Can I send my bags from Nagiso to Kiso-Fukushima on the same day?",
-      a: "Yes. The northbound run leaves Nagiso around 10:00 and your bags reach Kiso-Fukushima between 10:30 and 11:30 the same day.",
+      a: "Yes. Leave your bags at your inn's front desk or entrance by 9:00, and they'll be delivered to your next destination in Kiso-Fukushima by 15:00 the same day.",
     },
     {
       q: "How much does it cost to send one bag from Nagiso to Kiso-Fukushima?",
@@ -26,7 +26,7 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
   ja: [
     {
       q: "南木曽から木曽福島へ、当日中に荷物を送れますか?",
-      a: "送れます。北行きの便は10時ごろに南木曽を出て、荷物は当日10:30〜11:30に木曽福島に届きます。",
+      a: "送れます。朝9時までに宿のフロントまたは玄関に荷物を置いておけば、その日の15時までに木曽福島の次の目的地に配達されます。",
     },
     {
       q: "南木曽から木曽福島まで、荷物1個はいくらですか?",

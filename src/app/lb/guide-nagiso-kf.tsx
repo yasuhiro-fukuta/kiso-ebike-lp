@@ -32,8 +32,8 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
         </h1>
         <p>
           {ja
-            ? "中山道の南木曽から木曽福島まで、荷物を当日中に宿へ運びます。朝、南木曽の駅(預け場所)に荷物を預けたら、あとは手ぶらで歩く・走るだけ。荷物は木曽福島で待っています。"
-            : "Send your luggage along the Nakasendo from Nagiso to Kiso-Fukushima on the same day. Leave your bags at a Nagiso stop in the morning, then walk or ride with nothing on your back. Your bags wait for you in Kiso-Fukushima."}
+            ? "中山道の南木曽から木曽福島まで、荷物を当日中に宿へ運びます。朝9時までに南木曽の宿のフロントまたは玄関に荷物を置いたら、あとは手ぶらで歩く・走るだけ。その日の15時までに、木曽福島の次の目的地に配達されます。"
+            : "Send your luggage along the Nakasendo from Nagiso to Kiso-Fukushima on the same day. Leave your bags at your inn's front desk or entrance in Nagiso by 9:00, then walk or ride with nothing on your back. They're delivered to your next destination in Kiso-Fukushima by 15:00."}
         </p>
       </header>
 
@@ -47,13 +47,13 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
                 <th scope="row"><Clock size={16} /> {ja ? "預ける" : "Drop off"}</th>
                 <td className="us">
                   {ja
-                    ? "便が駅を通る10分前まで(前日の夕方でも可)。北行きは10:00ごろ南木曽発"
-                    : "At least 10 minutes before the run passes (or the evening before). The northbound run leaves Nagiso around 10:00"}
+                    ? "朝9時までに、宿のフロントまたは玄関に置く"
+                    : "By 9:00, at your inn's front desk or entrance"}
                 </td>
               </tr>
               <tr>
                 <th scope="row"><MapPin size={16} /> {ja ? "届く" : "Arrives"}</th>
-                <td className="us">{ja ? "当日 10:30〜11:30 に木曽福島" : "Same day, 10:30–11:30 in Kiso-Fukushima"}</td>
+                <td className="us">{ja ? "その日の15時までに、木曽福島の次の目的地へ" : "By 15:00 the same day, at your next stop in Kiso-Fukushima"}</td>
               </tr>
               <tr>
                 <th scope="row"><Luggage size={16} /> {ja ? "料金" : "Price"}</th>

@@ -102,7 +102,7 @@ export function LbFooter({ lang = "en" }: { lang?: Lang }) {
           <p>
             {ja
               ? "南木曽〜木曽福島の宿へ、荷物だけを運ぶバス。長野県南木曽町・ゲストハウス柏屋(From Scratch LLC)が運営しています。"
-              : "A bags-only shuttle between Nagiso and Kiso-Fukushima. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
+              : "Same-day luggage transfer from Nakatsugawa to Narai. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
           </p>
         </div>
         <div>

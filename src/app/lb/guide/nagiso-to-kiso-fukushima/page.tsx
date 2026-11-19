@@ -4,7 +4,7 @@ import { GUIDE_FAQ } from "../../guide-faq";
 
 export const metadata: Metadata = {
   title: "Nagiso to Kiso-Fukushima luggage transfer — same-day, bags only | Luggage Bus Nakasendo",
-  description: "Send your bags along the Nakasendo from Nagiso to Kiso-Fukushima the same day. Drop by 10:00, arrives 10:30–11:30. From ¥4,500 for one bag. Book by 23:00 the day before.",
+  description: "Send your bags along the Nakasendo from Nagiso to Kiso-Fukushima the same day. Leave your bags at your inn by 9:00; delivered by 15:00. From ¥4,500 for one bag. Book by 23:00 the day before.",
   alternates: {
     canonical: "/guide/nagiso-to-kiso-fukushima",
     languages: { en: "/guide/nagiso-to-kiso-fukushima", ja: "/ja/guide/nagiso-to-kiso-fukushima" },

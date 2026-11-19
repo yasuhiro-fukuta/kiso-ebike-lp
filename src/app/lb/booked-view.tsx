@@ -71,8 +71,8 @@ export async function BookedView({ lang, sessionId }: { lang: Lang; sessionId?: 
             <h3><Clock size={20} /> {ja ? "当日、駅に預ける" : "Drop off on the day"}</h3>
             <p>
               {ja
-                ? "便が駅を通る10分前まで(前日の夕方でも可)に預けてください。駅の預かり料は現地払いです。"
-                : "Leave your bags at least 10 minutes before the run passes (or the evening before). Station holding fees are paid on the spot."}
+                ? "朝9時までに、宿のフロントまたは玄関に荷物を置いてください。その日の15時までに、次の目的地に配達されます。駅の預かり料は現地払いです。"
+                : "Leave your bags at your inn's front desk or entrance by 9:00. They'll be delivered to your next destination by 15:00 the same day. Station holding fees are paid on the spot."}
             </p>
           </div>
         </div>

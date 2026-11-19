@@ -3,7 +3,6 @@
  *
  *  A request is confirmed on payment, with no manual approval, when:
  *  - both ends are listed stations or partner inns (not "another place"),
- *  - neither end is an extension (Nakatsugawa / Narai, by arrangement),
  *  - the date passes the usual checks (deadline, Mondays, winter, closures),
  *  - 1–8 bags.
  *  Anything else goes to WhatsApp for approval, as before. */
@@ -13,7 +12,6 @@ import { CLOSED_DAYS } from "./closed-days";
 type Lang = "en" | "ja";
 
 export const RUN_CAPACITY = 20;
-const EXT_POS = [0, 6];
 
 /** Today, tomorrow and whether it's past 23:00 — in Japan time. */
 export const jstNow = () => {
@@ -48,7 +46,6 @@ export function quoteLb(input: LbInput, lang: Lang): LbQuote {
   const f = point(input.from);
   const t = point(input.to);
   if (!f?.place || !t?.place || f.pos == null || t.pos == null) return { kind: "approval" };
-  if (EXT_POS.includes(f.pos) || EXT_POS.includes(t.pos)) return { kind: "approval" };
   if (!input.name.trim()) return { kind: "error", message: ja ? "氏名を入れてください。" : "Please enter your name." };
   if (!Number.isInteger(input.bags) || input.bags < 1 || input.bags > 8)
     return { kind: "error", message: ja ? "個数を選んでください。" : "Please choose the number of bags." };
