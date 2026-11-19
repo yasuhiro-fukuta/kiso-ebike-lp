@@ -16,7 +16,7 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
     },
     {
       q: "When do I need to book?",
-      a: "By 23:00 the day before. Your booking is confirmed once you pay through the link we send.",
+      a: "By 23:00 the day before. Your booking is confirmed as soon as you pay.",
     },
     {
       q: "Can I ride the Luggage Bus too?",
@@ -34,7 +34,7 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
     },
     {
       q: "いつまでに申し込めばいいですか?",
-      a: "前日23時までです。お送りする決済リンクで支払った時点で予約確定です。",
+      a: "前日23時までです。支払った時点で予約確定です。",
     },
     {
       q: "ラゲッジバスに人も乗れますか?",

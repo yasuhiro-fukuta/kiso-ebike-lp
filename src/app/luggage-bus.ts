@@ -412,17 +412,17 @@ export function dateProblem(
 /** Booking rules (decided 2026-10-10, "for now"). */
 export const RULES: { title: T; body: T }[] = [
   {
-    title: { en: "Request by 23:00 the day before", ja: "申し込みは前日23時まで" },
+    title: { en: "Book by 23:00 the day before", ja: "申し込みは前日23時まで" },
     body: {
-      en: "We approve requests together every evening. We reply on WhatsApp in the morning (until 8:45), 13:30–16:00 and after 21:00 — the rest of the day we're driving.",
-      ja: "承認は毎晩まとめて行います。WhatsAppに返信できるのは、朝(〜8:45)、13:30〜16:00、21:00以降です。それ以外の時間は運転中です。",
+      en: "Listed stops and inns: pay in the booking box and your booking is confirmed at once, no waiting. Another inn or the extensions: send the request on WhatsApp and we reply with a payment link. We reply on WhatsApp in the morning (until 8:45), 13:30–16:00 and after 21:00 — the rest of the day we're driving.",
+      ja: "一覧にある駅・宿なら、予約ボックスで支払った時点で確定します(承認待ちなし)。一覧にない宿や延長区間はWhatsAppで受け付け、決済リンクをお送りします。WhatsAppに返信できるのは、朝(〜8:45)、13:30〜16:00、21:00以降です。それ以外の時間は運転中です。",
     },
   },
   {
     title: { en: "Pay by 8:00 on the day", ja: "支払いは当日8:00まで" },
     body: {
-      en: "Your booking is confirmed once you've paid through the link we send. Bags without a paid booking are not carried.",
-      ja: "お送りする決済リンクで支払いが済んだ時点で予約確定です。支払いのない荷物は運びません。",
+      en: "Your booking is confirmed once you've paid. Bags without a paid booking are not carried.",
+      ja: "支払いが済んだ時点で予約確定です。支払いのない荷物は運びません。",
     },
   },
   {
