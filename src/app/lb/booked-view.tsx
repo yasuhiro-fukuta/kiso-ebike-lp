@@ -1,6 +1,7 @@
-import { CheckCircle2, Camera, Clock, MessageCircle } from "lucide-react";
+import { CheckCircle2, Camera, Clock, MessageCircle, Building2 } from "lucide-react";
 import { LbNav, LbFooter } from "./lb-chrome";
 import { WHATSAPP_URL, WHATSAPP_URL_JA } from "../site";
+import { DROP_BY, ARRIVE_BY } from "../luggage-bus";
 
 type Lang = "en" | "ja";
 
@@ -54,6 +55,20 @@ export async function BookedView({ lang, sessionId }: { lang: Lang; sessionId?: 
                 <tr><th scope="row">{ja ? "預ける" : "Drop off"}</th><td className="us">{m.from}</td></tr>
                 <tr><th scope="row">{ja ? "受け取る" : "Collect"}</th><td className="us">{m.to}</td></tr>
                 <tr><th scope="row">{ja ? "個数" : "Bags"}</th><td className="us">{m.bags}</td></tr>
+                {m.from_inn_booking_name && (
+                  <tr><th scope="row">{ja ? "出発の宿の予約名" : "Departure inn booking name"}</th><td className="us">{m.from_inn_booking_name}</td></tr>
+                )}
+                {m.to_inn_booking_name && (
+                  <tr><th scope="row">{ja ? "届け先の宿の予約名" : "Destination inn booking name"}</th><td className="us">{m.to_inn_booking_name}</td></tr>
+                )}
+                <tr>
+                  <th scope="row">{ja ? "届く時刻" : "Arrives"}</th>
+                  <td className="us">
+                    {m.delivery === "next_day"
+                      ? ja ? `翌日の${ARRIVE_BY}まで` : `By ${ARRIVE_BY} the next day`
+                      : ja ? `当日の${ARRIVE_BY}まで` : `By ${ARRIVE_BY} the same day`}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -71,8 +86,16 @@ export async function BookedView({ lang, sessionId }: { lang: Lang; sessionId?: 
             <h3><Clock size={20} /> {ja ? "当日、駅に預ける" : "Drop off on the day"}</h3>
             <p>
               {ja
-                ? "便が駅を通る10分前まで(前日の夕方でも可)に預けてください。駅の預かり料は現地払いです。"
-                : "Leave your bags at least 10 minutes before the run passes (or the evening before). Station holding fees are paid on the spot."}
+                ? `朝${DROP_BY}まで(前日の夕方でも可)に、宿のフロントか玄関、または駅に置いてください。駅の預かり料は現地払いです。`
+                : `Leave your bags at your inn's front desk or entrance, or at your stop, by ${DROP_BY} (or the evening before). Station holding fees are paid on the spot.`}
+            </p>
+          </div>
+          <div className="mini-card lb-way">
+            <h3><Building2 size={20} /> {ja ? "宿にはこちらから連絡します" : "We'll contact your inns"}</h3>
+            <p>
+              {ja
+                ? "出発と届け先の宿には、こちらから前もって連絡します。お客様から宿へ伝えていただく必要はありません。"
+                : "We let the departure and destination inns know ahead of time. You don't need to tell them yourself."}
             </p>
           </div>
         </div>

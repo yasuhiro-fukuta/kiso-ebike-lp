@@ -2076,3 +2076,11 @@ figure.season-cell .season-tag {
 .lb-cond-title { margin: 1.6rem 0 .6rem; }
 .mini-grid.cols3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 @media (max-width: 560px) { .lb-bookbox-grid { grid-template-columns: 1fr; } }
+/* Range checker (2026-11-20) */
+.lb-checker { margin-top: 1.5rem; }
+.lb-check-result { margin-top: 1rem; padding: .9rem 1rem; border-radius: 8px; background: #f3f6ef; font-size: .9rem; }
+.lb-check-result.out { background: #fbf1ec; }
+.lb-check-result p { margin: 0 0 .5rem; display: block; }
+.lb-check-result svg { vertical-align: -3px; }
+.lb-nextday, .lb-bookbox-price small.lb-nextday { font-size: .75rem; opacity: .85; }
+

@@ -9,16 +9,22 @@ import {
   ArrowRight,
   Ban,
   Camera,
-  ShieldCheck,
-  Building2,
 } from "lucide-react";
 import { WHATSAPP_URL } from "../site";
-import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
+import { LbNav, LbFooter, LbFloat, EBIKE_SITE, useLb } from "./lb-chrome";
 import { LbHowVideo } from "./how-video";
-import { LbBookBox } from "./book-box";
-import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../luggage-bus";
+import { LbPlanner } from "./lb-planner";
+import { LbInstantSteps, LbTrust, LbArrangements } from "./lb-sections";
+import {
+  STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
+  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS,
+} from "../luggage-bus";
+
+const RANGE_EN = LINE.map((a) => a.name.en).join(", ");
 
 export default function LuggageBusPage() {
+  const { base } = useLb();
+  const otherHref = `${base}/other-services`;
   return (
     <div className="lp">
       <LbNav />
@@ -32,22 +38,26 @@ export default function LuggageBusPage() {
         <div>
           <span className="head-badge">Luggage only · no passengers</span>
           <br />
-          <span className="eyebrow">Luggage Bus · Nagiso — Kiso-Fukushima</span>
+          <span className="eyebrow">Luggage Bus · Nakatsugawa — Narai</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            The Luggage Bus carries your bags along the Nakasendo on a fixed
-            daily timetable, stopping at Nagiso, Nojiri, Suhara, Agematsu
-            and Kiso-Fukushima. In the morning,
+            The Luggage Bus carries your bags along the Nakasendo on fixed
+            daily runs, covering {RANGE_EN}. In the morning,
             leave your bags at one of our stations — a luggage drop point
             or a partner inn — and walk on — they&apos;ll be
             waiting at the other end.
           </p>
           <p className="head-note">
-            Nagiso to Kiso-Fukushima, the same day: bags
-            arrive around 11:30, before check-in. Booking required — request on
-            WhatsApp and we confirm.
+            Leave your bags by {DROP_BY} in the morning, and they arrive by {ARRIVE_BY} the
+            same day. Choose, pay, and your booking is confirmed on the spot.
+          </p>
+          <p className="head-note">
+            <small>
+              From north of Nagiso to Tadachi, Sakashita or Nakatsugawa, bags arrive the
+              next day (we still take the booking).
+            </small>
           </p>
         </div>
         <figure className="page-head-visual">
@@ -60,7 +70,9 @@ export default function LuggageBusPage() {
         </figure>
       </header>
 
-      <LbBookBox lang="en" />
+      <LbPlanner lang="en" />
+
+      <LbInstantSteps lang="en" />
 
       {/* LUGGAGE ONLY */}
       <section className="mini-sec lb-notice-sec">
@@ -94,10 +106,10 @@ export default function LuggageBusPage() {
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">When it moves</th><td>The courier decides, or you pick a window</td><td className="us">Fixed daily runs (northbound 10:00–11:30, southbound 12:00–13:30)</td></tr>
+              <tr><th scope="row">When it moves</th><td>The courier decides, or you pick a window</td><td className="us">Fixed daily runs: leave bags by {DROP_BY}, they arrive by {ARRIVE_BY}</td></tr>
               <tr><th scope="row">Where you drop and collect</th><td>Any address</td><td className="us">Fixed stops: cafés, inns and info offices</td></tr>
               <tr><th scope="row">Booking deadline</th><td>Varies</td><td className="us">23:00 the day before</td></tr>
-              <tr><th scope="row">Price</th><td>By size and distance</td><td className="us">Zones × ¥1,500 + ¥1,500 per bag</td></tr>
+              <tr><th scope="row">Price</th><td>By size and distance</td><td className="us">A set price for your two stops and number of bags</td></tr>
               <tr><th scope="row">Best for</th><td>Exact times and addresses</td><td className="us">Walkers and cyclists with a plan already set</td></tr>
             </tbody>
           </table>
@@ -109,21 +121,19 @@ export default function LuggageBusPage() {
       {/* TIMETABLE */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">Timetable</span>
-        <h2>One round trip a day, Nagiso to Kiso-Fukushima and back.</h2>
+        <h2>Our routes, from Nakatsugawa Station to Narai.</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
               <span className="lb-run-dir">
-                {r.no} {r.north ? "Northbound" : "Southbound"}
+                {r.no} {r.dir.en}
               </span>
-              <span className="lb-run-time">{r.time}</span>
               <span className="lb-run-route">{r.route.en}</span>
             </div>
           ))}
         </div>
         <p className="drop-note">
-          Out to Kiso-Fukushima in the morning, back to Nagiso after
-          lunch — see when your bags arrive below.
+          Leave your bags by {DROP_BY} — see when they arrive below.
         </p>
 
         <h3 className="lb-sub">When your bags arrive</h3>
@@ -158,7 +168,7 @@ export default function LuggageBusPage() {
               <span className="koma-num">1</span>
               <CreditCard size={26} />
               <h3>Book and pay</h3>
-              <p>Choose your date, stops and bags in the box above. Paid = booked. For an inn that isn&apos;t listed, or the extensions, send the request on WhatsApp.</p>
+              <p>Choose your date, stops and bags in the box above. Paid = booked. For an inn that isn&apos;t listed, or a stop marked &ldquo;by arrangement&rdquo;, send the request on WhatsApp.</p>
             </div>
             <div className="koma">
               <div className="lb-ph">Photo (placeholder)<br/>A photo of your bag</div>
@@ -172,14 +182,14 @@ export default function LuggageBusPage() {
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
               <h3>Drop off in the morning</h3>
-              <p>Leave your bags at your stop or inn at least 10 minutes before the run passes (or the evening before), then set off with nothing on your back.</p>
+              <p>Leave your bags at your inn&apos;s front desk or entrance, or at your stop, by {DROP_BY} (or the evening before), then set off with nothing on your back.</p>
             </div>
             <div className="koma">
               <div className="lb-ph">Photo (placeholder)<br/>Collect at your next stop</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
               <h3>Collect at your next stop</h3>
-              <p>Northbound bags arrive 10:30–11:30, southbound by 13:30. Just pick them up when you arrive.</p>
+              <p>Your bags arrive by {ARRIVE_BY} the same day (next day from north of Nagiso to Tadachi, Sakashita or Nakatsugawa). Just pick them up when you arrive.</p>
             </div>
           </div>
         </div>
@@ -188,12 +198,8 @@ export default function LuggageBusPage() {
       {/* PEACE OF MIND + CONDITIONS (in one place) */}
       <section className="mini-sec" id="conditions">
         <span className="eyebrow">Peace of mind</span>
-        <h2>Covered, recorded, and run by real people.</h2>
-        <div className="mini-grid cols3">
-          <div className="mini-card lb-way"><h3><ShieldCheck size={20} /> Covered up to ¥30,000</h3><p>Every bag is insured with cargo insurance.</p></div>
-          <div className="mini-card lb-way"><h3><Camera size={20} /> Photo and tag</h3><p>We get a photo of each bag before we take it, and tag it when we collect.</p></div>
-          <div className="mini-card lb-way"><h3><Building2 size={20} /> Who we are</h3><p>From Scratch LLC, Nagiso. We also run Guesthouse Kashiwaya and Kiso Ride e-bikes. <a href="https://nakasendo-ebike.com/legal">Legal notice</a></p></div>
-        </div>
+        <h2>A registered van, a record of every bag, and real people.</h2>
+        <LbTrust lang="en" />
         <h3 className="lb-cond-title">Conditions</h3>
         <ul className="lb-places lb-cond">
           <li>Book by 23:00 the day before.</li>
@@ -215,7 +221,7 @@ export default function LuggageBusPage() {
             <ul className="lb-places">
               <li>Walkers and cyclists going inn to inn without bags</li>
               <li>You can choose your date and stops by the day before</li>
-              <li>You travel between Nagiso, Nojiri, Suhara, Agematsu and Kiso-Fukushima</li>
+              <li>You travel between {RANGE_EN}</li>
             </ul>
           </div>
           <div className="mini-card lb-way">
@@ -224,6 +230,7 @@ export default function LuggageBusPage() {
               <li>You need an exact time or an exact address</li>
               <li>You travel on a Monday, or from December to March (no runs)</li>
               <li>You want to ride along yourself (bags only)</li>
+              <li>You start or end in {OUT_OF_RANGE.map((o) => o.name.en).join(", ")} (<a href={otherHref}>other services</a>)</li>
             </ul>
           </div>
         </div>
@@ -232,28 +239,10 @@ export default function LuggageBusPage() {
       {/* PRICING */}
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">Pricing</span>
-        <h2>Delivery fee + ¥1,500 per bag.</h2>
+        <h2>Set by your stops and number of bags.</h2>
         <div className="pricing">
-          {ZONES.map((z) => (
-            <div className="pitem" key={z.name.en}>
-              <h4>{z.name.en}</h4>
-              <div className="amt">
-                {yen(ZONE_FEE)}
-                <span style={{ fontSize: "0.9rem" }}>/booking</span>
-              </div>
-              <p>{z.route.en}</p>
-            </div>
-          ))}
-          <div className="pitem">
-            <h4>Per bag</h4>
-            <div className="amt">
-              +{yen(BAG_FEE)}
-              <span style={{ fontSize: "0.9rem" }}>/bag</span>
-            </div>
-            <p>The same wherever it goes.</p>
-          </div>
           <p className="pricing-foot">
-            The delivery fee is charged once per booking, ¥1,500 for each zone your bags pass through. Suhara is where the two zones meet. Going on to Nakatsugawa (south) or Narai (north) is by arrangement and adds ¥1,500 each. The booking form works out an estimate for you.
+            Each trip has a set price for 1 to {MAX_FARE_BAGS} bags. Pick your stops in the range checker or the booking box and the price shows at once. For {MAX_FARE_BAGS + 1} or more bags, please ask us on WhatsApp.
           </p>
         </div>
 
@@ -268,23 +257,23 @@ export default function LuggageBusPage() {
               </tr>
             </thead>
             <tbody>
-              {EXAMPLES.map((x) => (
-                <tr key={`${x.trip.en}-${x.bags}`}>
-                  <th scope="row">
-                    {x.trip.en}
-                    <small>
-                      Delivery {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
-                    </small>
-                  </th>
-                  <td>{x.bags}</td>
-                  <td>{yen(fare(x.zones, x.bags))}</td>
-                </tr>
-              ))}
+              {EXAMPLES.map((x) => {
+                const e = estimate(posOf(x.from), posOf(x.to), x.bags);
+                return (
+                  <tr key={`${x.from}-${x.to}-${x.bags}`}>
+                    <th scope="row">
+                      {nameOf(x.from).en} → {nameOf(x.to).en}
+                    </th>
+                    <td>{x.bags}</td>
+                    <td>{e ? yen(e.total) : "—"}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
         <p className="drop-note">
-          The total is in our confirmation on WhatsApp, with the payment link.
+          The total shows in the booking box before you pay.
         </p>
       </section>
 
@@ -389,24 +378,25 @@ export default function LuggageBusPage() {
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">
             <h3>
-              <MessageCircle size={20} /> Somewhere not listed?
+              <MessageCircle size={20} /> Your inn isn&apos;t listed?
             </h3>
             <p>
-              Staying at an inn in Magome or Tsumago, or starting somewhere
-              else? Ask us on WhatsApp case by case.
+              Any inn in {RANGE_EN} works: choose &ldquo;another inn&rdquo; in
+              its town and send the request on WhatsApp.
             </p>
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> On to Nakatsugawa or Narai
+              <ArrowRight size={20} /> Magome, Tsumago or Ran?
             </h3>
             <p>
-              Past Nagiso to Nakatsugawa, or past Kiso-Fukushima to Narai,
-              can be arranged on WhatsApp: +{yen(EXTENSION_FEE)} each.
+              They are outside our route. <a href={otherHref}>See local services that cover them</a>.
             </p>
           </div>
         </div>
       </section>
+
+      <LbArrangements lang="en" />
 
       {/* FIND YOUR STOP */}
       <section className="mini-sec" id="find-stop">
@@ -449,9 +439,9 @@ export default function LuggageBusPage() {
         <details className="faq-item">
           <summary>Can I just turn up with my bags?</summary>
           <p>
-            No — please book first. We confirm each request on WhatsApp so
-            we know there&apos;s room on the run, and the booking is set
-            once you&apos;ve paid through the link we send.
+            No — please book first, by 23:00 the day before. For listed
+            stops and inns, your booking is confirmed as soon as you pay in
+            the booking box.
           </p>
         </details>
         <details className="faq-item">
