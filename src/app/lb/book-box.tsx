@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CreditCard, MessageCircle, ShieldCheck } from "lucide-react";
-import { LB_CHOICE_GROUPS, findPoint, estimate, isNextDay, yen, ARRIVE_BY, DROP_BY } from "../luggage-bus";
+import { LB_CHOICE_GROUPS, findPoint, estimate, isNextDay, yen, ARRIVE_BY, DROP_BY, MAX_FARE_BAGS } from "../luggage-bus";
 import { quoteLb, needsInnBooking } from "../lb-booking";
 import { LB_COMPENSATION_YEN } from "../lb-config";
 import { wa } from "../site";
@@ -182,8 +182,10 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
         <strong>{est ? yen(est.total) : "—"}</strong>
         <span>
           {est
-            ? est.parts.map((p) => `${p[lang]} ${yen(p.yen)}`).join(" + ")
-            : ja ? "駅と個数を選ぶと出ます(要相談の地点はWhatsAppで)" : "Choose your stops and bags (stops by arrangement: on WhatsApp)"}
+            ? est.parts.map((p) => p[lang]).join(" + ")
+            : bags > MAX_FARE_BAGS
+              ? ja ? `${MAX_FARE_BAGS + 1}個以上はWhatsAppでお問い合わせください` : `${MAX_FARE_BAGS + 1} or more bags: please ask us on WhatsApp`
+              : ja ? "駅と個数を選ぶと出ます(要相談の地点はWhatsAppで)" : "Choose your stops and bags (stops by arrangement: on WhatsApp)"}
         </span>
         <small>
           {ja

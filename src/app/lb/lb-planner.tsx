@@ -6,8 +6,9 @@ import {
   OUT_OF_RANGE,
   findPoint,
   estimate,
-  byArrangement,
   isNextDay,
+  sameTown as isSameTown,
+  MAX_FARE_BAGS,
   dropPlaceText,
   yen,
   ARRIVE_BY,
@@ -59,9 +60,9 @@ export function LbRangeChecker({ lang, onBook }: { lang: Lang; onBook: (p: Omit<
   const tp = findPoint(to);
   const outside = [from, to].filter((x) => x.startsWith(OUT)).map((x) => OUT_OF_RANGE.find((o) => `${OUT}${o.key}` === x)!);
   const both = !!fp && !!tp;
-  const sameTown = both && fp!.pos === tp!.pos;
+  const sameTown = both && isSameTown(fp!.pos, tp!.pos);
   const est = both ? estimate(fp!.pos, tp!.pos, Number(bags)) : null;
-  const arrange = both && (byArrangement(fp!.pos) || byArrangement(tp!.pos));
+  const manyBags = Number(bags) > MAX_FARE_BAGS;
   const nextDay = both && isNextDay(fp!.pos, tp!.pos);
   const otherHref = `${base}${ja ? "/ja" : ""}/other-services`;
 
@@ -109,10 +110,12 @@ export function LbRangeChecker({ lang, onBook }: { lang: Lang; onBook: (p: Omit<
         <div className="lb-check-result" role="status">
           {sameTown ? (
             <p>
-              <CheckCircle2 size={18} />{" "}
-              {ja
-                ? "どちらも範囲内ですが、同じ町の中です。WhatsAppでご相談ください。"
-                : "Both are on our route, but in the same town. Please ask us on WhatsApp."}
+              <XCircle size={18} />{" "}
+              <strong>
+                {ja
+                  ? "同じ町の中の区間です。この区間は承っていません。"
+                  : "Both ends are in the same town. We don't serve this trip."}
+              </strong>
             </p>
           ) : (
             <>
@@ -143,9 +146,9 @@ export function LbRangeChecker({ lang, onBook }: { lang: Lang; onBook: (p: Omit<
               <p>
                 <Wallet size={16} /> <b>{ja ? "料金:" : "Price: "}</b>
                 {est
-                  ? `${yen(est.total)} (${est.parts.map((p) => `${p[lang]} ${yen(p.yen)}`).join(" + ")})`
-                  : arrange
-                    ? ja ? "この地点の料金は要相談です(WhatsAppでお伝えします)。" : "Price for this stop is by arrangement — we'll tell you on WhatsApp."
+                  ? `${yen(est.total)} (${est.parts.map((p) => p[lang]).join(" + ")})`
+                  : manyBags
+                    ? ja ? `${MAX_FARE_BAGS + 1}個以上はWhatsAppでお問い合わせください。` : `For ${MAX_FARE_BAGS + 1} or more bags, please ask us on WhatsApp.`
                     : "—"}
               </p>
               <div className="lb-bookbox-actions">

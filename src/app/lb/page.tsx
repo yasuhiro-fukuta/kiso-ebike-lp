@@ -16,8 +16,8 @@ import { LbHowVideo } from "./how-video";
 import { LbPlanner } from "./lb-planner";
 import { LbInstantSteps, LbTrust, LbArrangements } from "./lb-sections";
 import {
-  STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, PRICE_BANDS, EXAMPLES, LINE, OUT_OF_RANGE,
-  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY,
+  STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
+  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS,
 } from "../luggage-bus";
 
 const RANGE_EN = LINE.map((a) => a.name.en).join(", ");
@@ -109,7 +109,7 @@ export default function LuggageBusPage() {
               <tr><th scope="row">When it moves</th><td>The courier decides, or you pick a window</td><td className="us">Fixed daily runs: leave bags by {DROP_BY}, they arrive by {ARRIVE_BY}</td></tr>
               <tr><th scope="row">Where you drop and collect</th><td>Any address</td><td className="us">Fixed stops: cafés, inns and info offices</td></tr>
               <tr><th scope="row">Booking deadline</th><td>Varies</td><td className="us">23:00 the day before</td></tr>
-              <tr><th scope="row">Price</th><td>By size and distance</td><td className="us">One unit price × (bags + 1)</td></tr>
+              <tr><th scope="row">Price</th><td>By size and distance</td><td className="us">A set price for your two stops and number of bags</td></tr>
               <tr><th scope="row">Best for</th><td>Exact times and addresses</td><td className="us">Walkers and cyclists with a plan already set</td></tr>
             </tbody>
           </table>
@@ -121,14 +121,13 @@ export default function LuggageBusPage() {
       {/* TIMETABLE */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">Timetable</span>
-        <h2>Two loops a day from Nagiso: south to Nakatsugawa, north to Narai.</h2>
+        <h2>Our routes, from Nakatsugawa Station to Narai.</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
               <span className="lb-run-dir">
-                {r.no} {r.north ? "North loop" : "South loop"}
+                {r.no} {r.dir.en}
               </span>
-              <span className="lb-run-time">{r.time.en}</span>
               <span className="lb-run-route">{r.route.en}</span>
             </div>
           ))}
@@ -240,20 +239,10 @@ export default function LuggageBusPage() {
       {/* PRICING */}
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">Pricing</span>
-        <h2>One unit price × (bags + 1).</h2>
+        <h2>Set by your stops and number of bags.</h2>
         <div className="pricing">
-          {PRICE_BANDS.map((b) => (
-            <div className="pitem" key={b.name.en}>
-              <h4>{b.name.en}</h4>
-              <div className="amt">
-                {yen(b.unit)}
-                <span style={{ fontSize: "0.9rem" }}>/unit</span>
-              </div>
-              <p>{b.where.en}</p>
-            </div>
-          ))}
           <p className="pricing-foot">
-            Price = unit × (number of bags + 1). The &ldquo;+ 1&rdquo; is the base fare, so each extra bag costs one unit. Both ends in the south: {yen(PRICE_BANDS[0].unit)}. If either end is in the north: {yen(PRICE_BANDS[1].unit)}. Stops marked &ldquo;by arrangement&rdquo; are priced on WhatsApp. The booking box works out the total for you.
+            Each trip has a set price for 1 to {MAX_FARE_BAGS} bags. Pick your stops in the range checker or the booking box and the price shows at once. For {MAX_FARE_BAGS + 1} or more bags, please ask us on WhatsApp.
           </p>
         </div>
 
@@ -274,7 +263,6 @@ export default function LuggageBusPage() {
                   <tr key={`${x.from}-${x.to}-${x.bags}`}>
                     <th scope="row">
                       {nameOf(x.from).en} → {nameOf(x.to).en}
-                      {e && <small>{yen(e.unit)} × ({x.bags} + 1)</small>}
                     </th>
                     <td>{x.bags}</td>
                     <td>{e ? yen(e.total) : "—"}</td>

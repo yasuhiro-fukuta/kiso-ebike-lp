@@ -6,10 +6,21 @@
  *  - neither end is a stop "by arrangement" (its price isn't decided yet),
  *  - the date passes the usual checks (deadline, Mondays, winter, closures),
  *    and, for next-day delivery, the delivery day does too,
- *  - 1–8 bags,
+ *  - 1–5 bags (the fare table has prices for 1–5; 6–8 bags go to WhatsApp),
+ *  - the pair of stops is in the fare table (same town: not served),
  *  - for an inn, the name its reservation is under (we tell both inns ahead).
  *  Anything else goes to WhatsApp for approval, as before. */
-import { findPoint, estimate, dateProblem, byArrangement, isNextDay, nextIso, type Place } from "./luggage-bus";
+import {
+  findPoint,
+  estimate,
+  dateProblem,
+  byArrangement,
+  isNextDay,
+  nextIso,
+  sameTown,
+  MAX_FARE_BAGS,
+  type Place,
+} from "./luggage-bus";
 import { CLOSED_DAYS } from "./closed-days";
 
 type Lang = "en" | "ja";
@@ -71,6 +82,13 @@ export function quoteLb(input: LbInput, lang: Lang, now: Now = jstNow(), closed:
   if (!input.name.trim()) return { kind: "error", message: ja ? "氏名を入れてください。" : "Please enter your name." };
   if (!Number.isInteger(input.bags) || input.bags < 1 || input.bags > 8)
     return { kind: "error", message: ja ? "個数を選んでください。" : "Please choose the number of bags." };
+  // The fare table has no price for more bags: we arrange it on WhatsApp.
+  if (input.bags > MAX_FARE_BAGS) return { kind: "approval" };
+  if (sameTown(f.pos, t.pos))
+    return {
+      kind: "error",
+      message: ja ? "預ける駅と受け取る駅が同じ町です。この区間は承っていません。" : "Drop-off and pick-up are in the same town. We don't serve this trip.",
+    };
   const problem = dateProblem(input.date, [f.place, t.place], lang, closed, now.today, now.tomorrow, now.afterDeadline);
   if (problem) return { kind: "error", message: problem };
   const nextDay = isNextDay(f.pos, t.pos);
@@ -80,11 +98,8 @@ export function quoteLb(input: LbInput, lang: Lang, now: Now = jstNow(), closed:
     if (dateProblem(d2, [t.place], lang, closed, now.today, now.tomorrow, false)) return { kind: "approval" };
   }
   const e = estimate(f.pos, t.pos, input.bags);
-  if (!e)
-    return {
-      kind: "error",
-      message: ja ? "預ける駅と受け取る駅が同じ町です。別の駅を選んでください。" : "Drop-off and pick-up are in the same town. Please choose another stop.",
-    };
+  // No price in the table: never charge a guessed amount.
+  if (!e) return { kind: "approval" };
   if (f.place.guestsOnly && !(input.fromBooking ?? "").trim())
     return {
       kind: "error",

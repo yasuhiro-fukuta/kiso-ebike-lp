@@ -1,13 +1,14 @@
-import { yen, estimate, posOf, unitPrice, DROP_BY, ARRIVE_BY } from "../luggage-bus";
+import { yen, estimate, posOf, DROP_BY, ARRIVE_BY } from "../luggage-bus";
 
 type Lang = "en" | "ja";
 
 /** FAQ for the Nagiso → Kiso-Fukushima guide (page + FAQPage JSON-LD).
- *  Prices come from luggage-bus.ts so they never drift from the fare table. */
-const N = posOf("nagiso");
+ *  Prices are looked up in the fare table (luggage-bus.ts), never typed.
+ *  Nagiso = the Nagiso Station stop (Cafe Izumiya). */
+const N = posOf("nagiso-st");
 const K = posOf("kisofukushima");
 const one = estimate(N, K, 1)?.total ?? 0;
-const unit = unitPrice(N, K) ?? 0;
+const two = estimate(N, K, 2)?.total ?? 0;
 
 /** Lowest price for one bag on this section (for the page description). */
 export const GUIDE_FROM_PRICE = one;
@@ -20,7 +21,7 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
     },
     {
       q: "How much does it cost to send one bag from Nagiso to Kiso-Fukushima?",
-      a: `${yen(one)}: the unit price ${yen(unit)} × (1 bag + 1). Each extra bag adds ${yen(unit)}.`,
+      a: `${yen(one)} for one bag, ${yen(two)} for two.`,
     },
     {
       q: "When do I need to book?",
@@ -38,7 +39,7 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
     },
     {
       q: "南木曽から木曽福島まで、荷物1個はいくらですか?",
-      a: `${yen(one)}です。単価${yen(unit)}×(1個+1)で計算します。荷物が1個増えるごとに${yen(unit)}です。`,
+      a: `1個${yen(one)}、2個${yen(two)}です。`,
     },
     {
       q: "いつまでに申し込めばいいですか?",

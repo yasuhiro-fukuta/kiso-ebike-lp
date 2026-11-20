@@ -16,8 +16,8 @@ import { LbHowVideo } from "../how-video";
 import { LbPlanner } from "../lb-planner";
 import { LbInstantSteps, LbTrust, LbArrangements } from "../lb-sections";
 import {
-  STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, PRICE_BANDS, EXAMPLES, LINE, OUT_OF_RANGE,
-  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY,
+  STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
+  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS,
 } from "../../luggage-bus";
 
 const RANGE_JA = LINE.map((a) => a.name.ja).join("・");
@@ -99,7 +99,7 @@ export default function JaLuggageBusPage() {
               <tr><th scope="row">運ぶ時刻</th><td>業者が決める・時間帯を指定</td><td className="us">毎日決まった便。朝{DROP_BY}までに置けば{ARRIVE_BY}までに届く</td></tr>
               <tr><th scope="row">預ける・受け取る場所</th><td>住所を自由に指定</td><td className="us">決まった「駅」(カフェ・宿・案内所)から選ぶ</td></tr>
               <tr><th scope="row">申し込みの締切</th><td>業者による</td><td className="us">前日23:00まで</td></tr>
-              <tr><th scope="row">料金</th><td>サイズ・距離で変わる</td><td className="us">単価 ×(個数 + 1)</td></tr>
+              <tr><th scope="row">料金</th><td>サイズ・距離で変わる</td><td className="us">2つの駅と個数で決まった料金</td></tr>
               <tr><th scope="row">向いている人</th><td>日時・場所を細かく指定したい人</td><td className="us">歩く・走る予定を先に決めた人</td></tr>
             </tbody>
           </table>
@@ -111,14 +111,13 @@ export default function JaLuggageBusPage() {
       {/* 時刻表 */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">時刻表</span>
-        <h2>南木曽から、南は中津川、北は奈良井まで。</h2>
+        <h2>配送ルート:中津川駅から奈良井まで。</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
               <span className="lb-run-dir">
-                {r.no} {r.north ? "北回り" : "南回り"}
+                {r.no} {r.dir.ja}
               </span>
-              <span className="lb-run-time">{r.time.ja}</span>
               <span className="lb-run-route">{r.route.ja}</span>
             </div>
           ))}
@@ -230,20 +229,10 @@ export default function JaLuggageBusPage() {
       {/* 料金 */}
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">料金</span>
-        <h2>単価 ×(個数 + 1)。</h2>
+        <h2>区間と個数で決まります。</h2>
         <div className="pricing">
-          {PRICE_BANDS.map((b) => (
-            <div className="pitem" key={b.name.en}>
-              <h4>{b.name.ja}</h4>
-              <div className="amt">
-                {yen(b.unit)}
-                <span style={{ fontSize: "0.9rem" }}>/単価</span>
-              </div>
-              <p>{b.where.ja}</p>
-            </div>
-          ))}
           <p className="pricing-foot">
-            料金 = 単価 ×(荷物の個数 + 1)。「+1」が基本料金で、荷物が1個増えるごとに単価1つ分です。発着とも南部なら単価{yen(PRICE_BANDS[0].unit)}、どちらかが北部なら単価{yen(PRICE_BANDS[1].unit)}です。「要相談」の地点の料金はWhatsAppでお伝えします。合計は予約ボックスで自動で出ます。
+            区間ごとに、荷物1〜{MAX_FARE_BAGS}個の料金が決まっています。範囲チェッカーか予約ボックスで駅を選ぶと、すぐに金額が出ます。{MAX_FARE_BAGS + 1}個以上はWhatsAppでお問い合わせください。
           </p>
         </div>
 
@@ -264,7 +253,6 @@ export default function JaLuggageBusPage() {
                   <tr key={`${x.from}-${x.to}-${x.bags}`}>
                     <th scope="row">
                       {nameOf(x.from).ja} → {nameOf(x.to).ja}
-                      {e && <small>{yen(e.unit)} ×({x.bags} + 1)</small>}
                     </th>
                     <td>{x.bags}</td>
                     <td>{e ? yen(e.total) : "—"}</td>

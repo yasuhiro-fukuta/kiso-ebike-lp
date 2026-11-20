@@ -6,6 +6,7 @@
     "lib": ["es2022", "dom"],
     "strict": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "outDir": ".test-build",
     "rootDir": ".",

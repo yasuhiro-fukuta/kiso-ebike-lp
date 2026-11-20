@@ -4,7 +4,7 @@ import { MapPin, ArrowRight, Clock, Luggage } from "lucide-react";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
 import { STATIONS, placeName, yen, estimate, posOf, DROP_BY, ARRIVE_BY } from "../luggage-bus";
 
-const kfFare = (bags: number) => estimate(posOf("nagiso"), posOf("kisofukushima"), bags)?.total ?? 0;
+const kfFare = (bags: number) => estimate(posOf("nagiso-st"), posOf("kisofukushima"), bags)?.total ?? 0;
 import { GUIDE_FAQ } from "./guide-faq";
 
 type Lang = "en" | "ja";
@@ -13,7 +13,7 @@ type Lang = "en" | "ja";
 
 export function GuideNagisoKf({ lang }: { lang: Lang }) {
   const ja = lang === "ja";
-  const from = STATIONS.find((s) => s.area === "nagiso");
+  const from = STATIONS.filter((s) => s.area === "nagiso-st" || s.area === "nagiso");
   const to = STATIONS.find((s) => s.area === "kisofukushima");
   const book = ja ? `${EBIKE_SITE}/ja/book?s=luggage` : `${EBIKE_SITE}/book?s=luggage`;
   const faq = GUIDE_FAQ[lang];
@@ -84,7 +84,7 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
         <span className="eyebrow">{ja ? "預ける・受け取る場所" : "Where to drop and collect"}</span>
         <h2>{ja ? "南木曽で預けて、木曽福島で受け取る。" : "Drop in Nagiso, collect in Kiso-Fukushima."}</h2>
         <div className="mini-grid cols2">
-          {[from, to].map((s) =>
+          {[...from, to].map((s) =>
             s ? (
               <div key={s.area} className="mini-card lb-way">
                 <h3><MapPin size={20} /> {s.name[lang]}</h3>

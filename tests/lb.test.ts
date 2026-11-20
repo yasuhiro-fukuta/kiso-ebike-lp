@@ -1,20 +1,22 @@
-/** ラゲッジバスの料金・範囲・翌日判定・即時予約の単体テスト。
+/** ラゲッジバスの料金(料金表の引き当て)・範囲・翌日判定・即時予約の単体テスト。
  *  実行: npm test (tsc で .test-build に書き出してから node --test) */
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   LINE,
   OUT_OF_RANGE,
   OTHER_SERVICES,
-  FARE_ZONE,
   FORM_POINTS,
   LB_CHOICE_GROUPS,
   STATIONS,
   RULES,
-  UNIT_SOUTH,
-  UNIT_NORTH,
-  unitPrice,
+  RUNS,
+  MAX_FARE_BAGS,
   estimate,
+  fareYen,
+  sameTown,
   isNextDay,
   nextIso,
   posOf,
@@ -26,11 +28,33 @@ import { quoteLb } from "../src/app/lb-booking";
 
 const p = posOf;
 
-test("範囲は社長決定(11/19)の11地点で、南から北の順", () => {
+/** The fare table, read straight from the file (not through the code). */
+type Row = [string, string, string, string, number[]];
+const ROWS: Row[] = JSON.parse(readFileSync(join(__dirname, "..", "..", "src", "app", "lb-fares.json"), "utf8"));
+const posByFare = (name: string) => {
+  const a = LINE.find((x) => x.fare === name);
+  assert.ok(a, `料金表の地点「${name}」がLINEに無い`);
+  return a.pos;
+};
+
+test("範囲は社長決定(11/21)の12地点で、南から北の順", () => {
   assert.deepEqual(
-    LINE.map((a) => a.key),
-    ["nakatsugawa", "sakashita", "tadachi", "nagiso", "nojiri", "suhara", "agematsu", "kisofukushima", "miyanokoshi", "yabuhara", "narai"],
+    LINE.map((a) => a.name.ja),
+    ["中津川駅", "坂下", "田立", "南木曽駅", "南木曽", "野尻駅", "野尻", "須原", "上松", "木曽福島", "奈良井駅", "奈良井"],
   );
+  assert.deepEqual(
+    LINE.map((a) => a.name.en),
+    ["Nakatsugawa Station", "Sakashita", "Tadachi", "Nagiso Station", "Nagiso", "Nojiri Station", "Nojiri", "Suhara", "Agematsu", "Kiso-Fukushima", "Narai Station", "Narai"],
+  );
+  assert.deepEqual(LINE.map((a) => a.pos), LINE.map((_, i) => i));
+  // 料金表の地点名と1対1
+  assert.deepEqual(LINE.map((a) => a.fare), LINE.map((a) => a.name.ja));
+});
+
+test("中津川の宿・宮ノ越・薮原は選択肢と文面に出ない", () => {
+  const all = JSON.stringify([FORM_POINTS, LB_CHOICE_GROUPS, STATIONS, RUNS, LINE]);
+  for (const w of ["kanoya", "hinataya", "加納屋", "陽屋", "Hinataya", "Kanoya", "宮ノ越", "薮原", "Miyanokoshi", "Yabuhara"])
+    assert.ok(!all.includes(w), `${w} が残っている`);
 });
 
 test("馬籠・妻籠・蘭は範囲外で、予約の選択肢に出ない", () => {
@@ -41,60 +65,58 @@ test("馬籠・妻籠・蘭は範囲外で、予約の選択肢に出ない", ()
   assert.deepEqual(OTHER_SERVICES.map((s) => s.url), ["https://magome-luggagetransport.jp/", "https://walklitejapan.com/"]);
 });
 
-test("単価:南部内1,500円、北部が絡むと2,000円、未決定の地点はnull", () => {
-  assert.equal(UNIT_SOUTH, 1500);
-  assert.equal(UNIT_NORTH, 2000);
-  assert.equal(unitPrice(p("nagiso"), p("nojiri")), UNIT_SOUTH);
-  assert.equal(unitPrice(p("nakatsugawa"), p("nagiso")), UNIT_SOUTH);
-  assert.equal(unitPrice(p("sakashita"), p("tadachi")), UNIT_SOUTH);
-  assert.equal(unitPrice(p("nagiso"), p("kisofukushima")), UNIT_NORTH);
-  assert.equal(unitPrice(p("kisofukushima"), p("nakatsugawa")), UNIT_NORTH);
-  assert.equal(unitPrice(p("agematsu"), p("kisofukushima")), UNIT_NORTH);
-  for (const k of ["suhara", "miyanokoshi", "yabuhara", "narai"] as AreaKey[]) {
-    assert.equal(FARE_ZONE[k], null);
-    assert.equal(unitPrice(p("nagiso"), p(k)), null);
-    assert.ok(byArrangement(p(k)));
+test("料金表:全126組×1〜5個で、コードの引き当て結果 = lb-fares.json の値", () => {
+  assert.equal(ROWS.length, 126);
+  let checked = 0;
+  for (const [from, to, , , yens] of ROWS) {
+    assert.equal(yens.length, 5, `${from}→${to} の個数の列が5でない`);
+    for (let n = 1; n <= 5; n++) {
+      const e = estimate(posByFare(from), posByFare(to), n);
+      assert.ok(e, `${from}→${to} ${n}個 が金額なし`);
+      assert.equal(e.total, yens[n - 1], `${from}→${to} ${n}個`);
+      assert.equal(fareYen(posByFare(from), posByFare(to), n), yens[n - 1]);
+      assert.equal(e.parts.reduce((s, x) => s + x.yen, 0), e.total);
+      checked++;
+    }
   }
+  assert.equal(checked, 126 * 5);
 });
 
-test("料金 = 単価 ×(個数 + 1)", () => {
-  assert.equal(estimate(p("nagiso"), p("nojiri"), 1)?.total, 3000);
-  assert.equal(estimate(p("nagiso"), p("nojiri"), 2)?.total, 4500);
-  assert.equal(estimate(p("nagiso"), p("nojiri"), 3)?.total, 6000);
-  assert.equal(estimate(p("nakatsugawa"), p("kisofukushima"), 1)?.total, 4000);
-  assert.equal(estimate(p("nakatsugawa"), p("kisofukushima"), 3)?.total, 8000);
-  // すべての組み合わせで式どおり、内訳の合計も一致
+test("料金表に無い組 = 同じ町どうし・同一地点だけ。どれも金額なし", () => {
+  const inTable = new Set(ROWS.map((r) => `${r[0]}|${r[1]}`));
+  const missing: string[] = [];
   for (const a of LINE)
-    for (const b of LINE)
-      for (let n = 1; n <= 8; n++) {
-        const e = estimate(a.pos, b.pos, n);
-        const u = unitPrice(a.pos, b.pos);
-        if (a.pos === b.pos || u === null) {
-          assert.equal(e, null);
-          continue;
-        }
-        assert.ok(e);
-        assert.equal(e.total, u * (n + 1));
-        assert.equal(e.parts.reduce((s, x) => s + x.yen, 0), e.total);
-      }
+    for (const b of LINE) {
+      if (inTable.has(`${a.fare}|${b.fare}`)) continue;
+      missing.push(`${a.fare}|${b.fare}`);
+      assert.ok(sameTown(a.pos, b.pos), `${a.fare}→${b.fare} は同じ町でないのに表に無い`);
+      for (let n = 1; n <= 8; n++) assert.equal(estimate(a.pos, b.pos, n), null, `${a.fare}→${b.fare} ${n}個`);
+    }
+  assert.equal(missing.length, 12 * 12 - 126);
+  for (const [x, y] of [["南木曽", "南木曽駅"], ["南木曽駅", "南木曽"], ["野尻", "野尻駅"], ["野尻駅", "野尻"], ["奈良井", "奈良井駅"], ["奈良井駅", "奈良井"]])
+    assert.ok(missing.includes(`${x}|${y}`));
 });
 
-test("料金を出さないとき:同じ町・個数0・不明な地点", () => {
-  assert.equal(estimate(p("nagiso"), p("nagiso"), 1), null);
-  assert.equal(estimate(p("nagiso"), p("nojiri"), 0), null);
+test("表に無い個数(0・6個以上・小数)と不明な地点は金額なし", () => {
+  assert.equal(MAX_FARE_BAGS, 5);
+  for (const n of [0, 6, 7, 8, 1.5, -1]) assert.equal(estimate(p("nagiso-st"), p("nojiri-st"), n), null, `${n}個`);
   assert.equal(estimate(null, p("nojiri"), 1), null);
-  assert.equal(estimate(p("nagiso"), p("nojiri"), 1.5), null);
+  assert.equal(estimate(p("nagiso"), null, 1), null);
 });
 
-test("翌日判定:南木曽より北 → 田立・坂下・中津川だけ翌日", () => {
-  assert.equal(isNextDay(p("nojiri"), p("tadachi")), true);
-  assert.equal(isNextDay(p("kisofukushima"), p("nakatsugawa")), true);
-  assert.equal(isNextDay(p("narai"), p("sakashita")), true);
-  assert.equal(isNextDay(p("nagiso"), p("tadachi")), false);
-  assert.equal(isNextDay(p("nagiso"), p("nakatsugawa")), false);
-  assert.equal(isNextDay(p("tadachi"), p("kisofukushima")), false);
-  assert.equal(isNextDay(p("nojiri"), p("nagiso")), false);
-  assert.equal(isNextDay(p("kisofukushima"), p("nojiri")), false);
+test("要相談の地点は須原・奈良井駅・奈良井(料金は表から出る)", () => {
+  for (const a of LINE) assert.equal(byArrangement(a.pos), ["suhara", "narai-st", "narai"].includes(a.key), a.key);
+  assert.ok(estimate(p("nagiso-st"), p("suhara"), 1));
+  assert.ok(estimate(p("nagiso-st"), p("narai-st"), 1));
+});
+
+test("翌日判定:南木曽より北(野尻駅〜) → 田立・坂下・中津川駅だけ翌日", () => {
+  const south: AreaKey[] = ["nakatsugawa", "sakashita", "tadachi"];
+  for (const a of LINE)
+    for (const b of LINE) {
+      const want = a.pos >= p("nojiri-st") && south.includes(b.key);
+      assert.equal(isNextDay(a.pos, b.pos), want, `${a.key}→${b.key}`);
+    }
 });
 
 test("翌日の日付", () => {
@@ -114,31 +136,46 @@ test("補償の金額が未設定のあいだ、ルールに補償の行が出�
   assert.ok(!JSON.stringify(RULES).includes("insur"));
 });
 
-/* ---------- quoteLb (即時予約の判定) ---------- */
+/* ---------- quoteLb (即時予約の判定。決済APIもこれで金額を出す) ---------- */
 const NOW = { today: "2027-04-01", tomorrow: "2027-04-02", afterDeadline: false };
 const NONE = new Set<string>();
 const label = (id: string) => FORM_POINTS.find((x) => x.place?.id === id)!.en;
 const base = { name: "Test", date: "2027-04-06", bags: 1 }; // 2027-04-06 は火曜
 
-test("一覧の駅どうしは即時予約、料金はコードの式", () => {
+test("一覧の駅どうしは即時予約、金額は料金表の値", () => {
   assert.equal(new Date("2027-04-06T00:00:00").getDay(), 2);
-  const q = quoteLb({ ...base, from: label("izumiya"), to: label("kisofukushima-info") }, "en", NOW, NONE);
-  assert.equal(q.kind, "instant");
-  if (q.kind === "instant") {
-    assert.equal(q.total, estimate(p("nagiso"), p("kisofukushima"), 1)!.total);
-    assert.equal(q.nextDay, false);
-    assert.equal(q.run, "north");
+  for (let n = 1; n <= 5; n++) {
+    const q = quoteLb({ ...base, bags: n, from: label("izumiya"), to: label("kisofukushima-info") }, "en", NOW, NONE);
+    assert.equal(q.kind, "instant");
+    if (q.kind === "instant") {
+      const row = ROWS.find((r) => r[0] === "南木曽駅" && r[1] === "木曽福島")!;
+      assert.equal(q.total, row[4][n - 1]);
+      assert.equal(q.nextDay, false);
+      assert.equal(q.run, "north");
+    }
   }
 });
 
+test("6〜8個は即時予約にせずWhatsApp(承認)、9個以上はエラー", () => {
+  for (const n of [6, 7, 8])
+    assert.equal(quoteLb({ ...base, bags: n, from: label("izumiya"), to: label("kisofukushima-info") }, "en", NOW, NONE).kind, "approval");
+  assert.equal(quoteLb({ ...base, bags: 9, from: label("izumiya"), to: label("kisofukushima-info") }, "en", NOW, NONE).kind, "error");
+});
+
+test("同じ町どうし(南木曽駅のカフェ ↔ 南木曽の宿)は承らない", () => {
+  const q = quoteLb({ ...base, from: label("izumiya"), to: label("kashiwaya"), toBooking: "B" }, "ja", NOW, NONE);
+  assert.equal(q.kind, "error");
+  if (q.kind === "error") assert.ok(q.message.includes("承っていません"));
+});
+
 test("宿が発着のときは予約名が要る", () => {
-  const q1 = quoteLb({ ...base, from: label("waiwai"), to: label("kanoya") }, "en", NOW, NONE);
+  const q1 = quoteLb({ ...base, from: label("waiwai"), to: label("kashiwaya") }, "en", NOW, NONE);
   assert.equal(q1.kind, "error");
-  const q2 = quoteLb({ ...base, from: label("waiwai"), to: label("kanoya"), fromBooking: "A", toBooking: "B" }, "en", NOW, NONE);
+  const q2 = quoteLb({ ...base, from: label("waiwai"), to: label("kashiwaya"), fromBooking: "A", toBooking: "B" }, "en", NOW, NONE);
   assert.equal(q2.kind, "instant");
   if (q2.kind === "instant") {
-    assert.equal(q2.nextDay, true);
-    assert.equal(q2.total, 4000);
+    assert.equal(q2.nextDay, false);
+    assert.equal(q2.total, ROWS.find((r) => r[0] === "木曽福島" && r[1] === "南木曽")![4][0]);
   }
 });
 
@@ -149,15 +186,4 @@ test("要相談の地点・一覧にない宿はWhatsApp(承認)", () => {
   assert.equal(other.place, null);
   assert.equal(findPoint(other.en)?.pos, p("tadachi"));
   assert.equal(quoteLb({ ...base, from: label("izumiya"), to: other.en }, "en", NOW, NONE).kind, "approval");
-});
-
-test("翌日届けの届く日が運休日(月曜)なら承認に回す", () => {
-  // 2027-04-04 は日曜 → 翌日は月曜
-  const q = quoteLb(
-    { ...base, date: "2027-04-04", from: label("katana"), to: label("kanoya"), toBooking: "B" },
-    "en",
-    NOW,
-    NONE,
-  );
-  assert.equal(q.kind, "approval");
 });

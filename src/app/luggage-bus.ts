@@ -1,20 +1,23 @@
 /** ============================================================
- *  ラゲッジバス(中津川〜奈良井の定時便)の共通データ
+ *  ラゲッジバス(中津川駅〜奈良井の定時便)の共通データ
  *  荷物運びLP(/lb, /lb/ja = luggagebusnakasendo.com)・範囲チェッカー・
  *  予約ボックス・予約フォーム・決済APIがすべてここを読む(二重管理しない)。
  *
- *  範囲(2026-11-19 社長決定):中津川・坂下・田立・南木曽・野尻・須原・上松・
- *  木曽福島・宮ノ越・薮原・奈良井。馬籠・妻籠・蘭は範囲外 → 他社のご案内。
- *  料金(2026-10-20 決定、2026-11-20 社長が採用):単価 ×(個数 + 1)。
- *  単価は南部内 1,500円、北部(上松・木曽福島)が絡むと 2,000円。
- *  須原・宮ノ越・薮原・奈良井の単価は未決定 → FARE_ZONE を null にして、
- *  料金を出さず WhatsApp で相談にしている(社長が決めたら1行直す)。
+ *  範囲(2026-11-21 社長決定):南→北に 中津川駅・坂下・田立・南木曽駅・南木曽・
+ *  野尻駅・野尻・須原・上松・木曽福島・奈良井駅・奈良井 の12地点。
+ *  中津川は駅のみ(宿は扱わない)。宮ノ越・薮原は範囲外にした。
+ *  馬籠・妻籠・蘭は範囲外 → 他社のご案内。
+ *  料金(2026-11-21 社長決定):式ではなく料金表 lb-fares.json の引き当てだけ。
+ *  表は [出発, 到着, 元表の出発, 元表の到着, [1個..5個の円]] の126組(プログラムで
+ *  生成し、元のスプレッドシートと全行一致を確認済み)。コードで計算・補完・丸めしない。
+ *  表に無い組(同じ町どうし)と、表に無い個数(6個以上)は金額を出さない。
  *  ※運賃料金の変更届を出す前に、この料金を本番に出さないこと。
  *  届く時刻(2026-11-20 社長決定):朝9時までに置けば、その日の16時までに届く。
- *  南木曽より北 → 南木曽より南(田立・坂下・中津川)は翌日届け。
+ *  南木曽より北 → 南木曽より南(田立・坂下・中津川駅)は翌日届け。
  *  ============================================================ */
 
 import { LB_NAKATSUGAWA_DROP, LB_COMPENSATION_YEN, LB_INSURANCE } from "./lb-config";
+import FARE_ROWS from "./lb-fares.json";
 
 type T = { en: string; ja: string };
 
@@ -132,36 +135,6 @@ export const PLACES: Record<string, Place> = {
     closed: { en: "Open daily (to be confirmed)", ja: "無休(要確認)" },
     rule: { weekdays: [], periods: [] },
   },
-  "kanoya": {
-    id: "kanoya",
-    name: { en: "Kanoya (private-use inn for families and friends)", ja: "家族や仲間と貸切宿 加納屋" },
-    map: "https://maps.app.goo.gl/VuKhBJU4KQWdNnpN8",
-    fee: 0,
-    guestsOnly: true,
-    hours: null,
-    closed: { en: "—", ja: "—" },
-    rule: null,
-  },
-  "hinataya": {
-    id: "hinataya",
-    name: { en: "Hinataya (old house inn overlooking the post town)", ja: "宿場を眺める古民家宿 陽屋" },
-    map: "https://maps.app.goo.gl/Mp5urfSizQJAbk9k9",
-    fee: 0,
-    guestsOnly: true,
-    hours: null,
-    closed: { en: "—", ja: "—" },
-    rule: null,
-  },
-  "hinataya-family": {
-    id: "hinataya-family",
-    name: { en: "Old-style inn Hinataya Family room", ja: "Old-style inn Hinataya Family room" },
-    map: "https://maps.app.goo.gl/bNdSQWGPZkeEWY3r6",
-    fee: 0,
-    guestsOnly: true,
-    hours: null,
-    closed: { en: "—", ja: "—" },
-    rule: null,
-  },
   "mugi-house": {
     id: "mugi-house",
     name: { en: "Mugi House by Nagi Stay", ja: "Mugi House by Nagi Stay" },
@@ -215,39 +188,56 @@ export const PLACES: Record<string, Place> = {
   "narai-station": { id: "narai-station", name: { en: "Narai Station luggage storage", ja: "奈良井駅荷物預かり所" }, map: "https://maps.app.goo.gl/ESeFTVPg2nDrmjG19", fee: 700, hours: null, closed: UNKNOWN, rule: null },
 };
 
-/** The towns on the line, south to north. `pos` is the order on the line. */
+/** The stops on the line, south to north. `pos` is the order on the line.
+ *  `town`: stops in the same town (a station and the town around it) are not
+ *  served between each other. `fare`: the stop's name in the fare table
+ *  (lb-fares.json). Places (stations, inns) belong to one stop. */
 export type AreaKey =
   | "nakatsugawa"
   | "sakashita"
   | "tadachi"
+  | "nagiso-st"
   | "nagiso"
+  | "nojiri-st"
   | "nojiri"
   | "suhara"
   | "agematsu"
   | "kisofukushima"
-  | "miyanokoshi"
-  | "yabuhara"
+  | "narai-st"
   | "narai";
 
-export const LINE: { key: AreaKey; pos: number; name: T }[] = [
-  { key: "nakatsugawa", pos: 0, name: { en: "Nakatsugawa", ja: "中津川" } },
-  { key: "sakashita", pos: 1, name: { en: "Sakashita", ja: "坂下" } },
-  { key: "tadachi", pos: 2, name: { en: "Tadachi", ja: "田立" } },
-  { key: "nagiso", pos: 3, name: { en: "Nagiso", ja: "南木曽" } },
-  { key: "nojiri", pos: 4, name: { en: "Nojiri", ja: "野尻" } },
-  { key: "suhara", pos: 5, name: { en: "Suhara", ja: "須原" } },
-  { key: "agematsu", pos: 6, name: { en: "Agematsu", ja: "上松" } },
-  { key: "kisofukushima", pos: 7, name: { en: "Kiso-Fukushima", ja: "木曽福島" } },
-  { key: "miyanokoshi", pos: 8, name: { en: "Miyanokoshi", ja: "宮ノ越" } },
-  { key: "yabuhara", pos: 9, name: { en: "Yabuhara", ja: "薮原" } },
-  { key: "narai", pos: 10, name: { en: "Narai", ja: "奈良井" } },
+export const LINE: { key: AreaKey; pos: number; name: T; town: string; fare: string; station: boolean }[] = [
+  { key: "nakatsugawa", pos: 0, name: { en: "Nakatsugawa Station", ja: "中津川駅" }, town: "nakatsugawa", fare: "中津川駅", station: true },
+  { key: "sakashita", pos: 1, name: { en: "Sakashita", ja: "坂下" }, town: "sakashita", fare: "坂下", station: false },
+  { key: "tadachi", pos: 2, name: { en: "Tadachi", ja: "田立" }, town: "tadachi", fare: "田立", station: false },
+  { key: "nagiso-st", pos: 3, name: { en: "Nagiso Station", ja: "南木曽駅" }, town: "nagiso", fare: "南木曽駅", station: true },
+  { key: "nagiso", pos: 4, name: { en: "Nagiso", ja: "南木曽" }, town: "nagiso", fare: "南木曽", station: false },
+  { key: "nojiri-st", pos: 5, name: { en: "Nojiri Station", ja: "野尻駅" }, town: "nojiri", fare: "野尻駅", station: true },
+  { key: "nojiri", pos: 6, name: { en: "Nojiri", ja: "野尻" }, town: "nojiri", fare: "野尻", station: false },
+  { key: "suhara", pos: 7, name: { en: "Suhara", ja: "須原" }, town: "suhara", fare: "須原", station: false },
+  { key: "agematsu", pos: 8, name: { en: "Agematsu", ja: "上松" }, town: "agematsu", fare: "上松", station: false },
+  { key: "kisofukushima", pos: 9, name: { en: "Kiso-Fukushima", ja: "木曽福島" }, town: "kisofukushima", fare: "木曽福島", station: false },
+  { key: "narai-st", pos: 10, name: { en: "Narai Station", ja: "奈良井駅" }, town: "narai", fare: "奈良井駅", station: true },
+  { key: "narai", pos: 11, name: { en: "Narai", ja: "奈良井" }, town: "narai", fare: "奈良井", station: false },
 ];
 
-/** Kept for older imports: the towns on the line. */
+/** Kept for older imports: the stops on the line. */
 export const AREAS = LINE;
 
-export const NAGISO_POS = 3;
 export const areaAt = (pos: number | null) => (pos === null ? null : LINE.find((a) => a.pos === pos) ?? null);
+export const posOf = (k: AreaKey) => LINE.find((a) => a.key === k)!.pos;
+export const nameOf = (k: AreaKey) => LINE.find((a) => a.key === k)!.name;
+
+/** Nagiso Station (southern end of Nagiso) and Nagiso (northern end). */
+export const NAGISO_POS = posOf("nagiso-st");
+export const NAGISO_NORTH_POS = posOf("nagiso");
+
+/** Both ends in the same town (e.g. Nagiso Station and Nagiso): not served. */
+export const sameTown = (from: number | null, to: number | null) => {
+  const a = areaAt(from);
+  const b = areaAt(to);
+  return !!a && !!b && a.town === b.town;
+};
 
 /** Not served: these go to the "other services" page. */
 export const OUT_OF_RANGE: { key: string; name: T }[] = [
@@ -263,93 +253,61 @@ export const OTHER_SERVICES: { name: string; url: string }[] = [
   { name: "Walk Lite Japan", url: "https://walklitejapan.com/" },
 ];
 
-/* ---------- Fare ---------- */
+/* ---------- Fare (looked up in the fare table, never computed) ---------- */
 
-/** Unit price by band (2026-10-20 decision). Fare = unit × (bags + 1). */
-export const UNIT_SOUTH = 1500;
-export const UNIT_NORTH = 2000;
+/** One row of lb-fares.json: from, to, source-sheet from, source-sheet to,
+ *  yen for 1..5 bags. */
+export type FareRow = [string, string, string, string, number[]];
+export const FARE_TABLE = FARE_ROWS as unknown as FareRow[];
 
-/** Which band each town is in. South: both ends in the south → UNIT_SOUTH.
- *  North: if either end is north → UNIT_NORTH. null = not decided yet
- *  (no automatic price; the request goes to WhatsApp). */
-export const FARE_ZONE: Record<AreaKey, "south" | "north" | null> = {
-  nakatsugawa: "south",
-  sakashita: "south",
-  tadachi: "south",
-  nagiso: "south",
-  nojiri: "south",
-  suhara: null, // 未決定(10/20 決定の南部・北部どちらの一覧にも無い)
-  agematsu: "north",
-  kisofukushima: "north",
-  miyanokoshi: null, // 未決定(11/19 に範囲へ追加。単価は未決定)
-  yabuhara: null, // 未決定(同上)
-  narai: null, // 未決定(10/20 時点は「当面なし」)
-};
+/** The table has prices for 1 to this many bags. More bags: ask on WhatsApp. */
+export const MAX_FARE_BAGS = 5;
 
-/** Stops whose price isn't decided: bookable only by arrangement on WhatsApp. */
+const FARE_MAP = new Map<string, number[]>(FARE_TABLE.map((r) => [`${r[0]}|${r[1]}`, r[4]]));
+
+/** Stops still booked by arrangement on WhatsApp (not instant), as before
+ *  the fare table: Suhara and Narai. Their price comes from the table too. */
+export const BY_ARRANGEMENT: AreaKey[] = ["suhara", "narai-st", "narai"];
+
 export const byArrangement = (pos: number | null) => {
   const a = areaAt(pos);
-  return !!a && FARE_ZONE[a.key] === null;
+  return !!a && BY_ARRANGEMENT.includes(a.key);
 };
 /** Positions that need arrangement (for the request form's note). */
-export const EXT_POS: number[] = LINE.filter((a) => FARE_ZONE[a.key] === null).map((a) => a.pos);
+export const EXT_POS: number[] = LINE.filter((a) => BY_ARRANGEMENT.includes(a.key)).map((a) => a.pos);
 
-/** Unit price for a trip, or null when it can't be worked out. */
-export function unitPrice(from: number | null, to: number | null): number | null {
+/** Fare in yen from the table, or null when the table has no price
+ *  (unknown stop, same town, a pair not in the table, or bags not 1–5). */
+export function fareYen(from: number | null, to: number | null, bags: number): number | null {
   const a = areaAt(from);
   const b = areaAt(to);
-  if (!a || !b) return null;
-  const za = FARE_ZONE[a.key];
-  const zb = FARE_ZONE[b.key];
-  if (za === null || zb === null) return null;
-  return za === "south" && zb === "south" ? UNIT_SOUTH : UNIT_NORTH;
+  if (!a || !b || a.town === b.town) return null;
+  if (!Number.isInteger(bags) || bags < 1 || bags > MAX_FARE_BAGS) return null;
+  const row = FARE_MAP.get(`${a.fare}|${b.fare}`);
+  const v = row?.[bags - 1];
+  return typeof v === "number" ? v : null;
 }
 
-/** Fare for a trip: unit × (bags + 1). null when it can't be worked out
- *  (unknown place, a stop whose price isn't decided, same town, or no bags).
- *  `parts` = base (one unit) + bags (unit × bags), for display. */
+/** Fare for a trip, from the table. null when there is no price.
+ *  `parts` = one line (the bags) for display and the Stripe description. */
 export function estimate(from: number | null, to: number | null, bags: number) {
-  if (from === null || to === null || from === to || !Number.isInteger(bags) || bags < 1) return null;
-  const unit = unitPrice(from, to);
-  if (unit === null) return null;
+  const total = fareYen(from, to, bags);
+  if (total === null) return null;
   const parts: { en: string; ja: string; yen: number }[] = [
-    { en: "Base", ja: "基本", yen: unit },
-    { en: `${bags} bag${bags > 1 ? "s" : ""}`, ja: `荷物${bags}個`, yen: unit * bags },
+    { en: `${bags} bag${bags > 1 ? "s" : ""}`, ja: `荷物${bags}個`, yen: total },
   ];
-  return { unit, total: unit * (bags + 1), parts };
+  return { total, parts };
 }
 
 export const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;
 
-/** Price bands shown on the page. */
-export const PRICE_BANDS: { name: T; unit: number; where: T }[] = [
-  {
-    name: { en: "Within the south", ja: "南部内" },
-    unit: UNIT_SOUTH,
-    where: {
-      en: LINE.filter((a) => FARE_ZONE[a.key] === "south").map((a) => a.name.en).join(" · "),
-      ja: LINE.filter((a) => FARE_ZONE[a.key] === "south").map((a) => a.name.ja).join("・"),
-    },
-  },
-  {
-    name: { en: "To or from the north", ja: "北部が絡む区間" },
-    unit: UNIT_NORTH,
-    where: {
-      en: LINE.filter((a) => FARE_ZONE[a.key] === "north").map((a) => a.name.en).join(" · "),
-      ja: LINE.filter((a) => FARE_ZONE[a.key] === "north").map((a) => a.name.ja).join("・"),
-    },
-  },
-];
-
-/** Worked examples shown on the page (prices computed, never typed). */
+/** Examples shown on the page (prices looked up in the table, never typed). */
 export const EXAMPLES: { from: AreaKey; to: AreaKey; bags: number }[] = [
-  { from: "nagiso", to: "nojiri", bags: 1 },
-  { from: "nakatsugawa", to: "nagiso", bags: 2 },
+  { from: "nagiso-st", to: "nojiri-st", bags: 1 },
+  { from: "nakatsugawa", to: "nagiso-st", bags: 2 },
   { from: "nagiso", to: "kisofukushima", bags: 1 },
   { from: "nakatsugawa", to: "kisofukushima", bags: 3 },
 ];
-export const posOf = (k: AreaKey) => LINE.find((a) => a.key === k)!.pos;
-export const nameOf = (k: AreaKey) => LINE.find((a) => a.key === k)!.name;
 
 /* ---------- When bags arrive ---------- */
 
@@ -357,10 +315,11 @@ export const nameOf = (k: AreaKey) => LINE.find((a) => a.key === k)!.name;
 export const DROP_BY = "9:00";
 export const ARRIVE_BY = "16:00";
 
-/** From north of Nagiso to south of Nagiso (Tadachi, Sakashita, Nakatsugawa):
- *  we take the booking and deliver the next day. */
+/** From north of Nagiso (Nojiri Station and beyond) to south of Nagiso
+ *  (Tadachi, Sakashita, Nakatsugawa Station): we take the booking and deliver
+ *  the next day. Nagiso Station and Nagiso count as Nagiso. */
 export const isNextDay = (from: number | null, to: number | null) =>
-  from !== null && to !== null && from > NAGISO_POS && to < NAGISO_POS;
+  from !== null && to !== null && from > NAGISO_NORTH_POS && to < NAGISO_POS;
 
 /** The day after an ISO date (yyyy-mm-dd). */
 export const nextIso = (iso: string) => {
@@ -387,25 +346,34 @@ export const ARRIVALS: { flow: T; when: T; next?: boolean }[] = [
   },
 ];
 
-/** The daily loops (2026-11-19 社長決定). Clock times aren't fixed yet,
- *  so only the order and rough duration are shown. */
-export const RUNS: { no: string; time: T; north: boolean; route: T }[] = [
+/** Delivery routes (2026-11-21 社長決定). Clock times aren't fixed yet,
+ *  so only the order of the stops is shown. */
+export const RUNS: { no: string; dir: T; north: boolean; route: T }[] = [
   {
     no: "①",
-    time: { en: "about 1 hour each way", ja: "片道 約1時間" },
+    dir: { en: "South", ja: "南回り" },
     north: false,
     route: {
-      en: "Nagiso → Tadachi → Sakashita → Nakatsugawa → back to Nagiso",
-      ja: "南木曽 → 田立 → 坂下 → 中津川 → 南木曽へ戻る",
+      en: "Nagiso → Tadachi → Sakashita → Nakatsugawa Station",
+      ja: "南木曽 → 田立 → 坂下 → 中津川駅",
     },
   },
   {
     no: "②",
-    time: { en: "about 2 hours each way", ja: "片道 約2時間" },
+    dir: { en: "Northbound", ja: "北行き" },
     north: true,
     route: {
-      en: "Nagiso → Nojiri → Suhara → Agematsu → Kiso-Fukushima → Miyanokoshi → Yabuhara → Narai → back to Nagiso",
-      ja: "南木曽 → 野尻 → 須原 → 上松 → 木曽福島 → 宮ノ越 → 薮原 → 奈良井 → 南木曽へ戻る",
+      en: "Nakatsugawa Station → Sakashita → Tadachi → Nagiso / Nagiso Station → Nojiri / Nojiri Station → Suhara → Agematsu → Kiso-Fukushima → Narai / Narai Station",
+      ja: "中津川駅 → 坂下 → 田立 → 南木曽・南木曽駅 → 野尻・野尻駅 → 須原 → 上松 → 木曽福島 → 奈良井・奈良井駅",
+    },
+  },
+  {
+    no: "③",
+    dir: { en: "Southbound", ja: "南行き" },
+    north: false,
+    route: {
+      en: "Narai → Kiso-Fukushima → Agematsu → Suhara → Nojiri / Nojiri Station → Nagiso / Nagiso Station",
+      ja: "奈良井 → 木曽福島 → 上松 → 須原 → 野尻・野尻駅 → 南木曽・南木曽駅",
     },
   },
 ];
@@ -421,20 +389,16 @@ export const STATIONS: { area: AreaKey; name: T; places: Place[] }[] = (
   [
     {
       area: "nakatsugawa",
-      name: { en: "Nakatsugawa stop", ja: "中津川駅" },
-      places: [
-        ...(showNakatsugawaDrop ? [PLACES["nakatsugawa-info"]] : []),
-        PLACES.kanoya,
-        PLACES.hinataya,
-        PLACES["hinataya-family"],
-      ],
+      name: { en: "Nakatsugawa Station stop", ja: "中津川駅" },
+      places: showNakatsugawaDrop ? [PLACES["nakatsugawa-info"]] : [],
     },
-    { area: "nagiso", name: { en: "Nagiso stop", ja: "南木曽駅" }, places: [PLACES.izumiya, PLACES.kashiwaya, PLACES.waku, PLACES.yuian] },
-    { area: "nojiri", name: { en: "Nojiri stop", ja: "野尻駅" }, places: [PLACES.katana] },
+    { area: "nagiso-st", name: { en: "Nagiso Station stop", ja: "南木曽駅" }, places: [PLACES.izumiya] },
+    { area: "nagiso", name: { en: "Nagiso stop (inns)", ja: "南木曽(宿)" }, places: [PLACES.kashiwaya, PLACES.waku, PLACES.yuian] },
+    { area: "nojiri-st", name: { en: "Nojiri Station stop", ja: "野尻駅" }, places: [PLACES.katana] },
     { area: "suhara", name: { en: "Suhara stop (by arrangement)", ja: "須原駅(要相談)" }, places: [PLACES.kinoma, PLACES["minshuku-suhara"]] },
     { area: "agematsu", name: { en: "Agematsu stop", ja: "上松駅" }, places: [PLACES["agematsu-info"]] },
     { area: "kisofukushima", name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" }, places: [PLACES["kisofukushima-info"], PLACES.waiwai, PLACES.matarihouse] },
-    { area: "narai", name: { en: "Narai stop (by arrangement)", ja: "奈良井駅(要相談)" }, places: [PLACES["narai-station"]] },
+    { area: "narai-st", name: { en: "Narai Station stop (by arrangement)", ja: "奈良井駅(要相談)" }, places: [PLACES["narai-station"]] },
   ] as { area: AreaKey; name: T; places: Place[] }[]
 ).filter((s) => s.places.length > 0);
 
@@ -480,36 +444,33 @@ export const FORM_POINTS: FormPoint[] = [
   ...(showNakatsugawaDrop
     ? [P("nakatsugawa", "Nakatsugawa stop (Nigiwai Tokusankan)", "中津川駅(にぎわい特産館)", PLACES["nakatsugawa-info"])]
     : []),
-  P("nakatsugawa", "Nakatsugawa (Kanoya, guests only)", "中津川(加納屋 ※宿泊者のみ)", PLACES.kanoya),
-  P("nakatsugawa", "Nakatsugawa (Hinataya, guests only)", "中津川(陽屋 ※宿泊者のみ)", PLACES.hinataya),
-  P("nakatsugawa", "Nakatsugawa (Hinataya Family room, guests only)", "中津川(Hinataya Family room ※宿泊者のみ)", PLACES["hinataya-family"]),
-  P("nagiso", "Nagiso stop (Cafe Izumiya)", "南木曽駅(カフェイズミヤ)", PLACES.izumiya),
+  P("nagiso-st", "Nagiso stop (Cafe Izumiya)", "南木曽駅(カフェイズミヤ)", PLACES.izumiya),
   P("nagiso", "Nagiso stop (Guesthouse Kashiwaya Inn, guests only)", "南木曽駅(ゲストハウス柏屋Inn ※宿泊者のみ)", PLACES.kashiwaya),
   P("nagiso", "Nagiso stop (Guesthouse Waku Nagiso, guests only)", "南木曽駅(ゲストハウスWaku南木曽 ※宿泊者のみ)", PLACES.waku),
   P("nagiso", "Nagiso stop (Guesthouse Yuian, guests only)", "南木曽駅(ゲストハウス結い庵 ※宿泊者のみ)", PLACES.yuian),
-  P("nojiri", "Nojiri stop (Cafe Katana)", "野尻駅(カフェ刀)", PLACES.katana),
+  P("nojiri-st", "Nojiri stop (Cafe Katana)", "野尻駅(カフェ刀)", PLACES.katana),
   P("suhara", "Suhara stop (Guesthouse Kinoma, guests only)", "須原駅(ゲストハウスKinoma ※宿泊者のみ)", PLACES.kinoma),
   P("suhara", "Suhara stop (Minshuku Suhara, guests only)", "須原駅(民宿すはら ※宿泊者のみ)", PLACES["minshuku-suhara"]),
   P("agematsu", "Agematsu stop (tourist information office)", "上松駅(上松町観光情報センター)", PLACES["agematsu-info"]),
   P("kisofukushima", "Kiso-Fukushima stop (tourist information office)", "木曽福島駅(木曽福島観光案内所)", PLACES["kisofukushima-info"]),
   P("kisofukushima", "Kiso-Fukushima stop (HOTEL waiwai yakiso, guests only)", "木曽福島駅(HOTEL waiwai yakiso ※宿泊者のみ)", PLACES["waiwai"]),
   P("kisofukushima", "Kiso-Fukushima stop (Matari House, guests only)", "木曽福島駅(素泊宿matarihouse ※宿泊者のみ)", PLACES["matarihouse"]),
-  P("narai", "Narai stop (Narai Station luggage storage, by arrangement)", "奈良井駅(奈良井駅荷物預かり所・要相談)", PLACES["narai-station"]),
+  P("narai-st", "Narai stop (Narai Station luggage storage, by arrangement)", "奈良井駅(奈良井駅荷物預かり所・要相談)", PLACES["narai-station"]),
   { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null, place: null },
 ];
 
-/** "Another inn in <town>": for every town on the line, so a traveller whose
- *  inn isn't listed can still check the range and the price. */
+/** "Another inn/place at <stop>": for every stop on the line, so a traveller
+ *  whose inn isn't listed can still check the range and the price. */
 export const AREA_OTHER_POINTS: FormPoint[] = LINE.map((a) => ({
-  en: `${a.name.en}: another inn (not listed)`,
-  ja: `${a.name.ja}:その他の宿(一覧にない宿)`,
+  en: a.station ? `${a.name.en}: another place (details in chat)` : `${a.name.en}: another inn (not listed)`,
+  ja: a.station ? `${a.name.ja}:その他の場所(チャットで相談)` : `${a.name.ja}:その他の宿(一覧にない宿)`,
   pos: a.pos,
   place: null,
   area: a.key,
 }));
 
-/** Every choice of the range checker and the booking box, grouped by town,
- *  south to north: the listed places, then "another inn". One list for both. */
+/** Every choice of the range checker and the booking box, grouped by stop,
+ *  south to north: the listed places, then "another inn/place". One list for both. */
 export const LB_CHOICE_GROUPS: { area: (typeof LINE)[number]; points: FormPoint[] }[] = LINE.map((a) => ({
   area: a,
   points: [...FORM_POINTS.filter((p) => p.area === a.key), AREA_OTHER_POINTS.find((p) => p.area === a.key)!],
@@ -525,10 +486,9 @@ export const findPoint = (label: string): FormPoint | null =>
 export const FORM_AREAS: { key: string; pos: number; name: T }[] = LINE.map((a) => ({
   key: a.key,
   pos: a.pos,
-  name:
-    FARE_ZONE[a.key] === null
-      ? { en: `${a.name.en} (by arrangement)`, ja: `${a.name.ja}(要相談)` }
-      : a.name,
+  name: BY_ARRANGEMENT.includes(a.key)
+    ? { en: `${a.name.en} (by arrangement)`, ja: `${a.name.ja}(要相談)` }
+    : a.name,
 }));
 
 /** Last choice in every area: an inn or place not on the list, named in the free-text box. */
