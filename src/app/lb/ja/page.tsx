@@ -9,16 +9,22 @@ import {
   ArrowRight,
   Ban,
   Camera,
-  ShieldCheck,
-  Building2,
 } from "lucide-react";
 import { WHATSAPP_URL_JA } from "../../site";
-import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "../lb-chrome";
+import { LbNav, LbFooter, LbFloat, EBIKE_SITE, useLb } from "../lb-chrome";
 import { LbHowVideo } from "../how-video";
-import { LbBookBox } from "../book-box";
-import { STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, ZONES, ZONE_FEE, BAG_FEE, EXTENSION_FEE, EXAMPLES, fare, yen } from "../../luggage-bus";
+import { LbPlanner } from "../lb-planner";
+import { LbInstantSteps, LbTrust, LbArrangements } from "../lb-sections";
+import {
+  STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, PRICE_BANDS, EXAMPLES, LINE, OUT_OF_RANGE,
+  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY,
+} from "../../luggage-bus";
+
+const RANGE_JA = LINE.map((a) => a.name.ja).join("・");
 
 export default function JaLuggageBusPage() {
+  const { base } = useLb();
+  const otherHref = `${base}/ja/other-services`;
   return (
     <div className="lp">
       <LbNav lang="ja" />
@@ -32,15 +38,18 @@ export default function JaLuggageBusPage() {
         <div>
           <span className="head-badge">荷物専用・人は乗れません</span>
           <br />
-          <span className="eyebrow">ラゲッジバス · 南木曽 — 木曽福島</span>
+          <span className="eyebrow">ラゲッジバス · 中津川 — 奈良井</span>
           <h1>
             Yes Road, <em>No load.</em>
           </h1>
           <p>
-            ラゲッジバスは、南木曽・野尻・須原・上松・木曽福島を、毎日決まった時刻で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
+            ラゲッジバスは、{RANGE_JA}を毎日決まった便で結ぶ荷物の定期便です。朝、ラゲッジバスの「駅」(荷物の預け場所や提携宿)に荷物を預けたら、あとは手ぶらで歩くだけ。荷物は行き先で待っています。
           </p>
           <p className="head-note">
-            南木曽から木曽福島へは当日11:30ごろに届き、チェックインに間に合います。ご利用は予約制です。WhatsAppで申し込み、こちらの承認で確定します。
+            朝{DROP_BY}までに置いていただければ、その日の{ARRIVE_BY}までに届きます。選んで、払えば、その場で予約確定です。
+          </p>
+          <p className="head-note">
+            <small>※南木曽より北から田立・坂下・中津川へは、翌日のお届けです(予約は受け付けます)。</small>
           </p>
         </div>
         <figure className="page-head-visual">
@@ -53,7 +62,9 @@ export default function JaLuggageBusPage() {
         </figure>
       </header>
 
-      <LbBookBox lang="ja" />
+      <LbPlanner lang="ja" />
+
+      <LbInstantSteps lang="ja" />
 
       {/* 荷物のみ */}
       <section className="mini-sec lb-notice-sec">
@@ -85,10 +96,10 @@ export default function JaLuggageBusPage() {
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">運ぶ時刻</th><td>業者が決める・時間帯を指定</td><td className="us">毎日決まった時刻(北行き 10:00〜11:30 / 南行き 12:00〜13:30)</td></tr>
+              <tr><th scope="row">運ぶ時刻</th><td>業者が決める・時間帯を指定</td><td className="us">毎日決まった便。朝{DROP_BY}までに置けば{ARRIVE_BY}までに届く</td></tr>
               <tr><th scope="row">預ける・受け取る場所</th><td>住所を自由に指定</td><td className="us">決まった「駅」(カフェ・宿・案内所)から選ぶ</td></tr>
               <tr><th scope="row">申し込みの締切</th><td>業者による</td><td className="us">前日23:00まで</td></tr>
-              <tr><th scope="row">料金</th><td>サイズ・距離で変わる</td><td className="us">配送料(区域×1,500円)+荷物1個1,500円</td></tr>
+              <tr><th scope="row">料金</th><td>サイズ・距離で変わる</td><td className="us">単価 ×(個数 + 1)</td></tr>
               <tr><th scope="row">向いている人</th><td>日時・場所を細かく指定したい人</td><td className="us">歩く・走る予定を先に決めた人</td></tr>
             </tbody>
           </table>
@@ -100,20 +111,20 @@ export default function JaLuggageBusPage() {
       {/* 時刻表 */}
       <section className="mini-sec" id="timetable">
         <span className="eyebrow">時刻表</span>
-        <h2>1日1往復。南木曽と木曽福島を結びます。</h2>
+        <h2>南木曽から、南は中津川、北は奈良井まで。</h2>
         <div className="lb-runs">
           {RUNS.map((r) => (
             <div className={`lb-run${r.north ? " north" : ""}`} key={r.no}>
               <span className="lb-run-dir">
-                {r.no} {r.north ? "北行き" : "南行き"}
+                {r.no} {r.north ? "北回り" : "南回り"}
               </span>
-              <span className="lb-run-time">{r.time.replace("–", "〜")}</span>
+              <span className="lb-run-time">{r.time.ja}</span>
               <span className="lb-run-route">{r.route.ja}</span>
             </div>
           ))}
         </div>
         <p className="drop-note">
-          午前に木曽福島へ、昼すぎに南木曽へ戻ります。届く時間は下の表をご覧ください。
+          荷物は朝{DROP_BY}までに置いてください。届く時間は下の表をご覧ください。
         </p>
 
         <h3 className="lb-sub">荷物が届く時間</h3>
@@ -148,7 +159,7 @@ export default function JaLuggageBusPage() {
               <span className="koma-num">1</span>
               <CreditCard size={26} />
               <h3>予約して支払う</h3>
-              <p>上の予約ボックスで日付・駅・個数を選び、支払った時点で予約確定です。宿の名前が無いときや延長区間はWhatsAppで受け付けます。</p>
+              <p>上の予約ボックスで日付・駅・個数を選び、支払った時点で予約確定です。宿の名前が無いときや「要相談」の地点はWhatsAppで受け付けます。</p>
             </div>
             <div className="koma">
               <div className="lb-ph">写真(仮置き)<br/>荷物の写真</div>
@@ -161,15 +172,15 @@ export default function JaLuggageBusPage() {
               <div className="lb-ph">写真(仮置き)<br/>駅に預ける</div>
               <span className="koma-num">3</span>
               <PackageCheck size={26} />
-              <h3>朝、駅に預ける</h3>
-              <p>便が駅を通る10分前まで(前日の夕方でも可)に、出発の駅か泊まった宿に預けて、手ぶらで出発。</p>
+              <h3>朝、宿や駅に置く</h3>
+              <p>朝{DROP_BY}まで(前日の夕方でも可)に、泊まった宿のフロントか玄関、または出発の駅に置いて、手ぶらで出発。</p>
             </div>
             <div className="koma">
               <div className="lb-ph">写真(仮置き)<br/>次の宿で受け取る</div>
               <span className="koma-num">4</span>
               <Footprints size={26} />
               <h3>次の駅・宿で受け取る</h3>
-              <p>北行きは10:30〜11:30、南行きは13:30までに到着。着いたら受け取るだけです。</p>
+              <p>その日の{ARRIVE_BY}までに届きます(南木曽より北から田立・坂下・中津川へは翌日)。着いたら受け取るだけです。</p>
             </div>
           </div>
         </div>
@@ -178,12 +189,8 @@ export default function JaLuggageBusPage() {
       {/* 安心と条件(ひとまとめ) */}
       <section className="mini-sec" id="conditions">
         <span className="eyebrow">安心して預けるために</span>
-        <h2>補償・記録・運営者。</h2>
-        <div className="mini-grid cols3">
-          <div className="mini-card lb-way"><h3><ShieldCheck size={20} /> 1個3万円まで補償</h3><p>貨物保険に入っています。</p></div>
-          <div className="mini-card lb-way"><h3><Camera size={20} /> 写真とタグで管理</h3><p>預かる前に1個ずつ写真を受け取り、回収のときにタグを付けます。</p></div>
-          <div className="mini-card lb-way"><h3><Building2 size={20} /> 運営者がわかる</h3><p>合同会社FROM SCRATCH(南木曽町)。ゲストハウス柏屋とE-bikeのキソライドを運営しています。<a href="https://nakasendo-ebike.com/ja/legal">特定商取引法の表記</a></p></div>
-        </div>
+        <h2>登録車両・1個ずつの記録・運営者。</h2>
+        <LbTrust lang="ja" />
         <h3 className="lb-cond-title">ご利用の条件</h3>
         <ul className="lb-places lb-cond">
           <li>申し込みは前日23時まで。</li>
@@ -205,7 +212,7 @@ export default function JaLuggageBusPage() {
             <ul className="lb-places">
               <li>宿から宿へ、手ぶらで歩く・走る方</li>
               <li>前日までに日付と駅を決められる方</li>
-              <li>南木曽・野尻・須原・上松・木曽福島の間で動く方</li>
+              <li>{RANGE_JA}の間で動く方</li>
             </ul>
           </div>
           <div className="mini-card lb-way">
@@ -214,6 +221,7 @@ export default function JaLuggageBusPage() {
               <li>時刻や場所を細かく指定したい方</li>
               <li>月曜、または12月〜3月に移動する方(運休)</li>
               <li>人も一緒に運んでほしい方(荷物専用です)</li>
+              <li>{OUT_OF_RANGE.map((o) => o.name.ja).join("・")}が発着の方(<a href={otherHref}>他のサービスのご案内</a>)</li>
             </ul>
           </div>
         </div>
@@ -222,28 +230,20 @@ export default function JaLuggageBusPage() {
       {/* 料金 */}
       <section className="mini-sec" id="pricing">
         <span className="eyebrow">料金</span>
-        <h2>配送料+荷物1個1,500円。</h2>
+        <h2>単価 ×(個数 + 1)。</h2>
         <div className="pricing">
-          {ZONES.map((z) => (
-            <div className="pitem" key={z.name.en}>
-              <h4>{z.name.ja}</h4>
+          {PRICE_BANDS.map((b) => (
+            <div className="pitem" key={b.name.en}>
+              <h4>{b.name.ja}</h4>
               <div className="amt">
-                {yen(ZONE_FEE)}
-                <span style={{ fontSize: "0.9rem" }}>/1予約</span>
+                {yen(b.unit)}
+                <span style={{ fontSize: "0.9rem" }}>/単価</span>
               </div>
-              <p>{z.route.ja}</p>
+              <p>{b.where.ja}</p>
             </div>
           ))}
-          <div className="pitem">
-            <h4>荷物</h4>
-            <div className="amt">
-              +{yen(BAG_FEE)}
-              <span style={{ fontSize: "0.9rem" }}>/個</span>
-            </div>
-            <p>距離に関係なく1個ごと。</p>
-          </div>
           <p className="pricing-foot">
-            配送料は1件の予約ごとに、荷物が通る区域1つにつき1,500円です。南部と中部の境目は須原です。中津川(南部延伸)・奈良井(北部延伸)まで延ばすときは要相談で、それぞれ+1,500円です。予約フォームで概算金額が出ます。
+            料金 = 単価 ×(荷物の個数 + 1)。「+1」が基本料金で、荷物が1個増えるごとに単価1つ分です。発着とも南部なら単価{yen(PRICE_BANDS[0].unit)}、どちらかが北部なら単価{yen(PRICE_BANDS[1].unit)}です。「要相談」の地点の料金はWhatsAppでお伝えします。合計は予約ボックスで自動で出ます。
           </p>
         </div>
 
@@ -258,23 +258,24 @@ export default function JaLuggageBusPage() {
               </tr>
             </thead>
             <tbody>
-              {EXAMPLES.map((x) => (
-                <tr key={`${x.trip.en}-${x.bags}`}>
-                  <th scope="row">
-                    {x.trip.ja}
-                    <small>
-                      配送料 {yen(x.zones * ZONE_FEE)} + {yen(BAG_FEE)} × {x.bags}
-                    </small>
-                  </th>
-                  <td>{x.bags}</td>
-                  <td>{yen(fare(x.zones, x.bags))}</td>
-                </tr>
-              ))}
+              {EXAMPLES.map((x) => {
+                const e = estimate(posOf(x.from), posOf(x.to), x.bags);
+                return (
+                  <tr key={`${x.from}-${x.to}-${x.bags}`}>
+                    <th scope="row">
+                      {nameOf(x.from).ja} → {nameOf(x.to).ja}
+                      {e && <small>{yen(e.unit)} ×({x.bags} + 1)</small>}
+                    </th>
+                    <td>{x.bags}</td>
+                    <td>{e ? yen(e.total) : "—"}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
         <p className="drop-note">
-          合計金額は、承認のときに決済リンクと一緒にWhatsAppでお伝えします。
+          合計金額は、支払う前に予約ボックスに出ます。
         </p>
       </section>
 
@@ -376,22 +377,24 @@ export default function JaLuggageBusPage() {
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">
             <h3>
-              <MessageCircle size={20} /> 載っていない場所は応相談
+              <MessageCircle size={20} /> 一覧にない宿
             </h3>
             <p>
-              駅のほかの宿や場所(馬籠・妻籠の宿など)は、WhatsAppで個別にご相談ください。
+              {RANGE_JA}の宿なら、その町の「その他の宿」を選んで、WhatsAppでお申し込みください。
             </p>
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> 中津川・奈良井への延長は要相談
+              <ArrowRight size={20} /> 馬籠・妻籠・蘭の方へ
             </h3>
             <p>
-              南木曽の先の中津川、木曽福島の先の奈良井までは、WhatsAppで相談のうえ運びます。それぞれ+{yen(EXTENSION_FEE)}です。
+              範囲外です。<a href={otherHref}>対応している地元のサービスのご案内</a>をご覧ください。
             </p>
           </div>
         </div>
       </section>
+
+      <LbArrangements lang="ja" />
 
       {/* 宿・場所から駅を探す */}
       <section className="mini-sec" id="find-stop">
@@ -432,7 +435,7 @@ export default function JaLuggageBusPage() {
         <details className="faq-item">
           <summary>予約なしで持って行ってもいいですか?</summary>
           <p>
-            予約をお願いします。便の空きを確かめるため、WhatsAppで1件ずつ承認しています。お送りするリンクで支払いが済んだら予約確定です。
+            前日23時までに予約をお願いします。一覧にある駅・宿なら、予約ボックスで支払った時点で予約確定です。
           </p>
         </details>
         <details className="faq-item">

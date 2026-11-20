@@ -25,6 +25,8 @@ export function middleware(req: NextRequest) {
       "/robots.txt": "/lb/robots.txt",
       "/booked": "/lb/booked",
       "/ja/booked": "/lb/ja/booked",
+      "/other-services": "/lb/other-services",
+      "/ja/other-services": "/lb/ja/other-services",
     };
     // Guide pages: /guide/... and /ja/guide/... live under /lb.
     const target =

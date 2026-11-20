@@ -1,18 +1,26 @@
-import { fare, yen, BAG_FEE, ZONE_FEE } from "../luggage-bus";
+import { yen, estimate, posOf, unitPrice, DROP_BY, ARRIVE_BY } from "../luggage-bus";
 
 type Lang = "en" | "ja";
 
 /** FAQ for the Nagiso → Kiso-Fukushima guide (page + FAQPage JSON-LD).
  *  Prices come from luggage-bus.ts so they never drift from the fare table. */
+const N = posOf("nagiso");
+const K = posOf("kisofukushima");
+const one = estimate(N, K, 1)?.total ?? 0;
+const unit = unitPrice(N, K) ?? 0;
+
+/** Lowest price for one bag on this section (for the page description). */
+export const GUIDE_FROM_PRICE = one;
+
 export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
   en: [
     {
       q: "Can I send my bags from Nagiso to Kiso-Fukushima on the same day?",
-      a: "Yes. The northbound run leaves Nagiso around 10:00 and your bags reach Kiso-Fukushima between 10:30 and 11:30 the same day.",
+      a: `Yes. Leave your bags by ${DROP_BY} in the morning and they reach Kiso-Fukushima by ${ARRIVE_BY} the same day.`,
     },
     {
       q: "How much does it cost to send one bag from Nagiso to Kiso-Fukushima?",
-      a: `${yen(fare(2, 1))}: two fare zones (${yen(ZONE_FEE)} each) plus ${yen(BAG_FEE)} for the bag. Each extra bag is ${yen(BAG_FEE)}.`,
+      a: `${yen(one)}: the unit price ${yen(unit)} × (1 bag + 1). Each extra bag adds ${yen(unit)}.`,
     },
     {
       q: "When do I need to book?",
@@ -26,11 +34,11 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
   ja: [
     {
       q: "南木曽から木曽福島へ、当日中に荷物を送れますか?",
-      a: "送れます。北行きの便は10時ごろに南木曽を出て、荷物は当日10:30〜11:30に木曽福島に届きます。",
+      a: `送れます。朝${DROP_BY}までに置いていただければ、その日の${ARRIVE_BY}までに木曽福島に届きます。`,
     },
     {
       q: "南木曽から木曽福島まで、荷物1個はいくらですか?",
-      a: `${yen(fare(2, 1))}です。配送料(区域2つ×${yen(ZONE_FEE)})と荷物1個${yen(BAG_FEE)}の合計です。2個目からは1個につき${yen(BAG_FEE)}です。`,
+      a: `${yen(one)}です。単価${yen(unit)}×(1個+1)で計算します。荷物が1個増えるごとに${yen(unit)}です。`,
     },
     {
       q: "いつまでに申し込めばいいですか?",
@@ -42,4 +50,3 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
     },
   ],
 };
-

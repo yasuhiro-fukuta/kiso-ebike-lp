@@ -54,6 +54,8 @@ export async function POST(req: NextRequest) {
     from: String(body.from ?? ""),
     to: String(body.to ?? ""),
     bags: Number(body.bags ?? 0),
+    fromBooking: String(body.fromBooking ?? "").slice(0, 80),
+    toBooking: String(body.toBooking ?? "").slice(0, 80),
   };
 
   const q = quoteLb(input, lang);
@@ -82,7 +84,9 @@ export async function POST(req: NextRequest) {
     const name = ja
       ? `ラゲッジバス ${input.date} ${q.from.label} → ${q.to.label} 荷物${input.bags}個`
       : `Luggage Bus ${input.date}: ${q.from.label} → ${q.to.label}, ${input.bags} bag${input.bags > 1 ? "s" : ""}`;
-    const description = q.parts.map((p) => `${p[lang]} ¥${p.yen.toLocaleString("en-US")}`).join(" + ");
+    const description =
+      q.parts.map((p) => `${p[lang]} ¥${p.yen.toLocaleString("en-US")}`).join(" + ") +
+      (q.nextDay ? (ja ? "(翌日のお届け)" : " (delivered the next day)") : "");
     const meta: Record<string, string> = {
       service: "luggage_bus",
       date: input.date,
@@ -93,6 +97,10 @@ export async function POST(req: NextRequest) {
       name: input.name,
       lang,
     };
+    // Names the inn reservations are under: we contact both inns ahead (2026-11-20).
+    if (input.fromBooking.trim()) meta.from_inn_booking_name = input.fromBooking.trim();
+    if (input.toBooking.trim()) meta.to_inn_booking_name = input.toBooking.trim();
+    if (q.nextDay) meta.delivery = "next_day";
 
     const p = new URLSearchParams();
     p.set("mode", "payment");

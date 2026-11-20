@@ -21,7 +21,7 @@ type Lang = "en" | "ja";
 
 /** On the preview/staging host the LP lives under /lb; on its own domain
  *  the middleware rewrites "/" → /lb, so paths carry no prefix. */
-function useLb(): { base: string; isJa: boolean } {
+export function useLb(): { base: string; isJa: boolean } {
   const pathname = usePathname() ?? "/";
   const base = pathname === "/lb" || pathname.startsWith("/lb/") ? "/lb" : "";
   const rest = base ? pathname.slice(base.length) || "/" : pathname;
@@ -101,8 +101,8 @@ export function LbFooter({ lang = "en" }: { lang?: Lang }) {
           </a>
           <p>
             {ja
-              ? "南木曽〜木曽福島の宿へ、荷物だけを運ぶバス。長野県南木曽町・ゲストハウス柏屋(From Scratch LLC)が運営しています。"
-              : "A bags-only shuttle between Nagiso and Kiso-Fukushima. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
+              ? "中津川〜奈良井の宿へ、荷物だけを運ぶバス。長野県南木曽町・ゲストハウス柏屋(From Scratch LLC)が運営しています。"
+              : "A bags-only shuttle between Nakatsugawa and Narai. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
           </p>
         </div>
         <div>

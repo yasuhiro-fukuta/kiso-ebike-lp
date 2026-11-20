@@ -2,7 +2,9 @@
 
 import { MapPin, ArrowRight, Clock, Luggage } from "lucide-react";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
-import { STATIONS, placeName, fare, yen } from "../luggage-bus";
+import { STATIONS, placeName, yen, estimate, posOf, DROP_BY, ARRIVE_BY } from "../luggage-bus";
+
+const kfFare = (bags: number) => estimate(posOf("nagiso"), posOf("kisofukushima"), bags)?.total ?? 0;
 import { GUIDE_FAQ } from "./guide-faq";
 
 type Lang = "en" | "ja";
@@ -47,20 +49,20 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
                 <th scope="row"><Clock size={16} /> {ja ? "預ける" : "Drop off"}</th>
                 <td className="us">
                   {ja
-                    ? "便が駅を通る10分前まで(前日の夕方でも可)。北行きは10:00ごろ南木曽発"
-                    : "At least 10 minutes before the run passes (or the evening before). The northbound run leaves Nagiso around 10:00"}
+                    ? `朝${DROP_BY}まで(前日の夕方でも可)`
+                    : `By ${DROP_BY} in the morning (or the evening before)`}
                 </td>
               </tr>
               <tr>
                 <th scope="row"><MapPin size={16} /> {ja ? "届く" : "Arrives"}</th>
-                <td className="us">{ja ? "当日 10:30〜11:30 に木曽福島" : "Same day, 10:30–11:30 in Kiso-Fukushima"}</td>
+                <td className="us">{ja ? `当日 ${ARRIVE_BY}までに木曽福島` : `Same day, by ${ARRIVE_BY} in Kiso-Fukushima`}</td>
               </tr>
               <tr>
                 <th scope="row"><Luggage size={16} /> {ja ? "料金" : "Price"}</th>
                 <td className="us">
                   {ja
-                    ? `荷物1個 ${yen(fare(2, 1))} / 2個 ${yen(fare(2, 2))} / 3個 ${yen(fare(2, 3))}`
-                    : `1 bag ${yen(fare(2, 1))} · 2 bags ${yen(fare(2, 2))} · 3 bags ${yen(fare(2, 3))}`}
+                    ? `荷物1個 ${yen(kfFare(1))} / 2個 ${yen(kfFare(2))} / 3個 ${yen(kfFare(3))}`
+                    : `1 bag ${yen(kfFare(1))} · 2 bags ${yen(kfFare(2))} · 3 bags ${yen(kfFare(3))}`}
                 </td>
               </tr>
               <tr>
@@ -103,8 +105,8 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
         </div>
         <p className="drop-note">
           {ja
-            ? "宿の駅は、その宿に泊まる方だけが使えます。途中の野尻・須原・上松で受け取ることもできます。"
-            : "Inn stops are for that inn's guests only. You can also collect at Nojiri, Suhara or Agematsu on the way."}
+            ? "宿の駅は、その宿に泊まる方だけが使えます。途中の野尻・上松で受け取ることもできます(須原は要相談)。"
+            : "Inn stops are for that inn's guests only. You can also collect at Nojiri or Agematsu on the way (Suhara by arrangement)."}
         </p>
       </section>
 
