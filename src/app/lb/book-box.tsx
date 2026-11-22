@@ -10,7 +10,7 @@ import { wa } from "../site";
 type Lang = "en" | "ja";
 
 /** Values the range checker hands over ("Book this"). `n` changes on every hand-over. */
-export type LbPreset = { from: string; to: string; bags: string; n: number };
+export type LbPreset = { from: string; to: string; bags: string; date?: string; n: number };
 
 /** The stops of the booking box and the range checker: one list, grouped by town. */
 export function LbStopOptions({ lang }: { lang: Lang }) {
@@ -54,7 +54,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
   // Hand-over from the range checker: fill the stops and bags, then bring the box into view.
   useEffect(() => {
     if (!preset) return;
-    setV((cur) => ({ ...cur, from: preset.from, to: preset.to, bags: preset.bags }));
+    setV((cur) => ({ ...cur, from: preset.from, to: preset.to, bags: preset.bags, date: preset.date || cur.date }));
     boxRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [preset]);
 
