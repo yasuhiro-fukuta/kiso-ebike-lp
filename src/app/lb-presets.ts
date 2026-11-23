@@ -6,7 +6,7 @@
  *  ※すべて「仮」(2026-11-22 社長室の作業役が作成。社長が決める)。
  *  ============================================================ */
 import type { AreaKey, FormPoint } from "./luggage-bus";
-import { pointFor } from "./lb-geo";
+import { pointFor } from "./lb-names";
 
 type T = { en: string; ja: string };
 
@@ -42,7 +42,7 @@ export const LB_TRIP_PRESETS: TripPreset[] = [
   {
     id: "kisofukushima-narai",
     title: { en: "Kiso-Fukushima → Narai", ja: "木曽福島 → 奈良井" },
-    note: { en: "1 day · Narai is by arrangement", ja: "1日・奈良井は要相談" },
+    note: { en: "1 day · go north to Narai", ja: "1日・奈良井へ北上" },
     legs: [{ from: { area: "kisofukushima" }, to: { area: "narai" }, day: 0 }],
   },
   // 仮

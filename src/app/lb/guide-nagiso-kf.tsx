@@ -72,7 +72,7 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
               <tr>
                 <th scope="row">{ja ? "運休" : "No runs"}</th>
                 <td className="us">
-                  {ja ? "毎週月曜と12〜3月(2027年3月20日ごろ再開)" : "Mondays, and December to March (restarting around 20 March 2027)"}
+                  {ja ? "毎週月曜(運行期間は2027年3月〜2028年2月)" : "Mondays (we run March 2027 – February 2028)"}
                 </td>
               </tr>
             </tbody>
@@ -105,8 +105,8 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
         </div>
         <p className="drop-note">
           {ja
-            ? "宿の駅は、その宿に泊まる方だけが使えます。途中の野尻・上松で受け取ることもできます(須原は要相談)。"
-            : "Inn stops are for that inn's guests only. You can also collect at Nojiri or Agematsu on the way (Suhara by arrangement)."}
+            ? "宿の駅は、その宿に泊まる方だけが使えます。途中の野尻・須原・上松で受け取ることもできます。"
+            : "Inn stops are for that inn's guests only. You can also collect at Nojiri, Suhara or Agematsu on the way."}
         </p>
       </section>
 

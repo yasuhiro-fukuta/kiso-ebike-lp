@@ -2112,3 +2112,15 @@ figure.season-cell .season-tag {
 .lb-leg-add svg { vertical-align: -3px; }
 @media (max-width: 560px) { .lb-leg-ends { grid-template-columns: 1fr; } .lb-preset { flex: 1 1 100%; } }
 
+
+/* Luggage Bus: stop picker, agreement, service calendar (2026-11-24) */
+.lb-stop-picker { display: flex; flex-direction: column; gap: .4rem; }
+.lb-agree { display: flex; gap: .5rem; align-items: flex-start; font-size: .85rem; line-height: 1.5; margin: .8rem 0; }
+.lb-agree input { margin-top: .25rem; }
+.lb-cal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.lb-cal h3 { font-size: .95rem; margin: 0 0 .4rem; }
+.lb-cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; font-size: .78rem; }
+.lb-cal-wd { font-weight: 700; opacity: .7; }
+.lb-cal-d { display: inline-block; min-width: 1.6em; padding: 2px 0; border-radius: 4px; }
+.lb-cal-d.on { background: #e6f2ea; color: #1d5b34; }
+.lb-cal-d.off { background: #eee; color: #999; text-decoration: line-through; }

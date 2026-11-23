@@ -1,7 +1,7 @@
 import { CheckCircle2, Camera, Clock, MessageCircle, Building2 } from "lucide-react";
 import { LbNav, LbFooter } from "./lb-chrome";
 import { WHATSAPP_URL, WHATSAPP_URL_JA } from "../site";
-import { DROP_BY, ARRIVE_BY } from "../luggage-bus";
+import { DROP_BY, ARRIVE_BY, CANCEL_POLICY } from "../luggage-bus";
 
 type Lang = "en" | "ja";
 
@@ -107,8 +107,8 @@ export async function BookedView({ lang, sessionId }: { lang: Lang; sessionId?: 
         <p className="drop-note">
           <CheckCircle2 size={14} />{" "}
           {ja
-            ? "キャンセル:3日前まで全額返金/3日前を過ぎて前日まで半額/当日は返金なし。急ぎはWhatsAppでお電話ください(+81 90-3839-2354)。"
-            : "Cancellation: full refund up to 3 days before; 50% from then until the day before; none on the day. Urgent? Call us on WhatsApp: +81 90-3839-2354."}
+            ? `キャンセル:${CANCEL_POLICY.ja}急ぎはWhatsAppでお電話ください(+81 90-3839-2354)。`
+            : `Cancellation: ${CANCEL_POLICY.en} Urgent? Call us on WhatsApp: +81 90-3839-2354.`}
         </p>
       </section>
 

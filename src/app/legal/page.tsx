@@ -22,7 +22,7 @@ const ROWS: [string, React.ReactNode][] = [
   ["Service delivery", "On the date you booked"],
   [
     "Cancellation & refunds",
-    "E-bike rental, guided tour and luggage transfer: full refund if you cancel 3 or more days before; 50% refund if you cancel 1–2 days before; no refund on the day (rain included). Full refund if we cancel, including when we call it off for weather.",
+    "E-bike rental and guided tour: full refund if you cancel 3 or more days before; 50% refund if you cancel 1–2 days before; no refund on the day (rain included). Luggage transfer (Luggage Bus): free cancellation up to 7 days before the service date; from 6 days before (including the day), 100% of the fare is charged. Full refund if we cancel, including when we call it off for weather.",
   ],
 ];
 

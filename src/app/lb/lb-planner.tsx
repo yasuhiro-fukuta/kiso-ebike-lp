@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, XCircle, MapPin, Clock, Wallet, ArrowRight, Search, Plus, Trash2, ExternalLink } from "lucide-react";
+import { CheckCircle2, XCircle, MapPin, Clock, Wallet, ArrowRight, Search, Plus, Trash2 } from "lucide-react";
 import {
   OUT_OF_RANGE,
   findPoint,
@@ -16,21 +16,9 @@ import {
   ARRIVE_BY,
   DROP_BY,
 } from "../luggage-bus";
-import {
-  AREA_GEO,
-  MAX_KM,
-  extractLatLng,
-  shortMapLink,
-  looksLikeMapInput,
-  judgeLatLng,
-  pointFor,
-  mapsUrl,
-  searchStops,
-  type LatLng,
-  type SearchEntry,
-} from "../lb-geo";
+import { searchStops, type SearchEntry } from "../lb-names";
 import { LB_TRIP_PRESETS, presetPoint, type TripPreset } from "../lb-presets";
-import { LbBookBox, LbStopOptions, type LbPreset } from "./book-box";
+import { LbBookBox, LbStopPicker, lbDateMin, LB_DATE_MAX, type LbPreset } from "./book-box";
 import { useLb } from "./lb-chrome";
 
 type Lang = "en" | "ja";
@@ -48,27 +36,8 @@ export function LbPlanner({ lang }: { lang: Lang }) {
   );
 }
 
-function EndSelect({ id, lang, value, onChange }: { id: string; lang: Lang; value: string; onChange: (v: string) => void }) {
-  const ja = lang === "ja";
-  return (
-    <select id={id} value={value} onChange={(e) => onChange(e.target.value)}>
-      <option value="">{ja ? "—一覧から選ぶ—" : "— or pick from the list —"}</option>
-      <LbStopOptions lang={lang} />
-      <optgroup label={ja ? "範囲外" : "Not on our route"}>
-        {OUT_OF_RANGE.map((o) => (
-          <option key={o.key} value={`${OUT}${o.key}`}>
-            {o.name[lang]}
-          </option>
-        ))}
-      </optgroup>
-    </select>
-  );
-}
-
-type Found = { how: "name" | "map"; km?: number } | { how: "far"; km: number } | null;
-
-/** One end of a trip: type an inn/station name (suggestions), or paste a Google Maps
- *  link / coordinates. The stop is judged and shown; the list below lets the guest fix it. */
+/** One end of a trip: pick the nearest JR station, then the inn or drop point there.
+ *  Typing an inn or station name is a shortcut (no Google Maps — 2026-11-24 社長). */
 function EndPicker({
   id,
   lang,
@@ -83,116 +52,51 @@ function EndPicker({
   onChange: (v: string) => void;
 }) {
   const ja = lang === "ja";
-  const { base } = useLb();
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
-  const [found, setFound] = useState<Found>(null);
-  const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState<string | null>(null);
-  const isMap = looksLikeMapInput(q);
-  const hits: SearchEntry[] = !isMap && open ? searchStops(q) : [];
+  const hits: SearchEntry[] = open ? searchStops(q) : [];
 
   const pick = (e: SearchEntry) => {
     onChange(e.point ? e.point[lang] : `${OUT}${e.out}`);
-    setFound({ how: "name" });
     setQ(e.label[lang]);
     setOpen(false);
-    setMsg(null);
-  };
-
-  const fromLatLng = (p: LatLng) => {
-    const j = judgeLatLng(p);
-    if (j.kind === "far") {
-      onChange("");
-      setFound({ how: "far", km: j.km });
-    } else if (j.kind === "out") {
-      onChange(`${OUT}${j.key}`);
-      setFound({ how: "map", km: j.km });
-    } else {
-      onChange(pointFor(j.area, j.placeId)[lang]);
-      setFound({ how: "map", km: j.km });
-    }
-  };
-
-  const readMap = async (text: string) => {
-    setMsg(null);
-    const p = extractLatLng(text);
-    if (p) return fromLatLng(p);
-    if (shortMapLink(text)) {
-      setBusy(true);
-      try {
-        const res = await fetch("/api/lb-maplink", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url: text.trim() }),
-        });
-        const j = await res.json().catch(() => ({}));
-        if (j.ok && typeof j.lat === "number" && typeof j.lng === "number") fromLatLng({ lat: j.lat, lng: j.lng });
-        else
-          setMsg(
-            ja
-              ? "このリンクからは場所を読み取れませんでした。宿や駅の名前を入れるか、下の一覧から選んでください。"
-              : "We couldn't read a location from this link. Type your inn or station name, or pick from the list below.",
-          );
-      } catch {
-        setMsg(ja ? "通信できませんでした。下の一覧から選んでください。" : "Connection failed. Please pick from the list below.");
-      }
-      setBusy(false);
-      return;
-    }
-    setMsg(
-      ja
-        ? "Googleマップのリンクから場所を読み取れませんでした。宿や駅の名前を入れるか、下の一覧から選んでください。"
-        : "We couldn't read a location from this link. Type your inn or station name, or pick from the list below.",
-    );
   };
 
   const fp = findPoint(value);
   const area = fp ? areaAt(fp.pos) : null;
-  const out = value.startsWith(OUT) ? OUT_OF_RANGE.find((o) => `${OUT}${o.key}` === value) : null;
-  const otherHref = `${base}${ja ? "/ja" : ""}/other-services`;
 
   return (
     <div className="lb-end">
       <span className="lb-end-label">{label}</span>
+      <LbStopPicker
+        id={id}
+        lang={lang}
+        value={value}
+        onChange={onChange}
+        extra={OUT_OF_RANGE.map((o) => ({ value: `${OUT}${o.key}`, label: o.name[lang] }))}
+      />
       <div className="lb-finder">
         <Search size={16} aria-hidden />
         <input
-          id={id}
+          id={`${id}-name`}
           type="text"
           inputMode="search"
           autoComplete="off"
           role="combobox"
           aria-expanded={hits.length > 0}
           aria-controls={`${id}-list`}
-          placeholder={ja ? "宿・駅の名前、またはGoogleマップのリンク" : "Inn or station name, or a Google Maps link"}
+          placeholder={ja ? "または宿・駅の名前で探す" : "or search by inn or station name"}
           value={q}
           onChange={(e) => {
             setQ(e.target.value);
             setOpen(true);
-            setMsg(null);
-          }}
-          onPaste={(e) => {
-            const t = e.clipboardData.getData("text");
-            if (looksLikeMapInput(t)) {
-              e.preventDefault();
-              setQ(t.trim());
-              setOpen(false);
-              void readMap(t);
-            }
           }}
           onKeyDown={(e) => {
             if (e.key !== "Enter") return;
             e.preventDefault();
-            if (isMap) void readMap(q);
-            else if (hits[0]) pick(hits[0]);
+            if (hits[0]) pick(hits[0]);
           }}
         />
-        {isMap && (
-          <button type="button" className="lb-finder-go" onClick={() => void readMap(q)} disabled={busy}>
-            {busy ? (ja ? "読み取り中…" : "Reading…") : ja ? "場所を読む" : "Read"}
-          </button>
-        )}
       </div>
       {hits.length > 0 && (
         <ul className="lb-suggest" id={`${id}-list`} role="listbox">
@@ -214,24 +118,11 @@ function EndPicker({
           ))}
         </ul>
       )}
-      {!isMap && open && q.trim().length >= 2 && hits.length === 0 && (
+      {open && q.trim().length >= 2 && hits.length === 0 && (
         <p className="book-hint">
           {ja
-            ? "見つかりません。Googleマップで宿を開き「共有」→「リンクをコピー」で貼り付けるか、下の一覧から選んでください。"
-            : "No match. In Google Maps, open your inn, tap Share → Copy link and paste it here, or pick from the list below."}
-        </p>
-      )}
-      {msg && <p className="book-hint">{msg}</p>}
-
-      {found?.how === "far" && !value && (
-        <p className="lb-judge out" role="status">
-          <XCircle size={15} />{" "}
-          {ja
-            ? `この場所は対象外です(一番近い地点から約${found.km.toFixed(1)}km。${MAX_KM}km以内が目安)。`
-            : `This place is outside our area (about ${found.km.toFixed(1)} km from the nearest stop; we cover up to about ${MAX_KM} km).`}{" "}
-          <a href={otherHref}>
-            {ja ? "他のサービスを見る" : "See other services"} <ArrowRight size={13} />
-          </a>
+            ? "見つかりません。宿の最寄りのJR駅を上で選び、「その他の宿」を選んでください。"
+            : "No match. Choose your inn's nearest JR station above, then \"another inn\"."}
         </p>
       )}
       {area && (
@@ -239,34 +130,15 @@ function EndPicker({
           <CheckCircle2 size={15} />{" "}
           {ja ? (
             <>
-              <b>{area.name.ja}</b>として見積もりました
-              {found?.how === "map" && typeof found.km === "number" ? `(地点まで約${found.km.toFixed(1)}km)` : ""}。違うときは下の一覧で直せます。
+              <b>{area.name.ja}</b>として見積もります。
             </>
           ) : (
             <>
-              Priced as <b>{area.name.en}</b>
-              {found?.how === "map" && typeof found.km === "number" ? ` (about ${found.km.toFixed(1)} km away)` : ""}. Not right? Fix it in the list below.
+              Priced as <b>{area.name.en}</b>.
             </>
-          )}{" "}
-          <a href={mapsUrl(AREA_GEO[area.key])} target="_blank" rel="noopener noreferrer">
-            {ja ? "Googleマップで開く" : "Open in Google Maps"} <ExternalLink size={12} />
-          </a>
+          )}
         </p>
       )}
-      {out && found && (
-        <p className="lb-judge out" role="status">
-          <XCircle size={15} /> {ja ? `${out.name.ja}として判定しました(範囲外)。` : `Judged as ${out.name.en} (not on our route).`}
-        </p>
-      )}
-      <EndSelect
-        id={`${id}-list-select`}
-        lang={lang}
-        value={value}
-        onChange={(v) => {
-          onChange(v);
-          setFound(null);
-        }}
-      />
     </div>
   );
 }
@@ -434,7 +306,7 @@ export function LbRangeChecker({ lang, onBook }: { lang: Lang; onBook: (p: Omit<
       <div className="lb-bookbox-grid">
         <label>
           <span>{ja ? (legs.length > 1 ? "1日目の日付" : "日付(荷物を置く日)") : legs.length > 1 ? "Date of day 1" : "Date (the day you leave your bags)"}</span>
-          <input id="lbc-date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <input id="lbc-date" type="date" min={lbDateMin()} max={LB_DATE_MAX} value={date} onChange={(e) => setDate(e.target.value)} />
         </label>
         <label>
           <span>{ja ? "個数" : "Bags"}</span>

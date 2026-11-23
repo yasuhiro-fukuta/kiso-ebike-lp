@@ -22,6 +22,10 @@ import {
   posOf,
   byArrangement,
   findPoint,
+  dateProblem,
+  JR_STATIONS,
+  jrOf,
+  choicesForJr,
   type AreaKey,
 } from "../src/app/luggage-bus";
 import { quoteLb } from "../src/app/lb-booking";
@@ -104,8 +108,8 @@ test("表に無い個数(0・6個以上・小数)と不明な地点は金額な�
   assert.equal(estimate(p("nagiso"), null, 1), null);
 });
 
-test("要相談の地点は須原・奈良井駅・奈良井(料金は表から出る)", () => {
-  for (const a of LINE) assert.equal(byArrangement(a.pos), ["suhara", "narai-st", "narai"].includes(a.key), a.key);
+test("要相談の地点は無い(12地点すべて即時確定・料金は表から出る)", () => {
+  for (const a of LINE) assert.equal(byArrangement(a.pos), false, a.key);
   assert.ok(estimate(p("nagiso-st"), p("suhara"), 1));
   assert.ok(estimate(p("nagiso-st"), p("narai-st"), 1));
 });
@@ -130,10 +134,34 @@ test("中津川駅前(特産館)の預けは既定で選択肢に出ない", () 
   assert.ok(!STATIONS.some((s) => s.places.some((pl) => pl.id === "nakatsugawa-info")));
 });
 
-test("補償の金額が未設定のあいだ、ルールに補償の行が出ない", () => {
-  assert.ok(!RULES.some((r) => r.title.en === "Compensation"));
-  assert.ok(!JSON.stringify(RULES).includes("30,000"));
-  assert.ok(!JSON.stringify(RULES).includes("insur"));
+test("補償は1個10万円・1人15万円、保険は書かない、キャンセルは7日前まで無料・以降100%", () => {
+  const all = JSON.stringify(RULES);
+  assert.ok(all.includes("¥100,000") && all.includes("¥150,000"));
+  assert.ok(all.includes("100,000円") === false);
+  assert.ok(!all.includes("30,000"));
+  assert.ok(!/insur|保険/i.test(all));
+  assert.ok(all.includes("7 days before") && all.includes("7日前"));
+  assert.ok(all.includes("100%"));
+});
+
+test("運行期間は2027-03-01〜2028-02-29、月曜は運休", () => {
+  const NOWX = { today: "2026-11-24", tomorrow: "2026-11-25", afterDeadline: false };
+  assert.ok(dateProblem("2027-02-27", [], "en", new Set(), NOWX.today, NOWX.tomorrow, false));
+  assert.equal(dateProblem("2027-03-02", [], "en", new Set(), NOWX.today, NOWX.tomorrow, false), null); // 火曜
+  assert.ok(dateProblem("2027-03-01", [], "en", new Set(), NOWX.today, NOWX.tomorrow, false)); // 月曜
+  assert.equal(dateProblem("2028-02-29", [], "en", new Set(), NOWX.today, NOWX.tomorrow, false), null); // 火曜
+  assert.ok(dateProblem("2028-03-01", [], "en", new Set(), NOWX.today, NOWX.tomorrow, false));
+  assert.ok(dateProblem("2027-12-15", [], "en", new Set(), NOWX.today, NOWX.tomorrow, false) === null);
+});
+
+test("最寄りJR駅から地点をたどれる(9駅で12地点を全部覆う)", () => {
+  const areas = JR_STATIONS.flatMap((j) => j.areas).sort();
+  assert.deepEqual(areas, LINE.map((a) => a.key).sort());
+  for (const j of JR_STATIONS) {
+    const ch = choicesForJr(j.key);
+    assert.ok(ch.length > 0, j.key);
+    for (const c of ch) assert.equal(jrOf(c.en), j.key);
+  }
 });
 
 /* ---------- quoteLb (即時予約の判定。決済APIもこれで金額を出す) ---------- */
@@ -179,11 +207,15 @@ test("宿が発着のときは予約名が要る", () => {
   }
 });
 
-test("要相談の地点・一覧にない宿はWhatsApp(承認)", () => {
-  assert.equal(quoteLb({ ...base, from: label("izumiya"), to: label("kinoma"), toBooking: "B" }, "en", NOW, NONE).kind, "approval");
-  assert.equal(quoteLb({ ...base, from: label("izumiya"), to: label("narai-station") }, "en", NOW, NONE).kind, "approval");
+test("須原・奈良井・一覧にない宿も即時予約(宿の名前と予約名が要る)", () => {
+  assert.equal(quoteLb({ ...base, from: label("izumiya"), to: label("kinoma"), toBooking: "B" }, "en", NOW, NONE).kind, "instant");
+  assert.equal(quoteLb({ ...base, from: label("izumiya"), to: label("narai-station") }, "en", NOW, NONE).kind, "instant");
   const other = LB_CHOICE_GROUPS.find((g) => g.area.key === "tadachi")!.points.at(-1)!;
   assert.equal(other.place, null);
   assert.equal(findPoint(other.en)?.pos, p("tadachi"));
-  assert.equal(quoteLb({ ...base, from: label("izumiya"), to: other.en }, "en", NOW, NONE).kind, "approval");
+  assert.equal(quoteLb({ ...base, from: label("izumiya"), to: other.en }, "en", NOW, NONE).kind, "error");
+  assert.equal(quoteLb({ ...base, from: label("izumiya"), to: other.en, toPlace: "Inn X" }, "en", NOW, NONE).kind, "error");
+  const q = quoteLb({ ...base, from: label("izumiya"), to: other.en, toPlace: "Inn X", toBooking: "B" }, "en", NOW, NONE);
+  assert.equal(q.kind, "instant");
+  if (q.kind === "instant") assert.equal(q.total, ROWS.find((r) => r[0] === "南木曽駅" && r[1] === "田立")![4][0]);
 });

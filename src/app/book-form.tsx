@@ -200,8 +200,8 @@ const SERVICES: Record<string, Service> = {
     hint: (l, k, v) => {
       if (k === "date")
         return l === "ja"
-          ? "申し込みは前日23時まで。毎週月曜と12〜3月は運休です。"
-          : "Requests close at 23:00 the day before. No runs on Mondays or from December to March.";
+          ? "申し込みは前日23時まで。運行は2027年3月〜2028年2月、毎週月曜は運休です。"
+          : "Requests close at 23:00 the day before. We run March 2027 – February 2028; no runs on Mondays.";
       if (k === "bags")
         return l === "ja" ? "1便につき20個まで。" : "Up to 20 bags per run.";
       if (k !== "from" && k !== "to") return null;

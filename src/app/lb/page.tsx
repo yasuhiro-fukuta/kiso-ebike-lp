@@ -14,10 +14,10 @@ import { WHATSAPP_URL } from "../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE, useLb } from "./lb-chrome";
 import { LbHowVideo } from "./how-video";
 import { LbPlanner } from "./lb-planner";
-import { LbInstantSteps, LbTrust, LbArrangements } from "./lb-sections";
+import { LbInstantSteps, LbTrust, LbArrangements, LbServiceCalendar } from "./lb-sections";
 import {
   STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
-  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS,
+  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS, CANCEL_POLICY, COMPENSATION_TEXT, SEASON_TEXT,
 } from "../luggage-bus";
 
 const RANGE_EN = LINE.map((a) => a.name.en).join(", ");
@@ -157,6 +157,8 @@ export default function LuggageBusPage() {
         </div>
       </section>
 
+      <LbServiceCalendar lang="en" />
+
       {/* HOW IT WORKS (4 steps) */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
@@ -168,7 +170,7 @@ export default function LuggageBusPage() {
               <span className="koma-num">1</span>
               <CreditCard size={26} />
               <h3>Book and pay</h3>
-              <p>Choose your date, stops and bags in the box above. Paid = booked. For an inn that isn&apos;t listed, or a stop marked &ldquo;by arrangement&rdquo;, send the request on WhatsApp.</p>
+              <p>Choose your date, your nearest JR stations and your inns or drop points in the box above. Paid = booked, anywhere on our route. Inn not listed? Choose &ldquo;another inn&rdquo; and write its name.</p>
             </div>
             <div className="koma">
               <div className="lb-ph">Photo (placeholder)<br/>A photo of your bag</div>
@@ -206,8 +208,9 @@ export default function LuggageBusPage() {
           <li>Up to 20 bags per run.</li>
           <li>One photo of each bag on WhatsApp.</li>
           <li>We don&apos;t carry cash, passports, valuables, fragile items, medicine or fresh food.</li>
-          <li>Cancellation: full refund up to 3 days before; 50% from then until the day before; none on the day.</li>
-          <li>No runs on Mondays or from December to March (restarting around 20 March 2027).</li>
+          <li>Cancellation: {CANCEL_POLICY.en}</li>
+          <li>Compensation: {COMPENSATION_TEXT.en}</li>
+          <li>We run {SEASON_TEXT.en}.</li>
         </ul>
       </section>
 
@@ -228,7 +231,7 @@ export default function LuggageBusPage() {
             <h3>Not a fit</h3>
             <ul className="lb-places">
               <li>You need an exact time or an exact address</li>
-              <li>You travel on a Monday, or from December to March (no runs)</li>
+              <li>You travel on a Monday (no runs), or outside March 2027 – February 2028</li>
               <li>You want to ride along yourself (bags only)</li>
               <li>You start or end in {OUT_OF_RANGE.map((o) => o.name.en).join(", ")} (<a href={otherHref}>other services</a>)</li>
             </ul>
@@ -280,16 +283,15 @@ export default function LuggageBusPage() {
       {/* CANCELLATION */}
       <section className="mini-sec" id="cancel">
         <span className="eyebrow">Cancellation</span>
-        <h2>Full refund up to 3 days before.</h2>
+        <h2>Free cancellation up to 7 days before.</h2>
         <div className="lb-table-wrap">
           <table className="lb-table lb-compare">
             <thead>
               <tr><th>When you cancel</th><th>Refund</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">3 or more days before</th><td className="us">Full refund</td></tr>
-              <tr><th scope="row">From 3 days before until the day before</th><td className="us">50% refund</td></tr>
-              <tr><th scope="row">On the day</th><td className="us">No refund</td></tr>
+              <tr><th scope="row">7 or more days before</th><td className="us">Free (full refund)</td></tr>
+              <tr><th scope="row">From 6 days before, including the day</th><td className="us">100% charged (no refund)</td></tr>
             </tbody>
           </table>
         </div>
@@ -373,7 +375,7 @@ export default function LuggageBusPage() {
           </table>
         </div>
         <p className="drop-note">
-          Some stations charge a small holding fee, paid to them directly. Closing days for the tourist offices come from tourism websites and may be out of date — we confirm everything when we approve your booking.
+          Some stations charge a small holding fee, paid to them directly. Closing days for the tourist offices come from tourism websites and may be out of date; if your drop point turns out to be closed, we contact you before the day.
         </p>
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">
@@ -381,8 +383,8 @@ export default function LuggageBusPage() {
               <MessageCircle size={20} /> Your inn isn&apos;t listed?
             </h3>
             <p>
-              Any inn in {RANGE_EN} works: choose &ldquo;another inn&rdquo; in
-              its town and send the request on WhatsApp.
+              Any inn in {RANGE_EN} works: pick its nearest JR station, choose
+              &ldquo;another inn&rdquo;, write its name, and pay — confirmed on the spot.
             </p>
           </div>
           <div className="mini-card lb-way">
@@ -403,7 +405,7 @@ export default function LuggageBusPage() {
         <span className="eyebrow">Find your stop</span>
         <h2>Look up your inn or place.</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.2rem" }}>
-          In the booking form you pick the area first, then the inn or place in it. If yours is not listed, choose &quot;Another&quot; and write its name.
+          In the booking box you pick your nearest JR station first, then the inn or place there. If yours is not listed, choose &quot;another inn&quot; and write its name.
         </p>
         <div className="lb-table-wrap">
           <table className="lb-table lb-info">
@@ -439,10 +441,18 @@ export default function LuggageBusPage() {
         <details className="faq-item">
           <summary>Can I just turn up with my bags?</summary>
           <p>
-            No — please book first, by 23:00 the day before. For listed
-            stops and inns, your booking is confirmed as soon as you pay in
-            the booking box.
+            No — please book first, by 23:00 the day before. Anywhere on
+            our route, your booking is confirmed as soon as you pay in the
+            booking box.
           </p>
+        </details>
+        <details className="faq-item">
+          <summary>Can I cancel?</summary>
+          <p>{CANCEL_POLICY.en}</p>
+        </details>
+        <details className="faq-item">
+          <summary>What if a bag is lost or damaged?</summary>
+          <p>{COMPENSATION_TEXT.en}</p>
         </details>
         <details className="faq-item">
           <summary>What if I arrive before my bags?</summary>
@@ -475,8 +485,7 @@ export default function LuggageBusPage() {
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             Message us on WhatsApp
           </a>
-          . The Square payment page we send is in Japanese (「金額」 is the
-          amount); your browser&apos;s translate function handles it fine.
+          .
         </p>
       </section>
 

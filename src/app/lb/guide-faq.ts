@@ -1,4 +1,4 @@
-import { yen, estimate, posOf, DROP_BY, ARRIVE_BY } from "../luggage-bus";
+import { yen, estimate, posOf, DROP_BY, ARRIVE_BY, CANCEL_POLICY, COMPENSATION_TEXT } from "../luggage-bus";
 
 type Lang = "en" | "ja";
 
@@ -27,6 +27,8 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
       q: "When do I need to book?",
       a: "By 23:00 the day before. Your booking is confirmed as soon as you pay.",
     },
+    { q: "Can I cancel?", a: CANCEL_POLICY.en },
+    { q: "What if a bag is lost or damaged?", a: COMPENSATION_TEXT.en },
     {
       q: "Can I ride the Luggage Bus too?",
       a: "No. It carries bags only. Walk, cycle, or take the JR Chuo Line or a local bus along the same valley.",
@@ -45,6 +47,8 @@ export const GUIDE_FAQ: Record<Lang, { q: string; a: string }[]> = {
       q: "いつまでに申し込めばいいですか?",
       a: "前日23時までです。支払った時点で予約確定です。",
     },
+    { q: "キャンセルはできますか?", a: CANCEL_POLICY.ja },
+    { q: "荷物がなくなったり壊れたりしたら?", a: COMPENSATION_TEXT.ja },
     {
       q: "ラゲッジバスに人も乗れますか?",
       a: "乗れません。運ぶのは荷物だけです。ご自身は徒歩・自転車、またはJR中央線や路線バスで移動してください。",

@@ -265,12 +265,12 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#shuttle`,
-      name: "Luggage Bus (Nagiso ⇄ Nojiri ⇄ Suhara ⇄ Agematsu ⇄ Kiso-Fukushima)",
+      name: "Luggage Bus (Nakatsugawa Station ⇄ Nagiso ⇄ Nojiri ⇄ Suhara ⇄ Agematsu ⇄ Kiso-Fukushima ⇄ Narai)",
       serviceType: "Luggage transfer",
       description:
-        "Scheduled luggage-only service between Nagiso and Kiso-Fukushima along Route 19, one round trip a day: northbound Nagiso \u2192 Nojiri \u2192 Suhara \u2192 Agematsu \u2192 Kiso-Fukushima 10:00\u201311:30; southbound Kiso-Fukushima \u2192 Agematsu \u2192 Suhara \u2192 Nojiri \u2192 Nagiso 12:00\u201313:30. Bags are handed over at Luggage Bus \u201cstations\u201d \u2014 tourist information offices at Agematsu and Kiso-Fukushima, Cafe Izumiya and the guesthouses Kashiwaya Inn, Waku Nagiso and Yuian at Nagiso, Cafe Katana at Nojiri and Guesthouse Kinoma at Suhara (inns for their own guests only); extensions to Nakatsugawa and Narai by arrangement, \u00a51,500 each; other places by arrangement. Booking required: request on WhatsApp, and a payment link is sent on approval. Luggage only \u2014 no passengers. Fare: a delivery fee of \u00a51,500 for each zone passed through (south zone Nagiso\u2013Suhara, central zone Suhara\u2013Kiso-Fukushima), charged once per booking, plus \u00a51,500 per bag \u2014 e.g. Nagiso to Kiso-Fukushima with one bag is \u00a54,500.",
+        "Luggage-only transfer along the Nakasendo between Nakatsugawa Station and Narai (12 stops: Nakatsugawa Station, Sakashita, Tadachi, Nagiso Station, Nagiso, Nojiri Station, Nojiri, Suhara, Agematsu, Kiso-Fukushima, Narai Station, Narai). Leave your bags at your inn or drop point by 9:00 and they arrive by 16:00 the same day (from north of Nagiso to Tadachi, Sakashita or Nakatsugawa: next day). Pick your nearest JR station and inn, see the price at once, pay online and the booking is confirmed instantly. The price is set for each pair of stops and number of bags (1–5 bags; 6 or more on WhatsApp) and shown at https://luggagebusnakasendo.com. Runs from March 2027 to February 2028, every day except Mondays. Free cancellation up to 7 days before; 100% charge after that. Compensation up to ¥100,000 per bag and ¥150,000 per person. Magome, Tsumago and Ran are not served. Luggage only \u2014 no passengers.",
       provider: { "@id": `${SITE_URL}/#business` },
-      areaServed: { "@type": "Place", name: "Kiso Valley, Nagiso to Kiso-Fukushima" },
+      areaServed: { "@type": "Place", name: "Kiso Valley, Nakatsugawa to Narai" },
       url: "https://luggagebusnakasendo.com",
     },
     {

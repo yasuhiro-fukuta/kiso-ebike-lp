@@ -2,9 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CreditCard, MessageCircle, ShieldCheck } from "lucide-react";
-import { LB_CHOICE_GROUPS, findPoint, estimate, isNextDay, yen, ARRIVE_BY, DROP_BY, MAX_FARE_BAGS } from "../luggage-bus";
-import { quoteLb, needsInnBooking } from "../lb-booking";
-import { LB_COMPENSATION_YEN } from "../lb-config";
+import {
+  LB_CHOICE_GROUPS,
+  JR_STATIONS,
+  jrOf,
+  choicesForJr,
+  findPoint,
+  estimate,
+  isNextDay,
+  yen,
+  ARRIVE_BY,
+  DROP_BY,
+  MAX_FARE_BAGS,
+  SEASON_START,
+  SEASON_END,
+  CANCEL_POLICY,
+  CANCEL_SHORT,
+} from "../luggage-bus";
+import { quoteLb, needsInnBooking, jstNow } from "../lb-booking";
+import { LB_COMPENSATION_YEN, LB_COMPENSATION_PERSON_YEN } from "../lb-config";
 import { wa } from "../site";
 
 type Lang = "en" | "ja";
@@ -29,6 +45,80 @@ export function LbStopOptions({ lang }: { lang: Lang }) {
   );
 }
 
+/** First and last day that can be picked: tomorrow (or the season start) to the season end. */
+export const lbDateMin = () => {
+  const t = jstNow().tomorrow;
+  return t > SEASON_START ? t : SEASON_START;
+};
+export const LB_DATE_MAX = SEASON_END;
+
+/** One end of a trip: first the nearest JR station, then the inn or place there
+ *  (2026-11-24 社長: Googleマップとはつながず、最寄りのJR駅名からたどる). */
+export function LbStopPicker({
+  id,
+  lang,
+  value,
+  onChange,
+  extra,
+}: {
+  id: string;
+  lang: Lang;
+  value: string;
+  onChange: (v: string) => void;
+  /** Extra options after the JR stations (e.g. out-of-range towns). */
+  extra?: { value: string; label: string }[];
+}) {
+  const ja = lang === "ja";
+  const [jrPick, setJrPick] = useState<string>("");
+  const jr = jrOf(value) ?? (extra?.some((x) => x.value === value) ? value : jrPick);
+  const choices = jr ? choicesForJr(jr) : [];
+  return (
+    <div className="lb-stop-picker">
+      <select
+        id={`${id}-jr`}
+        aria-label={ja ? "最寄りのJR駅" : "Nearest JR station"}
+        value={jr}
+        onChange={(e) => {
+          const k = e.target.value;
+          setJrPick(k);
+          if (extra?.some((x) => x.value === k)) return onChange(k);
+          const ch = choicesForJr(k);
+          // A single choice (e.g. a station with only "another place") is picked straight away.
+          onChange(ch.length === 1 ? ch[0][lang] : "");
+        }}
+      >
+        <option value="">{ja ? "—最寄りのJR駅を選ぶ—" : "— nearest JR station —"}</option>
+        <optgroup label={ja ? "JR中央本線(南→北)" : "JR Chuo Line (south → north)"}>
+          {JR_STATIONS.map((j) => (
+            <option key={j.key} value={j.key}>
+              {ja ? `${j.name.ja}駅` : `${j.name.en} Station`}
+            </option>
+          ))}
+        </optgroup>
+        {extra && extra.length > 0 && (
+          <optgroup label={ja ? "範囲外" : "Not on our route"}>
+            {extra.map((x) => (
+              <option key={x.value} value={x.value}>
+                {x.label}
+              </option>
+            ))}
+          </optgroup>
+        )}
+      </select>
+      {choices.length > 0 && (
+        <select id={id} aria-label={ja ? "宿・預け場所" : "Inn or drop point"} value={findPoint(value) ? value : ""} onChange={(e) => onChange(e.target.value)}>
+          <option value="">{ja ? "—宿・預け場所を選ぶ—" : "— your inn or drop point —"}</option>
+          {choices.map((p) => (
+            <option key={p.en} value={p[lang]}>
+              {p[lang]}
+            </option>
+          ))}
+        </select>
+      )}
+    </div>
+  );
+}
+
 /** Booking box at the top of the Luggage Bus page (modelled on Correos Paq Mochila):
  *  pick date, stops and bags → price appears at once → pay and confirm,
  *  or send the request on WhatsApp when it needs our approval. */
@@ -46,10 +136,12 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
     toInn: "",
   });
   const [err, setErr] = useState<string | null>(null);
+  const [agree, setAgree] = useState(false);
   const [paying, setPaying] = useState(false);
   const boxRef = useRef<HTMLElement>(null);
   const set = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setV({ ...v, [k]: e.target.value });
+  const setStop = (k: "from" | "to") => (val: string) => setV((cur) => ({ ...cur, [k]: val }));
 
   // Hand-over from the range checker: fill the stops and bags, then bring the box into view.
   useEffect(() => {
@@ -64,7 +156,17 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
   const est = estimate(fp?.pos ?? null, tp?.pos ?? null, bags);
   const nextDay = isNextDay(fp?.pos ?? null, tp?.pos ?? null);
   const q = quoteLb(
-    { name: v.name, date: v.date, from: v.from, to: v.to, bags, fromBooking: v.fromBooking, toBooking: v.toBooking },
+    {
+      name: v.name,
+      date: v.date,
+      from: v.from,
+      to: v.to,
+      bags,
+      fromBooking: v.fromBooking,
+      toBooking: v.toBooking,
+      fromPlace: v.fromInn,
+      toPlace: v.toInn,
+    },
     lang,
   );
   const instant = q.kind === "instant" && process.env.NEXT_PUBLIC_LB_INSTANT === "1";
@@ -97,6 +199,9 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
           bags,
           fromBooking: v.fromBooking,
           toBooking: v.toBooking,
+          fromPlace: v.fromInn,
+          toPlace: v.toInn,
+          agree,
         }),
       });
       const j = await res.json().catch(() => ({}));
@@ -117,7 +222,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
       <div className="lb-bookbox-grid">
         <label>
           <span>{ja ? "日付(荷物を置く日)" : "Date (the day you leave your bags)"}</span>
-          <input id="lbb-date" type="date" value={v.date} onChange={set("date")} />
+          <input id="lbb-date" type="date" min={lbDateMin()} max={LB_DATE_MAX} value={v.date} onChange={set("date")} />
         </label>
         <label>
           <span>{ja ? "個数" : "Bags"}</span>
@@ -128,15 +233,12 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
           </select>
         </label>
         <label className="wide">
-          <span>{ja ? "預ける駅・宿" : "Drop off at"}</span>
-          <select id="lbb-from" value={v.from} onChange={set("from")}>
-            <option value="">{ja ? "—選択—" : "— choose —"}</option>
-            <LbStopOptions lang={lang} />
-          </select>
+          <span>{ja ? "預ける場所(最寄りのJR駅 → 宿・預け場所)" : "Drop off at (nearest JR station → inn or drop point)"}</span>
+          <LbStopPicker id="lbb-from" lang={lang} value={v.from} onChange={setStop("from")} />
         </label>
         {fromInnAsk && (
           <label>
-            <span>{ja ? "出発の宿の名前" : "Name of the departure inn"}</span>
+            <span>{ja ? "出発の宿・場所の名前" : "Name of the inn or place you leave from"}</span>
             <input id="lbb-from-inn" type="text" value={v.fromInn} onChange={set("fromInn")} />
           </label>
         )}
@@ -147,15 +249,12 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
           </label>
         )}
         <label className="wide">
-          <span>{ja ? "受け取る駅・宿" : "Collect at"}</span>
-          <select id="lbb-to" value={v.to} onChange={set("to")}>
-            <option value="">{ja ? "—選択—" : "— choose —"}</option>
-            <LbStopOptions lang={lang} />
-          </select>
+          <span>{ja ? "受け取る場所(最寄りのJR駅 → 宿・預け場所)" : "Collect at (nearest JR station → inn or drop point)"}</span>
+          <LbStopPicker id="lbb-to" lang={lang} value={v.to} onChange={setStop("to")} />
         </label>
         {toInnAsk && (
           <label>
-            <span>{ja ? "届け先の宿の名前" : "Name of the destination inn"}</span>
+            <span>{ja ? "届け先の宿・場所の名前" : "Name of the inn or place your bags go to"}</span>
             <input id="lbb-to-inn" type="text" value={v.toInn} onChange={set("toInn")} />
           </label>
         )}
@@ -185,7 +284,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
             ? est.parts.map((p) => p[lang]).join(" + ")
             : bags > MAX_FARE_BAGS
               ? ja ? `${MAX_FARE_BAGS + 1}個以上はWhatsAppでお問い合わせください` : `${MAX_FARE_BAGS + 1} or more bags: please ask us on WhatsApp`
-              : ja ? "駅と個数を選ぶと出ます(要相談の地点はWhatsAppで)" : "Choose your stops and bags (stops by arrangement: on WhatsApp)"}
+              : ja ? "最寄りのJR駅・宿と個数を選ぶと出ます" : "Choose your stations, inns and bags to see the price"}
         </span>
         <small>
           {ja
@@ -204,9 +303,22 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
       {err && <p className="book-error" role="alert">{err}</p>}
       {q.kind === "error" && v.date && v.from && v.to && <p className="book-hint">{q.message}</p>}
 
+      {instant && (
+        <label className="lb-agree">
+          <input id="lbb-agree" type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />{" "}
+          <span>
+            {ja ? "キャンセルポリシーと補償に同意します:" : "I agree to the cancellation policy and compensation terms: "}
+            {CANCEL_POLICY[lang]}{" "}
+            {ja
+              ? `補償は荷物1個あたり最大${yen(LB_COMPENSATION_YEN)}、お一人あたり最大${yen(LB_COMPENSATION_PERSON_YEN)}。`
+              : `Compensation up to ${yen(LB_COMPENSATION_YEN)} per bag and ${yen(LB_COMPENSATION_PERSON_YEN)} per person.`}
+          </span>
+        </label>
+      )}
+
       <div className="lb-bookbox-actions">
         {instant ? (
-          <button type="button" className="stay-cta book-pay" disabled={paying} onClick={pay}>
+          <button type="button" className="stay-cta book-pay" disabled={paying || !agree} onClick={pay}>
             <CreditCard size={16} />{" "}
             {paying
               ? ja ? "決済画面を開いています…" : "Opening payment…"
@@ -221,8 +333,8 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
       <p className="lb-bookbox-trust">
         <ShieldCheck size={14} />{" "}
         {ja
-          ? `前日23時まで受付 ・ 3日前まで全額返金${LB_COMPENSATION_YEN !== null ? ` ・ 荷物1個${yen(LB_COMPENSATION_YEN)}まで補償` : ""}`
-          : `Book by 23:00 the day before · Full refund up to 3 days before${LB_COMPENSATION_YEN !== null ? ` · Each bag covered up to ${yen(LB_COMPENSATION_YEN)}` : ""}`}
+          ? `前日23時まで受付 ・ ${CANCEL_SHORT.ja} ・ 補償 1個${yen(LB_COMPENSATION_YEN)}/1人${yen(LB_COMPENSATION_PERSON_YEN)}まで`
+          : `Book by 23:00 the day before · ${CANCEL_SHORT.en} · Covered up to ${yen(LB_COMPENSATION_YEN)} per bag / ${yen(LB_COMPENSATION_PERSON_YEN)} per person`}
       </p>
     </section>
   );

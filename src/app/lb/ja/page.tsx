@@ -14,10 +14,10 @@ import { WHATSAPP_URL_JA } from "../../site";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE, useLb } from "../lb-chrome";
 import { LbHowVideo } from "../how-video";
 import { LbPlanner } from "../lb-planner";
-import { LbInstantSteps, LbTrust, LbArrangements } from "../lb-sections";
+import { LbInstantSteps, LbTrust, LbArrangements, LbServiceCalendar } from "../lb-sections";
 import {
   STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
-  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS,
+  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS, CANCEL_POLICY, COMPENSATION_TEXT, SEASON_TEXT,
 } from "../../luggage-bus";
 
 const RANGE_JA = LINE.map((a) => a.name.ja).join("・");
@@ -147,6 +147,8 @@ export default function JaLuggageBusPage() {
         </div>
       </section>
 
+      <LbServiceCalendar lang="ja" />
+
       {/* 申し込み方法(4ステップ) */}
       <section className="drop-sec" id="how">
         <div className="drop-inner">
@@ -158,7 +160,7 @@ export default function JaLuggageBusPage() {
               <span className="koma-num">1</span>
               <CreditCard size={26} />
               <h3>予約して支払う</h3>
-              <p>上の予約ボックスで日付・駅・個数を選び、支払った時点で予約確定です。宿の名前が無いときや「要相談」の地点はWhatsAppで受け付けます。</p>
+              <p>上の予約ボックスで日付・最寄りのJR駅・宿(預け場所)・個数を選び、支払った時点で予約確定です。範囲内ならどこでも同じです。一覧にない宿は「その他の宿」を選んで名前を書いてください。</p>
             </div>
             <div className="koma">
               <div className="lb-ph">写真(仮置き)<br/>荷物の写真</div>
@@ -196,8 +198,9 @@ export default function JaLuggageBusPage() {
           <li>1便につき荷物20個まで。</li>
           <li>荷物1個につき写真1枚をWhatsAppで送る。</li>
           <li>運ばない物：現金、パスポート、貴重品、壊れ物、医薬品、生もの。</li>
-          <li>キャンセル：3日前まで全額返金/3日前を過ぎて前日まで半額/当日は返金なし。</li>
-          <li>毎週月曜と12〜3月は運休(2027年3月20日ごろ再開)。</li>
+          <li>キャンセル：{CANCEL_POLICY.ja}</li>
+          <li>補償：{COMPENSATION_TEXT.ja}</li>
+          <li>運行期間：{SEASON_TEXT.ja}</li>
         </ul>
       </section>
 
@@ -218,7 +221,7 @@ export default function JaLuggageBusPage() {
             <h3>向いていない方</h3>
             <ul className="lb-places">
               <li>時刻や場所を細かく指定したい方</li>
-              <li>月曜、または12月〜3月に移動する方(運休)</li>
+              <li>月曜(運休)、または2027年3月〜2028年2月以外に移動する方</li>
               <li>人も一緒に運んでほしい方(荷物専用です)</li>
               <li>{OUT_OF_RANGE.map((o) => o.name.ja).join("・")}が発着の方(<a href={otherHref}>他のサービスのご案内</a>)</li>
             </ul>
@@ -270,16 +273,15 @@ export default function JaLuggageBusPage() {
       {/* キャンセル */}
       <section className="mini-sec" id="cancel">
         <span className="eyebrow">キャンセル</span>
-        <h2>キャンセルは3日前まで全額返金。</h2>
+        <h2>キャンセルは7日前まで無料。</h2>
         <div className="lb-table-wrap">
           <table className="lb-table lb-compare">
             <thead>
               <tr><th>取り消す日</th><th>返金</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">利用日の3日前まで</th><td className="us">全額返金</td></tr>
-              <tr><th scope="row">3日前を過ぎてから前日まで</th><td className="us">半額返金</td></tr>
-              <tr><th scope="row">当日</th><td className="us">返金なし</td></tr>
+              <tr><th scope="row">利用日の7日前まで</th><td className="us">無料(全額返金)</td></tr>
+              <tr><th scope="row">6日前から当日まで</th><td className="us">100%いただきます(返金なし)</td></tr>
             </tbody>
           </table>
         </div>
@@ -360,7 +362,7 @@ export default function JaLuggageBusPage() {
           </table>
         </div>
         <p className="drop-note">
-          預かり料がかかる駅があります(その場で各駅にお支払いください)。観光案内所の定休日は観光サイトの情報をもとにした目安で、変わっていることがあります。予約の承認のときに確認してお伝えします。
+          預かり料がかかる駅があります(その場で各駅にお支払いください)。観光案内所の定休日は観光サイトの情報をもとにした目安で、変わっていることがあります。預け場所が休みと分かったときは、前もってこちらからご連絡します。
         </p>
         <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
           <div className="mini-card lb-way">
@@ -368,7 +370,7 @@ export default function JaLuggageBusPage() {
               <MessageCircle size={20} /> 一覧にない宿
             </h3>
             <p>
-              {RANGE_JA}の宿なら、その町の「その他の宿」を選んで、WhatsAppでお申し込みください。
+              {RANGE_JA}の宿なら、最寄りのJR駅を選んで「その他の宿」を選び、宿の名前を書いて支払えば、その場で予約確定です。
             </p>
           </div>
           <div className="mini-card lb-way">
@@ -389,7 +391,7 @@ export default function JaLuggageBusPage() {
         <span className="eyebrow">駅の探し方</span>
         <h2>宿や場所の名前から、駅を探す。</h2>
         <p className="drop-note" style={{ marginTop: "-1rem", marginBottom: "1.2rem" }}>
-          予約フォームでは、先にエリア(駅)を選び、次にその中の宿・場所を選びます。載っていない宿は「その他」を選んで名前を書いてください。
+          予約ボックスでは、先に最寄りのJR駅を選び、次にその駅の宿・場所を選びます。載っていない宿は「その他の宿」を選んで名前を書いてください。
         </p>
         <div className="lb-table-wrap">
           <table className="lb-table lb-info">
@@ -423,8 +425,16 @@ export default function JaLuggageBusPage() {
         <details className="faq-item">
           <summary>予約なしで持って行ってもいいですか?</summary>
           <p>
-            前日23時までに予約をお願いします。一覧にある駅・宿なら、予約ボックスで支払った時点で予約確定です。
+            前日23時までに予約をお願いします。範囲内なら、予約ボックスで支払った時点で予約確定です。
           </p>
+        </details>
+        <details className="faq-item">
+          <summary>キャンセルはできますか?</summary>
+          <p>{CANCEL_POLICY.ja}</p>
+        </details>
+        <details className="faq-item">
+          <summary>荷物がなくなったり壊れたりしたら?</summary>
+          <p>{COMPENSATION_TEXT.ja}</p>
         </details>
         <details className="faq-item">
           <summary>荷物より先に着いてしまったら?</summary>

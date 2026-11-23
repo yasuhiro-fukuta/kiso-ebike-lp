@@ -1,26 +1,18 @@
 /** ============================================================
- *  ラゲッジバスの「社長が決めるまで出さない」表示の設定。
- *  値はVercelの環境変数で入れる(コードに金額・保険名を書かない)。
- *  空のあいだ、その行・その枠は画面に出ない。
- *  NEXT_PUBLIC_ なのでブラウザとサーバー(決済API)の両方で同じ値になる。
+ *  ラゲッジバスの表示の設定。
+ *  補償額は 2026-11-24 社長決定(旅行業の約款どおり):荷物1個あたり最大10万円、お一人あたり最大15万円。
+ *  保険は社長決定で「いったん伏せる」= 画面に一切出さない(LB_INSURANCE は常に null)。
  *  ============================================================ */
 
 const str = (v: string | undefined) => (v ?? "").trim();
 
-/** 当社が1個あたりいくらまで補償するか(円)。未決定のあいだは空 → 補償の行を出さない。
- *  例: NEXT_PUBLIC_LB_COMPENSATION_YEN=30000 */
-const compRaw = str(process.env.NEXT_PUBLIC_LB_COMPENSATION_YEN);
-const compNum = Number(compRaw);
-export const LB_COMPENSATION_YEN: number | null =
-  compRaw && Number.isInteger(compNum) && compNum > 0 ? compNum : null;
+/** 当社が荷物1個あたりいくらまで補償するか(円)。 */
+export const LB_COMPENSATION_YEN = 100000;
+/** 当社がお一人あたりいくらまで補償するか(円)。 */
+export const LB_COMPENSATION_PERSON_YEN = 150000;
 
-/** 加入している保険の名前。未加入・未決定のあいだは空 → 保険の行を出さない。
- *  例: NEXT_PUBLIC_LB_INSURANCE_EN="Cargo insurance (XX Insurance)" / NEXT_PUBLIC_LB_INSURANCE_JA="XX保険の貨物保険" */
-export const LB_INSURANCE: { en: string; ja: string } | null = (() => {
-  const en = str(process.env.NEXT_PUBLIC_LB_INSURANCE_EN);
-  const ja = str(process.env.NEXT_PUBLIC_LB_INSURANCE_JA);
-  return en && ja ? { en, ja } : null;
-})();
+/** 保険の表示は伏せる(2026-11-24 社長)。出すときはここを書き換える。 */
+export const LB_INSURANCE: { en: string; ja: string } | null = null;
 
 /** 取り決めがまだの案内の表示: "off"=出さない(既定) / "soon"=Coming soon だけ / "on"=案内を出す。 */
 export type LbFeature = "off" | "soon" | "on";

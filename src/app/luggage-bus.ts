@@ -16,7 +16,7 @@
  *  南木曽より北 → 南木曽より南(田立・坂下・中津川駅)は翌日届け。
  *  ============================================================ */
 
-import { LB_NAKATSUGAWA_DROP, LB_COMPENSATION_YEN, LB_INSURANCE } from "./lb-config";
+import { LB_NAKATSUGAWA_DROP, LB_COMPENSATION_YEN, LB_COMPENSATION_PERSON_YEN } from "./lb-config";
 import FARE_ROWS from "./lb-fares.json";
 
 type T = { en: string; ja: string };
@@ -265,9 +265,9 @@ export const MAX_FARE_BAGS = 5;
 
 const FARE_MAP = new Map<string, number[]>(FARE_TABLE.map((r) => [`${r[0]}|${r[1]}`, r[4]]));
 
-/** Stops still booked by arrangement on WhatsApp (not instant), as before
- *  the fare table: Suhara and Narai. Their price comes from the table too. */
-export const BY_ARRANGEMENT: AreaKey[] = ["suhara", "narai-st", "narai"];
+/** Stops booked by arrangement on WhatsApp (not instant). Empty since
+ *  2026-11-24 (社長: ルート3本の12地点はすべてその場で予約確定). */
+export const BY_ARRANGEMENT: AreaKey[] = [];
 
 export const byArrangement = (pos: number | null) => {
   const a = areaAt(pos);
@@ -395,10 +395,10 @@ export const STATIONS: { area: AreaKey; name: T; places: Place[] }[] = (
     { area: "nagiso-st", name: { en: "Nagiso Station stop", ja: "南木曽駅" }, places: [PLACES.izumiya] },
     { area: "nagiso", name: { en: "Nagiso stop (inns)", ja: "南木曽(宿)" }, places: [PLACES.kashiwaya, PLACES.waku, PLACES.yuian] },
     { area: "nojiri-st", name: { en: "Nojiri Station stop", ja: "野尻駅" }, places: [PLACES.katana] },
-    { area: "suhara", name: { en: "Suhara stop (by arrangement)", ja: "須原駅(要相談)" }, places: [PLACES.kinoma, PLACES["minshuku-suhara"]] },
+    { area: "suhara", name: { en: "Suhara stop", ja: "須原駅" }, places: [PLACES.kinoma, PLACES["minshuku-suhara"]] },
     { area: "agematsu", name: { en: "Agematsu stop", ja: "上松駅" }, places: [PLACES["agematsu-info"]] },
     { area: "kisofukushima", name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" }, places: [PLACES["kisofukushima-info"], PLACES.waiwai, PLACES.matarihouse] },
-    { area: "narai-st", name: { en: "Narai Station stop (by arrangement)", ja: "奈良井駅(要相談)" }, places: [PLACES["narai-station"]] },
+    { area: "narai-st", name: { en: "Narai Station stop", ja: "奈良井駅" }, places: [PLACES["narai-station"]] },
   ] as { area: AreaKey; name: T; places: Place[] }[]
 ).filter((s) => s.places.length > 0);
 
@@ -455,15 +455,14 @@ export const FORM_POINTS: FormPoint[] = [
   P("kisofukushima", "Kiso-Fukushima stop (tourist information office)", "木曽福島駅(木曽福島観光案内所)", PLACES["kisofukushima-info"]),
   P("kisofukushima", "Kiso-Fukushima stop (HOTEL waiwai yakiso, guests only)", "木曽福島駅(HOTEL waiwai yakiso ※宿泊者のみ)", PLACES["waiwai"]),
   P("kisofukushima", "Kiso-Fukushima stop (Matari House, guests only)", "木曽福島駅(素泊宿matarihouse ※宿泊者のみ)", PLACES["matarihouse"]),
-  P("narai-st", "Narai stop (Narai Station luggage storage, by arrangement)", "奈良井駅(奈良井駅荷物預かり所・要相談)", PLACES["narai-station"]),
-  { en: "Another inn or place (details in chat)", ja: "その他の宿・場所(チャットで相談)", pos: null, place: null },
+  P("narai-st", "Narai stop (Narai Station luggage storage)", "奈良井駅(奈良井駅荷物預かり所)", PLACES["narai-station"]),
 ];
 
 /** "Another inn/place at <stop>": for every stop on the line, so a traveller
  *  whose inn isn't listed can still check the range and the price. */
 export const AREA_OTHER_POINTS: FormPoint[] = LINE.map((a) => ({
-  en: a.station ? `${a.name.en}: another place (details in chat)` : `${a.name.en}: another inn (not listed)`,
-  ja: a.station ? `${a.name.ja}:その他の場所(チャットで相談)` : `${a.name.ja}:その他の宿(一覧にない宿)`,
+  en: a.station ? `${a.name.en}: another inn or place near the station (write its name)` : `${a.name.en}: another inn (write its name)`,
+  ja: a.station ? `${a.name.ja}:駅近くのその他の宿・場所(名前を書く)` : `${a.name.ja}:その他の宿(名前を書く)`,
   pos: a.pos,
   place: null,
   area: a.key,
@@ -475,6 +474,34 @@ export const LB_CHOICE_GROUPS: { area: (typeof LINE)[number]; points: FormPoint[
   area: a,
   points: [...FORM_POINTS.filter((p) => p.area === a.key), AREA_OTHER_POINTS.find((p) => p.area === a.key)!],
 }));
+
+/** Nearest JR station → the stops it covers (2026-11-24 社長: お客様は最寄りの
+ *  JR駅名からたどる。Googleマップとはつながない). South to north on the JR Chuo Line. */
+export const JR_STATIONS: { key: string; name: T; areas: AreaKey[] }[] = [
+  { key: "nakatsugawa", name: { en: "Nakatsugawa", ja: "中津川" }, areas: ["nakatsugawa"] },
+  { key: "sakashita", name: { en: "Sakashita", ja: "坂下" }, areas: ["sakashita"] },
+  { key: "tadachi", name: { en: "Tadachi", ja: "田立" }, areas: ["tadachi"] },
+  { key: "nagiso", name: { en: "Nagiso", ja: "南木曽" }, areas: ["nagiso-st", "nagiso"] },
+  { key: "nojiri", name: { en: "Nojiri", ja: "野尻" }, areas: ["nojiri-st", "nojiri"] },
+  { key: "suhara", name: { en: "Suhara", ja: "須原" }, areas: ["suhara"] },
+  { key: "agematsu", name: { en: "Agematsu", ja: "上松" }, areas: ["agematsu"] },
+  { key: "kisofukushima", name: { en: "Kiso-Fukushima", ja: "木曽福島" }, areas: ["kisofukushima"] },
+  { key: "narai", name: { en: "Narai", ja: "奈良井" }, areas: ["narai-st", "narai"] },
+];
+
+/** The JR station a choice belongs to (by its stop). */
+export const jrOf = (label: string): string | null => {
+  const p = findPoint(label);
+  const k = p?.area ?? areaAt(p?.pos ?? null)?.key;
+  return k ? JR_STATIONS.find((j) => j.areas.includes(k))?.key ?? null : null;
+};
+
+/** The choices (places, then "another inn/place") for one JR station. */
+export const choicesForJr = (jr: string): FormPoint[] => {
+  const st = JR_STATIONS.find((j) => j.key === jr);
+  if (!st) return [];
+  return LB_CHOICE_GROUPS.filter((g) => st.areas.includes(g.area.key)).flatMap((g) => g.points);
+};
 
 /** Find a choice by its label (either language). */
 export const findPoint = (label: string): FormPoint | null =>
@@ -519,13 +546,13 @@ export const dropPlaceText = (pt: FormPoint, lang: "en" | "ja") => {
       ? `${pt.place.name.ja}に、朝${DROP_BY}までに預けてください(預かり料:${feeText(pt.place, "ja")})。`
       : `Leave them at ${pt.place.name.en} by ${DROP_BY} (holding fee: ${feeText(pt.place, "en")}).`;
   return ja
-    ? `お泊まりの宿のフロントか玄関に、朝${DROP_BY}までに置いてください。`
-    : `Leave them at your inn's front desk or entrance by ${DROP_BY}.`;
+    ? `お泊まりの宿(お書きいただいた宿・場所)のフロントか玄関に、朝${DROP_BY}までに置いてください。`
+    : `Leave them at the front desk or entrance of the inn or place you named, by ${DROP_BY}.`;
 };
 
 /** Booking-date check for the form: requests close at 23:00 the day before
- *  (Japan time), no runs on Mondays, the calendar's extra closing days or in
- *  the winter break, and neither station may be on a known closing day.
+ *  (Japan time), no runs on Mondays, the calendar's extra closing days or
+ *  outside the service season, and neither station may be on a known closing day.
  *  Returns an error message, or null when OK. */
 export function dateProblem(
   iso: string,
@@ -546,10 +573,10 @@ export function dateProblem(
     return ja
       ? "明日の分の申し込みは締め切りました(前日23時まで)。明後日以降の日付を選んでください。電話・WhatsAppで予約済みの方は、お送りした決済リンクからお支払いください。"
       : "Requests for tomorrow closed at 23:00. Please choose the day after tomorrow or later. Already booked by phone or WhatsApp? Please pay with the payment link we sent you.";
-  if (inWinterBreak(iso))
+  if (!inSeason(iso))
     return ja
-      ? "12〜3月は運休です(3月20日ごろ再開)。別の日を選んでください。"
-      : "The Luggage Bus is closed from December to March (restarting around 20 March). Please pick another date.";
+      ? `運行期間は${SEASON_TEXT.ja}です。期間内の日付を選んでください。`
+      : `We run ${SEASON_TEXT.en}. Please pick a date in that period.`;
   const d = new Date(`${iso}T00:00:00`);
   if (d.getDay() === 1 || busClosed.has(iso))
     return ja
@@ -563,13 +590,40 @@ export function dateProblem(
   return null;
 }
 
+/** Service season (2026-11-24 社長決定): March 2027 to February 2028, every day except Mondays. */
+export const SEASON_START = "2027-03-01";
+export const SEASON_END = "2028-02-29";
+export const SEASON_TEXT: T = {
+  en: "from 1 March 2027 to 29 February 2028, every day except Mondays",
+  ja: "2027年3月1日〜2028年2月29日(毎週月曜は運休)",
+};
+export const inSeason = (iso: string) => !!iso && iso >= SEASON_START && iso <= SEASON_END;
+/** Kept for older imports: true outside the service season. */
+export const inWinterBreak = (iso: string) => !inSeason(iso);
+
+/** Cancellation policy (2026-11-24 社長決定): free up to 7 days before, 100% after. */
+export const CANCEL_POLICY: T = {
+  en: "Free cancellation up to 7 days before the service date. From 6 days before (including the day itself), the full fare is charged (no refund). If we cancel (bad weather, a breakdown or illness), you get a full refund.",
+  ja: "利用日の7日前までのキャンセルは無料(全額返金)です。6日前から当日までのキャンセルは料金の100%をいただきます(返金なし)。悪天候・車の故障・体調不良などこちらの都合で運休するときは全額返金します。",
+};
+export const CANCEL_SHORT: T = {
+  en: "Free cancellation up to 7 days before; 100% charge after that",
+  ja: "7日前までキャンセル無料、それ以降は100%",
+};
+
+/** Compensation (2026-11-24 社長決定, as in our travel-business terms). */
+export const COMPENSATION_TEXT: T = {
+  en: `If a bag is lost or damaged while we carry it, we compensate up to ${yen(LB_COMPENSATION_YEN)} per bag and ${yen(LB_COMPENSATION_PERSON_YEN)} per person.`,
+  ja: `運送中の紛失・破損は、荷物1個あたり最大${yen(LB_COMPENSATION_YEN)}、お一人あたり最大${yen(LB_COMPENSATION_PERSON_YEN)}まで当社が補償します。`,
+};
+
 /** Booking rules (decided 2026-10-10, "for now"). */
 export const RULES: { title: T; body: T }[] = [
   {
     title: { en: "Book by 23:00 the day before", ja: "申し込みは前日23時まで" },
     body: {
-      en: "Listed stops and inns: pay in the booking box and your booking is confirmed at once, no waiting. An inn that isn't listed, or a stop marked \"by arrangement\": send the request on WhatsApp and we reply with a payment link. We reply on WhatsApp in the morning (until 8:45), 13:30–16:00 and after 21:00 — the rest of the day we're driving.",
-      ja: "一覧にある駅・宿なら、予約ボックスで支払った時点で確定します(承認待ちなし)。一覧にない宿や「要相談」の地点はWhatsAppで受け付け、決済リンクをお送りします。WhatsAppに返信できるのは、朝(〜8:45)、13:30〜16:00、21:00以降です。それ以外の時間は運転中です。",
+      en: "Anywhere on our route: pay in the booking box and your booking is confirmed at once, no waiting. If your inn isn't listed, choose \"another inn\" at its stop and write its name. Only 6 or more bags go through WhatsApp. We reply on WhatsApp in the morning (until 8:45), 13:30–16:00 and after 21:00 — the rest of the day we're driving.",
+      ja: "範囲内なら、予約ボックスで支払った時点で確定します(承認待ちなし)。一覧にない宿は、その地点の「その他の宿」を選んで宿の名前を書いてください。6個以上だけWhatsAppで受け付けます。WhatsAppに返信できるのは、朝(〜8:45)、13:30〜16:00、21:00以降です。それ以外の時間は運転中です。",
     },
   },
   {
@@ -595,10 +649,7 @@ export const RULES: { title: T; body: T }[] = [
   },
   {
     title: { en: "Cancellations", ja: "取り消し・返金" },
-    body: {
-      en: "Full refund if you cancel 3 or more days before; 50% refund if you cancel 1–2 days before; no refund on the day (rain included). If we cancel (bad weather, a breakdown or illness), you get a full refund.",
-      ja: "利用日の3日前までの取り消しは全額返金、3日前を過ぎてから前日までは半額返金、当日は返金なし（雨天でも同じ）です。運休・天候・車の故障・体調不良などこちらの都合のときは全額返金します。",
-    },
+    body: CANCEL_POLICY,
   },
   {
     title: { en: "Bad weather", ja: "悪天候のとき" },
@@ -614,36 +665,19 @@ export const RULES: { title: T; body: T }[] = [
       ja: "現金、パスポート、貴重品、壊れ物、医薬品、生もの。",
     },
   },
-  // 補償・保険は lb-config の値が入ったときだけ出す(2026-11-20 社長:金額・保険は未決定)。
-  ...(LB_COMPENSATION_YEN !== null
-    ? [
-        {
-          title: { en: "Compensation", ja: "補償" },
-          body: {
-            en: `We compensate up to ${yen(LB_COMPENSATION_YEN)} per bag.${LB_INSURANCE ? ` Insurance: ${LB_INSURANCE.en}.` : ""}`,
-            ja: `当社が1個${yen(LB_COMPENSATION_YEN)}まで補償します。${LB_INSURANCE ? `保険:${LB_INSURANCE.ja}。` : ""}`,
-          },
-        },
-      ]
-    : []),
+  { title: { en: "Compensation", ja: "補償" }, body: COMPENSATION_TEXT },
   {
     title: { en: "Space on each run", ja: "1便あたりの上限" },
     body: {
-      en: "Up to 20 bags and 8 stops per run. Stops marked \"by arrangement\" are limited to one booking a day.",
-      ja: "1便につき荷物20個、止まる場所8か所までです。「要相談」の地点は1日1件までです。",
+      en: "Up to 20 bags and 8 stops per run.",
+      ja: "1便につき荷物20個、止まる場所8か所までです。",
     },
   },
   {
     title: { en: "Season", ja: "運行期間" },
     body: {
-      en: "Closed every Monday, and from December to March. We restart around 20 March 2027. The Agematsu stop can't be used from late November to mid-March (approx. 25 Nov–15 Mar), while its tourist office is closed.",
-      ja: "毎週月曜と、12〜3月は運休です。2027年3月20日ごろに再開します。上松駅は、観光案内所が休業する11月末〜3月半ば(11/25〜3/15目安)は使えません。",
+      en: `We run ${SEASON_TEXT.en}. Some drop points close in winter (see their closing days below); on those days choose another inn or place at that stop.`,
+      ja: `運行期間は${SEASON_TEXT.ja}です。冬に休む預け場所があります(下の定休日をご覧ください)。その日はその地点の別の宿・場所を選んでください。`,
     },
   },
 ];
-
-/** Winter break: no runs from 1 Dec to 19 Mar (restart around 20 Mar). */
-export const inWinterBreak = (iso: string) => {
-  const md = iso.slice(5);
-  return md >= "12-01" || md < "03-20";
-};

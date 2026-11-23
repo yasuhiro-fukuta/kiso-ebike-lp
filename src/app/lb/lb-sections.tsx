@@ -1,6 +1,7 @@
-import { MousePointerClick, CreditCard, CheckCircle2, Truck, Camera, Building2, ShieldCheck, FileText, Package, Train } from "lucide-react";
-import { LB_COMPENSATION_YEN, LB_INSURANCE, LB_NAKATSUGAWA_DROP, LB_YAMATO_RELAY } from "../lb-config";
-import { yen } from "../luggage-bus";
+import { MousePointerClick, CreditCard, CheckCircle2, Truck, Camera, Building2, ShieldCheck, Package, Train, CalendarDays } from "lucide-react";
+import { LB_COMPENSATION_YEN, LB_COMPENSATION_PERSON_YEN, LB_NAKATSUGAWA_DROP, LB_YAMATO_RELAY } from "../lb-config";
+import { yen, SEASON_START, SEASON_END, SEASON_TEXT, COMPENSATION_TEXT } from "../luggage-bus";
+import { CLOSED_DAYS } from "../closed-days";
 
 type Lang = "en" | "ja";
 
@@ -29,15 +30,15 @@ export function LbInstantSteps({ lang }: { lang: Lang }) {
       </div>
       <p className="drop-note">
         {ja
-          ? "見積もりを頼んで返事を待つ必要はありません。一覧にない宿や「要相談」の地点だけ、WhatsAppでお返事します。"
-          : "No need to ask for a quote and wait for a reply. Only an inn that isn't listed, or a stop marked “by arrangement”, goes through WhatsApp."}
+          ? "見積もりを頼んで返事を待つ必要はありません。範囲内なら、一覧にない宿でもその場で確定します(6個以上だけWhatsAppで)。"
+          : "No need to ask for a quote and wait for a reply. Anywhere on our route — even an inn that isn't listed — is confirmed on the spot (only 6+ bags go through WhatsApp)."}
       </p>
     </section>
   );
 }
 
-/** Peace of mind. The compensation and insurance rows appear only once their
- *  values are set in lb-config (env); until then nothing is claimed. */
+/** Peace of mind. Compensation: up to ¥100,000 per bag / ¥150,000 per person
+ *  (2026-11-24 社長). Insurance is not shown for now (社長「いったん伏せる」). */
 export function LbTrust({ lang }: { lang: Lang }) {
   const ja = lang === "ja";
   return (
@@ -59,18 +60,15 @@ export function LbTrust({ lang }: { lang: Lang }) {
           <a href={ja ? "https://nakasendo-ebike.com/ja/legal" : "https://nakasendo-ebike.com/legal"}>{ja ? "特定商取引法の表記" : "Legal notice"}</a>
         </p>
       </div>
-      {LB_COMPENSATION_YEN !== null && (
-        <div className="mini-card lb-way">
-          <h3><ShieldCheck size={20} /> {ja ? `1個${yen(LB_COMPENSATION_YEN)}まで補償` : `Covered up to ${yen(LB_COMPENSATION_YEN)} per bag`}</h3>
-          <p>{ja ? `当社が荷物1個あたり${yen(LB_COMPENSATION_YEN)}まで補償します。` : `We compensate up to ${yen(LB_COMPENSATION_YEN)} per bag.`}</p>
-        </div>
-      )}
-      {LB_INSURANCE && (
-        <div className="mini-card lb-way">
-          <h3><FileText size={20} /> {ja ? "保険" : "Insurance"}</h3>
-          <p>{LB_INSURANCE[lang]}</p>
-        </div>
-      )}
+      <div className="mini-card lb-way">
+        <h3>
+          <ShieldCheck size={20} />{" "}
+          {ja
+            ? `1個${yen(LB_COMPENSATION_YEN)}・1人${yen(LB_COMPENSATION_PERSON_YEN)}まで補償`
+            : `Covered up to ${yen(LB_COMPENSATION_YEN)} per bag, ${yen(LB_COMPENSATION_PERSON_YEN)} per person`}
+        </h3>
+        <p>{COMPENSATION_TEXT[lang]}</p>
+      </div>
     </div>
   );
 }
@@ -112,6 +110,67 @@ export function LbArrangements({ lang }: { lang: Lang }) {
       <span className="eyebrow">{ja ? "もっと身軽に" : "Travel lighter"}</span>
       <h2>{ja ? "駅や遠方からの使い方。" : "From the station, or from far away."}</h2>
       <div className="mini-grid cols2">{cards}</div>
+    </section>
+  );
+}
+
+/** Service calendar: March 2027 – February 2028, every day except Mondays
+ *  (2026-11-24 社長). Extra closing days from the shared calendar are marked too. */
+export function LbServiceCalendar({ lang }: { lang: Lang }) {
+  const ja = lang === "ja";
+  const months: { y: number; m: number }[] = [];
+  let y = Number(SEASON_START.slice(0, 4));
+  let m = Number(SEASON_START.slice(5, 7));
+  while (`${y}-${String(m).padStart(2, "0")}` <= SEASON_END.slice(0, 7)) {
+    months.push({ y, m });
+    m++;
+    if (m > 12) {
+      m = 1;
+      y++;
+    }
+  }
+  const wd = ja ? ["月", "火", "水", "木", "金", "土", "日"] : ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+  const MON_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return (
+    <section className="mini-sec" id="calendar">
+      <span className="eyebrow">{ja ? "運行カレンダー" : "Service calendar"}</span>
+      <h2>
+        <CalendarDays size={22} /> {ja ? "2027年3月〜2028年2月、月曜以外は毎日運行。" : "March 2027 – February 2028, every day except Mondays."}
+      </h2>
+      <p className="drop-note">{ja ? `運行期間:${SEASON_TEXT.ja}` : `We run ${SEASON_TEXT.en}.`}</p>
+      <div className="lb-cal-grid">
+        {months.map(({ y, m }) => {
+          const first = new Date(Date.UTC(y, m - 1, 1));
+          const days = new Date(Date.UTC(y, m, 0)).getUTCDate();
+          const lead = (first.getUTCDay() + 6) % 7; // Monday first
+          const cells: (number | null)[] = [...Array(lead).fill(null), ...Array.from({ length: days }, (_, i) => i + 1)];
+          return (
+            <div className="lb-cal" key={`${y}-${m}`}>
+              <h3>{ja ? `${y}年${m}月` : `${MON_EN[m - 1]} ${y}`}</h3>
+              <div className="lb-cal-days">
+                {wd.map((w) => (
+                  <span key={w} className="lb-cal-wd">
+                    {w}
+                  </span>
+                ))}
+                {cells.map((d, i) => {
+                  if (d === null) return <span key={`e${i}`} />;
+                  const iso = `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+                  const off = new Date(`${iso}T00:00:00Z`).getUTCDay() === 1 || CLOSED_DAYS.has(iso);
+                  return (
+                    <span key={iso} className={off ? "lb-cal-d off" : "lb-cal-d on"} title={off ? (ja ? "運休" : "No runs") : ja ? "運行" : "Running"}>
+                      {d}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <p className="drop-note">
+        <span className="lb-cal-d on">1</span> {ja ? "運行" : "running"} <span className="lb-cal-d off">1</span> {ja ? "運休(毎週月曜など)" : "no runs (Mondays etc.)"}
+      </p>
     </section>
   );
 }

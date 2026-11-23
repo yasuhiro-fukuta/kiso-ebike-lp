@@ -2,9 +2,9 @@
  *  booking box (browser) and the checkout API (server). No "use client" here on purpose.
  *
  *  A request is confirmed on payment, with no manual approval, when:
- *  - both ends are listed stations or partner inns (not "another inn/place"),
- *  - neither end is a stop "by arrangement" (its price isn't decided yet),
- *  - the date passes the usual checks (deadline, Mondays, winter, closures),
+ *  - both ends are stops on our route: a listed place, or "another inn/place"
+ *    at a stop with its name written (2026-11-24 社長: 12地点はすべて即時確定),
+ *  - the date passes the usual checks (deadline, Mondays, season, closures),
  *    and, for next-day delivery, the delivery day does too,
  *  - 1–5 bags (the fare table has prices for 1–5; 6–8 bags go to WhatsApp),
  *  - the pair of stops is in the fare table (same town: not served),
@@ -48,6 +48,9 @@ export type LbInput = {
   fromBooking?: string;
   /** Name the reservation at the destination inn is under (inns only). */
   toBooking?: string;
+  /** Name of the inn/place, when "another inn/place" is chosen. */
+  fromPlace?: string;
+  toPlace?: string;
 };
 
 export type LbQuote =
@@ -55,8 +58,8 @@ export type LbQuote =
       kind: "instant";
       total: number;
       parts: { en: string; ja: string; yen: number }[];
-      from: { label: string; place: Place; pos: number };
-      to: { label: string; place: Place; pos: number };
+      from: { label: string; place: Place | null; pos: number };
+      to: { label: string; place: Place | null; pos: number };
       run: "north" | "south";
       /** Delivered the day after drop-off (north of Nagiso → south of Nagiso). */
       nextDay: boolean;
@@ -77,7 +80,7 @@ export function quoteLb(input: LbInput, lang: Lang, now: Now = jstNow(), closed:
   const ja = lang === "ja";
   const f = findPoint(input.from);
   const t = findPoint(input.to);
-  if (!f?.place || !t?.place || f.pos == null || t.pos == null) return { kind: "approval" };
+  if (!f || !t || f.pos == null || t.pos == null) return { kind: "approval" };
   if (byArrangement(f.pos) || byArrangement(t.pos)) return { kind: "approval" };
   if (!input.name.trim()) return { kind: "error", message: ja ? "氏名を入れてください。" : "Please enter your name." };
   if (!Number.isInteger(input.bags) || input.bags < 1 || input.bags > 8)
@@ -100,12 +103,22 @@ export function quoteLb(input: LbInput, lang: Lang, now: Now = jstNow(), closed:
   const e = estimate(f.pos, t.pos, input.bags);
   // No price in the table: never charge a guessed amount.
   if (!e) return { kind: "approval" };
-  if (f.place.guestsOnly && !(input.fromBooking ?? "").trim())
+  if (!f.place && !(input.fromPlace ?? "").trim())
+    return {
+      kind: "error",
+      message: ja ? "出発の宿・場所の名前を入れてください。" : "Please enter the name of the inn or place you leave your bags at.",
+    };
+  if (!t.place && !(input.toPlace ?? "").trim())
+    return {
+      kind: "error",
+      message: ja ? "届け先の宿・場所の名前を入れてください。" : "Please enter the name of the inn or place your bags go to.",
+    };
+  if ((!f.place || f.place.guestsOnly) && !(input.fromBooking ?? "").trim())
     return {
       kind: "error",
       message: ja ? "出発の宿の予約名を入れてください(宿にこちらから連絡します)。" : "Please enter the name your booking at the departure inn is under (we let the inn know).",
     };
-  if (t.place.guestsOnly && !(input.toBooking ?? "").trim())
+  if ((!t.place || t.place.guestsOnly) && !(input.toBooking ?? "").trim())
     return {
       kind: "error",
       message: ja ? "届け先の宿の予約名を入れてください(宿にこちらから連絡します)。" : "Please enter the name your booking at the destination inn is under (we let the inn know).",
