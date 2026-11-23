@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
-import { PHONE, PHONE_TEL, MYMAP_VIEW_URL, WHATSAPP_URL } from "../site";
+import { PHONE, PHONE_TEL, NAVI_URL, WHATSAPP_URL } from "../site";
 import { SiteNav, SiteFooter } from "../chrome";
 
 /**
@@ -51,7 +51,7 @@ const STEPS: { h: string; p: string; img?: string; alt?: string; link?: { href: 
   {
     h: "Phone holder",
     p: "The phone holder is on the handlebar, for maps and videos. Open the arms, set your phone in, and squeeze them closed. Set your route before you start, and don't touch the phone while riding.",
-    link: { href: MYMAP_VIEW_URL, label: "Open the route map (Google My Maps)" },
+    link: { href: NAVI_URL, label: "Open the route guide (alerts you if you leave the route)" },
     img: "/assets/ride/phone-holder.jpg",
     alt: "Phone holder mounted on the handlebar",
   },

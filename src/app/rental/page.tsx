@@ -234,11 +234,15 @@ export default function RentalPage() {
             <h4>Route Maps</h4>
             <div className="amt">Free</div>
             <p>
-              Turn-by-turn Google Maps routes for all three rides — see the{" "}
+              A route guide on your phone that keeps you on our routes —{" "}
+              <a href="/navi" style={{ color: "var(--gold)" }}>
+                open the route guide
+              </a>
+              . Route ideas:{" "}
               <Link href="/second-day" style={{ color: "var(--gold)" }}>
                 Self-Tour Advice
-              </Link>{" "}
-              page.
+              </Link>
+              .
             </p>
           </div>
 </div>
