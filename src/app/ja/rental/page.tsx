@@ -199,7 +199,11 @@ export default function JaRentalPage() {
             <h4>ルートマップ</h4>
             <div className="amt">無料</div>
             <p>
-              3コース分のGoogleマップ経路をスマホでご案内 —{" "}
+              決めた道をスマホでご案内（道を外れると知らせます） —{" "}
+              <a href="/navi" style={{ color: "var(--gold)" }}>
+                コースのナビを開く
+              </a>
+              。コース選びは{" "}
               <Link href="/ja/second-day" style={{ color: "var(--gold)" }}>
                 セルフツアーのすすめ
               </Link>

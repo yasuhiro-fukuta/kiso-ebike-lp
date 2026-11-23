@@ -4,7 +4,7 @@ import { ArrowRight, MessageCircle, ExternalLink } from "lucide-react";
 import {
   WHATSAPP_URL_JA,
   MYMAP_EMBED_URL,
-  MYMAP_VIEW_URL,
+  NAVI_URL,
   HEART_MAP_EMBED_URL,
   HEART_MAP_VIEW_URL,
 } from "../../site";
@@ -223,13 +223,13 @@ export default function JaSecondDayPage() {
             />
           </div>
           <a
-            href={MYMAP_VIEW_URL}
+            href={NAVI_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="stay-cta"
             style={{ marginTop: "1.4rem" }}
           >
-            Googleマップで地図を開く <ExternalLink size={15} />
+            スマホでコースのナビを開く <ExternalLink size={15} />
           </a>
 
           <h3 className="tour-group-title" style={{ marginTop: "2.4rem" }}>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
-import { PHONE, PHONE_TEL, MYMAP_VIEW_URL, WHATSAPP_URL_JA } from "../../site";
+import { PHONE, PHONE_TEL, NAVI_URL, WHATSAPP_URL_JA } from "../../site";
 import { SiteNav, SiteFooter } from "../../chrome";
 
 /**
@@ -51,7 +51,7 @@ const STEPS: { h: string; p: string; img?: string; alt?: string; link?: { href: 
   {
     h: "スマホホルダー",
     p: "ハンドルにスマホホルダーがあります。地図や動画に。アームを開いてスマホを入れ、挟んで閉じます。ルートは出発前に設定し、走行中は操作しないでください。",
-    link: { href: MYMAP_VIEW_URL, label: "コースのマイマップを開く" },
+    link: { href: NAVI_URL, label: "コースのナビを開く（道を外れると知らせます）" },
     img: "/assets/ride/phone-holder.jpg",
     alt: "ハンドルに付いたスマホホルダー",
   },
