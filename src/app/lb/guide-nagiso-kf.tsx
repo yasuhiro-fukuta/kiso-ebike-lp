@@ -2,7 +2,9 @@
 
 import { MapPin, ArrowRight, Clock, Luggage } from "lucide-react";
 import { LbNav, LbFooter, LbFloat, EBIKE_SITE } from "./lb-chrome";
-import { STATIONS, placeName, fare, yen } from "../luggage-bus";
+import { STATIONS, placeName, yen, estimate, posOf, DROP_BY, ARRIVE_BY } from "../luggage-bus";
+
+const kfFare = (bags: number) => estimate(posOf("nagiso-st"), posOf("kisofukushima"), bags)?.total ?? 0;
 import { GUIDE_FAQ } from "./guide-faq";
 
 type Lang = "en" | "ja";
@@ -11,7 +13,7 @@ type Lang = "en" | "ja";
 
 export function GuideNagisoKf({ lang }: { lang: Lang }) {
   const ja = lang === "ja";
-  const from = STATIONS.find((s) => s.area === "nagiso");
+  const from = STATIONS.filter((s) => s.area === "nagiso-st" || s.area === "nagiso");
   const to = STATIONS.find((s) => s.area === "kisofukushima");
   const book = ja ? `${EBIKE_SITE}/ja/book?s=luggage` : `${EBIKE_SITE}/book?s=luggage`;
   const faq = GUIDE_FAQ[lang];
@@ -47,20 +49,20 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
                 <th scope="row"><Clock size={16} /> {ja ? "預ける" : "Drop off"}</th>
                 <td className="us">
                   {ja
-                    ? "便が駅を通る10分前まで(前日の夕方でも可)。北行きは10:00ごろ南木曽発"
-                    : "At least 10 minutes before the run passes (or the evening before). The northbound run leaves Nagiso around 10:00"}
+                    ? `朝${DROP_BY}まで(前日の夕方でも可)`
+                    : `By ${DROP_BY} in the morning (or the evening before)`}
                 </td>
               </tr>
               <tr>
                 <th scope="row"><MapPin size={16} /> {ja ? "届く" : "Arrives"}</th>
-                <td className="us">{ja ? "当日 10:30〜11:30 に木曽福島" : "Same day, 10:30–11:30 in Kiso-Fukushima"}</td>
+                <td className="us">{ja ? `当日 ${ARRIVE_BY}までに木曽福島` : `Same day, by ${ARRIVE_BY} in Kiso-Fukushima`}</td>
               </tr>
               <tr>
                 <th scope="row"><Luggage size={16} /> {ja ? "料金" : "Price"}</th>
                 <td className="us">
                   {ja
-                    ? `荷物1個 ${yen(fare(2, 1))} / 2個 ${yen(fare(2, 2))} / 3個 ${yen(fare(2, 3))}`
-                    : `1 bag ${yen(fare(2, 1))} · 2 bags ${yen(fare(2, 2))} · 3 bags ${yen(fare(2, 3))}`}
+                    ? `荷物1個 ${yen(kfFare(1))} / 2個 ${yen(kfFare(2))} / 3個 ${yen(kfFare(3))}`
+                    : `1 bag ${yen(kfFare(1))} · 2 bags ${yen(kfFare(2))} · 3 bags ${yen(kfFare(3))}`}
                 </td>
               </tr>
               <tr>
@@ -70,7 +72,7 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
               <tr>
                 <th scope="row">{ja ? "運休" : "No runs"}</th>
                 <td className="us">
-                  {ja ? "毎週月曜と12〜3月(2027年3月20日ごろ再開)" : "Mondays, and December to March (restarting around 20 March 2027)"}
+                  {ja ? "毎週月曜(運行期間は2027年3月〜2028年2月)" : "Mondays (we run March 2027 – February 2028)"}
                 </td>
               </tr>
             </tbody>
@@ -82,7 +84,7 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
         <span className="eyebrow">{ja ? "預ける・受け取る場所" : "Where to drop and collect"}</span>
         <h2>{ja ? "南木曽で預けて、木曽福島で受け取る。" : "Drop in Nagiso, collect in Kiso-Fukushima."}</h2>
         <div className="mini-grid cols2">
-          {[from, to].map((s) =>
+          {[...from, to].map((s) =>
             s ? (
               <div key={s.area} className="mini-card lb-way">
                 <h3><MapPin size={20} /> {s.name[lang]}</h3>

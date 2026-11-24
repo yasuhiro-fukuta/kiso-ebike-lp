@@ -17,7 +17,7 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(`${LB_ORIGIN}${rest}${search}`, 308);
     }
     // The booking box posts here from the LB domain itself.
-    if (pathname === "/api/lb-checkout") return NextResponse.next();
+    if (pathname === "/api/lb-checkout" ) return NextResponse.next();
     const map: Record<string, string> = {
       "/": "/lb",
       "/ja": "/lb/ja",
@@ -25,6 +25,8 @@ export function middleware(req: NextRequest) {
       "/robots.txt": "/lb/robots.txt",
       "/booked": "/lb/booked",
       "/ja/booked": "/lb/ja/booked",
+      "/other-services": "/lb/other-services",
+      "/ja/other-services": "/lb/ja/other-services",
     };
     // Guide pages: /guide/... and /ja/guide/... live under /lb.
     const target =

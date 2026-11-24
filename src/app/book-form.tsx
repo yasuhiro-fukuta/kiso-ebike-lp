@@ -15,6 +15,7 @@ import {
   yen,
   feeText,
   dateProblem,
+  EXT_POS,
 } from "./luggage-bus";
 import { CLOSED_DAYS } from "./closed-days";
 import { SiteNav, SiteFooter } from "./chrome";
@@ -115,7 +116,6 @@ const jstNow = () => {
     afterDeadline: jst.getUTCHours() >= 23,
   };
 };
-const EXT_POS = [0, 6];
 
 const fDate = (lang: Lang, iso: string) => {
   if (!iso) return lang === "ja" ? "〇年〇月〇日" : "__/__/____";
@@ -200,8 +200,8 @@ const SERVICES: Record<string, Service> = {
     hint: (l, k, v) => {
       if (k === "date")
         return l === "ja"
-          ? "申し込みは前日23時まで。毎週月曜と12〜3月は運休です。"
-          : "Requests close at 23:00 the day before. No runs on Mondays or from December to March.";
+          ? "申し込みは前日23時まで。運行は2027年3月〜2028年2月、毎週月曜は運休です。"
+          : "Requests close at 23:00 the day before. We run March 2027 – February 2028; no runs on Mondays.";
       if (k === "bags")
         return l === "ja" ? "1便につき20個まで。" : "Up to 20 bags per run.";
       if (k !== "from" && k !== "to") return null;
@@ -214,8 +214,8 @@ const SERVICES: Record<string, Service> = {
       const isExt = endPos(v, k) != null && EXT_POS.includes(endPos(v, k) as number);
       const extNote =
         l === "ja"
-          ? "延長は1日1件まで。日によっては受けられないことがあります。"
-          : "Extensions are limited to one a day and may not be possible on some days.";
+          ? "「要相談」の地点は1日1件まで。日によっては受けられないことがあります。"
+          : "Stops by arrangement are limited to one a day and may not be possible on some days.";
       if (!pl) return isExt ? extNote : null;
       const ext = isExt ? (l === "ja" ? ` ・ ${extNote}` : ` · ${extNote}`) : "";
       return l === "ja"

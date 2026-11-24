@@ -5,6 +5,7 @@
  *  PaymentIntents read). Without it the API answers 503 and the form falls back to WhatsApp. */
 import { NextResponse, type NextRequest } from "next/server";
 import { quoteLb, RUN_CAPACITY } from "../../lb-booking";
+import { CANCEL_POLICY } from "../../luggage-bus";
 
 type Lang = "en" | "ja";
 const STRIPE = "https://api.stripe.com/v1";
@@ -54,7 +55,16 @@ export async function POST(req: NextRequest) {
     from: String(body.from ?? ""),
     to: String(body.to ?? ""),
     bags: Number(body.bags ?? 0),
+    fromBooking: String(body.fromBooking ?? "").slice(0, 80),
+    toBooking: String(body.toBooking ?? "").slice(0, 80),
+    fromPlace: String(body.fromPlace ?? "").slice(0, 80),
+    toPlace: String(body.toPlace ?? "").slice(0, 80),
   };
+  if (body.agree !== true)
+    return NextResponse.json(
+      { error: ja ? "キャンセルポリシーと補償への同意にチェックを入れてください。" : "Please tick the box to agree to the cancellation policy and compensation terms." },
+      { status: 400 },
+    );
 
   const q = quoteLb(input, lang);
   if (q.kind === "approval") return NextResponse.json({ approval: true });
@@ -82,7 +92,9 @@ export async function POST(req: NextRequest) {
     const name = ja
       ? `ラゲッジバス ${input.date} ${q.from.label} → ${q.to.label} 荷物${input.bags}個`
       : `Luggage Bus ${input.date}: ${q.from.label} → ${q.to.label}, ${input.bags} bag${input.bags > 1 ? "s" : ""}`;
-    const description = q.parts.map((p) => `${p[lang]} ¥${p.yen.toLocaleString("en-US")}`).join(" + ");
+    const description =
+      q.parts.map((p) => `${p[lang]} ¥${p.yen.toLocaleString("en-US")}`).join(" + ") +
+      (q.nextDay ? (ja ? "(翌日のお届け)" : " (delivered the next day)") : "");
     const meta: Record<string, string> = {
       service: "luggage_bus",
       date: input.date,
@@ -93,6 +105,13 @@ export async function POST(req: NextRequest) {
       name: input.name,
       lang,
     };
+    // Names the inn reservations are under: we contact both inns ahead (2026-11-20).
+    if (input.fromBooking.trim()) meta.from_inn_booking_name = input.fromBooking.trim();
+    if (input.toBooking.trim()) meta.to_inn_booking_name = input.toBooking.trim();
+    if (input.fromPlace.trim()) meta.from_place_name = input.fromPlace.trim();
+    if (input.toPlace.trim()) meta.to_place_name = input.toPlace.trim();
+    meta.agreed_cancel_policy = "7d_free_then_100";
+    if (q.nextDay) meta.delivery = "next_day";
 
     const p = new URLSearchParams();
     p.set("mode", "payment");
@@ -107,8 +126,8 @@ export async function POST(req: NextRequest) {
     p.set(
       "custom_text[submit][message]",
       ja
-        ? "お支払いで予約確定です。キャンセル:3日前まで全額返金/3日前を過ぎて前日まで半額/当日は返金なし。駅の預かり料は現地払いです。"
-        : "Your booking is confirmed when you pay. Cancellation: full refund up to 3 days before; 50% from then until the day before; none on the day. Station holding fees are paid on the spot.",
+        ? `お支払いで予約確定です。${CANCEL_POLICY.ja}駅の預かり料は現地払いです。`
+        : `Your booking is confirmed when you pay. ${CANCEL_POLICY.en} Station holding fees are paid on the spot.`,
     );
     p.set("success_url", `${origin}${base}${jaPath}/booked?session_id={CHECKOUT_SESSION_ID}`);
     p.set("cancel_url", `${origin}${base}${jaPath}`);
