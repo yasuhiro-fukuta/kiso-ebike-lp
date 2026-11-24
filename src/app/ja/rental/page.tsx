@@ -46,6 +46,14 @@ export default function JaRentalPage() {
               妻籠〜野尻のエリア内なら、宿でも駅でも渓谷の入口でも、ご希望の場所にバイクをお届け。走り終えたら、エリア内の好きな場所で乗り捨てできます。
             </strong>
           </p>
+          <p style={{ marginTop: "1rem" }}>
+            <a
+              href="/navi"
+              style={{ display: "inline-block", padding: "0.7rem 1.2rem", borderRadius: "999px", background: "var(--gold)", color: "#fff", fontWeight: 700, textDecoration: "none" }}
+            >
+              ルート案内（スマホで道を確かめながら走れる地図）→
+            </a>
+          </p>
         </div>
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}

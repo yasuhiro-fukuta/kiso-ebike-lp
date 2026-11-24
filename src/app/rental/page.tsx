@@ -53,6 +53,14 @@ export default function RentalPage() {
               too.
             </strong>
           </p>
+          <p style={{ marginTop: "1rem" }}>
+            <a
+              href="/navi"
+              style={{ display: "inline-block", padding: "0.7rem 1.2rem", borderRadius: "999px", background: "var(--gold)", color: "#fff", fontWeight: 700, textDecoration: "none" }}
+            >
+              Route guide — turn-by-turn map on your phone →
+            </a>
+          </p>
         </div>
         <figure className="page-head-visual">
           {/* eslint-disable-next-line @next/next/no-img-element */}
