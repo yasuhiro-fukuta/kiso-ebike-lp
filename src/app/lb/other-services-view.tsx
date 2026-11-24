@@ -1,10 +1,10 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { LbNav, LbFooter } from "./lb-chrome";
-import { OTHER_SERVICES, OUT_OF_RANGE, LINE } from "../luggage-bus";
+import { OTHER_SERVICES, OUT_OF_RANGE, LINE, HIKE_TIP } from "../luggage-bus";
 
 type Lang = "en" | "ja";
 
-/** Magome, Tsumago and Ran are outside our route (2026-11-19). We point to
+/** Magome and Tsumago are outside our route (2026-11-19). We point to
  *  other local services instead (2026-11-20: NLTS and Walk Lite). */
 export function OtherServicesView({ lang }: { lang: Lang }) {
   const ja = lang === "ja";
@@ -16,11 +16,8 @@ export function OtherServicesView({ lang }: { lang: Lang }) {
       <header className="page-head">
         <span className="eyebrow">{ja ? "範囲外の方へ" : "Outside our route"}</span>
         <h1>{ja ? `${out}へは運んでいません。` : `We don't serve ${out}.`}</h1>
-        <p>
-          {ja
-            ? "これらの地点から・これらの地点への荷物は、地元の次のサービスをご利用ください。"
-            : "For bags to or from these places, please use one of these local services."}
-        </p>
+        <p>{HIKE_TIP.hike[lang]}</p>
+        <p>{HIKE_TIP.inn[lang]}</p>
       </header>
       <section className="mini-sec">
         <div className="mini-grid cols2">

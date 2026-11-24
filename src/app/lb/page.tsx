@@ -389,7 +389,7 @@ export default function LuggageBusPage() {
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> Magome, Tsumago or Ran?
+              <ArrowRight size={20} /> Magome or Tsumago?
             </h3>
             <p>
               They are outside our route. <a href={otherHref}>See local services that cover them</a>.

@@ -375,7 +375,7 @@ export default function JaLuggageBusPage() {
           </div>
           <div className="mini-card lb-way">
             <h3>
-              <ArrowRight size={20} /> 馬籠・妻籠・蘭の方へ
+              <ArrowRight size={20} /> 馬籠・妻籠の方へ
             </h3>
             <p>
               範囲外です。<a href={otherHref}>対応している地元のサービスのご案内</a>をご覧ください。

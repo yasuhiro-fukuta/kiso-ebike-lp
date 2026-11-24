@@ -83,8 +83,7 @@ const PLACE_ALIASES: Record<string, string[]> = {
 
 const OUT_ALIASES: Record<string, string[]> = {
   magome: ["馬籠", "馬籠宿", "まごめ", "Magome", "Magome-juku"],
-  tsumago: ["妻籠", "妻籠宿", "つまご", "Tsumago", "Tsumago-juku"],
-  ran: ["蘭", "あららぎ", "Araragi", "Ran", "Mugi House", "富貴の森", "Fuki no Mori"],
+  tsumago: ["妻籠", "妻籠宿", "つまご", "Tsumago", "Tsumago-juku", "蘭", "あららぎ", "Araragi", "Mugi House", "富貴の森", "Fuki no Mori"],
 };
 
 /** 名前で探す候補の一覧(一覧の宿・場所 → 駅 → 町 → 範囲外)。 */
