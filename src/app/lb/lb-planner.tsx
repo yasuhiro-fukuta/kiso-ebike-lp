@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { CheckCircle2, XCircle, MapPin, Clock, Wallet, ArrowRight, Search, Plus, Trash2 } from "lucide-react";
 import {
-  OUT_OF_RANGE,
+  OUT_OF_RANGE, HIKE_TIP,
   findPoint,
   estimate,
   isNextDay,
@@ -185,9 +185,11 @@ function LegResult({
               : `${outside.map((o) => o.name.en).join(" and ")} ${outside.length > 1 ? "are" : "is"} not on our route.`}
           </strong>
         </p>
+        <p>{HIKE_TIP.hike[ja ? "ja" : "en"]}</p>
         <p>
+          {HIKE_TIP.inn[ja ? "ja" : "en"]}{" "}
           <a href={otherHref}>
-            {ja ? "馬籠・妻籠・蘭に対応している他のサービスを見る" : "See local services that cover Magome, Tsumago and Ran"} <ArrowRight size={14} />
+            {ja ? "馬籠・妻籠に対応している業者を見る" : "See local services that cover Magome and Tsumago"} <ArrowRight size={14} />
           </a>
         </p>
       </div>

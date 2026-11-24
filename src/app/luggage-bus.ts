@@ -6,7 +6,7 @@
  *  範囲(2026-11-21 社長決定):南→北に 中津川駅・坂下・田立・南木曽駅・南木曽・
  *  野尻駅・野尻・須原・上松・木曽福島・奈良井駅・奈良井 の12地点。
  *  中津川は駅のみ(宿は扱わない)。宮ノ越・薮原は範囲外にした。
- *  馬籠・妻籠・蘭は範囲外 → 他社のご案内。
+ *  馬籠・妻籠は範囲外 → 他社のご案内(2026-11-24 蘭は妻籠に統合)。
  *  料金(2026-11-21 社長決定):式ではなく料金表 lb-fares.json の引き当てだけ。
  *  表は [出発, 到着, 元表の出発, 元表の到着, [1個..5個の円]] の126組(プログラムで
  *  生成し、元のスプレッドシートと全行一致を確認済み)。コードで計算・補完・丸めしない。
@@ -243,10 +243,21 @@ export const sameTown = (from: number | null, to: number | null) => {
 export const OUT_OF_RANGE: { key: string; name: T }[] = [
   { key: "magome", name: { en: "Magome", ja: "馬籠" } },
   { key: "tsumago", name: { en: "Tsumago", ja: "妻籠" } },
-  { key: "ran", name: { en: "Araragi (Ran)", ja: "蘭" } },
 ];
 
-/** Other luggage services we point to for Magome, Tsumago and Ran
+/** 馬籠・妻籠を選んだ人への補足(2026-11-24 社長の文)。 */
+export const HIKE_TIP: { hike: T; inn: T } = {
+  hike: {
+    en: "Hiking the Magome Pass? Drop your bags at Nakatsugawa Station instead of Magome, and pick them up at Nagiso Station instead of Tsumago. Between Nakatsugawa and Magome, and between Tsumago and Nagiso, the only transport is the bus — getting on and off with a suitcase or backpack is hard work.",
+    ja: "馬籠峠をハイキングされる場合は、馬籠ではなく中津川駅前で荷物を預け、妻籠ではなく南木曽駅前で荷物を受け取ることをおすすめします。中津川〜馬籠間、妻籠〜南木曽間の交通手段はバスのみで、スーツケースやバックパックを抱えて乗り降りするのは大変です。",
+  },
+  inn: {
+    en: "Booked an inn in Magome or Tsumago? We recommend these services, which also cover Magome and Tsumago.",
+    ja: "馬籠・妻籠で宿を予約された方は、当社ではなく、馬籠・妻籠もカバーしているこちらの業者がおすすめです。",
+  },
+};
+
+/** Other luggage services we point to for Magome and Tsumago
  *  (2026-11-20 社長: NLTS と Walk Lite。Magome Base は載せない). */
 export const OTHER_SERVICES: { name: string; url: string }[] = [
   { name: "NLTS (Nakasendo Luggage Transfer Service)", url: "https://magome-luggagetransport.jp/" },

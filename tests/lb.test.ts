@@ -62,7 +62,7 @@ test("中津川の宿・宮ノ越・薮原は選択肢と文面に出ない", ()
 });
 
 test("馬籠・妻籠・蘭は範囲外で、予約の選択肢に出ない", () => {
-  assert.deepEqual(OUT_OF_RANGE.map((o) => o.key), ["magome", "tsumago", "ran"]);
+  assert.deepEqual(OUT_OF_RANGE.map((o) => o.key), ["magome", "tsumago"]);
   const ids = [...FORM_POINTS, ...LB_CHOICE_GROUPS.flatMap((g) => g.points)].map((x) => x.place?.id).filter(Boolean);
   for (const id of ["mugi-house", "fuki-no-mori"]) assert.ok(!ids.includes(id), `${id} は範囲外`);
   assert.ok(!STATIONS.some((s) => (s.area as string) === "ran"));
