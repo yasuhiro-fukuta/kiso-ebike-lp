@@ -26,8 +26,8 @@ export function LbHowVideo({ lang }: { lang: "en" | "ja" }) {
       </div>
       <p className="drop-note">
         {ja
-          ? "日付と駅を選んで申し込む → 承認と支払い → 預ける・受け取る、までを順に見られます。"
-          : "Pick a date and stops, book, get approved and pay, then drop off and collect. All in order."}
+          ? "日付と駅を選ぶ → カードで払う → 預ける・受け取る、までを順に見られます。"
+          : "Pick a date and stops, pay by card, then drop off and collect. All in order."}
       </p>
     </section>
   );

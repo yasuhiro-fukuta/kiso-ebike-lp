@@ -1,12 +1,6 @@
-import type { Metadata } from "next";
-import { LbSectionView } from "../lb-pages";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Cancellation & compensation — Luggage Bus Nakasendo",
-  description: "Free cancellation up to 7 days before, compensation and booking rules.",
-  alternates: { canonical: "/policy", languages: { en: "/policy", ja: "/ja/policy" } },
-};
-
+/** 2026-11-25 このページはやめ、中身は「よくある質問」に入れた。 */
 export default function Page() {
-  return <LbSectionView lang="en" section="policy" />;
+  redirect("/lb/faq");
 }

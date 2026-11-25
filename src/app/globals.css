@@ -2180,3 +2180,132 @@ figure.season-cell .season-tag {
 .lb-campaign { display: inline-block; padding: .05rem .45rem; border-radius: 999px; background: #b5452f; color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
 .lb-bookbox-price .lb-price-now { font-size: 1.6rem; }
 .lb-bookbox-price .lb-campaign { font-size: .72rem; }
+
+/* ===== Luggage Bus top: one page in the order of a local delivery service site (2026-11-25) ===== */
+.lb-hero2 { padding-bottom: 0.4rem; }
+.lb-hero2 h1 { font-size: clamp(1.9rem, 6.6vw, 3.4rem); }
+.lb-anchor {
+  display: flex; flex-wrap: wrap; gap: 0.35rem; max-width: 980px; margin: 0 auto;
+  padding: 0.7rem clamp(1rem, 5vw, 4rem) 0.2rem;
+}
+.lb-anchor a {
+  padding: 0.3rem 0.7rem; border-radius: 100px; border: 1px solid var(--paper-deep); background: #fffdf8;
+  color: var(--ink); text-decoration: none; font-size: 0.78rem; white-space: nowrap;
+}
+.lb-anchor a:hover { border-color: var(--moss); }
+.lb-s { max-width: 980px; margin: 0 auto; padding: 1.1rem clamp(1rem, 5vw, 4rem) 0.3rem; scroll-margin-top: 4.5rem; }
+.lb-s + .lb-s { border-top: 1px solid var(--paper-deep); margin-top: 0.8rem; }
+.lp .lb-s h2 { font-size: clamp(1.3rem, 4.4vw, 1.9rem); margin: 0 0 0.6rem; }
+.lb-s-note { font-size: 0.82rem; line-height: 1.5; margin: 0.5rem 0; }
+.lb-s-links { display: flex; flex-wrap: wrap; gap: 0.2rem 1.2rem; }
+.lb-more { display: inline-flex; align-items: center; gap: 0.15rem; font-size: 0.85rem; color: var(--rust); text-decoration: none; font-weight: 500; min-height: 36px; }
+.lb-more:hover { text-decoration: underline; }
+.lb-feat { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+.lb-feat li { display: flex; gap: 0.55rem; align-items: flex-start; }
+.lb-feat-icon { color: var(--rust); flex: none; margin-top: 0.1rem; }
+.lb-feat strong { display: block; font-size: 0.9rem; line-height: 1.35; }
+.lb-feat small { display: block; font-size: 0.76rem; line-height: 1.4; opacity: 0.8; }
+.lb-stops { list-style: none; display: flex; flex-wrap: wrap; gap: 0.25rem 0; font-size: 0.8rem; }
+.lb-stops li { display: inline-flex; align-items: center; }
+.lb-stops li + li::before { content: "—"; margin: 0 0.3rem; opacity: 0.4; }
+.lb-stops li.st { font-weight: 600; color: var(--moss); }
+.lb-fare-mini { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.lb-fare-mini th, .lb-fare-mini td { padding: 0.4rem 0; border-bottom: 1px dashed var(--paper-deep); vertical-align: middle; }
+.lb-fare-mini th { text-align: left; font-weight: 500; }
+.lb-fare-mini th svg { vertical-align: -1px; opacity: 0.6; }
+.lb-fare-mini td { text-align: right; }
+.lb-fare-mini .lb-price-tag { justify-content: flex-end; }
+.lb-fare-mini .lb-campaign { display: none; }
+.lb-flow { list-style: none; counter-reset: f; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
+.lb-flow li { counter-increment: f; position: relative; padding-left: 1.9rem; }
+.lb-flow li::before {
+  content: counter(f); position: absolute; left: 0; top: 0.05rem; width: 1.45rem; height: 1.45rem; border-radius: 50%;
+  background: var(--moss); color: var(--paper); font-size: 0.78rem; display: grid; place-items: center;
+}
+.lb-flow strong { display: block; font-size: 0.9rem; line-height: 1.35; }
+.lb-flow small { display: block; font-size: 0.76rem; line-height: 1.4; opacity: 0.8; }
+.lb-qa { border-bottom: 1px solid var(--paper-deep); }
+.lb-qa summary { cursor: pointer; padding: 0.5rem 0; font-size: 0.88rem; font-weight: 500; }
+.lb-qa p { font-size: 0.8rem; line-height: 1.5; padding: 0 0 0.6rem; }
+.lb-co { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 1rem; font-size: 0.84rem; }
+.lb-co dt { opacity: 0.65; }
+.lb-contact { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.7rem 0 1.4rem; }
+.lb-contact a {
+  display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.85rem; min-height: 40px;
+  border: 1px solid var(--moss); border-radius: 100px; color: var(--moss); text-decoration: none; font-size: 0.84rem;
+}
+.lb-contact a:hover { background: var(--moss); color: var(--paper); }
+.lb-foot { padding: 1.4rem clamp(1rem, 5vw, 4rem) 4.6rem; }
+.lb-foot-in { max-width: 1100px; margin: 0 auto; }
+.lb-foot-brand { display: flex; gap: 0.7rem; align-items: center; }
+.lb-foot .brand { font-size: 1.3rem; }
+.lb-foot .foot-mark { width: 40px; height: 40px; margin: 0; }
+.lb-foot .lb-endorse { margin: 0; }
+.lb-foot p { margin-top: 0.5rem; font-size: 0.8rem; max-width: none; }
+.lb-foot-row { display: flex; flex-wrap: wrap; gap: 0.1rem 1rem; margin-top: 0.6rem; }
+.lb-foot-row a { margin-bottom: 0.2rem; font-size: 0.82rem; }
+.lb-foot-row.small a { font-size: 0.76rem; opacity: 0.7; }
+.lb-foot .foot-bottom { margin-top: 0.8rem; padding-top: 0.8rem; gap: 0.3rem 1rem; font-size: 0.72rem; }
+@media (max-width: 720px) {
+  .lb-feat { grid-template-columns: 1fr; gap: 0.45rem; }
+  .lb-flow { grid-template-columns: 1fr 1fr; gap: 0.6rem 0.8rem; }
+}
+.lb-fare-mini th { white-space: nowrap; }
+.lb-fare-mini th svg { margin: 0 0.2rem; }
+.lb-fare-mini .lb-price-tag { flex-wrap: nowrap; }
+.lb-anchor { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 0.4rem; }
+.lb-anchor::-webkit-scrollbar { display: none; }
+.lb-hero2 { padding-top: clamp(4.4rem, 8vw, 6rem); }
+.lb-hero2 p { margin-bottom: 0.8rem; }
+.lb-qa summary { padding: 0.4rem 0; }
+.lb-foot { scroll-margin-top: 4.5rem; }
+.lp-footer h4.lb-foot-h { margin: 1rem 0 0; }
+@media (max-width: 400px) { .lb-fare-mini { font-size: 0.8rem; } }
+.lb-hero2 .head-badge { display: none; }
+.lb-feat small { display: inline; margin-left: 0.3rem; }
+.lb-feat strong { display: inline; }
+.lb-s .lb-more { min-height: 32px; }
+@media (max-width: 720px) {
+  .lb-feat small { display: none; }
+  .lb-feat { gap: 0.35rem; }
+  .lb-foot .foot-bottom span + span { display: none; }
+  .lb-flow small { font-size: 0.74rem; }
+}
+
+/* ===== LBN 2026-11-25 夜 作り直し: 4項目の共通メニュー + 短いトップ ===== */
+.lb-mainmenu {
+  display: flex; gap: 0.35rem; padding: 0.6rem clamp(0.75rem, 4vw, 4rem);
+  margin-top: clamp(4.2rem, 8vw, 5.4rem); border-bottom: 1px solid var(--paper-deep);
+  max-width: 1100px; margin-left: auto; margin-right: auto;
+}
+.lb-mainmenu a {
+  flex: 1 1 0; text-align: center; padding: 0.55rem 0.3rem; border-radius: 100px; border: 1px solid var(--paper-deep);
+  color: var(--ink); text-decoration: none; font-size: 0.82rem; white-space: nowrap; background: #fffdf8; min-height: 40px;
+}
+.lb-mainmenu a.on { background: var(--moss); color: var(--paper); border-color: var(--moss); }
+@media (max-width: 420px) { .lb-mainmenu a { font-size: 0.74rem; padding: 0.55rem 0.15rem; } }
+.lb-mainmenu + .lb-hero2, .lb-mainmenu + .lb-sub-head { padding-top: 1.2rem; }
+.lb-ex-label { display: inline-block; background: var(--rust); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 0.1rem 0.55rem; border-radius: 4px; margin-right: 0.4rem; vertical-align: 0.15em; }
+.lb-ex-note { font-weight: 600; }
+.lb-jr { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0; font-size: 0.86rem; margin: 0.4rem 0; }
+.lb-jr li { list-style: none; display: inline-flex; align-items: center; }
+.lb-jr li + li::before { content: ""; display: inline-block; width: 1.1rem; height: 3px; background: var(--moss); margin: 0 0.25rem; border-radius: 2px; }
+.lb-days { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem 1.4rem; }
+.lb-days h3 { font-size: 0.95rem; margin: 0 0 0.4rem; color: var(--moss); }
+.lb-days .lb-flow { grid-template-columns: 1fr; gap: 0.45rem; }
+@media (max-width: 720px) { .lb-days { grid-template-columns: 1fr; } }
+.lb-big { font-size: clamp(1.3rem, 4.6vw, 1.7rem); font-weight: 700; margin: 0.2rem 0; color: var(--moss); }
+.lb-owner { display: flex; gap: 1rem; align-items: center; }
+.lb-owner img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; flex: none; background: var(--paper-deep); }
+.lb-owner strong { display: block; font-size: 1rem; }
+.lb-owner p { font-size: 0.82rem; line-height: 1.5; margin: 0.25rem 0 0; }
+.lb-top-video .lb-video { max-width: 640px; }
+.lb-faq-more { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+.lb-faq-more > details { border-bottom: 1px solid var(--paper-deep); }
+.lb-faq-more > details > summary { cursor: pointer; padding: 0.9rem 0; font-weight: 600; font-size: 1rem; }
+.lb-faq-more > details > .mini-sec, .lb-faq-more > details > section { padding-left: 0; padding-right: 0; }
+.lb-diff { list-style: none; display: grid; gap: 0.4rem; padding: 0; font-size: 0.9rem; }
+.lb-diff li { position: relative; padding-left: 1.4rem; line-height: 1.5; }
+.lb-diff li::before { content: "✓"; position: absolute; left: 0; color: var(--moss); font-weight: 700; }
+.lb-s .lb-top-video .mini-sec { padding-left: 0; padding-right: 0; }
+.lb-book-btn-end { margin-top: 1.2rem; }

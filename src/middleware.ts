@@ -16,6 +16,16 @@ export function middleware(req: NextRequest) {
       const rest = pathname.slice(3) || "/";
       return NextResponse.redirect(`${LB_ORIGIN}${rest}${search}`, 308);
     }
+    // Pages folded into the FAQ (2026-11-25): send old links there.
+    const gone: Record<string, string> = {
+      "/prices": "/faq",
+      "/how": "/faq",
+      "/policy": "/faq",
+      "/ja/prices": "/ja/faq",
+      "/ja/how": "/ja/faq",
+      "/ja/policy": "/ja/faq",
+    };
+    if (gone[pathname]) return NextResponse.redirect(`${LB_ORIGIN}${gone[pathname]}${search}`, 308);
     // The booking box posts here from the LB domain itself.
     if (pathname === "/api/lb-checkout" ) return NextResponse.next();
     const map: Record<string, string> = {
@@ -27,12 +37,8 @@ export function middleware(req: NextRequest) {
       "/ja/booked": "/lb/ja/booked",
       "/book": "/lb/book",
       "/ja/book": "/lb/ja/book",
-      "/prices": "/lb/prices",
-      "/ja/prices": "/lb/ja/prices",
-      "/how": "/lb/how",
-      "/ja/how": "/lb/ja/how",
-      "/policy": "/lb/policy",
-      "/ja/policy": "/lb/ja/policy",
+      "/calendar": "/lb/calendar",
+      "/ja/calendar": "/lb/ja/calendar",
       "/faq": "/lb/faq",
       "/ja/faq": "/lb/ja/faq",
       "/other-services": "/lb/other-services",

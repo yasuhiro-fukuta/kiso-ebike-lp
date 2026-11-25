@@ -8,6 +8,7 @@ import { LbTrust } from "./lb-sections";
 import {
   STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
   estimate, posOf, nameOf, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS, CANCEL_POLICY, COMPENSATION_TEXT, SEASON_TEXT,
+  HOLD_FEE_RULE, NARAI_NOTE,
 } from "../luggage-bus";
 
 const RANGE_EN = LINE.map((a) => a.name.en).join(", ");
@@ -347,7 +348,7 @@ export function EnStations() {
               <thead>
                 <tr>
                   <th>Station</th>
-                  <th>Holding fee (paid on the spot)</th>
+                  <th>Holding fee when you drop off (paid there)</th>
                   <th>Closed</th>
                   <th>Hours</th>
                 </tr>
@@ -370,7 +371,11 @@ export function EnStations() {
             </table>
           </div>
           <p className="drop-note">
-            Some stations charge a small holding fee, paid to them directly. Closing days for the tourist offices come from tourism websites and may be out of date; if your drop point turns out to be closed, we contact you before the day.
+            {HOLD_FEE_RULE.en}
+            <br />
+            {NARAI_NOTE.en}
+            <br />
+            Closing days for the tourist offices come from tourism websites and may be out of date; if your drop point turns out to be closed, we contact you before the day.
           </p>
           <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
             <div className="mini-card lb-way">
@@ -434,7 +439,6 @@ export function EnFaq() {
     <>
         {/* FAQ */}
         <section className="faq" id="faq">
-          <h2>Questions</h2>
           <details className="faq-item">
             <summary>Can I ride the Luggage Bus?</summary>
             <p>
@@ -452,6 +456,14 @@ export function EnFaq() {
             </p>
           </details>
           <details className="faq-item">
+            <summary>Are there station holding fees?</summary>
+            <p>{HOLD_FEE_RULE.en}</p>
+          </details>
+          <details className="faq-item">
+            <summary>Can I leave bags overnight at Narai Station?</summary>
+            <p>{NARAI_NOTE.en}</p>
+          </details>
+          <details className="faq-item">
             <summary>Can I cancel?</summary>
             <p>{CANCEL_POLICY.en}</p>
           </details>
@@ -462,7 +474,7 @@ export function EnFaq() {
           <details className="faq-item">
             <summary>What if I arrive before my bags?</summary>
             <p>
-              Check the arrival times on the Prices &amp; route page. If you get there first, have a
+              See “When your bags arrive” further down this page. If you get there first, have a
               coffee or look around while you wait — your bags will be there
               once the run is through.
             </p>

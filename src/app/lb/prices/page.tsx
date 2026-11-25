@@ -1,12 +1,6 @@
-import type { Metadata } from "next";
-import { LbSectionView } from "../lb-pages";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Prices & route — Luggage Bus Nakasendo",
-  description: "Stops from Nakatsugawa Station to Narai, timetable, service calendar and prices.",
-  alternates: { canonical: "/prices", languages: { en: "/prices", ja: "/ja/prices" } },
-};
-
+/** 2026-11-25 このページはやめ、中身は「よくある質問」に入れた。 */
 export default function Page() {
-  return <LbSectionView lang="en" section="prices" />;
+  redirect("/lb/faq");
 }

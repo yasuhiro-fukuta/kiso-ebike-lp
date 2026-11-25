@@ -21,6 +21,7 @@
 
 import { LB_NAKATSUGAWA_DROP, LB_COMPENSATION_YEN, LB_COMPENSATION_PERSON_YEN } from "./lb-config";
 import FARE_ROWS from "./lb-fares.json";
+import { SHEET_INNS } from "./lb-inns";
 
 type T = { en: string; ja: string };
 
@@ -53,9 +54,10 @@ export const PLACES: Record<string, Place> = {
     name: { en: "Nigiwai Tokusankan (Nakatsugawa tourist information office)", ja: "にぎわい特産館(中津川観光案内所)" },
     map: "https://maps.app.goo.gl/qMcJnvY2bVrjN46a9",
     fee: 700,
-    hours: { en: "8:30–18:00", ja: "8:30〜18:00" },
-    closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
-    rule: { weekdays: [], periods: [YEAR_END] },
+    hours: { en: "8:30–17:00", ja: "8:30〜17:00" },
+    closed: { en: "Third Sunday of February and Dec 29–Jan 3", ja: "2月第3日曜・12/29〜1/3" },
+    // 2月第3日曜は運行期間内では 2028-02-20 だけ
+    rule: { weekdays: [], periods: [YEAR_END, ["02-20", "02-20"]] },
   },
   izumiya: {
     id: "izumiya",
@@ -188,7 +190,24 @@ export const PLACES: Record<string, Place> = {
     closed: { en: "—", ja: "—" },
     rule: null,
   },
-  "narai-station": { id: "narai-station", name: { en: "Narai Station luggage storage", ja: "奈良井駅荷物預かり所" }, map: "https://maps.app.goo.gl/ESeFTVPg2nDrmjG19", fee: 700, hours: null, closed: UNKNOWN, rule: null },
+  // 2026-11-24 社長が奈良井駅で確認：1個700円・前払い・8:40〜16:40、時間を過ぎた荷物は駅の外に出される。
+  "narai-station": {
+    id: "narai-station",
+    name: { en: "Narai Station luggage storage", ja: "奈良井駅荷物預かり所" },
+    map: "https://maps.app.goo.gl/ESeFTVPg2nDrmjG19",
+    fee: 700,
+    feeNote: { en: "paid in advance; same day only", ja: "前払い。当日中のみ" },
+    hours: { en: "8:40–16:40", ja: "8:40〜16:40" },
+    closed: UNKNOWN,
+    rule: null,
+  },
+  // 2026-11-25 宿・駅の一覧スプシ(集配対象＝y)の宿。泊まる方だけが使える宿の駅、預かり料なし。
+  ...Object.fromEntries(
+    SHEET_INNS.map((i): [string, Place] => [
+      i.id,
+      { id: i.id, name: { en: i.name, ja: i.name }, map: i.map, fee: 0, guestsOnly: true, hours: null, closed: { en: "—", ja: "—" }, rule: null },
+    ]),
+  ),
 };
 
 /** The stops on the line, south to north. `pos` is the order on the line.
@@ -344,6 +363,14 @@ export const EXAMPLES: { from: AreaKey; to: AreaKey; bags: number }[] = [
   { from: "nakatsugawa", to: "kisofukushima", bags: 3 },
 ];
 
+/** トップの料金の例(2026-11-26 00:30 社長「1個だと割高に見える。2個の例に」)。3区間は社長指定。金額は表から estimate() で引く。 */
+export const TOP_EXAMPLE_BAGS = 2;
+export const TOP_EXAMPLE_ROUTES: { from: AreaKey; to: AreaKey }[] = [
+  { from: "nakatsugawa", to: "nagiso-st" },
+  { from: "nakatsugawa", to: "kisofukushima" },
+  { from: "kisofukushima", to: "narai" },
+];
+
 /* ---------- When bags arrive ---------- */
 
 /** Drop-off and arrival times (2026-11-20 社長決定). */
@@ -427,15 +454,22 @@ export const STATIONS: { area: AreaKey; name: T; places: Place[] }[] = (
       name: { en: "Nakatsugawa Station stop", ja: "中津川駅" },
       places: showNakatsugawaDrop ? [PLACES["nakatsugawa-info"]] : [],
     },
+    { area: "sakashita", name: { en: "Sakashita stop (inns)", ja: "坂下(宿)" }, places: [] },
+    { area: "tadachi", name: { en: "Tadachi stop (inns)", ja: "田立(宿)" }, places: [] },
     { area: "nagiso-st", name: { en: "Nagiso Station stop", ja: "南木曽駅" }, places: [PLACES.izumiya] },
     { area: "nagiso", name: { en: "Nagiso stop (inns)", ja: "南木曽(宿)" }, places: [PLACES.kashiwaya, PLACES.waku, PLACES.yuian] },
     { area: "nojiri-st", name: { en: "Nojiri Station stop", ja: "野尻駅" }, places: [PLACES.katana] },
+    { area: "nojiri", name: { en: "Nojiri stop (inns)", ja: "野尻(宿)" }, places: [] },
     { area: "suhara", name: { en: "Suhara stop", ja: "須原駅" }, places: [PLACES.kinoma, PLACES["minshuku-suhara"]] },
     { area: "agematsu", name: { en: "Agematsu stop", ja: "上松駅" }, places: [PLACES["agematsu-info"]] },
-    { area: "kisofukushima", name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" }, places: [PLACES["kisofukushima-info"], PLACES.waiwai, PLACES.matarihouse] },
+    { area: "kisofukushima", name: { en: "Kiso-Fukushima stop", ja: "木曽福島駅" }, places: [PLACES["kisofukushima-info"], PLACES.matarihouse] },
     { area: "narai-st", name: { en: "Narai Station stop", ja: "奈良井駅" }, places: [PLACES["narai-station"]] },
+    { area: "narai", name: { en: "Narai stop (inns)", ja: "奈良井(宿)" }, places: [] },
   ] as { area: AreaKey; name: T; places: Place[] }[]
-).filter((s) => s.places.length > 0);
+)
+  // 2026-11-25 宿・駅の一覧スプシ(集配対象＝y)の宿を足す
+  .map((s) => ({ ...s, places: [...s.places, ...SHEET_INNS.filter((i) => i.area === s.area).map((i) => PLACES[i.id])] }))
+  .filter((s) => s.places.length > 0);
 
 /** A place's name, with "guests only" for the inns. */
 export const placeName = (pl: Place, lang: "en" | "ja") =>
@@ -449,6 +483,52 @@ export const feeText = (pl: Place, lang: "en" | "ja") => {
   if (!pl.feeNote) return base;
   return lang === "ja" ? `${base}(${pl.feeNote.ja})` : `${base} (${pl.feeNote.en})`;
 };
+
+/** 2026-11-25 22:23 社長決定：中津川駅前(にぎわい)・奈良井駅前・南木曽駅前(イズミヤ)で
+ *  預けるときは、お客様が預けるときに現地で預かり料を払う。受け取るときはお客様は払わない
+ *  (受け取り側の預かり料は弊社が払う)。金額は PLACES から引く(手で打たない)。 */
+export const PICKUP_FREE_IDS = ["nakatsugawa-info", "narai-station", "izumiya"];
+
+const feeYen = (id: string, lang: "en" | "ja" = "en") => {
+  const f = PLACES[id].fee;
+  if (f === null) return "—";
+  return lang === "ja" ? `${f.toLocaleString("en-US")}円` : yen(f);
+};
+
+/** The station holding-fee rule, in one sentence (prices page, FAQ, booking box). */
+export const HOLD_FEE_RULE: T = {
+  en: `Leaving bags at a station? Pay that station's holding fee there when you drop them off (per bag: Nakatsugawa ${feeYen("nakatsugawa-info")}, Narai ${feeYen("narai-station")}, Nagiso / Cafe Izumiya ${feeYen("izumiya")}, Nojiri / Cafe Katana free). Collecting your bags at these stations is free: we pay that fee.`,
+  ja: `駅で預けるときは、その駅の預かり料を、預けるときに現地でお支払いください(1個あたり 中津川駅${feeYen("nakatsugawa-info", "ja")}・奈良井駅${feeYen("narai-station", "ja")}・南木曽駅前イズミヤ${feeYen("izumiya", "ja")}・野尻駅前カフェ刀 無料)。これらの駅で受け取るときは無料です(預かり料は弊社が負担します)。`,
+};
+
+/** Narai Station: no overnight holding (2026-11-25 社長「お客様への周知が必要」). */
+export const NARAI_NOTE: T = {
+  en: "Narai Station: bags can't stay overnight. The storage is open 8:40–16:40, and bags left after closing are put outside the station. Please collect yours the same day.",
+  ja: "奈良井駅：日をまたいで荷物を預けることはできません。預かり所は8:40〜16:40で、時間を過ぎた荷物は駅の外に出されます。その日のうちにお受け取りください。",
+};
+
+/** One-line notes for the chosen ends of a trip (booking box, range checker). */
+export function holdNotes(from: FormPoint | null, to: FormPoint | null, lang: "en" | "ja"): string[] {
+  const ja = lang === "ja";
+  const out: string[] = [];
+  const fp = from?.place;
+  if (fp && !fp.guestsOnly && fp.fee !== null && fp.fee > 0)
+    out.push(
+      ja
+        ? `${fp.name.ja}の預かり料 ${feeText(fp, "ja")} は、預けるときに現地でお支払いください。`
+        : `Pay the ${fp.name.en} holding fee (${feeText(fp, "en")}) there when you drop off.`,
+    );
+  const tpl = to?.place;
+  if (tpl && PICKUP_FREE_IDS.includes(tpl.id))
+    out.push(
+      ja
+        ? `${tpl.name.ja}での受け取りは無料です(預かり料は弊社が負担します)。`
+        : `Collecting at ${tpl.name.en} is free (we pay the holding fee).`,
+    );
+  const narai = posOf("narai-st");
+  if (from?.pos === narai || to?.pos === narai) out.push(NARAI_NOTE[lang]);
+  return out;
+}
 
 /** Is the place known to be closed on this date (ISO yyyy-mm-dd)? */
 export function placeClosed(place: Place, iso: string) {
@@ -475,6 +555,22 @@ const P = (area: AreaKey, en: string, ja: string, place: Place): FormPoint => ({
  *  automatic estimate. Labels of places already bookable before are kept as
  *  they were (bookings in Stripe carry them); only the former extensions
  *  (Nakatsugawa, Narai) were renamed. */
+/** The JR station name used in choice labels, per stop. */
+const JR_PREFIX: Record<AreaKey, T> = {
+  nakatsugawa: { en: "Nakatsugawa", ja: "中津川" },
+  sakashita: { en: "Sakashita", ja: "坂下" },
+  tadachi: { en: "Tadachi", ja: "田立" },
+  "nagiso-st": { en: "Nagiso", ja: "南木曽" },
+  nagiso: { en: "Nagiso", ja: "南木曽" },
+  "nojiri-st": { en: "Nojiri", ja: "野尻" },
+  nojiri: { en: "Nojiri", ja: "野尻" },
+  suhara: { en: "Suhara", ja: "須原" },
+  agematsu: { en: "Agematsu", ja: "上松" },
+  kisofukushima: { en: "Kiso-Fukushima", ja: "木曽福島" },
+  "narai-st": { en: "Narai", ja: "奈良井" },
+  narai: { en: "Narai", ja: "奈良井" },
+};
+
 export const FORM_POINTS: FormPoint[] = [
   ...(showNakatsugawaDrop
     ? [P("nakatsugawa", "Nakatsugawa stop (Nigiwai Tokusankan)", "中津川駅(にぎわい特産館)", PLACES["nakatsugawa-info"])]
@@ -488,9 +584,14 @@ export const FORM_POINTS: FormPoint[] = [
   P("suhara", "Suhara stop (Minshuku Suhara, guests only)", "須原駅(民宿すはら ※宿泊者のみ)", PLACES["minshuku-suhara"]),
   P("agematsu", "Agematsu stop (tourist information office)", "上松駅(上松町観光情報センター)", PLACES["agematsu-info"]),
   P("kisofukushima", "Kiso-Fukushima stop (tourist information office)", "木曽福島駅(木曽福島観光案内所)", PLACES["kisofukushima-info"]),
-  P("kisofukushima", "Kiso-Fukushima stop (HOTEL waiwai yakiso, guests only)", "木曽福島駅(HOTEL waiwai yakiso ※宿泊者のみ)", PLACES["waiwai"]),
   P("kisofukushima", "Kiso-Fukushima stop (Matari House, guests only)", "木曽福島駅(素泊宿matarihouse ※宿泊者のみ)", PLACES["matarihouse"]),
   P("narai-st", "Narai stop (Narai Station luggage storage)", "奈良井駅(奈良井駅荷物預かり所)", PLACES["narai-station"]),
+  // 2026-11-25 宿・駅の一覧スプシの宿(集配対象＝y)。HOTEL waiwai yakiso は一覧に無いので選択肢から外した。
+  ...SHEET_INNS.map((i) => {
+    const a = i.area as AreaKey;
+    const jr = JR_PREFIX[a];
+    return P(a, `${jr.en} stop (${i.name}, guests only)`, `${jr.ja}駅(${i.name} ※宿泊者のみ)`, PLACES[i.id]);
+  }),
 ];
 
 /** "Another inn/place at <stop>": for every stop on the line, so a traveller

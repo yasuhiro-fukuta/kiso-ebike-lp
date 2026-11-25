@@ -1,12 +1,6 @@
-import type { Metadata } from "next";
-import { LbSectionView } from "../../lb-pages";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "キャンセル・補償 — ラゲッジバス中山道",
-  description: "7日前までキャンセル無料、補償、ご利用のルール。",
-  alternates: { canonical: "/ja/policy", languages: { en: "/policy", ja: "/ja/policy" } },
-};
-
+/** 2026-11-25 このページはやめ、中身は「よくある質問」に入れた。 */
 export default function Page() {
-  return <LbSectionView lang="ja" section="policy" />;
+  redirect("/lb/ja/faq");
 }

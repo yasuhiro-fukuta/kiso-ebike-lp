@@ -14,6 +14,9 @@ import {
   RULES,
   RUNS,
   MAX_FARE_BAGS,
+  TOP_EXAMPLE_BAGS,
+  TOP_EXAMPLE_ROUTES,
+  nameOf,
   estimate,
   fareYen,
   listFareYen,
@@ -27,6 +30,10 @@ import {
   JR_STATIONS,
   jrOf,
   choicesForJr,
+  holdNotes,
+  HOLD_FEE_RULE,
+  NARAI_NOTE,
+  PLACES,
   type AreaKey,
 } from "../src/app/luggage-bus";
 import { quoteLb } from "../src/app/lb-booking";
@@ -138,9 +145,9 @@ test("翌日の日付", () => {
   assert.equal(nextIso("2028-02-28"), "2028-02-29");
 });
 
-test("中津川駅前(特産館)の預けは既定で選択肢に出ない", () => {
-  assert.ok(!FORM_POINTS.some((x) => x.place?.id === "nakatsugawa-info"));
-  assert.ok(!STATIONS.some((s) => s.places.some((pl) => pl.id === "nakatsugawa-info")));
+test("中津川駅前(特産館)の預けは既定で選択肢に出る(宿・駅一覧スプシで集配対象y)", () => {
+  assert.ok(FORM_POINTS.some((x) => x.place?.id === "nakatsugawa-info"));
+  assert.ok(STATIONS.some((s) => s.places.some((pl) => pl.id === "nakatsugawa-info")));
 });
 
 test("補償は1個10万円・1人15万円、保険は書かない、キャンセルは7日前まで無料・以降100%", () => {
@@ -206,9 +213,9 @@ test("同じ町どうし(南木曽駅のカフェ ↔ 南木曽の宿)は承ら�
 });
 
 test("宿が発着のときは予約名が要る", () => {
-  const q1 = quoteLb({ ...base, from: label("waiwai"), to: label("kashiwaya") }, "en", NOW, NONE);
+  const q1 = quoteLb({ ...base, from: label("matarihouse"), to: label("kashiwaya") }, "en", NOW, NONE);
   assert.equal(q1.kind, "error");
-  const q2 = quoteLb({ ...base, from: label("waiwai"), to: label("kashiwaya"), fromBooking: "A", toBooking: "B" }, "en", NOW, NONE);
+  const q2 = quoteLb({ ...base, from: label("matarihouse"), to: label("kashiwaya"), fromBooking: "A", toBooking: "B" }, "en", NOW, NONE);
   assert.equal(q2.kind, "instant");
   if (q2.kind === "instant") {
     assert.equal(q2.nextDay, false);
@@ -227,4 +234,56 @@ test("須原・奈良井・一覧にない宿も即時予約(宿の名前と予�
   const q = quoteLb({ ...base, from: label("izumiya"), to: other.en, toPlace: "Inn X", toBooking: "B" }, "en", NOW, NONE);
   assert.equal(q.kind, "instant");
   if (q.kind === "instant") assert.equal(q.total, ROWS.find((r) => r[0] === "南木曽駅" && r[1] === "田立")![3][0]);
+});
+
+test("預かり料の注記：預けるときは現地払い、中津川・奈良井・イズミヤの受け取りは無料、奈良井は日またぎ不可(2026-11-25 社長決定)", () => {
+  assert.equal(PLACES["nakatsugawa-info"].fee, 700);
+  assert.equal(PLACES["narai-station"].fee, 700);
+  assert.equal(PLACES.izumiya.fee, 500);
+  assert.equal(PLACES.katana.fee, 0);
+  assert.match(HOLD_FEE_RULE.ja, /中津川駅700円・奈良井駅700円・南木曽駅前イズミヤ500円・野尻駅前カフェ刀 無料/);
+  const pt = (id: string) => FORM_POINTS.find((x) => x.place?.id === id)!;
+  // イズミヤで預けて奈良井駅で受け取る：預け500円の注記・受け取り無料・奈良井の注意
+  const n1 = holdNotes(pt("izumiya"), pt("narai-station"), "ja");
+  assert.equal(n1.length, 3);
+  assert.match(n1[0], /¥500/);
+  assert.match(n1[1], /奈良井駅荷物預かり所での受け取りは無料/);
+  assert.equal(n1[2], NARAI_NOTE.ja);
+  // 宿どうし：注記なし
+  assert.deepEqual(holdNotes(pt("kashiwaya"), pt("matarihouse"), "en"), []);
+  // カフェ刀(0円)で預ける：預かり料の注記なし
+  assert.deepEqual(holdNotes(pt("katana"), pt("kashiwaya"), "en"), []);
+});
+
+test("宿・駅の一覧スプシ(集配対象＝y)の宿45件が予約の選択肢に出る・waiwaiは外す(2026-11-25)", async () => {
+  const { SHEET_INNS } = await import("../src/app/lb-inns");
+  assert.equal(SHEET_INNS.length, 45);
+  for (const i of SHEET_INNS) {
+    const fp = FORM_POINTS.find((x) => x.place?.id === i.id);
+    assert.ok(fp, i.name);
+    assert.equal(fp!.area, i.area);
+    assert.ok(STATIONS.some((s) => s.places.some((pl) => pl.id === i.id)));
+  }
+  assert.ok(!FORM_POINTS.some((x) => x.place?.id === "waiwai"));
+});
+
+test("トップの料金の例(荷物2個・3区間)は料金表 lb-fares.json の行と一致", () => {
+  const rows = JSON.parse(readFileSync(join(__dirname, "..", "..", "src", "app", "lb-fares.json"), "utf8")) as [string, string, number[], number[]][];
+  assert.equal(TOP_EXAMPLE_BAGS, 2);
+  const want: Record<string, [string, string]> = {
+    "nakatsugawa>nagiso-st": ["中津川駅", "南木曽駅"],
+    "nakatsugawa>kisofukushima": ["中津川駅", "木曽福島"],
+    "kisofukushima>narai": ["木曽福島", "奈良井"],
+  };
+  assert.equal(TOP_EXAMPLE_ROUTES.length, 3);
+  for (const r of TOP_EXAMPLE_ROUTES) {
+    const [a, b] = want[`${r.from}>${r.to}`];
+    const row = rows.find((x) => x[0] === a && x[1] === b);
+    assert.ok(row, `${a}→${b} の行がない`);
+    const e = estimate(posOf(r.from), posOf(r.to), TOP_EXAMPLE_BAGS);
+    assert.ok(e);
+    assert.equal(e!.list, row![2][TOP_EXAMPLE_BAGS - 1]);
+    assert.equal(e!.total, row![3][TOP_EXAMPLE_BAGS - 1]);
+    console.log(`TOP_EXAMPLE ${nameOf(r.from).ja}→${nameOf(r.to).ja} 2個 定価${e!.list} 支払${e!.total} 1個あたり${e!.total / 2}`);
+  }
 });

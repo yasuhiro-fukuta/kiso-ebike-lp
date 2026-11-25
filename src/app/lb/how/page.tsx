@@ -1,12 +1,6 @@
-import type { Metadata } from "next";
-import { LbSectionView } from "../lb-pages";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "How it works & drop points — Luggage Bus Nakasendo",
-  description: "Four steps, where to leave your bags, holding fees and closing days.",
-  alternates: { canonical: "/how", languages: { en: "/how", ja: "/ja/how" } },
-};
-
+/** 2026-11-25 このページはやめ、中身は「よくある質問」に入れた。 */
 export default function Page() {
-  return <LbSectionView lang="en" section="how" />;
+  redirect("/lb/faq");
 }

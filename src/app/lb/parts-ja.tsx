@@ -8,6 +8,7 @@ import { LbTrust } from "./lb-sections";
 import {
   STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
   estimate, posOf, nameOf, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS, CANCEL_POLICY, COMPENSATION_TEXT, SEASON_TEXT,
+  HOLD_FEE_RULE, NARAI_NOTE,
 } from "../luggage-bus";
 
 const RANGE_JA = LINE.map((a) => a.name.ja).join("・");
@@ -342,7 +343,7 @@ export function JaStations() {
               <thead>
                 <tr>
                   <th>駅</th>
-                  <th>預かり料(現地払い)</th>
+                  <th>預ける時の預かり料(現地払い)</th>
                   <th>定休日</th>
                   <th>営業時間</th>
                 </tr>
@@ -365,7 +366,11 @@ export function JaStations() {
             </table>
           </div>
           <p className="drop-note">
-            預かり料がかかる駅があります(その場で各駅にお支払いください)。観光案内所の定休日は観光サイトの情報をもとにした目安で、変わっていることがあります。預け場所が休みと分かったときは、前もってこちらからご連絡します。
+            {HOLD_FEE_RULE.ja}
+            <br />
+            {NARAI_NOTE.ja}
+            <br />
+            観光案内所の定休日は観光サイトの情報をもとにした目安で、変わっていることがあります。預け場所が休みと分かったときは、前もってこちらからご連絡します。
           </p>
           <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
             <div className="mini-card lb-way">
@@ -428,7 +433,6 @@ export function JaFaq() {
     <>
         {/* よくある質問 */}
         <section className="faq" id="faq">
-          <h2>よくある質問</h2>
           <details className="faq-item">
             <summary>ラゲッジバスに乗れますか?</summary>
             <p>
@@ -442,6 +446,14 @@ export function JaFaq() {
             </p>
           </details>
           <details className="faq-item">
+            <summary>駅の預かり料はかかりますか?</summary>
+            <p>{HOLD_FEE_RULE.ja}</p>
+          </details>
+          <details className="faq-item">
+            <summary>奈良井駅に一晩預けられますか?</summary>
+            <p>{NARAI_NOTE.ja}</p>
+          </details>
+          <details className="faq-item">
             <summary>キャンセルはできますか?</summary>
             <p>{CANCEL_POLICY.ja}</p>
           </details>
@@ -452,7 +464,7 @@ export function JaFaq() {
           <details className="faq-item">
             <summary>荷物より先に着いてしまったら?</summary>
             <p>
-              「料金・範囲」のページの「荷物が届く時間」をご覧ください。先に着いたら、お茶をしたり町を歩いたりしてお待ちください。便が着いたら荷物を受け取れます。
+              このページの下の「荷物が届く時間」をご覧ください。先に着いたら、お茶をしたり町を歩いたりしてお待ちください。便が着いたら荷物を受け取れます。
             </p>
           </details>
           <details className="faq-item">

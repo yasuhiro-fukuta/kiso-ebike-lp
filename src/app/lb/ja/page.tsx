@@ -1,6 +1,6 @@
-import { LbTopView } from "../lb-pages";
+import { LbTopView } from "../lb-top";
 
-/** トップ = 短いキャッチ + カード型の目次(2026-11-25)。詳しくは /ja/book・/ja/prices・/ja/how・/ja/policy・/ja/faq。 */
+/** トップ(2026-11-25 夜 作り直し):8つの項目+動画だけ。メニューは トップ/予約する/営業カレンダー/よくある質問。 */
 export default function JaLuggageBusPage() {
   return <LbTopView lang="ja" />;
 }
