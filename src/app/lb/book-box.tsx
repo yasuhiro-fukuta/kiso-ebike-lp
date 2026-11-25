@@ -1,5 +1,6 @@
 "use client";
 
+import { PriceTag } from "./price-tag";
 import { useEffect, useRef, useState } from "react";
 import { CreditCard, MessageCircle, ShieldCheck } from "lucide-react";
 import {
@@ -284,7 +285,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
       )}
 
       <div className="lb-bookbox-price">
-        <strong>{est ? yen(est.total) : "—"}</strong>
+        {est ? <PriceTag total={est.total} list={est.list} lang={lang} /> : <strong>—</strong>}
         <span>
           {est
             ? est.parts.map((p) => p[lang]).join(" + ")

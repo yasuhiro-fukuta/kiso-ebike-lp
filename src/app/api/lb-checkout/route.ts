@@ -94,6 +94,12 @@ export async function POST(req: NextRequest) {
       : `Luggage Bus ${input.date}: ${q.from.label} → ${q.to.label}, ${input.bags} bag${input.bags > 1 ? "s" : ""}`;
     const description =
       q.parts.map((p) => `${p[lang]} ¥${p.yen.toLocaleString("en-US")}`).join(" + ") +
+      // Opening campaign (2026-11-25): we charge the campaign price (q.total).
+      (q.list > q.total
+        ? ja
+          ? `(オープンキャンペーン価格・定価 ¥${q.list.toLocaleString("en-US")})`
+          : ` (opening campaign price; regular ¥${q.list.toLocaleString("en-US")})`
+        : "") +
       (q.nextDay ? (ja ? "(翌日のお届け)" : " (delivered the next day)") : "");
     const meta: Record<string, string> = {
       service: "luggage_bus",
@@ -111,6 +117,8 @@ export async function POST(req: NextRequest) {
     if (input.fromPlace.trim()) meta.from_place_name = input.fromPlace.trim();
     if (input.toPlace.trim()) meta.to_place_name = input.toPlace.trim();
     meta.agreed_cancel_policy = "7d_free_then_100";
+    meta.list_price_jpy = String(q.list);
+    meta.charged_price_jpy = String(q.total);
     if (q.nextDay) meta.delivery = "next_day";
 
     const p = new URLSearchParams();

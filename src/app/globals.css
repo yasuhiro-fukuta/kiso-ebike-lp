@@ -2173,3 +2173,10 @@ figure.season-cell .season-tag {
 .lb-sub-head .eyebrow { color: var(--rust); }
 .lb-sub-head h1 { font-size: clamp(1.7rem, 5vw, 2.8rem); margin: 0.4rem 0 0; }
 .lb-end-cta { text-align: center; }
+/* Opening campaign price (2026-11-25): regular price struck through + campaign price */
+.lb-price-tag { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .45rem; }
+.lb-price-was { opacity: .6; font-size: .85em; font-variant-numeric: tabular-nums; }
+.lb-price-now { font-variant-numeric: tabular-nums; }
+.lb-campaign { display: inline-block; padding: .05rem .45rem; border-radius: 999px; background: #b5452f; color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+.lb-bookbox-price .lb-price-now { font-size: 1.6rem; }
+.lb-bookbox-price .lb-campaign { font-size: .72rem; }
