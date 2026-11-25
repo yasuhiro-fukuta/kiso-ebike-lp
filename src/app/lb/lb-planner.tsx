@@ -1,5 +1,6 @@
 "use client";
 
+import { PriceTag } from "./price-tag";
 import { useState } from "react";
 import { CheckCircle2, XCircle, MapPin, Clock, Wallet, ArrowRight, Search, Plus, Trash2 } from "lucide-react";
 import {
@@ -233,7 +234,7 @@ function LegResult({
           <p>
             <Wallet size={16} /> <b>{ja ? "料金:" : "Price: "}</b>
             {est
-              ? `${yen(est.total)} (${est.parts.map((p) => p[lang]).join(" + ")})`
+              ? <><PriceTag total={est.total} list={est.list} lang={lang} /> ({est.parts.map((p) => p[lang]).join(" + ")})</>
               : manyBags
                 ? ja ? `${MAX_FARE_BAGS + 1}個以上はWhatsAppでお問い合わせください。` : `For ${MAX_FARE_BAGS + 1} or more bags, please ask us on WhatsApp.`
                 : "—"}

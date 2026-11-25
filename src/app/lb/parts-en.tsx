@@ -1,12 +1,13 @@
 "use client";
 
 /* ページごとに分けた本文(2026-11-25 トップを目次にした分割)。中身・数字は分割前の page.tsx からそのまま移した。 */
+import { PriceTag } from "./price-tag";
 import { MessageCircle, CreditCard, Footprints, PackageCheck, MapPin, ArrowRight, Ban, Camera } from "lucide-react";
 import { EBIKE_SITE, useLb } from "./lb-chrome";
 import { LbTrust } from "./lb-sections";
 import {
   STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
-  estimate, posOf, nameOf, yen, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS, CANCEL_POLICY, COMPENSATION_TEXT, SEASON_TEXT,
+  estimate, posOf, nameOf, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS, CANCEL_POLICY, COMPENSATION_TEXT, SEASON_TEXT,
 } from "../luggage-bus";
 
 const RANGE_EN = LINE.map((a) => a.name.en).join(", ");
@@ -242,7 +243,7 @@ export function EnPricing() {
                         {nameOf(x.from).en} → {nameOf(x.to).en}
                       </th>
                       <td>{x.bags}</td>
-                      <td>{e ? yen(e.total) : "—"}</td>
+                      <td>{e ? <PriceTag total={e.total} list={e.list} lang="en" /> : "—"}</td>
                     </tr>
                   );
                 })}

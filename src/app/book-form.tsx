@@ -10,6 +10,7 @@ import {
   FORM_OTHER,
   formSpots,
   formAreaPos,
+  CAMPAIGN_LABEL,
   estimate,
   yen,
   feeText,
@@ -45,7 +46,7 @@ type Service = {
   /** Optional check run when sending; returns an error message or null. */
   validate?: (lang: Lang, v: Record<string, string>) => string | null;
   /** Optional price estimate from the raw field values (shown and sent). */
-  estimate?: (lang: Lang, v: Record<string, string>) => { total: string; detail: string } | null;
+  estimate?: (lang: Lang, v: Record<string, string>) => { total: string; detail: string; was?: string; badge?: string } | null;
 };
 
 /** The five standard start/finish points. */
@@ -236,7 +237,12 @@ const SERVICES: Record<string, Service> = {
     estimate: (l, v) => {
       const e = estimate(endPos(v, "from"), endPos(v, "to"), Number(v.bags ?? 0));
       if (!e) return null;
-      return { total: yen(e.total), detail: e.parts.map((p) => `${p[l]} ${yen(p.yen)}`).join(" + ") };
+      return {
+        total: yen(e.total),
+        detail: e.parts.map((p) => `${p[l]} ${yen(p.yen)}`).join(" + "),
+        // Opening campaign (2026-11-25): regular price struck through.
+        ...(e.discounted ? { was: yen(e.list), badge: CAMPAIGN_LABEL[l] } : {}),
+      };
     },
     build: (l, g, est, v) => {
       const from = endText(l, v, "from", l === "ja" ? "〇" : "__");
@@ -517,7 +523,9 @@ export default function BookForm({ lang }: { lang: Lang }) {
             <div className="book-field">
               <label>{t.estimate}</label>
               <div className="book-estimate">
+                {est?.was && <s className="lb-price-was">{est.was}</s>}{" "}
                 <strong>{est ? est.total : t.estimateNone}</strong>
+                {est?.badge && <span className="lb-campaign">{est.badge}</span>}
                 {est && <span>{est.detail}</span>}
                 <small>{t.estimateNote}</small>
               </div>

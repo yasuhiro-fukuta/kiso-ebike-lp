@@ -8,8 +8,11 @@
  *  中津川は駅のみ(宿は扱わない)。宮ノ越・薮原は範囲外にした。
  *  馬籠・妻籠は範囲外 → 他社のご案内(2026-11-24 蘭は妻籠に統合)。
  *  料金(2026-11-21 社長決定):式ではなく料金表 lb-fares.json の引き当てだけ。
- *  表は [出発, 到着, 元表の出発, 元表の到着, [1個..5個の円]] の126組(プログラムで
- *  生成し、元のスプレッドシートと全行一致を確認済み)。コードで計算・補完・丸めしない。
+ *  2026-11-25 社長決定:定価=他社最安と同額(NLTS・はなまる配送の最小、競合が無い組は
+ *  前の料金)、オープンキャンペーン価格=定価×0.8を千円単位に切り上げ。表は
+ *  [出発, 到着, [定価 1個..5個], [キャンペーン価格 1個..5個]] の126組(プログラムで生成し、
+ *  スプレッドシートのタブ「うちの料金(定価=他社最安・オープンCP 0.8)」と全行照合済み)。
+ *  コードで計算・補完・丸めしない。お客様が払う(Stripeで請求する)のはキャンペーン価格。
  *  表に無い組(同じ町どうし)と、表に無い個数(6個以上)は金額を出さない。
  *  ※運賃料金の変更届を出す前に、この料金を本番に出さないこと。
  *  届く時刻(2026-11-20 社長決定):朝9時までに置けば、その日の16時までに届く。
@@ -266,15 +269,21 @@ export const OTHER_SERVICES: { name: string; url: string }[] = [
 
 /* ---------- Fare (looked up in the fare table, never computed) ---------- */
 
-/** One row of lb-fares.json: from, to, source-sheet from, source-sheet to,
- *  yen for 1..5 bags. */
-export type FareRow = [string, string, string, string, number[]];
+/** One row of lb-fares.json: from, to, regular (list) yen for 1..5 bags,
+ *  opening-campaign yen for 1..5 bags (what the guest pays). */
+export type FareRow = [string, string, number[], number[]];
 export const FARE_TABLE = FARE_ROWS as unknown as FareRow[];
+
+/** Opening campaign (2026-11-25 社長決定): guests pay the campaign price; the
+ *  regular price is shown struck through when it is higher. */
+export const CAMPAIGN_LABEL = { en: "Opening campaign", ja: "オープンキャンペーン" };
 
 /** The table has prices for 1 to this many bags. More bags: ask on WhatsApp. */
 export const MAX_FARE_BAGS = 5;
 
-const FARE_MAP = new Map<string, number[]>(FARE_TABLE.map((r) => [`${r[0]}|${r[1]}`, r[4]]));
+const FARE_MAP = new Map<string, { list: number[]; pay: number[] }>(
+  FARE_TABLE.map((r) => [`${r[0]}|${r[1]}`, { list: r[2], pay: r[3] }]),
+);
 
 /** Stops booked by arrangement on WhatsApp (not instant). Empty since
  *  2026-11-24 (社長: ルート3本の12地点はすべてその場で予約確定). */
@@ -287,27 +296,42 @@ export const byArrangement = (pos: number | null) => {
 /** Positions that need arrangement (for the request form's note). */
 export const EXT_POS: number[] = LINE.filter((a) => BY_ARRANGEMENT.includes(a.key)).map((a) => a.pos);
 
-/** Fare in yen from the table, or null when the table has no price
- *  (unknown stop, same town, a pair not in the table, or bags not 1–5). */
-export function fareYen(from: number | null, to: number | null, bags: number): number | null {
+/** Look up one pair in the table (null: unknown stop, same town, a pair not
+ *  in the table, or bags not 1–5). */
+function fareRow(from: number | null, to: number | null, bags: number) {
   const a = areaAt(from);
   const b = areaAt(to);
   if (!a || !b || a.town === b.town) return null;
   if (!Number.isInteger(bags) || bags < 1 || bags > MAX_FARE_BAGS) return null;
   const row = FARE_MAP.get(`${a.fare}|${b.fare}`);
-  const v = row?.[bags - 1];
-  return typeof v === "number" ? v : null;
+  const pay = row?.pay[bags - 1];
+  const list = row?.list[bags - 1];
+  return typeof pay === "number" && typeof list === "number" ? { pay, list } : null;
+}
+
+/** Fare the guest pays (the opening-campaign price) in yen, or null when the
+ *  table has no price. */
+export function fareYen(from: number | null, to: number | null, bags: number): number | null {
+  return fareRow(from, to, bags)?.pay ?? null;
+}
+
+/** Regular (list) price in yen, or null when the table has no price. */
+export function listFareYen(from: number | null, to: number | null, bags: number): number | null {
+  return fareRow(from, to, bags)?.list ?? null;
 }
 
 /** Fare for a trip, from the table. null when there is no price.
+ *  `total` = what the guest pays (campaign price, charged on Stripe).
+ *  `list` = regular price; `discounted` = list is higher than total.
  *  `parts` = one line (the bags) for display and the Stripe description. */
 export function estimate(from: number | null, to: number | null, bags: number) {
-  const total = fareYen(from, to, bags);
-  if (total === null) return null;
+  const r = fareRow(from, to, bags);
+  if (!r) return null;
+  const total = r.pay;
   const parts: { en: string; ja: string; yen: number }[] = [
     { en: `${bags} bag${bags > 1 ? "s" : ""}`, ja: `荷物${bags}個`, yen: total },
   ];
-  return { total, parts };
+  return { total, list: r.list, discounted: r.list > total, parts };
 }
 
 export const yen = (n: number) => `¥${n.toLocaleString("en-US")}`;

@@ -57,6 +57,8 @@ export type LbQuote =
   | {
       kind: "instant";
       total: number;
+      /** Regular (list) price; total is the opening-campaign price we charge. */
+      list: number;
       parts: { en: string; ja: string; yen: number }[];
       from: { label: string; place: Place | null; pos: number };
       to: { label: string; place: Place | null; pos: number };
@@ -126,6 +128,7 @@ export function quoteLb(input: LbInput, lang: Lang, now: Now = jstNow(), closed:
   return {
     kind: "instant",
     total: e.total,
+    list: e.list,
     parts: e.parts,
     from: { label: f[lang], place: f.place, pos: f.pos },
     to: { label: t[lang], place: t.place, pos: t.pos },

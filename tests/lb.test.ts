@@ -16,6 +16,7 @@ import {
   MAX_FARE_BAGS,
   estimate,
   fareYen,
+  listFareYen,
   sameTown,
   isNextDay,
   nextIso,
@@ -33,7 +34,8 @@ import { quoteLb } from "../src/app/lb-booking";
 const p = posOf;
 
 /** The fare table, read straight from the file (not through the code). */
-type Row = [string, string, string, string, number[]];
+/** [出発, 到着, 定価 1..5個, オープンキャンペーン価格 1..5個] (2026-11-25) */
+type Row = [string, string, number[], number[]];
 const ROWS: Row[] = JSON.parse(readFileSync(join(__dirname, "..", "..", "src", "app", "lb-fares.json"), "utf8"));
 const posByFare = (name: string) => {
   const a = LINE.find((x) => x.fare === name);
@@ -72,13 +74,20 @@ test("馬籠・妻籠・蘭は範囲外で、予約の選択肢に出ない", ()
 test("料金表:全126組×1〜5個で、コードの引き当て結果 = lb-fares.json の値", () => {
   assert.equal(ROWS.length, 126);
   let checked = 0;
-  for (const [from, to, , , yens] of ROWS) {
+  for (const [from, to, list, yens] of ROWS) {
     assert.equal(yens.length, 5, `${from}→${to} の個数の列が5でない`);
+    assert.equal(list.length, 5, `${from}→${to} の定価の列が5でない`);
     for (let n = 1; n <= 5; n++) {
       const e = estimate(posByFare(from), posByFare(to), n);
       assert.ok(e, `${from}→${to} ${n}個 が金額なし`);
       assert.equal(e.total, yens[n - 1], `${from}→${to} ${n}個`);
+      assert.equal(e.list, list[n - 1], `${from}→${to} ${n}個 定価`);
+      assert.equal(e.discounted, list[n - 1] > yens[n - 1]);
       assert.equal(fareYen(posByFare(from), posByFare(to), n), yens[n - 1]);
+      assert.equal(listFareYen(posByFare(from), posByFare(to), n), list[n - 1]);
+      // キャンペーン価格 = 定価×0.8 を千円単位に切り上げ(整数で計算)
+      assert.equal(yens[n - 1], Math.ceil((list[n - 1] * 8) / 10000) * 1000, `${from}→${to} ${n}個 CP`);
+      assert.ok(yens[n - 1] <= list[n - 1]);
       assert.equal(e.parts.reduce((s, x) => s + x.yen, 0), e.total);
       checked++;
     }
@@ -177,7 +186,7 @@ test("一覧の駅どうしは即時予約、金額は料金表の値", () => {
     assert.equal(q.kind, "instant");
     if (q.kind === "instant") {
       const row = ROWS.find((r) => r[0] === "南木曽駅" && r[1] === "木曽福島")!;
-      assert.equal(q.total, row[4][n - 1]);
+      assert.equal(q.total, row[3][n - 1]);
       assert.equal(q.nextDay, false);
       assert.equal(q.run, "north");
     }
@@ -203,7 +212,7 @@ test("宿が発着のときは予約名が要る", () => {
   assert.equal(q2.kind, "instant");
   if (q2.kind === "instant") {
     assert.equal(q2.nextDay, false);
-    assert.equal(q2.total, ROWS.find((r) => r[0] === "木曽福島" && r[1] === "南木曽")![4][0]);
+    assert.equal(q2.total, ROWS.find((r) => r[0] === "木曽福島" && r[1] === "南木曽")![3][0]);
   }
 });
 
@@ -217,5 +226,5 @@ test("須原・奈良井・一覧にない宿も即時予約(宿の名前と予�
   assert.equal(quoteLb({ ...base, from: label("izumiya"), to: other.en, toPlace: "Inn X" }, "en", NOW, NONE).kind, "error");
   const q = quoteLb({ ...base, from: label("izumiya"), to: other.en, toPlace: "Inn X", toBooking: "B" }, "en", NOW, NONE);
   assert.equal(q.kind, "instant");
-  if (q.kind === "instant") assert.equal(q.total, ROWS.find((r) => r[0] === "南木曽駅" && r[1] === "田立")![4][0]);
+  if (q.kind === "instant") assert.equal(q.total, ROWS.find((r) => r[0] === "南木曽駅" && r[1] === "田立")![3][0]);
 });
