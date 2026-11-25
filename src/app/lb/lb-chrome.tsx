@@ -95,17 +95,8 @@ export function LbFloat({
   href: string;
   children: React.ReactNode;
 }) {
-  const { isJa } = useLb();
   return (
     <>
-      <a
-        href={LINE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="float-book float-line"
-      >
-        <LineIcon size={18} /> {isJa ? "LINEで問い合わせ" : "LINE"}
-      </a>
       <a
         href={href}
         {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}

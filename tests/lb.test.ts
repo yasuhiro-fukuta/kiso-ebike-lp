@@ -142,9 +142,9 @@ test("翌日の日付", () => {
   assert.equal(nextIso("2028-02-28"), "2028-02-29");
 });
 
-test("中津川駅前(特産館)の預けは既定で選択肢に出ない", () => {
-  assert.ok(!FORM_POINTS.some((x) => x.place?.id === "nakatsugawa-info"));
-  assert.ok(!STATIONS.some((s) => s.places.some((pl) => pl.id === "nakatsugawa-info")));
+test("中津川駅前(特産館)の預けは既定で選択肢に出る(宿・駅一覧スプシで集配対象y)", () => {
+  assert.ok(FORM_POINTS.some((x) => x.place?.id === "nakatsugawa-info"));
+  assert.ok(STATIONS.some((s) => s.places.some((pl) => pl.id === "nakatsugawa-info")));
 });
 
 test("補償は1個10万円・1人15万円、保険は書かない、キャンセルは7日前まで無料・以降100%", () => {

@@ -92,7 +92,7 @@ export function LbTopView({ lang }: { lang: Lang }) {
           <li>{ja ? "当日中に配送。朝置いた荷物が、その日のうちに次の宿へ。" : "Same-day delivery: bags you leave in the morning reach your next inn that day."}</li>
           <li>{ja ? "サービス側の返事を待たずに、その場で予約完了。" : "Booked on the spot. No waiting for a reply from us."}</li>
           <li>
-            {ja ? "馬籠・妻籠に宿泊の方は、" : "Staying in Magome or Tsumago? "}
+            {ja ? "馬籠・妻籠で宿泊される方は、" : "Staying in Magome or Tsumago? "}
             <Link href={href("other-services")}>{ja ? "こちらの業者がおすすめです" : "these services are a better fit"}</Link>
             {ja ? "。" : "."}
           </li>

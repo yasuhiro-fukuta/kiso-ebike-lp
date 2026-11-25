@@ -21,8 +21,10 @@ const feature = (v: string | undefined): LbFeature => {
   return s === "on" || s === "soon" ? s : "off";
 };
 
-/** 中津川駅前「にぎわい特産館」での預け(取り決め未確認)。"on" のときだけ預け場所の選択肢に出る。 */
-export const LB_NAKATSUGAWA_DROP: LbFeature = feature(process.env.NEXT_PUBLIC_LB_NAKATSUGAWA_DROP);
+/** 中津川駅前「にぎわい特産館」(中津川観光案内所)での預け。2026-11-25 社長が中津川観光協会と打ち合わせ済み、
+ *  宿・駅一覧スプシで集配対象=y。既定で選択肢に出す(環境変数に "off"/"soon" を入れたときだけ隠す)。 */
+const nkRaw = str(process.env.NEXT_PUBLIC_LB_NAKATSUGAWA_DROP);
+export const LB_NAKATSUGAWA_DROP: LbFeature = nkRaw ? feature(nkRaw) : "on";
 
 /** 遠方からヤマトで送って、ラゲッジバスが引き継ぐ中継の案内(取り決め未確認)。 */
 export const LB_YAMATO_RELAY: LbFeature = feature(process.env.NEXT_PUBLIC_LB_YAMATO_RELAY);

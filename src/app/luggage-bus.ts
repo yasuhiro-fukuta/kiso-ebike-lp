@@ -54,9 +54,10 @@ export const PLACES: Record<string, Place> = {
     name: { en: "Nigiwai Tokusankan (Nakatsugawa tourist information office)", ja: "にぎわい特産館(中津川観光案内所)" },
     map: "https://maps.app.goo.gl/qMcJnvY2bVrjN46a9",
     fee: 700,
-    hours: { en: "8:30–18:00", ja: "8:30〜18:00" },
-    closed: { en: "New Year holidays (approx. Dec 29–Jan 3)", ja: "年末年始(12/29〜1/3目安)" },
-    rule: { weekdays: [], periods: [YEAR_END] },
+    hours: { en: "8:30–17:00", ja: "8:30〜17:00" },
+    closed: { en: "Third Sunday of February and Dec 29–Jan 3", ja: "2月第3日曜・12/29〜1/3" },
+    // 2月第3日曜は運行期間内では 2028-02-20 だけ
+    rule: { weekdays: [], periods: [YEAR_END, ["02-20", "02-20"]] },
   },
   izumiya: {
     id: "izumiya",
