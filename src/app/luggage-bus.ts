@@ -363,6 +363,14 @@ export const EXAMPLES: { from: AreaKey; to: AreaKey; bags: number }[] = [
   { from: "nakatsugawa", to: "kisofukushima", bags: 3 },
 ];
 
+/** トップの料金の例(2026-11-26 00:30 社長「1個だと割高に見える。2個の例に」)。3区間は社長指定。金額は表から estimate() で引く。 */
+export const TOP_EXAMPLE_BAGS = 2;
+export const TOP_EXAMPLE_ROUTES: { from: AreaKey; to: AreaKey }[] = [
+  { from: "nakatsugawa", to: "nagiso-st" },
+  { from: "nakatsugawa", to: "kisofukushima" },
+  { from: "kisofukushima", to: "narai" },
+];
+
 /* ---------- When bags arrive ---------- */
 
 /** Drop-off and arrival times (2026-11-20 社長決定). */

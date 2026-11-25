@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Shippori_Mincho_B1, Cormorant_Garamond, Noto_Sans_JP, Inter } from "next/font/google";
 import { LINE } from "../luggage-bus";
+import "./lb-theme.css";
+
+/* 書体(2026-11-26 はなまる配送の組み合わせを手本に):見出し=明朝(英はCormorant Garamond)、本文=ゴシック(英はInter)。 */
+const mincho = Shippori_Mincho_B1({ weight: ["500", "700", "800"], subsets: ["latin"], display: "swap", preload: false, variable: "--lbx-mincho" });
+const garamond = Cormorant_Garamond({ weight: ["500", "600", "700"], style: ["normal", "italic"], subsets: ["latin"], display: "swap", variable: "--lbx-garamond" });
+const notoJp = Noto_Sans_JP({ subsets: ["latin"], display: "swap", preload: false, variable: "--lbx-gothic" });
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--lbx-inter" });
 
 const LB_URL = "https://luggagebusnakasendo.com";
 
@@ -56,7 +64,7 @@ export default function LbLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
-      {children}
+      <div className={`lbx-root ${mincho.variable} ${garamond.variable} ${notoJp.variable} ${inter.variable}`}>{children}</div>
     </>
   );
 }

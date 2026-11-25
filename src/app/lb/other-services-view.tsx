@@ -11,7 +11,7 @@ export function OtherServicesView({ lang }: { lang: Lang }) {
   const out = OUT_OF_RANGE.map((o) => o.name[lang]).join(ja ? "・" : ", ");
   const range = LINE.map((a) => a.name[lang]).join(ja ? "・" : ", ");
   return (
-    <div className="lp">
+    <div className="lp lbx lbx-page">
       <LbNav lang={lang} />
       <header className="page-head">
         <span className="eyebrow">{ja ? "範囲外の方へ" : "Outside our route"}</span>

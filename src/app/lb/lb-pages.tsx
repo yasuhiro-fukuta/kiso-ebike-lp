@@ -1,12 +1,13 @@
 "use client";
 
 /** ラゲッジバスのページ構成(2026-11-25 23:02 社長のダメ出しで作り直し)。
- *  メニューは トップ/予約する/営業カレンダー/よくある質問 の4つだけ(lb-chrome の LbMenu)。
+ *  メニューは トップ/予約する/営業カレンダー/よくある質問 の4つだけ(lb-chrome の LbNav)。
+ *  見た目は 2026-11-26 トップと同じ地色・書体・見出し・余白・ボタンにそろえた(中身と動きは変えない)。
  *  旧 /prices /how /policy は消して /faq へリダイレクト。中身(料金の例・届く時間・置き場所・
  *  キャンセル・補償・ルール)は「よくある質問」に入れた。範囲外の方へ(/other-services)はメニューに出さない。 */
 import Link from "next/link";
 import { CalendarCheck, ArrowRight } from "lucide-react";
-import { LbNav, LbMenu, LbFooter, LbFloat, useLb } from "./lb-chrome";
+import { LbNav, LbFooter, LbFloat, useLb } from "./lb-chrome";
 import { LbPlanner } from "./lb-planner";
 import { LbServiceCalendar } from "./lb-sections";
 import * as En from "./parts-en";
@@ -28,9 +29,8 @@ export function useLbHref(lang: Lang) {
 export function BookButton({ lang }: { lang: Lang }) {
   const href = useLbHref(lang);
   return (
-    <Link href={href("book")} className="stay-cta lb-book-btn">
-      <CalendarCheck size={18} /> {lang === "ja" ? "予約する（返事を待たずに予約完了）" : "Book now (booked at once, no waiting for a reply)"}{" "}
-      <ArrowRight size={16} />
+    <Link href={href("book")} className="lbx-btn lbx-btn-primary">
+      {lang === "ja" ? "予約する" : "Book now"} <ArrowRight size={16} />
     </Link>
   );
 }
@@ -78,22 +78,23 @@ export function LbSectionView({ lang, section }: { lang: Lang; section: LbSectio
   const ja = lang === "ja";
   const href = useLbHref(lang);
   return (
-    <div className="lp">
-      <LbNav lang={lang} />
-      <LbMenu lang={lang} current={section} />
+    <div className="lp lbx lbx-page">
+      <LbNav lang={lang} current={section} />
       {section !== "book" && (
         <LbFloat href={href("book")}>
           <CalendarCheck size={18} /> {ja ? "予約する" : "Book now"}
         </LbFloat>
       )}
-      <header className="lb-sub-head">
+      <header className="lbx-page-head">
         <h1>{HEAD[section][lang]}</h1>
       </header>
 
-      <Body lang={lang} section={section} />
+      <main className={`lbx-page-body lbx-page-${section}`}>
+        <Body lang={lang} section={section} />
+      </main>
 
       {section !== "book" && (
-        <section className="mini-sec lb-end-cta">
+        <section className="lbx-end-cta lbx-center">
           <BookButton lang={lang} />
         </section>
       )}

@@ -1,5 +1,11 @@
 "use client";
 
+/** ラゲッジバスの共通の枠(ヘッダー・フッター・浮きボタン)。
+ *  2026-11-26 はなまる配送(全5ページ+CSS)の型を手本に作り直し:
+ *   - ヘッダー:固定の細い帯。トップでは最初は透明+白文字、スクロールで和紙色の半透明。ロゴ+メニュー4つ+言語切替
+ *   - フッター:墨色の地に生成りの文字。ロゴ+一言+メニュー+運営者情報+問い合わせ先
+ *  メニューは4つだけ(2026-11-25 23:11 社長の仕様):トップ/予約する/営業カレンダー/よくある質問。 */
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MessageCircle, Mail, Phone, Instagram } from "lucide-react";
@@ -29,38 +35,7 @@ export function useLb(): { base: string; isJa: boolean } {
   return { base, isJa };
 }
 
-export function LbNav({ lang = "en" }: { lang?: Lang }) {
-  const { base } = useLb();
-  const ja = lang === "ja";
-  const enHref = base || "/";
-  const jaHref = `${base}/ja`;
-  return (
-    <nav className="lp-nav">
-      <Link
-        href={ja ? jaHref : enHref}
-        className="brand"
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/logo-mark.png" alt="" className="brand-mark" />
-        Luggage Bus <span>Nakasendo</span>
-      </Link>
-      <div className="nav-right">
-        <div className="lang-switch">
-          <Link href={enHref} className={ja ? "" : "on"}>
-            EN
-          </Link>
-          <span>/</span>
-          <Link href={jaHref} className={ja ? "on" : ""}>
-            日本語
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
-/** The site menu (2026-11-25 23:02 社長): 4 items only, on every page including the top. */
+/** The site menu (2026-11-25 23:11 社長): 4 items only, on every page including the top. */
 export const LB_MENU: { slug: string; t: { en: string; ja: string } }[] = [
   { slug: "", t: { en: "Home", ja: "トップ" } },
   { slug: "book", t: { en: "Book", ja: "予約する" } },
@@ -68,96 +43,142 @@ export const LB_MENU: { slug: string; t: { en: string; ja: string } }[] = [
   { slug: "faq", t: { en: "FAQ", ja: "よくある質問" } },
 ];
 
-export function LbMenu({ lang = "en", current = "" }: { lang?: Lang; current?: string }) {
+function useMenuHref(lang: Lang) {
   const { base } = useLb();
   const ja = lang === "ja";
-  const href = (slug: string) => (slug ? `${base}${ja ? "/ja" : ""}/${slug}` : ja ? `${base}/ja` : base || "/");
-  return (
-    <nav className="lb-mainmenu" aria-label={ja ? "メニュー" : "Menu"}>
-      {LB_MENU.map((m) => (
-        <Link
-          key={m.slug || "top"}
-          href={href(m.slug)}
-          className={m.slug === current ? "on" : undefined}
-          aria-current={m.slug === current ? "page" : undefined}
-        >
-          {m.t[lang]}
-        </Link>
-      ))}
-    </nav>
-  );
+  return (slug: string) => (slug ? `${base}${ja ? "/ja" : ""}/${slug}` : ja ? `${base}/ja` : base || "/");
 }
 
-export function LbFloat({
-  href,
-  children,
+/** Fixed header bar. `overlay` = sits on the top photo: transparent with white text until you scroll. */
+export function LbNav({
+  lang = "en",
+  current,
+  overlay = false,
 }: {
-  href: string;
-  children: React.ReactNode;
+  lang?: Lang;
+  current?: string;
+  overlay?: boolean;
 }) {
+  const { base } = useLb();
+  const ja = lang === "ja";
+  const href = useMenuHref(lang);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    if (!overlay) return;
+    const on = () => setScrolled(window.scrollY > 24);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, [overlay]);
+  const clear = overlay && !scrolled;
+  const enHref = base || "/";
+  const jaHref = `${base}/ja`;
   return (
-    <>
-      <a
-        href={href}
-        {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className="float-book"
-      >
-        {children}
-      </a>
-    </>
+    <header className={`lbx-head${clear ? " is-clear" : ""}`}>
+      <div className="lbx-head-in">
+        <Link href={ja ? jaHref : enHref} className="lbx-brand">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/logo-mark.png" alt="" />
+          <span>
+            Luggage Bus <i>Nakasendo</i>
+          </span>
+        </Link>
+        <nav className="lbx-menu" aria-label={ja ? "メニュー" : "Menu"}>
+          {LB_MENU.map((m) => {
+            const on = current !== undefined && m.slug === current;
+            return (
+              <Link key={m.slug || "top"} href={href(m.slug)} className={on ? "on" : undefined} aria-current={on ? "page" : undefined}>
+                {m.t[lang]}
+              </Link>
+            );
+          })}
+        </nav>
+        <div className="lbx-lang">
+          <Link href={enHref} className={ja ? "" : "on"}>
+            EN
+          </Link>
+          <span>/</span>
+          <Link href={jaHref} className={ja ? "on" : ""}>
+            JP
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 }
 
-/** Footer, kept short (2026-11-25): brand, operator, contact and related links in a few lines. */
+export function LbFloat({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="lbx-float"
+    >
+      {children}
+    </a>
+  );
+}
+
+/** Footer: sumi ground, cream text. Logo + one line + menu + operator + contact. */
 export function LbFooter({ lang = "en" }: { lang?: Lang }) {
   const ja = lang === "ja";
+  const href = useMenuHref(lang);
   return (
-    <footer className="lp-footer lb-foot" id="company">
-      <div className="lb-foot-in">
-        <div className="lb-foot-brand">
+    <footer className="lbx-foot" id="company">
+      <div className="lbx-foot-in">
+        <div className="lbx-foot-brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/logo-mark.png" alt="" className="foot-mark" />
+          <img src="/assets/logo-mark.png" alt="" />
           <div>
-            <div className="brand">
-              Luggage Bus <span>Nakasendo</span>
+            <div className="lbx-foot-name">
+              Luggage Bus <i>Nakasendo</i>
             </div>
-            <a className="lb-endorse" href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>
-              a Kiso Ride service
+            <p className="lbx-foot-tag">{ja ? "手ぶらで、木曽を100％。" : "Hands-free in the Kiso Valley."}</p>
+          </div>
+        </div>
+        <nav className="lbx-foot-menu" aria-label={ja ? "メニュー" : "Menu"}>
+          {LB_MENU.map((m) => (
+            <Link key={m.slug || "top"} href={href(m.slug)}>
+              {m.t[lang]}
+            </Link>
+          ))}
+        </nav>
+        <div className="lbx-foot-info">
+          <h4>{ja ? "運営者" : "Operator"}</h4>
+          <p>
+            {ja
+              ? "合同会社From Scratch（ゲストハウス柏屋・キソライド）長野県木曽郡南木曽町"
+              : "From Scratch LLC (Kashiwaya Guesthouse · Kiso Ride), Nagiso, Nagano"}
+          </p>
+          <p>{ja ? "JR中央線沿いに、中津川〜奈良井で運行" : "Along the JR Chuo Line, Nakatsugawa to Narai"}</p>
+        </div>
+        <div className="lbx-foot-info">
+          <h4>{ja ? "お問い合わせ" : "Contact"}</h4>
+          <div className="lbx-foot-row">
+            <a href={ja ? WHATSAPP_URL_JA : WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <MessageCircle size={14} /> WhatsApp
+            </a>
+            <a href={LINE_URL} target="_blank" rel="noreferrer">
+              <LineIcon size={14} /> LINE
+            </a>
+            <a href={SUPPORT_MAILTO}>
+              <Mail size={14} /> {ja ? "メール" : "Email"}
+            </a>
+            <a href={PHONE_TEL}>
+              <Phone size={14} /> {PHONE}
+            </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+              <Instagram size={14} /> Instagram
             </a>
           </div>
         </div>
-        <h4 className="lb-foot-h">{ja ? "会社概要・お問い合わせ" : "About us & contact"}</h4>
-        <p>
-          {ja
-            ? "JR中央線沿いに、中津川〜奈良井。運営：ゲストハウス柏屋(合同会社From Scratch)・長野県南木曽町"
-            : "Along the JR Chuo Line, Nakatsugawa to Narai. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
-        </p>
-        <div className="lb-foot-row">
-          <a href={ja ? WHATSAPP_URL_JA : WHATSAPP_URL} target="_blank" rel="noreferrer">
-            <MessageCircle size={15} /> WhatsApp
-          </a>
-          <a href={LINE_URL} target="_blank" rel="noreferrer">
-            <LineIcon size={15} /> LINE
-          </a>
-          <a href={SUPPORT_MAILTO}>
-            <Mail size={15} /> {ja ? "メール" : "Email"}
-          </a>
-          <a href={PHONE_TEL}>
-            <Phone size={15} /> {PHONE}
-          </a>
-          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
-            <Instagram size={15} /> Instagram
-          </a>
-        </div>
-        <div className="lb-foot-row small">
-          <a href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>Kiso Ride</a>
-          <a href={ja ? `${EBIKE_SITE}/ja/rental` : `${EBIKE_SITE}/rental`}>{ja ? "E-bikeレンタル" : "E-Bike Rental"}</a>
-          <a href={ja ? `${EBIKE_SITE}/ja/guided` : `${EBIKE_SITE}/guided`}>{ja ? "ガイドツアー" : "Guided Tours"}</a>
-        </div>
-        <div className="foot-bottom">
-          <span>© {new Date().getFullYear()} From Scratch LLC</span>
-          <span>{ja ? "オンラインで申し込み · お支払いで予約確定" : "Book online · confirmed when you pay"}</span>
-        </div>
+      </div>
+      <div className="lbx-foot-bar">
+        <span>© {new Date().getFullYear()} From Scratch LLC</span>
+        <span className="lbx-foot-links">
+          <a href={ja ? `${EBIKE_SITE}/ja/legal` : `${EBIKE_SITE}/legal`}>{ja ? "特定商取引法の表記" : "Legal notice"}</a>
+          <a href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>a Kiso Ride service</a>
+        </span>
       </div>
     </footer>
   );

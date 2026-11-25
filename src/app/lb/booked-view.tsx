@@ -26,7 +26,7 @@ export async function BookedView({ lang, sessionId }: { lang: Lang; sessionId?: 
   const wa = ja ? WHATSAPP_URL_JA : WHATSAPP_URL;
 
   return (
-    <div className="lp">
+    <div className="lp lbx lbx-page">
       <LbNav lang={lang} />
       <header className="page-head">
         <span className="eyebrow">{ja ? "ご予約" : "Your booking"}</span>

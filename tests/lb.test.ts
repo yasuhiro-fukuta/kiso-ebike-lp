@@ -14,6 +14,9 @@ import {
   RULES,
   RUNS,
   MAX_FARE_BAGS,
+  TOP_EXAMPLE_BAGS,
+  TOP_EXAMPLE_ROUTES,
+  nameOf,
   estimate,
   fareYen,
   listFareYen,
@@ -262,4 +265,25 @@ test("宿・駅の一覧スプシ(集配対象＝y)の宿45件が予約の選択
     assert.ok(STATIONS.some((s) => s.places.some((pl) => pl.id === i.id)));
   }
   assert.ok(!FORM_POINTS.some((x) => x.place?.id === "waiwai"));
+});
+
+test("トップの料金の例(荷物2個・3区間)は料金表 lb-fares.json の行と一致", () => {
+  const rows = JSON.parse(readFileSync(join(__dirname, "..", "..", "src", "app", "lb-fares.json"), "utf8")) as [string, string, number[], number[]][];
+  assert.equal(TOP_EXAMPLE_BAGS, 2);
+  const want: Record<string, [string, string]> = {
+    "nakatsugawa>nagiso-st": ["中津川駅", "南木曽駅"],
+    "nakatsugawa>kisofukushima": ["中津川駅", "木曽福島"],
+    "kisofukushima>narai": ["木曽福島", "奈良井"],
+  };
+  assert.equal(TOP_EXAMPLE_ROUTES.length, 3);
+  for (const r of TOP_EXAMPLE_ROUTES) {
+    const [a, b] = want[`${r.from}>${r.to}`];
+    const row = rows.find((x) => x[0] === a && x[1] === b);
+    assert.ok(row, `${a}→${b} の行がない`);
+    const e = estimate(posOf(r.from), posOf(r.to), TOP_EXAMPLE_BAGS);
+    assert.ok(e);
+    assert.equal(e!.list, row![2][TOP_EXAMPLE_BAGS - 1]);
+    assert.equal(e!.total, row![3][TOP_EXAMPLE_BAGS - 1]);
+    console.log(`TOP_EXAMPLE ${nameOf(r.from).ja}→${nameOf(r.to).ja} 2個 定価${e!.list} 支払${e!.total} 1個あたり${e!.total / 2}`);
+  }
 });

@@ -19,7 +19,7 @@ export function GuideNagisoKf({ lang }: { lang: Lang }) {
   const faq = GUIDE_FAQ[lang];
 
   return (
-    <div className="lp">
+    <div className="lp lbx lbx-page">
       <LbNav lang={lang} />
       <LbFloat href={book}>{ja ? "荷物の予約へ" : "Book your bags"}</LbFloat>
 
