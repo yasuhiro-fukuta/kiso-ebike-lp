@@ -1,12 +1,6 @@
-import type { Metadata } from "next";
-import { LbSectionView } from "../../lb-pages";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "料金・範囲 — ラゲッジバス中山道",
-  description: "中津川駅〜奈良井の地点・時刻・運行カレンダー・料金。",
-  alternates: { canonical: "/ja/prices", languages: { en: "/prices", ja: "/ja/prices" } },
-};
-
+/** 2026-11-25 このページはやめ、中身は「よくある質問」に入れた。 */
 export default function Page() {
-  return <LbSectionView lang="ja" section="prices" />;
+  redirect("/lb/ja/faq");
 }

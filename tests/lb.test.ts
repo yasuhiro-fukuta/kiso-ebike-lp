@@ -210,9 +210,9 @@ test("同じ町どうし(南木曽駅のカフェ ↔ 南木曽の宿)は承ら�
 });
 
 test("宿が発着のときは予約名が要る", () => {
-  const q1 = quoteLb({ ...base, from: label("waiwai"), to: label("kashiwaya") }, "en", NOW, NONE);
+  const q1 = quoteLb({ ...base, from: label("matarihouse"), to: label("kashiwaya") }, "en", NOW, NONE);
   assert.equal(q1.kind, "error");
-  const q2 = quoteLb({ ...base, from: label("waiwai"), to: label("kashiwaya"), fromBooking: "A", toBooking: "B" }, "en", NOW, NONE);
+  const q2 = quoteLb({ ...base, from: label("matarihouse"), to: label("kashiwaya"), fromBooking: "A", toBooking: "B" }, "en", NOW, NONE);
   assert.equal(q2.kind, "instant");
   if (q2.kind === "instant") {
     assert.equal(q2.nextDay, false);
@@ -247,7 +247,19 @@ test("預かり料の注記：預けるときは現地払い、中津川・奈�
   assert.match(n1[1], /奈良井駅荷物預かり所での受け取りは無料/);
   assert.equal(n1[2], NARAI_NOTE.ja);
   // 宿どうし：注記なし
-  assert.deepEqual(holdNotes(pt("kashiwaya"), pt("waiwai"), "en"), []);
+  assert.deepEqual(holdNotes(pt("kashiwaya"), pt("matarihouse"), "en"), []);
   // カフェ刀(0円)で預ける：預かり料の注記なし
   assert.deepEqual(holdNotes(pt("katana"), pt("kashiwaya"), "en"), []);
+});
+
+test("宿・駅の一覧スプシ(集配対象＝y)の宿45件が予約の選択肢に出る・waiwaiは外す(2026-11-25)", async () => {
+  const { SHEET_INNS } = await import("../src/app/lb-inns");
+  assert.equal(SHEET_INNS.length, 45);
+  for (const i of SHEET_INNS) {
+    const fp = FORM_POINTS.find((x) => x.place?.id === i.id);
+    assert.ok(fp, i.name);
+    assert.equal(fp!.area, i.area);
+    assert.ok(STATIONS.some((s) => s.places.some((pl) => pl.id === i.id)));
+  }
+  assert.ok(!FORM_POINTS.some((x) => x.place?.id === "waiwai"));
 });

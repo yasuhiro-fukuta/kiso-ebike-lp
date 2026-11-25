@@ -60,6 +60,34 @@ export function LbNav({ lang = "en" }: { lang?: Lang }) {
   );
 }
 
+/** The site menu (2026-11-25 23:02 社長): 4 items only, on every page including the top. */
+export const LB_MENU: { slug: string; t: { en: string; ja: string } }[] = [
+  { slug: "", t: { en: "Home", ja: "トップ" } },
+  { slug: "book", t: { en: "Book", ja: "予約する" } },
+  { slug: "calendar", t: { en: "Calendar", ja: "運行カレンダー" } },
+  { slug: "faq", t: { en: "FAQ", ja: "よくある質問" } },
+];
+
+export function LbMenu({ lang = "en", current = "" }: { lang?: Lang; current?: string }) {
+  const { base } = useLb();
+  const ja = lang === "ja";
+  const href = (slug: string) => (slug ? `${base}${ja ? "/ja" : ""}/${slug}` : ja ? `${base}/ja` : base || "/");
+  return (
+    <nav className="lb-mainmenu" aria-label={ja ? "メニュー" : "Menu"}>
+      {LB_MENU.map((m) => (
+        <Link
+          key={m.slug || "top"}
+          href={href(m.slug)}
+          className={m.slug === current ? "on" : undefined}
+          aria-current={m.slug === current ? "page" : undefined}
+        >
+          {m.t[lang]}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
 export function LbFloat({
   href,
   children,
@@ -110,8 +138,8 @@ export function LbFooter({ lang = "en" }: { lang?: Lang }) {
         <h4 className="lb-foot-h">{ja ? "会社概要・お問い合わせ" : "About us & contact"}</h4>
         <p>
           {ja
-            ? "中津川〜奈良井の宿へ、荷物だけを運びます。運営：ゲストハウス柏屋(From Scratch LLC)・長野県南木曽町"
-            : "A bags-only shuttle between Nakatsugawa and Narai. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
+            ? "JR中央線沿いに、中津川〜奈良井。運営：ゲストハウス柏屋(合同会社From Scratch)・長野県南木曽町"
+            : "Along the JR Chuo Line, Nakatsugawa to Narai. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
         </p>
         <div className="lb-foot-row">
           <a href={ja ? WHATSAPP_URL_JA : WHATSAPP_URL} target="_blank" rel="noreferrer">

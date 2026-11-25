@@ -2271,3 +2271,36 @@ figure.season-cell .season-tag {
   .lb-foot .foot-bottom span + span { display: none; }
   .lb-flow small { font-size: 0.74rem; }
 }
+
+/* ===== LBN 2026-11-25 夜 作り直し: 4項目の共通メニュー + 短いトップ ===== */
+.lb-mainmenu {
+  display: flex; gap: 0.35rem; padding: 0.6rem clamp(0.75rem, 4vw, 4rem);
+  margin-top: clamp(4.2rem, 8vw, 5.4rem); border-bottom: 1px solid var(--paper-deep);
+  max-width: 1100px; margin-left: auto; margin-right: auto;
+}
+.lb-mainmenu a {
+  flex: 1 1 0; text-align: center; padding: 0.55rem 0.3rem; border-radius: 100px; border: 1px solid var(--paper-deep);
+  color: var(--ink); text-decoration: none; font-size: 0.82rem; white-space: nowrap; background: #fffdf8; min-height: 40px;
+}
+.lb-mainmenu a.on { background: var(--moss); color: var(--paper); border-color: var(--moss); }
+@media (max-width: 420px) { .lb-mainmenu a { font-size: 0.74rem; padding: 0.55rem 0.15rem; } }
+.lb-mainmenu + .lb-hero2, .lb-mainmenu + .lb-sub-head { padding-top: 1.2rem; }
+.lb-ex-label { display: inline-block; background: var(--rust); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 0.1rem 0.55rem; border-radius: 4px; margin-right: 0.4rem; vertical-align: 0.15em; }
+.lb-ex-note { font-weight: 600; }
+.lb-jr { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0; font-size: 0.86rem; margin: 0.4rem 0; }
+.lb-jr li { list-style: none; display: inline-flex; align-items: center; }
+.lb-jr li + li::before { content: ""; display: inline-block; width: 1.1rem; height: 3px; background: var(--moss); margin: 0 0.25rem; border-radius: 2px; }
+.lb-days { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem 1.4rem; }
+.lb-days h3 { font-size: 0.95rem; margin: 0 0 0.4rem; color: var(--moss); }
+.lb-days .lb-flow { grid-template-columns: 1fr; gap: 0.45rem; }
+@media (max-width: 720px) { .lb-days { grid-template-columns: 1fr; } }
+.lb-big { font-size: clamp(1.3rem, 4.6vw, 1.7rem); font-weight: 700; margin: 0.2rem 0; color: var(--moss); }
+.lb-owner { display: flex; gap: 1rem; align-items: center; }
+.lb-owner img { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; flex: none; background: var(--paper-deep); }
+.lb-owner strong { display: block; font-size: 1rem; }
+.lb-owner p { font-size: 0.82rem; line-height: 1.5; margin: 0.25rem 0 0; }
+.lb-top-video .lb-video { max-width: 640px; }
+.lb-faq-more { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 4rem); }
+.lb-faq-more > details { border-bottom: 1px solid var(--paper-deep); }
+.lb-faq-more > details > summary { cursor: pointer; padding: 0.9rem 0; font-weight: 600; font-size: 1rem; }
+.lb-faq-more > details > .mini-sec, .lb-faq-more > details > section { padding-left: 0; padding-right: 0; }

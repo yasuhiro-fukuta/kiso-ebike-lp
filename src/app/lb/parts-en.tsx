@@ -475,7 +475,7 @@ export function EnFaq() {
           <details className="faq-item">
             <summary>What if I arrive before my bags?</summary>
             <p>
-              Check the arrival times on the Prices &amp; route page. If you get there first, have a
+              See “When your bags arrive” further down this page. If you get there first, have a
               coffee or look around while you wait — your bags will be there
               once the run is through.
             </p>

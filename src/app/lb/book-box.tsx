@@ -296,8 +296,8 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
         </span>
         <small>
           {ja
-            ? `朝${DROP_BY}までに置けば、その日の${ARRIVE_BY}までに届きます。駅の預かり料は預けるときに現地払い、受け取りは無料です(宿は無料)。`
-            : `Leave them by ${DROP_BY}, and they arrive by ${ARRIVE_BY} the same day. Station holding fees are paid on the spot when you drop off; collecting is free (inns are free).`}
+            ? `朝${DROP_BY}までに置けば、その日の${ARRIVE_BY}までに届きます。`
+            : `Leave them by ${DROP_BY}, and they arrive by ${ARRIVE_BY} the same day.`}
         </small>
         {holdNotes(fp, tp, lang).map((t) => (
           <small key={t} className="lb-nextday">

@@ -1,6 +1,6 @@
 import { LbTopView } from "./lb-top";
 
-/** Top = one page: service, route, main prices, how to use, FAQ, about & contact (2026-11-25). Details live on /book, /prices, /how, /policy, /faq. */
+/** トップ(2026-11-25 夜 作り直し):7つの項目+動画だけ。メニューは トップ/予約する/運行カレンダー/よくある質問。 */
 export default function LuggageBusPage() {
   return <LbTopView lang="en" />;
 }
