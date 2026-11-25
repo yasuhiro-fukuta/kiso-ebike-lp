@@ -242,7 +242,7 @@ function LegResult({
             {est
               ? <><PriceTag total={est.total} list={est.list} lang={lang} /> ({est.parts.map((p) => p[lang]).join(" + ")})</>
               : manyBags
-                ? ja ? `${MAX_FARE_BAGS + 1}個以上はWhatsAppでお問い合わせください。` : `For ${MAX_FARE_BAGS + 1} or more bags, please ask us on WhatsApp.`
+                ? ja ? `荷物は${MAX_FARE_BAGS}個までです。` : `Up to ${MAX_FARE_BAGS} bags.`
                 : "—"}
           </p>
           <div className="lb-bookbox-actions">
@@ -320,7 +320,7 @@ export function LbRangeChecker({ lang, onBook }: { lang: Lang; onBook: (p: Omit<
         <label>
           <span>{ja ? "個数" : "Bags"}</span>
           <select id="lbc-bags" value={bags} onChange={(e) => setBags(e.target.value)}>
-            {["1", "2", "3", "4", "5", "6", "7", "8"].map((n) => (
+            {["1", "2", "3", "4", "5"].map((n) => (
               <option key={n} value={n}>{n}</option>
             ))}
           </select>

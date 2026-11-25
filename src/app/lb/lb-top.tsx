@@ -1,10 +1,10 @@
 "use client";
 
-/** ラゲッジバスのトップ(2026-11-25 23:02 社長のダメ出しで作り直し)。
- *  上に共通メニュー4つ(トップ/予約する/運行カレンダー/よくある質問)。
- *  トップに載せるのは次の7つと使い方の動画だけ。ページ内目次・チラ見せ・「詳しくはこちら」は置かない。
- *   ① 誰がどう嬉しいか + 予約ボタン  ② 料金の例(3区間・1個)  ③ 配送範囲(JR中央線沿い)
- *   ④ 予約から当日まで  ⑤ 返金(キャンセルポリシー)  ⑥ 遅延・紛失・盗難(補償限度額)  ⑦ 運営者(顔)
+/** ラゲッジバスのトップ(2026-11-25 23:02 社長のダメ出し・23:11 社長の仕様で作り直し)。
+ *  上に共通メニュー4つ(トップ/予約する/営業カレンダー/よくある質問)。
+ *  トップはこの順の8つと使い方の動画だけ。ページ内目次・チラ見せ・「詳しくはこちら」は置かない。
+ *   ① 誰がどう嬉しいか + 予約ボタン  ② 他とどう違うか  ③ 料金の目安と3例  ④ 配送範囲(JR中央線沿い)
+ *   ⑤ 予約から当日まで(下に動画)  ⑥ 返金(キャンセルポリシー)  ⑦ 遅延・紛失・盗難(補償限度額)  ⑧ 運営者(顔)+予約ボタン
  *  金額は表(lb-fares.json)から estimate() で引く。手で書かない。預かり料はトップに書かない。 */
 import Link from "next/link";
 import { CalendarCheck, ArrowRight } from "lucide-react";
@@ -85,16 +85,25 @@ export function LbTopView({ lang }: { lang: Lang }) {
         </Link>
       </header>
 
-      {/* 使い方の動画 */}
-      <div className="lb-top-video">
-        <LbHowVideo lang={lang} />
-      </div>
+      {/* ② 他とどう違うか */}
+      <section className="lb-s" id="diff">
+        <h2>{ja ? "ほかとの違い" : "What makes us different"}</h2>
+        <ul className="lb-diff">
+          <li>{ja ? "当日中に配送。朝置いた荷物が、その日のうちに次の宿へ。" : "Same-day delivery: bags you leave in the morning reach your next inn that day."}</li>
+          <li>{ja ? "サービス側の返事を待たずに、その場で予約完了。" : "Booked on the spot. No waiting for a reply from us."}</li>
+          <li>
+            {ja ? "馬籠・妻籠に宿泊の方は、" : "Staying in Magome or Tsumago? "}
+            <Link href={href("other-services")}>{ja ? "こちらの業者がおすすめです" : "these services are a better fit"}</Link>
+            {ja ? "。" : "."}
+          </li>
+        </ul>
+      </section>
 
-      {/* ② 料金の例 */}
+      {/* ③ 料金の目安 */}
       <section className="lb-s" id="price">
         <h2>
           <span className="lb-ex-label">{ja ? "例" : "e.g."}</span>
-          {ja ? "料金の例（荷物1個）" : "Example prices (1 bag)"}
+          {ja ? "料金の目安（荷物1個の例）" : "Prices at a glance (1 bag, examples)"}
         </h2>
         <table className="lb-fare-mini">
           <tbody>
@@ -118,7 +127,7 @@ export function LbTopView({ lang }: { lang: Lang }) {
         </p>
       </section>
 
-      {/* ③ 配送範囲 */}
+      {/* ④ 配送範囲 */}
       <section className="lb-s" id="area">
         <h2>{ja ? "配送範囲：JR中央線沿いに、中津川〜奈良井" : "Where: along the JR Chuo Line, Nakatsugawa to Narai"}</h2>
         <p className="lb-s-note">
@@ -129,14 +138,9 @@ export function LbTopView({ lang }: { lang: Lang }) {
             <li key={s.key}>{s.name[lang]}</li>
           ))}
         </ul>
-        <p className="lb-s-note">
-          {ja ? "馬籠・妻籠に宿泊の方は、" : "Staying in Magome or Tsumago? "}
-          <Link href={href("other-services")}>{ja ? "こちらの業者がおすすめです" : "these services are a better fit"}</Link>
-          {ja ? "。" : "."}
-        </p>
       </section>
 
-      {/* ④ 予約から当日まで */}
+      {/* ⑤ 予約から当日まで(下に動画) */}
       <section className="lb-s" id="flow">
         <h2>{ja ? "予約から当日まで" : "From booking to the day"}</h2>
         <div className="lb-days">
@@ -161,15 +165,18 @@ export function LbTopView({ lang }: { lang: Lang }) {
             </ol>
           </div>
         </div>
+        <div className="lb-top-video">
+          <LbHowVideo lang={lang} />
+        </div>
       </section>
 
-      {/* ⑤ 返金 */}
+      {/* ⑥ 返金 */}
       <section className="lb-s" id="refund">
         <h2>{ja ? "返金（キャンセルポリシー）" : "Refunds (cancellation policy)"}</h2>
         <p className="lb-s-note">{CANCEL_POLICY[lang]}</p>
       </section>
 
-      {/* ⑥ 遅延・紛失・盗難 */}
+      {/* ⑦ 遅延・紛失・盗難 */}
       <section className="lb-s" id="cover">
         <h2>{ja ? "遅延・紛失・盗難のとき" : "Delay, loss or theft"}</h2>
         <p className="lb-big">
@@ -182,7 +189,7 @@ export function LbTopView({ lang }: { lang: Lang }) {
         </p>
       </section>
 
-      {/* ⑦ 運営者 */}
+      {/* ⑧ 運営者 + 予約ボタン */}
       <section className="lb-s" id="owner">
         <h2>{ja ? "運営者" : "Who runs it"}</h2>
         <div className="lb-owner">
@@ -200,6 +207,10 @@ export function LbTopView({ lang }: { lang: Lang }) {
             </p>
           </div>
         </div>
+        <Link href={href("book")} className="stay-cta lb-book-btn lb-book-btn-end">
+          <CalendarCheck size={18} /> {ja ? "予約する（返事を待たずに予約完了）" : "Book now (booked at once, no waiting for a reply)"}{" "}
+          <ArrowRight size={16} />
+        </Link>
       </section>
 
       <LbFooter lang={lang} />

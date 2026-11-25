@@ -439,7 +439,6 @@ export function EnFaq() {
     <>
         {/* FAQ */}
         <section className="faq" id="faq">
-          <h2>Questions</h2>
           <details className="faq-item">
             <summary>Can I ride the Luggage Bus?</summary>
             <p>

@@ -433,7 +433,6 @@ export function JaFaq() {
     <>
         {/* よくある質問 */}
         <section className="faq" id="faq">
-          <h2>よくある質問</h2>
           <details className="faq-item">
             <summary>ラゲッジバスに乗れますか?</summary>
             <p>

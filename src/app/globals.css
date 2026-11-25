@@ -2304,3 +2304,8 @@ figure.season-cell .season-tag {
 .lb-faq-more > details { border-bottom: 1px solid var(--paper-deep); }
 .lb-faq-more > details > summary { cursor: pointer; padding: 0.9rem 0; font-weight: 600; font-size: 1rem; }
 .lb-faq-more > details > .mini-sec, .lb-faq-more > details > section { padding-left: 0; padding-right: 0; }
+.lb-diff { list-style: none; display: grid; gap: 0.4rem; padding: 0; font-size: 0.9rem; }
+.lb-diff li { position: relative; padding-left: 1.4rem; line-height: 1.5; }
+.lb-diff li::before { content: "✓"; position: absolute; left: 0; color: var(--moss); font-weight: 700; }
+.lb-s .lb-top-video .mini-sec { padding-left: 0; padding-right: 0; }
+.lb-book-btn-end { margin-top: 1.2rem; }

@@ -133,7 +133,7 @@ export function LbServiceCalendar({ lang }: { lang: Lang }) {
   const MON_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   return (
     <section className="mini-sec" id="calendar">
-      <span className="eyebrow">{ja ? "運行カレンダー" : "Service calendar"}</span>
+      <span className="eyebrow">{ja ? "営業カレンダー" : "Service calendar"}</span>
       <h2>
         <CalendarDays size={22} /> {ja ? "2027年3月〜2028年2月、月曜以外は毎日運行。" : "March 2027 – February 2028, every day except Mondays."}
       </h2>

@@ -2,7 +2,7 @@
 
 import { PriceTag } from "./price-tag";
 import { useEffect, useRef, useState } from "react";
-import { CreditCard, MessageCircle, ShieldCheck } from "lucide-react";
+import { CreditCard, ShieldCheck } from "lucide-react";
 import {
   LB_CHOICE_GROUPS,
   JR_STATIONS,
@@ -14,7 +14,6 @@ import {
   yen,
   ARRIVE_BY,
   DROP_BY,
-  MAX_FARE_BAGS,
   SEASON_START,
   SEASON_END,
   CANCEL_POLICY,
@@ -23,7 +22,6 @@ import {
 } from "../luggage-bus";
 import { quoteLb, needsInnBooking, jstNow } from "../lb-booking";
 import { LB_COMPENSATION_YEN, LB_COMPENSATION_PERSON_YEN } from "../lb-config";
-import { wa } from "../site";
 
 type Lang = "en" | "ja";
 
@@ -123,7 +121,8 @@ export function LbStopPicker({
 
 /** Booking box at the top of the Luggage Bus page (modelled on Correos Paq Mochila):
  *  pick date, stops and bags → price appears at once → pay and confirm,
- *  or send the request on WhatsApp when it needs our approval. */
+ *  2026-11-25 23:20 社長「WhatsApp要らねえだろ」：予約画面にWhatsAppの申し込みは出さない。
+ *  ボタンは最初からStripeの支払いボタン1つ(入力が足りないあいだは押せず、足りない項目を一言で出す)。 */
 export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | null }) {
   const ja = lang === "ja";
   const [v, setV] = useState({
@@ -140,7 +139,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
   const [err, setErr] = useState<string | null>(null);
   const [agree, setAgree] = useState(false);
   const [paying, setPaying] = useState(false);
-  // The server said "not instant after all" (no Stripe key, capacity, etc.): show WhatsApp.
+  // The server said "not instant after all" (capacity, closed day, etc.): we can't take it on that day.
   const [forceWa, setForceWa] = useState(false);
   const boxRef = useRef<HTMLElement>(null);
   const set = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -177,18 +176,26 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
   );
   // 2026-11-25: no env switch any more — every instant quote is paid and confirmed on the spot.
   const instant = q.kind === "instant" && !forceWa;
+  // What still stops the pay button, in one short line.
+  const missing: string | null = instant
+    ? agree
+      ? null
+      : ja ? "上の同意にチェックを入れてください。" : "Please tick the box above to agree."
+    : !v.date
+      ? ja ? "日付を選んでください。" : "Please choose a date."
+      : !fp
+        ? ja ? "預ける場所を選んでください。" : "Please choose where you leave your bags."
+        : !tp
+          ? ja ? "受け取る場所を選んでください。" : "Please choose where you collect them."
+          : q.kind === "error"
+            ? q.message
+            : forceWa
+              ? null
+              : ja ? "この日は受け付けできません。別の日を選んでください。" : "We can't take this booking on that day. Please choose another date.";
   const fromInnAsk = !!fp && !fp.place && fp.pos !== null;
   const toInnAsk = !!tp && !tp.place && tp.pos !== null;
   const fromBookingAsk = needsInnBooking(v.from);
   const toBookingAsk = needsInnBooking(v.to);
-
-  const innLine = (label: string, inn: string, booking: string, ja: boolean) =>
-    [label, inn && (ja ? `宿名:${inn}` : `inn: ${inn}`), booking && (ja ? `予約名:${booking}` : `booking name: ${booking}`)]
-      .filter(Boolean)
-      .join(" / ");
-  const message = ja
-    ? `こんにちは。ラゲッジバスの予約を申し込みます。\n氏名:${v.name || "〇"}\n日付:${v.date || "〇"}\n預ける場所:${innLine(v.from || "〇", v.fromInn, v.fromBooking, true)}\n受け取る場所:${innLine(v.to || "〇", v.toInn, v.toBooking, true)}\n個数:${bags}個\n概算金額:${est ? yen(est.total) : "要相談"}${nextDay ? "\n※翌日のお届けの区間です。" : ""}\n※荷物の写真を1個につき1枚送ります。`
-    : `Hello! I'd like to book the Luggage Bus.\nName: ${v.name || "__"}\nDate: ${v.date || "__"}\nDrop off: ${innLine(v.from || "__", v.fromInn, v.fromBooking, false)}\nCollect: ${innLine(v.to || "__", v.toInn, v.toBooking, false)}\nBags: ${bags}\nEstimate: ${est ? yen(est.total) : "to be confirmed"}${nextDay ? "\n(This route is delivered the next day.)" : ""}\nI'll send one photo of each bag.`;
 
   const pay = async () => {
     setErr(null);
@@ -217,9 +224,9 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
         return;
       }
       if (j.fallback || j.approval) setForceWa(true);
-      setErr(j.error ?? (ja ? "この内容はWhatsAppでお申し込みください。" : "Please send this request on WhatsApp."));
+      setErr(j.error ?? (ja ? "この日は受け付けできません。別の日を選んでください。" : "We can't take this booking on that day. Please choose another date."));
     } catch {
-      setErr(ja ? "通信できませんでした。WhatsAppでお申し込みください。" : "Connection failed. Please book on WhatsApp.");
+      setErr(ja ? "通信できませんでした。もう一度お試しください。" : "Connection failed. Please try again.");
     }
     setPaying(false);
   };
@@ -235,7 +242,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
         <label>
           <span>{ja ? "個数" : "Bags"}</span>
           <select id="lbb-bags" value={v.bags} onChange={set("bags")}>
-            {["1", "2", "3", "4", "5", "6", "7", "8"].map((n) => (
+            {["1", "2", "3", "4", "5"].map((n) => (
               <option key={n} value={n}>{n}</option>
             ))}
           </select>
@@ -290,9 +297,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
         <span>
           {est
             ? est.parts.map((p) => p[lang]).join(" + ")
-            : bags > MAX_FARE_BAGS
-              ? ja ? `${MAX_FARE_BAGS + 1}個以上はWhatsAppでお問い合わせください` : `${MAX_FARE_BAGS + 1} or more bags: please ask us on WhatsApp`
-              : ja ? "最寄りのJR駅・宿と個数を選ぶと出ます" : "Choose your stations, inns and bags to see the price"}
+            : ja ? "最寄りのJR駅・宿と個数を選ぶと出ます" : "Choose your stations, inns and bags to see the price"}
         </span>
         <small>
           {ja
@@ -314,10 +319,8 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
       </div>
 
       {err && <p className="book-error" role="alert">{err}</p>}
-      {q.kind === "error" && v.date && v.from && v.to && <p className="book-hint">{q.message}</p>}
 
-      {instant && (
-        <label className="lb-agree">
+      <label className="lb-agree">
           <input id="lbb-agree" type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />{" "}
           <span>
             {ja ? "キャンセルポリシーと補償に同意します:" : "I agree to the cancellation policy and compensation terms: "}
@@ -327,22 +330,18 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
               : `Compensation up to ${yen(LB_COMPENSATION_YEN)} per bag and ${yen(LB_COMPENSATION_PERSON_YEN)} per person.`}
           </span>
         </label>
-      )}
 
       <div className="lb-bookbox-actions">
-        {instant ? (
-          <button type="button" className="stay-cta book-pay" disabled={paying || !agree} onClick={pay}>
-            <CreditCard size={16} />{" "}
-            {paying
-              ? ja ? "決済画面を開いています…" : "Opening payment…"
-              : ja ? `${est ? yen(est.total) : ""}を支払って予約を確定` : `Pay ${est ? yen(est.total) : ""} and confirm`}
-          </button>
-        ) : (
-          <a href={wa(message)} target="_blank" rel="noopener noreferrer" className="stay-cta">
-            <MessageCircle size={16} /> {ja ? "この内容でWhatsAppから申し込む" : "Send this request on WhatsApp"}
-          </a>
-        )}
+        <button type="button" className="stay-cta book-pay" disabled={paying || !agree || !instant} onClick={pay}>
+          <CreditCard size={16} />{" "}
+          {paying
+            ? ja ? "決済画面を開いています…" : "Opening payment…"
+            : instant && est
+              ? ja ? `${yen(est.total)}をカードで支払って予約を確定` : `Pay ${yen(est.total)} by card and confirm`
+              : ja ? "カードで支払って予約を確定" : "Pay by card and confirm"}
+        </button>
       </div>
+      {missing && <p className="book-hint">{missing}</p>}
       <p className="lb-bookbox-trust">
         <ShieldCheck size={14} />{" "}
         {ja

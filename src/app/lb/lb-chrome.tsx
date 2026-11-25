@@ -64,7 +64,7 @@ export function LbNav({ lang = "en" }: { lang?: Lang }) {
 export const LB_MENU: { slug: string; t: { en: string; ja: string } }[] = [
   { slug: "", t: { en: "Home", ja: "トップ" } },
   { slug: "book", t: { en: "Book", ja: "予約する" } },
-  { slug: "calendar", t: { en: "Calendar", ja: "運行カレンダー" } },
+  { slug: "calendar", t: { en: "Calendar", ja: "営業カレンダー" } },
   { slug: "faq", t: { en: "FAQ", ja: "よくある質問" } },
 ];
 

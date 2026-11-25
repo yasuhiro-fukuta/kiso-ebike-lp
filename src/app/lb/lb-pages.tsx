@@ -1,7 +1,7 @@
 "use client";
 
 /** ラゲッジバスのページ構成(2026-11-25 23:02 社長のダメ出しで作り直し)。
- *  メニューは トップ/予約する/運行カレンダー/よくある質問 の4つだけ(lb-chrome の LbMenu)。
+ *  メニューは トップ/予約する/営業カレンダー/よくある質問 の4つだけ(lb-chrome の LbMenu)。
  *  旧 /prices /how /policy は消して /faq へリダイレクト。中身(料金の例・届く時間・置き場所・
  *  キャンセル・補償・ルール)は「よくある質問」に入れた。範囲外の方へ(/other-services)はメニューに出さない。 */
 import Link from "next/link";
@@ -37,7 +37,7 @@ export function BookButton({ lang }: { lang: Lang }) {
 
 const HEAD: Record<LbSection, T> = {
   book: { en: "Book", ja: "予約する" },
-  calendar: { en: "Service calendar", ja: "運行カレンダー" },
+  calendar: { en: "Service calendar", ja: "営業カレンダー" },
   faq: { en: "FAQ", ja: "よくある質問" },
 };
 
