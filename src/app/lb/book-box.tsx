@@ -19,6 +19,7 @@ import {
   SEASON_END,
   CANCEL_POLICY,
   CANCEL_SHORT,
+  holdNotes,
 } from "../luggage-bus";
 import { quoteLb, needsInnBooking, jstNow } from "../lb-booking";
 import { LB_COMPENSATION_YEN, LB_COMPENSATION_PERSON_YEN } from "../lb-config";
@@ -295,9 +296,14 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
         </span>
         <small>
           {ja
-            ? `朝${DROP_BY}までに置けば、その日の${ARRIVE_BY}までに届きます。駅の預かり料(宿は無料)は現地払いです。`
-            : `Leave them by ${DROP_BY}, and they arrive by ${ARRIVE_BY} the same day. Station holding fees (free at inns) are paid on the spot.`}
+            ? `朝${DROP_BY}までに置けば、その日の${ARRIVE_BY}までに届きます。駅の預かり料は預けるときに現地払い、受け取りは無料です(宿は無料)。`
+            : `Leave them by ${DROP_BY}, and they arrive by ${ARRIVE_BY} the same day. Station holding fees are paid on the spot when you drop off; collecting is free (inns are free).`}
         </small>
+        {holdNotes(fp, tp, lang).map((t) => (
+          <small key={t} className="lb-nextday">
+            ※{t}
+          </small>
+        ))}
         {nextDay && (
           <small className="lb-nextday">
             {ja

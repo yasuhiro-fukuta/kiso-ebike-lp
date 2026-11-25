@@ -27,6 +27,10 @@ import {
   JR_STATIONS,
   jrOf,
   choicesForJr,
+  holdNotes,
+  HOLD_FEE_RULE,
+  NARAI_NOTE,
+  PLACES,
   type AreaKey,
 } from "../src/app/luggage-bus";
 import { quoteLb } from "../src/app/lb-booking";
@@ -227,4 +231,23 @@ test("須原・奈良井・一覧にない宿も即時予約(宿の名前と予�
   const q = quoteLb({ ...base, from: label("izumiya"), to: other.en, toPlace: "Inn X", toBooking: "B" }, "en", NOW, NONE);
   assert.equal(q.kind, "instant");
   if (q.kind === "instant") assert.equal(q.total, ROWS.find((r) => r[0] === "南木曽駅" && r[1] === "田立")![3][0]);
+});
+
+test("預かり料の注記：預けるときは現地払い、中津川・奈良井・イズミヤの受け取りは無料、奈良井は日またぎ不可(2026-11-25 社長決定)", () => {
+  assert.equal(PLACES["nakatsugawa-info"].fee, 700);
+  assert.equal(PLACES["narai-station"].fee, 700);
+  assert.equal(PLACES.izumiya.fee, 500);
+  assert.equal(PLACES.katana.fee, 0);
+  assert.match(HOLD_FEE_RULE.ja, /中津川駅700円・奈良井駅700円・南木曽駅前イズミヤ500円・野尻駅前カフェ刀 無料/);
+  const pt = (id: string) => FORM_POINTS.find((x) => x.place?.id === id)!;
+  // イズミヤで預けて奈良井駅で受け取る：預け500円の注記・受け取り無料・奈良井の注意
+  const n1 = holdNotes(pt("izumiya"), pt("narai-station"), "ja");
+  assert.equal(n1.length, 3);
+  assert.match(n1[0], /¥500/);
+  assert.match(n1[1], /奈良井駅荷物預かり所での受け取りは無料/);
+  assert.equal(n1[2], NARAI_NOTE.ja);
+  // 宿どうし：注記なし
+  assert.deepEqual(holdNotes(pt("kashiwaya"), pt("waiwai"), "en"), []);
+  // カフェ刀(0円)で預ける：預かり料の注記なし
+  assert.deepEqual(holdNotes(pt("katana"), pt("kashiwaya"), "en"), []);
 });

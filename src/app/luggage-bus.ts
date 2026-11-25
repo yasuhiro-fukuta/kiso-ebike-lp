@@ -188,7 +188,17 @@ export const PLACES: Record<string, Place> = {
     closed: { en: "—", ja: "—" },
     rule: null,
   },
-  "narai-station": { id: "narai-station", name: { en: "Narai Station luggage storage", ja: "奈良井駅荷物預かり所" }, map: "https://maps.app.goo.gl/ESeFTVPg2nDrmjG19", fee: 700, hours: null, closed: UNKNOWN, rule: null },
+  // 2026-11-24 社長が奈良井駅で確認：1個700円・前払い・8:40〜16:40、時間を過ぎた荷物は駅の外に出される。
+  "narai-station": {
+    id: "narai-station",
+    name: { en: "Narai Station luggage storage", ja: "奈良井駅荷物預かり所" },
+    map: "https://maps.app.goo.gl/ESeFTVPg2nDrmjG19",
+    fee: 700,
+    feeNote: { en: "paid in advance; same day only", ja: "前払い。当日中のみ" },
+    hours: { en: "8:40–16:40", ja: "8:40〜16:40" },
+    closed: UNKNOWN,
+    rule: null,
+  },
 };
 
 /** The stops on the line, south to north. `pos` is the order on the line.
@@ -449,6 +459,52 @@ export const feeText = (pl: Place, lang: "en" | "ja") => {
   if (!pl.feeNote) return base;
   return lang === "ja" ? `${base}(${pl.feeNote.ja})` : `${base} (${pl.feeNote.en})`;
 };
+
+/** 2026-11-25 22:23 社長決定：中津川駅前(にぎわい)・奈良井駅前・南木曽駅前(イズミヤ)で
+ *  預けるときは、お客様が預けるときに現地で預かり料を払う。受け取るときはお客様は払わない
+ *  (受け取り側の預かり料は弊社が払う)。金額は PLACES から引く(手で打たない)。 */
+export const PICKUP_FREE_IDS = ["nakatsugawa-info", "narai-station", "izumiya"];
+
+const feeYen = (id: string, lang: "en" | "ja" = "en") => {
+  const f = PLACES[id].fee;
+  if (f === null) return "—";
+  return lang === "ja" ? `${f.toLocaleString("en-US")}円` : yen(f);
+};
+
+/** The station holding-fee rule, in one sentence (prices page, FAQ, booking box). */
+export const HOLD_FEE_RULE: T = {
+  en: `Leaving bags at a station? Pay that station's holding fee there when you drop them off (per bag: Nakatsugawa ${feeYen("nakatsugawa-info")}, Narai ${feeYen("narai-station")}, Nagiso / Cafe Izumiya ${feeYen("izumiya")}, Nojiri / Cafe Katana free). Collecting your bags at these stations is free: we pay that fee.`,
+  ja: `駅で預けるときは、その駅の預かり料を、預けるときに現地でお支払いください(1個あたり 中津川駅${feeYen("nakatsugawa-info", "ja")}・奈良井駅${feeYen("narai-station", "ja")}・南木曽駅前イズミヤ${feeYen("izumiya", "ja")}・野尻駅前カフェ刀 無料)。これらの駅で受け取るときは無料です(預かり料は弊社が負担します)。`,
+};
+
+/** Narai Station: no overnight holding (2026-11-25 社長「お客様への周知が必要」). */
+export const NARAI_NOTE: T = {
+  en: "Narai Station: bags can't stay overnight. The storage is open 8:40–16:40, and bags left after closing are put outside the station. Please collect yours the same day.",
+  ja: "奈良井駅：日をまたいで荷物を預けることはできません。預かり所は8:40〜16:40で、時間を過ぎた荷物は駅の外に出されます。その日のうちにお受け取りください。",
+};
+
+/** One-line notes for the chosen ends of a trip (booking box, range checker). */
+export function holdNotes(from: FormPoint | null, to: FormPoint | null, lang: "en" | "ja"): string[] {
+  const ja = lang === "ja";
+  const out: string[] = [];
+  const fp = from?.place;
+  if (fp && !fp.guestsOnly && fp.fee !== null && fp.fee > 0)
+    out.push(
+      ja
+        ? `${fp.name.ja}の預かり料 ${feeText(fp, "ja")} は、預けるときに現地でお支払いください。`
+        : `Pay the ${fp.name.en} holding fee (${feeText(fp, "en")}) there when you drop off.`,
+    );
+  const tpl = to?.place;
+  if (tpl && PICKUP_FREE_IDS.includes(tpl.id))
+    out.push(
+      ja
+        ? `${tpl.name.ja}での受け取りは無料です(預かり料は弊社が負担します)。`
+        : `Collecting at ${tpl.name.en} is free (we pay the holding fee).`,
+    );
+  const narai = posOf("narai-st");
+  if (from?.pos === narai || to?.pos === narai) out.push(NARAI_NOTE[lang]);
+  return out;
+}
 
 /** Is the place known to be closed on this date (ISO yyyy-mm-dd)? */
 export function placeClosed(place: Place, iso: string) {

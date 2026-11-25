@@ -8,6 +8,7 @@ import { LbTrust } from "./lb-sections";
 import {
   STATIONS, feeText, placeName, RULES, RUNS, ARRIVALS, EXAMPLES, LINE, OUT_OF_RANGE,
   estimate, posOf, nameOf, DROP_BY, ARRIVE_BY, MAX_FARE_BAGS, CANCEL_POLICY, COMPENSATION_TEXT, SEASON_TEXT,
+  HOLD_FEE_RULE, NARAI_NOTE,
 } from "../luggage-bus";
 
 const RANGE_JA = LINE.map((a) => a.name.ja).join("・");
@@ -342,7 +343,7 @@ export function JaStations() {
               <thead>
                 <tr>
                   <th>駅</th>
-                  <th>預かり料(現地払い)</th>
+                  <th>預ける時の預かり料(現地払い)</th>
                   <th>定休日</th>
                   <th>営業時間</th>
                 </tr>
@@ -365,7 +366,11 @@ export function JaStations() {
             </table>
           </div>
           <p className="drop-note">
-            預かり料がかかる駅があります(その場で各駅にお支払いください)。観光案内所の定休日は観光サイトの情報をもとにした目安で、変わっていることがあります。預け場所が休みと分かったときは、前もってこちらからご連絡します。
+            {HOLD_FEE_RULE.ja}
+            <br />
+            {NARAI_NOTE.ja}
+            <br />
+            観光案内所の定休日は観光サイトの情報をもとにした目安で、変わっていることがあります。預け場所が休みと分かったときは、前もってこちらからご連絡します。
           </p>
           <div className="mini-grid cols2" style={{ marginTop: "1.2rem" }}>
             <div className="mini-card lb-way">
@@ -440,6 +445,14 @@ export function JaFaq() {
             <p>
               前日23時までに予約をお願いします。範囲内なら、予約ボックスで支払った時点で予約確定です。
             </p>
+          </details>
+          <details className="faq-item">
+            <summary>駅の預かり料はかかりますか?</summary>
+            <p>{HOLD_FEE_RULE.ja}</p>
+          </details>
+          <details className="faq-item">
+            <summary>奈良井駅に一晩預けられますか?</summary>
+            <p>{NARAI_NOTE.ja}</p>
           </details>
           <details className="faq-item">
             <summary>キャンセルはできますか?</summary>

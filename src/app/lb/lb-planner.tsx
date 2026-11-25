@@ -13,6 +13,7 @@ import {
   areaAt,
   MAX_FARE_BAGS,
   dropPlaceText,
+  holdNotes,
   yen,
   ARRIVE_BY,
   DROP_BY,
@@ -214,6 +215,11 @@ function LegResult({
             <MapPin size={16} /> <b>{ja ? "荷物を置く場所:" : "Where to leave your bags: "}</b>
             {dropPlaceText(fp!, lang)}
           </p>
+          {holdNotes(fp, tp, lang).map((t) => (
+            <p key={t} className="lb-nextday">
+              ※{t}
+            </p>
+          ))}
           <p>
             <Clock size={16} /> <b>{ja ? "届く時刻:" : "When they arrive: "}</b>
             {nextDay

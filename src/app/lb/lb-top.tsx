@@ -24,6 +24,8 @@ import {
   SEASON_TEXT,
   CANCEL_POLICY,
   COMPENSATION_TEXT,
+  HOLD_FEE_RULE,
+  NARAI_NOTE,
   MAX_FARE_BAGS,
   estimate,
   posOf,
@@ -101,13 +103,16 @@ export function LbTopView({ lang }: { lang: Lang }) {
     },
     {
       t: { en: `Leave bags by ${DROP_BY}`, ja: `朝${DROP_BY}までに置く` },
-      d: { en: "Inn front desk or entrance, or your stop.", ja: "宿のフロントか玄関、または出発の駅に。" },
+      d: {
+        en: "Inn front desk or entrance, or your stop. At a station, pay its holding fee there.",
+        ja: "宿のフロントか玄関、または出発の駅に。駅では預かり料を現地で。",
+      },
     },
     {
       t: { en: `Collect by ${ARRIVE_BY}`, ja: `${ARRIVE_BY}までに受け取る` },
       d: {
-        en: "At your next stop (from north of Nagiso to the south end: next day).",
-        ja: "次の駅・宿で(南木曽より北→田立・坂下・中津川は翌日)。",
+        en: "At your next stop (from north of Nagiso to the south end: next day). Free at stations.",
+        ja: "次の駅・宿で(南木曽より北→田立・坂下・中津川は翌日)。駅での受け取りは無料。",
       },
     },
   ];
@@ -120,6 +125,8 @@ export function LbTopView({ lang }: { lang: Lang }) {
         ja: "乗れません。運ぶのは荷物だけで、短い区間でも人は乗せられません。",
       },
     },
+    { q: { en: "Are there station holding fees?", ja: "駅の預かり料はかかりますか?" }, a: HOLD_FEE_RULE },
+    { q: { en: "Can I leave bags overnight at Narai Station?", ja: "奈良井駅に一晩預けられますか?" }, a: NARAI_NOTE },
     { q: { en: "Can I cancel?", ja: "キャンセルはできますか?" }, a: CANCEL_POLICY },
     { q: { en: "What if a bag is lost or damaged?", ja: "荷物がなくなったり壊れたりしたら?" }, a: COMPENSATION_TEXT },
   ];
@@ -221,6 +228,7 @@ export function LbTopView({ lang }: { lang: Lang }) {
             })}
           </tbody>
         </table>
+        <p className="lb-s-note">{HOLD_FEE_RULE[lang]}</p>
         <div className="lb-s-links">
           <More href={href("book")}>{ja ? "他の区間の見積もり" : "Price any trip"}</More>
           <More href={href("prices")}>{ja ? "全料金・時刻" : "All prices & times"}</More>
