@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MessageCircle, CreditCard } from "lucide-react";
-import { quoteLb } from "./lb-booking";
 import { wa } from "./site";
 import {
   FORM_POINTS,
@@ -430,7 +429,6 @@ export default function BookForm({ lang }: { lang: Lang }) {
   const svc = SERVICES[key];
   const [v, setV] = useState<Record<string, string>>({});
   const [err, setErr] = useState<string | null>(null);
-  const [paying, setPaying] = useState(false);
   const t = T[lang];
 
   if (!svc) {
@@ -455,32 +453,8 @@ export default function BookForm({ lang }: { lang: Lang }) {
     return raw;
   };
   const est = svc.estimate?.(lang, v) ?? null;
-  // Luggage Bus: listed stations on a normal day can be paid and confirmed right away.
-  const lbQuote =
-    key === "luggage"
-      ? quoteLb({ name: v.name ?? "", date: v.date ?? "", from: v.from ?? "", to: v.to ?? "", bags: Number(v.bags ?? 0) }, lang)
-      : null;
-  const canPay = lbQuote?.kind === "instant" && process.env.NEXT_PUBLIC_LB_INSTANT === "1";
-  const payNow = async () => {
-    setErr(null);
-    setPaying(true);
-    try {
-      const res = await fetch("/api/lb-checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lang, name: v.name ?? "", date: v.date ?? "", from: v.from ?? "", to: v.to ?? "", bags: Number(v.bags ?? 0) }),
-      });
-      const j = await res.json().catch(() => ({}));
-      if (j.url) {
-        window.location.href = j.url;
-        return;
-      }
-      setErr(j.error ?? (lang === "ja" ? "この内容はWhatsAppでお申し込みください。" : "Please send this request on WhatsApp."));
-    } catch {
-      setErr(lang === "ja" ? "通信できませんでした。WhatsAppでお申し込みください。" : "Connection failed. Please book on WhatsApp.");
-    }
-    setPaying(false);
-  };
+  // Luggage Bus: pay-and-confirm lives on luggagebusnakasendo.com/book (with the cancellation consent).
+  const lbBookUrl = key === "luggage" ? `https://luggagebusnakasendo.com${lang === "ja" ? "/ja" : ""}/book` : null;
   const message = svc.build(lang, g, est ? `${est.total}(${est.detail})` : t.estimateNone, v);
 
   return (
@@ -562,20 +536,16 @@ export default function BookForm({ lang }: { lang: Lang }) {
               {err}
             </p>
           )}
-          {canPay && (
+          {lbBookUrl && (
             <>
-              <button type="button" className="stay-cta book-send book-pay" disabled={paying} onClick={payNow}>
+              <a href={lbBookUrl} className="stay-cta book-send book-pay">
                 <CreditCard size={16} />{" "}
-                {paying
-                  ? lang === "ja" ? "決済画面を開いています…" : "Opening payment…"
-                  : lang === "ja"
-                    ? `${lbQuote.kind === "instant" ? yen(lbQuote.total) : ""}を支払って予約を確定する`
-                    : `Pay ${lbQuote.kind === "instant" ? yen(lbQuote.total) : ""} and confirm now`}
-              </button>
+                {lang === "ja" ? "ラゲッジバスのサイトで支払い・即時予約する" : "Pay and confirm instantly on the Luggage Bus site"}
+              </a>
               <p className="book-reply-note">
                 {lang === "ja"
-                  ? "承認待ちはありません。お支払いが済んだ時点で予約確定です。駅の預かり料は現地払いです。質問があれば下のWhatsAppからどうぞ。"
-                  : "No waiting for approval: your booking is confirmed as soon as you pay. Station holding fees are paid on the spot. Questions? Use WhatsApp below."}
+                  ? "承認待ちはありません。お支払いが済んだ時点で予約確定です。"
+                  : "No waiting for approval: your booking is confirmed as soon as you pay."}
               </p>
             </>
           )}

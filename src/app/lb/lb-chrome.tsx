@@ -78,7 +78,11 @@ export function LbFloat({
       >
         <LineIcon size={18} /> {isJa ? "LINEで問い合わせ" : "LINE"}
       </a>
-      <a href={href} target="_blank" rel="noopener noreferrer" className="float-book">
+      <a
+        href={href}
+        {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="float-book"
+      >
         {children}
       </a>
     </>

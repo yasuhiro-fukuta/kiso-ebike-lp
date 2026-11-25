@@ -138,10 +138,14 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
   const [err, setErr] = useState<string | null>(null);
   const [agree, setAgree] = useState(false);
   const [paying, setPaying] = useState(false);
+  // The server said "not instant after all" (no Stripe key, capacity, etc.): show WhatsApp.
+  const [forceWa, setForceWa] = useState(false);
   const boxRef = useRef<HTMLElement>(null);
   const set = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setV({ ...v, [k]: e.target.value });
   const setStop = (k: "from" | "to") => (val: string) => setV((cur) => ({ ...cur, [k]: val }));
+
+  useEffect(() => setForceWa(false), [v.date, v.from, v.to, v.bags]);
 
   // Hand-over from the range checker: fill the stops and bags, then bring the box into view.
   useEffect(() => {
@@ -169,7 +173,8 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
     },
     lang,
   );
-  const instant = q.kind === "instant" && process.env.NEXT_PUBLIC_LB_INSTANT === "1";
+  // 2026-11-25: no env switch any more — every instant quote is paid and confirmed on the spot.
+  const instant = q.kind === "instant" && !forceWa;
   const fromInnAsk = !!fp && !fp.place && fp.pos !== null;
   const toInnAsk = !!tp && !tp.place && tp.pos !== null;
   const fromBookingAsk = needsInnBooking(v.from);
@@ -209,6 +214,7 @@ export function LbBookBox({ lang, preset }: { lang: Lang; preset?: LbPreset | nu
         window.location.href = j.url;
         return;
       }
+      if (j.fallback || j.approval) setForceWa(true);
       setErr(j.error ?? (ja ? "この内容はWhatsAppでお申し込みください。" : "Please send this request on WhatsApp."));
     } catch {
       setErr(ja ? "通信できませんでした。WhatsAppでお申し込みください。" : "Connection failed. Please book on WhatsApp.");
