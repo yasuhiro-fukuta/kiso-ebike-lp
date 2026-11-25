@@ -13,7 +13,6 @@ import {
   CircleHelp,
   Signpost,
   ArrowRight,
-  Ban,
 } from "lucide-react";
 import { LbNav, LbFooter, LbFloat, useLb } from "./lb-chrome";
 import { LbPlanner } from "./lb-planner";
@@ -92,74 +91,13 @@ export function useLbHref(lang: Lang) {
 }
 
 /** Book button that sits above everything else. */
-function BookButton({ lang }: { lang: Lang }) {
+export function BookButton({ lang }: { lang: Lang }) {
   const href = useLbHref(lang);
   return (
     <Link href={href("book")} className="stay-cta lb-book-btn">
       <CalendarCheck size={18} /> {lang === "ja" ? "予約する(料金がすぐ出ます)" : "Book now — see the price at once"}{" "}
       <ArrowRight size={16} />
     </Link>
-  );
-}
-
-export function LbTopView({ lang }: { lang: Lang }) {
-  const ja = lang === "ja";
-  const href = useLbHref(lang);
-  return (
-    <div className="lp">
-      <LbNav lang={lang} />
-      <LbFloat href={href("book")}>
-        <CalendarCheck size={18} /> {ja ? "予約する" : "Book now"}
-      </LbFloat>
-
-      <header className="lb-top">
-        <span className="head-badge">{ja ? "荷物専用・人は乗れません" : "Luggage only · no passengers"}</span>
-        <h1>
-          {ja ? (
-            <>
-              WEBで完結、<em>当日届く。</em>
-            </>
-          ) : (
-            <>
-              Book online. <em>Bags arrive the same day.</em>
-            </>
-          )}
-        </h1>
-        <p>
-          {ja
-            ? `中山道の${FIRST.ja}〜${LAST.ja}。朝${DROP_BY}までに置けば、その日の${ARRIVE_BY}までに次の宿へ。`
-            : `Along the Nakasendo, ${FIRST.en} to ${LAST.en}. Leave your bags by ${DROP_BY}; they reach your next stop by ${ARRIVE_BY}.`}
-        </p>
-        <BookButton lang={lang} />
-      </header>
-
-      <nav className="lb-menu" aria-label={ja ? "目次" : "Contents"}>
-        {LB_CARDS.map((c) => (
-          <Link key={c.slug} href={href(c.slug)} className={`lb-menu-card${c.slug === "book" ? " primary" : ""}`}>
-            <span className="lb-menu-icon">{c.icon}</span>
-            <span className="lb-menu-title">{c.title[lang]}</span>
-            <span className="lb-menu-text">{c.text[lang]}</span>
-          </Link>
-        ))}
-      </nav>
-
-      <figure className="lb-top-photo">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets/shuttle-van.jpg"
-          alt={
-            ja
-              ? "ラゲッジバスのバン。スーツケースとバックパックを積んで谷を走ります"
-              : "The Luggage Bus van with its tailgate up, suitcases and a backpack loaded for the run along the valley"
-          }
-        />
-        <figcaption>
-          <Ban size={14} /> {ja ? "運ぶのは荷物だけ。人は乗せません" : "Bags only — the van carries no passengers"}
-        </figcaption>
-      </figure>
-
-      <LbFooter lang={lang} />
-    </div>
   );
 }
 

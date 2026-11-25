@@ -89,64 +89,56 @@ export function LbFloat({
   );
 }
 
+/** Footer, kept short (2026-11-25): brand, operator, contact and related links in a few lines. */
 export function LbFooter({ lang = "en" }: { lang?: Lang }) {
   const ja = lang === "ja";
   return (
-    <footer className="lp-footer">
-      <div className="foot-grid">
-        <div>
+    <footer className="lp-footer lb-foot" id="company">
+      <div className="lb-foot-in">
+        <div className="lb-foot-brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/logo-mark.png" alt="" className="foot-mark" />
-          <div className="brand">
-            Luggage Bus <span>Nakasendo</span>
+          <div>
+            <div className="brand">
+              Luggage Bus <span>Nakasendo</span>
+            </div>
+            <a className="lb-endorse" href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>
+              a Kiso Ride service
+            </a>
           </div>
-          <a className="lb-endorse" href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>
-            a Kiso Ride service
-          </a>
-          <p>
-            {ja
-              ? "中津川〜奈良井の宿へ、荷物だけを運ぶバス。長野県南木曽町・ゲストハウス柏屋(From Scratch LLC)が運営しています。"
-              : "A bags-only shuttle between Nakatsugawa and Narai. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
-          </p>
         </div>
-        <div>
-          <h4>{ja ? "関連サービス" : "Also from us"}</h4>
-          <a href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>
-            Kiso Ride
-          </a>
-          <br />
-          <a href={ja ? `${EBIKE_SITE}/ja/rental` : `${EBIKE_SITE}/rental`}>
-            {ja ? "E-bikeレンタル" : "E-Bike Rental"}
-          </a>
-          <br />
-          <a href={ja ? `${EBIKE_SITE}/ja/guided` : `${EBIKE_SITE}/guided`}>
-            {ja ? "ガイドツアー" : "Guided Tours"}
-          </a>
-        </div>
-        <div>
-          <h4>{ja ? "お問い合わせ" : "Connect"}</h4>
+        <h4 className="lb-foot-h">{ja ? "会社概要・お問い合わせ" : "About us & contact"}</h4>
+        <p>
+          {ja
+            ? "中津川〜奈良井の宿へ、荷物だけを運びます。運営：ゲストハウス柏屋(From Scratch LLC)・長野県南木曽町"
+            : "A bags-only shuttle between Nakatsugawa and Narai. Operated by Kashiwaya Guesthouse (From Scratch LLC), Nagiso, Nagano."}
+        </p>
+        <div className="lb-foot-row">
           <a href={ja ? WHATSAPP_URL_JA : WHATSAPP_URL} target="_blank" rel="noreferrer">
-            <MessageCircle size={16} /> WhatsApp
+            <MessageCircle size={15} /> WhatsApp
           </a>
-          <br />
-          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
-            <Instagram size={16} /> Instagram
+          <a href={LINE_URL} target="_blank" rel="noreferrer">
+            <LineIcon size={15} /> LINE
           </a>
-          <br />
           <a href={SUPPORT_MAILTO}>
-            <Mail size={16} /> {ja ? "メールで相談" : "Email us"}
+            <Mail size={15} /> {ja ? "メール" : "Email"}
           </a>
-          <br />
           <a href={PHONE_TEL}>
-            <Phone size={16} /> {PHONE}
+            <Phone size={15} /> {PHONE}
+          </a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+            <Instagram size={15} /> Instagram
           </a>
         </div>
-      </div>
-      <div className="foot-bottom">
-        <span>© {new Date().getFullYear()} From Scratch LLC</span>
-        <span>
-          {ja ? "オンラインで申し込み · お支払いで予約確定" : "Book online · confirmed when you pay"}
-        </span>
+        <div className="lb-foot-row small">
+          <a href={ja ? `${EBIKE_SITE}/ja` : EBIKE_SITE}>Kiso Ride</a>
+          <a href={ja ? `${EBIKE_SITE}/ja/rental` : `${EBIKE_SITE}/rental`}>{ja ? "E-bikeレンタル" : "E-Bike Rental"}</a>
+          <a href={ja ? `${EBIKE_SITE}/ja/guided` : `${EBIKE_SITE}/guided`}>{ja ? "ガイドツアー" : "Guided Tours"}</a>
+        </div>
+        <div className="foot-bottom">
+          <span>© {new Date().getFullYear()} From Scratch LLC</span>
+          <span>{ja ? "オンラインで申し込み · お支払いで予約確定" : "Book online · confirmed when you pay"}</span>
+        </div>
       </div>
     </footer>
   );
